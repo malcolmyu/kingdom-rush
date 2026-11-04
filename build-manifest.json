@@ -1,5 +1,5 @@
 {
-  "version": "0.2.47",
+  "version": "0.2.48",
   "stages": 3,
   "modes": [
     "campaign",
@@ -20,7 +20,7 @@
     "repository.mjs": "66683ca915b85da9417a5bd68c45141f1e84713f32a3102c356048a6394ac1f4",
     "tutorials.mjs": "f252a55eaef3e66388d7b6b5a8cd0a0ad750c8bef21a7508490f5e0b95b465bd",
     "enemy-notifications.mjs": "891b6d08d182fc8dde3eb74097865b0f1d7a13f68fb540ea66534814bb7d6c0e",
-    "encyclopedia.mjs": "8db94ba502918babff56d3b8274f7408ede83cfbb8d19ca0d8891d73c10b4d52",
+    "encyclopedia.mjs": "7852efd3815ab93fba6fed019bd953088558c6c74647b4bcc8bdfe73c6456b4a",
     "upgrade-motion.mjs": "7c823e6faf6d9b4b497e3be0456d35088874507c632f4fc72986545e89da2c3c",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "upgrades-ui.mjs": "53abecf5241940c9f6d28a2ada1404e16893e401397d45dd227d66b2a3a30df6",
@@ -29,7 +29,7 @@
     "map-hero-hud.mjs": "29ea87d1ab5f08b5d4e930b73a9cd80e31805619755ba6fc0687fa35a284c06a",
     "results.mjs": "a3d42b65b0289d7999303afa3bae0b7589818fccf6e3131ff7af69dc78a4cadc",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
-    "style.css": "1f8744214b48cc4872b467adb7d0bf2a5fe6f786475077637dca3ee4c933b71f",
+    "style.css": "e191088e94e86a225b8667bcaeab74896c3930c156728ceb543977509818fdc7",
     "guidance.mjs": "407190d009e765717919494bb584458478adcf359f8ab14eb0c9a3225541b9f4",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
     "renderer.mjs": "f9049d20ea065e1b41d73a56057306b0e8f648c753fa465f5ae21a66cb30f58b",
@@ -129,6 +129,7 @@
     "assets/ui/mainmenu_saveslot_bg.webp": "c7f7471301e3cd48f85f9fbba251b833fd0edc046071046a1ec5f976f827a840",
     "assets/ui/heroroom_heroBadge_numbers_0008.webp": "953a107d15bfc17f4db5e80debb5361de2d9839ceefc2b6c1baa492f90f575ff",
     "assets/ui/mapButtons_portrait_hero_0001.webp": "adf9d8f53dec03cdddebdf2e645d0b7262d2d8ccd433af90bce98c73c0474517",
+    "assets/ui/encyclopedia_tips_bg_lt.webp": "ab445dbecc3e17734ec3d8a52c6f1a83b4e9f5681c4c1464c4ae8cd0b17e7360",
     "assets/ui/inaps_getGemsChain.webp": "9a7f54574b79b3e38c8172c3d72f77486cacec024182b022b467fe377bf44a86",
     "assets/ui/victoryStars_0001.webp": "8789ecdcb3a4949eb97e6d7a449eb7894e7e6b66310bc696e2eacbbc687f29e4",
     "assets/ui/heroroom_heroBadge_numbers_0009.webp": "20800d221cdc3d942462652d44a0a7d331558b3ac582d6928c9816994318d3b1",
@@ -339,6 +340,7 @@
     "assets/ui/heroroom_heropoint.webp": "12f31135f7fa61facada4af7e1529f5a1169e4270a830ca5c732a69ba20b4162",
     "assets/ui/mainmenu_saveslot_delete_0001.webp": "c8a4c56da6949eedd65a2299fb32fee57f5b263383e3a30c54433a5a5e7905eb",
     "assets/ui/upgrades_icons_0019.webp": "e272ec22de3d2085592225627a31abb60dbeffe8c763ea6667c91a6dc73450a9",
+    "assets/ui/encyclopedia_tips_bg_ct.webp": "8878d93572b6d3fee186f8f0bc75624b82e6f58481b640691feecbe4f588104e",
     "assets/ui/tutorial_but_skip_0001.webp": "6cd70c1522d8f07bce0e203110d506443a5a95b720c4ceecc068866b09ad5841",
     "assets/ui/mapFlag_0001.webp": "b4a3188f409da86102781faa2e8276c27b00e3394349e495e131eb47493133f8",
     "assets/ui/victoryStars_0049.webp": "bc65bd294defde1cc752c1883799631b65efe6c6831313a90c8eb8d4e80fe16e",
@@ -402,7 +404,7 @@
     "assets/ui/balloon_map_slices_lc.webp": "0dc5958c3ccef493ac3e86d2a25d1a3b518f0c01f829df5aa6d2412c7211b041",
     "assets/ui/upgrades_icons_off_0003.webp": "29cfc43cd039b4e880364d391c18de78dda3d80c732b7815fdcdf4aad8be8379",
     "assets/ui/encyclopedia_creep_infopanel.webp": "6b0d261ce4283f4fff6b75992d7213ae772467e427caa8a5d9854a9df0109347",
-    "assets/ui/layouts.json": "7eec449b88230eb904569c3a08fe027492b879e51c2e6b9a8017bdce922e9b4c",
+    "assets/ui/layouts.json": "b83ce26b704480b89cbdafd8b777bc5cd84e42d6976f2907dacc9a1cc5ba713f",
     "assets/ui/victoryStars_0035.webp": "3930b18df80c20582c067573728e9955c8499f621a418dea0b9d1ea844694ca4",
     "assets/ui/mainmenu_options_buttons_0006.webp": "b8d5c76aae13aaa23c9dd9e0a16913dda1939fdf3c579410a0ddad1cb71e86c4",
     "assets/ui/thumb_stage2.webp": "60165f2054eed4a6b852dddc62a166b46397d73555c5959885b41b38e70f957c",
@@ -649,7 +651,7 @@
     "assets/levels/02-heroic.json": "281121a5a1cc7347de1d3955d82c974e9ce6c7355a7e18de62be4389c1036f1a",
     "assets/fonts/SohoGothicProMedium.ttf": "8e9baf6733cc105a2b2a6f409375394f07880aea41385fafd5128aec1fbec93f",
     "assets/fonts/Comic Book Italic.ttf": "bd7e13f8fc1fb4dca3e5b5adb0941b1f101d8fe40f7cc3dbb434fd5103a6306f",
-    "assets/fonts/catalog.json": "14778608e8496a0d2b758aa99750eeb235a5e22acc25358f12c2dfe758ef513b",
+    "assets/fonts/catalog.json": "e7d0843814f93d66c20002b6b770786a0143d91cce986f3cc37f3f45f2079816",
     "assets/fonts/NotoSansCJKkr-Regular.otf": "de59c8b36a6260bb106893a691935e9b8e874989aafefd175af35dcd08518481",
     "assets/fonts/NotoSansCJKkr-Bold.otf": "541b576095cd50d08890f2729d43cef4c02c70a6ccf5da2be3dca4ccd54e071e"
   }
