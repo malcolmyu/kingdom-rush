@@ -1,0 +1,2 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{enemyNoticePose}from'../web/enemy-notifications.mjs';
+test('source notification reveal and dismissal end points',()=>{assert.equal(enemyNoticePose(0).alpha,0);assert.equal(enemyNoticePose(.15).alpha,.25);assert.equal(enemyNoticePose(.3).alpha,1);assert.equal(enemyNoticePose(.4,true).alpha,0);assert.ok(Math.abs(enemyNoticePose(.4,true).scale-.4)<1e-9);});

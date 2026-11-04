@@ -18,7 +18,7 @@ with zipfile.ZipFile(args.apk) as z:
     if isinstance(n.get('text'),str):wanted.append(n['text'])
     for child in n.get('children',[]):texts(child)
   texts(layout)
- for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES']:
+ for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']:
   texts(json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'),key])))
  data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua')]))
  for balloon in data['tutorial_balloons'].values():

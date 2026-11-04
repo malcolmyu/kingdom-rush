@@ -150,3 +150,5 @@ Tutorial markup从原布局递归展开图片/文本/按钮，源坐标在各页
 通知布局连同原ctx元数据由extract_ui导出，字体提取同步收集所用中文。Campaign将首关波次事件映射到队列，展示与seen记录/always策略分离，模态关闭后串行继续。测试策略提供可选afterStep观察器，浏览器在真实事件边界触发通知按钮的正常处理，不修改World数据以绕开暂停。
 
 Guidance 持有独立展示时钟与原气泡描述，按hide_cond接受语义事件并接续balloon_on_hide，不驱动世界。世界坐标和UI坐标通过guidancePosition分别换算，重开时清理节点和时间；模态期间遮蔽指引，结束时清理。
+
+EnemyNotifications消费World的enemy_spawn语义事件，按存档抑制重复并维护独立展示队列。已读在入队保存，与玩家是否打开面板分离；点击接入既有模态队列/暂停机制。图标缩退后压缩队列，展示时间不参与战斗随机或伤害。

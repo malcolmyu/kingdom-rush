@@ -16,7 +16,7 @@ layouts['tutorials']=[read('game_gui_noti_tutorial_'+str(i)) for i in range(1,4)
 notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 layouts['balloons']=notification_data['tutorial_balloons']
-layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES']}
+layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children']}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
@@ -28,6 +28,7 @@ def visit(v):
  elif isinstance(v,list):
   for x in v:visit(x)
 visit(layouts)
+keys.update(v['meta']['icon'] for v in layouts['notifications'].values() if v['meta'].get('icon'))
 keys.update('balloon_map_slices_'+p for p in ['lt','ct','rt','lc','cc','rc','lb','cb','rb','callout_center','callout_right'])
 keys.add('mapFlag_star_0018')
 keys.update(f'heroroom_upgradeIcons_{i:04}'for i in range(6))
