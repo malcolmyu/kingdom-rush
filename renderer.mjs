@@ -17,9 +17,9 @@ export class Renderer{
  screen(p){return{x:this.width/2+(p.x-512)*this.k,y:this.height/2-(p.y-384)*this.k};}
  world(p){return{x:(p.x-this.width/2)/this.k+512,y:(this.height/2-p.y)/this.k+384};}
  async sheet(name){if(!this.sheets.has(name))this.sheets.set(name,await this.repo.image('assets/images/'+name));return this.sheets.get(name);}
- async loadLevel(data){this.map=await this.repo.image(data.map);this.data=data;
+ async loadLevel(data,current=()=>true){const map=await this.repo.image(data.map);if(!current())return false;
   const prefixes=['go_towers','go_decals','go_enemies_elven_woods','go_hero_elves_archer','go_stages_elven_woods',`go_stage${String(data.id).padStart(2,'0')}-`];
-  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))).map(f=>f.a));await Promise.all([...names].map(n=>this.sheet(n)));
+  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))).map(f=>f.a));await Promise.all([...names].map(n=>this.sheet(n)));if(!current())return false;this.map=map;this.data=data;return true;
  }
  async icon(canvas,key){const f=this.catalog.frames[key];if(!f)return;await this.sheet(f.a);const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);this.sprite(c,key,canvas.width/2,canvas.height/2,Math.min(canvas.width/f.size[0],canvas.height/f.size[1]));}
  frame(name,time=0,loop=true){if(this.catalog.frames[name])return name;const a=this.catalog.animations[name];if(!a)return null;const frames=a.frames||a.ranges?.flatMap(([from,to])=>Array.from({length:to-from+1},(_,i)=>from+i))||Array.from({length:(a.to||a.from||1)-(a.from||1)+1},(_,i)=>(a.from||1)+i);let f=Math.max(0,Math.floor(time*30));f=loop?f%frames.length:Math.min(f,frames.length-1);return a.prefix+'_'+String(frames[f]).padStart(4,'0');}
