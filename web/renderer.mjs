@@ -27,10 +27,10 @@ export class Renderer{
    this.sprite(this.ctx,name,p.x,p.y,scale*(s.scale?.x||1),anchor.x,1-anchor.y,(pose.flip??flip)||s.flip_x,alpha*(s.alpha??255)/255,s.r||0);
   }
  }
- circle(pos,r,fill,stroke){const c=this.ctx,p=this.screen(pos);c.beginPath();c.ellipse(p.x,p.y,r*this.k,r*this.k*.72,0,0,Math.PI*2);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}}
+ circle(pos,r,fill,stroke){const c=this.ctx,p=this.screen(pos);c.beginPath();c.ellipse(p.x,p.y,r*this.k,r*this.k*.7,0,0,Math.PI*2);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}}
  draw(w,{selected=null,mode=null,hover=null}={}){const c=this.ctx;c.clearRect(0,0,this.width,this.height);if(!this.map)return;c.drawImage(this.map,0,0,this.width,this.height);
-  if(selected!==null&&w.slots[selected]){const s=w.slots[selected];this.circle(s,s.type?w.towerDef(s.type,s.level).range:160,'#d5f19222','#e5eea699');}
-  if(mode&&hover){const p=w.nearestRoad(hover);if(p)this.circle(p,mode==='lightning'?105:mode==='arrows'?100:24,'#7ccfdf33','#b8f4f8');}
+  if(selected!==null&&w.slots[selected]){const s=w.slots[selected];const d=s.type?w.towerDef(s.type,s.level):null;this.circle(d?{x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y}:s,d?d.range:160,'#d5f19222','#e5eea699');}
+  if(mode&&hover){const p=w.nearestRoad(hover);if(p)this.circle(p,mode==='lightning'?100:mode==='arrows'?35:24,'#7ccfdf33','#b8f4f8');}
   // Original map decoration layers include the river, waterfalls and foreground trees.
   const scenery=w.data.level.entities_list.filter(e=>e.template.startsWith('decal_')&&e.template!=='decal_background'&&e.template!=='decal_defend_point');
   const drawables=[...scenery.map(e=>({pos:e.pos,scenery:e})),...w.slots.map(s=>({pos:s,slot:s})),...w.plants.map(p=>({pos:p,plant:p})),...w.soldiers.map(u=>({pos:u,unit:u})),...w.enemies.map(u=>({pos:u,unit:u,enemy:true}))];if(w.hero)drawables.push({pos:w.hero,unit:w.hero,hero:true});drawables.sort((a,b)=>b.pos.y-a.pos.y);
@@ -47,13 +47,15 @@ export class Renderer{
    }else{if(a.hero)state=u.walking?'walk':u.anim?'ranged':'idle';else state=u.hp<=0?'death':u.walking?'walk':u.shooting?'ranged_attack':u.anim?'attack':'idle';this.entity(u.key,u,{time:u.hp<=0?u.dead:u.anim?w.time-(u.actionAt??(w.time-.6+u.anim)):u.walking?w.time-(u.walkAt||0):t,state,flip:a.hero?u.target.x>u.x:u.flip,alpha:u.hp<=0?Math.min(1,(1.5-u.dead)*2):1});}
    const p=this.screen(u);if(u.hp>0&&u.hp<u.maxHp){c.fillStyle='#203c2b';c.fillRect(p.x-18,p.y-48,36,6);c.fillStyle=a.enemy?'#cd4e34':'#76c74d';c.fillRect(p.x-17,p.y-47,34*u.hp/u.maxHp,4);}
   }
+  for(const b of w.spells?.projectiles||[]){const progress=Math.min(1,Math.max(0,w.time-b.start)*b.speed/b.length),p=this.screen({x:b.from.x+(b.to.x-b.from.x)*progress,y:b.from.y+(b.to.y-b.from.y)*progress});this.sprite(c,'archer_hero_arrows_proy-f',p.x,p.y,1,.96296296296296,.5,false,1,Math.atan2(b.to.y-b.from.y,b.to.x-b.from.x));}
   for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e});
   for(const b of w.shots){if(b.elapsed<0)continue;const p=this.screen(b),key=b.type==='artillery'?'artillery_thrower_proy':b.type==='mage'?this.frame('bolt_elves_travel',w.time):'arrow';this.sprite(c,key,p.x,p.y,1,.5,.5,false,1,b.type==='archer'||b.type==='hero'?-Math.atan2(-(b.ty-b.sy),b.tx-b.sx):0);}
   for(const f of w.effects){const p=this.screen(f),t=f.total-f.life;
    if(f.type==='coin'){c.save();c.globalAlpha=f.life/f.total;c.font='20px Obelix';c.textAlign='center';c.fillStyle='#ffe868';c.strokeStyle='#2b3e26';c.lineWidth=3;c.strokeText(f.text,p.x,p.y-t*30);c.fillText(f.text,p.x,p.y-t*30);c.restore();}
    else if(['rally','build','sell','impact','splash'].includes(f.type)){const names={rally:'rally_feedback',build:'tower_build_dust',sell:'tower_sell',impact:'fx_rock_explosion',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
-   else if(f.type==='lightning'){for(let i=0;i<3;i++){const age=t-i*.3;if(age<0||age>.65)continue;const x=p.x+[0,-26,24][i],y=p.y+[0,8,-10][i],alpha=age<.1?1:Math.max(0,1-(age-.1)/(.26666666666667-.1));if(alpha)this.sprite(c,'ray_000'+(i%2+1),x,y,1,.5,1,false,alpha);const blast=this.frame('fx_power_thunder_explosion_half',age,false);if(age<16/30){this.sprite(c,blast,x,y,1,.5,1-.15714285714286);this.sprite(c,blast,x,y,1,.5,1-.15714285714286,true);}this.sprite(c,this.frame('decal_power_thunder_explosion',age,false),x,y,1,.5,.5,false,Math.min(1,(.65-age)*4));}}
-   else if(f.type==='arrows'){for(let i=0;i<12;i++){const age=t-i*.025;if(age<0)continue;const x=p.x+Math.sin(i*2.4)*85,y=p.y+Math.cos(i*2.4)*45;if(age<.4)this.sprite(c,'archer_hero_arrows_proy-f',x-(.4-age)*260,y-(.4-age)*900,1,.96296296296296,.5,false,1,-1.85);else{const impact=age-.4;this.sprite(c,this.frame('decal_hero_elves_archer_ultimate',impact,false),x,y,1,.5,.5,false,Math.max(0,1-impact*1.5));this.sprite(c,this.frame('fx_hero_elves_archer_ultimate_smoke',impact,false),x,y,1,.5,.5,false,Math.max(0,1-impact*2));}}}
+   else if(f.type==='thunder-strike'){const alpha=t<.1?1:Math.max(0,1-(t-.1)/(.26666666666667-.1));if(alpha)this.sprite(c,'ray_000'+(f.variant||1),p.x,p.y,1,.5,1,false,alpha);if(t<16/30){const blast=this.frame('fx_power_thunder_explosion_half',t,false);this.sprite(c,blast,p.x,p.y,1,.5,1-.15714285714286);this.sprite(c,blast,p.x,p.y,1,.5,1-.15714285714286,true);}this.sprite(c,this.frame('decal_power_thunder_explosion',t,false),p.x,p.y,1,.5,.5,false,Math.min(1,(20/30-t)*4));}
+   else if(f.type==='arrow-impact'){const alpha=t<1?1:Math.max(0,(4-t)/3);this.sprite(c,this.frame('decal_hero_elves_archer_ultimate',t,false),p.x,p.y,1,.5,.5,false,alpha);this.sprite(c,this.frame('fx_hero_elves_archer_ultimate_smoke',t,false),p.x,p.y,1,.5,.5,false,alpha);}
+
 
   }
   for(const p of w.exits)this.circle(p,18,'#8bc9d122','#bdeefa77');

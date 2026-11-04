@@ -9,7 +9,7 @@
       "kills": 100,
       "leaks": 0,
       "spawned": 100,
-      "time": 431,
+      "time": 430,
       "gold": 135
     },
     {
@@ -20,7 +20,7 @@
       "kills": 96,
       "leaks": 0,
       "spawned": 96,
-      "time": 205,
+      "time": 208,
       "gold": 255
     },
     {
@@ -31,7 +31,7 @@
       "kills": 73,
       "leaks": 0,
       "spawned": 73,
-      "time": 123,
+      "time": 122,
       "gold": 225
     },
     {
@@ -42,7 +42,7 @@
       "kills": 229,
       "leaks": 0,
       "spawned": 229,
-      "time": 640,
+      "time": 646,
       "gold": 278
     },
     {
@@ -53,8 +53,8 @@
       "kills": 154,
       "leaks": 0,
       "spawned": 154,
-      "time": 311,
-      "gold": 210
+      "time": 314,
+      "gold": 150
     },
     {
       "stage": 2,
@@ -64,8 +64,8 @@
       "kills": 74,
       "leaks": 0,
       "spawned": 74,
-      "time": 154,
-      "gold": 95
+      "time": 158,
+      "gold": 45
     },
     {
       "stage": 3,
@@ -75,8 +75,8 @@
       "kills": 419,
       "leaks": 2,
       "spawned": 421,
-      "time": 902,
-      "gold": 890
+      "time": 901,
+      "gold": 710
     },
     {
       "stage": 3,
@@ -86,7 +86,7 @@
       "kills": 166,
       "leaks": 0,
       "spawned": 166,
-      "time": 326,
+      "time": 325,
       "gold": 300
     },
     {
@@ -97,8 +97,8 @@
       "kills": 96,
       "leaks": 0,
       "spawned": 96,
-      "time": 119,
-      "gold": 91
+      "time": 118,
+      "gold": 206
     }
   ],
   "errors": [],

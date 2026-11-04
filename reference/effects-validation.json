@@ -5,6 +5,12 @@
     "impact",
     "end"
   ],
+  "checks": [
+    "actual power cast controller",
+    "three timed lightning strikes",
+    "thirteen arrow arrivals",
+    "same simulation clock for flight and impacts"
+  ],
   "errors": [],
   "missingFrames": []
 }

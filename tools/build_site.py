@@ -2,10 +2,10 @@
 import json,pathlib,shutil,hashlib
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
-for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs']:
+for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs']:
  shutil.copy2(ROOT/'web'/name,OUT/name)
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
-assets={'catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg'}
+assets={'catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg'}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}
 assets|={'menu/'+n+'.webp'for n in ['start','logo','world']}

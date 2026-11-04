@@ -40,7 +40,7 @@ for group in groups:
 for name,im in sheets.items():im.save(OUT/'images'/(name.rsplit('.',1)[0]+'.webp'),lossless=True,method=4)
 titles=['灰鸦港口','高桥','瀑布小径','红杉阻击战','皇家庭院','狮鹫驿站','石环阵','格林堡之战','水晶之湖','奇迹仙境']
 levels=[]
-used_templates={'hero_elves_archer','soldier_re_1','tower_holder_elven_woods','tower_holder_faerie_grove'}
+used_templates={'power_thunder_control','hero_elves_archer','soldier_re_1','tower_holder_elven_woods','tower_holder_faerie_grove'}
 for ty in ['archer','barrack','mage','rock_thrower']:
  used_templates.add('tower_build_'+ty)
  for n in range(1,4):used_templates.add(f'tower_{ty}_{n}')
@@ -70,7 +70,7 @@ def visit(x):
 for k in used_templates:visit(k)
 catalog={'frames':frames,'animations':lua('assets/gc64/kr3/data/game_animations.lua')['animations'],'templates':selected,'levels':levels,'flags':json.loads((ROOT/'reference/map-flags.json').read_text())}
 (OUT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,sort_keys=True,separators=(',',':')))
-for key,source in {'door':'Sound_TowerOpenDoor.ogg','melee':'kr3_sfx_basicbarracks_fight.ogg','barrack':'Barrack_Taunt[2]-01c.ogg','menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
+for key,source in {'thunder1':'kr3_sfx_lightning_op1.ogg','thunder2':'kr3_sfx_lightning_op2.ogg','thunder3':'kr3_sfx_lightning_op3.ogg','door':'Sound_TowerOpenDoor.ogg','melee':'kr3_sfx_basicbarracks_fight.ogg','barrack':'Barrack_Taunt[2]-01c.ogg','menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
  p='assets/kr3-phone/sounds/files/'+source
  if p in z.namelist():(OUT/(key+'.ogg')).write_bytes(z.read(p))
 # These directories contain only generated outputs owned by this extractor.

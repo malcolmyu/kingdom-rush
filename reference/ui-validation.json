@@ -2,8 +2,9 @@
   "status": "passed",
   "checks": [
     "native pressed and restored button artwork",
+    "title settings music toggle",
     "three save slots",
-    "world map wheel pan and limits",
+    "world map wheel and pointer drag with limits",
     "locked challenge",
     "native pause panel bounds and nine-slice layout",
     "sound toggle and resume",

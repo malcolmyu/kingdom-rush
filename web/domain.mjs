@@ -1,3 +1,4 @@
+import {SpellTimeline,inEllipse} from './spells.mjs';
 // Deterministic game rules. No DOM, Canvas, network or storage dependencies.
 export const MODES={campaign:{name:'战役',lives:20},heroic:{name:'英雄挑战',lives:1},iron:{name:'钢铁挑战',lives:1}};
 export const TYPES={archer:{name:'猎人之树',template:'archer',icon:'tower_preview_archer',description:'快速射击，能攻击地面与飞行敌人。'},barrack:{name:'精灵兵营',template:'barrack',icon:'tower_preview_barracks',description:'三名精灵战士拦截地面敌人，可调整集结点。'},mage:{name:'秘法师高台',template:'mage',icon:'tower_preview_mage',description:'魔法飞弹穿透物理护甲，能攻击飞行敌人。'},artillery:{name:'石环阵',template:'rock_thrower',icon:'tower_preview_artillery',description:'投掷巨石，对地面敌人造成范围伤害。'}};
@@ -24,6 +25,7 @@ export class World{
   this.time=0;this.gold=data.waves.cash;this.lives=MODES[this.mode].lives;this.maxLives=this.lives;this.totalWaves=data.waves.groups.length;this.wave=0;
   this.status='ready';this.paused=false;this.enemies=[];this.soldiers=[];this.shots=[];this.effects=[];this.pending=[];this.events=[];this.serial=0;this.kills=0;this.leaks=0;this.spawned=0;
   this.cooldowns={reinforce:0,lightning:0,arrows:0};this.nextWaveAt=Infinity;this.nextWaveReadyAt=Infinity;this.hero=null;this.heroLevel=clamp(options.heroLevel||1,1,10);
+  this.spells=new SpellTimeline(this,options.ultimateLevel??this.templates.hero_elves_archer.hero.skills.ultimate.level);
   this.exits=data.level.entities_list.filter(e=>e.template==='decal_defend_point').map(e=>e.pos);
   this.routes=data.paths.map(paths=>paths.map(p=>makeRoute(p,this.exits)));
   this.slots=data.level.entities_list.filter(e=>e.template.startsWith('tower_holder_')||/^tower_(archer|barrack|mage|rock_thrower)_[123]$/.test(e.template)).map((e,id)=>({id,x:e.pos.x,y:e.pos.y,rally:{...(e['barrack.rally_pos']||e['tower.default_rally_pos'])},holder:e['tower.holder_id'],terrain:e['tower.terrain_style']||1,type:null,level:0,key:null,spent:0,cd:0,anim:0,prebuilt:!e.template.startsWith('tower_holder_'),source:e}));
@@ -37,7 +39,7 @@ export class World{
  active(){return ['ready','playing'].includes(this.status)&&!this.paused;}
  template(key){const t=this.templates[key];if(!t)throw new Error('Unknown original template: '+key);return t;}
  towerDef(type,level=1){const key='tower_'+TYPES[type].template+'_'+level,t=this.template(key),attack=t.attacks?.list?.[0],bullet=attack?.bullet?this.template(attack.bullet).bullet:null;
-  return {key,type,level,price:t.tower.price,range:t.attacks?.range||t.barrack?.rally_range||145,cooldown:attack?.cooldown||1,damage:[bullet?.damage_min||0,bullet?.damage_max||0],bullet:attack?.bullet,damageType:bullet?.damage_type||2,radius:bullet?.damage_radius||0,shootTime:attack?.shoot_time||0,offsets:attack?.bullet_start_offset?.x!==undefined?[attack.bullet_start_offset]:list(attack?.bullet_start_offset),count:type==='mage'?attack.loops||1:1,shotHeight:Math.max(28,...list(attack?.bullet_start_offset).map(p=>p?.y||0)),render:t.render.sprites};
+  return {key,type,level,price:t.tower.price,range:t.attacks?.range||t.barrack?.rally_range||145,rangeOffset:t.tower.range_offset||{x:0,y:0},cooldown:attack?.cooldown||1,damage:[bullet?.damage_min||0,bullet?.damage_max||0],bullet:attack?.bullet,damageType:bullet?.damage_type||2,radius:bullet?.damage_radius||0,shootTime:attack?.shoot_time||0,offsets:attack?.bullet_start_offset?.x!==undefined?[attack.bullet_start_offset]:list(attack?.bullet_start_offset),count:type==='mage'?attack.loops||1:1,shotHeight:Math.max(28,...list(attack?.bullet_start_offset).map(p=>p?.y||0)),render:t.render.sprites};
  }
  allowed(type,level=1){const locked=this.data.rules?.locked_towers||[];return !locked.includes('tower_build_'+TYPES[type].template)&&!locked.includes('tower_'+TYPES[type].template+'_'+level)&&level<=3;}
  build(id,type){const s=this.slots[id];if(!this.active()||!s||s.type||!TYPES[type]||!this.allowed(type))return false;const d=this.towerDef(type);if(this.gold<d.price)return false;
@@ -68,14 +70,14 @@ export class World{
   this.pending.sort((a,b)=>a.at-b.at);this.nextWaveReadyAt=end;this.nextWaveAt=end+(this.data.waves.groups[this.wave]?.interval||0)/30;if(this.id===1&&this.mode==='campaign'&&this.wave===5)this.addHero();this.emit('wave',{wave:this.wave});return true;
  }
  spawn(p){const t=this.template(p.key),h=t.health,route=this.routes[p.road]?.[p.lane];if(!route)throw new Error(`Missing route ${p.road}/${p.lane}`);
-  const maxHp=byDifficulty(h.hp_max,this.difficulty);const a=t.melee?.attacks?.[0],r=t.ranged?.attacks?.[0];this.enemies.push({id:++this.serial,key:p.key,hp:maxHp,maxHp,armor:byDifficulty(h.armor,this.difficulty)||0,magicArmor:byDifficulty(h.magic_armor,this.difficulty)||0,gold:t.enemy.gold,lives:t.enemy.lives_cost||1,speed:byDifficulty(t.motion.max_speed,this.difficulty),flying:!!(t.vis?.flags&128),d:0,road:p.road,lane:p.lane,cd:0,flash:0,blocked:false,anim:0,deadAt:0,damage:[byDifficulty(a?.damage_min,this.difficulty)||0,byDifficulty(a?.damage_max,this.difficulty)||0],attackCd:a?.cooldown||1,ranged:r?{range:r.max_range||140,damage:8,cooldown:r.cooldown||2}:null,goal:route.goal,...onRoute(route,0)});this.spawned++;
+  const maxHp=byDifficulty(h.hp_max,this.difficulty);const a=t.melee?.attacks?.[0],r=t.ranged?.attacks?.[0];this.enemies.push({id:++this.serial,key:p.key,hp:maxHp,maxHp,armor:byDifficulty(h.armor,this.difficulty)||0,magicArmor:byDifficulty(h.magic_armor,this.difficulty)||0,gold:t.enemy.gold,lives:t.enemy.lives_cost||1,speed:byDifficulty(t.motion.max_speed,this.difficulty),flying:!!(t.vis?.flags&128),d:0,road:p.road,lane:p.lane,cd:0,flash:0,blocked:false,anim:0,deadAt:0,damage:[byDifficulty(a?.damage_min,this.difficulty)||0,byDifficulty(a?.damage_max,this.difficulty)||0],attackCd:a?.cooldown||1,hitTime:a?.hit_time||0,ranged:r?{range:r.max_range||140,damage:8,cooldown:r.cooldown||2}:null,goal:route.goal,...onRoute(route,0)});this.spawned++;
  }
  unlocked(type){if(this.id===1&&this.mode==='campaign')return this.wave>=({reinforce:2,lightning:3,arrows:5,hero:5}[type]||99);
   if(type==='arrows'&&(this.data.rules?.locked_powers?.['3']||Array.isArray(this.data.rules?.locked_powers)&&this.data.rules.locked_powers[2]))return false;return type==='hero'?!!this.hero:true;
  }
  cast(type,p){if(this.status!=='playing'||this.paused||!this.unlocked(type)||!(type in this.cooldowns)||this.cooldowns[type]>0)return false;const q=this.nearestRoad(p);if(!q||distance(p,q)>55)return false;
   if(type==='reinforce'){this.addSoldier(q,0);this.addSoldier(q,1);this.cooldowns.reinforce=15;}
-  else{const radius=type==='lightning'?105:100,damage=type==='lightning'?175:90;for(const e of this.enemies)if(e.hp>0&&distance(e,q)<radius)this.hurt(e,damage,1);this.effect(type,q,1);this.cooldowns[type]=type==='lightning'?60:45;}
+  else if(type==='lightning')this.spells.castLightning(q);else this.spells.castArrows(q);
   this.emit('cast');return true;
  }
  activatePlant(id){const p=this.plants[id];if(!this.active()||!p||p.cd>0)return false;const t=this.template(p.key),a=t.custom_attack,targets=this.enemies.filter(e=>e.hp>0&&distance(e,p)<a.range);if(!targets.length)return false;
@@ -87,21 +89,22 @@ export class World{
   if(e.hp<=0){e.deadAt=this.time;this.kills++;this.gold+=e.gold;this.effect('coin',{x:e.x,y:e.y+20},.8,'+'+e.gold);this.emit('coin');}
  }
  projectile(s,e,o){const height=o.height||40;this.shots.push({id:++this.serial,type:o.type,bullet:o.bullet,sx:s.x+(o.offsetX||0),sy:s.y+height,x:s.x+(o.offsetX||0),y:s.y+height,tx:e.x,ty:e.y+12,target:e,damage:o.damage,damageType:o.damageType||2,radius:o.radius||0,elapsed:-(o.delay||0),duration:o.type==='artillery'?.8:.35});if(!o.preserveAnimation)s.anim=.6;if(!o.preserveAnimation)s.facing=e.y>s.y?'Up':'Down';}
- updateTowers(dt,live){for(const s of this.slots){s.cd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.type==='artillery'&&s.reloadUntil===undefined){s.reloadAt=s.buildUntil||0;s.reloadUntil=s.reloadAt+this.animationDuration(this.template(s.key).render.sprites.at(-1).prefix,'loadDown');}if(s.type==='artillery'&&this.time<s.reloadUntil)continue;if(!s.type||this.time<s.buildUntil||s.type==='barrack'||s.cd>0)continue;const d=this.towerDef(s.type,s.level),targets=live.filter(e=>e.hp>0&&(s.type!=='artillery'||!e.flying)&&distance(s,e)<d.range).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!targets.length)continue;const e=targets[0];
+ updateTowers(dt,live){for(const s of this.slots){s.cd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.type==='artillery'&&s.reloadUntil===undefined){s.reloadAt=s.buildUntil||0;s.reloadUntil=s.reloadAt+this.animationDuration(this.template(s.key).render.sprites.at(-1).prefix,'loadDown');}if(s.type==='artillery'&&this.time<s.reloadUntil)continue;if(!s.type||this.time<s.buildUntil||s.type==='barrack'||s.cd>0)continue;const d=this.towerDef(s.type,s.level),targets=live.filter(e=>e.hp>0&&(s.type!=='artillery'||!e.flying)&&inEllipse({x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y},e,d.range)).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!targets.length)continue;const e=targets[0];
    s.actionAt=this.time;s.facing=e.y>s.y+d.shotHeight?'Up':'Down';s.flip=e.x<s.x;s.shotCount=(s.shotCount||0)+1;s.shooterIndex=s.shotCount%d.offsets.length;
    const shooter=d.render.find(v=>v.angles?.shoot),name=shooter?.angles?.shoot?.[s.facing==='Up'?0:1];s.anim=this.animationDuration(shooter?.prefix||s.key,name||'shoot');
    for(let i=0;i<d.count;i++){const offset=d.offsets[s.type==='archer'?s.shooterIndex:i%d.offsets.length]||{x:0,y:d.shotHeight};this.projectile(s,e,{type:s.type,damage:this.number(d.damage[0],d.damage[1]),damageType:d.damageType,bullet:d.bullet,radius:d.radius,height:offset.y,offsetX:offset.x,delay:d.shootTime,preserveAnimation:true});}s.cd=d.cooldown;
    if(s.type==='artillery'){s.reloadAt=this.time+s.anim;s.reloadUntil=s.reloadAt+this.animationDuration(shooter.prefix,'loadDown');}
   }
  }
- updateSoldiers(dt,live){const blockers=new Set();for(const s of this.soldiers){if(this.time>s.expires){s.expired=true;continue;}if(s.hp<=0){s.pendingHit=null;s.dead+=dt;if(s.home!==null&&s.dead>s.respawn){s.hp=s.maxHp;s.dead=0;this.departSoldier(s,this.slots[s.home]);}continue;}if(this.time<s.departAt)continue;
+ meleePosition(s,e,index=0){const enemy=this.template(e.key).enemy.melee_slot||{x:18,y:0},offset=this.template(s.key).soldier?.melee_slot_offset||{x:5,y:0},side=e.dx===undefined?(s.rally.x>=e.x?1:-1):e.dx>=0?1:-1;return{x:e.x+(enemy.x+offset.x+(index%3? -3:0))*side,y:e.y+enemy.y+offset.y+(index%3===1?-6:index%3===2?6:0)};}
+ updateSoldiers(dt,live){const blockers=new Set(),engaged=new Map(),enemyTurns=new Set();for(const s of this.soldiers){if(this.time>s.expires){s.expired=true;continue;}if(s.hp<=0){s.pendingHit=null;s.dead+=dt;if(s.home!==null&&s.dead>s.respawn){s.hp=s.maxHp;s.dead=0;this.departSoldier(s,this.slots[s.home]);}continue;}if(this.time<s.departAt)continue;
    s.cd-=dt;s.rangedCd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.anim<=0)s.shooting=false;
-   if(s.pendingHit&&this.time>=s.pendingHit.at){const hit=s.pendingHit;s.pendingHit=null;if(hit.target.hp>0){if(hit.ranged)this.projectile(s,hit.target,{type:'archer',damage:this.number(...s.ranged.damage),damageType:2,bullet:s.ranged.bullet,height:10,preserveAnimation:true});else if(distance(s,hit.target)<25){this.hurt(hit.target,this.number(...s.damage),2);this.emit('melee');}}}
-   const e=live.find(e=>e.hp>0&&!e.flying&&!blockers.has(e.id)&&distance(s.rally,e)<60);
-   let target=s.rally;if(e){blockers.add(e.id);target={x:e.x+(s.rally.x<e.x?-12:12),y:e.y};}
+   if(s.pendingHit&&this.time>=s.pendingHit.at){const hit=s.pendingHit;s.pendingHit=null;if(hit.target.hp>0){if(hit.ranged)this.projectile(s,hit.target,{type:'archer',damage:this.number(...s.ranged.damage),damageType:2,bullet:s.ranged.bullet,height:10,preserveAnimation:true});else if(distance(s,this.meleePosition(s,hit.target,hit.slot))<4){this.hurt(hit.target,this.number(...s.damage),2);this.emit('melee');}}}
+   const candidates=live.filter(e=>e.hp>0&&!e.flying&&(engaged.get(e.id)||0)<3&&inEllipse(s.rally,e,this.template(s.key).melee?.range||60));const e=candidates.find(e=>e.id===s.targetId)||candidates.sort((a,b)=>distance(s,a)-distance(s,b))[0];
+   let target=s.rally;if(e){s.targetId=e.id;s.targetSlot=engaged.get(e.id)||0;engaged.set(e.id,s.targetSlot+1);blockers.add(e.id);target=this.meleePosition(s,e,s.targetSlot);}else{s.targetId=null;}
    const d=distance(s,target);if(d>2){if(!s.walking)s.walkAt=this.time;s.walking=true;s.flip=target.x<s.x;s.x+=(target.x-s.x)/d*Math.min(d,s.speed*dt);s.y+=(target.y-s.y)/d*Math.min(d,s.speed*dt);}
-   else{s.walking=false;if(e){s.flip=e.x<s.x;if(s.cd<=0){s.cd=s.attackCd;s.anim=this.animationDuration(s.key,'attack');s.actionAt=this.time;s.shooting=false;s.pendingHit={at:this.time+s.hitTime,target:e};}e.cd-=dt;if(e.cd<=0){s.hp-=Math.max(1,this.number(...e.damage)*(1-s.armor));s.lastHitAt=this.time;e.cd=e.attackCd;e.anim=.6;}}
-    else{if(s.regen&&this.time-s.lastHitAt>s.regen.last_hit_standoff_time)s.hp=Math.min(s.maxHp,s.hp+s.regen.health/s.regen.cooldown*dt);if(s.ranged&&s.rangedCd<=0&&!s.pendingHit){const target=live.find(e=>e.hp>0&&distance(s,e)<s.ranged.range&&distance(s,e)>=s.ranged.minRange);if(target){s.rangedCd=s.ranged.cooldown;s.shooting=true;s.flip=target.x<s.x;s.anim=this.animationDuration(s.key,'ranged_attack');s.actionAt=this.time;s.pendingHit={at:this.time+s.ranged.shootTime,target,ranged:true};}}}}
+   else{s.walking=false;if(e){s.flip=e.x<s.x;if(s.cd<=0){s.cd=s.attackCd;s.anim=this.animationDuration(s.key,'attack');s.actionAt=this.time;s.shooting=false;s.pendingHit={at:this.time+s.hitTime,target:e,slot:s.targetSlot};}if(!enemyTurns.has(e.id)){enemyTurns.add(e.id);e.cd-=dt;if(e.cd<=0){e.pendingMelee={at:this.time+e.hitTime,target:s};e.cd=e.attackCd;e.anim=.6;}}}
+    else{if(s.regen&&this.time-s.lastHitAt>s.regen.last_hit_standoff_time)s.hp=Math.min(s.maxHp,s.hp+s.regen.health/s.regen.cooldown*dt);if(s.ranged&&s.rangedCd<=0&&!s.pendingHit){const target=live.find(e=>e.hp>0&&inEllipse(s,e,s.ranged.range)&&!inEllipse(s,e,s.ranged.minRange||.01));if(target){s.rangedCd=s.ranged.cooldown;s.shooting=true;s.flip=target.x<s.x;s.anim=this.animationDuration(s.key,'ranged_attack');s.actionAt=this.time;s.pendingHit={at:this.time+s.ranged.shootTime,target,ranged:true};}}}}
   }this.soldiers=this.soldiers.filter(s=>!s.expired);return blockers;
  }
  animationDuration(key,state){const a=this.data.animations?.[key+'_'+state];return a?(a.frames?.length||a.ranges?.reduce((n,[f,t])=>n+t-f+1,0)||(a.to-a.from+1))/30:.6;}
@@ -113,19 +116,19 @@ export class World{
   }
  }
  step(dt){if(!this.active())return;this.time+=dt;for(const s of this.slots)if(s.type==='barrack'&&s.doorAt<=this.time&&s.doorPlayedAt!==s.doorAt){s.doorPlayedAt=s.doorAt;this.emit('door');}for(const k in this.cooldowns)this.cooldowns[k]=Math.max(0,this.cooldowns[k]-dt);for(const p of this.plants){p.cd=Math.max(0,p.cd-dt);p.anim=Math.max(0,p.anim-dt);}
-  while(this.pending.length&&this.pending[0].at<=this.time)this.spawn(this.pending.shift());const live=this.enemies.filter(e=>e.hp>0);this.updateTowers(dt,live);const blockers=this.updateSoldiers(dt,live);this.updateHero(dt,live,blockers);
+  while(this.pending.length&&this.pending[0].at<=this.time)this.spawn(this.pending.shift());this.spells.update();const live=this.enemies.filter(e=>e.hp>0);for(const e of live)if(e.pendingMelee&&e.pendingMelee.at<=this.time){const s=e.pendingMelee.target;if(s.hp>0){s.hp-=Math.max(1,this.number(...e.damage)*(1-s.armor));s.lastHitAt=this.time;}e.pendingMelee=null;}this.updateTowers(dt,live);const blockers=this.updateSoldiers(dt,live);this.updateHero(dt,live,blockers);
   for(const e of live){if(e.hp<=0)continue;e.flash=Math.max(0,e.flash-dt);e.anim=Math.max(0,e.anim-dt);e.blocked=blockers.has(e.id);
    // Burners throw at defenders; hyenas resist blocking only by their high speed.
    if(e.ranged&&!e.blocked){e.cd-=dt;const s=this.soldiers.find(s=>s.hp>0&&distance(e,s)<e.ranged.range);if(s&&e.cd<=0){s.hp-=e.ranged.damage*(1-s.armor);e.cd=e.ranged.cooldown;e.anim=.6;this.effect('ember',s,.3);}}
-   const route=this.routes[e.road][e.lane],connection=this.data.connections?.[String(e.road+1)];if(!e.blocked)e.d+=e.speed*dt;Object.assign(e,onRoute(route,e.d));
+   const route=this.routes[e.road][e.lane],connection=this.data.connections?.[String(e.road+1)];if(!e.blocked)e.d+=e.speed*(e.slowUntil>this.time?.5:1)*dt;Object.assign(e,onRoute(route,e.d));
    if(connection&&e.d>=route.length){this.effect('splash',e,.5);e.road=connection-1;e.d=0;const next=this.routes[e.road][e.lane];e.goal=next.goal;Object.assign(e,onRoute(next,0));this.effect('splash',e,.5);}
    else if(!connection&&e.d>=e.goal){e.hp=0;e.leaked=true;e.deadAt=this.time;this.lives=Math.max(0,this.lives-e.lives);this.leaks++;this.emit('leak');}
   }
   for(const b of this.shots){b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
-   if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&distance(e,{x:b.tx,y:b.ty})<b.radius)this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType);}
+   if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType);}
   }
   this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);
-  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length){this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
+  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length&&!this.spells.busy){this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
  }
  get stars(){return this.mode!=='campaign'?1:this.lives>=18?3:this.lives>=6?2:1;}
 }
