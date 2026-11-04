@@ -85,3 +85,5 @@ for p in (OUT/'levels').iterdir():
 print(json.dumps({'levels':len(levels),'frames':len(frames),'sheets':len(sheets),'bytes':sum(p.stat().st_size for p in OUT.rglob('*')if p.is_file())}))
 
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py')],check=True)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_fonts.py'),'--apk',opt.apk],check=True)
