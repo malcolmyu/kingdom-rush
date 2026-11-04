@@ -1,5 +1,5 @@
 {
-  "version": "0.2.50",
+  "version": "0.2.51",
   "stages": 3,
   "modes": [
     "campaign",
@@ -10,6 +10,7 @@
     "balloon.mjs": "a61ef7a131362a25ff4af74dafb4057fce993585c2c93766c3390e64d4e03179",
     "hero-room.mjs": "00d7cae9d6626246dbed4861a567c3e83898677e3def103e0e7a6aa992307811",
     "ellipse-text.mjs": "5d0b2fba87e469e2466783e06f6da9137cfcf98a09f3a0e26ca3af2367f679ef",
+    "tower-menu.mjs": "d4c34d1faf23f36e26522271bd20bc371e574c6576dc2ec60c9259b251c4b401",
     "index.html": "d09f2f6cf3a56dd6f569f4fd3eb245a87bb105ca11cdab298c678a9bcf562e37",
     "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
@@ -25,11 +26,11 @@
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "upgrades-ui.mjs": "53abecf5241940c9f6d28a2ada1404e16893e401397d45dd227d66b2a3a30df6",
     "map-unlock.mjs": "d2c99310809ba609ea2066507850df2d331c6b6b1640056981b56e3866450100",
-    "domain.mjs": "26b93601fe61df4df667a060033248d5552f06fcecac593c981479ba577f9179",
+    "domain.mjs": "2256c159ee59a9e1d232e6e4f2e7f618763120b4f5ac7093ef75abe85741e856",
     "map-hero-hud.mjs": "29ea87d1ab5f08b5d4e930b73a9cd80e31805619755ba6fc0687fa35a284c06a",
     "results.mjs": "a3d42b65b0289d7999303afa3bae0b7589818fccf6e3131ff7af69dc78a4cadc",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
-    "style.css": "0943be4be94a75de93dda195c3acbdb0b16f43adc3d5d0b58e60fe1c03748327",
+    "style.css": "b078b404a0e700fbb2c67d1be3f12d8ebb33ca828246ca36aee82de2a79312c9",
     "guidance.mjs": "407190d009e765717919494bb584458478adcf359f8ab14eb0c9a3225541b9f4",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
     "renderer.mjs": "f9049d20ea065e1b41d73a56057306b0e8f648c753fa465f5ae21a66cb30f58b",
