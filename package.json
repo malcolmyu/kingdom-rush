@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.25",
+  "version": "0.2.26",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -28,7 +28,8 @@
     "test:guidance": "node tests/guidance-browser.mjs",
     "test:enemy-notifications": "node tests/enemy-notifications-browser.mjs",
     "test:notification-motion": "node tests/notification-motion-browser.mjs",
-    "test:hud-motion": "node tests/hud-motion-browser.mjs"
+    "test:hud-motion": "node tests/hud-motion-browser.mjs",
+    "test:wave-reward": "node tests/wave-reward-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

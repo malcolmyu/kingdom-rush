@@ -1,0 +1,8 @@
+// Native WaveRewardFx/SpriteDigits, game_gui.lua:4831–4874.
+export function rewardDigits(amount,frames){let x=12;const digits=Array.from('+'+amount,c=>{const key='waveReward_'+String(c==='+'?11:+c).padStart(4,'0'),f=frames[key],item={key,x};x+=Math.floor(f.size[0]/2*.7+.5);return item;});return{digits,width:x};}
+export class WaveReward{
+ constructor(host,renderer){this.host=host;this.r=renderer;this.items=[];}
+ show(amount,pos){if(amount<=0)return;const layout=rewardDigits(amount,this.r.catalog.frames),canvas=document.createElement('canvas');canvas.className='wave-reward';canvas.width=(layout.width+4)*2;canvas.height=36;canvas.style.cssText=`left:${(pos.x-layout.width/2)/693*100}cqw;top:${(pos.y-18)/693*100}cqw;width:${(layout.width+4)/693*100}cqw;height:${18/693*100}cqw`;canvas.setAttribute('aria-label','+'+amount);this.host.append(canvas);const item={canvas,layout,age:0,ready:false};this.items.push(item);const keys=['nextwave_coin_0001',...layout.digits.map(d=>d.key)];Promise.all(keys.map(k=>this.r.sheet(this.r.catalog.frames[k].a))).then(()=>item.ready=true);}
+ update(dt){for(const item of [...this.items]){item.age+=dt;if(item.age>=1.5){item.canvas.remove();this.items.splice(this.items.indexOf(item),1);continue;}const t=item.age/1.5;item.canvas.style.opacity=(1-t)**2;if(!item.ready)continue;const c=item.canvas.getContext('2d');c.clearRect(0,0,item.canvas.width,item.canvas.height);const frame=Math.max(1,Math.min(14,Math.ceil(item.age*30)));this.r.sprite(c,'nextwave_coin_'+String(frame).padStart(4,'0'),0,0,1,0,0);for(const d of item.layout.digits)this.r.sprite(c,d.key,d.x*2,0,1,0,0);}}
+ reset(){for(const i of this.items)i.canvas.remove();this.items=[];}
+}

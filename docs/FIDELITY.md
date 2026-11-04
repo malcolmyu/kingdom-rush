@@ -274,3 +274,11 @@ PowerTimeline 按每个World独立记录锁定、解锁、冷却和就绪转换�
 核对phone show_gui_hud/hide_gui_hud(game_gui.lua:1842–1939)：隐藏默认0.4秒out-back，返回0.4秒out-cubic，反向前取消旧timer并从当前位置继续。按原父容器/图片尺寸导出battleHud，状态栏上移57、暂停上移42、英雄父容器左移150、通知队列左移90、技能栏下移anchor.y=60（原安全区当前0）。英雄父宽100不能误用单个肖像42，通知队列宽60不能按全屏host宽计算。
 
 HudMotion只写各组translate，保持英雄/技能Canvas、图标自身scale及建造点独立。通知/教程进入隐藏，页间不重启退场；关闭立即开始返回，与面板缩退并行，连续通知重入从当前位移接续。切场景清理，不把battle-slots或整个battle-ui隐藏。bag/infobar等未实现界面不虚构替代品；非零safearea和其他全局HUD触发场景尚未对齐。截图为当前受控通知状态，非原版同镜头逐帧对照；整体仍未达到1:1。
+
+## 0.2.26 波次旗帜退出与金币反馈
+
+核对WaveFlag.remove(4187–4201)：停止pulse，0.5秒out-quad到alpha0/scale1.5后移除。已召唤旗帜保留冻结Canvas副本退出，副本无id、disabled/inert且pointer-events:none；正常下一波仍使用稳定next按钮。退出与新入口创建分离，切场景清理。飞行波改用原模板vis.flags的128位，去掉按敌人字符串猜测。
+
+核对show_early_wave_reward(1793–1806)、WaveRewardFx(4831–4843)、SpriteDigits(4846–4874)：点击附近的nextwave_coin1–14与waveReward数字，+映射11，每字间距round(width*.7)，以总宽居中、上移金币图高，1.5秒out-quad淡出；coin采用原KUI非loop的ceil取帧后停末帧。原临时顶部金币横幅已移除，World奖励数值未变。Space沿用最近指针位置，无指针时使用画面中心。
+
+148单测、九模式通关及专项验证实际金币增量、两点击只召唤一次、退出副本/奖励清理、手机Space。受控提前波截图不是原版同输入证据。原TimeRewardFx与技能冷却奖励尚未接入；不以仅绘制减少秒数冒充真实冷却生效。完整提前波奖励算法仍需核对原systems后恢复，整体继续in_progress，未达1:1。

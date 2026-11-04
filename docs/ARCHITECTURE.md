@@ -156,3 +156,5 @@ EnemyNotifications消费World的enemy_spawn语义事件，按存档抑制重复�
 NotificationMotion独立管理浏览器展示动画，World在正常模态关闭时立即恢复；退出副本inert且去掉ID，动画结束清理。初始化/翻页取消上一入场定时器，声音不会从旧页面延迟触发；场景切换清理所有副本。原通知规则/存档与战斗数值不受动画时钟影响。
 
 HudMotion从导出的battleHud父容器尺寸计算各组偏移，以独立展示时钟插值translate。重入复制当前坐标作为新起点；通知模态负责目标状态，World暂停/恢复仍由Campaign决定。图标、肖像和技能原图层不需要知道HUD移动状态。
+
+WaveFlag退出将已绘制Canvas复制到不可交互副本，保留稳定输入按钮给下一波。WaveReward只消费World bonus事件绘制原金币和数字，不增减金币或冷却；展示时间与世界模拟分离，场景切换清理。
