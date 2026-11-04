@@ -206,3 +206,18 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .native-encyclopedia-dialog{width:85.4257%;aspect-ratio:592/320}.encyclopedia-image{transform-origin:0 0}.encyclopedia-label{position:absolute;pointer-events:none;white-space:pre-wrap;line-height:1.1;overflow:hidden}.encyclopedia-hit{position:absolute;background:transparent;border:0;box-shadow:none;padding:0}.native-encyclopedia-dialog .native-button:disabled{filter:none;opacity:.4}
 .native-encyclopedia-dialog [data-ency-enemy]:disabled{opacity:1}
 .encyclopedia-slices{position:absolute;display:grid;pointer-events:none}.encyclopedia-slices img{width:100%;height:100%;min-width:0;min-height:0}
+/* Original phone TowerMenu reference122, max_scale .88; no prototype labels. */
+.source-tower-menu{position:absolute;transform:translate(-50%,-50%);pointer-events:none;z-index:6}
+.source-tower-menu .native-button{position:absolute;pointer-events:auto;background:none;border:0;border-radius:0;padding:0;margin:0;transform:none;box-shadow:none;display:block;filter:none}
+.source-tower-menu .native-button>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.source-tower-menu .build-option,.source-tower-menu .tower-action{right:auto;bottom:auto;transform:none}
+.source-tower-menu .native-button:disabled{opacity:1;filter:none}
+.source-tower-price{position:absolute;pointer-events:none;display:grid;place-items:center;color:rgb(var(--price-color))}
+.source-tower-price img{position:absolute;width:100%;height:100%;inset:0}.source-tower-price span{position:relative;line-height:1;translate:0 .14cqw}
+.source-tower-tooltip{position:absolute;z-index:7;pointer-events:none;container-type:inline-size}
+.source-tower-tooltip .source-tip-title{position:absolute;left:5%;top:5cqw;width:90%;height:7cqw;white-space:nowrap}
+.source-tower-tooltip .source-tip-desc{position:absolute;left:5%;top:13cqw;width:90%;line-height:1.05}
+.source-tip-stats{position:absolute;left:5%;width:90%;height:10cqw}
+.source-tip-stats>div{position:absolute}.source-tip-stats>div>img{width:8cqw!important;height:8cqw!important}
+.source-tip-stats span{display:block;white-space:nowrap;padding-left:9cqw;line-height:8cqw}
+.source-tower-menu{container-type:inline-size}
