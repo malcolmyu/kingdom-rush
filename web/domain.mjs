@@ -7,6 +7,8 @@ export const MODES={campaign:{name:'战役',lives:20},heroic:{name:'英雄挑战
 export const TYPES={archer:{name:'猎人之树',template:'archer',icon:'tower_preview_archer',description:'快速射击，能攻击地面与飞行敌人。'},barrack:{name:'精灵兵营',template:'barrack',icon:'tower_preview_barracks',description:'三名精灵战士拦截地面敌人，可调整集结点。'},mage:{name:'秘法师高台',template:'mage',icon:'tower_preview_mage',description:'魔法飞弹穿透物理护甲，能攻击飞行敌人。'},artillery:{name:'石环阵',template:'rock_thrower',icon:'tower_preview_artillery',description:'投掷巨石，对地面敌人造成范围伤害。'}};
 export const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const list=x=>Array.isArray(x)?x:Object.values(x||{});
+// Original systems.lua633–802 + klua.macros44–46. Wave zero is pre-battle.
+export function towerRefund(spent,refundFactor,wave){return wave===0?spent:Math.floor(spent*refundFactor+.5);}
 export const byDifficulty=(x,d=2)=>Array.isArray(x)?x[Math.min(d-1,x.length-1)]:x;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
@@ -51,7 +53,7 @@ export class World{
  upgrade(id){const s=this.slots[id];if(!this.active()||!s?.type||!this.allowed(s.type,s.level+1))return false;const d=this.towerDef(s.type,s.level+1);if(this.gold<d.price)return false;
   this.gold-=d.price;s.level++;s.spent+=d.price;s.key=d.key;const previous=this.soldiers.filter(v=>v.home===id);this.soldiers=this.soldiers.filter(v=>v.home!==id);this.fillBarrack(s,previous);this.effect('build',s,.7);this.emit('build');return true;
  }
- sell(id){const s=this.slots[id];if(!this.active()||!s?.type)return false;this.gold+=Math.floor(s.spent*.6);s.type=null;s.key=null;s.level=0;s.spent=0;this.soldiers=this.soldiers.filter(v=>v.home!==id);this.effect('sell',s,.7);this.emit('coin');return true;}
+ sell(id){const s=this.slots[id];if(!this.active()||!s?.type)return false;this.gold+=towerRefund(s.spent,this.template(s.key).tower.refund_factor,this.wave);s.type=null;s.key=null;s.level=0;s.spent=0;this.soldiers=this.soldiers.filter(v=>v.home!==id);this.effect('sell',s,.7);this.emit('coin');return true;}
  nearestRoad(p,groundOnly=true){let best=null,dist=Infinity;const used=new Set(this.data.waves.groups.flatMap(g=>g.waves.map(w=>w.path_index-1)));
   for(let r=0;r<this.routes.length;r++){if(!used.has(r))continue;for(const q of this.routes[r][0].points){const d=distance(p,q);if(d<dist){best=q;dist=d;}}}return best;
  }

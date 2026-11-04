@@ -210,3 +210,5 @@ encyclopedia.mjs只读原模板、声明目录和已保存spawn通知状态，en
 百科塔书页的towerBookStats仅读取Repository基础模板，不读取World克隆后的升级模板。towerUnlocked读取原布局always_shown与存档发现键；战役二/三关首波原通知通过统一串行通知队列展示，并在展示时保存meta.seen附属塔键。浏览书页本身不解锁、不扣费、不改战斗。
 
 TowerMenu独立维护当前菜单选择和原提示框，菜单数据/几何来自原声明；动作只调用World公开接口，双击确认不直接修改金币/模板。提示读取本局World模板以反映已购买天赋，百科仍读取Repository基础模板。菜单动画/提示测量不消耗World随机数；固定游戏viewport的DOM scroll与原地图pan分开。
+
+出售唯一计算入口towerRefund仅读取实际支出、模板因子和已发波数，UI文案与World到账共享；准备时间/塔的标价不替代这些状态。构建自动复制全部顶层运行时mjs并检查相对import存在，部署验证须覆盖build目录，避免源码目录通过却漏发模块。

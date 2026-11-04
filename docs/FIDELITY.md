@@ -493,3 +493,17 @@ read_tower_menu只读原kr3/data/tower_menus_data及jit函数常量，不执行�
 新查明但本批未改的原出售差异：原game_gui3832–3942提示准备波0为spent全退，其他波km.round(spent*refund_factor)，当前World.sell仍floor*.6。此批提示先显示当前实际到账（用原译文），不显示无法兑现的原退款数；后续须以源规则独立校准领域/完整买卖回归，不能为旧278预算策略保留错误实现，也不能只改提示冒充修复。
 
 215领域测试、九模式完整browser三战役三星、原塔百科/UI/公开Pages UI/guidance/HUD专项通过。新tower-menu专项真实两次建造/升级/出售核对账目、勾选/直接rally/取消/重开/手机/0金币灰图与拒绝成交；阶段3解锁与低资金状态为受控UIfixture，独立九模式自然XP链仍过。campaign-browser按真实两次点击及升级后重选塔出售，保持原350->278旧规则预算本批未动。桌面/手机截图为当前实现非原版同步。初次专项误在首关验证被规则锁定的升级，已改合法第三关；替换时误删deselectWaveFlags与测试批量编辑语法错误都已修复，相关专项重跑通过。整体仍in_progress。
+
+### 0.2.51 原出售退款与构建遗漏修正
+
+实际all/systems633–802的出售分支确认：wave_group_number==0退tower.spent，其余退km.round(spent*refund_factor)；macros44–46的round为floor(x+.5)。波次协程在真正发首组时写wave_group_number=1，对应World.startWave把wave从0变1，不按等待秒数判断。原模板spent=0，level_utils346–362未传初始花费也设0，预建塔不因标价而凭空获利；systems升级分支把原spent加实际扣款后传给新塔。
+
+新增纯towerRefund(spent,refundFactor,wave)，World.sell与TowerMenu原文共用，读取实际模板refund_factor而非写死.6。准备期买70+升级110再卖退180，第二关预算恢复350；发首波后同塔退108。修正此前“准备期净损72是应有规则”的错误判断，历史278预算断言改源规则350；不保留错误退款来适配策略，未修改敌人/冷却/三星阈值/经验。源因子、半数舍入、等待/重复买卖防套利、预建0、仅升级花费、折扣实际支出、暂停/终局拒售新增5项领域测试。
+
+线上QA发现0.2.50打包清单未加入tower-menu.mjs：公开文件实际404，import失败，先前仅本地web目录回归和旧公开0.2.49 UI通过，不能证明0.2.50部署可运行。这是明确发布缺陷，本批修正为自动复制web顶层全部mjs，并在构建时检查相对import均存在。直接以build目录HTTP8766运行UI、真实退款专项及完整九模式，不能只以web目录验证。0.2.50私有/Pages曾受此缺陷影响；0.2.51必须完成同Site/Pages同步后交付。
+
+退款专项截图同时发现固定game的hidden仍允许浏览器scrollIntoView产生30px DOM滚动。game改overflow:clip，禁止固定画布DOM滚动而保持原裁切与子对话框自身滚动，地图仍用transform pan；专项断言game.scrollTop=0并在原通知.4退出完成后采样，不跳过原动画。底部infobar/镜头fit尚未补齐。
+
+220Node与web目录九模式三战役三星、塔菜单/UI专项通过；build目录UI、实际两次卖塔的准备180/首波108/预建0手机专项通过。截图是当前受控操作取样，非原版同步。公开0.2.50 UI检查如实失败（模块404），不声称远程新版通过，不循环等待CI；整体继续in_progress。
+
+最终build目录完整九模式也已通过，三个战役三星；上述构建验证已完成，非仅启动检查。退款专项桌面/手机最终截图已查看，通知退出后正常取样且固定画布无DOM滚动。未声称公开0.2.51已上线，推送后不轮询外部CI。

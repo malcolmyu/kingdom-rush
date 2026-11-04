@@ -1,10 +1,14 @@
 """Copy the dependency-free browser app into a deployable static build."""
-import json,pathlib,shutil,hashlib
+import json,pathlib,shutil,hashlib,re
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
 (OUT/'.nojekyll').touch()
-for name in ['encyclopedia.mjs','hero-room.mjs','save-slots.mjs','menu-motion.mjs','index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs','progression.mjs','hero-data.mjs','map.mjs','map-flags.mjs','wave-flags.mjs','battle-portraits.mjs','tutorials.mjs','guidance.mjs','enemy-notifications.mjs','notification-motion.mjs','hud-motion.mjs','wave-reward.mjs','wave-rules.mjs','results.mjs','ellipse-text.mjs','victory-particles.mjs','scene-transition.mjs','map-unlock.mjs','balloon.mjs','map-hero-hud.mjs','upgrades.mjs','upgrade-data.mjs','upgrades-ui.mjs','upgrade-motion.mjs']:
+for name in ['index.html','style.css']+[p.name for p in (ROOT/'web').glob('*.mjs')]:
  shutil.copy2(ROOT/'web'/name,OUT/name)
+# Reject incomplete runtime packages before producing a deployable manifest.
+for module in OUT.glob('*.mjs'):
+ for relative in re.findall(r"(?:from\s*|import\s*)['\"](\./[^'\"]+)",module.read_text()):
+  if not (module.parent/relative).is_file():raise RuntimeError(f'Missing runtime import {relative} from {module.name}')
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
 assets={'encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-select.ogg','upgrade-confirm.ogg','map-new-flag.ogg','transition-open.ogg','transition-close.ogg','quest-completed.ogg','quest-failed.ogg','win-star.ogg','notification-open.ogg','notification-close.ogg','notification-icon.ogg','spell-refresh.ogg','catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
