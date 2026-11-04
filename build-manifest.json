@@ -1,5 +1,5 @@
 {
-  "version": "0.2.52",
+  "version": "0.2.53",
   "stages": 3,
   "modes": [
     "campaign",
@@ -10,7 +10,7 @@
     "balloon.mjs": "a61ef7a131362a25ff4af74dafb4057fce993585c2c93766c3390e64d4e03179",
     "hero-room.mjs": "00d7cae9d6626246dbed4861a567c3e83898677e3def103e0e7a6aa992307811",
     "ellipse-text.mjs": "5d0b2fba87e469e2466783e06f6da9137cfcf98a09f3a0e26ca3af2367f679ef",
-    "tower-menu.mjs": "d4c34d1faf23f36e26522271bd20bc371e574c6576dc2ec60c9259b251c4b401",
+    "tower-menu.mjs": "4bb46dbd83c05c3ec6b23410326b094b83d8818d6d4f778a6070d21c5e285f72",
     "index.html": "d09f2f6cf3a56dd6f569f4fd3eb245a87bb105ca11cdab298c678a9bcf562e37",
     "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
