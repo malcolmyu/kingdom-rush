@@ -17,7 +17,7 @@ layouts['tutorials']=[read('game_gui_noti_tutorial_'+str(i)) for i in range(1,4)
 notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 layouts['balloons']=notification_data['tutorial_balloons']
-layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
+layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['TOWER_LEVEL2','TOWER_LEVEL3','POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
 layouts['upgrades']=find(world,'upgrades_view')
 layouts['upgradeItem']=read('upgrade_item_view')
 right=find(world,'bottom_right_bar_view')
@@ -25,7 +25,7 @@ hero_map_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_
 layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'hero':find(right,'map_hero_button'),'encyclopedia':find(right,'map_encyclopedia_button'),'levelup':find(right,'map_balloon_level_up_view'),'unlocked':find(right,'map_balloon_hero_unlocked_view'),'heroData':hero_map_data['hero_data_free'],'upgrades':find(right,'map_upgrades_button'),'upgradeHint':find(right,'map_balloon_upgrades_view')}
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
 book_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_encyclopedia.lua'),str(ROOT/'reference/apk/assets/gc64')]))
-layouts['encyclopedia']={'index':find(world,'encyclopedia_view'),'enemies':find(world,'encyclopedia_enemies_view'),'tips':find(world,'encyclopedia_tips_view'),'entries':book_data['enemies'],'tipsCount':book_data['tips_count']}
+layouts['encyclopedia']={'towers':find(world,'encyclopedia_towers_view'),'index':find(world,'encyclopedia_view'),'enemies':find(world,'encyclopedia_enemies_view'),'tips':find(world,'encyclopedia_tips_view'),'entries':book_data['enemies'],'tipsCount':book_data['tips_count']}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
  if isinstance(v,dict):
@@ -46,6 +46,9 @@ keys.update(f'heroroom_upgradeIcons_{i:04}'for i in range(6))
 keys.update(f'heroroom_heroBadge_numbers_{i:04}'for i in range(1,11))
 keys.add('heroroom_heroBadge_bar')
 keys.add('heroroom_portraits_0001')
+for family in ['archer','barrack','mage','rock_thrower']:
+ for level in range(1,4):
+  icon=c['templates'][f'tower_{family}_{level}']['info']['enc_icon'];keys.update([f'encyclopedia_tower_thumbs_{icon:04}',f'encyclopedia_towers_{icon:04}'])
 keys.update(['encyclopedia_tower_thumbs_0121','encyclopedia_creep_thumbs_frame_0001','encyclopedia_creep_thumbs_frame_0002'])
 for name in ['enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']:
  icon=c['templates'][name]['info']['enc_icon'];keys.update([f'encyclopedia_creep_thumbs_{icon:04}',f'encyclopedia_creeps_{icon:04}'])

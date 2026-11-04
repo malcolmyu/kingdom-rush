@@ -206,3 +206,5 @@ hero-room.mjs将原模板key与原字符串绑定为下一等级技能预览，�
 encyclopedia.mjs只读原模板、声明目录和已保存spawn通知状态，enemyUnlocked/ enemyBookStats为纯查询；不创建World单位或修改发现状态。原书页坐标/锚点与文字角色在独立592×320容器绘制，翻页保留详情并重建缩略图，关闭后没有异步提交回调。read_encyclopedia.lua只读取声明配置，完整提取包括独立缩略图图集。
 
 百科提示页只读声明配置与原文，页码为对话框局部状态，重开回1；与enemy发现、存档和World无耦合。共用markup新增原横向三片背景与显式line_height的字体测高换算，不更改NativeUI全局变换。
+
+百科塔书页的towerBookStats仅读取Repository基础模板，不读取World克隆后的升级模板。towerUnlocked读取原布局always_shown与存档发现键；战役二/三关首波原通知通过统一串行通知队列展示，并在展示时保存meta.seen附属塔键。浏览书页本身不解锁、不扣费、不改战斗。
