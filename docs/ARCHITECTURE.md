@@ -188,3 +188,5 @@ upgrade-data.mjs由原upgrades数据生成；upgrades.mjs负责星预算、合�
 UpgradeTimeline维护购买按钮的当前线性插值和单次勾选帧；UpgradeMotion在重绘详情时保留展示状态，切场景/退出统一reset。UpgradeBurst使用独立展示PRNG与固定积分，不访问World。ui模块仍使用同一领域购买规则，购买成功后才创建粒子并选下一项；异步图集加载只影响绘制，不影响扣星。手机版面板本身按源立即显隐。
 
 雷电一级沿用模板补丁边界：星星购买记录只决定本局power_thunder_control.count，SpellTimeline读取同一模板排入真实事件。基础3击、选购6击与挑战上限分开测试。援军零级/一级来源已核实但尚未接入，未加入可购买白名单。
+
+援军通过re_current_1/2/3别名选择本局已应用天赋的模板；cast负责原随机与生成偏移，World保存spawnAt/departAt/expires/fadeOutAt，updateSoldiers负责等待、撤销攻击及离场移动。Renderer读取同一时间点的alpha和walking，不独立删除单位或产生伤害。reinforcement一级与其他全局升级共用独立预算/存档/cap，不依附英雄训练。

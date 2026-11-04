@@ -42,3 +42,7 @@ test('fresh save completes all nine modes with damage-earned hero XP and no stag
 
 test('damage-earned hero XP near the third-stage threshold preserves three-star legal play after asset preparation',()=>{for(const phase of[0,1,8,15,45]){const w=world(3,'campaign',{heroXp:4897});for(let i=0;i<phase;i++)w.step(1/60);const result=play(w);assert.equal(result.status,'won',JSON.stringify(result));assert.equal(w.stars,3,JSON.stringify(result));}});
 test('stage two heroic legal skills survive fresh-save XP and preparation-frame variations',()=>{for(const xp of[3587,3632])for(const frames of[0,1,8,15,45]){const w=world(2,'heroic',{difficulty:1,heroXp:xp});for(let i=0;i<frames;i++)w.step(1/60);const result=play(w);assert.equal(result.status,'won',JSON.stringify({xp,frames,result}));}});
+
+test('source zero-level reinforcement strategy survives stage two entry XP and menu preparation',()=>{for(const frames of[0,1,8,15,45,58]){const w=world(2,'campaign',{heroXp:2064});for(let i=0;i<frames;i++)w.step(1/60);const r=play(w);assert.equal(r.status,'won',JSON.stringify(r));assert.equal(w.stars,3,JSON.stringify(r));}});
+
+test('first iron strategy survives original reinforcement variants across ready frames',()=>{for(const frames of[0,1,2,3,4,8,15,45]){const w=world(1,'iron',{heroXp:1644});for(let i=0;i<frames;i++)w.step(1/60);assert.equal(play(w).status,'won');}});
