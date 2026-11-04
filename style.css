@@ -224,3 +224,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .source-infobar{position:absolute;z-index:3;pointer-events:none;container-type:inline-size}
 .source-infobar .infobar-shape,.source-infobar [data-infobar-field]{position:absolute;pointer-events:none}
 .source-infobar [data-infobar-field]{display:flex;align-items:center;white-space:nowrap;line-height:1;overflow:hidden}
+
+#battlefield,.slot{touch-action:none}

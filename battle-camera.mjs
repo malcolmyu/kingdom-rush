@@ -13,8 +13,8 @@ export class BattleCamera{
  constructor(width,height){this.width=width;this.height=height;this.reset();}
  reset(){this.x=this.width/2;this.y=this.height/2;this.zoom=1;this.phase=1;this.from=null;}
  clamp(p){const zoom=Math.max(1,Math.min(2,p.zoom)),top=this.top||0,bottom=this.bottom||0;return{x:Math.max(this.width/(2*zoom),Math.min(this.width-this.width/(2*zoom),p.x)),y:Math.max(-top+this.height/(2*zoom),Math.min(this.height-bottom-this.height/(2*zoom),p.y)),zoom};}
- tween(target){target=this.clamp(target);this.from={x:this.x,y:this.y,zoom:this.zoom};this.target=target;this.phase=0;}
- update(dt){if(this.phase===1)return;this.phase=Math.min(1,this.phase+dt/.2);const t=this.phase,e=t<.5?2*t*t:1-(-2*t+2)**2/2;for(const k of['x','y','zoom'])this[k]=this.from[k]+(this.target[k]-this.from[k])*e;Object.assign(this,this.clamp(this));}
+ tween(target,duration=.2,easing='in-out-quad'){this.duration=duration;this.easing=easing;target=this.clamp(target);this.from={x:this.x,y:this.y,zoom:this.zoom};this.target=target;this.phase=0;}
+ update(dt){if(this.phase===1)return;this.phase=Math.min(1,this.phase+dt/this.duration);const t=this.phase,e=this.easing==='out-quad'?1-(1-t)**2:t<.5?2*t*t:1-(-2*t+2)**2/2;for(const k of['x','y','zoom'])this[k]=this.from[k]+(this.target[k]-this.from[k])*e;Object.assign(this,this.clamp(this));}
  project(p){return{x:this.width/2+(p.x-this.x)*this.zoom,y:this.height/2+(p.y-this.y)*this.zoom};}
  unproject(p){return{x:this.x+(p.x-this.width/2)/this.zoom,y:this.y+(p.y-this.height/2)/this.zoom};}
 }
