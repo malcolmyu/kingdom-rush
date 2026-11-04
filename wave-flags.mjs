@@ -20,3 +20,12 @@ export class IncomingTooltip{
  position(){if(!this.flag)return;const game=document.getElementById('game'),k=game.clientWidth/693,x=parseFloat(this.flag.button.style.left)*693/100,y=parseFloat(this.flag.button.style.top)*game.clientHeight/100/k,p=incomingTooltipPosition(x,y,this.width,this.height),e=this.element;e.style.left=p.x/693*100+'cqw';e.style.top=p.y/693*100+'cqw';e.dataset.left=p.left;e.dataset.below=p.below;}
  hide(){this.flag=null;const e=this.element;if(e.hidden)return;const revision=++this.revision;this.tween?.cancel();this.tween=e.animate([{opacity:1},{opacity:0}],{duration:250,easing:'cubic-bezier(.333333,.666667,.666667,1)'});this.tween.onfinish=()=>{if(revision===this.revision)e.hidden=true;};}
 }
+
+// scripts.editor_wave_flag.insert: scripts.lua:5752–5767.
+export function waveEntrances(level){return level.entities_list.filter(e=>e.template==='editor_wave_flag').map(e=>({path:e['editor.path_id'],pos:e.pos,angle:e['editor.r'],length:e['editor.len']})).sort((a,b)=>a.path-b.path);}
+// game_gui.find_flag_position:1722–1791. Intersect outward ray with visible
+// coordinate lines, then keep top/bottom flags at their authored positions
+// unless inside the margin; side flags may extend by their authored length.
+export function findWaveFlagPosition(entrance,visible,margin={t:65,b:65,l:65,r:65}){const p=entrance.pos,d={x:Math.cos(entrance.angle),y:Math.sin(entrance.angle)},hits=[];
+ for(const[axis,value,side]of[['y',visible.top,'t'],['y',visible.bottom,'b'],['x',visible.right,'r'],['x',visible.left,'l']]){if(Math.abs(d[axis])<1e-5)continue;const t=(value-p[axis])/d[axis];if(t<0)continue;hits.push({distance:t,side,x:p.x+d.x*t,y:p.y+d.y*t});}
+ hits.sort((a,b)=>a.distance-b.distance);const hit=hits[0];if(!hit)return{...p};const m=margin[hit.side];if(hit.side==='t'||hit.side==='b'){if(hit.distance>=m)return{...p};}else if(entrance.length&&hit.distance>entrance.length+m)return{x:p.x+d.x*entrance.length,y:p.y+d.y*entrance.length};return{x:hit.x-d.x*m,y:hit.y-d.y*m};}
