@@ -16,9 +16,9 @@ export function purchase(w,plan){
  return false;
 }
 function ahead(w,e,seconds=.7){const r=w.routes[e.road][e.lane],n=r.lengths.findIndex(x=>x>=Math.min(r.length,e.d+e.speed*seconds));return r.points[n<0?r.points.length-1:n];}
-function positionHero(w,danger){if(w.hero&&w.hero.hp>0&&!w.hero.pendingHit&&!w.hero.anim){const target=ahead(w,danger,w.id===3&&w.mode==='campaign'?(initialXp.get(w)<5000?.5:3):w.id===2||w.id===1&&w.mode==='heroic'?2:1);if(target&&Math.hypot(target.x-w.hero.target.x,target.y-w.hero.target.y)>100)w.moveHero(target);}}
+function positionHero(w,danger){if(w.hero&&w.hero.hp>0&&!w.hero.pendingHit&&!w.hero.anim){const target=ahead(w,danger,w.id===3&&w.mode==='campaign'?(initialXp.get(w)<5000?.5:3):w.id===2&&w.mode==='heroic'&&initialXp.get(w)<5300?2.5:w.id===2||w.id===1&&w.mode==='heroic'?2:1);if(target&&Math.hypot(target.x-w.hero.target.x,target.y-w.hero.target.y)>100)w.moveHero(target);}}
 function useSkillsSmart(w){const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!live.length)return;
- const danger=live[0],remaining=danger.goal-danger.d,threshold=w.id===3?400:w.id===2&&w.mode==='iron'?100:w.id===2&&w.mode==='heroic'?300:150,cluster=w.id===3?80:w.id===2&&w.mode==='iron'?160:w.id===2&&w.mode==='heroic'?80:260;
+ const danger=live[0],remaining=danger.goal-danger.d,threshold=w.id===3?400:w.id===2&&w.mode==='iron'?100:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?200:300):150,cluster=w.id===3?80:w.id===2&&w.mode==='iron'?160:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?120:80):260;
  if(w.id!==3||w.mode!=='heroic')positionHero(w,danger);
  if(!danger.flying&&danger.key!=='enemy_hyena'&&remaining<500)w.cast('reinforce',danger);
  if(w.cooldowns.lightning<=0&&w.unlocked('lightning')){const target=remaining<threshold?danger:live.reduce((best,e)=>{const score=live.reduce((n,t)=>n+(Math.hypot(e.x-t.x,e.y-t.y)<105?Math.min(t.hp,175):0),0);return score>best.score?{e,score}:best;},{e:danger,score:0}).e;if(remaining<threshold||live.reduce((n,e)=>n+(Math.hypot(e.x-target.x,e.y-target.y)<105?Math.min(e.hp,175):0),0)>cluster)w.cast('lightning',target);}

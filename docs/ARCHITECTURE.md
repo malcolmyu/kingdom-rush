@@ -182,3 +182,5 @@ VictoryParticles使用独立PRNG和固定小步积分，ResultMotion只提供展
 ## 全局星星升级
 
 upgrade-data.mjs由原upgrades数据生成；upgrades.mjs负责星预算、合法购买/重置及每局模板补丁。Repository在存档边界规范化选择，Campaign将选择传给World；World在建立守军前按挑战上限生成独立模板，不修改Repository共享资源。upgrades-ui.mjs只呈现原节点和调用同一购买规则，未实现节点保持禁用。地图升级提示只在真实入口可用后启用，与英雄成长提示和战斗always通知分开。
+
+第二层全局升级由previousUpgrade和canBuyUpgrade统一校验同系前置；normalizeUpgrades按已支持层级顺序恢复合法连续链。patchUpgradeTemplates按本局挑战上限过滤效果，与永久存档选择分离；兵营交互直接读取补丁后模板，不另存一份固定范围。默认无天赋仍复用原资源，避免跨局模板污染。
