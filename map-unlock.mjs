@@ -10,7 +10,7 @@ export class MapUnlockSequence{
    for(const[mode,wait]of[['iron',4],['heroic',2]])if(progress.challenges[id+'-'+mode]&&!this.before.challenges?.[id+'-'+mode]){s.blockBegin??=cursor;s[mode+'Begin']=cursor+.5;cursor+=.5+wait;s[mode+'End']=cursor;this.events.push({at:s[mode+'Begin'],sound:'win-star'});}
    if(id>previous){s.roadBegin=cursor;cursor+=(roads.find(r=>r.unlock_at===id)?.dots.length||0)*.3;s.flagBegin=cursor;cursor+=1;s.flagEnd=cursor;this.events.push({at:s.flagBegin,sound:'map-new-flag'});}
    s.end=cursor;this.levels.set(id,s);
-  }this.duration=cursor;this.events.sort((a,b)=>a.at-b.at);
+  }this.duration=cursor;this.startBalloonAt=progress.unlocked===1?cursor+.5:null;this.events.sort((a,b)=>a.at-b.at);
  }
  state(flag,time){const s=this.levels.get(flag.id),base=flagState(flag,this.progress,this.progress.unlocked,0,this.roads);if(!s)return base;
   if(s.flagBegin!==undefined){if(time<s.flagBegin)return{visible:false,enabled:false};return{...base,enabled:time>=s.flagEnd,reveal:time<s.flagEnd?newFlagPose(time-s.flagBegin):null};}
@@ -21,3 +21,5 @@ export class MapUnlockSequence{
  }
  dots(time){return this.roads.filter(r=>r.unlock_at<=Math.min(3,this.progress.unlocked)).flatMap(r=>{const start=this.levels.get(r.unlock_at)?.roadBegin;return r.dots.map((pos,i)=>({pos,frame:start===undefined?9:Math.min(9,Math.floor((time-start-i*.3)*30)),hidden:(r.hidden_idx||[]).includes(i+1)}));}).filter(d=>!d.hidden&&d.frame>=0);}
 }
+
+export function mapBalloonAlpha(time,start){return start===null||time<start?0:Math.min(1,(time-start)/.4);}
