@@ -1,0 +1,56 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+const origin=process.env.TEST_URL||'http://127.0.0.1:8765';
+const out=path.resolve('artifacts');fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:process.platform==='darwin'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});
+const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],requests=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)requests.push([r.status(),r.url()]);});
+await page.goto(origin);await page.waitForFunction(()=>window.origins);
+await page.screenshot({path:path.join(out,'01-开始界面.png')});
+await page.getByRole('button',{name:'开始游戏',exact:true}).click();
+assert.equal(await page.locator('.save-slot').count(),3);
+await page.locator('.save-slot').first().click();
+await page.waitForFunction(()=>origins.renderer.sheets.has(origins.repo.catalog.frames.mapFlag_0006.a));
+await page.screenshot({path:path.join(out,'02-大地图.png')});
+await page.locator('[data-level="2"]').click();assert.equal(await page.evaluate(()=>origins.app.modal),false);
+await page.locator('[data-level="1"]').click();await page.getByRole('tab',{name:/英雄挑战/}).click();assert.equal(await page.locator('#enter-level').isDisabled(),true);
+await page.getByRole('tab',{name:'战役',exact:true}).click();
+await page.locator('#difficulty').selectOption('1');await page.screenshot({path:path.join(out,'03-模式选择.png')});
+await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');
+await page.locator('[data-build-slot="6"]').click();await page.locator('[data-type="artillery"]').click();
+assert.equal(await page.evaluate(()=>origins.world.gold),195);
+await page.getByRole('button',{name:'暂停游戏',exact:true}).click();assert.equal(await page.evaluate(()=>origins.world.paused),true);await page.getByRole('button',{name:'继续战斗',exact:true}).click();
+assert.equal(await page.evaluate(()=>origins.world.paused),false);
+const strategy=fs.readFileSync(new URL('./strategies.mjs',import.meta.url),'utf8').replaceAll('export ','')+'\nwindow.playCampaignTest=play;';
+async function injectStrategy(){await page.addScriptTag({content:strategy});}
+await injectStrategy();
+await page.screenshot({path:path.join(out,'04-灰鸦港口.png')});
+async function complete(){const result=await page.evaluate(()=>{const r=playCampaignTest(origins.world);origins.app.events();origins.app.updateBattle();return r;});assert.equal(result.status,'won',JSON.stringify(result));assert.equal(await page.getByRole('heading',{name:'胜利！',exact:true}).count(),1);return result;}
+const results=[await complete()];
+await page.locator('#return-map').click();
+await page.reload();await page.waitForFunction(()=>window.origins);await page.locator('#start-game').click();await page.locator('.save-slot').first().click();assert.equal(await page.evaluate(()=>origins.app.progress.stars[1]),3);assert.equal(await page.evaluate(()=>origins.app.progress.unlocked),2);await injectStrategy();
+for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
+ if(id===1&&mode==='campaign')continue;
+ await page.locator(`[data-level="${id}"]`).click();await page.locator(`[data-mode="${mode}"]`).click();await page.locator('#difficulty').selectOption('1');
+ await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');
+ if(mode==='iron'){await page.locator('[data-build-slot]').first().click();const prohibited=id===2?'mage':'archer';const option=page.locator(`[data-type="${prohibited}"]`);if(await option.count())assert.equal(await option.isDisabled(),true);await page.keyboard.press('Escape');}
+ if(mode==='campaign'){
+  const screenshot=path.join(out,`${id===2?'05-高桥':'06-瀑布小径'}.png`);await page.screenshot({path:screenshot});
+  if(id===2){const s=await page.evaluate(()=>origins.world.slots.find(s=>!s.type));await page.locator(`[data-build-slot="${s.id}"]`).click();await page.locator('[data-type="archer"]').click();await page.locator(`[data-build-slot="${s.id}"]`).click();const before=await page.evaluate(()=>origins.world.gold);await page.locator('#upgrade').click();assert.equal(await page.evaluate(()=>origins.world.gold),before-110);await page.locator('#sell').click();}
+ }
+ results.push(await complete());await page.locator('#return-map').click();
+}
+assert.equal(await page.evaluate(()=>Object.keys(origins.app.progress.challenges).length),6);
+assert.equal(await page.evaluate(()=>Object.values(origins.app.progress.stars).reduce((a,b)=>a+b,0)),9);
+await page.screenshot({path:path.join(out,'07-全模式完成.png')});
+await page.setViewportSize({width:844,height:390});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+await page.locator('[data-level="3"]').click();await page.locator('[data-mode="iron"]').click();await page.screenshot({path:path.join(out,'08-手机模式选择.png')});
+await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');
+const mobileSlot=await page.evaluate(()=>origins.world.slots.find(s=>!s.type).id);await page.locator(`[data-build-slot="${mobileSlot}"]`).click();await page.locator('[data-type="artillery"]').click();await page.screenshot({path:path.join(out,'09-手机战场.png')});
+assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
+const missing=await page.evaluate(()=>[...origins.renderer.missing]);
+fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({status:'passed',results,errors,requests,missingFrames:missing,checks:['title','three save slots','world map','stage locks','challenge locks','all 9 legal wins','3-star challenge unlock','upgrade and sell through UI','pause and resume','persistent progress after reload','mobile landscape build and mode selection','no HTTP failures','no uncaught JS errors']},null,2));
+await browser.close();console.log('Campaign browser flow passed: all 9 modes, persistence, mobile controls.');

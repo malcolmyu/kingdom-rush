@@ -4,3 +4,7 @@ reference/apk/
 reference/*.mp4
 __pycache__/
 .DS_Store
+node_modules/
+build/
+artifacts/
+dist/

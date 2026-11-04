@@ -3,6 +3,15 @@
   "bytes": 277546388,
   "sha256": "30c1df2faef845a176a9e565490c2031da43219ce04994ee613932000a542689",
   "source": "User-provided APKPure download URL",
-  "assets": 1454,
-  "version_claimed_by_download": "5.8.02"
+  "assets": 11186,
+  "version_claimed_by_download": "5.8.02",
+  "browser_version": "0.2.0",
+  "scope": {
+    "stages": 3,
+    "modes": [
+      "campaign",
+      "heroic",
+      "iron"
+    ]
+  }
 }

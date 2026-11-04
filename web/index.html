@@ -1,28 +1,35 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>王国保卫战：起源 · 灰鸦港口</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#163e2c"><title>王国保卫战：起源 · 精灵的家园</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ctext y='32' font-size='32'%3E🏹%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main id="game" aria-label="王国保卫战起源第一关">
-  <canvas id="battlefield" width="1672" height="1014" aria-label="灰鸦港口战场，点击空地建塔，点击道路部署技能"></canvas>
-  <div id="slot-controls" aria-label="建造位置"></div>
-  <div id="hud" aria-live="polite"><span class="heart">♥</span> <b id="lives">20</b><span class="gold">●</span> <b id="gold">320</b><span class="waves">☠ <b id="wave">0 / 6</b></span></div>
-  <div class="top-actions"><button id="sound" class="small" aria-label="开启声音" title="声音">♪</button><button id="speed" class="small" aria-label="切换游戏速度">1×</button><button id="help" class="small" aria-label="玩法说明">?</button><button id="pause" class="small" aria-label="暂停游戏">Ⅱ</button></div>
-  <div id="menu" class="build-menu" hidden></div>
-  <div id="toast" role="status"></div>
-  <div id="bottom">
-    <button id="hero" class="ability hero" aria-label="选择艾瑞丹，H 键" title="艾瑞丹 · 第5波加入"><canvas width="84" height="92" data-icon="hero_portraits_0001"></canvas><span class="key">H</span><span class="lock">第 5 波</span></button>
-    <button id="lightning" class="ability" aria-label="选择雷电，1 键" title="雷电 · 第3波解锁"><canvas width="100" height="100" data-icon="portraits_power_lightening"></canvas><span class="key">1</span><span class="lock">第 3 波</span><span class="cooldown"></span></button>
-    <button id="reinforce" class="ability" aria-label="选择援军，2 键" title="援军 · 第2波解锁"><canvas width="100" height="100" data-icon="power_portrait_reinforcement_0001"></canvas><span class="key">2</span><span class="lock">第 2 波</span><span class="cooldown"></span></button>
-    <button id="arrows" class="ability" aria-label="选择箭雨，3 键" title="箭雨 · 第5波解锁"><canvas width="100" height="100" data-icon="portraits_power_hero_0001"></canvas><span class="key">3</span><span class="lock">第 5 波</span><span class="cooldown"></span></button>
+<main id="game" aria-label="王国保卫战：起源">
+ <div id="screen" class="screen"></div>
+ <canvas id="battlefield" width="1672" height="1014" aria-label="战场，点击建造点建塔，选择技能后点击道路施放" hidden></canvas>
+ <div id="battle-ui" hidden>
+  <div id="battle-slots" aria-label="建造点和魔法花"></div>
+  <div id="hud" aria-label="战斗状态"><canvas width="224" height="76" data-icon="hud_background"></canvas><b id="lives">20</b><b id="gold">320</b><b id="wave">0 / 6</b></div>
+  <span id="battle-name"></span>
+  <div class="top-actions"><button id="battle-sound" class="small-button" aria-label="切换声音">♪</button><button id="speed" class="small-button" aria-label="切换游戏速度">1×</button><button id="pause" class="small-button" aria-label="暂停游戏">Ⅱ</button></div>
+  <div id="build-menu" class="build-menu" hidden></div>
+  <div class="abilities">
+   <button id="hero" class="ability hero" aria-label="选择艾瑞丹"><canvas width="84" height="92" data-icon="hero_portraits_0001"></canvas><span class="key">H</span><span class="ability-note"></span></button>
+   <button id="lightning" class="ability" aria-label="选择雷电"><canvas width="100" height="100" data-icon="portraits_power_lightening"></canvas><span class="key">1</span><span class="ability-note"></span></button>
+   <button id="reinforce" class="ability" aria-label="选择援军"><canvas width="100" height="100" data-icon="power_portrait_reinforcement_0001"></canvas><span class="key">2</span><span class="ability-note"></span></button>
+   <button id="arrows" class="ability" aria-label="选择箭雨"><canvas width="100" height="100" data-icon="portraits_power_hero_0001"></canvas><span class="key">3</span><span class="ability-note"></span></button>
   </div>
-  <button id="next" class="wood next" aria-label="召唤下一波，空格键"><span class="skull">☠</span><span id="next-label">开始战斗</span><small id="next-hint">先点击空地建塔</small></button>
-  <div id="veil" class="veil"><section id="dialog" class="parchment" role="dialog" aria-modal="true" aria-labelledby="dialog-title"></section></div>
-  <div id="loading">正在进入灰鸦港口…</div>
+  <button id="next" class="wood next"><span class="skull">☠</span><strong id="next-label">开始战斗</strong><small id="next-hint">先点击空地建塔</small></button>
+  <button id="battle-back" class="battle-exit" aria-label="战斗菜单">☰</button>
+ </div>
+ <div id="toast" role="status" hidden></div>
+ <div id="veil" class="veil" hidden><section id="dialog" class="parchment" role="dialog" aria-modal="true" aria-labelledby="dialog-title"></section></div>
+ <div id="loading" class="loading"><div class="loading-emblem">🏹</div><p id="loading-text">正在进入精灵的家园…</p></div>
 </main>
-<footer><span>王国保卫战：起源 <span class="dot">◆</span> 第一关 · 灰鸦港口</span><span>点击空地建塔 · 空格召唤 · Esc 取消 / 暂停 <button id="fullscreen" aria-label="切换全屏">⛶ 全屏</button></span></footer>
-<script type="module" src="game.mjs"></script>
-</body></html>
+<footer><span>王国保卫战：起源 · 前三关 / 三种模式</span><button id="fullscreen">⛶ 全屏</button></footer>
+<script type="module" src="campaign.mjs"></script>
+</body>
+</html>

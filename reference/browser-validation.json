@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "stage": 1,
+      "mode": "campaign",
+      "status": "won",
+      "lives": 20,
+      "kills": 100,
+      "leaks": 0,
+      "spawned": 100,
+      "time": 431,
+      "gold": 135
+    },
+    {
+      "stage": 1,
+      "mode": "heroic",
+      "status": "won",
+      "lives": 1,
+      "kills": 96,
+      "leaks": 0,
+      "spawned": 96,
+      "time": 204,
+      "gold": 255
+    },
+    {
+      "stage": 1,
+      "mode": "iron",
+      "status": "won",
+      "lives": 1,
+      "kills": 73,
+      "leaks": 0,
+      "spawned": 73,
+      "time": 123,
+      "gold": 225
+    },
+    {
+      "stage": 2,
+      "mode": "campaign",
+      "status": "won",
+      "lives": 20,
+      "kills": 229,
+      "leaks": 0,
+      "spawned": 229,
+      "time": 640,
+      "gold": 278
+    },
+    {
+      "stage": 2,
+      "mode": "heroic",
+      "status": "won",
+      "lives": 1,
+      "kills": 154,
+      "leaks": 0,
+      "spawned": 154,
+      "time": 307,
+      "gold": 210
+    },
+    {
+      "stage": 2,
+      "mode": "iron",
+      "status": "won",
+      "lives": 1,
+      "kills": 74,
+      "leaks": 0,
+      "spawned": 74,
+      "time": 148,
+      "gold": 95
+    },
+    {
+      "stage": 3,
+      "mode": "campaign",
+      "status": "won",
+      "lives": 18,
+      "kills": 419,
+      "leaks": 2,
+      "spawned": 421,
+      "time": 902,
+      "gold": 890
+    },
+    {
+      "stage": 3,
+      "mode": "heroic",
+      "status": "won",
+      "lives": 1,
+      "kills": 166,
+      "leaks": 0,
+      "spawned": 166,
+      "time": 322,
+      "gold": 300
+    },
+    {
+      "stage": 3,
+      "mode": "iron",
+      "status": "won",
+      "lives": 1,
+      "kills": 96,
+      "leaks": 0,
+      "spawned": 96,
+      "time": 124,
+      "gold": 91
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "missingFrames": [],
+  "checks": [
+    "title",
+    "three save slots",
+    "world map",
+    "stage locks",
+    "challenge locks",
+    "all 9 legal wins",
+    "3-star challenge unlock",
+    "upgrade and sell through UI",
+    "pause and resume",
+    "persistent progress after reload",
+    "mobile landscape build and mode selection",
+    "no HTTP failures",
+    "no uncaught JS errors"
+  ]
+}

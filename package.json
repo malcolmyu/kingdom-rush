@@ -1,0 +1,8 @@
+{
+ "name":"kingdom-rush-origins-browser",
+ "private":true,
+ "version":"0.2.0",
+ "type":"module",
+ "scripts":{"test":"node --test tests/*.test.mjs","test:browser":"node tests/campaign-browser.mjs","build":"python3 tools/build_site.py","start":"python3 -m http.server 8765 --bind 127.0.0.1 --directory web"},
+ "devDependencies":{"playwright":"1.58.2"}
+}
