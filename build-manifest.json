@@ -1,5 +1,5 @@
 {
-  "version": "0.2.7",
+  "version": "0.2.8",
   "stages": 3,
   "modes": [
     "campaign",
@@ -8,14 +8,14 @@
   ],
   "files": {
     "index.html": "a9746a4ccb8a3c2025ea9bd837576413b33396bb0f24ae51ae513f2a4cc0139e",
-    "progression.mjs": "6a70d59efdc056796e90021b3a68b2d12d24172fb1f1fff4bacb6d4051cfbfee",
+    "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
     "ui.mjs": "4e66af27cdfe94afcd8009f7a5bd6daa10dfa3b07708348776ffe5a53000db02",
     "repository.mjs": "aed2fc9d6edf09e72935cf2a2d515cfbbefac2467a75613d561cbd68a9a129a5",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "domain.mjs": "07f3415c5b2bce021d85426b24f82f6a0f6474077e5c017cd6b801eaaeb77291",
+    "domain.mjs": "59d666e7cd29880125bae9112c5a178120330bdaeb5ee7e879b73ad3106a839e",
     "style.css": "f098b8528ca2fe159080f89be972f33e7719970e9c51b8f2466905aa37afab86",
     "renderer.mjs": "19432948472524a1416770204b7bd3bd7575113ba0619bfd9595ec25d1d1b982",
-    "campaign.mjs": "140f8c7cafbb885472c9346a3468f552e05aaccfb14aed10c7aff69225fbfdfa",
+    "campaign.mjs": "7d429d95f78482c85f3565552f4359facc9632a38302e2340fbe0f5ab0ea8e5a",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",
     "assets/arrow.ogg": "ea23ab850778c9e6cb26a217e0499e3e4e11b4b87b071d1d0ca094075b6fc7d9",
@@ -34,6 +34,7 @@
     "assets/door.ogg": "646d7e56e98ce11a2b9acf031ce809ac9616f240c30b5eccb60456058aae9a6d",
     "assets/catalog.json": "42cf8a53d65e70f360237d4cca0df398311d70c71171be2f0480ad2edbfe531b",
     "assets/levelup.ogg": "e0639382bbfdaf3419c202f8e3dcf11ffee988bd091aa20342fd08c94a5497ea",
+    "assets/nimble.ogg": "6335bb4c56344c01d56d75d24b5dc326e8c8dda1fde731203395d87b53ee18a5",
     "assets/menu.ogg": "c985122e90cf3dcb297bfdfb1b23056ed4efbdaa7321667226af058f76f23cae",
     "assets/ui/encyclopedia_tow_creep_close_0001.webp": "41cf90df4c0499315d7df7450c2609278cd47493703a2abc8394b601e09810d3",
     "assets/ui/logo_brillo_0008.webp": "f565bd7144a20cca73305ec0a2922b9e81feac897a9682d1c691b321b569e41a",
