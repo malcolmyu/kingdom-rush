@@ -1,0 +1,3 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{menuEase,menuFrames}from'../web/menu-motion.mjs';
+test('source back easing preserves endpoints and original overshoot directions',()=>{for(const kind of['in','out']){assert.ok(Math.abs(menuEase(0,kind))<1e-12);assert.ok(Math.abs(menuEase(1,kind)-1)<1e-12);}assert.ok(menuEase(.7)>1);assert.ok(menuEase(.3,'in')<0);});
+test('source save panel uses 330 design-pixel travel without opacity or scaling',()=>{const frames=menuFrames(330,0);assert.equal(frames[0].translate,`0 ${330/693*100}cqw`);assert.equal(frames.at(-1).translate,'0 0cqw');assert.ok(frames.some(f=>parseFloat(f.translate.slice(2))<0));assert.ok(frames.every(f=>f.opacity===undefined&&f.scale===undefined));});

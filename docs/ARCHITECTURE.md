@@ -190,3 +190,6 @@ UpgradeTimeline维护购买按钮的当前线性插值和单次勾选帧；Upgra
 雷电一级沿用模板补丁边界：星星购买记录只决定本局power_thunder_control.count，SpellTimeline读取同一模板排入真实事件。基础3击、选购6击与挑战上限分开测试。援军一级同样通过本局三个re_current别名替换应用，原零级和可选一级共用同一冷却/寿命与渲染时间线。
 
 援军通过re_current_1/2/3别名选择本局已应用天赋的模板；cast负责原随机与生成偏移，World保存spawnAt/departAt/expires/fadeOutAt，updateSoldiers负责等待、撤销攻击及离场移动。Renderer读取同一时间点的alpha和walking，不独立删除单位或产生伤害。reinforcement一级与其他全局升级共用独立预算/存档/cap，不依附英雄训练。
+
+
+MenuMotion仅处理screen_slots菜单内部logo/按钮/存档面板的原坐标时间线，与SceneTransition战场加载门分开。Campaign在替换DOM前捕获当前显示位置，副本只参与绘制，原按钮身份与存档操作保留；transition统一cancel，版本检查阻止旧完成回调改写新状态。动画不会访问或推进World。
