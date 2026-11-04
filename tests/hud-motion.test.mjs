@@ -1,0 +1,3 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';import{hudEase,hudOffsets}from'../web/hud-motion.mjs';
+test('phone HUD uses distinct original frame and parent sizes',()=>{const x=hudOffsets(JSON.parse(readFileSync('web/assets/ui/layouts.json')));assert.deepEqual(x,{hud:{x:0,y:-57},pause:{x:0,y:-42},hero:{x:-150,y:0},notices:{x:-90,y:0},powers:{x:0,y:60}});});
+test('hide overshoots with out-back, return approaches with out-cubic',()=>{assert.ok(hudEase(.5,true)>1);assert.equal(hudEase(1,true),1);assert.equal(hudEase(.5,false),.875);assert.equal(hudEase(0,false),0);});

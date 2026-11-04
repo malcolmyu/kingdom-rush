@@ -12,6 +12,7 @@ def find(node,id):
   if match:return match
 slots=read('screen_slots');world=read('screen_map');game=read('game_gui')
 layouts={'title':slots,'slot':read('slot_view'),'slotTab':read('slot_tab_view'),'level':find(world,'level_view'),'pause':find(game,'pause_view'),'victory':find(game,'victory_view'),'defeat':find(game,'defeat_view'),'hero':find(world,'hero_room_view'),'heroSkill':read('hero_skill_view')}
+layouts['battleHud']={key:{k:v for k,v in find(game,key).items() if k!='children'}for key in ['hud_normal_view','pause_button','hero_portraits_view','notification_queue_view','powers_view']}
 layouts['tutorials']=[read('game_gui_noti_tutorial_'+str(i)) for i in range(1,4)]
 notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))

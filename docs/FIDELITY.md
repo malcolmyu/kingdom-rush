@@ -268,3 +268,9 @@ PowerTimeline 按每个World独立记录锁定、解锁、冷却和就绪转换�
 核对NotificationView(game_gui.lua:4330–4402)及原sounds表：展示先暂停/禁用战斗输入，0.1秒后打开黑色100/255遮罩，alpha0/scale0.5用0.4秒out-back到1；关闭立即恢复World、撤去遮罩，同时alpha1/scale1用0.4秒in-back到0/0.5后移除。此前接续说明中猜测的pos_y移动并不存在，本批没有添加。教程continue原next分支直接换页，走no_transition，保留0.1秒初始化但不重新缩放；确认/跳过走正常缩退。
 
 新增NotificationMotion负责原曲线采样、入场取消及非交互退出副本，避免旧面板动画遮挡新面板或延迟战斗恢复。原GUINotificationOpen/Close映射Sound_NotificationOpen/Close.ogg已提取并可重建。通知选中时清除旧塔/能力/波次输入。原HUD隐藏/返回独立协程尚未恢复，不将本批面板动画等同完整UI转场。字体测高、镜头、挑战结算等仍需同镜头证据，整体未达1:1。
+
+## 0.2.25 原通知 HUD 分组退场与返回
+
+核对phone show_gui_hud/hide_gui_hud(game_gui.lua:1842–1939)：隐藏默认0.4秒out-back，返回0.4秒out-cubic，反向前取消旧timer并从当前位置继续。按原父容器/图片尺寸导出battleHud，状态栏上移57、暂停上移42、英雄父容器左移150、通知队列左移90、技能栏下移anchor.y=60（原安全区当前0）。英雄父宽100不能误用单个肖像42，通知队列宽60不能按全屏host宽计算。
+
+HudMotion只写各组translate，保持英雄/技能Canvas、图标自身scale及建造点独立。通知/教程进入隐藏，页间不重启退场；关闭立即开始返回，与面板缩退并行，连续通知重入从当前位移接续。切场景清理，不把battle-slots或整个battle-ui隐藏。bag/infobar等未实现界面不虚构替代品；非零safearea和其他全局HUD触发场景尚未对齐。截图为当前受控通知状态，非原版同镜头逐帧对照；整体仍未达到1:1。
