@@ -24,7 +24,8 @@ right=find(world,'bottom_right_bar_view')
 hero_map_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/map_data.lua')]))
 layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'hero':find(right,'map_hero_button'),'encyclopedia':find(right,'map_encyclopedia_button'),'levelup':find(right,'map_balloon_level_up_view'),'unlocked':find(right,'map_balloon_hero_unlocked_view'),'heroData':hero_map_data['hero_data_free'],'upgrades':find(right,'map_upgrades_button'),'upgradeHint':find(right,'map_balloon_upgrades_view')}
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
-layouts['encyclopedia']={'index':find(world,'encyclopedia_view'),'enemies':find(world,'encyclopedia_enemies_view'),'entries':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_encyclopedia.lua'),str(ROOT/'reference/apk/assets/gc64')]))['enemies']}
+book_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_encyclopedia.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+layouts['encyclopedia']={'index':find(world,'encyclopedia_view'),'enemies':find(world,'encyclopedia_enemies_view'),'tips':find(world,'encyclopedia_tips_view'),'entries':book_data['enemies'],'tipsCount':book_data['tips_count']}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
  if isinstance(v,dict):

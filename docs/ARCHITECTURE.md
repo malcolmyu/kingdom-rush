@@ -204,3 +204,5 @@ hero-room.mjs将原模板key与原字符串绑定为下一等级技能预览，�
 英雄殿堂帮助仅由真实遮罩点击保存seenMapHints.hero_room_help，下层按钮暂存并恢复inert；关闭不改变已读。HeroFeedback独立读取UI时间画原两处白闪，Campaign统一在dialog/close/transition清理。createBalloon新增显式资源prefix参数，既有地图和战斗气泡默认资源保持不变。
 
 encyclopedia.mjs只读原模板、声明目录和已保存spawn通知状态，enemyUnlocked/ enemyBookStats为纯查询；不创建World单位或修改发现状态。原书页坐标/锚点与文字角色在独立592×320容器绘制，翻页保留详情并重建缩略图，关闭后没有异步提交回调。read_encyclopedia.lua只读取声明配置，完整提取包括独立缩略图图集。
+
+百科提示页只读声明配置与原文，页码为对话框局部状态，重开回1；与enemy发现、存档和World无耦合。共用markup新增原横向三片背景与显式line_height的字体测高换算，不更改NativeUI全局变换。
