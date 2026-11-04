@@ -46,7 +46,7 @@ for group in groups:
 for name,im in sheets.items():im.save(OUT/'images'/(name.rsplit('.',1)[0]+'.webp'),lossless=True,method=4)
 titles=['灰鸦港口','高桥','瀑布小径','红杉阻击战','皇家庭院','狮鹫驿站','石环阵','格林堡之战','水晶之湖','奇迹仙境']
 levels=[]
-used_templates={'power_thunder_control','hero_elves_archer','soldier_re_1','tower_holder_elven_woods','tower_holder_faerie_grove'}
+used_templates={*[f're_current_{i}'for i in range(1,4)],*[f'soldier_re_{level}_{i}'for level in [0,1]for i in range(1,4)],'power_reinforcements_control','power_thunder_control','hero_elves_archer','soldier_re_1','tower_holder_elven_woods','tower_holder_faerie_grove'}
 for ty in ['archer','barrack','mage','rock_thrower']:
  used_templates.add('tower_build_'+ty)
  for n in range(1,4):used_templates.add(f'tower_{ty}_{n}')
