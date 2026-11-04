@@ -1,5 +1,5 @@
 {
-  "version": "0.2.25",
+  "version": "0.2.26",
   "stages": 3,
   "modes": [
     "campaign",
@@ -8,7 +8,7 @@
   ],
   "files": {
     "index.html": "d09f2f6cf3a56dd6f569f4fd3eb245a87bb105ca11cdab298c678a9bcf562e37",
-    "wave-flags.mjs": "58af00c823094f5f51c4d823b23d7789bb5d1fdcd439d9fc9ac7d21856b90f3a",
+    "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
     "ui.mjs": "589a9f26bb760fb51283a8db3e89de46fb6413d5ee5d59a4367f444a390d9ffd",
     "battle-portraits.mjs": "a699edd2ef9c3836d91042d5e0d887a3c59033571e3c9e96b1b78f80f4a57232",
@@ -19,11 +19,12 @@
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "domain.mjs": "3e7bb852c85959272a3bdf8a7cc6483d6668716c830b3cd798742bce13a4c967",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
-    "style.css": "3473284e91da25d544078d32402eb78341052775faab156112231c826b7396cb",
+    "style.css": "1bbd23cd05fc45aeeea917db24ad27dffeb526421380e7cd9f2a53255f3d11f2",
     "guidance.mjs": "1c68a574114aba113ce863a417de1c6e36855529e7b631aa9efe0bd6d9b172e1",
     "renderer.mjs": "799048e843a5341cf46f7df7390e8d5a49f1067570856d09a3eae9da0fe5f666",
-    "campaign.mjs": "50b7e546ace5182a0b4a7fc973eada4f9a8fce54bde5cf4c5133961ef3a20970",
+    "campaign.mjs": "18143b5ad2c5f3179e3ef62395debd5a6245e5f0e2130c9614324e4898f5741e",
     "map-flags.mjs": "06a801d6637b97d17f257547f43b669ba0a862f03dc246c183c9d1501632b9b9",
+    "wave-reward.mjs": "3f0856fc94d2f96c823eb9f02b745ee089179ab501886c5936cf43bdcf2e7735",
     "map.mjs": "6f6d84a4d64721c8eccfc58caa2005f0c10dc74f89338d51a25927ac3c632484",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",

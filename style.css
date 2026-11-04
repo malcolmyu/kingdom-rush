@@ -187,3 +187,4 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .veil.source-notification-veil{background:rgb(0 0 0 / .3921568627);backdrop-filter:none}.native-tutorial-dialog{transform-origin:center}.notification-exit{position:absolute!important;left:50%;top:50%;translate:-50% -50%;z-index:11;pointer-events:none!important;transform-origin:center}
 .veil.source-notification-veil[data-notification-wait]{background:transparent}
 #game:has(.source-notification-veil:not([hidden])) #toast{visibility:hidden}
+.wave-flag-exit{pointer-events:none!important;filter:none!important;z-index:3}.wave-reward{position:absolute;pointer-events:none;z-index:4}
