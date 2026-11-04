@@ -1,0 +1,190 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "pose": "walk-right",
+      "draws": [
+        {
+          "frame": "archer_hero_0019",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 830.75,
+        "y": 546.6666666666666
+      },
+      "action": "levelup",
+      "shots": 0
+    },
+    {
+      "pose": "walk-left",
+      "draws": [
+        {
+          "frame": "archer_hero_0019",
+          "flip": true
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 813.25,
+        "y": 546.6666666666666
+      },
+      "action": "levelup",
+      "shots": 0
+    },
+    {
+      "pose": "ranged-right",
+      "draws": [
+        {
+          "frame": "archer_hero_0057",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "ranged",
+      "shots": 0
+    },
+    {
+      "pose": "ranged-left",
+      "draws": [
+        {
+          "frame": "archer_hero_0057",
+          "flip": true
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "ranged",
+      "shots": 0
+    },
+    {
+      "pose": "sword-change",
+      "draws": [
+        {
+          "frame": "archer_hero_0024",
+          "flip": true
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "bow2sword",
+      "shots": 0
+    },
+    {
+      "pose": "melee-left",
+      "draws": [
+        {
+          "frame": "archer_hero_0082",
+          "flip": true
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "attack",
+      "shots": 0
+    },
+    {
+      "pose": "death",
+      "draws": [
+        {
+          "frame": "archer_hero_0142",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "death",
+      "shots": 0
+    },
+    {
+      "pose": "tombstone",
+      "draws": [
+        {
+          "frame": "hero_death_0039",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "death",
+      "shots": 0
+    },
+    {
+      "pose": "respawn",
+      "draws": [
+        {
+          "frame": "archer_hero_0151",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "respawn",
+      "shots": 0
+    },
+    {
+      "pose": "burner-melee-left",
+      "draws": [
+        {
+          "frame": "gnoll_burner_0130",
+          "flip": true
+        },
+        {
+          "frame": "archer_hero_0003",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "levelup",
+      "shots": 0
+    },
+    {
+      "pose": "burner-shoot-right",
+      "draws": [
+        {
+          "frame": "gnoll_burner_0082",
+          "flip": false
+        },
+        {
+          "frame": "archer_hero_0005",
+          "flip": false
+        }
+      ],
+      "missing": [],
+      "center": {
+        "x": 822,
+        "y": 546.6666666666666
+      },
+      "action": "levelup",
+      "shots": 0
+    }
+  ],
+  "errors": []
+}

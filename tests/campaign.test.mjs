@@ -34,3 +34,6 @@ test('mage paired bolts leave together on frame nineteen, rather than at animati
 test('stone throwers complete the original forty-eight-frame loading sequence before firing',()=>{const w=world(3),t=w.slots.find(s=>!s.type);w.build(t.id,'artillery');const e={id:9,hp:100,x:t.x+50,y:t.y+50,goal:100,d:50};w.time=1;w.updateTowers(0,[e]);assert.equal(w.shots.length,0);assert.equal(t.reloadUntil,.8+48/30);w.time=2.41;t.cd=0;w.updateTowers(0,[e]);assert.equal(w.shots.length,1);assert.ok(Math.abs(w.shots[0].elapsed+.3)<1e-10);assert.ok(t.reloadUntil>w.time+2);});
 
 for(const[id,mode]of [[2,'heroic'],[2,'iron'],[3,'campaign'],[3,'heroic'],[3,'iron']])test(`legal play after save progression: stage ${id} ${mode}, hero ${id+1}`,()=>{const w=world(id,mode,{heroLevel:id+1}),r=play(w);assert.equal(r.status,'won',JSON.stringify(r));if(mode==='campaign')assert.equal(w.stars,3);else assert.equal(w.leaks,0);});
+
+// Browser menu/asset waits advance the ready-world clock before the first wave.
+for(const heroLevel of[3,4])for(const frames of[1,15,45])test(`stage 3 campaign remains three-star after ${frames} ready frames, hero ${heroLevel}`,()=>{const w=world(3,'campaign',{heroLevel});for(let i=0;i<frames;i++)w.step(1/60);const r=play(w);assert.equal(r.status,'won',JSON.stringify(r));assert.equal(w.stars,3,JSON.stringify(r));});
