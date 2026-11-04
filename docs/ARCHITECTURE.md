@@ -218,3 +218,6 @@ Infobar只查询选中塔的本局模板，按原STATS_TYPE构建肖像/文本/�
 
 
 TowerMenu复用infobarViewport的phone参考窗口，towerUiPoint把Renderer画布坐标转换到GUI逻辑坐标，圆环和tooltip再统一映射回实际game内像素；towerTooltipRect仅读source右侧分支与中心ceil规则。World位置/交易状态不变，不用屏幕CSS夹紧替代后续原相机fit_screen实现。
+
+
+BattleCamera只维护展示姿态和原fit目标的.2秒插值；Renderer内部绘制使用基础投影加统一Canvas变换，外部投影和逆投影使用相机。Campaign逐帧同步世界DOM控件，TowerMenu从相同投影定位原GUI。异步loadLevel在current校验后提交资源并重置相机，避免旧加载重置新镜头；领域World不感知相机。

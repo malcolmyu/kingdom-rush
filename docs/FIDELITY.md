@@ -523,3 +523,14 @@ read_tower_menu只读原kr3/data/tower_menus_data及jit函数常量，不执行�
 game_gui.lua:91–112由screen_utils.clamp_window_aspect初始化sw/sh/gui_scale，1424–1432的w2u把世界投影除以gui_scale后加sw/sh中心；圆环3117–3279按原range_offset与menu_offset后四舍五入位置，最大scale0.88。当前圆环与200宽提示框改用已有phone480×320参考窗口与aspect留边换算，不再除以693；补齐圆环原x偏移，保留原节点/hitbox随父尺度一致，未改World交易。TowerMenuTooltip3948–3963按实体y+12定位、右侧空间不足切左、中心ceil后再减半宽/高；缩放或viewport变化会刷新当前菜单和提示，避免只更新绘图而点选范围仍旧。
 
 225项领域单测通过，新增源坐标/超宽留边与提示左右边界和ceil回归。build目录真实菜单专项、底栏与完整九模式通过（三战役三星），保留原两次交易；退款回归结果另记本轮评论。新尺度桌面与手机截图已检查，仍为当前UI受控样本而非原版同步证据。原.2秒camera.tween的平移/缩放尚未接入，边缘菜单仍可能超出画面；未用CSS夹紧假冒相机。其他HUD仍有旧参考尺度差异，字体测高/基线也尚非Love逐像素。原开关0.12秒保留，现归一化缩放起点与原绝对0.6到0.88的幅度仍应继续校准，整体不称完整塔UI1:1。
+
+
+## 0.2.54 原塔菜单相机适配连续分支
+
+新增battle-camera.mjs，按game_gui.lua:3199–3279的fit_screen_factor1.2/1.3、ring122/max_scale.88/gui_scale、实体原点、clamped_h与pan_extension计算选塔相机目标。核对game.lua:117–143的clamp/tween/cancel_tween，采用phone最大zoom2与0.2秒in-out-quad，从当前姿态重新插值，保留上下扩展。公式在现有Renderer物理参考框架内换算；初始世界铺图/中心512,384/k7/6仍为既有基线，并未称已复原完整原game初始camera/min_zoom与全部宽高比配置。当前前三关初始1倍画面里多数塔不需要移动，不能为演示而强行移动。
+
+Renderer在统一Canvas上下文上变换地图、单位、射程和效果；外部screen/world使用同一相机投影与逆变换。塔位/魔法花DOM中心、波旗世界位置、菜单与tooltip逐帧跟随；guidance继续查询同一Renderer。关卡资源提交时reset相机，旧加载current检查仍在；World坐标、寻路、RNG、金币和技能不变。没有将圆环单独CSS夹紧。尚未实现用户捏合/自由拖动、完整原初始相机和其他HUD参考尺度，开关菜单绝对scale幅度差异仍保留待校准。
+
+227领域单测通过，新增fit分支、.2时序/重入/限幅/投影逆变换。构建目录相机专项在受控的合法2倍zoom姿态选择实际边缘塔，真实点击建造/出售/集结，验证Canvas/DOM对齐、暂停、手机和新关重置；2倍姿态由测试设定，当前产品没有假造捏合交互。测试首次错误地用点击区域中心代替原80%高度锚点，另一次选点离道路过远，均修正测试后正常真实点击通过，未改World规则或force绕过遮挡。截图是当前受控相机取样，非原版同输入同步证据；整体仍非1:1。
+
+实际build目录完整九模式（三战役三星）、原塔菜单、相机专项、scene-transition与guidance均通过；公开0.2.53 UI通过。原always教程和自然XP链保留，未通过预置已读绕过。

@@ -1,3 +1,4 @@
+import{BattleCamera}from'./battle-camera.mjs';
 // Canvas presentation. Reads the simulation; never changes game rules.
 const values=x=>Array.isArray(x)?x:Object.values(x||{});
 // Source utils.animation_name_for_angle: three directions, 45-degree sectors,
@@ -13,13 +14,14 @@ export function enemyDirection(dx,dy,previous=null,stickiness=10){
  return{facing:'RightLeft',flip:false,quadrant:4};
 }
 export class Renderer{
- constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=7/6;this.map=null;this.missing=new Set();this.enemyDirections=new WeakMap();}
- screen(p){return{x:this.width/2+(p.x-512)*this.k,y:this.height/2-(p.y-384)*this.k};}
- world(p){return{x:(p.x-this.width/2)/this.k+512,y:(this.height/2-p.y)/this.k+384};}
+ constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=7/6;this.camera=new BattleCamera(this.width,this.height);this.map=null;this.missing=new Set();this.enemyDirections=new WeakMap();}
+ baseScreen(p){return{x:this.width/2+(p.x-512)*this.k,y:this.height/2-(p.y-384)*this.k};}
+ screen(p){const q=this.baseScreen(p);return this.drawing?q:this.camera.project(q);}
+ world(p){p=this.camera.unproject(p);return{x:(p.x-this.width/2)/this.k+512,y:(this.height/2-p.y)/this.k+384};}
  async sheet(name){if(!this.sheets.has(name))this.sheets.set(name,await this.repo.image('assets/images/'+name));return this.sheets.get(name);}
  async loadLevel(data,current=()=>true){const map=await this.repo.image(data.map);if(!current())return false;
   const prefixes=['go_towers','go_decals','go_enemies_elven_woods','go_hero_elves_archer','go_stages_elven_woods',`go_stage${String(data.id).padStart(2,'0')}-`];
-  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))).map(f=>f.a));await Promise.all([...names].map(n=>this.sheet(n)));if(!current())return false;this.map=map;this.data=data;return true;
+  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))).map(f=>f.a));await Promise.all([...names].map(n=>this.sheet(n)));if(!current())return false;this.camera.reset();this.camera.top=(data.level?.pan_extension?.top||0)*this.k;this.camera.bottom=(data.level?.pan_extension?.bottom||0)*this.k;this.map=map;this.data=data;return true;
  }
  async icon(canvas,key){const f=this.catalog.frames[key];if(!f)return;await this.sheet(f.a);const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);this.sprite(c,key,canvas.width/2,canvas.height/2,Math.min(canvas.width/f.size[0],canvas.height/f.size[1]));}
  frame(name,time=0,loop=true){if(this.catalog.frames[name])return name;const a=this.catalog.animations[name];if(!a)return null;const frames=a.frames||a.ranges?.flatMap(([from,to])=>Array.from({length:to-from+1},(_,i)=>from+i))||Array.from({length:(a.to||a.from||1)-(a.from||1)+1},(_,i)=>(a.from||1)+i);let f=Math.max(0,Math.floor(time*30));f=loop?f%frames.length:Math.min(f,frames.length-1);return a.prefix+'_'+String(frames[f]).padStart(4,'0');}
@@ -40,7 +42,7 @@ export class Renderer{
   }
  }
  circle(pos,r,fill,stroke){const c=this.ctx,p=this.screen(pos);c.beginPath();c.ellipse(p.x,p.y,r*this.k,r*this.k*.7,0,0,Math.PI*2);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}}
- draw(w,{selected=null,mode=null,hover=null}={}){const c=this.ctx;c.clearRect(0,0,this.width,this.height);if(!this.map)return;c.drawImage(this.map,0,0,this.width,this.height);
+ draw(w,{selected=null,mode=null,hover=null}={}){const c=this.ctx;c.clearRect(0,0,this.width,this.height);if(!this.map)return;this.drawing=true;c.save();c.translate(this.width/2,this.height/2);c.scale(this.camera.zoom,this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);c.drawImage(this.map,0,0,this.width,this.height);
   if(selected!==null&&w.slots[selected]){const s=w.slots[selected];const d=s.type?w.towerDef(s.type,s.level):null;this.circle(d?{x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y}:s,d?d.range:160,'#d5f19222','#e5eea699');}
   if(mode&&hover){const p=w.nearestRoad(hover);if(p)this.circle(p,mode==='lightning'?100:mode==='arrows'?35:24,'#7ccfdf33','#b8f4f8');}
   // Original map decoration layers include the river, waterfalls and foreground trees.
@@ -74,5 +76,6 @@ export class Renderer{
   }
   for(const p of w.exits)this.circle(p,18,'#8bc9d122','#bdeefa77');
 
+ c.restore();this.drawing=false;
  }
 }

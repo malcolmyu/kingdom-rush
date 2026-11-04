@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.53",
+  "version": "0.2.54",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -55,7 +55,8 @@
     "test:tower-menu": "node tests/tower-menu-browser.mjs",
     "test:tower-refund": "node tests/tower-refund-browser.mjs",
     "test:infobar": "node tests/infobar-browser.mjs",
-    "test:tower-menu-scale": "node tests/tower-menu-scale-browser.mjs"
+    "test:tower-menu-scale": "node tests/tower-menu-scale-browser.mjs",
+    "test:battle-camera": "node tests/battle-camera-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"
