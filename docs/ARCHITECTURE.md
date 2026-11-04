@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+鬣狗的临时脱离状态由World的updateHyena在守军寻敌后、路径移动前处理。cowardUntil限制重复拦截，结束时恢复速度；soldier/hero的近战候选排除该状态，远程候选保留。Renderer按状态选择walking/running原方向动作，不更改寻敌、速度或伤害。
+
 敌人持续状态由World维护：咬噬者光环按模板周期/椭圆与vis筛选更新自身modifier，伤害倍率在命中时消费，持续时间与动画起点分别保存。Renderer只读取状态画原素材，刷新状态不会重启循环动作，也不消耗展示以外的随机数。
 
 ```mermaid

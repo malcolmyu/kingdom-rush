@@ -102,7 +102,7 @@ export class World{
  updateSoldiers(dt,live){const blockers=new Set(),engaged=new Map(),enemyTurns=new Set();for(const s of this.soldiers){if(this.time>s.expires){s.expired=true;continue;}if(s.hp<=0){s.pendingHit=null;s.dead+=dt;if(s.home!==null&&s.dead>s.respawn){s.hp=s.maxHp;s.dead=0;this.departSoldier(s,this.slots[s.home]);}continue;}if(this.time<s.departAt)continue;
    s.cd-=dt;s.rangedCd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.anim<=0)s.shooting=false;
    if(s.pendingHit&&this.time>=s.pendingHit.at){const hit=s.pendingHit;s.pendingHit=null;if(hit.target.hp>0){if(hit.ranged)this.projectile(s,hit.target,{type:'archer',damage:this.number(...s.ranged.damage),damageType:2,bullet:s.ranged.bullet,height:10,preserveAnimation:true});else if(distance(s,this.meleePosition(s,hit.target,hit.slot))<4){this.hurt(hit.target,this.number(...s.damage),2);this.emit('melee');}}}
-   const candidates=live.filter(e=>e.hp>0&&!e.flying&&(engaged.get(e.id)||0)<3&&inEllipse(s.rally,e,this.template(s.key).melee?.range||60));const e=candidates.find(e=>e.id===s.targetId)||candidates.sort((a,b)=>distance(s,a)-distance(s,b))[0];
+   const candidates=live.filter(e=>e.hp>0&&!e.flying&&!this.hyenaFleeing(e)&&(engaged.get(e.id)||0)<3&&inEllipse(s.rally,e,this.template(s.key).melee?.range||60));const e=candidates.find(e=>e.id===s.targetId)||candidates.sort((a,b)=>distance(s,a)-distance(s,b))[0];
    let target=s.rally;if(e){s.targetId=e.id;s.targetSlot=engaged.get(e.id)||0;engaged.set(e.id,s.targetSlot+1);blockers.add(e.id);target=this.meleePosition(s,e,s.targetSlot);}else{s.targetId=null;}
    const d=distance(s,target);if(d>2){if(!s.walking)s.walkAt=this.time;s.walking=true;s.flip=target.x<s.x;s.x+=(target.x-s.x)/d*Math.min(d,s.speed*dt);s.y+=(target.y-s.y)/d*Math.min(d,s.speed*dt);}
    else{s.walking=false;if(e){s.flip=e.x<s.x;if(s.cd<=0){s.cd=s.attackCd;s.anim=this.animationDuration(s.key,'attack');s.actionAt=this.time;s.shooting=false;s.pendingHit={at:this.time+s.hitTime,target:e,slot:s.targetSlot};}if(!enemyTurns.has(e.id)){enemyTurns.add(e.id);this.enemyMelee(e,s,dt);}}
@@ -115,7 +115,7 @@ export class World{
  launchTorch(e,hit){if(e.hp<=0||hit.target.hp<=0)return;const r=e.ranged,b=this.template(r.bullet).bullet,unit=this.template(hit.target.key).unit,offset=unit?.hit_offset||{x:0,y:12};this.shots.push({id:++this.serial,type:'torch',bullet:r.bullet,sx:e.x+r.offset.x,sy:e.y+r.offset.y,x:e.x+r.offset.x,y:e.y+r.offset.y,tx:hit.target.x+offset.x,ty:hit.target.y+offset.y,target:hit.target,offset,elapsed:0,duration:b.flight_time,damage:this.number(b.damage_min,b.damage_max),damageType:b.damage_type,g:b.g,rotationSpeed:b.rotation_speed,hitDistance:b.hit_distance});this.emit('arrow');}
  updateBurns(dt){for(const s of [...this.soldiers,this.hero].filter(Boolean)){const burn=s.burn;if(!burn)continue;if(s.hp<=0||this.time+1e-9>=burn.until){s.burn=null;continue;}while(this.time+1e-9>=burn.next&&burn.next<burn.until-1e-9){this.hurtDefender(s,burn.damage,1);burn.next+=burn.every;}}}
  enemyAction(e,target,action){e.action=action;e.actionAt=this.time;e.actionFlip=target.x<e.x;const prefix=this.template(e.key).render.sprites[0].prefix;e.anim=this.animationDuration(prefix,action);}
- enemyMelee(e,target,dt){if(e.meleeTick===this.time)return;e.meleeTick=this.time;e.cd-=dt;if(e.cd<=0){const attack=this.template(e.key).melee.attacks[0];e.pendingMelee={at:this.time+e.hitTime,target,dodgeAt:this.time+(attack.dodge_time??e.hitTime)};e.cd=e.attackCd;this.enemyAction(e,target,'attack');}}
+ enemyMelee(e,target,dt){if(this.template(e.key).coward_duration)return;if(e.meleeTick===this.time)return;e.meleeTick=this.time;e.cd-=dt;if(e.cd<=0){const attack=this.template(e.key).melee.attacks[0];e.pendingMelee={at:this.time+e.hitTime,target,dodgeAt:this.time+(attack.dodge_time??e.hitTime)};e.cd=e.attackCd;this.enemyAction(e,target,'attack');}}
  heroAction(h,action){h.action=action;h.actionAt=this.time;const name=this.template(h.key).render.sprites[0].angles?.[action]?.[0]||action;h.anim=this.animationDuration(h.key,name);}
  heroArrowBonus(h,target){h.porcupineStacks=h.porcupineTarget===target.id?Math.min(3,(h.porcupineStacks||0)+1):0;h.porcupineTarget=target.id;const rank=this.heroSkills.porcupine;return rank?this.template(h.key).hero.skills.porcupine.damage_inc[rank-1]*h.porcupineStacks:0;}
  volleyTarget(h,live,exclude){return live.filter(e=>e.hp>0&&e.id!==exclude&&inEllipse(h,e,215)&&!inEllipse(h,e,60)).sort((a,b)=>Number(b.flying)-Number(a.flying)||(a.goal-a.d)-(b.goal-b.d))[0];}
@@ -129,14 +129,14 @@ export class World{
   if(h.hp<=0){if(!h.dead){h.pendingHit=null;h.volley=null;h.counterPending=false;h.combatTarget=null;h.walking=false;this.heroAction(h,'death');}h.dead+=dt;if(h.dead>=template.health.dead_lifetime){h.hp=h.maxHp;h.dead=0;h.stance='bow';this.heroAction(h,'respawn');}return;}
   if(h.pendingHit&&this.time+1e-9>=h.pendingHit.at){const hit=h.pendingHit;h.pendingHit=null;if(hit.target.hp>0){if(hit.ranged){const offset=ranged.bullet_start_offset[0];this.projectile(h,hit.target,{type:'hero',damage:this.number(...h.damage)+(hit.porcupineBonus||0),damageType:2,bullet:ranged.bullet,height:offset.y,offsetX:offset.x*(h.flip?-1:1),duration:this.template(ranged.bullet).bullet.flight_time,xpFactor:this.template(ranged.bullet).bullet.xp_gain_factor,preserveAnimation:true});if(hit.volley){h.volley.fired=true;this.heroXpQueued+=template.hero.skills.multishot.xp_gain_factor*this.heroSkills.multishot;}}else if(inEllipse(h,hit.target,35)){this.hurt(hit.target,this.number(...(hit.damage||h.meleeDamage)),melee.damage_type,hit.skill?0:melee.xp_gain_factor);this.emit('melee');}}}
   const move=target=>{const d=distance(h,target);if(d<=2){h.walking=false;return false;}if(!h.walking)h.walkAt=this.time;h.walking=true;h.flip=target.x<h.x;h.x+=(target.x-h.x)/d*Math.min(d,h.speed*dt);h.y+=(target.y-h.y)/d*Math.min(d,h.speed*dt);return true;};
-  const engaged=live.find(e=>e.id===h.combatTarget&&e.hp>0);if(engaged&&!h.walking&&inEllipse(h,engaged,35)){blockers.add(engaged.id);this.enemyMelee(engaged,h,dt);}
+  const engaged=live.find(e=>e.id===h.combatTarget&&e.hp>0&&!this.hyenaFleeing(e));if(engaged&&!h.walking&&inEllipse(h,engaged,35)){blockers.add(engaged.id);this.enemyMelee(engaged,h,dt);}
   if(h.anim>0){h.walking=false;return;}
   if(h.volley&&this.updateVolley(h,live))return;
   if(h.playerMove){if(distance(h,h.target)>3){move(h.target);return;}h.playerMove=false;}
   if(this.flushHeroXp())return;
   // A player rally order takes priority over combat; pending attacks are cancelled by moveHero.
   if(!h.combatTarget&&distance(h,h.target)>3){move(h.target);return;}
-  const close=live.filter(e=>e.hp>0&&!e.flying&&inEllipse(h.target,e,template.melee.range)).sort((a,b)=>distance(h,a)-distance(h,b))[0];
+  const close=live.filter(e=>e.hp>0&&!e.flying&&!this.hyenaFleeing(e)&&inEllipse(h.target,e,template.melee.range)).sort((a,b)=>distance(h,a)-distance(h,b))[0];
   if(close){h.combatTarget=close.id;const slot=this.meleePosition({...h,rally:h.target},close,0);if(move(slot))return;blockers.add(close.id);h.flip=close.x<h.x;this.enemyMelee(close,h,dt);
    if(h.stance!=='sword'){h.stance='sword';this.heroAction(h,'bow2sword');return;}
    if(h.counterPending){h.counterPending=false;const a=template.dodge.counter_attack;this.heroAction(h,a.animation);h.pendingHit={at:this.time+a.hit_time,target:close,skill:true,damage:[a.damage_min,a.damage_max]};this.emit('nimble');return;}
@@ -149,6 +149,18 @@ export class World{
   if(target&&h.cd<=0){h.flip=target.x<h.x;h.cd=ranged.cooldown;this.heroAction(h,'ranged');h.pendingHit={at:this.time+ranged.shoot_time,target,ranged:true,porcupineBonus:this.heroArrowBonus(h,target)};return;}
   if(!target&&distance(h,h.target)>3){move(h.target);return;}
   if(!target&&this.time-h.lastHitAt>template.regen.last_hit_standoff_time&&this.time-h.regenAt>=template.regen.cooldown){h.hp=Math.min(h.maxHp,h.hp+template.hero.level_stats.regen_health[this.heroLevel-1]);h.regenAt=this.time;}
+ }
+ hyenaFleeing(e){return e.cowardUntil!==undefined&&this.time<=e.cowardUntil;}
+ updateHyena(e,blockers){
+  const t=this.template(e.key);if(!t.coward_duration)return;
+  if(e.cowardUntil!==undefined&&this.time>e.cowardUntil){e.cowardUntil=undefined;e.speed/=t.coward_speed_factor;e.walkAt=this.time;}
+  if(!this.hyenaFleeing(e)&&blockers.has(e.id)){
+   e.cowardUntil=this.time+t.coward_duration;e.speed*=t.coward_speed_factor;e.walkAt=this.time;
+   e.pendingMelee=null;e.anim=0;
+   for(const s of this.soldiers)if(s.targetId===e.id){s.targetId=null;if(s.pendingHit?.target===e&&!s.pendingHit.ranged)s.pendingHit=null;}
+   if(this.hero?.combatTarget===e.id){this.hero.combatTarget=null;if(this.hero.pendingHit?.target===e&&!this.hero.pendingHit.ranged)this.hero.pendingHit=null;}
+  }
+  if(this.hyenaFleeing(e))blockers.delete(e.id);
  }
  updateGnawerAuras(live){
   for(const e of this.enemies){
@@ -173,8 +185,8 @@ export class World{
  }
  step(dt){if(!this.active())return;this.time+=dt;for(const s of this.slots)if(s.type==='barrack'&&s.doorAt<=this.time&&s.doorPlayedAt!==s.doorAt){s.doorPlayedAt=s.doorAt;this.emit('door');}for(const k in this.cooldowns)this.cooldowns[k]=Math.max(0,this.cooldowns[k]-dt);for(const p of this.plants){p.cd=Math.max(0,p.cd-dt);p.anim=Math.max(0,p.anim-dt);}
   while(this.pending.length&&this.pending[0].at<=this.time)this.spawn(this.pending.shift());this.spells.update();this.updateBurns(dt);const live=this.enemies.filter(e=>e.hp>0);this.updateGnawerAuras(live);for(const e of live)if(e.pendingMelee){const hit=e.pendingMelee;if(!hit.dodgeChecked&&this.time+1e-9>=hit.dodgeAt){hit.dodgeChecked=true;this.tryHeroDodge(e,hit);}if(hit.at<=this.time){const s=hit.target;if(s.hp>0&&!hit.dodged){s.hp-=Math.max(1,this.number(...e.damage)*(e.gnawerBuff?.factor||1)*(1-s.armor));s.lastHitAt=this.time;}e.pendingMelee=null;}}this.updateTowers(dt,live);const blockers=this.updateSoldiers(dt,live);this.updateHero(dt,live,blockers);
-  for(const e of live){if(e.hp<=0)continue;e.flash=Math.max(0,e.flash-dt);e.anim=Math.max(0,e.anim-dt);e.blocked=blockers.has(e.id);
-   // Burners throw at defenders; hyenas resist blocking only by their high speed.
+  for(const e of live){if(e.hp<=0)continue;this.updateHyena(e,blockers);e.flash=Math.max(0,e.flash-dt);e.anim=Math.max(0,e.anim-dt);e.blocked=blockers.has(e.id);
+   // Enemy behavior updates resolve before route movement.
    if(e.ranged){e.rangedCd-=dt;if(e.blocked)e.pendingRanged=null;if(e.pendingRanged&&this.time+1e-9>=e.pendingRanged.at){this.launchTorch(e,e.pendingRanged);e.pendingRanged=null;}if(!e.blocked&&!e.pendingRanged&&e.anim<=0&&e.rangedCd<=0){const s=[...this.soldiers,this.hero].filter(Boolean).find(s=>s.hp>0&&inEllipse(e,s,e.ranged.range)&&!inEllipse(e,s,e.ranged.minRange));if(s){e.pendingRanged={at:this.time+e.ranged.shootTime,target:s};e.rangedCd=e.ranged.cooldown;this.enemyAction(e,s,'shoot');}}}
    const route=this.routes[e.road][e.lane],connection=this.data.connections?.[String(e.road+1)];if(!e.blocked)e.d+=e.speed*(e.slowUntil>this.time?.5:1)*dt;Object.assign(e,onRoute(route,e.d));
    if(connection&&e.d>=route.length){this.effect('splash',e,.5);e.road=connection-1;e.d=0;const next=this.routes[e.road][e.lane];e.goal=next.goal;Object.assign(e,onRoute(next,0));this.effect('splash',e,.5);}
