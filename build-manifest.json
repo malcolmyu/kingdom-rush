@@ -1,5 +1,5 @@
 {
-  "version": "0.2.44",
+  "version": "0.2.45",
   "stages": 3,
   "modes": [
     "campaign",
@@ -8,6 +8,7 @@
   ],
   "files": {
     "balloon.mjs": "6dd3bde48f884b291dd18a2eb5d2e704805a363c35555ad55f6ebc19d2428d6d",
+    "hero-room.mjs": "010f3ed37ba6bb5482419ab0affa1ae6f937853f40f2551c6101ff0799814f2b",
     "ellipse-text.mjs": "5d0b2fba87e469e2466783e06f6da9137cfcf98a09f3a0e26ca3af2367f679ef",
     "index.html": "d09f2f6cf3a56dd6f569f4fd3eb245a87bb105ca11cdab298c678a9bcf562e37",
     "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
@@ -27,12 +28,12 @@
     "map-hero-hud.mjs": "29ea87d1ab5f08b5d4e930b73a9cd80e31805619755ba6fc0687fa35a284c06a",
     "results.mjs": "a3d42b65b0289d7999303afa3bae0b7589818fccf6e3131ff7af69dc78a4cadc",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
-    "style.css": "64671ddf704261821af4d879fd21a77f2a1557e15bf08e6d0a8e9b2624e82bf3",
+    "style.css": "e37dfc251a0f0efb1357d023b5d78fb0da94a45fe1aeedb8a0b66e35234483c5",
     "guidance.mjs": "407190d009e765717919494bb584458478adcf359f8ab14eb0c9a3225541b9f4",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
     "renderer.mjs": "f9049d20ea065e1b41d73a56057306b0e8f648c753fa465f5ae21a66cb30f58b",
     "upgrade-data.mjs": "6cac3569c860f2218b416a70b01a1ce272cc5c14239f35d5d48c0ecc630a5760",
-    "campaign.mjs": "3342b36017b29ab2944f3c717abffdcd02f0760fdd0cff6aa6aa5fe043b297ae",
+    "campaign.mjs": "7f10751ea8286d6285c08656cb9c43838b2d030b2f493ecc1870841c27c7c638",
     "map-flags.mjs": "06a801d6637b97d17f257547f43b669ba0a862f03dc246c183c9d1501632b9b9",
     "wave-reward.mjs": "4d027faf3f448135daf5a449e175f978753c2ffc63e07989bcff392aff99c508",
     "menu-motion.mjs": "1cd9e9f7ac35db6cf0965cb7d003836c47d772517d6c8a7da7aa64dda0134508",
@@ -610,7 +611,7 @@
     "assets/levels/02-heroic.json": "281121a5a1cc7347de1d3955d82c974e9ce6c7355a7e18de62be4389c1036f1a",
     "assets/fonts/SohoGothicProMedium.ttf": "8e9baf6733cc105a2b2a6f409375394f07880aea41385fafd5128aec1fbec93f",
     "assets/fonts/Comic Book Italic.ttf": "bd7e13f8fc1fb4dca3e5b5adb0941b1f101d8fe40f7cc3dbb434fd5103a6306f",
-    "assets/fonts/catalog.json": "4bbfd96f0981f2a458d87c7de9a0bb792aebc9de52fa101b1599c5e4e3c8e385",
+    "assets/fonts/catalog.json": "75fac9b0949ac49737c72d60399133c3daea4c786d6a3ff4695bf0a4c71ff0cb",
     "assets/fonts/NotoSansCJKkr-Regular.otf": "de59c8b36a6260bb106893a691935e9b8e874989aafefd175af35dcd08518481",
     "assets/fonts/NotoSansCJKkr-Bold.otf": "541b576095cd50d08890f2729d43cef4c02c70a6ccf5da2be3dca4ccd54e071e"
   }
