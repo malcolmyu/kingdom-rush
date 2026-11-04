@@ -21,6 +21,8 @@ wave_rules=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_wav
 (ROOT/'web/wave-rules.mjs').write_text('// Generated from original kr3/game_settings.lua.\nexport default '+json.dumps(wave_rules,sort_keys=True,separators=(',',':'))+';\n')
 progression=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_progression.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 (ROOT/'web/hero-data.mjs').write_text('// Generated from original kr3/game_settings.lua by tools/read_progression.lua.\nexport default '+json.dumps(progression,sort_keys=True,separators=(',',':'))+';\n')
+upgrades=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_upgrades.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+(ROOT/'web/upgrade-data.mjs').write_text('// Original kr3/upgrades.lua declarative data.\nexport default '+json.dumps(upgrades,separators=(',',':'))+';\n')
 groups=['go_towers','go_decals','go_enemies_elven_woods',
         'go_hero_elves_archer','go_stages_elven_woods',
         'loading_common','encyclopedia','gui_notifications_bg','gui_notifications_common','gui_shop','gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']

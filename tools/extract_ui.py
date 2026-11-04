@@ -18,9 +18,11 @@ notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 layouts['balloons']=notification_data['tutorial_balloons']
 layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
+layouts['upgrades']=find(world,'upgrades_view')
+layouts['upgradeItem']=read('upgrade_item_view')
 right=find(world,'bottom_right_bar_view')
 hero_map_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/map_data.lua')]))
-layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'hero':find(right,'map_hero_button'),'encyclopedia':find(right,'map_encyclopedia_button'),'levelup':find(right,'map_balloon_level_up_view'),'unlocked':find(right,'map_balloon_hero_unlocked_view'),'heroData':hero_map_data['hero_data_free']}
+layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'hero':find(right,'map_hero_button'),'encyclopedia':find(right,'map_encyclopedia_button'),'levelup':find(right,'map_balloon_level_up_view'),'unlocked':find(right,'map_balloon_hero_unlocked_view'),'heroData':hero_map_data['hero_data_free'],'upgrades':find(right,'map_upgrades_button'),'upgradeHint':find(right,'map_balloon_upgrades_view')}
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
@@ -34,6 +36,9 @@ def visit(v):
 visit(layouts)
 keys.update(v['meta']['icon'] for v in layouts['notifications'].values() if v['meta'].get('icon'))
 keys.update('balloon_map_slices_'+p for p in ['lt','ct','rt','lc','cc','rc','lb','cb','rb','callout_center','callout_right'])
+keys.update(f'upgrades_icons_{i:04}'for i in range(1,33))
+keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
+keys.add('upgrade_check_anim_0007')
 keys.add('mapFlag_star_0018')
 keys.update(f'heroroom_upgradeIcons_{i:04}'for i in range(6))
 keys.update(f'heroroom_heroBadge_numbers_{i:04}'for i in range(1,11))

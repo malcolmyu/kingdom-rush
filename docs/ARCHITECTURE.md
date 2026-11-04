@@ -178,3 +178,7 @@ ResultMotion以独立展示时钟读取已结束World的模式/星数，按原�
 ellipseGlyphs将字符宽度与原椭圆参数转为独立位置/旋转/锚点，drawEllipseText只处理字体测量与Canvas变换。失败页复用layoutMarkup的原图层与字体规则，交互ID继续映射到Campaign重试/退出命令。
 
 VictoryParticles使用独立PRNG和固定小步积分，ResultMotion只提供展示时钟与生命周期。全屏粒子Canvas与缩放徽章分层，切场景由ResultMotion.reset删除；宝石区域展示只读当前结果，不生成经济奖励。
+
+## 全局星星升级
+
+upgrade-data.mjs由原upgrades数据生成；upgrades.mjs负责星预算、合法购买/重置及每局模板补丁。Repository在存档边界规范化选择，Campaign将选择传给World；World在建立守军前按挑战上限生成独立模板，不修改Repository共享资源。upgrades-ui.mjs只呈现原节点和调用同一购买规则，未实现节点保持禁用。地图升级提示只在真实入口可用后启用，与英雄成长提示和战斗always通知分开。

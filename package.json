@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.36",
+  "version": "0.2.37",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -38,7 +38,8 @@
     "test:scene-transition": "node tests/scene-transition-browser.mjs",
     "test:map-unlock": "node tests/map-unlock-browser.mjs",
     "test:map-start": "node tests/map-start-browser.mjs",
-    "test:map-hero": "node tests/map-hero-hud-browser.mjs"
+    "test:map-hero": "node tests/map-hero-hud-browser.mjs",
+    "test:upgrades": "node tests/upgrades-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"
