@@ -1,0 +1,3 @@
+import test from'node:test';import assert from'node:assert/strict';import{waveFlagPose,incomingReport}from'../web/wave-flags.mjs';
+test('native pulse and game-time countdown have independent phase',()=>{assert.equal(waveFlagPose(3,3,10).phase,1);assert.equal(waveFlagPose(8,3,10).phase,.5);assert.equal(waveFlagPose(13,3,10).phase,0);assert.ok(Math.abs(waveFlagPose(.2,0).scale-1.075)<1e-10);assert.equal(waveFlagPose(0,0).phase,0);});
+test('incoming report combines only actual spawns on selected entrance',()=>{assert.deepEqual(incomingReport({waves:[{path_index:1,spawns:[{creep:'a',max:2},{creep:'a',max:3},{creep:'b',max:0}]},{path_index:2,spawns:[{creep:'b',max:10}]}]},0),[{key:'a',count:5}]);});
