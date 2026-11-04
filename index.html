@@ -14,7 +14,7 @@
   <div id="battle-slots" aria-label="建造点和魔法花"></div>
   <div id="hud" aria-label="战斗状态"><canvas width="224" height="76" data-icon="hud_background"></canvas><b id="lives">20</b><b id="gold">320</b><b id="wave">0 / 6</b></div>
   <span id="battle-name"></span>
-  <div class="top-actions"><button id="battle-sound" class="small-button" aria-label="切换声音">♪</button><button id="speed" class="small-button" aria-label="切换游戏速度">1×</button><button id="pause" class="small-button" aria-label="暂停游戏">Ⅱ</button></div>
+  <div class="top-actions"><button id="battle-sound" class="small-button" aria-label="切换声音">♪</button><button id="speed" class="small-button" aria-label="切换游戏速度">1×</button><button id="pause" class="native-pause" aria-label="暂停游戏"><canvas width="112" height="112"></canvas></button></div>
   <div id="build-menu" class="build-menu" hidden></div>
   <div class="abilities">
    <button id="hero" class="ability hero" aria-label="选择艾瑞丹"><canvas width="84" height="92" data-icon="hero_portraits_0001"></canvas><span class="key">H</span><span class="ability-note"></span></button>
@@ -22,7 +22,7 @@
    <button id="reinforce" class="ability" aria-label="选择援军"><canvas width="100" height="100" data-icon="power_portrait_reinforcement_0001"></canvas><span class="key">2</span><span class="ability-note"></span></button>
    <button id="arrows" class="ability" aria-label="选择箭雨"><canvas width="100" height="100" data-icon="portraits_power_hero_0001"></canvas><span class="key">3</span><span class="ability-note"></span></button>
   </div>
-  <button id="next" class="wood next"><span class="skull">☠</span><strong id="next-label">开始战斗</strong><small id="next-hint">先点击空地建塔</small></button>
+  <div id="wave-entrances"><button id="next" class="wave-entrance" aria-label="开始战斗"><canvas width="120" height="120"></canvas></button></div>
   <button id="battle-back" class="battle-exit" aria-label="战斗菜单">☰</button>
  </div>
  <div id="toast" role="status" hidden></div>

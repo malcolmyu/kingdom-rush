@@ -1,5 +1,5 @@
 {
-  "version": "0.2.13",
+  "version": "0.2.14",
   "stages": 3,
   "modes": [
     "campaign",
@@ -7,15 +7,15 @@
     "iron"
   ],
   "files": {
-    "index.html": "a9746a4ccb8a3c2025ea9bd837576413b33396bb0f24ae51ae513f2a4cc0139e",
+    "index.html": "9ca0a2a4f4cff9bfaba4f78eb84212fa8c1ec492fef8a81b9d659bcd73c5d1c3",
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
     "ui.mjs": "589a9f26bb760fb51283a8db3e89de46fb6413d5ee5d59a4367f444a390d9ffd",
     "repository.mjs": "11e415c5351d61a690cde36a6b73bf64cbbcbd4bf8dc4ebb3ecba18cf69ddba2",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "domain.mjs": "a4fee3311f7584c48c2a7fc31420eee9c92cdcf56d586794d01bc74e8f8cea99",
-    "style.css": "b985177c0c58adb56cea8609858e98769a5048388ee90b6866076748a995c502",
-    "renderer.mjs": "7ffe6f215e201e0970fea13a4a1984233ec46d4d17a0674b9dce316ba1d38623",
-    "campaign.mjs": "7ec8ac871df5c1b7db3dea34119cff6ef834d776e290dcf3fc774e58f610a7a9",
+    "style.css": "32ad615f7da41a088106ea828e8eaae649f4667e5ad06ecd3187d46a06fefeaa",
+    "renderer.mjs": "799048e843a5341cf46f7df7390e8d5a49f1067570856d09a3eae9da0fe5f666",
+    "campaign.mjs": "6febe56a54c2d6af3714e57127004e4658b98252cf39cdc3048310df60d33dea",
     "map-flags.mjs": "06a801d6637b97d17f257547f43b669ba0a862f03dc246c183c9d1501632b9b9",
     "map.mjs": "6f6d84a4d64721c8eccfc58caa2005f0c10dc74f89338d51a25927ac3c632484",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
