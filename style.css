@@ -125,3 +125,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .screen.map .map-wrap{aspect-ratio:640/510;background-size:100% 100%}.map-wrap canvas#map-decos,.map-wrap canvas#map-top-decos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#map-decos{z-index:0}#map-flags{position:absolute;inset:0;z-index:1}#map-top-decos{z-index:2}
 
 .screen.map .map-flag.future{pointer-events:none}
+
+.screen.map .map-flag,.screen.map .map-flag.future{width:10%;height:18.824%;transform:translate(-50%,-65%);opacity:1}.screen.map .map-flag canvas{filter:none}
