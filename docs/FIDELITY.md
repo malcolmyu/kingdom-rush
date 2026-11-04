@@ -481,3 +481,15 @@ common scripts1393–1420/1541–1550/1711–1750：普通塔bullet上下限乘t
 核对真实level02/03 campaign waves.groups[0].waves[0].notification分别TOWER_LEVEL2/3，systems波次分支发view；原game_gui2075–2110展示时mark_seen附属seen四塔。接通这两条原always通知及原tower_4模板，展示才保存对应二/三级发现。不是按通关/已建塔/当前等级推断解锁。挑战不触发该战役数据路径；未迁移猜测旧存档历史，旧玩家须实际重新看原通知后解锁。
 
 215领域测试、九模式完整browser三战役三星、塔/敌人/23Tips百科/UI及公开Pages UI通过。塔专项由实际startWave触发二/三级原通知（受控阶段解锁fixture），真实确认后检查12详情、未见锁、重载持久化、只读浏览/分支返回与手机；非正常九模式通关证据，独立完整回归仍通过。桌面兵营和手机页已查看，为当前受控取样，非原版同步。原文字基线/测高、图层按下反馈与完整后续塔/角色仍不完全一致，整体未1:1。
+
+### 0.2.50 原基础塔圆环菜单与确认
+
+read_tower_menu只读原kr3/data/tower_menus_data及jit函数常量，不执行控制器；extract_ui导出menus/原9处坐标/root.max_scale=.88/tooltip模板与原disabled/check/price素材（556sprites/19layouts）。TowerMenu用原gui_ring122logical、各图面原宽高、place中心减半尺寸定位，不再CSS百分比猜圆周。建造四角、I/II升级place5、出售place9、集结place8；III未来分支保持原位置锁图，未开放高级塔。world range_offset/menu_offset通过Renderer变换，未恢复原.2秒camera.tween与全屏fit_screen缩放，不声称边界镜头完全一致。
+
+原game_gui3117–3315开/关.12outquad，开启.6->1（父max_scale已在尺寸）、alpha0->1，结束才操作，关闭inert与清理；原3804–3824建造/升级/出售先select再confirm，rally直接confirm进入选点。保持真实World.build/upgrade/sell/setRally与稳定按钮id，成功交易按原deselect；不足金钱使用原disabled图/灰check/灰price但允许查看选择，World仍拒绝购买。价格hud10/原黄色255,224,0、灰156,146,132、button bottom-11；不再覆盖“升级●/最高等级”等原型文案。菜单重开/切换/暂停/通知/场景切换取消旧tip/动画，不推进World时钟。阻止pointerdown原生focus滚动，reset清固定game的DOM scroll，防HUD被浏览器移30px（不改变地图pan）。
+
+原tooltip九片/标题/正文/属性图面与原中文已接，法师伤害含loops、兵营HP/伤害/护甲；统计从本局World克隆模板读取真实天赋值，百科依旧基础值。原200宽、左右以entity+12及ring*.62*max_scale定位，正文测高与.9字体高度换算仍浏览器近似；底部infobar、预览塔/升级射程与halo/完整相机适配未实现，不能称整个塔UI1:1。
+
+新查明但本批未改的原出售差异：原game_gui3832–3942提示准备波0为spent全退，其他波km.round(spent*refund_factor)，当前World.sell仍floor*.6。此批提示先显示当前实际到账（用原译文），不显示无法兑现的原退款数；后续须以源规则独立校准领域/完整买卖回归，不能为旧278预算策略保留错误实现，也不能只改提示冒充修复。
+
+215领域测试、九模式完整browser三战役三星、原塔百科/UI/公开Pages UI/guidance/HUD专项通过。新tower-menu专项真实两次建造/升级/出售核对账目、勾选/直接rally/取消/重开/手机/0金币灰图与拒绝成交；阶段3解锁与低资金状态为受控UIfixture，独立九模式自然XP链仍过。campaign-browser按真实两次点击及升级后重选塔出售，保持原350->278旧规则预算本批未动。桌面/手机截图为当前实现非原版同步。初次专项误在首关验证被规则锁定的升级，已改合法第三关；替换时误删deselectWaveFlags与测试批量编辑语法错误都已修复，相关专项重跑通过。整体仍in_progress。

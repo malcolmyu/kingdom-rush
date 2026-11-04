@@ -22,7 +22,7 @@ await page.locator('[data-level="1"]').click();await page.getByRole('tab',{name:
 await page.getByRole('tab',{name:'战役',exact:true}).click();
 await page.locator('#difficulty').selectOption('1');await settle();await page.screenshot({path:path.join(out,'03-模式选择.png')});
 await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
-await page.locator('[data-build-slot="6"]').click();await page.locator('[data-type="artillery"]').click();
+await page.locator('[data-build-slot="6"]').click();await page.locator('[data-type="artillery"]').click();await page.locator('[data-type="artillery"]').click();
 assert.equal(await page.evaluate(()=>origins.world.gold),195);
 await page.getByRole('button',{name:'暂停游戏',exact:true}).click();assert.equal(await page.evaluate(()=>origins.world.paused),true);await settle();await page.screenshot({path:path.join(out,'04b-原版暂停.png')});await page.getByRole('button',{name:'继续战斗',exact:true}).click();
 assert.equal(await page.evaluate(()=>origins.world.paused),false);
@@ -43,7 +43,7 @@ for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
  if(mode==='iron'){await page.locator('[data-build-slot]').first().click();const prohibited=id===2?'mage':'archer';const option=page.locator(`[data-type="${prohibited}"]`);if(await option.count())assert.equal(await option.isDisabled(),true);await page.keyboard.press('Escape');}
  if(mode==='campaign'){
   const screenshot=path.join(out,`${id===2?'05-高桥':'06-瀑布小径'}.png`);await settle();await page.screenshot({path:screenshot});
-  if(id===2){const s=await page.evaluate(()=>origins.world.slots.find(s=>!s.type));await page.locator(`[data-build-slot="${s.id}"]`).click();await page.locator('[data-type="archer"]').click();await page.locator(`[data-build-slot="${s.id}"]`).click();const before=await page.evaluate(()=>origins.world.gold);await page.locator('#upgrade').click();assert.equal(await page.evaluate(()=>origins.world.gold),before-110);await page.locator('#sell').click();}
+  if(id===2){const s=await page.evaluate(()=>origins.world.slots.find(s=>!s.type));await page.locator(`[data-build-slot="${s.id}"]`).click();await page.locator('[data-type="archer"]').click();await page.locator('[data-type="archer"]').click();await page.locator(`[data-build-slot="${s.id}"]`).click();const before=await page.evaluate(()=>origins.world.gold);await page.locator('#upgrade').click();await page.locator('#upgrade').click();assert.equal(await page.evaluate(()=>origins.world.gold),before-110);await page.locator(`[data-build-slot="${s.id}"]`).click();await page.locator('#sell').click();await page.locator('#sell').click();}
  }
  results.push(await complete());await page.locator('#return-map').click();
 }
@@ -54,7 +54,7 @@ await settle();await page.screenshot({path:path.join(out,'07-全模式完成.png
 await page.setViewportSize({width:844,height:390});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
 await page.locator('[data-level="3"]').click();await page.locator('[data-mode="iron"]').click();await settle();await page.screenshot({path:path.join(out,'08-手机模式选择.png')});
 await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
-const mobileSlot=await page.evaluate(()=>origins.world.slots.find(s=>!s.type).id);await page.locator(`[data-build-slot="${mobileSlot}"]`).click();await page.locator('[data-type="artillery"]').click();await settle();await page.screenshot({path:path.join(out,'09-手机战场.png')});
+const mobileSlot=await page.evaluate(()=>origins.world.slots.find(s=>!s.type).id);await page.locator(`[data-build-slot="${mobileSlot}"]`).click();await page.locator('[data-type="artillery"]').click();await page.locator('[data-type="artillery"]').click();await settle();await page.screenshot({path:path.join(out,'09-手机战场.png')});
 assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
 assert.equal(await page.evaluate(()=>origins.app.progress.seenMapHints?.map_balloon_level_up_view),true);
 assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
