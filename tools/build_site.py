@@ -2,6 +2,7 @@
 import json,pathlib,shutil,hashlib
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
+(OUT/'.nojekyll').touch()
 for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs','progression.mjs','hero-data.mjs']:
  shutil.copy2(ROOT/'web'/name,OUT/name)
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())

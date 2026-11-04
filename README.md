@@ -67,3 +67,7 @@ python3 tools/extract_campaign.py --apk origins.apk
 动画时序与当前尚未达到 1:1 的部分，见 [保真记录](docs/FIDELITY.md)。
 
 界面回归：启动本地服务器后执行 `npm run test:ui`；原版雷电和箭雨素材检查：`npm run test:effects`。`tools/extract_ui.py` 会从原始布局表和图集中重建界面素材。
+
+## GitHub Pages
+
+`npm run build` 生成可直接部署到 `gh-pages` 分支根目录的静态文件，含 `.nojekyll`。资源与模块均使用相对路径，支持项目路径 `/kingdom-rush/`。仓库首次启用时，在 Settings → Pages 选择 Deploy from a branch、`gh-pages`、`/ (root)`，保存后使用 GitHub 返回的发布地址。SSH 推送权限不能替代 Pages 设置所需的 GitHub 管理/API 登录权限。
