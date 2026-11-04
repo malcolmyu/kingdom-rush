@@ -38,7 +38,7 @@ keys.update(v['meta']['icon'] for v in layouts['notifications'].values() if v['m
 keys.update('balloon_map_slices_'+p for p in ['lt','ct','rt','lc','cc','rc','lb','cb','rb','callout_center','callout_right'])
 keys.update(f'upgrades_icons_{i:04}'for i in range(1,33))
 keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
-keys.add('upgrade_check_anim_0007')
+keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('mapFlag_star_0018')
 keys.update(f'heroroom_upgradeIcons_{i:04}'for i in range(6))
 keys.update(f'heroroom_heroBadge_numbers_{i:04}'for i in range(1,11))
