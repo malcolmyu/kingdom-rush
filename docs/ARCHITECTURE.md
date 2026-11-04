@@ -215,3 +215,6 @@ TowerMenu独立维护当前菜单选择和原提示框，菜单数据/几何来�
 
 
 Infobar只查询选中塔的本局模板，按原STATS_TYPE构建肖像/文本/两段原布局；展示时钟与World随机和时间分离。infobarViewport读取原phone参考尺寸与aspect常量，Infobar以game内尺寸定位，不能把静态battle-ui的零高度当viewport。UI实体选择、模态与场景门控共同决定显隐；交易只由既有World接口修改领域状态，百科基础数据与战斗天赋数据仍分开。
+
+
+TowerMenu复用infobarViewport的phone参考窗口，towerUiPoint把Renderer画布坐标转换到GUI逻辑坐标，圆环和tooltip再统一映射回实际game内像素；towerTooltipRect仅读source右侧分支与中心ceil规则。World位置/交易状态不变，不用屏幕CSS夹紧替代后续原相机fit_screen实现。

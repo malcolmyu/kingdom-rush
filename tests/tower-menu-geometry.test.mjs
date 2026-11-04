@@ -1,0 +1,4 @@
+import test from'node:test';import assert from'node:assert/strict';import{towerUiPoint,towerTooltipRect}from'../web/tower-menu.mjs';import{infobarViewport}from'../web/infobar.mjs';
+const source={reference:{width:480,height:320,minAspect:1.5,maxAspect:2.165}};
+test('world screen coordinates convert through phone scale and letterbox origin',()=>{const v=infobarViewport(source,1200,400),r={width:1672,height:1014};assert.deepEqual(towerUiPoint({x:836,y:507},r,v,1200,400),{x:v.sw/2,y:160});const narrow=infobarViewport(source,480,640);assert.deepEqual(towerUiPoint({x:836,y:507},r,narrow,480,640),{x:240,y:160});});
+test('source tooltip changes side at strict right boundary and rounds its center upward',()=>{const o=122*.62*.88,left=towerTooltipRect({x:100.2,y:80.2},200,70,480);assert.equal(left.x,Math.ceil(100.2+o+100)-100);assert.equal(left.y,46);const right=towerTooltipRect({x:480-o-200,y:80},200,70,480);assert.equal(right.x,Math.ceil(480-o-200-o-100)-100);});
