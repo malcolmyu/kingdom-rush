@@ -1,6 +1,6 @@
 import rules from './hero-data.mjs';
 export {rules as HERO_RULES};
-export const TRAINABLE_SKILLS=['double_strike','ultimate'];
+export const TRAINABLE_SKILLS=['porcupine','double_strike','ultimate'];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export function levelForXp(xp){let level=1;while(level<10&&xp>=rules.hero_xp_thresholds[level-1])level++;return level;}
 export function xpForLevel(level){return rules.hero_xp_thresholds[clamp(Math.trunc(level||1),1,10)-2]||0;}
