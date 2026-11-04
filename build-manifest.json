@@ -1,5 +1,5 @@
 {
-  "version": "0.2.6",
+  "version": "0.2.7",
   "stages": 3,
   "modes": [
     "campaign",
@@ -8,14 +8,14 @@
   ],
   "files": {
     "index.html": "a9746a4ccb8a3c2025ea9bd837576413b33396bb0f24ae51ae513f2a4cc0139e",
-    "progression.mjs": "f5e7a25fb109ba4856062c8bacafc6fc3b3514c4b68a14d13f0c8e6fd3264291",
+    "progression.mjs": "6a70d59efdc056796e90021b3a68b2d12d24172fb1f1fff4bacb6d4051cfbfee",
     "ui.mjs": "4e66af27cdfe94afcd8009f7a5bd6daa10dfa3b07708348776ffe5a53000db02",
     "repository.mjs": "aed2fc9d6edf09e72935cf2a2d515cfbbefac2467a75613d561cbd68a9a129a5",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "domain.mjs": "7b0c48798ef7da8dca92b5760f4135d55065346ad6eb574b1667407521f1bebb",
+    "domain.mjs": "07f3415c5b2bce021d85426b24f82f6a0f6474077e5c017cd6b801eaaeb77291",
     "style.css": "f098b8528ca2fe159080f89be972f33e7719970e9c51b8f2466905aa37afab86",
     "renderer.mjs": "19432948472524a1416770204b7bd3bd7575113ba0619bfd9595ec25d1d1b982",
-    "campaign.mjs": "c8079e8148868fc26caad56b17b727d20e8081356c4b5317decec41ae6ef0ef5",
+    "campaign.mjs": "140f8c7cafbb885472c9346a3468f552e05aaccfb14aed10c7aff69225fbfdfa",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",
     "assets/arrow.ogg": "ea23ab850778c9e6cb26a217e0499e3e4e11b4b87b071d1d0ca094075b6fc7d9",
