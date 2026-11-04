@@ -1,0 +1,43 @@
+import {chromium} from '../.tools/browser/node_modules/playwright/index.mjs';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+await page.goto(pathToFileURL(path.resolve('dist/灰鸦港口试玩.html')).href);
+await page.waitForFunction(()=>window.origins);
+await page.getByRole('button',{name:'布置防线'}).click();
+await page.screenshot({path:'dist/首关-布防.png'});
+await page.locator('[data-slot="6"]').click();await page.locator('[data-type="artillery"]').click();
+await page.locator('[data-slot="2"]').click();await page.locator('[data-type="artillery"]').click();
+await page.locator('[data-slot="4"]').click();await page.locator('[data-type="archer"]').click();
+assert.equal(await page.evaluate(()=>origins.world.gold),0);
+await page.getByRole('button',{name:'召唤下一波，空格键'}).click();
+await page.evaluate(()=>origins.advance(20));
+await page.screenshot({path:'dist/首关-战斗.png'});
+await page.getByRole('button',{name:'暂停游戏',exact:true}).click();
+assert.equal(await page.evaluate(()=>origins.world.paused),true);
+await page.getByRole('button',{name:'继续战斗'}).click();
+assert.equal(await page.evaluate(()=>origins.world.paused),false);
+await page.evaluate(()=>origins.advance(10));
+assert.ok(await page.evaluate(()=>origins.world.wave>=2));
+await page.getByRole('button',{name:'选择援军，2 键'}).click();
+const loc=await page.evaluate(()=>{const p=origins.screen({x:500,y:274}),r=document.getElementById('battlefield').getBoundingClientRect();return{x:r.left+p.x/1672*r.width,y:r.top+p.y/1014*r.height};});
+await page.mouse.click(loc.x,loc.y);assert.ok(await page.evaluate(()=>origins.world.soldiers.length>=2));
+// Complete the campaign with purchases made through the same public build API as the UI.
+await page.evaluate(()=>{const w=origins.world;for(let i=0;i<30000&&w.status==='playing';i++){
+ for(const [id,type,cost]of [[5,'artillery',125],[7,'barrack',90],[0,'archer',70],[8,'archer',70],[3,'mage',100],[1,'archer',70]])if(!w.slots[id].type&&w.gold>=cost){w.build(id,type);break;}
+ if(i%60===0){const e=w.enemies.filter(e=>e.hp>0).sort((a,b)=>a.x-b.x)[0];if(e){w.cast('reinforce',e);w.cast('lightning',e);w.cast('arrows',e);if(w.hero)w.moveHero({x:270,y:370});}}w.step(1/60);
+}origins.advance(.02);});
+assert.equal(await page.evaluate(()=>origins.world.status),'won');
+await page.screenshot({path:'dist/首关-胜利.png'});
+await page.getByRole('button',{name:'再战一次'}).click();assert.equal(await page.evaluate(()=>origins.world.wave),0);
+await page.setViewportSize({width:844,height:390});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:'dist/首关-手机横屏.png'});
+const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflow,false);
+await page.locator('[data-slot="6"]').click();await page.locator('[data-type="archer"]').click();
+assert.equal(await page.evaluate(()=>origins.world.gold),250);
+assert.deepEqual(errors,[]);
+fs.writeFileSync('dist/browser-results.json',JSON.stringify({status:'passed',checks:['offline file loads','building via UI','gold accounting','wave starts','pause/resume','reinforcement targeting','6-wave victory','restart','mobile landscape building','no horizontal overflow','no uncaught JS errors'],errors},null,2));
+await browser.close();console.log('Browser checks passed. Screenshots in dist/.');

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": [
+    "offline file loads",
+    "building via UI",
+    "gold accounting",
+    "wave starts",
+    "pause/resume",
+    "reinforcement targeting",
+    "6-wave victory",
+    "restart",
+    "mobile landscape building",
+    "no horizontal overflow",
+    "no uncaught JS errors"
+  ],
+  "errors": []
+}

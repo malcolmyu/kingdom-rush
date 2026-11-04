@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>王国保卫战：起源 · 灰鸦港口</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="game" aria-label="王国保卫战起源第一关">
+  <canvas id="battlefield" width="1672" height="1014" aria-label="灰鸦港口战场，点击空地建塔，点击道路部署技能"></canvas>
+  <div id="slot-controls" aria-label="建造位置"></div>
+  <div id="hud" aria-live="polite"><span class="heart">♥</span> <b id="lives">20</b><span class="gold">●</span> <b id="gold">320</b><span class="waves">☠ <b id="wave">0 / 6</b></span></div>
+  <div class="top-actions"><button id="sound" class="small" aria-label="开启声音" title="声音">♪</button><button id="speed" class="small" aria-label="切换游戏速度">1×</button><button id="help" class="small" aria-label="玩法说明">?</button><button id="pause" class="small" aria-label="暂停游戏">Ⅱ</button></div>
+  <div id="menu" class="build-menu" hidden></div>
+  <div id="toast" role="status"></div>
+  <div id="bottom">
+    <button id="hero" class="ability hero" aria-label="选择艾瑞丹，H 键" title="艾瑞丹 · 第5波加入"><canvas width="84" height="92" data-icon="hero_portraits_0001"></canvas><span class="key">H</span><span class="lock">第 5 波</span></button>
+    <button id="lightning" class="ability" aria-label="选择雷电，1 键" title="雷电 · 第3波解锁"><canvas width="100" height="100" data-icon="portraits_power_lightening"></canvas><span class="key">1</span><span class="lock">第 3 波</span><span class="cooldown"></span></button>
+    <button id="reinforce" class="ability" aria-label="选择援军，2 键" title="援军 · 第2波解锁"><canvas width="100" height="100" data-icon="power_portrait_reinforcement_0001"></canvas><span class="key">2</span><span class="lock">第 2 波</span><span class="cooldown"></span></button>
+    <button id="arrows" class="ability" aria-label="选择箭雨，3 键" title="箭雨 · 第5波解锁"><canvas width="100" height="100" data-icon="portraits_power_hero_0001"></canvas><span class="key">3</span><span class="lock">第 5 波</span><span class="cooldown"></span></button>
+  </div>
+  <button id="next" class="wood next" aria-label="召唤下一波，空格键"><span class="skull">☠</span><span id="next-label">开始战斗</span><small id="next-hint">先点击空地建塔</small></button>
+  <div id="veil" class="veil"><section id="dialog" class="parchment" role="dialog" aria-modal="true" aria-labelledby="dialog-title"></section></div>
+  <div id="loading">正在进入灰鸦港口…</div>
+</main>
+<footer><span>王国保卫战：起源 <span class="dot">◆</span> 第一关 · 灰鸦港口</span><span>点击空地建塔 · 空格召唤 · Esc 取消 / 暂停 <button id="fullscreen" aria-label="切换全屏">⛶ 全屏</button></span></footer>
+<script type="module" src="game.mjs"></script>
+</body></html>
