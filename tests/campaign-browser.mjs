@@ -7,6 +7,7 @@ const out=path.resolve('artifacts');fs.mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:process.platform==='darwin'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});
 const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],requests=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)requests.push([r.status(),r.url()]);});
+try{
 await page.goto(origin);await page.waitForFunction(()=>window.origins);
 await page.screenshot({path:path.join(out,'01-开始界面.png')});
 await page.getByRole('button',{name:'开始游戏',exact:true}).click();
@@ -53,4 +54,5 @@ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerW
 assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
 const missing=await page.evaluate(()=>[...origins.renderer.missing]);
 fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({status:'passed',results,errors,requests,missingFrames:missing,checks:['title','three save slots','world map','stage locks','challenge locks','all 9 legal wins','3-star challenge unlock','upgrade and sell through UI','pause and resume','persistent progress after reload','mobile landscape build and mode selection','no HTTP failures','no uncaught JS errors']},null,2));
-await browser.close();console.log('Campaign browser flow passed: all 9 modes, persistence, mobile controls.');
+}finally{await browser.close();}
+console.log('Campaign browser flow passed: all 9 modes, persistence, mobile controls.');

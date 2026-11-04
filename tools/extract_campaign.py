@@ -42,6 +42,7 @@ titles=['灰鸦港口','高桥','瀑布小径','红杉阻击战','皇家庭院',
 levels=[]
 used_templates={'hero_elves_archer','soldier_re_1','tower_holder_elven_woods','tower_holder_faerie_grove'}
 for ty in ['archer','barrack','mage','rock_thrower']:
+ used_templates.add('tower_build_'+ty)
  for n in range(1,4):used_templates.add(f'tower_{ty}_{n}')
 for i,title in enumerate(titles[:3],1):
  raw=lua(f'assets/gc64/kr3/data/levels/level{i:02}_data.lua');paths=lua(f'assets/gc64/kr3/data/levels/level{i:02}_paths.lua')
@@ -69,7 +70,7 @@ def visit(x):
 for k in used_templates:visit(k)
 catalog={'frames':frames,'animations':lua('assets/gc64/kr3/data/game_animations.lua')['animations'],'templates':selected,'levels':levels,'flags':json.loads((ROOT/'reference/map-flags.json').read_text())}
 (OUT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,sort_keys=True,separators=(',',':')))
-for key,source in {'menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
+for key,source in {'door':'Sound_TowerOpenDoor.ogg','melee':'kr3_sfx_basicbarracks_fight.ogg','barrack':'Barrack_Taunt[2]-01c.ogg','menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
  p='assets/kr3-phone/sounds/files/'+source
  if p in z.namelist():(OUT/(key+'.ogg')).write_bytes(z.read(p))
 # These directories contain only generated outputs owned by this extractor.

@@ -80,3 +80,16 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 @media(prefers-reduced-motion:reduce) {*{scroll-behavior:auto!important;transition:none!important}}
 
 .map-flag.future{width:4cqw;height:4cqw;opacity:.55}.map-flag.future .flag-name,.map-flag.future .flag-stars{display:none}.map-flag.future .flag-number{font-size:1.1cqw}.map-flag.future:hover{opacity:1}
+
+/* The original tower command ring and command atlas replace rectangular cards. */
+.build-menu,.tower-menu{width:20cqw;height:20cqw;transform:translate(-50%,-50%);background:none;border:0;box-shadow:none;padding:0;pointer-events:none}
+.menu-ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.build-option{width:8cqw;height:8cqw;background:none;border:0;box-shadow:none;padding:0;transform:translate(-50%,-50%)}
+.build-option:hover:not(:disabled){background:none;filter:brightness(1.2)}
+.build-option canvas{width:7.5cqw;height:6.9cqw}.build-option strong{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.build-option:nth-of-type(1){left:18%;top:18%;right:auto;bottom:auto}.build-option:nth-of-type(2){left:82%;top:18%;right:auto;bottom:auto}.build-option:nth-of-type(3){left:18%;top:82%;right:auto;bottom:auto}.build-option:nth-of-type(4){left:82%;top:82%;right:auto;bottom:auto}
+.build-option .price{position:absolute;left:18%;bottom:-2%;width:64%;height:2.8cqw;font:1.25cqw Obelix;color:#ffe89a;display:grid;place-items:center}.build-option .price canvas{position:absolute;inset:0;width:100%;height:100%}.build-option .price span{position:relative;text-shadow:1px 1px #251d0c}
+.tower-menu h3,.tower-menu p,.tower-menu .tower-stats{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.tower-menu .tower-action{position:absolute;pointer-events:auto;width:8cqw;height:8cqw;padding:0;margin:0;border:0;background:none;transform:translate(-50%,-50%);color:#ffe9ad}
+.tower-action canvas{width:100%;height:100%;display:block}.tower-action span{position:absolute;bottom:-.5cqw;left:0;width:100%;font-size:1cqw;background:#1c281be8;border:1px solid #a49157;border-radius:3px;white-space:nowrap;padding:.2cqw}.tower-action:hover:not(:disabled){filter:brightness(1.2)}
+.action-upgrade{left:50%;top:0}.action-rally{left:100%;top:50%}.action-sell{left:50%;top:100%}
