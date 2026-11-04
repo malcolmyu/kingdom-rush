@@ -11,7 +11,7 @@ const $=id=>document.getElementById(id);
 const textHTML=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const enemyNames={enemy_gnoll_reaver:'豺狼人盗匪',enemy_gnoll_burner:'豺狼人纵火者',enemy_gnoll_gnawer:'豺狼人咬噬者',enemy_hyena:'鬣狗',enemy_perython:'鹿角鹰'};
 export class Campaign{
- constructor(repo,renderer){this.repo=repo;this.renderer=renderer;this.portraits=new BattlePortraits(renderer);this.ui=new NativeUI(repo.ui);this.incoming=new IncomingTooltip($('incoming-wave'),this.ui);this.scene='title';this.world=null;this.progress=repo.load();this.selected=null;this.targeting=null;this.hover=null;this.speed=1;this.modal=false;this.last=0;this.accumulator=0;this.toastTimer=0;this.lastUiTime=0;this.currentStage=1;this.currentMode='campaign';this.audio={};this.version=0;}
+ constructor(repo,renderer){this.repo=repo;this.renderer=renderer;this.portraits=new BattlePortraits(renderer,()=>this.sound('spell-refresh'));this.ui=new NativeUI(repo.ui);this.incoming=new IncomingTooltip($('incoming-wave'),this.ui);this.scene='title';this.world=null;this.progress=repo.load();this.selected=null;this.targeting=null;this.hover=null;this.speed=1;this.modal=false;this.last=0;this.accumulator=0;this.toastTimer=0;this.lastUiTime=0;this.currentStage=1;this.currentMode='campaign';this.audio={};this.version=0;}
  icon(canvas,key){this.renderer.icon(canvas,key).catch(e=>this.notify(e.message));}
  icons(){for(const c of document.querySelectorAll('[data-icon]:not([data-map-flag])'))this.icon(c,c.dataset.icon);}
  notify(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(this.toastTimer);this.toastTimer=setTimeout(()=>$('toast').hidden=true,3300);}
