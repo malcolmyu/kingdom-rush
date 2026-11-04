@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.30",
+  "version": "0.2.31",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -32,7 +32,8 @@
     "test:wave-reward": "node tests/wave-reward-browser.mjs",
     "test:early-wave": "node tests/early-wave-browser.mjs",
     "test:results": "node tests/results-browser.mjs",
-    "test:victory-particles": "node tests/victory-particles-browser.mjs"
+    "test:victory-particles": "node tests/victory-particles-browser.mjs",
+    "test:gnawer": "node tests/gnawer-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

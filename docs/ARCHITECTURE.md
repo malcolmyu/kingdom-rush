@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+敌人持续状态由World维护：咬噬者光环按模板周期/椭圆与vis筛选更新自身modifier，伤害倍率在命中时消费，持续时间与动画起点分别保存。Renderer只读取状态画原素材，刷新状态不会重启循环动作，也不消耗展示以外的随机数。
+
 ```mermaid
 flowchart LR
   APK[用户提供的 APK] --> Extract[Python + LuaJIT 数据导出]

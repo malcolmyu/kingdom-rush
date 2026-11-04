@@ -150,8 +150,29 @@ export class World{
   if(!target&&distance(h,h.target)>3){move(h.target);return;}
   if(!target&&this.time-h.lastHitAt>template.regen.last_hit_standoff_time&&this.time-h.regenAt>=template.regen.cooldown){h.hp=Math.min(h.maxHp,h.hp+template.hero.level_stats.regen_health[this.heroLevel-1]);h.regenAt=this.time;}
  }
+ updateGnawerAuras(live){
+  for(const e of this.enemies){
+   if(e.gnawerBuff&&(e.hp<=0||this.time>=e.gnawerBuff.until))e.gnawerBuff=null;
+   if(e.hp<=0||e.leaked)continue;
+   const entry=this.template(e.key).auras?.list?.find(a=>a.name==='aura_gnoll_gnawer');
+   if(!entry)continue;
+   const aura=this.template(entry.name),a=aura.aura;
+   if(this.time-(e.gnawerAuraAt||0)+1e-9<a.cycle_time)continue;
+   e.gnawerAuraAt=this.time;
+   const neighbors=live.filter(other=>{
+    const vis=this.template(other.key).vis||{};
+    return !other.leaked&&other.hp>0&&!(vis.flags&a.vis_bans)&&!(vis.bans&a.vis_flags)&&inEllipse(e,other,a.radius);
+   });
+   if(neighbors.length>=aura.min_count){
+    const mod=this.template(a.mod);
+    // resets_same refreshes modifier time, not the existing sprite animation.
+    if(!e.gnawerBuff)e.gnawerBuff={at:this.time,factor:mod.inflicted_damage_factor};
+    e.gnawerBuff.until=this.time+mod.modifier.duration;
+   }
+  }
+ }
  step(dt){if(!this.active())return;this.time+=dt;for(const s of this.slots)if(s.type==='barrack'&&s.doorAt<=this.time&&s.doorPlayedAt!==s.doorAt){s.doorPlayedAt=s.doorAt;this.emit('door');}for(const k in this.cooldowns)this.cooldowns[k]=Math.max(0,this.cooldowns[k]-dt);for(const p of this.plants){p.cd=Math.max(0,p.cd-dt);p.anim=Math.max(0,p.anim-dt);}
-  while(this.pending.length&&this.pending[0].at<=this.time)this.spawn(this.pending.shift());this.spells.update();this.updateBurns(dt);const live=this.enemies.filter(e=>e.hp>0);for(const e of live)if(e.pendingMelee){const hit=e.pendingMelee;if(!hit.dodgeChecked&&this.time+1e-9>=hit.dodgeAt){hit.dodgeChecked=true;this.tryHeroDodge(e,hit);}if(hit.at<=this.time){const s=hit.target;if(s.hp>0&&!hit.dodged){s.hp-=Math.max(1,this.number(...e.damage)*(1-s.armor));s.lastHitAt=this.time;}e.pendingMelee=null;}}this.updateTowers(dt,live);const blockers=this.updateSoldiers(dt,live);this.updateHero(dt,live,blockers);
+  while(this.pending.length&&this.pending[0].at<=this.time)this.spawn(this.pending.shift());this.spells.update();this.updateBurns(dt);const live=this.enemies.filter(e=>e.hp>0);this.updateGnawerAuras(live);for(const e of live)if(e.pendingMelee){const hit=e.pendingMelee;if(!hit.dodgeChecked&&this.time+1e-9>=hit.dodgeAt){hit.dodgeChecked=true;this.tryHeroDodge(e,hit);}if(hit.at<=this.time){const s=hit.target;if(s.hp>0&&!hit.dodged){s.hp-=Math.max(1,this.number(...e.damage)*(e.gnawerBuff?.factor||1)*(1-s.armor));s.lastHitAt=this.time;}e.pendingMelee=null;}}this.updateTowers(dt,live);const blockers=this.updateSoldiers(dt,live);this.updateHero(dt,live,blockers);
   for(const e of live){if(e.hp<=0)continue;e.flash=Math.max(0,e.flash-dt);e.anim=Math.max(0,e.anim-dt);e.blocked=blockers.has(e.id);
    // Burners throw at defenders; hyenas resist blocking only by their high speed.
    if(e.ranged){e.rangedCd-=dt;if(e.blocked)e.pendingRanged=null;if(e.pendingRanged&&this.time+1e-9>=e.pendingRanged.at){this.launchTorch(e,e.pendingRanged);e.pendingRanged=null;}if(!e.blocked&&!e.pendingRanged&&e.anim<=0&&e.rangedCd<=0){const s=[...this.soldiers,this.hero].filter(Boolean).find(s=>s.hp>0&&inEllipse(e,s,e.ranged.range)&&!inEllipse(e,s,e.ranged.minRange));if(s){e.pendingRanged={at:this.time+e.ranged.shootTime,target:s};e.rangedCd=e.ranged.cooldown;this.enemyAction(e,s,'shoot');}}}
