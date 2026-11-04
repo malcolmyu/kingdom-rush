@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "frames": [
+    "onset",
+    "impact",
+    "end"
+  ],
+  "errors": [],
+  "missingFrames": []
+}

@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "checks": [
+    "native pressed and restored button artwork",
+    "three save slots",
+    "world map wheel pan and limits",
+    "locked challenge",
+    "native pause panel bounds and nine-slice layout",
+    "sound toggle and resume",
+    "mobile dialog bounds",
+    "no HTTP or JS errors"
+  ],
+  "boxes": {
+    "dialog": {
+      "x": 305.71875,
+      "y": 151.0625,
+      "w": 828.5625,
+      "h": 662.84375
+    },
+    "panel": {
+      "x": 305.71875,
+      "y": 246.34375,
+      "w": 828.5625,
+      "h": 455.703125
+    },
+    "scroll": 456
+  }
+}

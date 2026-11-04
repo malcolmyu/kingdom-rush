@@ -19,7 +19,7 @@ def lua(n):
 templates=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 groups=['go_towers','go_decals','go_enemies_elven_woods',
         'go_hero_elves_archer','go_stages_elven_woods',
-        'gui_common','gui_portraits','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
+        'gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
 groups += [f'go_stage{i:02}' for i in range(1,4)]
 frames={};sheets={}
 def decode(name):
@@ -81,3 +81,5 @@ for p in (OUT/'images').glob('*.webp'):
 for p in (OUT/'levels').iterdir():
  if p.is_file() and p.name not in keep_levels:p.unlink()
 print(json.dumps({'levels':len(levels),'frames':len(frames),'sheets':len(sheets),'bytes':sum(p.stat().st_size for p in OUT.rglob('*')if p.is_file())}))
+
+subprocess.run(['python3',str(ROOT/'tools/extract_ui.py')],check=True)
