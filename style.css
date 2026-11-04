@@ -186,3 +186,4 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 #enemy-notifications{position:absolute;inset:0;pointer-events:none;container-type:inline-size;z-index:6}.enemy-notice{position:absolute;left:0;padding:0;border:0;background:none;pointer-events:auto;transform-origin:center;cursor:pointer}.enemy-notice img{width:100%;height:100%;display:block}.enemy-notice:disabled{cursor:default}
 .veil.source-notification-veil{background:rgb(0 0 0 / .3921568627);backdrop-filter:none}.native-tutorial-dialog{transform-origin:center}.notification-exit{position:absolute!important;left:50%;top:50%;translate:-50% -50%;z-index:11;pointer-events:none!important;transform-origin:center}
 .veil.source-notification-veil[data-notification-wait]{background:transparent}
+#game:has(.source-notification-veil:not([hidden])) #toast{visibility:hidden}
