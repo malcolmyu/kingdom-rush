@@ -1,5 +1,5 @@
 {
-  "version": "0.2.37",
+  "version": "0.2.38",
   "stages": 3,
   "modes": [
     "campaign",
@@ -19,9 +19,9 @@
     "tutorials.mjs": "f252a55eaef3e66388d7b6b5a8cd0a0ad750c8bef21a7508490f5e0b95b465bd",
     "enemy-notifications.mjs": "891b6d08d182fc8dde3eb74097865b0f1d7a13f68fb540ea66534814bb7d6c0e",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "upgrades-ui.mjs": "002413d59a0a1f920131a36b8870d64914cdf3f44d9a613558215b8dd3b44aa8",
+    "upgrades-ui.mjs": "9b02c1d552efc8428a963dd9c73b954b70c603fb1ba20ff1899cb78cb40dce38",
     "map-unlock.mjs": "d2c99310809ba609ea2066507850df2d331c6b6b1640056981b56e3866450100",
-    "domain.mjs": "0994a8b964bbf25b2ef7dd12abce063013b4b13d4ff7fe3aa200df0d8f3321c3",
+    "domain.mjs": "941b2a42daf7603b8bb3212f2446820749189acf9f43e6ee981a1b1da61ba5fb",
     "map-hero-hud.mjs": "29ea87d1ab5f08b5d4e930b73a9cd80e31805619755ba6fc0687fa35a284c06a",
     "results.mjs": "a3d42b65b0289d7999303afa3bae0b7589818fccf6e3131ff7af69dc78a4cadc",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
@@ -36,7 +36,7 @@
     "map.mjs": "3f53cedf18b6c1374dd0a6c064ad0d2a3d73105a109b746d312483600115abd3",
     "scene-transition.mjs": "e61d9a01fafca32a70677dbee3effe9d3164a6f8396b31b967c9ab21bcba0bc1",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
-    "upgrades.mjs": "16a689f7d58ea09fcb4c5e8270cb0d7f953af3f3085b06f162534ba370eea23c",
+    "upgrades.mjs": "e1b8499d323287eeb25c397a2cbe241f89f56adbe4d56bb242b45604342ef919",
     "wave-rules.mjs": "67f68bd365addb57a36c4dd0d25c0fe43b0f3d5ea016d67fd296bbb5c3f8b298",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",
     "assets/quest-completed.ogg": "d8a64b156e7c9789397457e45fde8327b055b4a657e5b592683adc9b5058b466",
