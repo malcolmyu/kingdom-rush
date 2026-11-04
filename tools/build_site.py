@@ -3,7 +3,7 @@ import json,pathlib,shutil,hashlib
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
 (OUT/'.nojekyll').touch()
-for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs','progression.mjs','hero-data.mjs','map.mjs','map-flags.mjs','wave-flags.mjs']:
+for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs','progression.mjs','hero-data.mjs','map.mjs','map-flags.mjs','wave-flags.mjs','battle-portraits.mjs']:
  shutil.copy2(ROOT/'web'/name,OUT/name)
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
 assets={'catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}

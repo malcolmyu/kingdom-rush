@@ -157,3 +157,13 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 #incoming-wave[data-left=true]::before{left:auto;right:-.7215cqw;transform:scaleX(-1)}
 #incoming-wave[data-below=false]::before{top:auto;bottom:-.8658cqw;transform:scaleY(-1)}
 #incoming-wave[data-left=true][data-below=false]::before{transform:scale(-1)}
+
+/* game_gui runtime places powers at safe left/bottom; portrait stays below HUD. */
+.abilities{position:static;display:block}
+.ability,.ability.hero{position:absolute;border:0;outline:0;background:none;margin:0;padding:0;border-radius:0;filter:none}
+.ability{width:10.38961cqw;height:10.38961cqw;bottom:-1.731602cqw}
+#lightning{left:-1.154401cqw}#reinforce{left:6.637807cqw}#arrows{left:14.430014cqw}
+.ability.hero{left:1.010101cqw;top:7.792208cqw;width:6.060606cqw;height:6.637807cqw;bottom:auto}
+.abilities .key,.abilities .ability-note{display:none}
+.ability.selected,.ability.cooling canvas{filter:none;outline:0}
+.ability:focus-visible{outline:2px solid #fff1a0}
