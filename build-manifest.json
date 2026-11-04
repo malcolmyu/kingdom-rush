@@ -1,5 +1,5 @@
 {
-  "version": "0.2.8",
+  "version": "0.2.9",
   "stages": 3,
   "modes": [
     "campaign",
@@ -12,9 +12,9 @@
     "ui.mjs": "4e66af27cdfe94afcd8009f7a5bd6daa10dfa3b07708348776ffe5a53000db02",
     "repository.mjs": "aed2fc9d6edf09e72935cf2a2d515cfbbefac2467a75613d561cbd68a9a129a5",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "domain.mjs": "59d666e7cd29880125bae9112c5a178120330bdaeb5ee7e879b73ad3106a839e",
+    "domain.mjs": "a4fee3311f7584c48c2a7fc31420eee9c92cdcf56d586794d01bc74e8f8cea99",
     "style.css": "f098b8528ca2fe159080f89be972f33e7719970e9c51b8f2466905aa37afab86",
-    "renderer.mjs": "19432948472524a1416770204b7bd3bd7575113ba0619bfd9595ec25d1d1b982",
+    "renderer.mjs": "74775e5c3f593785df72fceb1b0adda2a1ee50f006893c07be946f69bb574899",
     "campaign.mjs": "7d429d95f78482c85f3565552f4359facc9632a38302e2340fbe0f5ab0ea8e5a",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",
