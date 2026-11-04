@@ -16,7 +16,7 @@ assert.equal(await page.locator('.save-slot').count(),3);await settle();await pa
 await page.locator('.save-slot').first().click();
 await page.waitForFunction(()=>[...document.querySelectorAll('.map-flag canvas')].every(c=>origins.renderer.sheets.has(origins.repo.catalog.frames[c.dataset.icon].a)));
 await settle();await page.screenshot({path:path.join(out,'02-大地图.png')});
-await page.locator('[data-level="2"]').click();assert.equal(await page.evaluate(()=>origins.app.modal),false);
+assert.ok(await page.locator('[data-level="2"]').isDisabled());assert.equal(await page.evaluate(()=>origins.app.modal),false);
 await page.locator('[data-level="1"]').click();await page.getByRole('tab',{name:/英雄挑战/}).click();assert.equal(await page.locator('#enter-level').isDisabled(),true);
 await page.getByRole('tab',{name:'战役',exact:true}).click();
 await page.locator('#difficulty').selectOption('1');await settle();await page.screenshot({path:path.join(out,'03-模式选择.png')});
