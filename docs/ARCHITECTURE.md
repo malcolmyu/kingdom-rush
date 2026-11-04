@@ -138,3 +138,5 @@ World 为英雄伤害保留 XP 归属，命中后进入 `heroXpQueued`；在动�
 `wave-flags.mjs` 独立负责脉冲/扇面与 Canvas 分层，incomingReport 仅汇总对应入口的源波次数据。Campaign 负责单选和二次点击命令；World 保留唯一召唤奖励与时间推进权。
 
 IncomingTooltip 独立管理原文本角色、测量和相对旗帜的定位/显隐；Campaign.deselectWaveFlags 统一退出选中状态，避免切换输入模式遗留浮层。动画重入使用版本号，旧 fade 完成回调不能隐藏新浮层。
+
+waveEntrances 读取原关卡作者入口，findWaveFlagPosition 以显式可见边界/间距求展示坐标。Campaign 提供 Renderer.world 逆变换得到的边界；入口展示不依赖寻路采样，世界模拟与屏幕缩放保持分离。
