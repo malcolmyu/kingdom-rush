@@ -1,0 +1,13 @@
+import rules from './hero-data.mjs';
+export {rules as HERO_RULES};
+export const TRAINABLE_SKILLS=['double_strike','ultimate'];
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+export function levelForXp(xp){let level=1;while(level<10&&xp>=rules.hero_xp_thresholds[level-1])level++;return level;}
+export function xpForLevel(level){return rules.hero_xp_thresholds[clamp(Math.trunc(level||1),1,10)-2]||0;}
+export function xpProgress(xp){const level=levelForXp(xp),from=xpForLevel(level),to=rules.hero_xp_thresholds[level-1];return{level,from,to:to??null,ratio:to===undefined?1:clamp((xp-from)/(to-from),0,1)};}
+export function xpMultiplier(level,stage,difficulty){const expected=rules.hero_level_expected[String(stage)],difference=level-expected;let factor=1;if(expected&&difference<0)factor=rules.hero_level_expected_multipliers_below[Math.min(2,-difference)-1];else if(expected&&difference>0)factor=rules.hero_level_expected_multipliers_above[Math.min(2,difference)-1];return factor*(rules.hero_xp_gain_per_difficulty_mode[difficulty-1]||1);}
+export function heroSkills(value={}){return Object.fromEntries(['multishot','porcupine','nimble_fencer','double_strike','ultimate'].map(k=>[k,clamp(Math.trunc(Number(value[k])||0),0,3)]));}
+export function skillPoints(level,skills,definitions){let spent=0;for(const[key,value]of Object.entries(heroSkills(skills)))for(let i=0;i<value;i++)spent+=definitions[key].hr_cost[i];return Math.max(0,rules.skill_points_for_hero_level[clamp(level,1,10)-1]-spent);}
+export function normalizeHeroProgress(save,definitions){const next={...save},legacy=next.heroProgressVersion!==1;next.heroXp=Math.max(0,Math.trunc(Number(next.heroXp) || (legacy?xpForLevel(next.heroLevel):0)));next.heroLevel=levelForXp(next.heroXp);next.heroSkills=heroSkills(next.heroSkills);next.heroProgressVersion=1;if(definitions){const budget=rules.skill_points_for_hero_level[next.heroLevel-1];let spent=0;for(const key of Object.keys(next.heroSkills))for(let i=0;i<next.heroSkills[key];i++){const cost=definitions[key].hr_cost[i];if(spent+cost>budget){next.heroSkills[key]=i;break;}spent+=cost;}}return next;}
+export function trainHeroSkill(save,key,definitions){if(!TRAINABLE_SKILLS.includes(key))return null;const next=normalizeHeroProgress(save,definitions),level=next.heroSkills[key],cost=definitions[key]?.hr_cost[level];if(level>=3||!cost||skillPoints(next.heroLevel,next.heroSkills,definitions)<cost)return null;next.heroSkills[key]++;return next;}
+export function resetHeroSkills(save,definitions){const next=normalizeHeroProgress(save,definitions);next.heroSkills=heroSkills();return next;}

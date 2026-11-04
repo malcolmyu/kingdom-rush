@@ -1,0 +1,2 @@
+// Generated from original kr3/game_settings.lua by tools/read_progression.lua.
+export default {"hero_level_expected":{"1":1,"10":7,"11":8,"12":9,"13":9,"14":10,"15":10,"16":8,"17":9,"18":10,"19":8,"2":1,"20":9,"21":10,"22":10,"3":2,"4":2,"5":3,"6":4,"7":5,"8":5,"81":1,"82":1,"9":6},"hero_level_expected_multipliers_above":[0.5,0.25],"hero_level_expected_multipliers_below":[1,2],"hero_xp_gain_per_difficulty_mode":[1.9,1,0.9,0.9],"hero_xp_thresholds":[1300,5300,11300,19300,31800,46800,64300,88300,115300],"skill_points_for_hero_level":[0,4,8,12,16,20,24,28,32,36]};
