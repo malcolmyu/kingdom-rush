@@ -55,6 +55,7 @@ await page.locator('[data-level="3"]').click();await page.locator('[data-mode="i
 await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
 const mobileSlot=await page.evaluate(()=>origins.world.slots.find(s=>!s.type).id);await page.locator(`[data-build-slot="${mobileSlot}"]`).click();await page.locator('[data-type="artillery"]').click();await settle();await page.screenshot({path:path.join(out,'09-手机战场.png')});
 assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+assert.equal(await page.evaluate(()=>origins.app.progress.seenMapHints?.map_balloon_level_up_view),true);
 assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
 const missing=await page.evaluate(()=>[...origins.renderer.missing]);
 fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({status:'passed',results,errors,requests,missingFrames:missing,checks:['title','three save slots','world map','stage locks','challenge locks','all 9 legal wins','3-star challenge unlock','upgrade and sell through UI','pause and resume','persistent progress after reload','mobile landscape build and mode selection','no HTTP failures','no uncaught JS errors']},null,2));

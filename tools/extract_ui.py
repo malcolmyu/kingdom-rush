@@ -18,6 +18,9 @@ notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 layouts['balloons']=notification_data['tutorial_balloons']
 layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
+right=find(world,'bottom_right_bar_view')
+hero_map_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/map_data.lua')]))
+layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'hero':find(right,'map_hero_button'),'encyclopedia':find(right,'map_encyclopedia_button'),'levelup':find(right,'map_balloon_level_up_view'),'unlocked':find(right,'map_balloon_hero_unlocked_view'),'heroData':hero_map_data['hero_data_free']}
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):

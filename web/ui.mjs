@@ -5,7 +5,7 @@ export function rectStyle(x,y,w,h,ref={x:693,y:320}){
 const escape=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 export class NativeUI{
  constructor(data){this.data=data;}
- fontStyle(role,size,ref={x:693,y:320}){const f=this.data.fonts?.roles[role],scale=f?.metrics?.size||1;return `font-family:${role==='numbers'?'OriginsNumbers':'OriginsCJK'};font-weight:${f?.name?.endsWith('-Bold')?700:400};font-size:${size*scale/ref.x*100}cqw`;}
+ fontStyle(role,size,ref={x:693,y:320}){const f=this.data.fonts?.roles[role],scale=f?.metrics?.size||1;return `font-family:${role==='numbers_italic'?'OriginsNumbersItalic':role==='numbers'?'OriginsNumbers':'OriginsCJK'};font-weight:${f?.name?.endsWith('-Bold')?700:400};font-size:${size*scale/ref.x*100}cqw`;}
  find(tree,id){if(tree.id===id)return tree;for(const child of Object.values(tree.children||{})){const n=this.find(child,id);if(n)return n;}return null;}
  image(key,node={},ref={x:693,y:320},extra=''){
   const asset=this.data.images[key];if(!asset)throw new Error('Missing original UI sprite: '+key);
