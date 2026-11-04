@@ -37,3 +37,5 @@ for(const[id,mode]of [[2,'heroic'],[2,'iron'],[3,'campaign'],[3,'heroic'],[3,'ir
 
 // Browser menu/asset waits advance the ready-world clock before the first wave.
 for(const heroLevel of[3,4])for(const frames of[1,15,45])test(`stage 3 campaign remains three-star after ${frames} ready frames, hero ${heroLevel}`,()=>{const w=world(3,'campaign',{heroLevel});for(let i=0;i<frames;i++)w.step(1/60);const r=play(w);assert.equal(r.status,'won',JSON.stringify(r));assert.equal(w.stars,3,JSON.stringify(r));});
+
+test('fresh save completes all nine modes with damage-earned hero XP and no stage-based leveling',()=>{let save=emptySave();for(const id of[1,2,3])for(const mode of['campaign','heroic','iron']){const w=world(id,mode,{heroXp:save.heroXp,heroSkills:save.heroSkills});const result=play(w);assert.equal(result.status,'won',JSON.stringify(result));if(mode==='campaign')assert.equal(w.stars,3,JSON.stringify(result));save=recordVictory(save,w);if(id===1&&mode==='campaign')assert.equal(save.heroLevel,1);assert.equal(save.heroXp,w.heroXp);}assert.equal(Object.keys(save.challenges).length,6);assert.ok(save.heroXp>5300);});

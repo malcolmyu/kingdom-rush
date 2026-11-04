@@ -42,7 +42,7 @@
       "kills": 229,
       "leaks": 0,
       "spawned": 229,
-      "time": 659,
+      "time": 646,
       "gold": 278
     },
     {
@@ -53,7 +53,7 @@
       "kills": 154,
       "leaks": 0,
       "spawned": 154,
-      "time": 317,
+      "time": 315,
       "gold": 95
     },
     {
@@ -64,19 +64,19 @@
       "kills": 74,
       "leaks": 0,
       "spawned": 74,
-      "time": 158,
+      "time": 147,
       "gold": 135
     },
     {
       "stage": 3,
       "mode": "campaign",
       "status": "won",
-      "lives": 19,
-      "kills": 420,
-      "leaks": 1,
+      "lives": 18,
+      "kills": 419,
+      "leaks": 2,
       "spawned": 421,
       "time": 900,
-      "gold": 318
+      "gold": 280
     },
     {
       "stage": 3,
@@ -86,7 +86,7 @@
       "kills": 166,
       "leaks": 0,
       "spawned": 166,
-      "time": 326,
+      "time": 324,
       "gold": 300
     },
     {

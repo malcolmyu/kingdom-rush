@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "checks": [
+    "level-one training lock",
+    "hero damage XP boundary and native level-up",
+    "points consumed once",
+    "training persists after reload",
+    "trained ultimate supplies seventeen damage-31 projectiles",
+    "reset refunds original budget",
+    "double-strike training",
+    "unavailable skills cannot spend points",
+    "mobile native hero room bounds"
+  ],
+  "bounds": {
+    "left": 226.34375,
+    "right": 617.640625,
+    "top": 46.21875,
+    "bottom": 308.75,
+    "gameLeft": 130.140625,
+    "gameRight": 713.84375,
+    "gameTop": 0.5,
+    "gameBottom": 354.484375
+  },
+  "errors": []
+}

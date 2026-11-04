@@ -17,9 +17,11 @@ def lua(n):
  p=ROOT/'reference/apk'/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(z.read(n))
  return json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/dump_lua.lua'),str(p)]))
 templates=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+progression=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_progression.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+(ROOT/'web/hero-data.mjs').write_text('// Generated from original kr3/game_settings.lua by tools/read_progression.lua.\nexport default '+json.dumps(progression,sort_keys=True,separators=(',',':'))+';\n')
 groups=['go_towers','go_decals','go_enemies_elven_woods',
         'go_hero_elves_archer','go_stages_elven_woods',
-        'gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
+        'gui_shop','gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
 groups += [f'go_stage{i:02}' for i in range(1,4)]
 frames={};sheets={}
 def decode(name):
@@ -70,7 +72,7 @@ def visit(x):
 for k in used_templates:visit(k)
 catalog={'frames':frames,'animations':lua('assets/gc64/kr3/data/game_animations.lua')['animations'],'templates':selected,'levels':levels,'flags':json.loads((ROOT/'reference/map-flags.json').read_text())}
 (OUT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,sort_keys=True,separators=(',',':')))
-for key,source in {'thunder1':'kr3_sfx_lightning_op1.ogg','thunder2':'kr3_sfx_lightning_op2.ogg','thunder3':'kr3_sfx_lightning_op3.ogg','door':'Sound_TowerOpenDoor.ogg','melee':'kr3_sfx_basicbarracks_fight.ogg','barrack':'Barrack_Taunt[2]-01c.ogg','menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
+for key,source in {'levelup':'Level_up.ogg','double-strike':'kre_sfx_eridan_doublestrike_v2[mid].ogg','thunder1':'kr3_sfx_lightning_op1.ogg','thunder2':'kr3_sfx_lightning_op2.ogg','thunder3':'kr3_sfx_lightning_op3.ogg','door':'Sound_TowerOpenDoor.ogg','melee':'kr3_sfx_basicbarracks_fight.ogg','barrack':'Barrack_Taunt[2]-01c.ogg','menu':'kro_bgmusic_maintheme[master_25-08].ogg','world':'kre_bgmusic_map[master_25-08].ogg'}.items():
  p='assets/kr3-phone/sounds/files/'+source
  if p in z.namelist():(OUT/(key+'.ogg')).write_bytes(z.read(p))
 # These directories contain only generated outputs owned by this extractor.

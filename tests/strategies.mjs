@@ -4,7 +4,10 @@ export const plans={
  2:{campaign:[['24','artillery',2],['20','mage',2],['27','barrack',2],['28','artillery',2],['26','mage',2],['25','archer',2]],heroic:[["28","artillery",1],["26","archer",2],["20","barrack",1],["27","mage",2],["24","archer",1],["25","mage",1],["28","artillery",2],["26","archer",2],["20","barrack",2],["27","mage",2],["24","archer",2],["25","mage",2],["29","barrack",2]],iron:[["29","barrack",2],["26","archer",1],["20","archer",1],["24","archer",2],["28","barrack",1],["27","barrack",2],["29","barrack",2],["26","archer",2],["20","archer",2],["24","archer",2],["28","barrack",2],["27","barrack",2]]},
  3:{campaign:[["10","archer",3],["5","artillery",1],["1","archer",1],["4","archer",1],["10","archer",1],["2","barrack",1],["8","archer",2],["10","archer",2],["3","archer",3],["7","mage",1],["5","artillery",2],["1","archer",2],["2","barrack",2],["7","mage",2],["1","archer",3],["2","barrack",3],["5","artillery",3],["7","mage",3],["6","artillery",3]],heroic:[['5','artillery',2],['1','archer',2],['2','barrack',2],['7','mage',2],['6','artillery',3]],iron:[["1","barrack",2],["2","barrack",2],["6","barrack",3],["5","artillery",2],["1","barrack",3],["2","barrack",3],["7","artillery",2]]}
 };
-export function purchase(w,plan=plans[w.id][w.mode]){
+const growthCampaignPlan=[["10","archer",1],["11","archer",3],["10","archer",3],["5","artillery",1],["1","archer",1],["4","archer",1],["2","barrack",1],["8","archer",2],["10","archer",2],["3","archer",3],["7","mage",1],["5","artillery",2],["1","archer",2],["2","barrack",2],["7","mage",2],["1","archer",3],["2","barrack",3],["5","artillery",3],["7","mage",3],["6","artillery",3]];
+const assignedPlans=new WeakMap();
+export function purchase(w,plan){
+ if(!plan){if(!assignedPlans.has(w))assignedPlans.set(w,w.id===3&&w.mode==='campaign'&&w.heroLevel<3?growthCampaignPlan:plans[w.id][w.mode]);plan=assignedPlans.get(w);}
  for(const [holder,type,level]of plan){const s=w.slots.find(s=>String(s.holder)===holder);if(!s)continue;if(!s.type){if(w.build(s.id,type))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}if(s.type===type&&s.level<level){if(w.upgrade(s.id))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}}
  return false;
 }

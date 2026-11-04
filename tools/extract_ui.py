@@ -11,7 +11,7 @@ def find(node,id):
   match=find(child,id)
   if match:return match
 slots=read('screen_slots');world=read('screen_map');game=read('game_gui')
-layouts={'title':slots,'slot':read('slot_view'),'slotTab':read('slot_tab_view'),'level':find(world,'level_view'),'pause':find(game,'pause_view'),'victory':find(game,'victory_view'),'defeat':find(game,'defeat_view')}
+layouts={'title':slots,'slot':read('slot_view'),'slotTab':read('slot_tab_view'),'level':find(world,'level_view'),'pause':find(game,'pause_view'),'victory':find(game,'victory_view'),'defeat':find(game,'defeat_view'),'hero':find(world,'hero_room_view'),'heroSkill':read('hero_skill_view')}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
  if isinstance(v,dict):
@@ -23,6 +23,10 @@ def visit(v):
   for x in v:visit(x)
 visit(layouts)
 keys.add('mapFlag_star_0018')
+keys.update(f'heroroom_upgradeIcons_{i:04}'for i in range(6))
+keys.update(f'heroroom_heroBadge_numbers_{i:04}'for i in range(1,11))
+keys.add('heroroom_heroBadge_bar')
+keys.add('heroroom_portraits_0001')
 keys.update(['mapStarsContainer','map_borders','butConfig_0001','butConfig_0002','mapButtons_hero_0001','mapButtons_hero_0002','butEncyclopedia_0001','butEncyclopedia_0002'])
 keys.update(f'thumb_stage{i}'for i in range(1,4))
 keys.update(f'levelSelect_butModes_{i:04}'for i in range(1,8))

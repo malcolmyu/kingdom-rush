@@ -1,3 +1,4 @@
+import {xpForLevel,levelForXp,xpMultiplier,heroSkills,normalizeHeroProgress,HERO_RULES} from './progression.mjs';
 import {SpellTimeline,inEllipse} from './spells.mjs';
 // Deterministic game rules. No DOM, Canvas, network or storage dependencies.
 export const MODES={campaign:{name:'战役',lives:20},heroic:{name:'英雄挑战',lives:1},iron:{name:'钢铁挑战',lives:1}};
@@ -24,8 +25,8 @@ export class World{
   this.data=data;this.templates=data.templates;this.id=data.id;this.mode=data.mode||'campaign';this.difficulty=options.difficulty||2;this.seed=options.seed??17;
   this.time=0;this.gold=data.waves.cash;this.lives=MODES[this.mode].lives;this.maxLives=this.lives;this.totalWaves=data.waves.groups.length;this.wave=0;
   this.status='ready';this.paused=false;this.enemies=[];this.soldiers=[];this.shots=[];this.effects=[];this.pending=[];this.events=[];this.serial=0;this.kills=0;this.leaks=0;this.spawned=0;
-  this.cooldowns={reinforce:0,lightning:0,arrows:0};this.nextWaveAt=Infinity;this.nextWaveReadyAt=Infinity;this.hero=null;this.heroLevel=clamp(options.heroLevel||1,1,10);
-  this.spells=new SpellTimeline(this,options.ultimateLevel??this.templates.hero_elves_archer.hero.skills.ultimate.level);
+  this.cooldowns={reinforce:0,lightning:0,arrows:0};this.nextWaveAt=Infinity;this.nextWaveReadyAt=Infinity;this.hero=null;this.heroXp=options.heroXp??xpForLevel(options.heroLevel||1);this.heroXpQueued=0;this.heroLevel=levelForXp(this.heroXp);this.heroSkills=heroSkills(options.heroSkills);
+  this.spells=new SpellTimeline(this,options.ultimateLevel??this.heroSkills.ultimate);
   this.exits=data.level.entities_list.filter(e=>e.template==='decal_defend_point').map(e=>e.pos);
   this.routes=data.paths.map(paths=>paths.map(p=>makeRoute(p,this.exits)));
   this.slots=data.level.entities_list.filter(e=>e.template.startsWith('tower_holder_')||/^tower_(archer|barrack|mage|rock_thrower)_[123]$/.test(e.template)).map((e,id)=>({id,x:e.pos.x,y:e.pos.y,rally:{...(e['barrack.rally_pos']||e['tower.default_rally_pos'])},holder:e['tower.holder_id'],terrain:e['tower.terrain_style']||1,type:null,level:0,key:null,spent:0,cd:0,anim:0,prebuilt:!e.template.startsWith('tower_holder_'),source:e}));
@@ -54,7 +55,7 @@ export class World{
  }
  setRally(id,p){const s=this.slots[id],q=this.nearestRoad(p);if(!this.active()||!s||s.type!=='barrack'||distance(p,q)>45||distance(s,q)>145)return false;s.rally={x:q.x,y:q.y};for(const v of this.soldiers.filter(v=>v.home===id)){v.rally=this.formation(s,v.index);v.pendingHit=null;}this.effect('rally',q,1);this.emit('barrack');return true;}
  addHero(){const t=this.template('hero_elves_archer'),ls=t.hero.level_stats,i=this.heroLevel-1,p=this.data.level.custom_spawn_pos||this.exits[0]||{x:512,y:384};
-  this.hero={id:++this.serial,key:'hero_elves_archer',x:p.x,y:p.y,target:{...p},hp:ls.hp_max[i],maxHp:ls.hp_max[i],armor:ls.armor[i],range:t.ranged.attacks[0].max_range,minRange:t.ranged.attacks[0].min_range,damage:[ls.ranged_damage_min[i],ls.ranged_damage_max[i]],meleeDamage:[ls.melee_damage_min[i],ls.melee_damage_max[i]],speed:t.motion.max_speed,cd:0,dead:0,anim:this.animationDuration('hero_elves_archer','levelup'),action:'levelup',actionAt:this.time,walkAt:this.time,stance:'bow',flip:false,lastHitAt:-Infinity,regenAt:this.time,walking:false};
+  this.hero={id:++this.serial,key:'hero_elves_archer',x:p.x,y:p.y,target:{...p},hp:ls.hp_max[i],maxHp:ls.hp_max[i],armor:ls.armor[i],range:t.ranged.attacks[0].max_range,minRange:t.ranged.attacks[0].min_range,damage:[ls.ranged_damage_min[i],ls.ranged_damage_max[i]],meleeDamage:[ls.melee_damage_min[i],ls.melee_damage_max[i]],speed:t.motion.max_speed,cd:0,dead:0,anim:this.animationDuration('hero_elves_archer','levelup'),action:'levelup',actionAt:this.time,walkAt:this.time,stance:'bow',flip:false,lastHitAt:-Infinity,regenAt:this.time,walking:false,skillReadyAt:0};
  }
  formation(s,index){const t=this.template(s.key).barrack,angle=(t.rally_angle_offset||0)+Math.PI*2*index/t.max_soldiers-Math.PI/2;return{x:s.rally.x+Math.cos(angle)*t.rally_radius,y:s.rally.y+Math.sin(angle)*t.rally_radius*.7};}
  fillBarrack(s,previous=[]){if(s.type!=='barrack')return;const t=this.template(s.key);s.doorAt=Math.max(this.time,s.buildUntil||0);for(let i=0;i<t.barrack.max_soldiers;i++){const u=this.addSoldier(this.formation(s,i),i,s.id,t.barrack.soldier_type),old=previous[i];if(old){u.x=old.x;u.y=old.y;u.flip=old.flip;u.hp=u.maxHp*(Math.max(0,old.hp)/old.maxHp);u.dead=old.dead;u.departAt=this.time;}else this.departSoldier(u,s);}}
@@ -83,12 +84,12 @@ export class World{
  activatePlant(id){const p=this.plants[id];if(!this.active()||!p||p.cd>0)return false;const t=this.template(p.key),a=t.custom_attack,targets=this.enemies.filter(e=>e.hp>0&&distance(e,p)<a.range);if(!targets.length)return false;
   for(let i=0;i<a.bullet_count;i++)this.projectile(p,targets[i%targets.length],{type:'mage',damage:byDifficulty(this.template(a.bullet).bullet.damage_min)||20,damageType:4,bullet:a.bullet,height:55,delay:i*.1});p.cd=a.cooldown;p.anim=1;this.emit('cast');return true;
  }
- moveHero(p){if(!this.active()||!this.hero||this.hero.hp<=0)return false;const q=this.nearestRoad(p);if(!q||distance(p,q)>70)return false;this.hero.target={x:q.x,y:q.y};this.hero.pendingHit=null;this.hero.combatTarget=null;this.hero.anim=0;this.hero.action=null;return true;}
+ moveHero(p){if(!this.active()||!this.hero||this.hero.hp<=0)return false;const q=this.nearestRoad(p);if(!q||distance(p,q)>70)return false;this.hero.target={x:q.x,y:q.y};this.hero.pendingHit=null;this.hero.playerMove=true;this.hero.combatTarget=null;this.hero.anim=0;this.hero.action=null;return true;}
  effect(type,p,life,text){this.effects.push({type,x:p.x,y:p.y,life,total:life,text});}
- hurt(e,damage,type=2){if(e.hp<=0)return;const armor=type&4?e.magicArmor:type&8?e.armor*.5:type&2?e.armor:0;e.hp-=Math.max(1,Math.round(damage*(1-(armor||0))));e.flash=.1;
+ hurt(e,damage,type=2,xpFactor=0){if(e.hp<=0)return;const armor=type&4?e.magicArmor:type&8?e.armor*.5:type&2?e.armor:0;const applied=Math.max(1,Math.round(damage*(1-(armor||0))));e.hp-=applied;e.flash=.1;if(xpFactor>0)this.heroXpQueued+=applied*xpFactor;
   if(e.hp<=0){e.deadAt=this.time;e.deathFlip=e.anim>0?e.actionFlip:e.dx<0;this.kills++;this.gold+=e.gold;this.effect('coin',{x:e.x,y:e.y+20},.8,'+'+e.gold);this.emit('coin');}
  }
- projectile(s,e,o){const height=o.height||40;this.shots.push({id:++this.serial,type:o.type,bullet:o.bullet,sx:s.x+(o.offsetX||0),sy:s.y+height,x:s.x+(o.offsetX||0),y:s.y+height,tx:e.x,ty:e.y+12,target:e,damage:o.damage,damageType:o.damageType||2,radius:o.radius||0,elapsed:-(o.delay||0),duration:o.duration??(o.type==='artillery'?.8:.35)});if(!o.preserveAnimation)s.anim=.6;if(!o.preserveAnimation)s.facing=e.y>s.y?'Up':'Down';}
+ projectile(s,e,o){const height=o.height||40;this.shots.push({id:++this.serial,type:o.type,bullet:o.bullet,xpFactor:o.xpFactor||0,sx:s.x+(o.offsetX||0),sy:s.y+height,x:s.x+(o.offsetX||0),y:s.y+height,tx:e.x,ty:e.y+12,target:e,damage:o.damage,damageType:o.damageType||2,radius:o.radius||0,elapsed:-(o.delay||0),duration:o.duration??(o.type==='artillery'?.8:.35)});if(!o.preserveAnimation)s.anim=.6;if(!o.preserveAnimation)s.facing=e.y>s.y?'Up':'Down';}
  updateTowers(dt,live){for(const s of this.slots){s.cd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.type==='artillery'&&s.reloadUntil===undefined){s.reloadAt=s.buildUntil||0;s.reloadUntil=s.reloadAt+this.animationDuration(this.template(s.key).render.sprites.at(-1).prefix,'loadDown');}if(s.type==='artillery'&&this.time<s.reloadUntil)continue;if(!s.type||this.time<s.buildUntil||s.type==='barrack'||s.cd>0)continue;const d=this.towerDef(s.type,s.level),targets=live.filter(e=>e.hp>0&&(s.type!=='artillery'||!e.flying)&&inEllipse({x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y},e,d.range)).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!targets.length)continue;const e=targets[0];
    s.actionAt=this.time;s.facing=e.y>s.y+d.shotHeight?'Up':'Down';s.flip=e.x<s.x;s.shotCount=(s.shotCount||0)+1;s.shooterIndex=s.shotCount%d.offsets.length;
    const shooter=d.render.find(v=>v.angles?.shoot),name=shooter?.angles?.shoot?.[s.facing==='Up'?0:1];s.anim=this.animationDuration(shooter?.prefix||s.key,name||'shoot');
@@ -108,21 +109,24 @@ export class World{
   }this.soldiers=this.soldiers.filter(s=>!s.expired);return blockers;
  }
  animationDuration(key,state){const a=this.data.animations?.[key+'_'+state];return a?(a.frames?.length||a.ranges?.reduce((n,[f,t])=>n+t-f+1,0)||(a.to-a.from+1))/30:.6;}
+ flushHeroXp(){if(!this.heroXpQueued||!this.hero||this.hero.hp<=0)return false;this.heroXp+=Math.floor(this.heroXpQueued*xpMultiplier(this.heroLevel,this.id,this.difficulty)+.5);this.heroXpQueued=0;const next=this.heroLevel<10&&this.heroXp>=HERO_RULES.hero_xp_thresholds[this.heroLevel-1];if(next){this.heroLevel++;const h=this.hero,stats=this.template(h.key).hero.level_stats,i=this.heroLevel-1;h.maxHp=stats.hp_max[i];h.hp=h.maxHp;h.armor=stats.armor[i];h.damage=[stats.ranged_damage_min[i],stats.ranged_damage_max[i]];h.meleeDamage=[stats.melee_damage_min[i],stats.melee_damage_max[i]];this.heroAction(h,'levelup');this.emit('hero_levelup',{level:this.heroLevel});}this.emit('hero_xp',{xp:this.heroXp,level:this.heroLevel});return !!next;}
  enemyAction(e,target,action){e.action=action;e.actionAt=this.time;e.actionFlip=target.x<e.x;const prefix=this.template(e.key).render.sprites[0].prefix;e.anim=this.animationDuration(prefix,action);}
  enemyMelee(e,target,dt){if(e.meleeTick===this.time)return;e.meleeTick=this.time;e.cd-=dt;if(e.cd<=0){e.pendingMelee={at:this.time+e.hitTime,target};e.cd=e.attackCd;this.enemyAction(e,target,'attack');}}
  heroAction(h,action){h.action=action;h.actionAt=this.time;const name=this.template(h.key).render.sprites[0].angles?.[action]?.[0]||action;h.anim=this.animationDuration(h.key,name);}
  updateHero(dt,live,blockers){const h=this.hero;if(!h)return;const template=this.template(h.key),ranged=template.ranged.attacks[0],melee=template.melee.attacks[0];h.cd-=dt;h.anim=Math.max(0,h.anim-dt);
   if(h.hp<=0){if(!h.dead){h.pendingHit=null;h.combatTarget=null;h.walking=false;this.heroAction(h,'death');}h.dead+=dt;if(h.dead>=template.health.dead_lifetime){h.hp=h.maxHp;h.dead=0;h.stance='bow';this.heroAction(h,'respawn');}return;}
-  if(h.pendingHit&&this.time+1e-9>=h.pendingHit.at){const hit=h.pendingHit;h.pendingHit=null;if(hit.target.hp>0){if(hit.ranged){const offset=ranged.bullet_start_offset[0];this.projectile(h,hit.target,{type:'hero',damage:this.number(...h.damage),damageType:2,bullet:ranged.bullet,height:offset.y,offsetX:offset.x*(h.flip?-1:1),duration:this.template(ranged.bullet).bullet.flight_time,preserveAnimation:true});}else if(inEllipse(h,hit.target,35)){this.hurt(hit.target,this.number(...h.meleeDamage),melee.damage_type);this.emit('melee');}}}
+  if(h.pendingHit&&this.time+1e-9>=h.pendingHit.at){const hit=h.pendingHit;h.pendingHit=null;if(hit.target.hp>0){if(hit.ranged){const offset=ranged.bullet_start_offset[0];this.projectile(h,hit.target,{type:'hero',damage:this.number(...h.damage),damageType:2,bullet:ranged.bullet,height:offset.y,offsetX:offset.x*(h.flip?-1:1),duration:this.template(ranged.bullet).bullet.flight_time,xpFactor:this.template(ranged.bullet).bullet.xp_gain_factor,preserveAnimation:true});}else if(inEllipse(h,hit.target,35)){this.hurt(hit.target,this.number(...(hit.damage||h.meleeDamage)),melee.damage_type,hit.skill?0:melee.xp_gain_factor);this.emit('melee');}}}
   const move=target=>{const d=distance(h,target);if(d<=2){h.walking=false;return false;}if(!h.walking)h.walkAt=this.time;h.walking=true;h.flip=target.x<h.x;h.x+=(target.x-h.x)/d*Math.min(d,h.speed*dt);h.y+=(target.y-h.y)/d*Math.min(d,h.speed*dt);return true;};
   const engaged=live.find(e=>e.id===h.combatTarget&&e.hp>0);if(engaged&&!h.walking&&inEllipse(h,engaged,35)){blockers.add(engaged.id);this.enemyMelee(engaged,h,dt);}
   if(h.anim>0){h.walking=false;return;}
+  if(h.playerMove){if(distance(h,h.target)>3){move(h.target);return;}h.playerMove=false;}
+  if(this.flushHeroXp())return;
   // A player rally order takes priority over combat; pending attacks are cancelled by moveHero.
   if(!h.combatTarget&&distance(h,h.target)>3){move(h.target);return;}
   const close=live.filter(e=>e.hp>0&&!e.flying&&inEllipse(h.target,e,template.melee.range)).sort((a,b)=>distance(h,a)-distance(h,b))[0];
   if(close){h.combatTarget=close.id;const slot=this.meleePosition({...h,rally:h.target},close,0);if(move(slot))return;blockers.add(close.id);h.flip=close.x<h.x;this.enemyMelee(close,h,dt);
    if(h.stance!=='sword'){h.stance='sword';this.heroAction(h,'bow2sword');return;}
-   if(h.cd<=0){h.cd=template.melee.cooldown;this.heroAction(h,melee.animation);h.pendingHit={at:this.time+melee.hit_time,target:close,ranged:false};}return;
+   if(h.cd<=0){const level=this.heroSkills.double_strike,skill=level>0&&this.time>=(h.skillReadyAt||0),attack=skill?template.melee.attacks[1]:melee;h.cd=template.melee.cooldown;this.heroAction(h,attack.animation);h.pendingHit={at:this.time+attack.hit_time,target:close,ranged:false,skill};if(skill){this.emit('double_strike');const values=template.hero.skills.double_strike;h.skillReadyAt=this.time+attack.cooldown;h.pendingHit.damage=[values.damage_min[level-1],values.damage_max[level-1]];this.heroXpQueued+=values.xp_gain_factor*level;}}return;
   }
   h.combatTarget=null;h.walking=false;
   if(h.stance!=='bow'){h.stance='bow';this.heroAction(h,'sword2bow');return;}
@@ -141,14 +145,14 @@ export class World{
    else if(!connection&&e.d>=e.goal){e.hp=0;e.leaked=true;e.deadAt=this.time;this.lives=Math.max(0,this.lives-e.lives);this.leaks++;this.emit('leak');}
   }
   for(const b of this.shots){b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
-   if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType);}
+   if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType,b.xpFactor);}
   }
   this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);
-  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length&&!this.spells.busy){this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
+  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length&&!this.spells.busy){this.flushHeroXp();this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
  }
  get stars(){return this.mode!=='campaign'?1:this.lives>=18?3:this.lives>=6?2:1;}
 }
 
-export function emptySave(){return{version:2,unlocked:1,stars:{},challenges:{},heroLevel:1,options:{sound:false,difficulty:2}};}
-export function recordVictory(save,w){if(w.status!=='won')return save;const next=structuredClone(save);if(w.mode==='campaign'){next.stars[w.id]=Math.max(next.stars[w.id]||0,w.stars);next.unlocked=Math.min(3,Math.max(next.unlocked,w.id+1));next.heroLevel=Math.max(next.heroLevel,Math.min(10,w.id+1));}else next.challenges[w.id+'-'+w.mode]=true;return next;}
+export function emptySave(){return{version:2,unlocked:1,stars:{},challenges:{},heroLevel:1,heroXp:0,heroSkills:heroSkills(),heroProgressVersion:1,options:{sound:false,difficulty:2}};}
+export function recordVictory(save,w){if(w.status!=='won')return save;const next=normalizeHeroProgress(structuredClone(save));next.heroXp=w.heroXp;next.heroLevel=w.heroLevel;if(w.mode==='campaign'){next.stars[w.id]=Math.max(next.stars[w.id]||0,w.stars);next.unlocked=Math.min(3,Math.max(next.unlocked,w.id+1));}else next.challenges[w.id+'-'+w.mode]=true;return next;}
 export function canSelect(save,id,mode='campaign'){return id>=1&&id<=3&&id<=save.unlocked&&(mode==='campaign'||(save.stars[id]||0)===3);}
