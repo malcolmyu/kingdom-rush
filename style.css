@@ -198,3 +198,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .native-upgrades-dialog{width:min(100%,150cqh);aspect-ratio:480/320;container-type:inline-size;padding:0;background:none;box-shadow:none;border:0}
 
 .upgrade-cost{position:absolute;pointer-events:none;color:#facd00;line-height:1}
+
+.upgrade-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
