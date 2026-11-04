@@ -9,5 +9,6 @@ export class Repository{
  image(src){if(!this.images.has(src)){this.images.set(src,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>{this.images.delete(src);reject(new Error('图片加载失败：'+src));};im.src=src;}));}return this.images.get(src);}
  save(value){try{this.storage?.setItem('origins-campaign-v2-'+this.slot,JSON.stringify(value));return true;}catch{return false;}}
  load(slot=this.slot){try{const s=JSON.parse(this.storage?.getItem('origins-campaign-v2-'+slot)||'null');if(s?.version===2)return normalizeUpgrades(normalizeHeroProgress({...emptySave(),...s,heroProgressVersion:s.heroProgressVersion,unlocked:Math.max(1,Math.min(3,s.unlocked||1))},this.catalog?.templates.hero_elves_archer.hero.skills));}catch{}return emptySave();}
+ has(slot=this.slot){try{return JSON.parse(this.storage?.getItem('origins-campaign-v2-'+slot)||'null')?.version===2;}catch{return false;}}
  remove(slot){try{this.storage?.removeItem('origins-campaign-v2-'+slot);}catch{}}
 }

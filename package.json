@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.43",
+  "version": "0.2.44",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -45,7 +45,8 @@
     "test:thunder-upgrade": "node tests/thunder-upgrade-browser.mjs",
     "test:reinforcements": "node tests/reinforcements-browser.mjs",
     "test:menu-motion": "node tests/menu-motion-browser.mjs",
-    "test:director": "node tests/director-browser.mjs"
+    "test:director": "node tests/director-browser.mjs",
+    "test:save-slots": "node tests/save-slots-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

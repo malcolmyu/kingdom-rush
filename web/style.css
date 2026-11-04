@@ -200,3 +200,4 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .upgrade-cost{position:absolute;pointer-events:none;color:#facd00;line-height:1}
 
 .upgrade-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.native-slot,.native-slot-tab{position:absolute}.native-slot{z-index:2}.native-slot-tab{z-index:1}.native-slot-label{position:absolute;display:flex;flex-direction:column;pointer-events:none;line-height:1.1;white-space:nowrap}.native-save-panel .native-slot .save-slot{width:100%;height:100%}.native-slot-tab[hidden]{display:none}
