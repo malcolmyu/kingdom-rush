@@ -193,3 +193,6 @@ UpgradeTimeline维护购买按钮的当前线性插值和单次勾选帧；Upgra
 
 
 MenuMotion仅处理screen_slots菜单内部logo/按钮/存档面板的原坐标时间线，与SceneTransition战场加载门分开。Campaign在替换DOM前捕获当前显示位置，副本只参与绘制，原按钮身份与存档操作保留；transition统一cancel，版本检查阻止旧完成回调改写新状态。动画不会访问或推进World。
+
+
+存档到地图、地图到screen_slots根菜单由Campaign.selectSave/returnToMenu接受一次路由；原数据确认需要loading后复用SceneTransition。waitScreenReady等待实际背景/DOM图片/地图资源和首画，事务current检查贯穿异步边界。SceneTransition暂存宿主inert状态并在取消或当前事务完成时恢复，MenuMotion暂停/恢复只作用于同版本菜单；直接渲染函数仍可供受控测试使用。

@@ -14,7 +14,7 @@ await page.goto(origin);await page.waitForFunction(()=>window.origins);
 await settle();await page.screenshot({path:path.join(out,'01-开始界面.png')});
 await page.getByRole('button',{name:'开始游戏',exact:true}).click();
 assert.equal(await page.locator('.save-slot').count(),3);await settle();await page.screenshot({path:path.join(out,'01b-原版存档面板.png')});
-await page.locator('.save-slot').first().click();
+await page.locator('.save-slot').first().click();await page.waitForFunction(()=>origins.app.scene==='map'&&!origins.app.sceneMotion.busy&&origins.app.mapScene?.ready);
 await page.waitForFunction(()=>[...document.querySelectorAll('.map-flag canvas')].every(c=>origins.renderer.sheets.has(origins.repo.catalog.frames[c.dataset.icon].a)));
 await settle();await page.screenshot({path:path.join(out,'02-大地图.png')});
 assert.ok(await page.locator('[data-level="2"]').isDisabled());assert.equal(await page.evaluate(()=>origins.app.modal),false);
@@ -33,7 +33,7 @@ await settle();await page.screenshot({path:path.join(out,'04-灰鸦港口.png')}
 async function complete(){await page.waitForFunction(()=>!origins.app.sceneMotion.busy);console.log('Initial growth',await page.evaluate(()=>({stage:origins.world.id,mode:origins.world.mode,xp:origins.world.heroXp,level:origins.world.heroLevel,time:origins.world.time})));const result=await page.evaluate(()=>{const r=playCampaignTest(origins.world,1800,undefined,()=>{origins.app.events();const button=document.querySelector('#dialog[data-notification] #tutorial-ok_button');if(button){(window.closedSourceNotifications??=[]).push(origins.app.activeNotification);button.click();}});origins.app.events();origins.app.updateBattle();return r;});console.log('Completed',JSON.stringify(result));assert.equal(result.status,'won',JSON.stringify(result));const stars=await page.evaluate(()=>origins.world.mode==='campaign'?origins.world.stars:3);assert.equal(stars,3,JSON.stringify(result));assert.equal(await page.getByRole('heading',{name:'胜利！',exact:true}).count(),1);return result;}
 const results=[await complete()];assert.deepEqual(await page.evaluate(()=>window.closedSourceNotifications),['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES']);await settle();await page.screenshot({path:path.join(out,'04c-原版结算.png')});
 await page.locator('#return-map').click();
-await page.reload();await page.waitForFunction(()=>window.origins);await page.locator('#start-game').click();await page.locator('.save-slot').first().click();assert.equal(await page.evaluate(()=>origins.app.progress.stars[1]),3);assert.equal(await page.evaluate(()=>origins.app.progress.unlocked),2);await injectStrategy();
+await page.reload();await page.waitForFunction(()=>window.origins);await page.locator('#start-game').click();await page.locator('.save-slot').first().click();await page.waitForFunction(()=>origins.app.scene==='map'&&!origins.app.sceneMotion.busy&&origins.app.mapScene?.ready);assert.equal(await page.evaluate(()=>origins.app.progress.stars[1]),3);assert.equal(await page.evaluate(()=>origins.app.progress.unlocked),2);await injectStrategy();
 for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
  if(id===1&&mode==='campaign')continue;
  // Spend earned points through the real hero room before the third campaign.

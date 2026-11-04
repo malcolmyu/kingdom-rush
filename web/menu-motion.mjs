@@ -6,6 +6,8 @@ export function captureMenu(stage,layout,ui,{panel=false}={}){if(!stage)return n
 clone.querySelectorAll('[id]').forEach(n=>{n.dataset.menuOldId=n.id;n.removeAttribute('id');});clone.inert=true;clone.setAttribute('aria-hidden','true');clone.style.pointerEvents='none';return{el:clone,offsets,panel};}
 export class MenuMotion{
  constructor(){this.version=0;this.animations=[];this.ghosts=new Set();this.returning=false;}
+ pause(){for(const a of this.animations)a.pause();}
+ resume(){for(const a of this.animations)a.play();}
  cancel(){this.version++;for(const a of this.animations)a.cancel();this.animations=[];for(const g of this.ghosts)g.remove();this.ghosts.clear();this.returning=false;}
  tween(el,from,to,{delay=0,duration=.4,kind='out',scale=false,showDuringDelay=false,hideAfter=false}={}){if(!el)return null;const reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;el.style.visibility=delay&&!reduced&&!showDuringDelay?'hidden':'visible';if(!scale)el.style.translate=`0 ${from/693*100}cqw`;const frames=scale?Array.from({length:49},(_,i)=>({offset:i/48,scale:from+(to-from)*menuEase(i/48,kind),visibility:'visible'})):menuFrames(from,to,kind);if(hideAfter)frames.at(-1).visibility='hidden';const a=el.animate(frames,{delay:reduced?0:delay*1000,duration:reduced?1:duration*1000,fill:'forwards'});this.animations.push(a);return a;}
  ghost(snapshot,host,before=null){if(!snapshot)return;snapshot.el.dataset.menuGhost='';host.insertBefore(snapshot.el,before);this.ghosts.add(snapshot.el);}

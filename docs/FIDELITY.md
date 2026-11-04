@@ -422,3 +422,12 @@ reinforcement_level_1按原price2开放，替换三个别名为soldier_re_1_1/2/
 新增MenuMotion独立维护WAAPI展示、旧控件/面板副本与取消版本，不推进World。logo在两种视图中保持，退出按钮在面板后方，退场副本去id并inert；切场景取消旧动作，返回中不重复派发，快速Escape从当前面板位置反向，不从终点跳回。源GUIButtonCommon沿用已提取音效。删除后刷新存档内容不重播整个面板入场。旧CSS chain-drop/panel-arrive不再驱动这两界面；减少动态效果偏好显示静态终点。
 
 208项领域测试、完整九模式/三战役三星、UI手机边界通过；新test:menu-motion以真实DOM/WAAPI时钟取0/100/300/500ms面板位置和回弹，验证共享logo、双击、Escape反向、删除/重开、三个存档选择及手机。截图为当前受控取样，非原版同输入逐帧。完整SlotView/SlotTab状态、云服务、存档到地图的director交接和其他标题装饰仍未完全复现，整体未1:1。
+
+
+## 0.2.43 存档与地图的原 director 交接
+
+只读director_data.item_props确认map/slots都show_loading=true；screen_slots.handle_slot_button680–684在加载/创建存档并选为active后回调{next_item_name='map'}，screen_map2287–2291回调{next_item_name='slots'}。后者进入screen_slots根菜单并执行start_animation，对应当前title而非直接弹存档面板。tools/read_director_routes.lua只执行声明数据并用jit.util检查这两个函数的常量，不执行游戏init/update/callback，可重现该证据。
+
+原director240–318立即禁用旧window并忽略重复done，384–510选screen_loading，605–704等待queued ready/init/首画后open。新增真实selectSave/returnToMenu路由复用已有loading门时序；存档选择先设置真实active slot，关门交接前保留旧画面。关闭后准备目标背景、原图片、地图图集并等待首帧，再开门和恢复输入。SceneTransition在等待门图时就把screen/battle-ui/veil设inert，完成/取消按原状态恢复，旧事务不覆盖新事务。返回菜单的MenuMotion在准备/开门时暂停，成为活动界面后继续，避免慢图片解码消耗整个入场。旧慢加载回调只完成自己的等待，不重新选存档或切场景。失败恢复可操作菜单/地图并提示，没有修改战斗。
+
+208项Node、完整九模式三战役三星、菜单/旧加载门/首入地图/UI手机回归通过。新test:director实际点击存档和返回按钮，受控延迟资源就绪，验证旧画面、即时输入门控、重复拒绝、关闭等待、返回菜单暂停、取消后第二存档隔离及手机失败恢复。截图是当前受控慢加载状态，不是原版同步对照。原queued init额外预更新tick、全部资源管理与平台服务尚未逐像素复现，不能称整个director或游戏完全1:1。
