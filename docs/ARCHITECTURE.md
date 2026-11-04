@@ -131,3 +131,6 @@ World 为英雄伤害保留 XP 归属，命中后进入 `heroXpQueued`；在动�
 `map-flags.mjs` 将存档的战役/英雄/钢铁完成状态映射到独立绘制层。道路完成和落旗结束决定按钮能否接收输入，Canvas 动作由同一个地图时钟驱动。资源存在性优先于布局声明；本包新版旗帜帧缺失时使用明确记录的兼容图集，不能以虚构帧名掩盖缺失。
 
 字体通过 `assets/fonts/catalog.json` 与原文件版本化。Repository 加载角色映射和原界面文案；NativeUI.fontStyle 将原 font_name/font_size 与 locale 倍率转换到同一参考容器，HUD 保留其自身角色。提取与静态构建显式包含字体，避免运行设备的系统字体改变字形和排版。
+
+
+波次入口由 Campaign 根据下一波路径生成按钮，复用 Renderer 原图集；多个入口共享 sendWave 命令和 World.startWave 的校验/奖励。按钮展示状态不参与模拟时间。Renderer 不再重复绘制无法交互的旗帜。

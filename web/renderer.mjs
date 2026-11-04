@@ -72,6 +72,6 @@ export class Renderer{
 
   }
   for(const p of w.exits)this.circle(p,18,'#8bc9d122','#bdeefa77');
-  if(w.wave<w.totalWaves){const group=w.data.waves.groups[w.wave],roads=new Set(group.waves.map(x=>x.path_index-1));for(const road of roads){const route=w.routes[road][0],p=route.points.find(q=>q.x>=0&&q.x<=1024&&q.y>=30&&q.y<=730)||route.points[0];const s=this.screen(p);this.sprite(c,'waveFlag_0001',s.x,s.y,1.2);}}
+
  }
 }

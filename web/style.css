@@ -134,3 +134,12 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .native-button>span,.native-level-title,.native-level-copy h3,.native-victory-title,.native-defeat-title{font-family:OriginsCJK,sans-serif;font-weight:700}#hud .numbers,.map-native-summary span,.build-option .price span,.save-number{font-family:OriginsNumbers,OriginsCJK,sans-serif;font-weight:400}.native-source-history{white-space:pre-line;line-height:1.4!important;margin:0!important}.native-level-copy .native-rule-row,.native-level-copy .native-lock,.native-level-copy .native-tower-rules{font-family:OriginsCJK,sans-serif}.native-level-copy h3{margin-bottom:.6cqw}
 
 #hud{left:.866cqw;top:1.1544cqw;width:16.1616cqw;height:5.4834cqw;font-family:OriginsCJK,sans-serif;font-size:1.90476cqw;font-weight:400;text-shadow:none;color:#f3eccf}#hud b{display:flex;align-items:center;line-height:1;white-space:nowrap}#lives{left:19.642857%;top:7.894737%;width:16.071429%;height:34.210526%}#gold{left:66.071429%;top:7.894737%;width:28.571429%;height:34.210526%}#wave{left:21.428571%;top:60.526316%;width:69.642857%;height:34.210526%;justify-content:center;color:#c8ba9d}
+
+/* Original pause image: native size 28x28, anchor (36,-8) at right edge. */
+.top-actions{right:0;top:0;display:block}
+#battle-sound,#speed,#battle-name,#battle-back{display:none}
+.native-pause{position:absolute;right:1.1544cqw;top:1.1544cqw;width:4.0404cqw;height:4.0404cqw;border:0;background:none;padding:0}
+.native-pause canvas,.wave-entrance canvas{width:100%;height:100%;pointer-events:none}
+.wave-entrance{position:absolute;width:4.3062%;aspect-ratio:1;transform:translate(-50%,-50%);background:none;border:0;padding:0;touch-action:manipulation}
+.wave-entrance:hover:not(:disabled){filter:brightness(1.2)}
+.wave-entrance:focus-visible,.native-pause:focus-visible{outline:2px solid #fff1a0;border-radius:50%}
