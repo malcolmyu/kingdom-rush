@@ -18,7 +18,7 @@ notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 layouts['balloons']=notification_data['tutorial_balloons']
 layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
-layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children']}
+layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
  if isinstance(v,dict):

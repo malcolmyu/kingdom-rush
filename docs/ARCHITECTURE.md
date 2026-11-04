@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+balloon.mjs共享地图与战斗的九片气泡、箭头和字体构建，调用者提供坐标参考宽度。地图淡入读取MapScene展示时间，战斗脉冲/缩退仍由Guidance负责。mapInitialized只标记首关地图记录已建立，不影响战役解锁、英雄经验或always教程。
+
 MapUnlockSequence从本次进度与上次展示快照生成各关奖励、道路和新旗的绝对时间，不依靠多个并行setTimeout。MapScene共用展示时钟绘图并依事件游标只播放一次声音；地图资源就绪后才推进。mapSize/mapCenter封装原尺寸与边界，Campaign处理双轴拖动和resize，不改World或存档战斗数值。
 
 SceneTransition独立处理加载门和串行场景交接，展示时钟与World分离。prepare只在关闭完成后执行，返回后才开门；事务代号贯穿Repository等待和Renderer提交，取消后的异步结果不能重置当前场景。等待期间World暂停，正常完成后才恢复输入/教程；失败走地图恢复分支。
