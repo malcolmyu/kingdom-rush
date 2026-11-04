@@ -1,0 +1,27 @@
+import{rectStyle}from'./ui.mjs';
+import{towerBookStats}from'./encyclopedia.mjs';
+import{armorKey}from'./hero-room.mjs';
+import{byDifficulty}from'./domain.mjs';
+const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
+// Source phone resize centers the bar between powers and the backpack button.
+export function infobarCenter(source,width){const right=width-source.bag.anchor.x+source.bagButton.pos.x;return(source.powers.size.x+right)/2;}
+export function infobarViewport(source,width,height){const r=source.reference,origin={x:0,y:0};let sw,sh,scale;if(width/height<r.minAspect){sw=r.width;sh=sw/r.minAspect;scale=width/sw;origin.y=(height-sh*scale)/2;}else{sh=r.height;sw=sh*width/height;scale=height/sh;if(sw/sh>r.maxAspect){sw=sh*r.maxAspect;origin.x=(width-sw*scale)/2;}}return{sw,sh,scale,origin};}
+export function towerInfobarData(world,slot,text,types){if(!slot?.type)return null;const t=world.template(slot.key),stats=towerBookStats(world.templates,slot.key,text),barrack=!!t.barrack,type=barrack?types.barrack:t.tower.type==='mage'?types.mage:types.tower,armor=barrack?text[armorKey(byDifficulty(world.template(t.barrack.soldier_type).health.armor)).replace('CArmor','CArmorSmall')]:null;return{key:slot.key,title:text[(t.info.i18n_key||slot.key.toUpperCase())+'_NAME'],portrait:t.info.portrait,type,values:{damage:stats.attack,cooldown:stats.reload,health:stats.health,armor}};}
+function markup(ui,source,data){const root=source.view,ref=root.size,partA=ui.find(root,'infobar_part_a'),partB=ui.find(root,'infobar_part_b');let html='';
+ function visit(n,ox=0,oy=0){const x=ox+(n.pos?.x||0)-(n.anchor?.x||0),y=oy+(n.pos?.y||0)-(n.anchor?.y||0);if(n.shape){const a=n.shape.args,c=n.colors.background;html+=`<div class="infobar-shape" style="${rectStyle(x+a[1],y+a[2],a[3],a[4],ref)};border-radius:${a[5]/ref.x*100}cqw;background:rgb(${c.slice(0,3).join(' ')} / ${c[3]/255})"></div>`;}
+ if(n.image_name){const key=n.id==='portrait'?data.portrait:n.image_name,o=n.image_offset||{x:0,y:0};html+=ui.image(key,{pos:{x:x+o.x,y:y+o.y}},ref);}
+ if(n.class==='GGLabel'){const value=n.id==='title'?data.title:data.values[n.id],size=n.size,off=n.text_offset||{x:0,y:0};html+=`<span data-infobar-field="${n.id}" style="${rectStyle(x+off.x,y+off.y,size.x,size.y,ref)};${ui.fontStyle(n.font_name,n.font_size,ref)};color:rgb(${n.colors.text.slice(0,3).join(' ')});text-align:${n.text_align||'left'}">${esc(value??'')}</span>`;}
+ for(const c of n.children||[])visit(c,x,y);
+ }
+ visit({...partA,children:[ui.find(partA,'with_portrait')]});visit({...partB,children:[ui.find(partB,'infobar_stats_type_'+data.type)]});return html;
+}
+const ease=t=>1+2.70158*(t-1)**3+1.70158*(t-1)**2;
+export class Infobar{
+ constructor(app){this.app=app;this.source=app.ui.data.layouts.infobar;this.distance=this.source.view.hidden_y-this.source.view.shown_y;this.offset=this.distance;this.from=this.offset;this.hidden=true;this.phase=1;this.signature='';this.node=document.createElement('div');this.node.id='tower-infobar';this.node.className='source-infobar';this.node.setAttribute('role','status');document.getElementById('battle-ui').append(this.node);this.position();}
+ position(){const r=this.source.view,box=document.getElementById('game'),v=infobarViewport(this.source,box.clientWidth,box.clientHeight),x=v.origin.x+(infobarCenter(this.source,v.sw)-r.anchor.x)*v.scale,y=v.origin.y+(v.sh-r.anchor.y+this.offset)*v.scale;this.node.style.left=x+'px';this.node.style.top=y+'px';this.node.style.width=r.size.x*v.scale+'px';this.node.style.height=r.size.y*v.scale+'px';this.node.style.visibility=this.hidden&&this.phase===1?'hidden':'visible';}
+
+ setHidden(hidden){if(this.hidden===hidden)return;this.hidden=hidden;this.phase=0;this.from=this.offset;}
+ sync(){const a=this.app,w=a.world,data=a.scene==='battle'&&!a.modal&&!a.sceneMotion.busy&&a.selected!==null?towerInfobarData(w,w?.slots[a.selected],a.ui.data.fonts.text,this.source.stats):null;this.setHidden(!data);if(!data){this.entity=null;return;}const entity=w.slots[a.selected];if(this.entity!==entity){this.entity=entity;this.from=this.offset;this.phase=0;}const signature=JSON.stringify(data);if(this.signature!==signature){this.signature=signature;this.node.innerHTML=markup(a.ui,this.source,data);this.node.dataset.tower=data.key;this.node.dataset.statsType=data.type;for(const label of this.node.querySelectorAll('[data-infobar-field]')){const width=label.getBoundingClientRect().width;let size=parseFloat(getComputedStyle(label).fontSize);while(label.scrollWidth>width+1&&size>6){size-=.25;label.style.fontSize=size/this.node.clientWidth*100+'cqw';}}}}
+ update(dt){this.sync();this.phase=Math.min(1,this.phase+dt/.4);this.offset=this.from+((this.hidden?this.distance:0)-this.from)*ease(this.phase);this.position();}
+ reset(){this.node.remove();}
+}

@@ -5,4 +5,6 @@ local literals={};local function visit(fn)local ok,info=pcall(u.funcinfo,fn);if 
  for i=1,info.gcconsts do local x=u.funck(fn,-i);if type(x)=='table'and(info.linedefined==3367 or info.linedefined==3487 or info.linedefined==3500)then literals[tostring(info.linedefined)..':'..tostring(i-1)]=x end
  if pcall(u.funcinfo,x)then visit(x)end end end
 visit(assert(loadfile(base..'all-phone/game_gui.lua')))
-io.write(encode({menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))
+KR_TARGET='phone'
+dofile(base..'all/constants.lua')
+io.write(encode({reference={width=GUI_REF_W,height=GUI_REF_H,minAspect=MIN_SCREEN_ASPECT,maxAspect=MAX_SCREEN_ASPECT},stats={tower=STATS_TYPE_TOWER,barrack=STATS_TYPE_TOWER_BARRACK,mage=STATS_TYPE_TOWER_MAGE},menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))

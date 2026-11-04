@@ -17,6 +17,7 @@ layouts['tutorials']=[read('game_gui_noti_tutorial_'+str(i)) for i in range(1,4)
 notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 tower_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_tower_menu.lua')]))
+layouts['infobar']={'reference':tower_data['reference'],'view':find(game,'infobar_view'),'powers':{k:v for k,v in find(game,'powers_view').items() if k!='children'},'bag':{k:v for k,v in find(game,'bag_view').items() if k!='children'},'bagButton':find(game,'bag_button'),'stats':tower_data['stats']}
 layouts['towerMenu']={'menus':tower_data['menus'],'literals':tower_data['literals'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
 layouts['balloons']=notification_data['tutorial_balloons']
 layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['TOWER_LEVEL2','TOWER_LEVEL3','POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
@@ -44,6 +45,7 @@ keys.update('balloon_map_slices_'+p for p in ['lt','ct','rt','lc','cc','rc','lb'
 keys.update(f'upgrades_icons_{i:04}'for i in range(1,33))
 keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
 keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
+keys.update(f'portraits_towers_{i:04}'for i in range(1,5))
 keys.update(['gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
  if key+'_disabled' in c['frames']:keys.add(key+'_disabled')

@@ -221,3 +221,6 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .source-tip-stats>div{position:absolute}.source-tip-stats>div>img{width:8cqw!important;height:8cqw!important}
 .source-tip-stats span{display:block;white-space:nowrap;padding-left:9cqw;line-height:8cqw}
 .source-tower-menu{container-type:inline-size}
+.source-infobar{position:absolute;z-index:3;pointer-events:none;container-type:inline-size}
+.source-infobar .infobar-shape,.source-infobar [data-infobar-field]{position:absolute;pointer-events:none}
+.source-infobar [data-infobar-field]{display:flex;align-items:center;white-space:nowrap;line-height:1;overflow:hidden}
