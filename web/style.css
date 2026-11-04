@@ -188,3 +188,4 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .veil.source-notification-veil[data-notification-wait]{background:transparent}
 #game:has(.source-notification-veil:not([hidden])) #toast{visibility:hidden}
 .wave-flag-exit{pointer-events:none!important;filter:none!important;z-index:3}.wave-reward{position:absolute;pointer-events:none;z-index:4}
+.time-reward{position:absolute;pointer-events:none;z-index:5}

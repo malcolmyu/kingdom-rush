@@ -282,3 +282,11 @@ HudMotion只写各组translate，保持英雄/技能Canvas、图标自身scale�
 核对show_early_wave_reward(1793–1806)、WaveRewardFx(4831–4843)、SpriteDigits(4846–4874)：点击附近的nextwave_coin1–14与waveReward数字，+映射11，每字间距round(width*.7)，以总宽居中、上移金币图高，1.5秒out-quad淡出；coin采用原KUI非loop的ceil取帧后停末帧。原临时顶部金币横幅已移除，World奖励数值未变。Space沿用最近指针位置，无指针时使用画面中心。
 
 148单测、九模式通关及专项验证实际金币增量、两点击只召唤一次、退出副本/奖励清理、手机Space。受控提前波截图不是原版同输入证据。原TimeRewardFx与技能冷却奖励尚未接入；不以仅绘制减少秒数冒充真实冷却生效。完整提前波奖励算法仍需核对原systems后恢复，整体继续in_progress，未达1:1。
+
+## 0.2.27 原提前召唤冷却奖励
+
+核对common systems波次协程：发送非首波时，先round(interval-(tick_ts-last_wave_ts))得到奖励秒数；普通关卡金币ceil(seconds*GS.early_wave_reward_per_second)，原设置为1。新增只读read_wave_rules.lua与wave-rules.mjs，World从此前ceil剩余时间改为原取整顺序。PowerButton.early_wave_bonus(3046–3054)只有cooldown且seconds>1才减start_ts；World仅对已解锁且冷却中的三技能扣减相同秒数，归零截断，事件保留名义秒数用于原数字，避免把实际剩余量当显示奖励。
+
+TimeRewardFx使用waveRewardTimer的负号11/s12，原.7字宽舍入间距、1秒out-quad淡出与数字向上移动图高1/3。其原KView只设置size.x、height保持默认0，因此按钮处根定位y为0，不能按数字图高误设根y=-12；Canvas留白只供数字上移裁切。减时数字附着技能按钮，跟随HUD移动，不改技能原冷却总时长。金币和冷却事件分别消费，首波/自动到时无奖励，已就绪/锁定技能不显示减时。
+
+156单测和九模式完整浏览器通过；专项先真实施放三技能，再正常提前召唤，断言三项真实冷却下降、原数字与清理、手机Space。场景仅提前设置可召唤等待时刻作为受控fixture，截图不是原版同镜头证据。其余镜头/转场、完整敌状态与字体等差异仍在，整体未达1:1。

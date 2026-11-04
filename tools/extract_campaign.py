@@ -17,6 +17,8 @@ def lua(n):
  p=ROOT/'reference/apk'/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(z.read(n))
  return json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/dump_lua.lua'),str(p)]))
 templates=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+wave_rules=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_wave_rules.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+(ROOT/'web/wave-rules.mjs').write_text('// Generated from original kr3/game_settings.lua.\nexport default '+json.dumps(wave_rules,sort_keys=True,separators=(',',':'))+';\n')
 progression=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_progression.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 (ROOT/'web/hero-data.mjs').write_text('// Generated from original kr3/game_settings.lua by tools/read_progression.lua.\nexport default '+json.dumps(progression,sort_keys=True,separators=(',',':'))+';\n')
 groups=['go_towers','go_decals','go_enemies_elven_woods',

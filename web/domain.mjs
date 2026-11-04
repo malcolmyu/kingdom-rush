@@ -1,3 +1,4 @@
+import WAVE_RULES from './wave-rules.mjs';
 import {xpForLevel,levelForXp,xpMultiplier,heroSkills,normalizeHeroProgress,HERO_RULES} from './progression.mjs';
 import {SpellTimeline,inEllipse} from './spells.mjs';
 // Deterministic game rules. No DOM, Canvas, network or storage dependencies.
@@ -65,7 +66,7 @@ export class World{
   const u={id:++this.serial,key,x:r.x,y:r.y,rally:r,hp:h.hp_max||50,maxHp:h.hp_max||50,armor:h.armor||0,speed:t.motion.max_speed,damage:[a.damage_min||1,a.damage_max||3],hitTime:a.hit_time||0,attackCd:a.cooldown||1,cd:0,rangedCd:0,ranged:ranged?{range:ranged.max_range,minRange:ranged.min_range||0,shootTime:ranged.shoot_time||0,cooldown:ranged.cooldown,bullet:ranged.bullet,damage:[bullet.damage_min,bullet.damage_max]}:null,dead:0,respawn:h.dead_lifetime||14,index,home,expires:home===null?this.time+20:Infinity,anim:0,actionAt:this.time,walkAt:this.time,lastHitAt:-Infinity,regen:t.regen,walking:false,flip:false,departAt:this.time};this.soldiers.push(u);return u;
  }
  startWave(){if(!this.active()||this.wave>=this.totalWaves||this.wave&&this.time<this.nextWaveReadyAt)return false;
-  if(this.wave&&Number.isFinite(this.nextWaveAt)){const bonus=Math.max(0,Math.ceil((this.nextWaveAt-this.time)));this.gold+=bonus;if(bonus)this.emit('bonus',{amount:bonus});}
+  if(this.wave&&Number.isFinite(this.nextWaveAt)){const seconds=Math.max(0,Math.floor(this.nextWaveAt-this.time+.5)),bonus=Math.ceil(seconds*WAVE_RULES.early_wave_reward_per_second);this.gold+=bonus;if(bonus)this.emit('bonus',{amount:bonus});if(seconds>1)for(const type of ['lightning','reinforce','arrows'])if(this.unlocked(type)&&this.cooldowns[type]>0){this.cooldowns[type]=Math.max(0,this.cooldowns[type]-seconds);this.emit('cooldown_bonus',{power:type,seconds});}}
   const group=this.data.waves.groups[this.wave++];this.status='playing';
   let end=this.time;for(const w of group.waves){let t=this.time+(w.delay||0)/30;for(const s of w.spawns){const interval=s.interval||0,next=s.interval_next||0;for(let i=0;i<s.max;i++)this.pending.push({at:t+i*interval/30,key:s.creep,road:w.path_index-1,lane:s.fixed_sub_path?clamp(s.path-1,0,2):Math.floor(this.random()*3)});t+=Math.max(0,s.max-1)*interval/30+next/30;}end=Math.max(end,t);}
   this.pending.sort((a,b)=>a.at-b.at);this.nextWaveReadyAt=end;this.nextWaveAt=end+(this.data.waves.groups[this.wave]?.interval||0)/30;if(this.id===1&&this.mode==='campaign'&&this.wave===5)this.addHero();this.emit('wave',{wave:this.wave});return true;
