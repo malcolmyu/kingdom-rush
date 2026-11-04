@@ -6,7 +6,7 @@ OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
 for name in ['index.html','style.css','campaign.mjs','domain.mjs','repository.mjs','renderer.mjs','ui.mjs','spells.mjs','progression.mjs','hero-data.mjs','map.mjs','map-flags.mjs','wave-flags.mjs','battle-portraits.mjs']:
  shutil.copy2(ROOT/'web'/name,OUT/name)
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
-assets={'catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
+assets={'spell-refresh.ogg','catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}

@@ -218,3 +218,11 @@
 新 BattlePortraits 读取 World：原health/xp bars在(2,39)/(2,42)裁切，原numbers字号8显示角色等级；死亡遮罩按实际dead/dead_lifetime缩减；未解锁英雄隐藏。技能使用原selected、locked左右门与power_loading完整/扇形遮罩，按真实70/15/40秒冷却进度读取，不改变冷却。原phone扇面7π/2到3π/2+phase*2π，原selected与普通图层来自包内图集。锁定/冷却按钮禁用，H/1/2/3保留。
 
 138项领域测试、九模式完整browser、入口操作与新肖像专项通过；专项检查实际开始后H选择、半血/死亡、半冷却Canvas状态差异及手机边界，截图为受控状态不是原版同步视频。解锁开门/ready光效时间线、经验升级特效、像素吸附和非零安全区尚未完整恢复，不宣称技能栏或整体完全1:1。
+
+## 0.2.19 技能解锁与就绪时间线
+
+核对 `PowerButton.set_mode`（game_gui.lua:2894–3012）和原模板：phone解锁使用两片 portraits_power_doors1–10（30fps、右门镜像），同起点播放 power_portrait_glow1–12 后隐藏；冷却结束重播光效并通知一次原 GUISpellRefresh。原 sounds/sounds.lua 将此音效映射到 Sound_SpellRefresh.ogg，已提取并纳入构建。
+
+修正前轮接续说明：模板及脚本未赋值 use_tween，所以当前应走原12帧单次图集分支，而不是猜测循环呼吸。0.3/0.5秒alpha tween属于未启用分支，本批没有强制添加。原解锁分支立即enable，本批保留World的合法操作时刻，没有为了开门动画修改冷却或强加额外等待。
+
+PowerTimeline 按每个World独立记录锁定、解锁、冷却和就绪转换，不读取上局状态；暂停时随World时间静止。140项单测、九模式完整浏览器、肖像/手机检查通过；四时刻实际Canvas门与光效取样及ready通知仅一次检查通过。取样人为设置波次/时间，属于受控动作证据，不是原版同步对照或正常通关。原教程、经验升级提示、转场/退出等差异仍存在，整体未达1:1。
