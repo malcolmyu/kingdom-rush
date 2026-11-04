@@ -6,11 +6,12 @@ export const plans={
 };
 const growthCampaignPlan=[["10","archer",1],["5","artillery",1],["2","barrack",3],["10","archer",3],["10","archer",2],["5","barrack",2],["6","archer",3],["7","archer",1],["7","mage",1],["11","archer",3],["2","barrack",1],["1","archer",1],["4","archer",1],["7","mage",2],["1","archer",2],["5","artillery",2],["2","barrack",2],["3","archer",3],["1","artillery",2],["5","artillery",3],["8","archer",2]];
 const campaignVeteranPlan=[["5","artillery",3],["5","artillery",1],["2","barrack",2],["10","archer",1],["4","archer",1],["2","barrack",1],["8","archer",2],["10","archer",2],["3","archer",3],["7","mage",1],["5","artillery",2],["1","archer",2],["1","archer",1],["7","mage",2],["1","archer",3],["2","barrack",3],["10","archer",3],["7","mage",3],["6","archer",3]];
+const trainedHeroicPlan=[["1","barrack",2],["6","artillery",3],["2","archer",1],["5","artillery",2],["7","mage",2]];
 const heroicVeteranPlan=[["28","artillery",2],["24","archer",2],["27","mage",2],["25","mage",2],["24","archer",1],["26","archer",2],["28","artillery",1],["26","archer",2],["20","barrack",2],["27","mage",2],["25","mage",1],["20","barrack",1],["29","barrack",2]];
 const assignedPlans=new WeakMap(),initialXp=new WeakMap();
 export function purchase(w,plan){
  if(!initialXp.has(w))initialXp.set(w,w.heroXp);
- if(!plan){if(!assignedPlans.has(w))assignedPlans.set(w,w.id===2&&w.mode==='heroic'&&w.heroLevel>=3?heroicVeteranPlan:w.id===3&&w.mode==='campaign'&&w.heroLevel<3?growthCampaignPlan:w.id===3&&w.mode==='campaign'&&w.heroLevel>=4?campaignVeteranPlan:plans[w.id][w.mode]);plan=assignedPlans.get(w);}
+ if(!plan){if(!assignedPlans.has(w))assignedPlans.set(w,w.id===3&&w.mode==='heroic'&&w.heroSkills.multishot>=2?trainedHeroicPlan:w.id===2&&w.mode==='heroic'&&w.heroLevel>=3?heroicVeteranPlan:w.id===3&&w.mode==='campaign'&&w.heroLevel<3?growthCampaignPlan:w.id===3&&w.mode==='campaign'&&w.heroLevel>=4?campaignVeteranPlan:plans[w.id][w.mode]);plan=assignedPlans.get(w);}
  for(const [holder,type,level]of plan){const s=w.slots.find(s=>String(s.holder)===holder);if(!s)continue;if(!s.type){if(w.build(s.id,type))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}if(s.type===type&&s.level<level){if(w.upgrade(s.id))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}}
  return false;
 }
