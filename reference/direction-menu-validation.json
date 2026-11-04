@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "id": 1,
+      "mode": "campaign",
+      "samples": 390
+    },
+    {
+      "id": 1,
+      "mode": "heroic",
+      "samples": 390
+    },
+    {
+      "id": 1,
+      "mode": "iron",
+      "samples": 390
+    },
+    {
+      "id": 2,
+      "mode": "campaign",
+      "samples": 1155
+    },
+    {
+      "id": 2,
+      "mode": "heroic",
+      "samples": 1155
+    },
+    {
+      "id": 2,
+      "mode": "iron",
+      "samples": 1155
+    },
+    {
+      "id": 3,
+      "mode": "campaign",
+      "samples": 1245
+    },
+    {
+      "id": 3,
+      "mode": "heroic",
+      "samples": 1245
+    },
+    {
+      "id": 3,
+      "mode": "iron",
+      "samples": 1245
+    }
+  ],
+  "menu": {
+    "duration": 120,
+    "scale": [
+      0.6,
+      1
+    ],
+    "easing": "out-quad",
+    "close": true,
+    "reopen": true,
+    "reducedMotion": true
+  },
+  "errors": []
+}

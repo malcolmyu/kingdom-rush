@@ -1,7 +1,19 @@
 // Canvas presentation. Reads the simulation; never changes game rules.
 const values=x=>Array.isArray(x)?x:Object.values(x||{});
+// Source utils.animation_name_for_angle: three directions, 45-degree sectors,
+// and a 10-degree hysteresis band. Native side-view frames face right.
+export function enemyDirection(dx,dy,previous=null,stickiness=10){
+ if(!dx&&!dy)return previous||{facing:'RightLeft',flip:false,quadrant:4};
+ const angle=(Math.atan2(dy,dx)*180/Math.PI+360)%360;
+ const shift=previous?(previous.quadrant===1||previous.quadrant===3?stickiness:-stickiness):0;
+ const [a,b,c,d]=[45-shift,135+shift,225-shift,315+shift];
+ if(angle>=a&&angle<b)return{facing:'Up',flip:false,quadrant:1};
+ if(angle>=b&&angle<c)return{facing:'RightLeft',flip:true,quadrant:2};
+ if(angle>=c&&angle<d)return{facing:'Down',flip:false,quadrant:3};
+ return{facing:'RightLeft',flip:false,quadrant:4};
+}
 export class Renderer{
- constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=7/6;this.map=null;this.missing=new Set();}
+ constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=7/6;this.map=null;this.missing=new Set();this.enemyDirections=new WeakMap();}
  screen(p){return{x:this.width/2+(p.x-512)*this.k,y:this.height/2-(p.y-384)*this.k};}
  world(p){return{x:(p.x-this.width/2)/this.k+512,y:(this.height/2-p.y)/this.k+384};}
  async sheet(name){if(!this.sheets.has(name))this.sheets.set(name,await this.repo.image('assets/images/'+name));return this.sheets.get(name);}
@@ -40,7 +52,7 @@ export class Renderer{
     const overrides={'tower.terrain_style':s.terrain},spriteStates={};for(const[i,raw]of w.template(s.key).render.sprites.entries())if(raw.angles_flip_horizontal)spriteStates[i+1]={flip:s.flip};if(s.type==='archer'&&s.level>1){for(let i=3;i<=4;i++)if(i!==s.shooterIndex+3)spriteStates[i]={state:'idle',time:0};}if(s.type==='artillery'){const loading=w.time>=s.reloadAt&&w.time<s.reloadUntil;overrides['render.sprites[3].hidden']=!loading;if(loading){state='load';time=w.time-s.reloadAt;}}this.entity(s.key,s,{time,state,facing:s.facing,spriteStates,overrides});}continue;}
    if(a.plant){this.entity(a.plant.key,a.plant,{time:w.time,state:a.plant.anim?'shoot':'idle'});if(a.plant.cd>0){const p=this.screen(a.pos);c.font='18px Obelix';c.fillStyle='#f6e3ac';c.textAlign='center';c.fillText(Math.ceil(a.plant.cd),p.x,p.y-35);}continue;}
    const u=a.unit;if(u.leaked||u.departAt>w.time||u.hp<=0&&!a.enemy&&(a.hero||u.dead>1.5))continue;let state='idle',facing='Down',flip=false,t=w.time+u.id*.031;
-   if(a.enemy){if(u.hp<=0){state='death';t=w.time-u.deadAt;}else if(u.anim>0){state=u.anim&&u.ranged?'shoot':'attack';t=u.anim ? .6-u.anim : w.time;}else state=u.blocked?'idle':'walk';facing=Math.abs(u.dy)>Math.abs(u.dx)*1.5?(u.dy>0?'Up':'Down'):'RightLeft';flip=u.dx>0;
+   if(a.enemy){if(u.hp<=0){state='death';t=w.time-u.deadAt;}else if(u.anim>0){state=u.anim&&u.ranged?'shoot':'attack';t=u.anim ? .6-u.anim : w.time;}else state=u.blocked?'idle':'walk';const direction=enemyDirection(u.dx,u.dy,this.enemyDirections.get(u),this.catalog.templates[u.key]?.render?.sprites?.[0]?.angles_stickiness?.walk||0);this.enemyDirections.set(u,direction);facing=direction.facing;flip=direction.flip;
     const raw=this.catalog.templates[u.key]?.render?.sprites?.[0],prefix=raw?.prefix,animation=prefix+'_'+(state==='walk'?'walking'+facing:state);const p=this.screen(u),name=this.frame(animation,t,state!=='death');
     if(u.flying){c.fillStyle='#193a2c55';c.beginPath();c.ellipse(p.x,p.y+10,20,7,0,0,Math.PI*2);c.fill();}
     if(name)this.sprite(c,name,p.x,p.y-(u.flying?25:0),1,raw.anchor?.x??.5,1-(raw.anchor?.y??.15),flip,u.hp<=0?Math.max(0,1-t/1.2):1);
