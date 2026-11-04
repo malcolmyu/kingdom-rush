@@ -1,5 +1,5 @@
 {
-  "version": "0.2.31",
+  "version": "0.2.32",
   "stages": 3,
   "modes": [
     "campaign",
@@ -18,13 +18,13 @@
     "tutorials.mjs": "f252a55eaef3e66388d7b6b5a8cd0a0ad750c8bef21a7508490f5e0b95b465bd",
     "enemy-notifications.mjs": "891b6d08d182fc8dde3eb74097865b0f1d7a13f68fb540ea66534814bb7d6c0e",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "domain.mjs": "28e28e1cd2ff8032d618b7e8491eb4697a23f7bbc01b1af45c0a30017b5eb69f",
+    "domain.mjs": "9398a6ca89a9b9f30e2d6f486c4dc98e97ae29c66cad27378537aece588e0331",
     "results.mjs": "a3d42b65b0289d7999303afa3bae0b7589818fccf6e3131ff7af69dc78a4cadc",
     "hud-motion.mjs": "5004bff195b5822726747f0902b2e284ab68bee6ad6123ca683ec95d623da78a",
     "style.css": "f7bb677356f6e289d436e5f44fe1ef09330630c8244f6e46535594099c5e774d",
     "guidance.mjs": "1c68a574114aba113ce863a417de1c6e36855529e7b631aa9efe0bd6d9b172e1",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
-    "renderer.mjs": "8505f8e7c46483c7f1b2bd3e354118a43016755543b3e053063b424e46112a9a",
+    "renderer.mjs": "db550159f1df16a6a06a34c296abddbe6d915cf5d3d5073f33df620aef5e4a5c",
     "campaign.mjs": "be606226799ad92c2faefef2d137b803e30abd75397f3a97670f1bf26924d47d",
     "map-flags.mjs": "06a801d6637b97d17f257547f43b669ba0a862f03dc246c183c9d1501632b9b9",
     "wave-reward.mjs": "4d027faf3f448135daf5a449e175f978753c2ffc63e07989bcff392aff99c508",
