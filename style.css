@@ -143,3 +143,6 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .wave-entrance{position:absolute;width:4.3062%;aspect-ratio:1;transform:translate(-50%,-50%);background:none;border:0;padding:0;touch-action:manipulation}
 .wave-entrance:hover:not(:disabled){filter:brightness(1.2)}
 .wave-entrance:focus-visible,.native-pause:focus-visible{outline:2px solid #fff1a0;border-radius:50%}
+
+.wave-entrance{width:6.0287%}
+#incoming-wave{position:absolute;left:30%;top:3%;max-width:45%;padding:.7cqw 1cqw;background:#172e20ed;border:1px solid #aaa078;border-radius:5px;font:1.2cqw OriginsCJK;color:#f3eccf;pointer-events:none}
