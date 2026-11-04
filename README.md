@@ -1,6 +1,10 @@
 王国保卫战：起源 · 第一关「灰鸦港口」试玩
 ================================================
 
+在线试玩：https://kingdom-rush-origins-first-level.minghaoyusombie.chatgpt.site
+
+通过 Sites 发布，当前为私人访问，需要使用创建站点的 ChatGPT 账号登录。GitHub Pages 尚未开启。
+
 打开 `灰鸦港口试玩.html` 即可玩。下载到电脑后用 Chrome、Edge 或 Safari 打开；无须安装依赖，也无须服务器。手机建议横屏。附件预览器如不允许运行脚本，请下载文件后在浏览器中打开。
 
 操作
