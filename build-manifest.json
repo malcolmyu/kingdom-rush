@@ -1,5 +1,5 @@
 {
-  "version": "0.2.39",
+  "version": "0.2.40",
   "stages": 3,
   "modes": [
     "campaign",
@@ -37,7 +37,7 @@
     "map.mjs": "3f53cedf18b6c1374dd0a6c064ad0d2a3d73105a109b746d312483600115abd3",
     "scene-transition.mjs": "e61d9a01fafca32a70677dbee3effe9d3164a6f8396b31b967c9ab21bcba0bc1",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
-    "upgrades.mjs": "e1b8499d323287eeb25c397a2cbe241f89f56adbe4d56bb242b45604342ef919",
+    "upgrades.mjs": "36c0b8cc41b03ea3cc6b874ff20e61c236c672660e846f7d4b9e4d6b53cad429",
     "wave-rules.mjs": "67f68bd365addb57a36c4dd0d25c0fe43b0f3d5ea016d67fd296bbb5c3f8b298",
     "hero-data.mjs": "16dd0cffb1fb54126773301b0ccbc473f0f1ac280bc0acca259200e803a869d4",
     "assets/quest-completed.ogg": "d8a64b156e7c9789397457e45fde8327b055b4a657e5b592683adc9b5058b466",
@@ -64,7 +64,7 @@
     "assets/spell-refresh.ogg": "8b5c5d74274d2ccd5cf6497afe8d9eb6e7246a6e65627d560d989d00ec223949",
     "assets/notification-open.ogg": "8db004127b2c62052100bc8d31b75522f16e86ea9a9c010c99010e790a065289",
     "assets/door.ogg": "646d7e56e98ce11a2b9acf031ce809ac9616f240c30b5eccb60456058aae9a6d",
-    "assets/catalog.json": "040f42dd906493e3fb36789fd8f29b4a3cf19e827e7c62e033273cf8909e355f",
+    "assets/catalog.json": "6fba5e6c72b0bd207cf5e806744f702e274e6dc8bcb149b9968ae3a0526d1536",
     "assets/upgrade-buy.ogg": "07356718c7bbea07d2e806358901dc91d4998b39413487df3f72a6330f54352d",
     "assets/levelup.ogg": "e0639382bbfdaf3419c202f8e3dcf11ffee988bd091aa20342fd08c94a5497ea",
     "assets/nimble.ogg": "6335bb4c56344c01d56d75d24b5dc326e8c8dda1fde731203395d87b53ee18a5",
@@ -608,7 +608,7 @@
     "assets/levels/02-heroic.json": "281121a5a1cc7347de1d3955d82c974e9ce6c7355a7e18de62be4389c1036f1a",
     "assets/fonts/SohoGothicProMedium.ttf": "8e9baf6733cc105a2b2a6f409375394f07880aea41385fafd5128aec1fbec93f",
     "assets/fonts/Comic Book Italic.ttf": "bd7e13f8fc1fb4dca3e5b5adb0941b1f101d8fe40f7cc3dbb434fd5103a6306f",
-    "assets/fonts/catalog.json": "efbc981071338eeec8b550cd643b4bb4833330db31af32ce0008dfcfdc1ddbbf",
+    "assets/fonts/catalog.json": "ed3914103b982efa496fe5866cca846aa0b0a735ef55f3633677af1f1fe52776",
     "assets/fonts/NotoSansCJKkr-Regular.otf": "de59c8b36a6260bb106893a691935e9b8e874989aafefd175af35dcd08518481",
     "assets/fonts/NotoSansCJKkr-Bold.otf": "541b576095cd50d08890f2729d43cef4c02c70a6ccf5da2be3dca4ccd54e071e"
   }

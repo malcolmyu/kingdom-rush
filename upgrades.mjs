@@ -1,5 +1,5 @@
 import DATA from './upgrade-data.mjs';
-export const TRAINABLE_UPGRADES=['archer_el_master_shooter','barrack_el_elven_fencing','mage_el_crystal_focus','stone_el_druid_hardened_boulders','archer_el_treesinged_bow','barrack_el_expert_tactician','mage_el_bane_spell','stone_el_druid_sharp_splinters'];
+export const TRAINABLE_UPGRADES=['archer_el_master_shooter','barrack_el_elven_fencing','mage_el_crystal_focus','stone_el_druid_hardened_boulders','archer_el_treesinged_bow','barrack_el_expert_tactician','mage_el_bane_spell','stone_el_druid_sharp_splinters','thunder_level_1'];
 export const upgradeData=DATA;
 // Original utils.count_stars: campaign stars plus one for each completed challenge.
 export function totalStars(save){return Object.entries(save.stars||{}).filter(([id])=>+id<80).reduce((n,[,v])=>n+Math.max(0,Math.min(3,Number(v)||0)),0)+Object.entries(save.challenges||{}).filter(([key,v])=>v&&+key.split('-')[0]<80&&/-(heroic|iron)$/.test(key)).length;}
@@ -12,7 +12,7 @@ export function resetUpgrades(save){save.upgrades={};}
 export function patchUpgradeTemplates(templates,selected={},maxLevel=Infinity){
  const active=TRAINABLE_UPGRADES.filter(k=>selected[k]===true&&DATA.list[k].level<=maxLevel&&(!previousUpgrade(k)||selected[previousUpgrade(k)]===true));
  if(!active.length)return templates;const t=structuredClone(templates);
- for(const key of active){const u=DATA.list[key];for(let i=1;i<=3;i++){
+ for(const key of active){const u=DATA.list[key];if(key==='thunder_level_1'){t.power_thunder_control.thunders[0].count=u.hits;t.power_thunder_control.user_power.level=1;continue;}for(let i=1;i<=3;i++){
   const type={archers:'archer',barracks:'barrack',mages:'mage',rocks:'rock_thrower'}[u.class],tower=t[`tower_${type}_${i}`];if(!tower)continue;
   if(key==='archer_el_master_shooter')tower.tower.damage_factor=(tower.tower.damage_factor??1)*u.damage_factor;
   if(key==='barrack_el_elven_fencing')tower.tower.price=Math.ceil(tower.tower.price*u.cost_factor);
