@@ -455,3 +455,11 @@ storage.get_slot_progress原316–358计战役星与每个已完成英雄/钢铁
 原HeroThumbView3908–3952/3955–4115/4186–4189：补当前艾莉丹缩略图原边框/check与已选择图面；实际点击缩略图执行show(true)刷新第一项技能，缩略图与大肖像白闪.2秒in-quad(1-t²)。这与select4117–4153的.8秒反馈是不同路径；当前仅一个已选英雄，不假造新角色选择/解锁。独立HeroFeedback由UI时钟驱动，重入/关闭/切场景清理，不改World。补齐原1202–1206训练GUIBuyUpgrade音效（源gain .6），仍使用原真实点数函数。
 
 212领域测试、九模式浏览器三战役三星、hero-room/UI/guidance专项通过；新增hero-help专项验证首次显示、实际点击与键盘、关闭不已读、刷新/重入/存档隔离、0/100/200ms双处白闪和手机。共用测试helper真实点击继续，不预置seen。图片是当前受控取样，非原版同步像素证据；气泡测高/换行及Love字体/随机后端仍有差异，完整角色列表/跨角色选择未实现，整体继续未达1:1。
+
+### 0.2.47 原百科敌人分支
+
+新增encyclopedia.mjs，替换五篇CSS统计文章。按原screen_map1854–1912、3707–3805与phone模板接入原索引、敌人书页、16格缩略图、插画/相框、姓名/描述/特殊能力与六项统计、分页和返回。read_encyclopedia.lua只读kr3/game_settings声明，导出原47条/3页顺序；盗匪always_shown，其余四种由真实spawn通知产生的seenNotifications解锁，未见原锁图且禁用，不因浏览百科而mark_seen。超出当前五种支持范围的条目保持锁定；防御塔/提示/外部攻略分支目前disabled，未伪装为可用功能，尚不是完整百科。
+
+原独立encyclopedia_thumbs图集之前未提取，现加入可复现完整提取，catalog11534frames/146sheets，UI412sprites/18layouts。确认本次重提没有改变任何模板或动画数据。normal/base模板统计不读取当前战斗难度：生命/物理魔法护甲、速度按gui_utils分类、近战伤害ceil（零或无伤害显示None原译文）、lives_desc原文。法术/攻击行为不改。布局镜像按原锚点画两半书页，按钮按原hit_rect，fit_lines采用浏览器文本测高近似并保留相对单位，旋转/resize不锁死像素字号。纸张翻页原GUINotificationPaperOver音效已提取，源码/构建可复现。
+
+214Node、九模式完整browser三战役三星、UI及新encyclopedia专项通过。专项按真实按钮进入，正常点三页开场教程后通过World.spawn受控首见四种敌人，检查5详情、已见/未见/3页、返回、重载/存档隔离、手机；这不是无修改通关证据，九模式天然XP链独立保留。截图已查看，为当前受控样本，非原版同步。全文字体基线/换行、部分按钮按下反馈/索引非敌人分支与完整敌人册仍有差异，整体仍不1:1。
