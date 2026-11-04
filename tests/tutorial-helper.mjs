@@ -1,1 +1,3 @@
 export async function dismissOpeningTutorial(page){await page.waitForFunction(()=>!window.origins?.app.sceneMotion?.busy);for(let i=0;i<3;i++){if(!await page.locator('#dialog[data-tutorial-page]').isVisible())return;const next=page.locator('#tutorial-continue_button');if(await next.count())await next.click();else{await page.locator('#tutorial-gotit_button').click();return;}}}
+
+export async function dismissHeroRoomHelp(page){const help=page.locator('#hero-help-continue');if(await help.isVisible())await help.click();}

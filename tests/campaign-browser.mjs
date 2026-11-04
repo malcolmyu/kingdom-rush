@@ -1,4 +1,4 @@
-import {dismissOpeningTutorial} from './tutorial-helper.mjs';
+import {dismissOpeningTutorial,dismissHeroRoomHelp} from './tutorial-helper.mjs';
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,7 +37,7 @@ await page.reload();await page.waitForFunction(()=>window.origins);await page.lo
 for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
  if(id===1&&mode==='campaign')continue;
  // Spend earned points through the real hero room before the third campaign.
- if(id===3&&mode==='campaign'){await page.locator('#hero-room').click();await page.locator('#hero-skill-multishot').click();await page.locator('#hero-train').click();await page.locator('#hero-train').click();assert.equal(await page.evaluate(()=>origins.app.progress.heroSkills.multishot),2);await page.locator('#hero-done').click();}
+ if(id===3&&mode==='campaign'){await page.locator('#hero-room').click();await dismissHeroRoomHelp(page);await page.locator('#hero-skill-multishot').click();await page.locator('#hero-train').click();await page.locator('#hero-train').click();assert.equal(await page.evaluate(()=>origins.app.progress.heroSkills.multishot),2);await page.locator('#hero-done').click();}
  await page.locator(`[data-level="${id}"]`).click();await page.locator(`[data-mode="${mode}"]`).click();await page.locator('#difficulty').selectOption('1');
  await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
  if(mode==='iron'){await page.locator('[data-build-slot]').first().click();const prohibited=id===2?'mage':'archer';const option=page.locator(`[data-type="${prohibited}"]`);if(await option.count())assert.equal(await option.isDisabled(),true);await page.keyboard.press('Escape');}

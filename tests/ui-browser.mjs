@@ -1,4 +1,4 @@
-import {dismissOpeningTutorial} from './tutorial-helper.mjs';
+import {dismissOpeningTutorial,dismissHeroRoomHelp} from './tutorial-helper.mjs';
 import {chromium}from'playwright';import assert from'node:assert/strict';import fs from'node:fs';
 const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}),page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
