@@ -20,6 +20,9 @@ with zipfile.ZipFile(args.apk) as z:
   texts(layout)
  for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES']:
   texts(json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'),key])))
+ data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua')]))
+ for balloon in data['tutorial_balloons'].values():
+  wanted.extend(balloon[k]for k in ['text','title']if k in balloon)
  p=ROOT/'artifacts/fonts-hud.lua';p.write_bytes(z.read('assets/gc64/kr3-phone/data/kui_templates/game_gui.lua'))
  ui=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_ui.lua'),str(p)]))
  def find(n,id):

@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.21",
+  "version": "0.2.22",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -24,7 +24,8 @@
     "test:portraits": "node tests/portraits-browser.mjs",
     "test:power-motion": "node tests/power-motion-browser.mjs",
     "test:tutorial": "node tests/tutorial-browser.mjs",
-    "test:notifications": "node tests/notifications-browser.mjs"
+    "test:notifications": "node tests/notifications-browser.mjs",
+    "test:guidance": "node tests/guidance-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"
