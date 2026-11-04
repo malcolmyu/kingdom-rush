@@ -49,6 +49,7 @@ for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
 }
 assert.equal(await page.evaluate(()=>Object.keys(origins.app.progress.challenges).length),6);
 assert.equal(await page.evaluate(()=>Object.values(origins.app.progress.stars).reduce((a,b)=>a+b,0)),9);
+await page.waitForFunction(()=>origins.app.scene==='map'&&!origins.app.sceneMotion.busy&&origins.app.mapScene?.ready);
 await settle();await page.screenshot({path:path.join(out,'07-全模式完成.png')});
 await page.setViewportSize({width:844,height:390});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
 await page.locator('[data-level="3"]').click();await page.locator('[data-mode="iron"]').click();await settle();await page.screenshot({path:path.join(out,'08-手机模式选择.png')});
