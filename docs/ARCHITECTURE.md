@@ -160,3 +160,5 @@ HudMotion从导出的battleHud父容器尺寸计算各组偏移，以独立展�
 WaveFlag退出将已绘制Canvas复制到不可交互副本，保留稳定输入按钮给下一波。WaveReward只消费World bonus事件绘制原金币和数字，不增减金币或冷却；展示时间与世界模拟分离，场景切换清理。
 
 提前波奖励在World.startWave内以原取整顺序结算金币与冷却，分别发bonus/cooldown_bonus事件。后者使用power字段，不能覆盖事件type。WaveReward仅绘制这次实际结算的名义秒数，技能状态继续由World维护；原规则数据独立生成wave-rules，避免与英雄训练配置混用。
+
+ResultMotion以独立展示时钟读取已结束World的模式/星数，按原模板选择徽章及星帧，串行控制按钮显隐和启用、原星声音。结果保存仍在Campaign完成，展示时间线不改变通关阈值/奖励，场景切换销毁控制器。
