@@ -18,6 +18,8 @@ with zipfile.ZipFile(args.apk) as z:
     if isinstance(n.get('text'),str):wanted.append(n['text'])
     for child in n.get('children',[]):texts(child)
   texts(layout)
+ for key in ['POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES']:
+  texts(json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'),key])))
  p=ROOT/'artifacts/fonts-hud.lua';p.write_bytes(z.read('assets/gc64/kr3-phone/data/kui_templates/game_gui.lua'))
  ui=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_ui.lua'),str(p)]))
  def find(n,id):

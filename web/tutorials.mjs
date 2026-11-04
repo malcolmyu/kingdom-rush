@@ -1,8 +1,11 @@
 import{rectStyle}from'./ui.mjs';
 const escape=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 // Source tutorial layouts retain their own 372/464 x 320 reference boxes.
-export function tutorialMarkup(ui,page){const layout=ui.data.layouts.tutorials[page-1],ref=layout.size,text=ui.data.fonts.text;let html='<h2 id="dialog-title" class="sr-only">'+escape(text.INGAME_TUTORIAL_INSTRUCTIONS)+'</h2>';
+export function tutorialMarkup(ui,page){return layoutMarkup(ui,ui.data.layouts.tutorials[page-1]);}
+export function layoutMarkup(ui,layout){const ref=layout.size,text=ui.data.fonts.text;let html='<h2 id="dialog-title" class="sr-only">'+escape(text[layout.children?.[0]?.text]||text.INGAME_TUTORIAL_INSTRUCTIONS)+'</h2>';
  function visit(n,ox=0,oy=0){const x=ox+(n.pos?.x||0)-(n.anchor?.x||0),y=oy+(n.pos?.y||0)-(n.anchor?.y||0),button=n.default_image_name,key=button||n.image_name;
+  if(n.slices_prefix){if(n.direction==='h'){const a=ui.data.images[n.slices_prefix+'_lt'],b=ui.data.images[n.slices_prefix+'_ct'];html+=`<div class="notification-panel" style="${rectStyle(x,y,n.size.x,n.size.y,ref)};grid-template-columns:${a.size[0]/2/n.size.x*100}% 1fr ${a.size[0]/2/n.size.x*100}%"><img src="${a.src}" alt=""><img src="${b.src}" alt=""><img src="${a.src}" style="transform:scaleX(-1)" alt=""></div>`;}else html+=ui.nine(n.slices_prefix,{x,y,w:n.size.x,h:n.size.y},ref);}
+  if(n.class==='GGLayout'){html+=`<div class="notification-flow" style="${rectStyle(x,y,n.size.x,n.size.y,ref)};gap:${(n.space||0)/ref.x*100}cqw">`+Object.values(n.children||{}).map(child=>`<div style="${ui.fontStyle(child.font_name,child.font_size,ref)};color:rgb(${(child.colors?.text||[24,26,15]).slice(0,3).join(' ')});line-height:${child.line_height||1.1}">${escape(text[child.text]||child.text)}</div>`).join('')+'</div>';return;}
   if(key){const node={...n,pos:{x,y},anchor:{x:0,y:0}};html+=button?ui.button('tutorial-'+n.id,text[n.text]||n.text,node,ref):ui.image(key,node,ref);}
   if(n.text){const off=n.text_offset||{x:0,y:0},size=n.text_size||n.size||{x:100,y:20},color=n.colors?.text||[61,49,35],tag=n.font_name==='body_bold'?'strong':'span';html+=`<${tag} class="tutorial-text" style="${rectStyle(x+off.x,y+off.y,size.x,size.y,ref)};${ui.fontStyle(n.font_name,n.font_size,ref)};color:rgb(${color.slice(0,3).join(' ')});line-height:${n.line_height||1.1};${n.r?'rotate:'+n.r+'rad;':''}">${escape(text[n.text]||n.text)}</${tag}>`;}
   for(const child of Object.values(n.children||{}))visit(child,x,y);

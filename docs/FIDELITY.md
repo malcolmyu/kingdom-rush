@@ -234,3 +234,13 @@ PowerTimeline 按每个World独立记录锁定、解锁、冷却和就绪转换�
 新 tutorialMarkup 按原节点坐标/锚点绘制图片和文本。首次弹出暂停World，完成、跳过或关闭恢复；已展示页面标记保存在当前槽位seenNotifications，重载/重进不重复弹；挑战不触发。首关临时顶部准备提示由教程替换，其他关卡不再弹原型准备横幅。原资源提取新增gui_notifications_bg/common及三页布局，fonts提取自动收集原页面文本。
 
 140领域测试、九模式真实browser及原UI/手机检查通过，浏览器实际点击三页按钮（未预置已读绕过）；新专项检查三页、暂停、完成/跳过、重载存档与挑战不弹。页面换行/默认文本对齐、原进入退出动画和遮罩仍需同镜头校准。援军/雷电/英雄波次通知、新敌人提示和教学气泡尚未接入，本批不宣称完整通知系统或整体达到1:1。
+
+## 0.2.21 原援军、雷电与英雄通知
+
+只读提取原 kr3-phone/data/game_gui_data.notifications 及 ctx 模板，新增read_notifications.lua（设计时vector/i18n/伤害枚举stub，不执行游戏控制脚本）。按level01.lua在波2/3/5展示POWER_REINFORCEMENT/POWER_THUNDERBOLT/TIP_HEROES，读取原图、标题、中文描述和确认按钮。原power面板是direction=h的三片背景，不是九宫格；采用lt/ct及镜像右片，修复Grid默认最小尺寸使切片越界的问题，并检查内部图片边界。
+
+通知串行展示并暂停World，确认后恢复或展示下一条；展示时保存seenNotifications。三个原描述都有always=true，按原show_notification规则，重玩仍展示，不错误地用已读压掉。挑战模式不触发；移除已由通知替代的临时波次/能力横幅。GGLayout顶向文字流使用浏览器行高近似，仍需原字体测高校准。
+
+140项单测、九模式浏览器通过；通关脚本每步消费实际事件，通过正常按钮click关闭三条通知并断言顺序，未预置已读或禁用通知。专项验证真实startWave触发、暂停/恢复、已读/always重玩、串行排队、挑战排除和手机边界，截图是受控波次fixture。
+
+原TUTORIAL_1/2/3描述也有always=true，本批修正前批开场教程“已读不重复”的错误策略：重玩仍显示，已读记录保留而非用作压制always通知。原教学气泡、新敌人icon队列及面板过渡/音效仍未完整恢复；整体继续进行。

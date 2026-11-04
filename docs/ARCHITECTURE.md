@@ -146,3 +146,5 @@ BattlePortraits 将原英雄肖像和技能图层画到按钮Canvas，读取已�
 PowerTimeline 按World隔离展示状态转换，输出门/光效帧和一次就绪通知；BattlePortraits 绘制帧，Campaign 接收通知播放原声音。展示时间线不更改技能可用时刻或世界冷却。
 
 Tutorial markup从原布局递归展开图片/文本/按钮，源坐标在各页独立参考容器中换算。Campaign管理页间导航、暂停恢复与seenNotifications存档；领域World不参与教程UI。浏览器回归通过合法点击教程按钮进入战斗，不设置测试专用跳过开关。
+
+通知布局连同原ctx元数据由extract_ui导出，字体提取同步收集所用中文。Campaign将首关波次事件映射到队列，展示与seen记录/always策略分离，模态关闭后串行继续。测试策略提供可选afterStep观察器，浏览器在真实事件边界触发通知按钮的正常处理，不修改World数据以绕开暂停。
