@@ -146,3 +146,14 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 
 .wave-entrance{width:6.0287%}
 #incoming-wave{position:absolute;left:30%;top:3%;max-width:45%;padding:.7cqw 1cqw;background:#172e20ed;border:1px solid #aaa078;border-radius:5px;font:1.2cqw OriginsCJK;color:#f3eccf;pointer-events:none}
+
+/* Source IncomingTooltip uses a filled rectangle and polygon, not atlas slices. */
+#incoming-wave{left:auto;top:auto;max-width:none;padding:0;background:rgb(21 17 13 / 86.2745%);border:0;border-radius:0;pointer-events:none;z-index:5}
+#incoming-wave strong,#incoming-wave div,#incoming-wave small{position:absolute;left:0;width:100%;text-align:center;line-height:1.2;white-space:pre;display:block;font-weight:400}
+#incoming-wave strong{color:rgb(255 115 55);font-weight:700}
+#incoming-wave div{color:rgb(255 245 210)}
+#incoming-wave small{color:rgb(255 131 69)}
+#incoming-wave::before{content:'';position:absolute;width:1.443cqw;height:1.7316cqw;left:-.7215cqw;top:-.8658cqw;background:inherit;clip-path:polygon(0 100%,100% 50%,50% 50%,50% 0)}
+#incoming-wave[data-left=true]::before{left:auto;right:-.7215cqw;transform:scaleX(-1)}
+#incoming-wave[data-below=false]::before{top:auto;bottom:-.8658cqw;transform:scaleY(-1)}
+#incoming-wave[data-left=true][data-below=false]::before{transform:scale(-1)}
