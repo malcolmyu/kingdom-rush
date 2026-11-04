@@ -144,3 +144,5 @@ waveEntrances 读取原关卡作者入口，findWaveFlagPosition 以显式可见
 BattlePortraits 将原英雄肖像和技能图层画到按钮Canvas，读取已结算XP、血量/复活时间、冷却与输入选择。按钮可访问状态仍由Campaign控制，渲染器不写World；战斗核心与展示冷却相分离。
 
 PowerTimeline 按World隔离展示状态转换，输出门/光效帧和一次就绪通知；BattlePortraits 绘制帧，Campaign 接收通知播放原声音。展示时间线不更改技能可用时刻或世界冷却。
+
+Tutorial markup从原布局递归展开图片/文本/按钮，源坐标在各页独立参考容器中换算。Campaign管理页间导航、暂停恢复与seenNotifications存档；领域World不参与教程UI。浏览器回归通过合法点击教程按钮进入战斗，不设置测试专用跳过开关。

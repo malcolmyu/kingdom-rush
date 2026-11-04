@@ -10,6 +10,14 @@ with zipfile.ZipFile(args.apk) as z:
   p=ROOT/'artifacts'/('fonts-'+key+'.lua');p.parent.mkdir(exist_ok=True);p.write_bytes(z.read(name));sources[key]=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/dump_lua.lua'),str(p)]))
  roles={entry[0]:{'name':entry[1],'metrics':entry[2]if len(entry)>2 else {}}for entry in sources['mapping']['zh-Hans']+sources['mapping']['global']}
  wanted=[f'LEVEL_{i}_{suffix}'for i in range(1,4)for suffix in ['TITLE','HISTORY','IRON_UNLOCK','MODES_UPGRADES']]+['LEVEL_MODE_CAMPAIGN','LEVEL_MODE_HEROIC','LEVEL_MODE_IRON','LEVEL_MODE_HEROIC_DESCRIPTION','LEVEL_MODE_IRON_DESCRIPTION','MENU_HUD_WAVES','INCOMING WAVE','WAVE_TOOLTIP_TAP_AGAIN']
+ for i in range(1,4):
+  p=ROOT/'artifacts'/('fonts-tutorial-'+str(i)+'.lua');p.write_bytes(z.read('assets/gc64/kr3-phone/data/kui_templates/game_gui_noti_tutorial_'+str(i)+'.lua'))
+  layout=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_ui.lua'),str(p)]))
+  def texts(n):
+   if isinstance(n,dict):
+    if isinstance(n.get('text'),str):wanted.append(n['text'])
+    for child in n.get('children',[]):texts(child)
+  texts(layout)
  p=ROOT/'artifacts/fonts-hud.lua';p.write_bytes(z.read('assets/gc64/kr3-phone/data/kui_templates/game_gui.lua'))
  ui=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_ui.lua'),str(p)]))
  def find(n,id):

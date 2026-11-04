@@ -21,7 +21,7 @@ progression=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_pr
 (ROOT/'web/hero-data.mjs').write_text('// Generated from original kr3/game_settings.lua by tools/read_progression.lua.\nexport default '+json.dumps(progression,sort_keys=True,separators=(',',':'))+';\n')
 groups=['go_towers','go_decals','go_enemies_elven_woods',
         'go_hero_elves_archer','go_stages_elven_woods',
-        'gui_shop','gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
+        'gui_notifications_bg','gui_notifications_common','gui_shop','gui_common','gui_slices','gui_portraits','screen_map_stage_thumbs','screen_slots','screen_map','screen_map_opaque','screen_map_decos','screens_common_zh-Hans']
 groups += [f'go_stage{i:02}' for i in range(1,4)]
 frames={};sheets={}
 def decode(name):

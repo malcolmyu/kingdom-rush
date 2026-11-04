@@ -167,3 +167,7 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .abilities .key,.abilities .ability-note{display:none}
 .ability.selected,.ability.cooling canvas{filter:none;outline:0}
 .ability:focus-visible{outline:2px solid #fff1a0}
+
+.native-tutorial-dialog{width:var(--tutorial-width);aspect-ratio:var(--tutorial-ratio)}
+.tutorial-text{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;font-weight:400;text-shadow:none;overflow:hidden}
+.tutorial-text strong,strong.tutorial-text{font-weight:700}
