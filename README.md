@@ -2,7 +2,7 @@
 
 [在线试玩](https://kingdom-rush-origins-first-level.minghaoyusombie.chatgpt.site) · [技术方案](docs/ARCHITECTURE.md) · [参考与差异](docs/REFERENCE.md)
 
-当前版本包含开始界面、三个独立本地存档、大地图，以及**灰鸦港口、高桥、瀑布小径**的战役、英雄挑战和钢铁挑战，共 9 个关卡组合。在线试玩通过 Sites 托管，为私人访问，需要用创建站点的 ChatGPT 账号登录。
+当前版本包含开始界面、三个独立本地存档、大地图，以及**灰鸦港口、高桥、瀑布小径**的战役、英雄挑战和钢铁挑战，共 9 个关卡组合。公开试玩：[GitHub Pages](https://malcolmyu.github.io/kingdom-rush/)。原 Sites 站点继续保持私人访问范围。
 
 ![开始界面](docs/images/start.png)
 
@@ -69,5 +69,7 @@ python3 tools/extract_campaign.py --apk origins.apk
 界面回归：启动本地服务器后执行 `npm run test:ui`；原版雷电和箭雨素材检查：`npm run test:effects`。`tools/extract_ui.py` 会从原始布局表和图集中重建界面素材。
 
 ## GitHub Pages
+
+当前地址：https://malcolmyu.github.io/kingdom-rush/ 。
 
 `npm run build` 生成可直接部署到 `gh-pages` 分支根目录的静态文件，含 `.nojekyll`。资源与模块均使用相对路径，支持项目路径 `/kingdom-rush/`。仓库首次启用时，在 Settings → Pages 选择 Deploy from a branch、`gh-pages`、`/ (root)`，保存后使用 GitHub 返回的发布地址。SSH 推送权限不能替代 Pages 设置所需的 GitHub 管理/API 登录权限。
