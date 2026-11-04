@@ -1,3 +1,4 @@
+import {patchUpgradeTemplates} from './upgrades.mjs';
 import WAVE_RULES from './wave-rules.mjs';
 import {xpForLevel,levelForXp,xpMultiplier,heroSkills,normalizeHeroProgress,HERO_RULES} from './progression.mjs';
 import {SpellTimeline,inEllipse} from './spells.mjs';
@@ -23,7 +24,7 @@ export function onRoute(route,d){
 export class World{
  constructor(data,options={}){
   if(typeof options==='number')options={seed:options};
-  this.data=data;this.templates=data.templates;this.id=data.id;this.mode=data.mode||'campaign';this.difficulty=options.difficulty||2;this.seed=options.seed??17;
+  this.data=data;this.templates=patchUpgradeTemplates(data.templates,options.upgrades,data.rules?.max_upgrade_level??Infinity);this.id=data.id;this.mode=data.mode||'campaign';this.difficulty=options.difficulty||2;this.seed=options.seed??17;
   this.time=0;this.gold=data.waves.cash;this.lives=MODES[this.mode].lives;this.maxLives=this.lives;this.totalWaves=data.waves.groups.length;this.wave=0;
   this.status='ready';this.paused=false;this.enemies=[];this.soldiers=[];this.shots=[];this.effects=[];this.pending=[];this.events=[];this.serial=0;this.kills=0;this.leaks=0;this.spawned=0;
   this.cooldowns={reinforce:0,lightning:0,arrows:0};this.nextWaveAt=Infinity;this.nextWaveReadyAt=Infinity;this.hero=null;this.heroXp=options.heroXp??xpForLevel(options.heroLevel||1);this.heroXpQueued=0;this.heroLevel=levelForXp(this.heroXp);this.heroSkills=heroSkills(options.heroSkills);
@@ -41,7 +42,7 @@ export class World{
  active(){return ['ready','playing'].includes(this.status)&&!this.paused;}
  template(key){const t=this.templates[key];if(!t)throw new Error('Unknown original template: '+key);return t;}
  towerDef(type,level=1){const key='tower_'+TYPES[type].template+'_'+level,t=this.template(key),attack=t.attacks?.list?.[0],bullet=attack?.bullet?this.template(attack.bullet).bullet:null;
-  return {key,type,level,price:t.tower.price,range:t.attacks?.range||t.barrack?.rally_range||145,rangeOffset:t.tower.range_offset||{x:0,y:0},cooldown:attack?.cooldown||1,damage:[bullet?.damage_min||0,bullet?.damage_max||0],bullet:attack?.bullet,damageType:bullet?.damage_type||2,radius:bullet?.damage_radius||0,shootTime:attack?.shoot_time||0,offsets:attack?.bullet_start_offset?.x!==undefined?[attack.bullet_start_offset]:list(attack?.bullet_start_offset),count:type==='mage'?attack.loops||1:1,shotHeight:Math.max(28,...list(attack?.bullet_start_offset).map(p=>p?.y||0)),render:t.render.sprites};
+  return {key,type,level,price:t.tower.price,range:t.attacks?.range||t.barrack?.rally_range||145,rangeOffset:t.tower.range_offset||{x:0,y:0},cooldown:attack?.cooldown||1,damage:[bullet?.damage_min||0,bullet?.damage_max||0],bullet:attack?.bullet,damageFactor:t.tower.damage_factor??1,damageType:bullet?.damage_type||2,radius:bullet?.damage_radius||0,shootTime:attack?.shoot_time||0,offsets:attack?.bullet_start_offset?.x!==undefined?[attack.bullet_start_offset]:list(attack?.bullet_start_offset),count:type==='mage'?attack.loops||1:1,shotHeight:Math.max(28,...list(attack?.bullet_start_offset).map(p=>p?.y||0)),render:t.render.sprites};
  }
  allowed(type,level=1){const locked=this.data.rules?.locked_towers||[];return !locked.includes('tower_build_'+TYPES[type].template)&&!locked.includes('tower_'+TYPES[type].template+'_'+level)&&level<=3;}
  build(id,type){const s=this.slots[id];if(!this.active()||!s||s.type||!TYPES[type]||!this.allowed(type))return false;const d=this.towerDef(type);if(this.gold<d.price)return false;
@@ -94,7 +95,7 @@ export class World{
  updateTowers(dt,live){for(const s of this.slots){s.cd-=dt;s.anim=Math.max(0,s.anim-dt);if(s.type==='artillery'&&s.reloadUntil===undefined){s.reloadAt=s.buildUntil||0;s.reloadUntil=s.reloadAt+this.animationDuration(this.template(s.key).render.sprites.at(-1).prefix,'loadDown');}if(s.type==='artillery'&&this.time<s.reloadUntil)continue;if(!s.type||this.time<s.buildUntil||s.type==='barrack'||s.cd>0)continue;const d=this.towerDef(s.type,s.level),targets=live.filter(e=>e.hp>0&&(s.type!=='artillery'||!e.flying)&&inEllipse({x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y},e,d.range)).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!targets.length)continue;const e=targets[0];
    s.actionAt=this.time;s.facing=e.y>s.y+d.shotHeight?'Up':'Down';s.flip=e.x<s.x;s.shotCount=(s.shotCount||0)+1;s.shooterIndex=s.shotCount%d.offsets.length;
    const shooter=d.render.find(v=>v.angles?.shoot),name=shooter?.angles?.shoot?.[s.facing==='Up'?0:1];s.anim=this.animationDuration(shooter?.prefix||s.key,name||'shoot');
-   for(let i=0;i<d.count;i++){const offset=d.offsets[s.type==='archer'?s.shooterIndex:i%d.offsets.length]||{x:0,y:d.shotHeight};this.projectile(s,e,{type:s.type,damage:this.number(d.damage[0],d.damage[1]),damageType:d.damageType,bullet:d.bullet,radius:d.radius,height:offset.y,offsetX:offset.x,delay:d.shootTime,preserveAnimation:true});}s.cd=d.cooldown;
+   for(let i=0;i<d.count;i++){const offset=d.offsets[s.type==='archer'?s.shooterIndex:i%d.offsets.length]||{x:0,y:d.shotHeight};this.projectile(s,e,{type:s.type,damage:Math.ceil(this.number(d.damage[0],d.damage[1])*d.damageFactor),damageType:d.damageType,bullet:d.bullet,radius:d.radius,height:offset.y,offsetX:offset.x,delay:d.shootTime,preserveAnimation:true});}s.cd=d.cooldown;
    if(s.type==='artillery'){s.reloadAt=this.time+s.anim;s.reloadUntil=s.reloadAt+this.animationDuration(shooter.prefix,'loadDown');}
   }
  }
