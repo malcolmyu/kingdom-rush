@@ -9,3 +9,14 @@ export class WaveFlag{
  // Native phone pointer anchor is (-width/2+4,height/2).
  c.save();c.rotate(-this.angle);r.sprite(c,'waveFlag_0004',0,0,2,-26/24,.5);c.restore();c.restore();this.button.setAttribute('aria-pressed',String(this.selected));}
 }
+
+// IncomingTooltip, game_gui.lua:3970–4104 (phone branch).
+export function incomingTooltipPosition(x,y,width,height){const left=x>1.5*width,below=y<1.5*height;return{x:x+(left?-width-20:20),y:y+(below?21:-height-21),left,below};}
+export class IncomingTooltip{
+ constructor(element,ui){this.element=element;this.ui=ui;this.revision=0;}
+ show(flag,report){const e=this.element,u=this.ui,text=u.data.fonts.text;this.revision++;this.tween?.cancel();e.hidden=false;e.replaceChildren();const title=document.createElement('strong'),body=document.createElement('div'),phrase=document.createElement('small');title.textContent=text['INCOMING WAVE'];body.textContent=report;phrase.textContent=text.WAVE_TOOLTIP_TAP_AGAIN;title.style.cssText=u.fontStyle('h',11);body.style.cssText=u.fontStyle('body',11);phrase.style.cssText=u.fontStyle('sans',9);e.append(title,body,phrase);
+ const game=document.getElementById('game'),k=game.clientWidth/693,c=document.createElement('canvas').getContext('2d'),measure=node=>{const s=getComputedStyle(node);c.font=s.font;return Math.max(...node.textContent.split('\n').map(line=>c.measureText(line).width))/k;},width=Math.max(measure(title),measure(body),measure(phrase))+20,reportHeight=report.split('\n').length*11*1.1*1.2,height=4+15+reportHeight+10+10;this.width=width;this.height=height;e.style.width=width/693*100+'cqw';e.style.height=height/693*100+'cqw';title.style.top=4/693*100+'cqw';title.style.height=15/693*100+'cqw';body.style.top=19/693*100+'cqw';phrase.style.bottom=8/693*100+'cqw';
+ this.flag=flag;this.position();this.tween=e.animate([{opacity:0},{opacity:1}],{duration:250,easing:'cubic-bezier(.333333,.666667,.666667,1)'});}
+ position(){if(!this.flag)return;const game=document.getElementById('game'),k=game.clientWidth/693,x=parseFloat(this.flag.button.style.left)*693/100,y=parseFloat(this.flag.button.style.top)*game.clientHeight/100/k,p=incomingTooltipPosition(x,y,this.width,this.height),e=this.element;e.style.left=p.x/693*100+'cqw';e.style.top=p.y/693*100+'cqw';e.dataset.left=p.left;e.dataset.below=p.below;}
+ hide(){this.flag=null;const e=this.element;if(e.hidden)return;const revision=++this.revision;this.tween?.cancel();this.tween=e.animate([{opacity:1},{opacity:0}],{duration:250,easing:'cubic-bezier(.333333,.666667,.666667,1)'});this.tween.onfinish=()=>{if(revision===this.revision)e.hidden=true;};}
+}

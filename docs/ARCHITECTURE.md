@@ -136,3 +136,5 @@ World 为英雄伤害保留 XP 归属，命中后进入 `heroXpQueued`；在动�
 波次入口由 Campaign 根据下一波路径生成按钮，复用 Renderer 原图集；多个入口共享 sendWave 命令和 World.startWave 的校验/奖励。按钮展示状态不参与模拟时间。Renderer 不再重复绘制无法交互的旗帜。
 
 `wave-flags.mjs` 独立负责脉冲/扇面与 Canvas 分层，incomingReport 仅汇总对应入口的源波次数据。Campaign 负责单选和二次点击命令；World 保留唯一召唤奖励与时间推进权。
+
+IncomingTooltip 独立管理原文本角色、测量和相对旗帜的定位/显隐；Campaign.deselectWaveFlags 统一退出选中状态，避免切换输入模式遗留浮层。动画重入使用版本号，旧 fade 完成回调不能隐藏新浮层。
