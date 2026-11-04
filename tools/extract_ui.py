@@ -12,6 +12,7 @@ def find(node,id):
   if match:return match
 slots=read('screen_slots');world=read('screen_map');game=read('game_gui')
 layouts={'title':slots,'slot':read('slot_view'),'slotTab':read('slot_tab_view'),'level':find(world,'level_view'),'pause':find(game,'pause_view'),'victory':find(game,'victory_view'),'defeat':find(game,'defeat_view'),'hero':find(world,'hero_room_view'),'heroSkill':read('hero_skill_view')}
+layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children']}
 c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
 def visit(v):
  if isinstance(v,dict):

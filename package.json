@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.9",
+  "version": "0.2.10",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -14,6 +14,7 @@
     "test:actors": "node tests/actors-browser.mjs",
     "test:hero-skills": "node tests/hero-skills-browser.mjs",
     "test:torches": "node tests/torches-browser.mjs",
+    "test:map": "node tests/map-browser.mjs",
     "test:growth": "node tests/growth-browser.mjs"
   },
   "devDependencies": {
