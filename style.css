@@ -1,7 +1,7 @@
-@font-face{font-family:OriginsNumbersItalic;src:url('assets/fonts/Comic Book Italic.ttf') format('truetype');font-display:swap}
-@font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Regular.otf') format('opentype');font-weight:400;font-display:swap}
-@font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Bold.otf') format('opentype');font-weight:700;font-display:swap}
-@font-face{font-family:OriginsNumbers;src:url('assets/fonts/SohoGothicProMedium.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:OriginsNumbersItalic;src:url('assets/fonts/Comic Book Italic.woff2') format('woff2');font-display:swap}
+@font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:OriginsNumbers;src:url('assets/fonts/SohoGothicProMedium.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face {font-family:Obelix;src:url('assets/ObelixPro.ttf');font-display:swap}
 * {box-sizing:border-box}
 html,body {margin:0;min-height:100%;background:#102a20;color:#f6e6b2;font-family:OriginsCJK,sans-serif}
