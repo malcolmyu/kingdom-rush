@@ -313,3 +313,6 @@ DesktopBattleBottom持有独立原图目录/Canvas状态与UI时间，组合进D
 
 
 DesktopGuidance is configured through the desktop battle asset transaction and reuses Guidance event ownership. Five native fixed-image balloons own only UI motion/DOM; source World positions project through Renderer, power offsets use GUI space. Initial alpha is inherited1, hide completion owns hidden/removal and re-show starts at.8. Transition clears all records and profile; old resource completion cannot revive another scene. Existing phone hints remain for unmigrated START/WAVE/NOTI. Native TB_POWER3 does not invent an upstream notification signal. desktopPowerUnlocked maps existing ready-state disabled controls to original closed-door presentation without changing World unlock semantics.
+
+
+第4–6关进入独立还原工作区，见STAGES-4-6.md。ExpansionRepository只加载assets/expansion声明和选中图面，创建合并副本，绝不写入主catalog、Repository缓存或存档解锁。当前生产可玩仍前三关九模式；新关特殊脚本和高级塔未完成，因此资源加载/World构造/Renderer预览不当作玩法验收。全量提取调用extract_expansion，源文件固定SHA、原图无损RGBA验证，后续可在完整机制验收后统一开放。

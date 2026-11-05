@@ -1052,3 +1052,15 @@ Three selected images exported as original RGBA PNG (4142B total), fixed source 
 339 Node tests pass. Actual final build1488files61,753,980B passes native guidance geometry/phase/pixel/mobile/camera/pause/cleanup, natural fresh-save nine modes and persistence/mobile, UI, desktop-bottom regression. Public .98 UI passes after fixture waits for actual settings-close transaction before Start; no product gate weakened. Native third-power fixture, controlled display clocks and screenshots are not natural progression or original synchronized evidence. Cold100ms/1.5MBps/cacheoff actual book-to-battle14,628,163B,7.168s, total15.953s/217requests; budget15MB unchanged, not a universal network guarantee. Logs guidance-tests-final/browser-publish/campaign-publish/ui-publish/bottom-regression/performance-publish/pages-ui-final.
 
 Human preference: publish every release to GitHub Pages and present that URL first; same owner-private Site remains synchronized.
+
+
+### 0.2.100 第4–6关还原工作区
+
+按最新人类指示将主工作重心转向后面三关，前三关余项继续保留记录。已从原APK逐项提取红杉阻击战/皇家庭院/狮鹫驿站的九份模式数据、原路径/建造点/预建建筑/金币/波次/模式限制，38个额外依赖模板、三张背景与3566个所选帧键。extract_expansion.py/source expansion.json固定原声明与图面SHA，不执行控制器；完整图片与每个紧凑sprite crop逐解码RGBA无损验证，保留size/trim/alias。初轮输出的整stage中间图已清除，仅紧凑包保留。
+
+ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前三关九模式，新关暂未开放，绝不把缺失特殊机制的普通敌人替身冒充完成。实际build资源预览通过三关背景/初始引用sprite无缺帧、World/旧进度不变、桌面/手机；这些是资源预览，不是新九模式通关或原控制器演出。新关机制缺口详见STAGES-4-6.md：ettin regen/狂暴、blighter ranged/封花、载兵飞行释放、harasser、ewok、gryphon/关卡脚本、高级塔等。
+
+343Node全过。首UI命令忘显式TEST_URL使用默认8765，连接拒绝正常exit1；改命令指向实际build8766，未修改产品/测试门控。后续原九模式/UI/性能日志分别独立收集。源包是尚未启用的按需资源，不代表新关入关预算已验；旧关键路径保持15MB。
+
+
+最终actualbuild1503files72,763,398B，343Node、新三关资源预览与原天然完整九模式/存档手机/UI均正常exit0。冷路径100ms/1.5MBps/cacheoff14,637,653B，book入关7.149s、总15.924s/218requests，无整atlas/OTF；新扩展包未进入当前旧关加载链，不称新关预算。104个固定源SHA独立复核通过。截图expansion-stage4/5/6-resource-preview和stage6-mobile-preview已人工看，均资源预览不是特殊脚本/战斗验收。

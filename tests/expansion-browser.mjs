@@ -1,0 +1,14 @@
+import{chromium}from'playwright';import assert from'node:assert/strict';
+const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}),p=await b.newPage({viewport:{width:1440,height:1000}}),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
+try{
+ await p.goto(process.env.TEST_URL||'http://127.0.0.1:8766');await p.waitForFunction(()=>window.origins);
+ const initial=await p.evaluate(()=>({catalog:origins.app.repo.catalog.levels.length,progress:JSON.stringify(origins.app.progress)}));assert.equal(initial.catalog,3);
+ await p.evaluate(async()=>{const{ExpansionRepository}=await import('./expansion.mjs'),{Renderer}=await import('./renderer.mjs');const canvas=document.createElement('canvas');canvas.id='expansion-preview';canvas.width=1672;canvas.height=1014;Object.assign(canvas.style,{position:'fixed',inset:0,width:'100vw',height:'100vh',objectFit:'contain',background:'#173025',zIndex:99999});document.body.append(canvas);window.expansionPreview={repo:await new ExpansionRepository(origins.app.repo).init(),canvas,Renderer};});
+ for(const id of[4,5,6]){
+  const result=await p.evaluate(async id=>{const{World}=await import('./domain.mjs'),v=expansionPreview,d=await v.repo.level(id),w=new World(d),r=new v.Renderer(v.canvas,v.repo);await r.loadLevel(d);r.camera.phase=1;const before=JSON.stringify({time:w.time,seed:w.seed,serial:w.serial,gold:w.gold,slots:w.slots,hero:w.hero});r.draw(w);const after=JSON.stringify({time:w.time,seed:w.seed,serial:w.serial,gold:w.gold,slots:w.slots,hero:w.hero});v.renderer=r;v.world=w;return{id,before,after,map:[r.map.width,r.map.height],missing:[...r.missing],source:d.size};},id);
+  assert.equal(result.before,result.after);assert.deepEqual(result.map,result.source);assert.deepEqual(result.missing,[]);await p.screenshot({path:`artifacts/expansion-stage${id}-resource-preview.png`});
+ }
+ await p.setViewportSize({width:844,height:390});await p.evaluate(()=>expansionPreview.renderer.draw(expansionPreview.world));await p.screenshot({path:'artifacts/expansion-stage6-mobile-preview.png'});
+ assert.deepEqual(await p.evaluate(()=>({catalog:origins.app.repo.catalog.levels.length,progress:JSON.stringify(origins.app.progress)})),initial);assert.deepEqual(errors,[]);
+ console.log('Stage 4–6 source resource previews render on desktop/mobile with isolated catalogs, original map sizes, no missing referenced initial sprites and no World/progress mutation. This is not a combat completion or original-controller/synchronized pixel test.');
+}finally{await p.context().close();await b.close();}
