@@ -1107,3 +1107,17 @@ ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前
 362Node通过；实际最终build test:blight覆盖真实World.step封花、原Canvas q/alpha与draw只读、死亡后持续/解除重蓄能、暂停/zoom/mobile/owner清理。受控位置/时钟样本不是自然新关通关或原版同步。桌面/手机截图已人工看，手机整关前景接缝仍待完整层级验收，不拿局部modifier调用证明整图像素一致。新mod字面量让旧塔紧凑包完整增加12帧，1314帧/2,122,316B，逐原RGBA/trim验证；没有提高15MB或降图质。
 
 最终build1509files72,827,505B；blight-browser-final、天然完整旧九模式/存档手机blight-campaign-final、blight-ui-final与公开旧.101 blight-pages-ui全部正常exit0。冷100ms/1.5MBps/cacheoff14,700,669B，book入关7.082s/总15.958s/224requests<15MB，无整atlas/OTF，不保证所有线上线路；新关自身预算尚未验。所有三个campaign20生命，第三campaign入关自然XP4705，完整九模式末自然XP继续增长。
+
+### 0.2.104 枯萎者专用远程能量弹
+
+原APK game_scripts14118–14159与script_utils2784–2832/367–387、scripts494–559、utils245–313完整只读-bl交叉缓存源码。extract_blighter_energy.py/read_blighter_energy.lua读取原FPS30/F_RANGED2、固定六源SHA并接全量提取，不执行控制器。源enemy_basic.insert把ranged.ts设出生时钟，非全局0；新的held ranged episode按hold_advance在冷却时也停步，energy前摇20/30秒、原动画30帧，cast开始一次chance draw，释放原offset14,0随水平flip。释放初始to包含hit_offset，专用update随后追踪target.pos中心。目标在前摇中死亡并不自动取消释放，原释放仅查vis flags/bans；死亡目标弹仍飞完而不伤害，未自行加一个health门。
+
+弹体mspeed60起，每模拟tick先以旧to/旧speed测试distance>speed*dt，再追踪/检查目标死亡或F_RANGED ban；speed+=FPS*ceil(speed/FPS*acceleration_factor)，clamp60..240，以规范方向推进实际位置。没有用旧sin弧线、固定duration、火把spin或burn。travel按原三方向/10度stickiness和每tick animation_start重置ts，因此当前正常模拟绘制多数是对应travel首帧，不为视觉“顺滑”改变源时钟。抵达时原create_bullet_damage是ceil(frandom50,75)/type2；APK该helper没有共享vanilla后来新增的damage_factor分支，当前sourcefactor1不受影响。复用现hurtDefender的物理护甲/取整适配，原damage queue/native调度完整同输入尚未恢复。
+
+原hit阶段是在同弹体pos=(to.x,to.y-1)播hitUpDown24–26三帧，再删除；虽然bullet声明hit_fx，专用controller没有生成它，未虚构generic hitFX/火把DOT。目标死亡/禁止ranged时永久丢失追踪，仍飞到末目标点；移出World不向无效对象提交伤害。弹体及phase归World，暂停不推进，场景丢弃World清理；绘制只读pose进入同actorqueue原z3000/anchor(.5,.15625)/trim/alpha/world纹理与相机链。旧burner保持原launchTorch，不加新RNG调用。
+
+纯测覆盖实际出生冷却、源range/ban边界、hold、前摇与打断、左右offset、逐tick加速/中心追踪、animation ts重置、死亡/丢失目标、旧to接触边界、一次伤害、三帧hit/无DOT或genericFX、World暂停与旧模板不变。最初源码audit把queue_insert upvalue当成带引号字段而失败，修正为实际UGET注释检查，没执行控制器。完整新关仍缺树屋/高级塔/关卡事件/资源分组与解锁，不能据此称新九模式可玩。
+
+最终373Node、actualbuild test:blighter-energy/封花与旧火把回归均正常exit0。原完整九模式首轮完成全部战斗/存档/手机断言并写出passed JSON后，在浏览器关闭阶段挂住；与daemon88207比对后只TERM Node10284，收143，明确不算正常通过。未改产品/策略/门控，独立串行重跑energy-campaign-repeat → energy-ui → energy-performance全部正常exit0，三个campaign20生命，第三campaign入关自然XP4705，末XP继续自然增长。公开一次manifest确认.103，首UI启动30秒超时，独立energy-pages-ui-repeat完整断言和最终exit0，不改超时值。无未收集失败结果或后台。
+
+最终build1511files72,835,167B；冷100ms/1.5MBps/cacheoff14,708,023B，book入关7.169s/总16.092s/226requests<15MB，无整atlas/OTF，不保证所有线上设备/线路速度。无新图下载，旧塔compact1314帧/2,122,316B保持；新关自身资源预算未验。blighter-energy-flight/mobile/hit已人工看，飞行桌面样本附评论，均隔离受控展示不是新关天然通关/原版同步证据；手机整关前景接缝仍待关卡层级验收，不掩盖。logs energy-tests-final-release/build-publish/browser/blight-regression/torch-regression/campaign-repeat/ui/performance/pages-ui-repeat。

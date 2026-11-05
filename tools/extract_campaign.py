@@ -95,6 +95,7 @@ subprocess.run(['python3',str(ROOT/'tools/extract_expansion.py'),'--apk',opt.apk
 subprocess.run(['python3',str(ROOT/'tools/extract_ettin.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/extract_carrier.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/extract_blight.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_blighter_energy.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py')],check=True)
 

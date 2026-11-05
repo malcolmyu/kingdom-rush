@@ -1,7 +1,7 @@
 import {inEllipse} from './spells.mjs';
 import {tweenValue} from './skill-effects.mjs';
 // Original blighter timed attack. Plant references are local objects, never enemy IDs.
-export function insertBlighter(w,e){if(e.key==='enemy_gnoll_blighter')e.blighter={ts:0,phase:null};}
+export function insertBlighter(w,e){if(e.key==='enemy_gnoll_blighter')e.blighter={ts:0,phase:null,rangedAt:w.time};}
 export function blockPlant(w,p){
  if(!w.plants.includes(p))return false;
  // sys.mod_lifecycle rejects an equal-level duplicate after resetting modifier.ts.
@@ -27,9 +27,9 @@ export function updateBlighter(w,e){const s=e.blighter;if(!s)return false;
   if(s.phase==='finish'&&w.time-s.at>=w.animationDuration(w.template(e.key).render.sprites[0].prefix,a.animation)){s.phase=null;return true;}
   return true;
  }
- if(e.stunned||e.frozen)return true;
+ if(e.stunned||e.frozen){s.energyAttack=null;s.rangedTarget=null;e.anim=0;return true;}
  // Existing melee/ranged episodes finish before source outer-loop timed attack.
- if(e.blocked||e.pendingMelee||e.pendingRanged||e.anim>0||e.canDoMagic===false||w.time-s.ts<a.cooldown)return false;
+ if(s.energyAttack||s.rangedTarget||e.blocked||e.pendingMelee||e.pendingRanged||e.anim>0||e.canDoMagic===false||w.time-s.ts<a.cooldown)return false;
  const target=w.plants.find(p=>!p.blocked&&inEllipse(e,p,a.range));if(!target)return false;
  s.ts=s.at=w.time;s.target=target;s.phase='cast';e.pendingMelee=null;e.pendingRanged=null;
  w.enemyAction(e,target,a.animation);return true;
