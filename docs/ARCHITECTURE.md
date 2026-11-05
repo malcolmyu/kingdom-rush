@@ -4,12 +4,15 @@
 
 ## 模块边界
 
+`constructionBarPose`只从当前tower_build模板第4sprite与scale tween派生进度条姿态，drawConstructionBar在原World/camera队列内执行独立x/y缩放。完整54×8原图、offset(-21,50)、anchor(0,.5)、alpha255与z3000保留，不再用固定屏幕clip猜测宽高。当前普通击杀的World coin事件仍保留，但Renderer不绘制自创的黄色金币浮字；原GUI got-enemy-gold只在Hand of Midas生效时创建奖励特效，该特殊能力尚未实现，原金币实值与独立早波WaveReward不变。
+
+
 `TowerEffects`只读观察现有build/sell展示事件，以原fx_tower_buy_dust/fx_tower_sell_dust声明生成12帧、3300层、半图锚点的烟尘。初次购买按当前World.buildUntil延迟，纯展示缓存跨过原World事件.7秒寿命，升级立即、卖塔原位置+35；不改World事件/交易/退款/计时或RNG。pending购买随原塔取消，已发出的烟尘独立；owner/loadLevel/transition清缓存。原建造协程严格大于build_duration才升级的量化时刻与World现有完成条件仍有差异，不声称同输入逐帧一致。
 
 
 `NativeUI.image`以原KView左上原点执行scale→rotate(-r)→translate(-anchor)，不再使用CSS默认中心缩放。通知父组同样保留原位置、先缩放/负旋转再锚点位移，照片和子边框共享同一坐标链。带锚点的平移以原图面尺寸换算，不用看图补偏移；generic helper覆盖通知外其他NativeUI图片，测试以实际DOM内容四角比对原层级矩阵。
 
-`SkillEffects`从只读原模板/tween声明派生雷电射线、镜像爆炸、地面贴花与箭雨地面箭/烟雾逐sprite姿态并入actor队列。定时组件按原帧数结束，alpha按原keys线性取样，射线独立y拉伸；一次展示随机翻转/落箭角度由WeakMap与独立UI RNG持有，重画不重抽、场景reset，不改World seed或实际施法时钟。range及其他建造/卖塔特效等仍独立，原全局ID与同输入随机轨迹未恢复。
+`SkillEffects`从只读原模板/tween声明派生雷电射线、镜像爆炸、地面贴花与箭雨地面箭/烟雾逐sprite姿态并入actor队列。定时组件按原帧数结束，alpha按原keys线性取样，射线独立y拉伸；一次展示随机翻转/落箭角度由WeakMap与独立UI RNG持有，重画不重抽、场景reset，不改World seed或实际施法时钟。range及尚未恢复的环境特效等仍独立，原全局ID与同输入随机轨迹未恢复。
 
 `GroundCorpses`拥有当前四种地面敌普通死亡的只读展示快照；不透明死亡动画与末帧按原health.dead_lifetime保留到严格大于2秒。World仍在1.2秒清理模拟数组，缓存不进入碰撞/寻敌/伤害/奖励或随机迭代。快照只留绘制必要字段，以原World时间驱动；复活/漏怪清条目，场景owner变化、loadLevel提交和Campaign.transition都reset，旧尸体不跨槽/场景复活。特殊伤害/地形死亡、血池及原尸体点击仍未建模，不称完整敌死亡状态恢复。
 

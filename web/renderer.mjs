@@ -1,3 +1,4 @@
+import{constructionBarPose,drawConstructionBar}from'./construction-bar.mjs';
 import{TowerEffects}from'./tower-effects.mjs';
 import{SkillEffects}from'./skill-effects.mjs';
 import{GroundCorpses,isGroundCorpse}from'./ground-corpses.mjs';
@@ -60,7 +61,7 @@ export class Renderer{
   const scenery=w.data.level.entities_list.filter(e=>e.template.startsWith('decal_')&&e.template!=='decal_background'&&e.template!=='decal_defend_point');
   const drawables=[...scenery.map(e=>({pos:e.pos,scenery:e})),...w.slots.map(s=>({pos:s,slot:s})),...w.plants.map(p=>({pos:p,plant:p})),...w.soldiers.map(u=>({pos:u,unit:u})),...this.groundCorpses.update(w).map(u=>({pos:u,unit:u,enemy:true}))];if(w.hero)drawables.push({pos:w.hero,unit:w.hero,hero:true});drawables.sort((a,b)=>b.pos.y-a.pos.y);
   for(const a of drawables){this.entityOrderId=this.renderId(a.scenery||a.slot||a.plant||a.unit);if(a.scenery){this.entity(a.scenery.template,a.pos,{time:w.time,overrides:a.scenery});continue;}
-   if(a.slot){const s=a.slot;if(!s.type)this.entity(s.terrain===2?'tower_holder_faerie_grove':'tower_holder_elven_woods',s,{overrides:{'tower.terrain_style':s.terrain,...holderPreviewOverrides(this.catalog.templates[s.terrain===2?'tower_holder_faerie_grove':'tower_holder_elven_woods'],s,preview)}});else if(w.time<s.buildUntil){const key='tower_build_'+({archer:'archer',barrack:'barrack',mage:'mage',artillery:'rock_thrower'}[s.type]);this.entity(key,s,{overrides:{'tower.terrain_style':s.terrain,'render.sprites[4].hidden':true}});const p=this.screen({x:s.x-21,y:s.y+50});this.orderQueue.add(spriteOrder({},s,4,this.entityOrderId),()=>{c.save();c.beginPath();c.rect(p.x,p.y-8,54*(w.time-s.buildAt)/(s.buildUntil-s.buildAt),16);c.clip();this.sprite(c,'buildbar',p.x,p.y,1,0,.5);c.restore();});}else{let state=s.anim?'shoot':'idle',time=s.anim?w.time-(s.actionAt??(w.time-.6+s.anim)):w.time;
+   if(a.slot){const s=a.slot;if(!s.type)this.entity(s.terrain===2?'tower_holder_faerie_grove':'tower_holder_elven_woods',s,{overrides:{'tower.terrain_style':s.terrain,...holderPreviewOverrides(this.catalog.templates[s.terrain===2?'tower_holder_faerie_grove':'tower_holder_elven_woods'],s,preview)}});else if(w.time<s.buildUntil){const key='tower_build_'+({archer:'archer',barrack:'barrack',mage:'mage',artillery:'rock_thrower'}[s.type]);this.entity(key,s,{overrides:{'tower.terrain_style':s.terrain,'render.sprites[4].hidden':true}});drawConstructionBar(this,constructionBarPose(w.template(key),s,w.time,this.entityOrderId));}else{let state=s.anim?'shoot':'idle',time=s.anim?w.time-(s.actionAt??(w.time-.6+s.anim)):w.time;
     if(s.type==='barrack'){const age=w.time-(s.doorAt??-100),open=w.animationDuration(s.key+'_door','open'),hold=w.template(s.key).barrack.door_hold_time;state=age<open+hold?'open':'close';time=state==='open'?Math.min(age,open):Math.max(0,age-open-hold);}
     const overrides={'tower.terrain_style':s.terrain},spriteStates={};for(const[i,raw]of w.template(s.key).render.sprites.entries())if(raw.angles_flip_horizontal)spriteStates[i+1]={flip:s.flip};if(s.type==='archer'&&s.level>1){for(let i=3;i<=4;i++)if(i!==s.shooterIndex+3)spriteStates[i]={state:'idle',time:0};}if(s.type==='artillery'){const loading=w.time>=s.reloadAt&&w.time<s.reloadUntil;overrides['render.sprites[3].hidden']=!loading;if(loading){state='load';time=w.time-s.reloadAt;}}this.entity(s.key,s,{time,state,facing:s.facing,spriteStates,overrides});}continue;}
    if(a.plant){this.entity(a.plant.key,a.plant,{time:w.time,state:a.plant.anim?'shoot':'idle'});if(a.plant.cd>0){const p=this.screen(a.pos);this.orderQueue.add(spriteOrder({},a.pos,4,this.entityOrderId),()=>{c.font='18px Obelix';c.fillStyle='#f6e3ac';c.textAlign='center';c.fillText(Math.ceil(a.plant.cd),p.x,p.y-35);});}continue;}
@@ -83,8 +84,9 @@ export class Renderer{
   this.towerEffects.draw(this,w);
   const queue=this.orderQueue;this.orderQueue=null;queue.flush();this.entityOrderId=0;
   for(const f of w.effects){const p=this.screen(f),t=f.total-f.life;
-   if(f.type==='coin'){c.save();c.globalAlpha=f.life/f.total;c.font='20px OriginsNumbers';c.textAlign='center';c.fillStyle='#ffe868';c.strokeStyle='#2b3e26';c.lineWidth=3;c.strokeText(f.text,p.x,p.y-t*30);c.fillText(f.text,p.x,p.y-t*30);c.restore();}
-   else if(['rally','splash'].includes(f.type)){const names={rally:'rally_feedback',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
+   // Ordinary enemy gold has no floating reward in the source. Hand of
+   // Midas is a separate, unsupported power; WaveReward DOM remains separate.
+   if(['rally','splash'].includes(f.type)){const names={rally:'rally_feedback',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
 
 
 

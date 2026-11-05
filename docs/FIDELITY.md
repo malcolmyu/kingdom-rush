@@ -987,3 +987,16 @@ TowerEffects独立展示缓存观察原World.effects，初次购买延迟到现�
 326Node通过。最终实际build烟尘专项真实买70/升110/售180全退，采样购买完成延迟/World事件过期后仍有烟尘/源frame1与7/alpha1/原q和trim/dest/位置矩阵/3300晚于3100前景，World快照不变，缩放、手机CDP暂停、重入清理通过。额外受控显示时钟非原版同步或天然通关。首专项误用绝对.801而实际buildAt非0，改按实际record.start；初始记录检查加真实交易完成等待；旧金币断言硬写350起始，但第三关真实400，改读真实初始金与净支出，不改产品数值。旧失败结果均收集。
 
 最终UI/原tower-preview/天然新存档完整九模式三战役三星/存档手机正常exit0，三campaign自然XP4705/20生命。公开一次manifest0.2.93且完整UI过，新版推送不轮询。冷路径100ms/1.5MBps/cacheoff真实书页入关14,229,609B/15.516s、203请求<15MB，无整atlas/OTF/降质/抬预算，非所有线上线路速度保证。logs tower-dust-tests-final.log/build-final.log/browser-release.log/preview.log/campaign.log/ui.log/performance.log/pages-ui.log。
+
+
+## 0.2.95 原建造条向量缩放与普通击杀反馈
+
+完整只读核对systems.tween APK1288–1386（shared1320起）和render_utils.frame_draw_params31–52。四基础tower_build模板第4sprite buildbar/anchor0,.5/offset-21,50/z3000，scale keys0:(0,1)→.8:(1,1)，默认线性插值。新construction-bar.mjs从本局模板派生原pose，在同actor队列的原World/k/textureScale/camera链执行独立x/y缩放，完整54×8图、原trim和alpha255保留。去掉旧54屏幕宽clip/16屏幕高/y-8，不能把原图面像素当World或phone UI像素。纯展示不改建造时间/金币/World数组或RNG，现World完成条件与原协程严格>duration的tick量化差异仍保留。
+
+追踪原systems.health939–1104奖励与game_gui got-enemy-gold1081–1102：普通死亡增加player_gold并emit该信号；GUI只在hand_of_midas_factor存在且奖励>0时处理额外金钱/音效/glow/WaveRewardFx，普通击杀无当前原型黄色+gold浮字。移除Renderer此处自创20px字/黑描边/.8秒上移淡出，保留World原coin事件、真实gold/伤害/XP/RNG和既有早波WaveReward；不伪造尚未实现的Hand of Midas能力或coin_jump/shower特殊图。现有普通击杀音效等其余状态不借本批宣称已恢复。
+
+extract_construction_feedback.py只读原template与systems/game_gui/render_utils/scripts字节码，记录SHA/选中原sprite/tween到tools/sources/construction-feedback.json，并接完整extract_campaign。首审计误用all/game_gui.lua路径，实际为all-phone/game_gui.lua，已纠正，没执行控制器。
+
+328项Node通过；实际build test:construction-feedback验证四种真实购买/出售全退款、0/25/50/75%完整54×8图与q/trim/dest/独立轴矩阵/alpha、无clip、实际World.hurt普通击杀金币增加但不绘制prototype coin.text，World绘制快照不变，zoom/手机CDP暂停/重入清理均正常exit0。原test:tower-effects共享队列回归正常exit0。初截图包含原菜单关闭中途，最终仅加等真实menu.hidden后再拍，未改产品时序。桌面/手机半程建造截图已看，受控World显示时刻并非原版同步或天然通关证据。
+
+最终build1474文件61,354,576B。UI/完整天然新存档九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命，策略/World数值未变。公开一次manifest0.2.94且完整UI通过，新推送后不轮询。100ms/1.5MBps/cacheoff真实书页入关14,230,939B/14.583s、204请求<15MB，无整atlas/OTF、不降质/抬预算，非所有线上线路速度保证。logs construction-tests.log/build.log/browser-final.log/dust-regression.log/campaign.log/ui.log/performance.log/pages-ui.log。

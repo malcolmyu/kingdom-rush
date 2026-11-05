@@ -1,0 +1,232 @@
+{
+  "scope": "four current construction scale tweens; ordinary kill has no floating gold without Hand of Midas",
+  "sources": {
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "all-phone/game_gui.lua": "e9ba578e0b2d53075f1e7b7fc7b9bae04736983246c2270c31000fd02060381d",
+    "all/render_utils.lua": "3350d592e409ec682bb1a46b116fad5a79fcb647f2c1d6432f6dca0ccc954caa",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc"
+  },
+  "systemsTween": [
+    1288,
+    1386
+  ],
+  "renderParams": [
+    31,
+    52
+  ],
+  "enemyGoldGui": [
+    1081,
+    1102
+  ],
+  "healthReward": [
+    939,
+    1104
+  ],
+  "ordinaryKillPopup": "none; Hand of Midas is separate and unsupported",
+  "build": {
+    "tower_build_archer": {
+      "sprite": {
+        "animated": false,
+        "r": 0,
+        "anchor": {
+          "y": 0.5,
+          "x": 0
+        },
+        "name": "buildbar",
+        "ts": 0,
+        "time_offset": 0,
+        "frame_idx": 1,
+        "hidden_count": 0,
+        "loop": true,
+        "offset": {
+          "y": 50,
+          "x": -21
+        },
+        "flip_x": false,
+        "z": 3000,
+        "alpha": 255,
+        "runs": 0
+      },
+      "tween": {
+        "props": [
+          {
+            "name": "scale",
+            "keys": [
+              [
+                0,
+                {
+                  "y": 1,
+                  "x": 0
+                }
+              ],
+              [
+                0.8,
+                {
+                  "y": 1,
+                  "x": 1
+                }
+              ]
+            ],
+            "loop": false,
+            "sprite_id": 4
+          }
+        ],
+        "reverse": false,
+        "remove": false
+      }
+    },
+    "tower_build_barrack": {
+      "sprite": {
+        "animated": false,
+        "r": 0,
+        "anchor": {
+          "y": 0.5,
+          "x": 0
+        },
+        "name": "buildbar",
+        "ts": 0,
+        "time_offset": 0,
+        "frame_idx": 1,
+        "hidden_count": 0,
+        "loop": true,
+        "offset": {
+          "y": 50,
+          "x": -21
+        },
+        "flip_x": false,
+        "z": 3000,
+        "alpha": 255,
+        "runs": 0
+      },
+      "tween": {
+        "props": [
+          {
+            "name": "scale",
+            "keys": [
+              [
+                0,
+                {
+                  "y": 1,
+                  "x": 0
+                }
+              ],
+              [
+                0.8,
+                {
+                  "y": 1,
+                  "x": 1
+                }
+              ]
+            ],
+            "loop": false,
+            "sprite_id": 4
+          }
+        ],
+        "reverse": false,
+        "remove": false
+      }
+    },
+    "tower_build_mage": {
+      "sprite": {
+        "animated": false,
+        "r": 0,
+        "anchor": {
+          "y": 0.5,
+          "x": 0
+        },
+        "name": "buildbar",
+        "ts": 0,
+        "time_offset": 0,
+        "frame_idx": 1,
+        "hidden_count": 0,
+        "loop": true,
+        "offset": {
+          "y": 50,
+          "x": -21
+        },
+        "flip_x": false,
+        "z": 3000,
+        "alpha": 255,
+        "runs": 0
+      },
+      "tween": {
+        "props": [
+          {
+            "name": "scale",
+            "keys": [
+              [
+                0,
+                {
+                  "y": 1,
+                  "x": 0
+                }
+              ],
+              [
+                0.8,
+                {
+                  "y": 1,
+                  "x": 1
+                }
+              ]
+            ],
+            "loop": false,
+            "sprite_id": 4
+          }
+        ],
+        "reverse": false,
+        "remove": false
+      }
+    },
+    "tower_build_rock_thrower": {
+      "sprite": {
+        "animated": false,
+        "r": 0,
+        "anchor": {
+          "y": 0.5,
+          "x": 0
+        },
+        "name": "buildbar",
+        "ts": 0,
+        "time_offset": 0,
+        "frame_idx": 1,
+        "hidden_count": 0,
+        "loop": true,
+        "offset": {
+          "y": 50,
+          "x": -21
+        },
+        "flip_x": false,
+        "z": 3000,
+        "alpha": 255,
+        "runs": 0
+      },
+      "tween": {
+        "props": [
+          {
+            "name": "scale",
+            "keys": [
+              [
+                0,
+                {
+                  "y": 1,
+                  "x": 0
+                }
+              ],
+              [
+                0.8,
+                {
+                  "y": 1,
+                  "x": 1
+                }
+              ]
+            ],
+            "loop": false,
+            "sprite_id": 4
+          }
+        ],
+        "reverse": false,
+        "remove": false
+      }
+    }
+  }
+}
