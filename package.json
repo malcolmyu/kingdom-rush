@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.77",
+  "version": "0.2.78",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -36,8 +36,8 @@
     "test:gnawer": "node tests/gnawer-browser.mjs",
     "test:hyena": "node tests/hyena-browser.mjs",
     "test:scene-transition": "node tests/scene-transition-browser.mjs",
-    "test:map-unlock": "node tests/map-unlock-browser.mjs",
-    "test:map-start": "node tests/map-start-browser.mjs",
+    "test:map-unlock": "node tests/desktop-map-rewards-browser.mjs",
+    "test:map-start": "node tests/desktop-map-start-browser.mjs",
     "test:map-hero": "node tests/map-hero-hud-browser.mjs",
     "test:upgrades": "node tests/upgrades-browser.mjs",
     "test:upgrades-second": "node tests/upgrades-second-browser.mjs",
@@ -79,7 +79,8 @@
     "test:desktop-options": "node tests/desktop-options-browser.mjs",
     "test:map-difficulty": "node tests/map-difficulty-browser.mjs",
     "test:tower-ranges": "node tests/tower-ranges-browser.mjs",
-    "test:map-flag-motion": "node tests/map-flag-motion-browser.mjs"
+    "test:map-flag-motion": "node tests/map-flag-motion-browser.mjs",
+    "test:desktop-map-rewards": "node tests/desktop-map-rewards-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

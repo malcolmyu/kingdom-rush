@@ -6684,5 +6684,16 @@
       "methods": "LevelFlagView.initialize/set_mode/update; KView.update/animation_frame905–958",
       "randomApi": "https://love2d.org/wiki/love.math.random"
     }
+  },
+  "rewardMotion": {
+    "initialWait": 1,
+    "beforeReward": 0.5,
+    "gotstarHold": 1,
+    "starInterval": 0.5,
+    "ironHold": 4,
+    "heroicHold": 2,
+    "roadInterval": 0.4,
+    "newFlagHold": 1,
+    "source": "vanilla desktop-screen_map.lua MapView.show_flags1640–1770, cross-checked KR3. KR3 map_decos3 has no first-three trigger unlock waits."
   }
 }

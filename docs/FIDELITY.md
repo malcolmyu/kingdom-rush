@@ -1,5 +1,19 @@
 # 动画保真记录
 
+## 0.2.78 原桌面旗奖励串行阶段
+
+新增desktop-map-unlock.mjs独立桌面profile，旧phone MapUnlockSequence保持不变。完整只读交叉vanilla desktop-screen_map MapView.show_flags1640–1770与KR3对应流程：初始wait1；获星disable(false)/.5，非iron gotstar65–89 restart/wait1/campaign端点，新增星每个1–17/.5；转iron前.5/turnIron135–150 restart/hold4/iron端点；heroic前.5/wing1–15/hold2；新道路每点wait.4（纠正旧.3），newFlag1–24/hold1/nostar端点/enable。KR3 map_data的map_decos3只见trigger21，首三关没有对应deco unlock额外等待；KR1 map_decos1的trigger2/3不能误套。本批未执行任何控制器。
+
+phase事件只在边界reset控制器，模式/时钟不被每帧idle sync覆盖，保留原turnIron hold内可能的随机重播。星星出现前hidden，真实KUI ceil(ts*30)/clamp，newFlag也修正旧floor+1并更新错误旧断言。源Start Here在协程结束即创建，.5 in-quad，不再多等.5；原stime+=dt*10，所以轻摆sin(UI时间*5)，DOM文本/Canvas纸张同尺度。按源仅开场难度窗口等待.5轮询，书页/英雄等模态下奖励继续；不再一律modal暂停。UI时钟与World分离，不改真实星/挑战数/XP/金币/HP/冷却/寻路。
+
+已有217,812B transition图只在gotstar/新iron需要时载入，fresh路径仍不取。新增原GuimapNewRoad→Sound_MapRoad.ogg（gain1）在道路首点前排队，APK原件提取/build可复现。tools/sources/desktop-map.json rewardMotion记录源规则，mapHistory/各槽隔离及销毁继续沿现有生命周期。新test:map-start/map-unlock入口指向desktop专项，旧phone browser文件/pure profile仍保留。
+
+289Node全过，新增名义阶段/.4与phone.3隔离、逐星/翼章/输入block、模式phase不覆盖、无变化不载transition及难度轮询；实际最终build奖励/空闲/开始提示/UI/导演/完整九模式三战役三星/存档手机均正常exit0，3campaign自然XP4705/20生命。奖励专项用受控UI时钟抽样gotstar65/66、逐星hidden、道路→newFlag1/2、turnIron与wing，真实点击在动画中拒绝、完成后书页/手机入关，预算未变；这是受控进度，独立天然九模式另过，非原版同步证据。
+
+首轮phase优先表达式括号缺失导致多载iron图，已修并增加phase优先测试。首轮九模式在返回按钮等待超时，修正后完整重跑正常；campaign失败路径新增错误/界面状态诊断。旧idle fixture把“新解锁2”和“2已赢iron”同批设置，源newFlag最后会转nostar，旧白旗期望不成立；改成一致的已完成重入快照，奖励由独立真实阶段专项覆盖，未改产品门控。旧idle等待清理Node42433比daemon86230后TERM收143，不能冒称那轮通过；诊断重跑正常收exit1，修fixture后exit0。开始提示CSS scale字符串仅约六位精度，浏览器断言用1e-6序列化误差，仍验证原sin5与inquad，未改产品公式或跳动画。
+
+最终build954文件54,415,745B；100ms/1.5MBps/cacheoff真实书页入关14,829,899B/14.193s<15MB，无整大atlas/OTF/多余transition下载，未降质或抬预算。公开本轮一次manifest确认0.2.77且完整UI过，新推送后不轮询。最终logs map-reward-tests-final.log、map-reward-browser-release.log、map-reward-idle-release.log、map-reward-start-release.log、map-reward-ui-release.log、map-reward-director-release.log、map-reward-campaign-final.log、map-reward-performance-release.log。desktop-reward-first-star.png/iron-mobile.png已查看，受控UI时刻不是原版同输入证据；其他地图运动层/vignette和字体shader/测量等仍不完全一致，整体未1:1。
+
 ## 0.2.77 原桌面旗帜idle/hover与点击输入锁
 
 桌面完整map_flag_0001–0182在已审计atlas中齐全，不能套用phone旧缺帧结论。原vanilla desktop-screen_map.lua LevelFlagView1821–1960与KR3同方法2499–2643声明交叉一致：nostar24–64、campaign90–134、iron160–179、newFlag1–24、gotstar65–89、turnIron135–150。KView.update先加ts，animation_frame905–958用ceil(ts*30)、1..len clamp，默认非循环末帧保持。set_mode非restart ts=1e9，restart ts0；randomWait首次love.math.random(3,10)，严格<0后重新取(3,10.1)并ts0。LÖVE文档说明参数整数取整，10.1取10（https://love2d.org/wiki/love.math.random），浏览器使用独立可注入UI随机，不声称复现原Love随机流/同seed轨迹。
