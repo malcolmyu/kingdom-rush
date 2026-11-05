@@ -259,3 +259,5 @@ source-font-layout.mjs仅处理单行HUD的源字号取整与fit步长：逻辑�
 
 
 桌面地图由desktop-map.mjs与声明生成desktop-map-data.mjs独立呈现，使用原1920×1080参考。MapUnlockSequence仍负责实际三槽奖励/旗启用串行状态，DesktopMapScene只读progress并投影原flag/road。资源源与scope登记tools/sources/desktop-map.json，裁图工具仅处理图像/声明，不执行社区mod游戏控制器。构建元数据提供gzip旁文件，并在HTML标记packedMetadata；Repository只在支持DecompressionStream的构建页面读取压缩JSON，否则使用保留的普通JSON。
+
+DesktopMapHud只拥有地图顶部齿轮与原图片数字StarsBanner，不进入World。依附现有mapResize生命周期，尺寸按原desktop参考/窗口origin计算；异步资源复用DesktopMapScene.readyPromise，Campaign检查mapOwner防旧slot加载污染新页面。设置内退出先清modal再走既有director回标题，不重写场景门；底部phone MapHeroHud独立保留，尚未迁移。

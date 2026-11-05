@@ -705,3 +705,20 @@ DesktopMapScene保留现有存档/奖励串行时间/首旗门控与原director�
 最终268项Node通过，包含gzip三份声明还原与不支持解压API时原JSON回退。实际build桌面地图专项真实前三旗→书页→入关、源图面/hitbox与手机CDP触摸通过；UI专项原phone纵向拖图假设改为desktop真实横向wheel/drag及限幅，保留旧public版本分支。首次领域测试把1600×900错误期待scale1、路径忽略原数值id排序，均按源修正，未改产品规则迁就断言。两次并发浏览器在断言全部通过且Chrome退出后Node句柄残留，已比daemon后精确TERM owned26178/26239并收集；独立最终touch专项exit0，最终完整campaign另行重跑，不能把被TERM进程说成正常exit0。
 
 最终完整build九模式、三战役三星/真实存档手机、test:ui、test:desktop-map全部exit0；第三关campaign自然XP4705/准备约6帧20生命。最终冷路径100ms/1.5MBps/cacheoff为14,585,235B/13.915s，未调高15MB预算，全部新图RGBA无损。公开Pages本轮一次manifest确认0.2.70且旧版test:ui通过，0.2.71推送后不循环等CI。desktop-map-first-continent.png/mobile.png已人工查看，为受控三星解锁当前UI取样，不是原版同输入逐帧证据。整体仍未1:1。
+
+## 0.2.72 桌面地图顶部统计与真实设置入口
+
+原桌面screen_map.init设置按钮三帧map_configBtn_0001/2/3，130×130、anchor65/65、pos80/70，旧共用desktop源码与KR3声明一致。StarsBanner原mapStarsContainer312×62、anchor156/0、pos(sw-190,30)；数字不是GGLabel字体，而是原32×32图片，左侧逆序20步长、slash在x131、右侧110正序。totalStars读取真实战役星及挑战星，原max_stars110，不沿用原型/15；桌面此处无原型宝石0栏，因此移除，未造宝石经济/商店。
+
+新增desktop-map-hud.mjs，在desktop-map元数据/atlas就绪且场景owner仍匹配时创建。与地图拖图分离，参考1920×1080，复用原screen_utils最小4:3/最大16:9和origin分支，按game.clientWidth/Height计算，完整Canvas保留原图片；同一原atlas新增15帧逐RGBA无损验证。source数据与字段写入tools/sources/desktop-map.json hud声明，全量提取可复现。不执行社区mod控制器/数值。
+
+gear正常/hover/pressed、离开/cancel/blur回图及真实设置按钮接通；原共用screen_map:keypressed确认空地图Escape开设置，已有modal则关闭。退出放到设置内，关闭modal后通过既有returnToMenu/SceneTransition门回标题，不再地图左上wood返回。director专项改真实先点齿轮再退出，原慢准备/重复拒绝/输入门控/slot取消检查保留。设置窗口内部仍是既有phone设置与暂置退出按钮，并未称原desktop OptionsView完整复原；底部三按钮/提示也仍phone，下一批迁移。World/买卖/金币/XP/冷却未动。
+
+看图另发现0.2.71把未解锁旗的旧phone base态误画成desktop红旗；按原show_flags仅创建已有level，修为未解锁id隐藏且不可点，当前三星入口不变。截图受控统计fixture造5战役星+2挑战星验证7/110，真实进度演练与九模式独立，不作为正常通关证据。首次geometry测试误含#game的4px边框，改按原代码一致的client区域计算，未放宽源坐标误差或改产品位置。截图需等待原底部入场.5秒结束，避免截到半入场误判。
+
+
+270项Node通过；最终实际build test:desktop-map-hud、test:director、test:ui正常exit0。专项源图片数字/战役挑战统计/齿轮0-1-2态、Escape开关、真实音效/音乐开关保存、设置退出走门、slot1/2隔离与重载、手机CDP触摸通过。截图desktop-map-top-native.png/mobile.png已查看，前者受控5+2星而非自然通关，后者slot2新存档；底部phone控件仍明显待迁移。首次最终campaign等所有flag canvas元数据，因隐藏的未解锁旗保留未绘制占位key而超时，改只检查实际可见flag（隐藏/禁用另有专项断言），没有force/跳过教程或修改World。
+
+最终冷路径100ms/1.5MBps/cacheoff14,635,898B/14.841s，保持15MB预算，不是所有线上设备保证。公开Pages本轮一次manifest确认0.2.71，新gzip元数据真实线上启动及完整test:ui通过；0.2.72推送后不轮询CI。
+
+最终同一build完整九模式、三战役三星/存档手机回归exit0，3campaign自然XP4705/准备约5帧20生命，无改策略/战斗数值。最终日志map-hud-tests-final.log、map-hud-browser-complete.log、map-hud-director-final.log、map-hud-campaign-complete.log、map-hud-ui-final.log、map-hud-performance-final.log、map-hud-pages-ui.log。所有owned结果收集，整体仍未1:1。

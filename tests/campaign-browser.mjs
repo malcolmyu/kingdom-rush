@@ -15,7 +15,7 @@ await settle();await page.screenshot({path:path.join(out,'01-开始界面.png')}
 await page.getByRole('button',{name:'开始游戏',exact:true}).click();
 assert.equal(await page.locator('.save-slot').count(),3);await settle();await page.screenshot({path:path.join(out,'01b-原版存档面板.png')});
 await page.locator('.save-slot').first().click();await page.waitForFunction(()=>origins.app.scene==='map'&&!origins.app.sceneMotion.busy&&origins.app.mapScene?.ready);
-await page.waitForFunction(()=>origins.app.mapScene.ready&&[...document.querySelectorAll('.map-flag canvas')].every(c=>origins.app.mapScene.data.frames[c.dataset.icon]));
+await page.waitForFunction(()=>origins.app.mapScene.ready&&[...document.querySelectorAll('.map-flag canvas')].filter(c=>!c.closest('.map-flag').hidden).every(c=>origins.app.mapScene.data.frames[c.dataset.icon]));
 await settle();await page.screenshot({path:path.join(out,'02-大地图.png')});
 assert.ok(await page.locator('[data-level="2"]').isDisabled());assert.equal(await page.evaluate(()=>origins.app.modal),false);
 await page.locator('[data-level="1"]').click();assert.equal(await page.getByRole('tab',{name:/英雄挑战/}).isDisabled(),true);
