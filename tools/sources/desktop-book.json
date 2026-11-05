@@ -1,0 +1,1283 @@
+{
+  "atlasPath": "kr3-desktop/assets/images/fullhd/screen_map_123.lua",
+  "atlasSha256": "23352a39a58ced6f9c7578a9e93078bef42bb6225f3d8316e486e359fc1b2730",
+  "capitals": {
+    "file": "JIMOJW.ttf",
+    "path": "all-desktop/assets/fonts/JIMOJW.ttf",
+    "sha256": "aa07ea1b5fa02a4ec1afcbb2a91038c57fc6154d8c3b7ba8f6db5eae9c2b8204"
+  },
+  "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+  "frames": {
+    "levelSelect_Mode_notxt_0001": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1932,
+        7,
+        92,
+        98
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        4
+      ]
+    },
+    "levelSelect_Mode_notxt_0002": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1932,
+        110,
+        92,
+        98
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        4
+      ]
+    },
+    "levelSelect_Mode_notxt_0003": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1885,
+        1253,
+        112,
+        98
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        4,
+        4
+      ]
+    },
+    "levelSelect_Mode_notxt_0004": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1932,
+        719,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0005": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1932,
+        826,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0006": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1932,
+        933,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0007": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1844,
+        1900,
+        112,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0008": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1937,
+        1882,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0009": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1930,
+        1092,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0010": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1930,
+        1199,
+        92,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        24,
+        0
+      ]
+    },
+    "levelSelect_Mode_notxt_0011": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1908,
+        419,
+        112,
+        102
+      ],
+      "size": [
+        116,
+        102
+      ],
+      "trim": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    "levelSelect_background": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        1092,
+        1190,
+        708
+      ],
+      "size": [
+        1202,
+        720
+      ],
+      "trim": [
+        7,
+        7,
+        5,
+        5
+      ]
+    },
+    "levelSelect_badges_0001": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1156,
+        1980,
+        28,
+        26
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "levelSelect_badges_0002": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1156,
+        2011,
+        28,
+        26
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "levelSelect_badges_0003": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1195,
+        2013,
+        34,
+        28
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        0,
+        2,
+        0,
+        2
+      ]
+    },
+    "levelSelect_badges_0004": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1339,
+        357,
+        34,
+        30
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    "levelSelect_badges_0005": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        2019,
+        235,
+        22,
+        30
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        7,
+        0,
+        5,
+        2
+      ]
+    },
+    "levelSelect_badges_0006": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        2019,
+        124,
+        22,
+        32
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        7,
+        0,
+        5,
+        0
+      ]
+    },
+    "levelSelect_capitular_bg": {
+      "a_name": "screen_map-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1099,
+        1805,
+        86,
+        102
+      ],
+      "size": [
+        88,
+        104
+      ],
+      "trim": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "levelSelect_closeBtn_0001": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1940,
+        1788,
+        34,
+        32
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "levelSelect_closeBtn_0002": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1979,
+        1788,
+        34,
+        32
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "levelSelect_closeBtn_0003": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1844,
+        2007,
+        30,
+        30
+      ],
+      "size": [
+        34,
+        32
+      ],
+      "trim": [
+        2,
+        1,
+        2,
+        1
+      ]
+    },
+    "levelSelect_difficulty_0001": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        844,
+        1498,
+        62,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "levelSelect_difficulty_0002": {
+      "a_name": "screen_map-5.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1198,
+        561,
+        62,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "levelSelect_difficulty_0003": {
+      "a_name": "screen_map-5.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1265,
+        561,
+        62,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "levelSelect_difficulty_0004": {
+      "a_name": "screen_map-5.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1332,
+        561,
+        62,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "levelSelect_difficulty_0005": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1333,
+        1904,
+        64,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "levelSelect_difficulty_0006": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1402,
+        1904,
+        64,
+        60
+      ],
+      "size": [
+        64,
+        60
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "levelSelect_modeRules_0001": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1854,
+        1788,
+        38,
+        38
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "levelSelect_modeRules_0002": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1897,
+        1788,
+        38,
+        38
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "levelSelect_modeRules_0003": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1698,
+        1990,
+        34,
+        40
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        5,
+        2,
+        7,
+        4
+      ]
+    },
+    "levelSelect_modeRules_0004": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1388,
+        1969,
+        34,
+        40
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        5,
+        2,
+        7,
+        4
+      ]
+    },
+    "levelSelect_modeRules_0005": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        2011,
+        7,
+        30,
+        34
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        7,
+        5,
+        9,
+        7
+      ]
+    },
+    "levelSelect_modeRules_0006": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        2011,
+        46,
+        30,
+        34
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        7,
+        5,
+        9,
+        7
+      ]
+    },
+    "levelSelect_modeRules_0007": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1402,
+        744,
+        40,
+        40
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        3,
+        4,
+        3,
+        2
+      ]
+    },
+    "levelSelect_modeRules_0008": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1885,
+        1356,
+        40,
+        40
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        3,
+        4,
+        3,
+        2
+      ]
+    },
+    "levelSelect_modeRules_0009": {
+      "a_name": "screen_map-4.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1944,
+        1653,
+        32,
+        36
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        7,
+        4,
+        7,
+        6
+      ]
+    },
+    "levelSelect_modeRules_0010": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        300,
+        1991,
+        46,
+        42
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        0,
+        2,
+        0,
+        2
+      ]
+    },
+    "levelSelect_modeRules_0011": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        198,
+        1991,
+        46,
+        46
+      ],
+      "size": [
+        46,
+        46
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "levelSelect_modebg_notxt_0001": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1392,
+        1807,
+        362,
+        62
+      ],
+      "size": [
+        376,
+        80
+      ],
+      "trim": [
+        8,
+        9,
+        6,
+        9
+      ]
+    },
+    "levelSelect_modebg_notxt_0002": {
+      "a_name": "screen_map-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        1970,
+        358,
+        50
+      ],
+      "size": [
+        376,
+        80
+      ],
+      "trim": [
+        9,
+        9,
+        9,
+        21
+      ]
+    },
+    "levelSelect_startMode_notxt_0001": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        867,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_startMode_notxt_0002": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        974,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_startMode_notxt_0003": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        1081,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_startMode_notxt_0004": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        1188,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_startMode_notxt_0005": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        1295,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_startMode_notxt_0006": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1909,
+        1402,
+        118,
+        102
+      ],
+      "size": [
+        122,
+        114
+      ],
+      "trim": [
+        2,
+        3,
+        2,
+        9
+      ]
+    },
+    "levelSelect_thumbFrame": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1200,
+        1483,
+        370,
+        274
+      ],
+      "size": [
+        370,
+        280
+      ],
+      "trim": [
+        0,
+        4,
+        0,
+        2
+      ]
+    },
+    "levelSelect_volutas_0001": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1891,
+        1303,
+        58,
+        18
+      ],
+      "size": [
+        120,
+        20
+      ],
+      "trim": [
+        0,
+        1,
+        62,
+        1
+      ]
+    },
+    "stage_thumbs_0001": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1479,
+        1092,
+        342,
+        246
+      ],
+      "size": [
+        342,
+        246
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "stage_thumbs_0002": {
+      "a_name": "screen_map-2.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1200,
+        1762,
+        342,
+        246
+      ],
+      "size": [
+        342,
+        246
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "stage_thumbs_0003": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1060,
+        7,
+        342,
+        246
+      ],
+      "size": [
+        342,
+        246
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "kind": "community-mod-origins-desktop-assets",
+  "repository": "https://github.com/zidonghua2018/KingdomRushFL",
+  "sheets": {
+    "screen_map-0.png": "99c5166a978d1d761345761a6962315014a0ef9149daa033911e6cba40896894",
+    "screen_map-1.png": "22b9e472ac9ad6d14b6f778ab336388b805b00032c41a866db92a6847fd3d43d",
+    "screen_map-2.png": "ce397fa0e03716df4c0faf2e426d95e0c6bc50a09f35741e424f108c0dc064db",
+    "screen_map-3.png": "8ced8abe451fa1596da2984bc7d56b30e6690a902f24bc3806ed2e1b0bb13a05",
+    "screen_map-4.png": "3fec3da8338e69d3a584c746a8fececa490c87158a7b805ea8486a3e2867de67",
+    "screen_map-5.png": "89efd14de3a9408895986004c620bba7322fcc700a28a0dcf3984bb325f17633"
+  },
+  "stringsPath": "kr3-desktop/assets/strings/zh-Hans_3.lua",
+  "stringsSha256": "50aae83a41804accf5cd54a87e1b04b38655ecb7b98a5e468b537499bb5a2d80",
+  "text": {
+    "BUTTON_TO_BATTLE_1": "进入",
+    "BUTTON_TO_BATTLE_2": "战斗",
+    "Campaign": "战役",
+    "Challenge Rules": "挑战规则",
+    "HEROES": "英雄",
+    "Heroic": "英雄模式",
+    "Iron": "钢铁",
+    "NO HEROES": "无英雄",
+    "UPGRADE_LEVEL": "提升等级"
+  }
+}

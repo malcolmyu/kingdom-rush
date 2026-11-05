@@ -1,5 +1,17 @@
 # 动画保真记录
 
+## 0.2.69 桌面双页书框、皇冠首字与模式书页
+
+本批找到带 Origins desktop 图集的公开社区模组仓库 `zidonghua2018/KingdomRushFL`，固定提交 `a1facc6b76d00b064ad43db958d31b4ceaf7388d`。只提取经过视频同关画面核对的书页图片与九个书页短标签，不导入模组控制器、游戏模板、数值、改写后的字体映射或新增功能。起初核对的 KR1 图集首字饰板不符，未采用；最终采用 KR3 皇冠饰板、金色书框和前三关矩形预览图。`tools/sources/desktop-book.json` 记录选中声明、原图集 SHA256、来源与帧坐标；`extract_desktop_book.py` 输出 52 张保留 trim/完整 size 的无损 WebP，并验证解码 RGBA 一致。此来源是社区仓库中的 desktop 图集，不能改写成当前 phone APK 的内容。
+
+`desktop-book.mjs` 独立恢复 1202×720 书页坐标与 screen_map 自有 1920×1080 参考窗口。这里 desktop 纹理 ref_res=fullhd1080，图片逻辑尺寸直接为元数据 size，不经过 NativeUI 的 phone UI 0.5。共用源 `add_level_title`/`add_level_description`/`add_level_tab`/`LevelSelectView` 与实际画面对照：左标题中心394/y126，右标题中心870/y104，原花纹、首字皇冠690/120、56号 JIMO 首字、154起始窄栏/下方宽栏、342×246预览、五枚徽章、1105处三个模式页签、805/470蜡封与982/522难度钱币。保留真实入关/难度/存档与三种模式规则，锁定挑战页签不可点击；旧测试对应改为检查禁用，未放松战役三星解锁。英雄/升级上限与钢铁禁塔展示读取现有真实本局规则，不复制模组规则。
+
+JIMOJW 与前批已取得原字体 SHA 一致，但源文件 `vhea` 版本1.1被 Chromium OTS 拒绝，表现为 FontFace 加载失败；本批只去除 `vhea/vmtx` 竖排表，逐表验证 `glyf/loca/hmtx/hhea/cmap/OS2/字体 hinting` 的横排内容字节不变，分别记录 source SHA 与 browser SHA。发布时只 subset 书页实际首字与“进入战斗”，WOFF2约20KB，按需加载，不增加启动五字体门。没有替换成系统字体或导入模组 HarmonyOS 字体。蜡封文字仅按原特定 shader 参数做 CSS 近似，未给全局中文随意描边。
+
+261项 Node、实际 build 的 desktop-book/level-book/font/UI 专项与完整九模式三战役三星通过；真实新存档第三战役XP4705、20生命。专项覆盖九页原文/皇冠首字与窄宽栏顺序、原图尺寸/桌面坐标、锁定页签、真实切换/难度保存、Escape/关闭重开、ResizeObserver手机缩放、两字体部署字形与横排原件 Canvas 像素/metrics 一致。前批字体请求延迟取消回归保留。冷路径含真实开书页与点击入关，100ms/1.5MBps/禁缓存14.15秒、14,580,610B，仍低于15MB；这是受控本地数据而非所有线上设备承诺。
+
+当前桌面/手机截图均已检查，解锁进度是UI受控样本。仍有旧 phone 地图背景与 desktop 视频不同、书页开关动画、蜡封 shader、Love 字号取整/基线与完整单位/UI等差异，尚无同输入逐帧像素验收，不能称整体1:1。首版浏览器失败确认为原 JIMO 竖排表拒绝；另两次专项分别在小于0.02逻辑像素的浏览器坐标量化、ResizeObserver尚未交付时失败，已按实际亚像素精度与真实观察器等待修正，最终完整通过，没有强制点击或改变游戏数值。
+
 ## 0.2.68 用户截图对应的关卡书页字体
 
 用户截图与指定视频 BV1y8411R7iB 第八段、第 7 秒的第三关书页直接比较后，确认此前“APK 字体文件相同即可证明画面正确”的判断不成立。当前 APK 是 phone 方案，而视频展示 desktop 书页；普通粗体 `h_map` 不能充当视频里的书法书页标题。

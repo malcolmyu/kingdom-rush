@@ -13,6 +13,7 @@ catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
 assets={'encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-select.ogg','upgrade-confirm.ogg','map-new-flag.ogg','transition-open.ogg','transition-close.ogg','quest-completed.ogg','quest-failed.ogg','win-star.ogg','notification-open.ogg','notification-close.ogg','notification-icon.ogg','spell-refresh.ogg','catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}
 assets|={'menu/'+n+'.webp'for n in ['start','logo','world']}
 assets|={f'levels/{i:02}-{m}.json'for i in range(1,4)for m in ['campaign','heroic','iron']}
