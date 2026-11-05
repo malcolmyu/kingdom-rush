@@ -1149,3 +1149,17 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 首专项仅对全部progress做快照比较失败：新增真实敌通知合法更新seen；改只比较真实关卡解锁/星/挑战，不跳教程/通知、不改产品门控。公开一次manifest确认.105；首远程UI断言已完成但Node16593关闭挂住，与daemon88207比对后TERM143，明确不算exit0；独立重跑结果另记。原本地全九模式与UI正常exit0；最终修改仅修shield期间战斗冷却时间继续流逝后，最终包再串行回归，不拿修改前检查冒最终结果。
 
 最终actualbuild1515files72,844,669B；shield-browser-release → shield-campaign-release → shield-ui-release → shield-performance-release串行全部正常exit0，原9模式/存档手机全过，三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。387Node全过，shield-rules-final另对最终纯测试补充的冷却不冻结断言通过；hut招募回归正常exit0。远程公开.105独立shield-pages-ui-repeat最终正常exit0，首关闭挂住143已如实区分。冷100ms/1.5MBps/cacheoff14,715,120B，book入关6.301s/总15.285s/229requests，无整atlas/OTF，15MB不变、不保证线上所有设备速度。没有新图下载；原紧凑塔1314帧仍2,122,316B，新关自身预算未验。
+
+### 0.2.107 小熊专用投矛预测、抛物线与接触
+
+只读完整核对原APK scripts.arrow1947–1987/1989–2130、script_utils389–401抛物线、367–387 damage、1084–1167 soldier ranged发射职责，与缓存共享源码交叉，不执行控制器。tools/extract_ewok_spear.py固定原scripts/script_utils/templates三SHA并接完整extract_campaign，记录选中bullet原模板及剩余边界。
+
+小熊射击不再进入旧friendly arrow的sin/chord追踪适配。新ewok-spear以原发射偏移(0,10)、target.pos+hit_offset+velocity*22/30固定一次预测落点，g=-900，initial_parabola_speed与position_in_parabola原公式更新。原弹体hide_radius6/anchor/trim/alpha/z3400保持在同actorqueue，角度取实际每模拟tick的last_pos差，不按渲染帧重算或用from-to弦线。新插入同tick不推进；source while elapsed+tick<=flight_time后，才用当前仍在World且活体目标+hit_offset严格距离<22判断接触，成功一次ceil(frandom16,20)后复用真实hurt。发射不预抽伤害、死亡/移除/走离目标不假必命中，目标改变位置不拖拽固定终点。ranged前摇记录目标初点，移动超原attack.max_track_distance128取消发射；bullet模板max_track_distance64没有在这个controller中凭印象加追踪。
+
+新关motionVelocity来自World模拟tick实际位置变化/真实dt，旧前三关不增加此字段；不是图集像素、不是路段dx/dy直接当速度，也不是RAF差分。当前World寻路/held动作及更新顺序仍适配原native motion/controller，完整ranged episode目标挑选/随机、queued damage/nativeIDs/协程、未来harasser目标dodge、blood/pop和水面miss FX未在此批声称恢复。原其他塔箭/英雄/炮石/torch分支不改，盾挡与能量弹回归保持；新4–6继续隔离，不据本批弹体方程称完整小熊或18模式完成。
+
+392Node全过，5新纯测覆盖固定预测/原offset/无发射damage RNG、抛物线/模拟切线/z、strict22命中与miss无RNG、死/移除/maxtrack/插入一tick、暂停与新关速度/旧关不加字段。原hut测试改为等待真实contact才有damage，不保留旧发射时预抽的错误预期。actualbuild test:ewok-spear真实Campaign修100/雇100后由World ranged前摇开火，捕实际Canvas原q/alpha/矩阵朝向、抛物线坐标/draw快照不变、moving target固定落点/真实伤HP、pause/zoom/mobile/map清理通过。额外模型位置/时钟为受控fixture，不是自然第4关或原版同步证据。
+
+首截图手动模拟后统计DOM尚未刷新，初取样top400而World真实300；最终截图前调用原updateBattle同步显示，没改交易或假造金钱。ewok-spear-flight/mobile最终已人工看，top300与100+100真实消费一致。没有浏览器产品故障待处理。shield/专用energy回归、完整天然原九模式/存档手机、UI与性能串行exit0。三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。公开一次manifest确认.106且spear-pages-ui正常exit0，新发布后不轮询CI。
+
+最终build1516files72,847,957B；冷100ms/1.5MBps/cacheoff14,718,269B，book6.215s/总15.215s230requests<15MB，无整atlas/OTF/新图下载，原塔compact1314帧2,122,316B保持。不是所有线上设备速度保证，新关自身预算仍未验，扩展7.3MB不能直接整图预载后抬预算/降质。logs spear-tests/build/browser-final/shield-regression/energy-regression/campaign/ui/performance/pages-ui均已收集。

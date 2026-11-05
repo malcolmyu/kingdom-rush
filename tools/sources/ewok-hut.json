@@ -637,7 +637,7 @@
   },
   "scope": "holder repair and individually purchased, non-respawning mercenaries; shared current combat adapter",
   "limitations": [
-    "Full original spear physics remains pending; shield audit is tools/sources/ewok-shield.json",
+    "Spear core trajectory/contact audit is tools/sources/ewok-spear.json; complete native scheduler/FX remain pending; shield audit is tools/sources/ewok-shield.json",
     "Native scheduler and insertion queue are adapted, not source insert ID stream",
     "Complete special death/blood pool remains pending"
   ],

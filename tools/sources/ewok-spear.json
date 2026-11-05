@@ -1,0 +1,100 @@
+{
+  "sha256": {
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  },
+  "ranges": [
+    "scripts.lua:1947-1987",
+    "scripts.lua:1989-2130",
+    "script_utils.lua:389-394",
+    "script_utils.lua:396-401",
+    "script_utils.lua:367-387",
+    "script_utils.lua:1084-1167"
+  ],
+  "templates": {
+    "bullet_soldier_ewok": {
+      "bullet": {
+        "align_with_trajectory": true,
+        "damage_bans": 0,
+        "damage_factor": 1,
+        "damage_flags": 0,
+        "damage_max": 20,
+        "damage_min": 16,
+        "damage_radius": 0,
+        "damage_type": 2,
+        "flight_time": 0.7333333333333333,
+        "g": -900,
+        "hide_radius": 6,
+        "hit_blood_fx": "fx_blood_splat",
+        "hit_distance": 22,
+        "level": 0,
+        "max_track_distance": 64,
+        "miss_fx_water": "fx_splash_small",
+        "pop": [
+          "pop_shunt",
+          "pop_oof"
+        ],
+        "pop_chance": 1,
+        "pop_conds": 2,
+        "predict_target_pos": true,
+        "prediction_error": false,
+        "reduce_armor": 0,
+        "reduce_magic_armor": 0,
+        "reset_to_target_pos": true,
+        "speed": {
+          "x": 0,
+          "y": 0
+        },
+        "vis_bans": 0,
+        "vis_flags": 0
+      },
+      "main_script": {
+        "insert": {},
+        "runs": 1,
+        "update": {}
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": true,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "bullet_soldier_ewok",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3400
+          }
+        ]
+      },
+      "sound_events": {
+        "insert": "ArrowSound"
+      },
+      "template_name": "bullet_soldier_ewok"
+    }
+  },
+  "scope": "Ewok-only fixed predicted destination, original parabola, tick displacement tangent, strict distance contact and ceil(frandom) at contact",
+  "limitations": [
+    "Target motion is measured from current World simulation ticks, not a recovered native motion/controller scheduler",
+    "Original ranged target selection/insert queue ordering remain adapted",
+    "Blood/pop/water miss effects and target dodge controller for future harassers remain pending"
+  ]
+}

@@ -330,3 +330,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `ewok-hut.mjs`单独管理树屋slot、repair与hire请求及门状态，未加入四基础TYPES或普通fillBarrack。slot附在既有slots后，不重排旧建造点；TowerMenu只为ewok选择原holder_ewok/ewok声明、tw_upgrade/tw_buy_soldier与实际价格/容量，通过World公开方法交易。pending购买由World模拟时钟结束门动画后提交，暂停冻结，场景丢弃World清理。mercenary死亡走独立无复活分支，清理后按活跃对象数量重排原formation。新兵暂复用当前战斗适配，盾挡/完整spear物理未做，保持新关隔离，不当普通兵营免费替身。新增原portrait13通过同NativeUI源裁图路径提供，不用占位肖像或吞掉Missing UI错误。
 
 `ewok-shield.mjs`只在新小熊的攻击调用边界执行tryEwokDodge，与原半血function-valued模板审计分开记录；不修改hurtDefender为全局免伤。盾挡phase和随机职责归World，Renderer经ewokShieldPose只读取原动画，hold保留最后一帧而非伪循环。持续burn与专用energy仍直接伤害；投矛现有适配保持，尚非完整原预测抛物线。
+
+`ewok-spear.mjs`为新小熊独立创建type=ewok-spear固定预测落点/原抛物线状态，World新关每模拟tick记录实际运动速度供下一次插入预测；不会按RAF修改目标/朝向或消费随机。emit tick不更新新弹，之后按source while边界更新位置/tick切线，再按存活目标当前hit_offset严格接触，成功才消费ceil(frandom)并hurt。旧三关不增加motionVelocity字段，原其他projectile分支不变；native调度/完整ranged episode与未来目标dodge、血水FX仍为边界。
