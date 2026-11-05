@@ -617,3 +617,11 @@ SelectionMarkers位于展示层，快照与过滤仅维护引用；Renderer在�
 hide在取消旧WAAPI前采当前scale/opacity，new show按源重新.6/0；回调带动画对象身份保护。TowerMenu同一实体内容/resize重绘保留进行中动画与inert，不再取消后提前可点；transition显式取消旧动画，减少动态偏好仍直接终点。原.12outquad、9位置、fit相机、两次确认/真实退款与World数值不变。
 
 246领域测试通过，新增源绝对幅度/中断关闭与new show重置规则。实际build专项0/60/120ms图面和子hitbox、alpha、中断关闭/重开、真实resize重绘门控、tooltip、购买升级出售、手机/暂停/场景清理通过；完整九模式三战役三星、原tower-menu/scale/UI与公开0.2.62 UI通过。早期专项点不可操作按钮会落空地取消菜单（无扣款），取样改重新选择后测；再次点同塔原产品会取消，重绘专项改用真实resize，不为测试改该行为。截图已人工查看，为受控展示时间取样而非原版同输入逐帧证据，整体仍未1:1。
+
+## 0.2.64 基础建造预览
+
+原game_gui3513–3608 select在preview字段存在时按entity.tower_holder.preview_ids索引设置原sprite.hidden=false，3610–3641 deselect恢复true；没有生成另一座完整塔。四类原预览分别archer/barracks/mage/artillery，alpha180、anchor(.5,.5)、offset(0,34)/(0,34)/(0,36)/(0,26)、z3000均读取原holder模板。holderPreviewOverrides只产生本帧展示覆盖，Renderer沿用世界纹理ref_scale/game_scale/相机与原entity裁图链，不修改World slot、模板或RNG。TowerMenu第一点击选择派生preview，切换、取消、成交、通知、暂停、场景切换清理。两种holder模板均通过渲染级回归；当前前三关原数据均elven_woods/terrain1，未为展示第二种地形篡改关卡。
+
+零金币专项发现旧Campaign.updateBattle仍按余额把按钮设disabled，与TowerMenu原click_disabled“可选中预览、不可确认成交”规则冲突。删除该旧覆盖，仍由TowerMenu源规则锁定未开放塔，价格/图面灰显且真实World拒绝无钱交易。未改价格、金币、伤害或冷却。原选中范围/升级halo与完整z遮挡仍待恢复，本批只闭合原预览图，不称全部建造反馈1:1。
+
+249项领域测试全部通过；实际build预览专项验证四类原图/偏移/透明度、切换/取消、零金币真实鼠标选择与拒绝成交、70建造与准备全额退款、手机/真实滚轮缩放、暂停/敌通知/重入清理。两地形采用Renderer实体级测试，当前关卡未改地形；浏览器中零金币为受控fixture，完整九模式另用天然新存档链。最初跨帧比较slot.cd自然递减误报，改为比较非时间状态；通知专项先按真实规则取消选塔再点波旗，不force。截图为当前样本，非原版同输入像素证据。
