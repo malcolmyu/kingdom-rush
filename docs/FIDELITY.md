@@ -689,3 +689,19 @@ source-font-layout.mjs封装此取整顺序与单行HUD fit，BattleTop按当前
 修改范围为顶部单行统计字号/fit。基线font_adj、Love getHeight/getWrap完整后端、light hinting与原生高DPI像素关系尚未全部复原；本批当前浏览器GUI参考取整不能当全部设备同步像素证据。GGLabel.draw153–227的top/middle/base/bottom调整链及默认text_shadow=nil、offset1/1已读，未凭感觉添加普遍阴影。多行正文仍待后续。
 
 256Node全部通过；实际build source-font-layout专项验证桌面/手机/resize原整数参考字号、原.5逻辑步长、上一步不能再fit、World金币不变、暂停与三页教程后恢复；battle-top/五种字体原件Canvas像素一致性、最终完整九模式三战役三星/存档手机均exit0。启动冷缓存预算13,908,960B/约13.40s，15MB预算与无整大atlas/OTF继续过。公开Pages本轮manifest0.2.66且完整test:ui通过，上轮入关超时没有重复；新0.2.67推送后不循环等CI。截图source-hud-font-mobile.png已查看，是当前实际界面非原版同输入逐帧证据。
+
+
+## 0.2.71 桌面第一大陆地图连续分支
+
+指定视频第8P开书前彩色地图与当前phone英文纸图明显不同。本批使用固定社区混合源 a1facc6b76d00b064ad43db958d31b4ceaf7388d 的KR3 desktop screen_map_123原图声明，仅提取原基础地图0001、村庄under遮挡0003、未解锁山体0002、旗帜/星/路径/首次提示原图。不是APK desktop资源，不执行或移植mod控制器、数值/AI背景。tools/sources/desktop-map.json记录源sheet SHA与只读points声明；extract_desktop_map.py每裁图/紧凑打包按解码RGBA逐字节核对。前三旗(196,204)/(471,312)/(322,407)与2关14点、3关7点路径（按数值id排序）按声明坐标，实际图中村庄/石桥/瀑布路径与视频交叉核对。地图1920x1080参考按h/1080，窄屏按w/1920，与phone640x510和World1024x768隔离。
+
+DesktopMapScene保留现有存档/奖励串行时间/首旗门控与原director资源首帧等待，Canvas/DOM/hitbox/pan共同换参考。旗图88x120居中于源pos；可点子rect(20,34,44,74)与完整图面分离，避免clip切掉星。hover用180/181/182帧，挑战白旗与英雄翼读真实进度，未来关不造入口。首次提示换原desktop图片与中文，源.5inquad/轻摆。World/价格/寻路/冷却/XP没有改。
+
+这是第一大陆与前三入口的可用连续迁移，不是全desktop地图完成：其余背景移动层/船/树/粒子等动画尚未迁移，旗待机随机动画尚未完整复现；旧phone顶部/底部菜单与提示仍保留，布局与指定视频不一致。奖励时序沿用既有phone串行实现，不能称desktop原协程逐帧一致。完整遮挡、vignette、窗口safearea仍欠，截图非原版同输入同步像素验收。
+
+高清图首次让15MB冷路径预算失败（16,655,777B），没有减画质或调高预算。去掉当前未使用的旗待机中间帧关键下载，原资源完整源声明仍保留；构建对catalog/ui/fonts三份JSON无损gzip，浏览器DecompressionStream解码，原JSON作为无API兼容回退。更新后的受控同网络测试14,583,874B/约13.9s通过；最终包仍需按最终日志报告。此前测试wait旧phone atlas字段已改为等待当前desktop源图就绪，不把缺字段当网络或放宽输入门控。
+
+
+最终268项Node通过，包含gzip三份声明还原与不支持解压API时原JSON回退。实际build桌面地图专项真实前三旗→书页→入关、源图面/hitbox与手机CDP触摸通过；UI专项原phone纵向拖图假设改为desktop真实横向wheel/drag及限幅，保留旧public版本分支。首次领域测试把1600×900错误期待scale1、路径忽略原数值id排序，均按源修正，未改产品规则迁就断言。两次并发浏览器在断言全部通过且Chrome退出后Node句柄残留，已比daemon后精确TERM owned26178/26239并收集；独立最终touch专项exit0，最终完整campaign另行重跑，不能把被TERM进程说成正常exit0。
+
+最终完整build九模式、三战役三星/真实存档手机、test:ui、test:desktop-map全部exit0；第三关campaign自然XP4705/准备约6帧20生命。最终冷路径100ms/1.5MBps/cacheoff为14,585,235B/13.915s，未调高15MB预算，全部新图RGBA无损。公开Pages本轮一次manifest确认0.2.70且旧版test:ui通过，0.2.71推送后不循环等CI。desktop-map-first-continent.png/mobile.png已人工查看，为受控三星解锁当前UI取样，不是原版同输入逐帧证据。整体仍未1:1。

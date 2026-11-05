@@ -100,3 +100,4 @@ subprocess.run(['python3',str(ROOT/'tools/extract_markers.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/extract_book_font.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_book.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_desktop_map.py')],check=True)

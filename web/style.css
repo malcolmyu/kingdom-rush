@@ -254,3 +254,16 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .desktop-book .book-battle-caption{position:absolute;left:0;width:100%;display:flex;justify-content:center;align-items:center;line-height:1;color:rgb(243 198 152);-webkit-text-stroke:.18cqw rgb(95 6 13);paint-order:stroke fill;text-shadow:0 0 .14cqw #0009;pointer-events:none}
 
 .desktop-book{animation:none!important}.veil.book-veil{background:rgba(0,0,0,.6274509804);backdrop-filter:none}
+
+/* Desktop map: source pixels are logical units at fullhd reference. */
+.screen.map .map-wrap.desktop-map-wrap{aspect-ratio:1920/1080;background:none;container-type:inline-size}
+.desktop-map-wrap::before{display:none}
+.screen.map .desktop-map-wrap .map-flag{width:4.583333%;height:11.111111%;transform:translate(-50%,-50%)}
+.desktop-map-wrap .map-flag canvas{width:100%;height:100%}
+.desktop-map-wrap .map-flag{clip-path:inset(28.333333% 27.272727% 10% 22.727273%)}
+.desktop-map-start{position:absolute;left:10.104167%;top:11.111111%;width:9.375%;height:2.962963%;font:400 1.125cqw OriginsCJK;color:rgb(46 41 39);text-align:center;pointer-events:none;z-index:4;transform-origin:50% 100%}
+
+.screen.map .desktop-map-wrap .map-flag{width:2.291667%;height:6.851852%;transform:none;clip-path:none;overflow:visible}
+.screen.map .desktop-map-wrap .map-flag canvas{position:absolute;left:-45.454545%;top:-45.945946%;width:200%;height:162.162162%;max-width:none}
+
+.desktop-map-start{top:15.740741%;height:6.296296%}.desktop-map-start span{position:absolute;left:4.444444%;top:11.764706%;width:91.111111%;height:47.058824%;display:flex;align-items:center;justify-content:center;white-space:nowrap}

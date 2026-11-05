@@ -256,3 +256,6 @@ tower-menu-motion.mjs仅读源motion元数据，把原绝对scale换为已按max
 font-roles.mjs以原font_subst的字体名作为唯一角色路由，普通CJK、粗体CJK、Soho、Comic Italic、TOONISH各用实际注册face；NativeUI不再凭少数role名猜family。启动时字体加载与Repository metadata并发，原字体准备好后才创建依赖测宽的界面。extract_fonts记录源APK路径和SHA-256，优化构建仍保留原度量/字形，原文件与部署压缩文件职责分开。
 
 source-font-layout.mjs仅处理单行HUD的源字号取整与fit步长：逻辑字号×角色系数×GUIscale后按原阈值取整，溢出减.5逻辑字号并重新测量。BattleTop消费这个纯结果，Canvas只用于已就绪原字体的测宽，不读写World规则。段落排版与基线后端继续独立，不将HUD参考尺度泛化到所有场景。
+
+
+桌面地图由desktop-map.mjs与声明生成desktop-map-data.mjs独立呈现，使用原1920×1080参考。MapUnlockSequence仍负责实际三槽奖励/旗启用串行状态，DesktopMapScene只读progress并投影原flag/road。资源源与scope登记tools/sources/desktop-map.json，裁图工具仅处理图像/声明，不执行社区mod游戏控制器。构建元数据提供gzip旁文件，并在HTML标记packedMetadata；Repository只在支持DecompressionStream的构建页面读取压缩JSON，否则使用保留的普通JSON。

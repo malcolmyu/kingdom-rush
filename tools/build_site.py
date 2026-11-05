@@ -1,5 +1,5 @@
 """Copy the dependency-free browser app into a deployable static build."""
-import json,pathlib,shutil,hashlib,re
+import json,pathlib,shutil,hashlib,re,gzip
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
 (OUT/'.nojekyll').touch()
@@ -14,6 +14,7 @@ assets={'book-hover.ogg','encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-sele
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-map').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}
 assets|={'menu/'+n+'.webp'for n in ['start','logo','world']}
 assets|={f'levels/{i:02}-{m}.json'for i in range(1,4)for m in ['campaign','heroic','iron']}
@@ -24,7 +25,10 @@ from optimize_runtime import optimize
 optimize(OUT)
 # Resolve static imports up front to remove deep ESM request waterfalls on cold
 # connections. Preload the title background while metadata is downloading.
-html=(OUT/'index.html').read_text()
+# Compress declaration metadata losslessly; raw JSON remains a compatibility fallback.
+for relative in ['assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json']:
+ p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))
+html=(OUT/'index.html').read_text().replace('<html ', '<html data-packed-metadata="gzip" ')
 preloads=''.join(f'<link rel="modulepreload" href="{p.name}">\n'for p in sorted(OUT.glob('*.mjs')))
 preloads+='<link rel="preload" as="image" href="assets/menu/start.webp" fetchpriority="high">\n'
 (OUT/'index.html').write_text(html.replace('</head>',preloads+'</head>'))
