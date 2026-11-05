@@ -12,5 +12,5 @@ for key,f in s['frames'].items():
  x,y,w,h=f['f_quad'];im=Image.new('RGBA',tuple(f['size']));im.paste(sheets[f['a_name']].crop((x,y,x+w,y+h)),tuple(f['trim'][:2]));target=out/(key+'.webp');im.save(target,lossless=True,exact=True,method=6)
  if Image.open(target).convert('RGBA').tobytes()!=im.tobytes():raise RuntimeError(key)
  images[key]={'src':'assets/options/'+target.name,'size':f['size'],'rgbaSha256':hashlib.sha256(im.tobytes()).hexdigest()}
-(out/'catalog.json').write_text(json.dumps({**{k:s[k]for k in ['reference','text','slider','scope','jimoKeys']},'images':images,'provenance':{k:s[k]for k in ['repository','commit','kind','atlasPath','atlasSha256']}},ensure_ascii=False,separators=(',',':')))
+(out/'catalog.json').write_text(json.dumps({**{k:s[k]for k in ['reference','text','slider','scope','jimoKeys','difficulty']},'images':images,'provenance':{k:s[k]for k in ['repository','commit','kind','atlasPath','atlasSha256']}},ensure_ascii=False,separators=(',',':')))
 print('Extracted',len(images),'verified desktop options sprites')

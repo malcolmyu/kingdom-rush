@@ -6,7 +6,7 @@
 
 `desktop-options.mjs` 只替换地图设置分支，按需读取独立 options 图集和 desktop 字体；标题/存档页设置保留。MapOptionsView 拥有滑杆 pointer capture、原图帧、ResizeObserver 与关闭事务；请求号、槽位及场景版本防止异步资源或旧关闭回调覆盖新书页/窗口。复用 BookMotion 时显式传入570参考高度，书页默认720不变。退出先立即清理设置，再进入既有 returnToMenu 导演门。
 
-`audio-settings.mjs` 管理独立全局 volume_fx/volume_music（0..1），Campaign 将它们乘原音轨/效果 gain 并同步已有 Audio。没有全局配置的旧存档保留原 sound/music 布尔语义；首次使用原滑杆才捕获旧有效状态并启用全局音量，之后跨槽同步，不由新槽默认静音覆盖。设置关闭持久化，未改变 World。完整难度子页尚未实现，设置中只读显示真实三档当前值。
+`audio-settings.mjs` 管理独立全局 volume_fx/volume_music（0..1），Campaign 将它们乘原音轨/效果 gain 并同步已有 Audio。没有全局配置的旧存档保留原 sound/music 布尔语义；首次使用原滑杆才捕获旧有效状态并启用全局音量，之后跨槽同步，不由新槽默认静音覆盖。设置关闭持久化，未改变 World。MapDifficultyView 复用设置资源与关闭事务，前三档调用 chooseMapDifficulty 写入当前槽既有 difficulty；第四档玩法未实现而禁用。设置先完成关闭再打开难度页，取消返回 false 阻止旧续接；难度选择保存后按源回地图，重新设置再读当前槽。
 
 `BookMotion` 只拥有书页host和veil上的WAAPI动画与临时样式，打开即时启用、关闭保持modal并禁用host，结束才调用原关闭流程。模式页内容重绘显式保留父动画，其他dialog/transition统一reset；串号与Promise取消防止旧关闭影响复用DOM的新内容。`Campaign.closeDialog` 在书页关闭时返回完成Promise，入关交接显式立即清理，原SceneTransition仍负责loading期间的输入。音效与hover保持UI职责，不进入World。
 

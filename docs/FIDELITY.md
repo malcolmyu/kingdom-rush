@@ -1,5 +1,17 @@
 # 动画保真记录
 
+## 0.2.75 原桌面难度选择连续分支
+
+原共用desktop-screen_map DifficultyButton6479起/DifficultyView6689附近与KR3混合源对应只读比较：wide1380×720、原四张340×420插画/三层框、kr3_title_bg，卡中心690+(2i-5)*162.5/y340，按下.98、hover原框与glow，原h46标题/body20说明，标题/底部提示原坐标。只取固定源声明与PNG SHA验证原图，新增9图均无损RGBA验证；设置资源保持独立lazy，不进入首图关键下载。原共用源第四档解锁条件与mod改成已有一关不一致，未复制mod条件/玩法。
+
+设置难度原hover颜色214/189/131→255/223/0，点击先关闭设置再打开独立难度页。前三档选择调用现有存档difficulty与persist，关闭后回地图，书页/入关沿既有真实参数；第四档始终disabled，完整第四档玩法仍未实现。第四栏使用原通用难度说明，避免“完成战役即可解锁”误导当前支持范围，不为 UI 加第四档数值。Escape取消不改难度；旧设置关闭Promise若被新窗口取消则不续开，版本/modal双检查。原.5/.25 PopUpView与50逻辑位移沿用，难度720高度、设置570与书页720分开。
+
+文字shader/阴影/垂直基线和description测高仍浏览器近似，原图不等于逐像素验收。World/HP/金币/XP/冷却/策略未改。278 Node全过（新增支持范围拒绝4与原四栏坐标）；构建包真实鼠标hover/.98按下、1/2/3保存、重载、Escape不变、更换窗口取消旧续接、手机CDP选择后真实入关difficulty2通过。早期测试未设置TEST_URL时误连停用8765而失败，已明确8766实际build重跑，不启动旧web冒充构建。首次专项断言完成后Node多等待，拟TERM时已自然退出，kill no such process，session最终正常exit0；不冒称被杀/跳清理。最终专项显式detach CDP并先关context。
+
+最终build945文件54,076,831B；冷路径100ms/1.5MBps/cacheoff14,781,239B/15.058s，15MB流量预算保留，没有整大atlas/OTF下载。公开本轮一次manifest0.2.74且完整UI通过，推送0.2.75后不轮询。最终日志difficulty-tests-final.log、difficulty-browser-release.log、difficulty-ui-release.log、difficulty-performance-release.log、difficulty-campaign-release.log；原音量设置专项difficulty-options.log同批通过。desktop-difficulty-native.png/mobile.png已查看，为当前正常UI取样非原版同步像素证据。
+
+完整九模式首次构建回归difficulty-campaign-final.log正常exit0。最终仅第四栏说明由解锁承诺换原通用说明后再构建，九模式/存档/手机断言与browser-results.json均完成，Chrome已退出但Node36139残留，比较daemon86230后精确TERM并收143；该release清理不能称exit0，没有删除断言或伪造成功。三战役最终均三星、第三关自然XP4705/20生命，World与策略未变。
+
 ## 0.2.74 地图原 OptionsView 与真实全局音量
 
 地图设置改为原720×570 options_bg_notxt、12张独立原图与原desktop角色，固定公开源/PNG SHA在 tools/sources/desktop-options.json，extract_desktop_options.py 无损裁图逐RGBA验证并接全量提取。标题/存档页设置不迁移。原共用OptionsView6264–6500与VolumeSlider/GGOptionsButton/GGPanelHeader交叉核对：SFX滑杆149/167、音乐149/254、422×34、填充396×15；原thumb60×60。标题和按钮按原角色/物理字号取整与宽度fit，shader/基线仍CSS/浏览器近似。公开旧调用签名与新版slider style接口不同，按实际音乐/SFX样式分支选原帧，不执行控制器。

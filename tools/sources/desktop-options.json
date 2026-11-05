@@ -292,11 +292,231 @@
         46
       ],
       "alias": {}
+    },
+    "difficulty_bg_wide_notxt": {
+      "a_name": "screen_map-0.png",
+      "size": [
+        1380,
+        720
+      ],
+      "trim": [
+        0,
+        27,
+        0,
+        31
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        7,
+        1092,
+        1380,
+        662
+      ],
+      "alias": {}
+    },
+    "kr3_title_bg": {
+      "a_name": "screen_map-0.png",
+      "size": [
+        500,
+        120
+      ],
+      "trim": [
+        16,
+        3,
+        16,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1285,
+        1886,
+        468,
+        114
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_notxt_marco_0001": {
+      "a_name": "screen_map-1.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        14,
+        15,
+        12,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1639,
+        1483,
+        314,
+        394
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_notxt_marco_0002": {
+      "a_name": "screen_map-0.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1392,
+        1092,
+        338,
+        418
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_notxt_marco_0003": {
+      "a_name": "screen_map-3.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        28,
+        30,
+        26,
+        24
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1395,
+        1489,
+        286,
+        366
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_ilustraciones_0001": {
+      "a_name": "screen_map-4.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        49,
+        54,
+        49,
+        154
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        565,
+        1822,
+        242,
+        212
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_ilustraciones_0002": {
+      "a_name": "screen_map-2.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        49,
+        54,
+        49,
+        150
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        782,
+        1805,
+        242,
+        216
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_ilustraciones_0003": {
+      "a_name": "screen_map-3.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        33,
+        54,
+        49,
+        116
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1686,
+        398,
+        258,
+        250
+      ],
+      "alias": {}
+    },
+    "difficulty_btns_ilustraciones_0004": {
+      "a_name": "screen_map-1.png",
+      "size": [
+        340,
+        420
+      ],
+      "trim": [
+        26,
+        34,
+        20,
+        158
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        800,
+        1805,
+        294,
+        228
+      ],
+      "alias": {}
     }
   },
   "sheets": {
     "view_options-1.png": "4a08d3feacbc30abc66845b812fe67c49a57f6e2cc811b00a7592ae237c247ba",
-    "screen_map-0.png": "99c5166a978d1d761345761a6962315014a0ef9149daa033911e6cba40896894"
+    "screen_map-0.png": "99c5166a978d1d761345761a6962315014a0ef9149daa033911e6cba40896894",
+    "screen_map-1.png": "22b9e472ac9ad6d14b6f778ab336388b805b00032c41a866db92a6847fd3d43d",
+    "screen_map-3.png": "8ced8abe451fa1596da2984bc7d56b30e6690a902f24bc3806ed2e1b0bb13a05",
+    "screen_map-4.png": "3fec3da8338e69d3a584c746a8fececa490c87158a7b805ea8486a3e2867de67",
+    "screen_map-2.png": "ce397fa0e03716df4c0faf2e426d95e0c6bc50a09f35741e424f108c0dc064db"
   },
   "text": {
     "OPTIONS": "选项",
@@ -307,7 +527,15 @@
     "BUTTON_RESUME": "返回",
     "LEVEL_SELECT_DIFFICULTY_CASUAL": "休闲",
     "LEVEL_SELECT_DIFFICULTY_NORMAL": "普通",
-    "LEVEL_SELECT_DIFFICULTY_VETERAN": "老兵"
+    "LEVEL_SELECT_DIFFICULTY_VETERAN": "老兵",
+    "DIFFICULTY LEVEL": "难度级别",
+    "For beginners to strategy games!": "策略游戏新手！",
+    "A good challenge!": "不错的挑战！",
+    "Hardcore! play at your own risk!": "硬核级别！有风险!",
+    "DIFFICULTY_SELECTION_IMPOSSIBLE_LOCKED_DESCRIPTION": "完成战役 即可解锁此模式",
+    "LEVEL_SELECT_DIFFICULTY_IMPOSSIBLE": "不可能",
+    "You can always change the difficulty in the options menu.": "你可以随时在选项菜单中更改难度级别。",
+    "DIFFICULTY_SELECTION_IMPOSSIBLE_DESCRIPTION": "只有最强之人 才有生还的希望！"
   },
   "jimoKeys": [
     "OPTIONS",
@@ -315,7 +543,12 @@
     "Music",
     "Difficulty",
     "BUTTON_QUIT",
-    "BUTTON_RESUME"
+    "BUTTON_RESUME",
+    "DIFFICULTY LEVEL",
+    "LEVEL_SELECT_DIFFICULTY_CASUAL",
+    "LEVEL_SELECT_DIFFICULTY_NORMAL",
+    "LEVEL_SELECT_DIFFICULTY_VETERAN",
+    "LEVEL_SELECT_DIFFICULTY_IMPOSSIBLE"
   ],
   "reference": {
     "x": 720,
@@ -341,5 +574,19 @@
       60
     ]
   },
-  "scope": "Original audio/resume/quit with three supported difficulty labels readonly; full difficulty popup not restored."
+  "scope": "Original audio/resume/quit and difficulty popup with real three supported choices; fourth disabled.",
+  "difficulty": {
+    "size": [
+      1380,
+      720
+    ],
+    "card": [
+      340,
+      420
+    ],
+    "spacing": 325,
+    "centerY": 340,
+    "maxSupported": 3,
+    "scope": "Original wide desktop assets/layout. Fourth remains disabled because its gameplay is not implemented; not the mod campaign-unlock condition."
+  }
 }
