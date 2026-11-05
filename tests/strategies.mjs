@@ -14,6 +14,10 @@ export function purchase(w,plan){
  for(const [holder,type,level]of plan){const s=w.slots.find(s=>String(s.holder)===holder);if(!s)continue;if(!s.type){if(w.build(s.id,type))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}if(s.type===type&&s.level<level){if(w.upgrade(s.id))return true;if(w.mode==='iron'&&w.id>1)return false;continue;}}
  return false;
 }
+// Joined waterfall routes continue on another path; their local goal is not the exit.
+export function remainingDistance(w,e){let road=e.road,d=e.d,total=0;const visited=new Set();while(!visited.has(road)){visited.add(road);const route=w.routes[road][e.lane],next=w.data.connections?.[String(road+1)];total+=(next?route.length:route.goal)-d;if(!next)break;road=next-1;d=0;}return total;}
+// Trained volley guards the joined-route exit; other plans defend their local lane fronts.
+function threatPriority(w,e){return w.id===3&&w.mode==='campaign'&&w.heroSkills.multishot>=2?remainingDistance(w,e):e.goal-e.d;}
 function ahead(w,e,seconds=.7){const r=w.routes[e.road][e.lane],n=r.lengths.findIndex(x=>x>=Math.min(r.length,e.d+e.speed*seconds));return r.points[n<0?r.points.length-1:n];}
 function tactics(w){if(w.id===1&&w.mode==='iron')return{hero:4,re:1,threshold:150,cluster:200,range:800};if(w.id===2&&w.mode==='campaign'&&initialXp.get(w)<2100)return{hero:3,re:.5,threshold:80,cluster:80,range:500};return w.id===1&&w.mode==='heroic'?{hero:0,re:2,threshold:400,cluster:200,range:500}:w.id===2&&w.mode==='heroic'?{hero:1,re:1.5,threshold:80,cluster:200,range:500}:w.id===3&&w.mode==='heroic'?{hero:0,re:w.heroSkills.multishot>=2?1:.5,threshold:150,cluster:120,range:500}:w.id===3&&w.mode==='campaign'?(initialXp.get(w)>=11300?{hero:4,re:2,threshold:150,cluster:80,range:300}:initialXp.get(w)<5300&&w.heroSkills.multishot<2?{hero:3,re:1.5,threshold:80,cluster:120,range:800}:{hero:2,re:1,threshold:80,cluster:300,range:800}):{re:w.id===2?1:0,range:500};}
 const heldHeroes=new WeakSet();
@@ -22,8 +26,9 @@ function positionHero(w,danger){
  // Chasing the front enemy leaves a gap while the smaller opening budget rebuilds.
  if(w.id===2&&w.mode==='campaign'&&initialGold.get(w)<w.data.waves.cash)return;
 if(w.id===3&&(w.mode==='heroic'&&w.heroSkills.multishot<2||w.mode==='campaign'&&initialXp.get(w)>=5300&&initialXp.get(w)<11300)){if(w.hero&&!heldHeroes.has(w)){w.moveHero(w.nearestRoad({x:400,y:w.mode==='heroic'?250:100}));heldHeroes.add(w);}return;}if(w.hero&&w.hero.hp>0&&!w.hero.pendingHit&&!w.hero.anim){const target=ahead(w,danger,tactics(w).hero??(w.id===3&&w.mode==='campaign'?(initialXp.get(w)<5000?.5:3):w.id===2&&w.mode==='heroic'&&initialXp.get(w)<5300?2.5:w.id===2||w.id===1&&w.mode==='heroic'?2:1));if(target&&Math.hypot(target.x-w.hero.target.x,target.y-w.hero.target.y)>100)w.moveHero(target);}}
-function useSkillsSmart(w){const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!live.length)return;
- const danger=live[0],remaining=danger.goal-danger.d,threshold=tactics(w).threshold??(w.id===3?400:w.id===2&&w.mode==='iron'?100:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?200:300):150),cluster=tactics(w).cluster??(w.id===3?80:w.id===2&&w.mode==='iron'?160:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?120:80):260);
+// Reserve the last campaign lightning for an exit threat, with time for all three strikes.
+function useSkillsSmart(w){const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>threatPriority(w,a)-threatPriority(w,b));if(!live.length)return;
+ const danger=live[0],remaining=threatPriority(w,danger),finalExitDefense=w.id===3&&w.mode==='campaign'&&w.wave===w.totalWaves,threshold=finalExitDefense?300:tactics(w).threshold??(w.id===3?400:w.id===2&&w.mode==='iron'?100:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?200:300):150),cluster=finalExitDefense?Infinity:tactics(w).cluster??(w.id===3?80:w.id===2&&w.mode==='iron'?160:w.id===2&&w.mode==='heroic'?(initialXp.get(w)<5300?120:80):260);
  positionHero(w,danger);
  if(!danger.flying&&danger.key!=='enemy_hyena'&&remaining<tactics(w).range)w.cast('reinforce',ahead(w,danger,tactics(w).re));
  if(w.cooldowns.lightning<=0&&w.unlocked('lightning')){const target=remaining<threshold?danger:live.reduce((best,e)=>{const score=live.reduce((n,t)=>n+(Math.hypot(e.x-t.x,e.y-t.y)<105?Math.min(t.hp,175):0),0);return score>best.score?{e,score}:best;},{e:danger,score:0}).e;if(remaining<threshold||live.reduce((n,e)=>n+(Math.hypot(e.x-target.x,e.y-target.y)<105?Math.min(e.hp,175):0),0)>cluster)w.cast('lightning',target);}
@@ -32,7 +37,7 @@ function useSkillsSmart(w){const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>(a
 }
 export function useSkills(w){
  if(w.id===2&&w.mode!=='campaign'||w.id===3)return useSkillsSmart(w);
- const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d));if(!live.length)return;const danger=live[0],remaining=danger.goal-danger.d;
+ const live=w.enemies.filter(e=>e.hp>0).sort((a,b)=>threatPriority(w,a)-threatPriority(w,b));if(!live.length)return;const danger=live[0],remaining=threatPriority(w,danger);
  positionHero(w,danger);
  if(!danger.flying&&danger.key!=='enemy_hyena'&&remaining<tactics(w).range)w.cast('reinforce',ahead(w,danger,tactics(w).re));
  if(w.cooldowns.lightning<=0&&w.unlocked('lightning')){const target=remaining<(tactics(w).threshold??240)?danger:live.reduce((best,e)=>{const score=live.reduce((n,t)=>n+(Math.hypot(e.x-t.x,e.y-t.y)<105?Math.min(t.hp,175):0),0);return score>best.score?{e,score}:best;},{e:danger,score:0}).e;if(remaining<(tactics(w).threshold??240)||live.filter(e=>Math.hypot(e.x-target.x,e.y-target.y)<105).length>=4)w.cast('lightning',target);}

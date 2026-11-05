@@ -7,4 +7,4 @@ local literals={};local function visit(fn)local ok,info=pcall(u.funcinfo,fn);if 
 visit(assert(loadfile(base..'all-phone/game_gui.lua')))
 KR_TARGET='phone'
 dofile(base..'all/constants.lua')
-io.write(encode({reference={width=GUI_REF_W,height=GUI_REF_H,minAspect=MIN_SCREEN_ASPECT,maxAspect=MAX_SCREEN_ASPECT},stats={tower=STATS_TYPE_TOWER,barrack=STATS_TYPE_TOWER_BARRACK,mage=STATS_TYPE_TOWER_MAGE},menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))
+io.write(encode({hudScaleSteps=HUD_SCALE_STEPS,reference={width=GUI_REF_W,height=GUI_REF_H,minAspect=MIN_SCREEN_ASPECT,maxAspect=MAX_SCREEN_ASPECT},stats={tower=STATS_TYPE_TOWER,barrack=STATS_TYPE_TOWER_BARRACK,mage=STATS_TYPE_TOWER_MAGE},menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))

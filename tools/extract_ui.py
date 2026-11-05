@@ -17,6 +17,7 @@ layouts['tutorials']=[read('game_gui_noti_tutorial_'+str(i)) for i in range(1,4)
 notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data.lua'
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 tower_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_tower_menu.lua')]))
+layouts['battleTop']={'reference':tower_data['reference'],'hudScaleSteps':tower_data['hudScaleSteps'],'hud':{**find(game,'hud_normal_view'),'children':[n for n in find(game,'hud_normal_view')['children']if n.get('class')=='GGLabel']},'pause':find(game,'pause_button')}
 layouts['infobar']={'reference':tower_data['reference'],'view':find(game,'infobar_view'),'powers':{k:v for k,v in find(game,'powers_view').items() if k!='children'},'bag':{k:v for k,v in find(game,'bag_view').items() if k!='children'},'bagButton':find(game,'bag_button'),'stats':tower_data['stats']}
 layouts['towerMenu']={'menus':tower_data['menus'],'literals':tower_data['literals'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
 layouts['balloons']=notification_data['tutorial_balloons']
@@ -29,7 +30,7 @@ layouts['mapHero']={'parent':{k:v for k,v in right.items() if k!='children'},'he
 layouts['map']={'decos':find(world,'map_decos_view')['children'],'top':find(world,'map_top_decos_view')['children'],'roads':find(world,'map_roads_view')['children'],'startBalloon':find(world,'map_balloon_start_here_view')}
 book_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_encyclopedia.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 layouts['encyclopedia']={'towers':find(world,'encyclopedia_towers_view'),'index':find(world,'encyclopedia_view'),'enemies':find(world,'encyclopedia_enemies_view'),'tips':find(world,'encyclopedia_tips_view'),'entries':book_data['enemies'],'tipsCount':book_data['tips_count']}
-c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys=set()
+c=json.loads((ROOT/'web/assets/catalog.json').read_text());keys={'hero_portraits_0001'}
 def visit(v):
  if isinstance(v,dict):
   for k,x in v.items():

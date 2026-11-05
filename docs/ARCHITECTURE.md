@@ -227,3 +227,6 @@ CameraGesture封装原输入状态、缩放比、阻尼与六样本惯性；Came
 
 
 world-rules.mjs由原声明常量和director纹理比例派生，世界ref尺寸、GUI ref尺寸、图集像素尺寸分开。worldViewport提供原game_scale和camera世界边界；Renderer在世界Canvas分支应用纹理ref_scale，UI Canvas不继承它。背景和普通精灵共用原世界单位链，初始相机与逆点击不再依赖旧7/6常数。
+
+
+BattleTop局部读取原顶部布局，保留稳定HUD/暂停/英雄节点并按GUI参考窗定位；HudMotion从节点guiScale换算对应组的原位移，未迁移能力栏仍保留原路径。通知队列及TB_NOTI共用本批GUI坐标，领域统计与按键处理仍由Campaign/World原接口负责，不更改NativeUI全局变换。

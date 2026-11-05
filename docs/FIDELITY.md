@@ -554,3 +554,16 @@ Canvas/塔位接真实Pointer Events，滚轮原逐格倍率、浏览器CDP双�
 worldViewport按原ceil可见宽度及4:3..16:9限制推导wl/wr/ww/wh与超宽min_zoom，BattleCamera.clamp使用这些源边界和上下pan_extension；reset回原初始姿态再clamp。Canvas画面、DOM塔位与screen/world逆变换共用新投影，不改World坐标、速度/HP/金币/冷却。现页面仍以固定1672:1014游戏viewport展示，其他设备全屏宽高比接入与安全区尚未完全复现；不能把纯函数宽屏分支称为所有设备实测。
 
 233项Node测试通过，新增原常量/比例/宽屏min_zoom、初始中心/逆变换、背景/战场精灵与UI icon缩放隔离。构建包完整九模式（三战役三星）、真实camera-input、battle-camera、infobar专项通过；公开0.2.55 UI通过。原相机专项旧受控2倍姿态需把x移60使目标在新正确视野内，真实交互仍不force。数值测试的Lua导出精度和浮点乘法使用epsilon比较，不改源规则。桌面第二关与手机第三关截图已查看，均是当前原投影实现的取样，非原版同输入同步像素证据；整体仍未1:1。
+
+
+## 0.2.57 原顶部统计、暂停和英雄/通知GUI分组
+
+核对screen_utils.lua:72–81与HUD_SCALE_STEPS=[[2.053125,1],[1.775,1],[0,.85]]，game_gui init模板ctx将hud_scale单独用于powers等对象；顶部hud_normal_view、pause_button、hero_portraits_view本身没有该scale，使用window GUI尺度，不能整层乘.85。extract_ui新增battleTop原HUD完整标签/暂停/reference/分档元数据；新增原hero_portraits_0001图面尺寸，英雄沿用现有HP/XP/死亡绘制，只校准父坐标与尺寸。
+
+BattleTop按实际game窗口的480×320参考布局：HUD anchor(-6,-8)/112×38，原三标签pos/size/hud11/颜色/对齐；暂停位置sw-safe.r、anchor(36,-8)/28×28；英雄父anchor(-7,0)/pos(0,54)、肖像42×46。暂停按钮从旧top-actions空容器移回实际battle-ui层，保留ID/点击与按下图。HUDmotion对这些组和通知队列按GUI像素换算原hidden目标，保留.4outback隐藏/.4outcubic返回；能力栏仍沿用旧参考空间，不称整个HUD完成。safearea当前仍0，非零安全区未恢复。
+
+通知队列60/104与图标/间隔按同一GUI尺度，防与原英雄栏重叠；首波TB_NOTI原offset60/86提示只校准GUI锚点与尺度，其他世界/技能引导触发和移除不变。原enemy专项force仅为跳过呼吸稳定检查，现在须等待HUD原进场完成再点，避免force把仍在屏外的图标当可点；没有删动画或预置seen。其他HUD/能力气泡仍有参考尺度差异，字体基线/测高仍浏览器近似。
+
+237项Node测试通过，新增原GUI几何/与独立hud_scale区分/手机间距；build目录顶部专项真实暂停、文本fit、桌面/手机、教程隐藏返回、重入通过。完整九模式及原HUDmotion/敌通知/指导回归见本轮结果，截图为当前实现取样而非原版同步像素验收，整体仍未1:1。
+
+最终构建回归曾在第三关战役天然XP4705、准备5帧时仅17生命；6帧则三星。合法策略现在对最后一波保留雷电出口防守，并只对已训练齐射的第三关战役用连接道路到最终出口的剩余距离排序；其他分路方案保留局部优先级。新增实际观察XP4705/4897×9种准备帧共18场三星回归，所有旧领域断言保留，不改World/金币/HP/冷却/三星阈值。探索XP4500/5100的部分长准备组合仍不稳定，不宣称所有XP策略均稳健。

@@ -1,0 +1,2 @@
+import test from'node:test';import assert from'node:assert/strict';import{remainingDistance}from'./strategies.mjs';
+test('legal strategy measures the actual exit after a connected path, rather than a negative local goal',()=>{const w={routes:[[{length:300,goal:150}],[{length:400,goal:250}]],data:{connections:{1:2}}};assert.equal(remainingDistance(w,{road:0,lane:0,d:220}),330);assert.equal(remainingDistance(w,{road:1,lane:0,d:220}),30);});

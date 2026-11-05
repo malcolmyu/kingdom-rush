@@ -1,0 +1,4 @@
+import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs';import{battleTopGeometry}from'../web/battle-top.mjs';
+const ui=JSON.parse(fs.readFileSync(new URL('../web/assets/ui/layouts.json',import.meta.url)));
+test('source top HUD and pause use GUI scale, not the independent .85 power HUD factor',()=>{const g=battleTopGeometry(ui,1440,880),k=880/320;assert.equal(g.hud.w,112*k);assert.equal(g.hud.x,6*k);assert.equal(g.hud.y,8*k);assert.equal(g.pause.w,28*k);assert.equal(g.pause.x,1440-36*k);assert.deepEqual(ui.layouts.battleTop.hudScaleSteps,[[2.053125,1],[1.775,1],[0,.85]]);});
+test('original hero parent and portrait dimensions leave room below stats at phone size',()=>{const g=battleTopGeometry(ui,582,354),k=354/320;assert.equal(g.hero.x,7*k);assert.equal(g.hero.y,54*k);assert.equal(g.hero.w,42*k);assert.ok(g.hero.y>g.hud.y+g.hud.h);assert.ok(104*k>g.hero.y+g.hero.h);});
