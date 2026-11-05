@@ -106,3 +106,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_desktop_map.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_options.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_title.py')],check=True)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_render_order.py')],check=True,cwd=ROOT)

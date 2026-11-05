@@ -893,3 +893,16 @@ MapOptionsView的原滑杆绑定抽为bindAudioSliders，两设置分支共享po
 303Node通过；新纯测全局保存不触碰槽与遮罩中断值。实际build主菜单专项受控250ms遮罩100/255/静态源中心/完整可见，真实FX键盘.25/音乐鼠标.65→实际Audio.menu.volume .13、Done保存但空槽仍空、Escape不保存/重载/跨槽、旧close被新dialog取消、pending请求Escape取消不复活、手机CDP拖动均正常exit0。桌面与手机截图已人工查看，为当前UI非原版同步取样。地图Options共享滑杆兼容专项、UI亦正常exit0。
 
 最终完整九模式三战役三星/存档手机正常exit0，3campaign天然XP4705/20生命；原title/slots/fonts与公开0.2.85完整UI通过。最终冷路径100ms/1.5MBps/cacheoff真实书页入关14,166,792B/15.262s<15MB，新主菜单设置图片未进入关键路径；非所有线上速度保证。logs title-options-tests-final.log/browser.log/map-regression.log/ui.log/campaign.log/title.log/slots.log/fonts.log/performance.log/pages-ui.log。未改World/策略/HP/gold/XP/cooldown，全部owned结果收集。
+
+
+## 0.2.87 实体逐sprite层级与遮挡
+
+原APK systems.lua1986–2029只读-bl与固定vanilla共享systems.render2116–2159交叉：z升序；sort_y存在（0仍Lua truthy）优先，否则实体pos.y+sort_y_offset降序；再draw_order升序、x升序、完全同键保持原插入顺序。frame.draw_order=100000*(sprite.draw_order或sprite序号)+entity.id；sprite.offset只影响图面，不参与sort_y。extract_render_order.py仅读控制器字节码字段并读constants声明生成defaultZ3000/因子100000/sourceSHA元数据，接完整提取，不执行systems控制器。
+
+现Renderer此前已有实体级y排序，但整塔三层绑定一起且marker固定最先画；现RenderQueue在同一原world/camera transform中逐sprite收集塔地基/上层/射手、scenery、士兵/敌/英雄/modifier/原选中环，按上述键重放。塔terrain1300可先于marker1400，再按3000物体y交错。建造进度条保留完整clip闭包，不把clip状态丢失；现有primitive血条用原hb z/sort_y_offset与背景200002/填充200003顺序，几何仍原现有近似。飞行影子/花冷却文字仍现有primitive，仅纳入实体队列，不宣称它们原图完整恢复。范围3500与弹道/FX/特殊前景仍独立阶段，因此不是全部全局render_frames排序。原完整entity insert ID流未实现，展示ID用原level声明顺序与现World serial偏移作为稳定代理，不能宣称原版全部同y tie ID一致。
+
+306Node通过，覆盖z/y/视觉offset隔离、sort_y0、s.pos/offset、draw_order/x优先级、完全同键稳定与只重放一次。实际Canvas专项验证地基→原选中环→高y敌人→血条→低y塔体/原range调用，并比对绘制前后World seed/serial/time/gold/XP/slots/单位快照不变。真实购买70、等待建造完成后使用重叠敌/半血和冻结世界的受控展示fixture，非天然通关/原版同步证据。首次截图敌位置下一RAF回到道路，最终fixture暂停仅用于展示；实际暂停按钮前恢复fixture paused=false，否则原pause方法正确拒绝重复暂停而专项等待超时，未改产品门控。
+
+最终build原markers/ranges/UI专项与源排序Canvas专项正常exit0，缩放、手机、暂停/场景清理通过；受控截图render-order-overlap.png/mobile.png已人工查看。公开一次manifest0.2.86，首UI在入关等待30秒超时；未改产品或超时值，独立复测render-order-pages-ui-diagnostic.log完整UI正常exit0，不把首失败冒称成功。最终冷路径100ms/1.5MBps/cacheoff真实书页入关14,169,315B/15.280s<15MB，未提高预算/整atlas下载/降质，非所有线路速度保证。
+
+最终同一build完整九模式三战役三星/存档手机正常exit0，3campaign天然XP4705/20生命，World/策略未变。最终logs render-order-tests.log/build-final.log/canvas-final.log/markers.log/ranges.log/ui-final.log/campaign-final.log/performance-final.log/pages-ui-diagnostic.log，早期fixture暂停失败与首远程失败均已收集；所有owned工具结果前台收集。

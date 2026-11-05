@@ -4,6 +4,9 @@
 
 ## 模块边界
 
+`RenderQueue`在原世界/相机transform内收集实体与选中标记的逐sprite绘制，不改World数组或时间。顺序为z升序、sort_y或pos.y+sort_y_offset降序、100000*(draw_order或sprite序号)+展示实体ID升序、pos.x升序，完整同键稳定。视觉offset不参与排序，Lua数值0保留。当前只闭合scenery/塔各层/单位/modifier/选中环与现有血条/建造条等实体阶段；弹道、FX和特殊前景/range仍既有阶段，不能当完整全局render_frames。原实体insert ID流尚未全恢复，展示ID以原level声明序号与现World serial作稳定代理，完整同y tie的原插入ID仍是差异。
+
+
 `DesktopTitle` 是独立的desktop主横幅/中文位图按钮profile，读取固定裁图声明并按1080高度参考/居中背景origin布局。资源与ResizeObserver由实例持有，destroy/owner身份检查阻止旧加载或报错覆盖新场景；waitScreenReady包含title readyPromise。背景使用原1920×1080桌面main_menu_bg（内含左上标志），按h/1080与居中origin布局，移除desktop分支的独立phone logo/CSS背景；DesktopSlots按原.1 outquad在横幅后展开三个真实存档，独立按需目录/图片/删除确认资源由title owner持有。删除弹窗源模板没有命名back，仅遮罩渐变，面板静态保持窗口中心上50逻辑像素；取消请求、切场景与重开均使旧回调失效。真实Repository删除同时清理地图历史和当前活动progress，防旧XP再保存复活；旧MenuMotion和SaveSlots代码保留，phone profile可独立回归。退出在浏览器无对应能力而禁用，主菜单设置由TitleOptionsView按需加载原700×370面板；与地图设置共享bindAudioSliders真实音量绑定，主菜单Done只保存全局音量不创建槽，Escape仅关闭且不写设置。源未命名back的面板仅遮罩渐变，窗口中心上50逻辑像素保持静态；请求号/owner/version防止关闭和切场景后的旧资源复活。名单入口仍现有简化实现。
 
 `readMetadata` 共享原gzip流解码与无API原JSON兼容，地图目录加入无损gzip旁文件。build按当前enemy模板prefix完整收集565帧重打包，逐裁图RGBA比对并保留size/trim；Renderer只在campaignEnemySheets存在时跳过未用完整enemy atlas，源web仍兼容原图集，不改实体行为或数值。GUI原494帧按原动画前缀成组、静态图独立按需，无损逐帧裁图验证；完整源图集仍留包内兼容，Renderer.sheet/icon保持原加载接口。这样desktop原背景不必以降低图质或提高冷路径预算换取。
