@@ -1,5 +1,19 @@
 # 动画保真记录
 
+## 0.2.77 原桌面旗帜idle/hover与点击输入锁
+
+桌面完整map_flag_0001–0182在已审计atlas中齐全，不能套用phone旧缺帧结论。原vanilla desktop-screen_map.lua LevelFlagView1821–1960与KR3同方法2499–2643声明交叉一致：nostar24–64、campaign90–134、iron160–179、newFlag1–24、gotstar65–89、turnIron135–150。KView.update先加ts，animation_frame905–958用ceil(ts*30)、1..len clamp，默认非循环末帧保持。set_mode非restart ts=1e9，restart ts0；randomWait首次love.math.random(3,10)，严格<0后重新取(3,10.1)并ts0。LÖVE文档说明参数整数取整，10.1取10（https://love2d.org/wiki/love.math.random），浏览器使用独立可注入UI随机，不声称复现原Love随机流/同seed轨迹。
+
+hover停止动画、wait=-1，按nostar/campaign/iron显示180/181/182并原GUIQuickMenuOver；leave从对应首帧重播并重新等待。点击源disable(false) .5后enable，本批保留原图不变灰，非通用button:disabled滤镜。控制器在书页模态下继续UI时钟，奖励时间线保留既有暂停方式，不改变其phone串行时间；destroy主动失效所有旗，旧资源完成不能复活。World/金币/HP/XP/冷却/RNG/解锁/存档预算不改，纯idle不写进度。
+
+原关键图集保留，idle按nostar19,216B/campaign38,112B/iron28,968B独立分组且只加载当前模式，transition217,812B生成但本批不加载（桌面gotstar/turnIron完整奖励协程仍待迁移，不能称全旗动画已完）。每帧独立trim/size与sheet，像素重复裁图共享位置，所有263个所选帧逐一与固定PNG源解码RGBA验证。整atlas实验会增关键下载，最终不采用整包加载/不调15MB预算；背景/原关键图仍无损。tools/sources/desktop-map.json记录动画声明/方法/原共享段SHA，extract_desktop_map.py接全提取。
+
+285Node全过，新增ceil边界/严格等待重播/hover离开/模式切换/.5输入锁/销毁与全182帧分组。专项真实pointer hover/leave/随机重播、modal下锁结束、冷路径仅nostar、只读存档、三个真实模式、手机CDP入关与销毁，模式进度为受控fixture非正常通关证据。原desktop-map专项首次全部断言后Node39716残留，比daemon86230精确TERM收143，不能冒称exit0；测试补detach CDP/先关context，最终正常退出。手机截图首次取在原书页alpha0，已改等原open终点后取样，不跳动画。
+
+最终build952文件54,406,726B；实际build旗专项、desktop-map/UI/导演和完整九模式三战役三星/存档手机回归正常退出，第三关自然XP4705/20生命。冷路径100ms/1.5MBps/cacheoff14,825,363B/14.239s<15MB流量预算，只加载nostar小组；不是所有线上速度保证。公开本轮一次manifest0.2.76且UI通过，新推送后不轮询。最终logs flag-idle-tests.log、flag-idle-browser-release.log/flag-idle-browser-screenshot-final.log、flag-idle-map-release.log、flag-idle-ui-release.log、flag-idle-director.log、flag-idle-campaign-release.log、flag-idle-performance-release.log；map-flag-idle-modes.png/mobile-book.png已看，受控7星模式样本非原版同输入逐帧证据。
+
+既有MapUnlockSequence奖励串行时间仍沿phone实现，newFlag揭示仍走旧desktopMapFlagFrame帧选择，获星/turnIron尚未使用完整新桌面transition组；本批不把idle恢复说成完整桌面奖励协程完成。地图其他运动层/船/vignette也仍待迁移。
+
 ## 0.2.76 原四象限选塔/预览/升级/集结范围
 
 原game_gui1950–1974 show_tower_range用decal_tower_range/decal_rally_range，pos=实体+tower.range_offset；4sprite按奇偶x正负、前后二个y正负，scale.x=±range/actual_radius，scale.y=±ASPECT*range/actual_radius。原constants ASPECT=.7，模板actual_radius137、anchor1/0、alpha255、z3500、原range_circle/rally_circle图已在go_decals，非CSS猜椭圆。模板没有range显隐Tween，1975–1984 hide直接移除，展示层按同即时语义派生，不插World实体/消耗RNG。

@@ -6639,5 +6639,50 @@
         "Use the earned hero points to train your hero!": "用获得的英雄点数来训练英雄！"
       }
     }
+  },
+  "flagMotion": {
+    "animations": {
+      "gotstar": {
+        "from": 65,
+        "to": 89
+      },
+      "campaign": {
+        "from": 90,
+        "to": 134
+      },
+      "newFlag": {
+        "from": 1,
+        "to": 24
+      },
+      "nostar": {
+        "from": 24,
+        "to": 64
+      },
+      "iron": {
+        "from": 160,
+        "to": 179
+      },
+      "turnIron": {
+        "from": 135,
+        "to": 150
+      }
+    },
+    "fps": 30,
+    "frameSelection": "ceil-clamp",
+    "initialWait": [
+      3,
+      10
+    ],
+    "repeatWait": [
+      3,
+      10.1
+    ],
+    "clickLock": 0.5,
+    "source": {
+      "vanillaCommit": "cf90f0d68002491e705505fdeec346c0e803a97a",
+      "levelFlagSha256": "680a14e167394cce5d1f0e1362d8e327b8643204b4f32ebb693c4d93a2ed2a53",
+      "methods": "LevelFlagView.initialize/set_mode/update; KView.update/animation_frame905–958",
+      "randomApi": "https://love2d.org/wiki/love.math.random"
+    }
   }
 }

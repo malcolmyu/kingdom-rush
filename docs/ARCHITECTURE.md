@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+`MapFlagMotion` 拥有桌面旗帜独立UI时钟、模式、hover及.5点击锁，不引用World/RNG。原动画用ceil帧选择、非循环末帧保持和独立3..10秒重播；地图模态仅暂停原奖励时间线，旗帜时钟继续推进。DesktopMapScene在场景销毁时reset各旗并拒绝旧资源就绪回调。地图图集按关键帧/nostar/campaign/iron/transition无损分组，只预载当前旗需要的idle组；每个frame携带自己的sheet，固定PNG来源及逐裁图验证保持。
+
 `tower-ranges.mjs` 由当前菜单项和本局克隆模板派生只读范围描述，空塔基使用 source.template，已建塔使用 key。预览按 action_arg 的 build_name 找真实模板，升级攻击范围与兵营集结范围分开；没有选择时无虚构160圈。Renderer用原四象限图、独立带符号x/y比例、ASPECT与既有世界/相机链绘制，不插入World实体。`extract_ranges.py` 只读取原声明和constants生成range-data.mjs，接全量提取。
 
 `desktop-options.mjs` 只替换地图设置分支，按需读取独立 options 图集和 desktop 字体；标题/存档页设置保留。MapOptionsView 拥有滑杆 pointer capture、原图帧、ResizeObserver 与关闭事务；请求号、槽位及场景版本防止异步资源或旧关闭回调覆盖新书页/窗口。复用 BookMotion 时显式传入570参考高度，书页默认720不变。退出先立即清理设置，再进入既有 returnToMenu 导演门。
