@@ -16,7 +16,7 @@ for key,f in sorted(s['frames'].items()):
   name=key+'.webp';im.save(out/name,lossless=True,exact=True,method=6)
   if Image.open(out/name).convert('RGBA').tobytes()!=im.tobytes():raise RuntimeError(key)
   large[key]={'src':'assets/desktop-map/'+name,'size':f['size'],'trim':f['trim'],'rgbaSha256':hashlib.sha256(im.tobytes()).hexdigest()};continue
- group='ambient' if key.startswith(('ma_lake_water_sparks_','ma_george_shout_','ma_venom_vine_')) else 'sprites'
+ group='ambient' if any(key.startswith(a['animation']['prefix']+'_')for a in s['ambient']['animations']) else 'sprites'
  if key.startswith('map_flag_')and key[9:].isdigit():
   n=int(key[9:])
   if n not in {*range(1,25),64,134,179,180,181,182}:group=next(('flag-'+mode for mode in ['nostar','campaign','iron']if s['flagMotion']['animations'][mode]['from']<=n<=s['flagMotion']['animations'][mode]['to']),'flag-transition')

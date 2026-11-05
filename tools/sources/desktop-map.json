@@ -12495,6 +12495,4030 @@
         84,
         52
       ]
+    },
+    "ma_hr_crystals_0001": {
+      "trim": [
+        76,
+        0,
+        0,
+        48
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1677,
+        1323,
+        38,
+        21
+      ],
+      "alias": [
+        "ma_hr_crystals_0002"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0002": {
+      "trim": [
+        76,
+        0,
+        0,
+        48
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1677,
+        1323,
+        38,
+        21
+      ],
+      "alias": [
+        "ma_hr_crystals_0002"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0003": {
+      "trim": [
+        76,
+        0,
+        0,
+        47
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1325,
+        706,
+        38,
+        22
+      ],
+      "alias": [
+        "ma_hr_crystals_0004"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0004": {
+      "trim": [
+        76,
+        0,
+        0,
+        47
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1325,
+        706,
+        38,
+        22
+      ],
+      "alias": [
+        "ma_hr_crystals_0004"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0005": {
+      "trim": [
+        76,
+        0,
+        0,
+        15
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1605,
+        1214,
+        38,
+        54
+      ],
+      "alias": [
+        "ma_hr_crystals_0006"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0006": {
+      "trim": [
+        76,
+        0,
+        0,
+        15
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1605,
+        1214,
+        38,
+        54
+      ],
+      "alias": [
+        "ma_hr_crystals_0006"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0007": {
+      "trim": [
+        75,
+        1,
+        0,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1164,
+        1775,
+        39,
+        54
+      ],
+      "alias": [
+        "ma_hr_crystals_0008"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0008": {
+      "trim": [
+        75,
+        1,
+        0,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1164,
+        1775,
+        39,
+        54
+      ],
+      "alias": [
+        "ma_hr_crystals_0008"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0009": {
+      "trim": [
+        14,
+        1,
+        0,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        607,
+        1361,
+        100,
+        55
+      ],
+      "alias": [
+        "ma_hr_crystals_0010"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0010": {
+      "trim": [
+        14,
+        1,
+        0,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        607,
+        1361,
+        100,
+        55
+      ],
+      "alias": [
+        "ma_hr_crystals_0010"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0011": {
+      "trim": [
+        13,
+        1,
+        0,
+        12
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1469,
+        523,
+        101,
+        56
+      ],
+      "alias": [
+        "ma_hr_crystals_0012"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0012": {
+      "trim": [
+        13,
+        1,
+        0,
+        12
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1469,
+        523,
+        101,
+        56
+      ],
+      "alias": [
+        "ma_hr_crystals_0012"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0013": {
+      "trim": [
+        2,
+        1,
+        0,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1840,
+        268,
+        112,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0014"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0014": {
+      "trim": [
+        2,
+        1,
+        0,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1840,
+        268,
+        112,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0014"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0015": {
+      "trim": [
+        2,
+        2,
+        1,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        894,
+        111,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0016"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0016": {
+      "trim": [
+        2,
+        2,
+        1,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        894,
+        111,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0016"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0017": {
+      "trim": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        962,
+        111,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0018": {
+      "trim": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        962,
+        111,
+        62
+      ],
+      "alias": [
+        "ma_hr_crystals_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0019": {
+      "trim": [
+        1,
+        4,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        823,
+        111,
+        65
+      ],
+      "alias": [
+        "ma_hr_crystals_0020"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0020": {
+      "trim": [
+        1,
+        4,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        266,
+        823,
+        111,
+        65
+      ],
+      "alias": [
+        "ma_hr_crystals_0020"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0021": {
+      "trim": [
+        2,
+        17,
+        8,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        498,
+        465,
+        104,
+        52
+      ],
+      "alias": [
+        "ma_hr_crystals_0022"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0022": {
+      "trim": [
+        2,
+        17,
+        8,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        498,
+        465,
+        104,
+        52
+      ],
+      "alias": [
+        "ma_hr_crystals_0022"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0023": {
+      "trim": [
+        0,
+        17,
+        75,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1164,
+        1895,
+        39,
+        52
+      ],
+      "alias": [
+        "ma_hr_crystals_0024"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0024": {
+      "trim": [
+        0,
+        17,
+        75,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1164,
+        1895,
+        39,
+        52
+      ],
+      "alias": [
+        "ma_hr_crystals_0024"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0025": {
+      "trim": [
+        0,
+        19,
+        78,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1507,
+        1290,
+        36,
+        50
+      ],
+      "alias": [
+        "ma_hr_crystals_0026"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0026": {
+      "trim": [
+        0,
+        19,
+        78,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1507,
+        1290,
+        36,
+        50
+      ],
+      "alias": [
+        "ma_hr_crystals_0026"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0027": {
+      "trim": [
+        0,
+        54,
+        80,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1553,
+        1206,
+        34,
+        15
+      ],
+      "alias": [
+        "ma_hr_crystals_0028"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0028": {
+      "trim": [
+        0,
+        54,
+        80,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1553,
+        1206,
+        34,
+        15
+      ],
+      "alias": [
+        "ma_hr_crystals_0028"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0029": {
+      "trim": [
+        0,
+        55,
+        80,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1610,
+        1206,
+        34,
+        14
+      ],
+      "alias": [
+        "ma_hr_crystals_0030"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0030": {
+      "trim": [
+        0,
+        55,
+        80,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1610,
+        1206,
+        34,
+        14
+      ],
+      "alias": [
+        "ma_hr_crystals_0030"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0031": {
+      "trim": [
+        0,
+        55,
+        80,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1690,
+        1206,
+        34,
+        13
+      ],
+      "alias": [
+        "ma_hr_crystals_0032"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_crystals_0032": {
+      "trim": [
+        0,
+        55,
+        80,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1690,
+        1206,
+        34,
+        13
+      ],
+      "alias": [
+        "ma_hr_crystals_0032"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        114,
+        69
+      ]
+    },
+    "ma_hr_sparks_0001": {
+      "trim": [
+        86,
+        17,
+        9,
+        26
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        204,
+        1833,
+        28,
+        34
+      ],
+      "alias": [
+        "ma_hr_sparks_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0002": {
+      "trim": [
+        86,
+        17,
+        9,
+        26
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        204,
+        1833,
+        28,
+        34
+      ],
+      "alias": [
+        "ma_hr_sparks_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0003": {
+      "trim": [
+        85,
+        5,
+        8,
+        25
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2018,
+        579,
+        30,
+        47
+      ],
+      "alias": [
+        "ma_hr_sparks_0004"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0004": {
+      "trim": [
+        85,
+        5,
+        8,
+        25
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2018,
+        579,
+        30,
+        47
+      ],
+      "alias": [
+        "ma_hr_sparks_0004"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0031": {
+      "trim": [
+        4,
+        22,
+        72,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        820,
+        1100,
+        47,
+        53
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0005": {
+      "trim": [
+        84,
+        5,
+        3,
+        25
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1549,
+        1290,
+        36,
+        47
+      ],
+      "alias": [
+        "ma_hr_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0006": {
+      "trim": [
+        84,
+        5,
+        3,
+        25
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1549,
+        1290,
+        36,
+        47
+      ],
+      "alias": [
+        "ma_hr_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0007": {
+      "trim": [
+        81,
+        4,
+        3,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1164,
+        1953,
+        39,
+        50
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0008": {
+      "trim": [
+        75,
+        4,
+        3,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        873,
+        1931,
+        45,
+        50
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0009": {
+      "trim": [
+        75,
+        2,
+        2,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        873,
+        1182,
+        46,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0010": {
+      "trim": [
+        73,
+        2,
+        2,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2000,
+        1970,
+        48,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0011": {
+      "trim": [
+        73,
+        2,
+        0,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        655,
+        811,
+        50,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0012": {
+      "trim": [
+        72,
+        2,
+        0,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1453,
+        579,
+        51,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0013": {
+      "trim": [
+        72,
+        3,
+        0,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1510,
+        579,
+        51,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0014": {
+      "trim": [
+        70,
+        0,
+        0,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1660,
+        480,
+        53,
+        55
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0015": {
+      "trim": [
+        70,
+        0,
+        1,
+        21
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        539,
+        1983,
+        52,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0016": {
+      "trim": [
+        69,
+        0,
+        1,
+        21
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1601,
+        480,
+        53,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0017": {
+      "trim": [
+        30,
+        0,
+        1,
+        17
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1016,
+        1572,
+        92,
+        60
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0018": {
+      "trim": [
+        30,
+        1,
+        1,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1016,
+        1142,
+        92,
+        69
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0019": {
+      "trim": [
+        29,
+        1,
+        4,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1211,
+        1504,
+        90,
+        69
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0020": {
+      "trim": [
+        29,
+        1,
+        4,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1958,
+        268,
+        90,
+        71
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0021": {
+      "trim": [
+        28,
+        20,
+        11,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1809,
+        358,
+        84,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0022": {
+      "trim": [
+        28,
+        20,
+        11,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1899,
+        358,
+        84,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0023": {
+      "trim": [
+        20,
+        17,
+        11,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1016,
+        1703,
+        92,
+        55
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0024": {
+      "trim": [
+        20,
+        17,
+        11,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1016,
+        1638,
+        92,
+        59
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0025": {
+      "trim": [
+        18,
+        18,
+        11,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1117,
+        876,
+        94,
+        58
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0026": {
+      "trim": [
+        18,
+        18,
+        35,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1605,
+        1851,
+        70,
+        57
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0027": {
+      "trim": [
+        17,
+        19,
+        35,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1451,
+        1986,
+        71,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0028": {
+      "trim": [
+        6,
+        19,
+        39,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1970,
+        517,
+        78,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0029": {
+      "trim": [
+        6,
+        19,
+        72,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        873,
+        1746,
+        45,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0030": {
+      "trim": [
+        4,
+        19,
+        72,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        820,
+        916,
+        47,
+        56
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0032": {
+      "trim": [
+        3,
+        22,
+        72,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        711,
+        1121,
+        48,
+        50
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0033": {
+      "trim": [
+        3,
+        32,
+        72,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1242,
+        48,
+        40
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0034": {
+      "trim": [
+        1,
+        32,
+        85,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1296,
+        1551,
+        37,
+        40
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0035": {
+      "trim": [
+        1,
+        31,
+        89,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1339,
+        1862,
+        33,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0036": {
+      "trim": [
+        0,
+        31,
+        89,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1961,
+        1290,
+        34,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0037": {
+      "trim": [
+        0,
+        32,
+        93,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1418,
+        1907,
+        30,
+        37
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0038": {
+      "trim": [
+        0,
+        32,
+        93,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1418,
+        1950,
+        30,
+        37
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0039": {
+      "trim": [
+        0,
+        47,
+        101,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1956,
+        1577,
+        22,
+        22
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0040": {
+      "trim": [
+        0,
+        54,
+        107,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        2033,
+        16,
+        15
+      ],
+      "alias": [
+        "ma_hr_sparks_0041"
+      ],
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0041": {
+      "trim": [
+        0,
+        54,
+        107,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        2033,
+        16,
+        15
+      ],
+      "alias": [
+        "ma_hr_sparks_0041"
+      ],
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_hr_sparks_0042": {
+      "trim": [
+        6,
+        55,
+        107,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1387,
+        247,
+        10,
+        9
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        123,
+        77
+      ]
+    },
+    "ma_lake_crystals_0017": {
+      "trim": [
+        21,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        714,
+        1883,
+        95,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0018": {
+      "trim": [
+        21,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        817,
+        787,
+        95,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0019": {
+      "trim": [
+        21,
+        0,
+        5,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        917,
+        1399,
+        93,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0021": {
+      "trim": [
+        21,
+        0,
+        7,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1114,
+        1398,
+        91,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0023": {
+      "trim": [
+        20,
+        1,
+        39,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        287,
+        1602,
+        60,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0025": {
+      "trim": [
+        6,
+        3,
+        39,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1616,
+        991,
+        74,
+        80
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0027": {
+      "trim": [
+        4,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1610,
+        1274,
+        73,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0029": {
+      "trim": [
+        3,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1856,
+        991,
+        74,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0031": {
+      "trim": [
+        1,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1637,
+        735,
+        76,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0033": {
+      "trim": [
+        0,
+        6,
+        79,
+        9
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1772,
+        40,
+        68
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0035": {
+      "trim": [
+        0,
+        17,
+        90,
+        9
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1455,
+        1596,
+        29,
+        57
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0036": {
+      "trim": [
+        0,
+        17,
+        93,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1691,
+        1436,
+        26,
+        58
+      ],
+      "alias": [
+        "ma_lake_crystals_0037"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0037": {
+      "trim": [
+        0,
+        17,
+        93,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1691,
+        1436,
+        26,
+        58
+      ],
+      "alias": [
+        "ma_lake_crystals_0037"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0038": {
+      "trim": [
+        0,
+        17,
+        95,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2006,
+        1429,
+        24,
+        59
+      ],
+      "alias": [
+        "ma_lake_crystals_0039"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0039": {
+      "trim": [
+        0,
+        17,
+        95,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2006,
+        1429,
+        24,
+        59
+      ],
+      "alias": [
+        "ma_lake_crystals_0039"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0040": {
+      "trim": [
+        0,
+        18,
+        97,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1609,
+        1608,
+        22,
+        57
+      ],
+      "alias": [
+        "ma_lake_crystals_0041"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0041": {
+      "trim": [
+        0,
+        18,
+        97,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1609,
+        1608,
+        22,
+        57
+      ],
+      "alias": [
+        "ma_lake_crystals_0041"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0042": {
+      "trim": [
+        1,
+        43,
+        99,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        894,
+        604,
+        19,
+        32
+      ],
+      "alias": [
+        "ma_lake_crystals_0043"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0043": {
+      "trim": [
+        1,
+        43,
+        99,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        894,
+        604,
+        19,
+        32
+      ],
+      "alias": [
+        "ma_lake_crystals_0043"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0001": {
+      "trim": [
+        106,
+        28,
+        0,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        582,
+        1966,
+        13,
+        23
+      ],
+      "alias": [
+        "ma_lake_crystals_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0002": {
+      "trim": [
+        106,
+        28,
+        0,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        582,
+        1966,
+        13,
+        23
+      ],
+      "alias": [
+        "ma_lake_crystals_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0003": {
+      "trim": [
+        87,
+        10,
+        0,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        991,
+        32,
+        41
+      ],
+      "alias": [
+        "ma_lake_crystals_0004"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0004": {
+      "trim": [
+        87,
+        10,
+        0,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        991,
+        32,
+        41
+      ],
+      "alias": [
+        "ma_lake_crystals_0004"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0005": {
+      "trim": [
+        87,
+        10,
+        0,
+        30
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        876,
+        32,
+        43
+      ],
+      "alias": [
+        "ma_lake_crystals_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0006": {
+      "trim": [
+        87,
+        10,
+        0,
+        30
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        876,
+        32,
+        43
+      ],
+      "alias": [
+        "ma_lake_crystals_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0007": {
+      "trim": [
+        86,
+        10,
+        0,
+        30
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1339,
+        1813,
+        33,
+        43
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0008": {
+      "trim": [
+        52,
+        0,
+        0,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1981,
+        1738,
+        67,
+        81
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0009": {
+      "trim": [
+        52,
+        0,
+        0,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        985,
+        67,
+        81
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0010": {
+      "trim": [
+        52,
+        0,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        809,
+        67,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0011": {
+      "trim": [
+        52,
+        0,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        897,
+        67,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0012": {
+      "trim": [
+        51,
+        0,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1979,
+        1883,
+        68,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0013": {
+      "trim": [
+        51,
+        0,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        6,
+        68,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0014": {
+      "trim": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1681,
+        1830,
+        69,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0015": {
+      "trim": [
+        22,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1625,
+        787,
+        94,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0034": {
+      "trim": [
+        0,
+        6,
+        79,
+        9
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1846,
+        40,
+        68
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0032": {
+      "trim": [
+        0,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1061,
+        735,
+        77,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0030": {
+      "trim": [
+        1,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1555,
+        735,
+        76,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0028": {
+      "trim": [
+        3,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1776,
+        991,
+        74,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0026": {
+      "trim": [
+        4,
+        4,
+        42,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1531,
+        1274,
+        73,
+        77
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0024": {
+      "trim": [
+        6,
+        3,
+        39,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1536,
+        991,
+        74,
+        80
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0022": {
+      "trim": [
+        21,
+        1,
+        7,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1114,
+        1487,
+        91,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0020": {
+      "trim": [
+        21,
+        0,
+        5,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        917,
+        1488,
+        93,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_crystals_0016": {
+      "trim": [
+        22,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1725,
+        787,
+        94,
+        83
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        119,
+        83
+      ]
+    },
+    "ma_lake_sparks_0015": {
+      "trim": [
+        54,
+        5,
+        1,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1072,
+        67,
+        79
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0016": {
+      "trim": [
+        52,
+        3,
+        1,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1756,
+        1738,
+        69,
+        81
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0017": {
+      "trim": [
+        52,
+        3,
+        5,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        80,
+        493,
+        65,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0018": {
+      "trim": [
+        41,
+        3,
+        5,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1473,
+        735,
+        76,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0019": {
+      "trim": [
+        37,
+        3,
+        11,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        991,
+        74,
+        82
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0020": {
+      "trim": [
+        32,
+        0,
+        11,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        809,
+        735,
+        79,
+        85
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0001": {
+      "trim": [
+        111,
+        31,
+        6,
+        52
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        588,
+        1157,
+        5,
+        5
+      ],
+      "alias": [
+        "ma_lake_sparks_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0002": {
+      "trim": [
+        111,
+        31,
+        6,
+        52
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        588,
+        1157,
+        5,
+        5
+      ],
+      "alias": [
+        "ma_lake_sparks_0002"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0003": {
+      "trim": [
+        109,
+        30,
+        5,
+        37
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        587,
+        1224,
+        8,
+        21
+      ],
+      "alias": [
+        "ma_lake_sparks_0004"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0004": {
+      "trim": [
+        109,
+        30,
+        5,
+        37
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        587,
+        1224,
+        8,
+        21
+      ],
+      "alias": [
+        "ma_lake_sparks_0004"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0005": {
+      "trim": [
+        107,
+        29,
+        3,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        583,
+        1789,
+        12,
+        27
+      ],
+      "alias": [
+        "ma_lake_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0006": {
+      "trim": [
+        107,
+        29,
+        3,
+        32
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        583,
+        1789,
+        12,
+        27
+      ],
+      "alias": [
+        "ma_lake_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0007": {
+      "trim": [
+        86,
+        16,
+        1,
+        31
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1715,
+        1290,
+        35,
+        41
+      ],
+      "alias": [
+        "ma_lake_sparks_0008"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0008": {
+      "trim": [
+        86,
+        16,
+        1,
+        31
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1715,
+        1290,
+        35,
+        41
+      ],
+      "alias": [
+        "ma_lake_sparks_0008"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0009": {
+      "trim": [
+        81,
+        15,
+        0,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1214,
+        41,
+        50
+      ],
+      "alias": [
+        "ma_lake_sparks_0010"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0010": {
+      "trim": [
+        81,
+        15,
+        0,
+        23
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1214,
+        41,
+        50
+      ],
+      "alias": [
+        "ma_lake_sparks_0010"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0011": {
+      "trim": [
+        80,
+        14,
+        1,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1156,
+        41,
+        52
+      ],
+      "alias": [
+        "ma_lake_sparks_0012"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0012": {
+      "trim": [
+        80,
+        14,
+        1,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1156,
+        41,
+        52
+      ],
+      "alias": [
+        "ma_lake_sparks_0012"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0013": {
+      "trim": [
+        79,
+        12,
+        1,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1023,
+        1082,
+        42,
+        54
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0014": {
+      "trim": [
+        54,
+        5,
+        1,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1782,
+        67,
+        61
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0021": {
+      "trim": [
+        32,
+        0,
+        32,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        353,
+        575,
+        58,
+        88
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0022": {
+      "trim": [
+        30,
+        0,
+        32,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        287,
+        1414,
+        60,
+        88
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0023": {
+      "trim": [
+        30,
+        0,
+        37,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        417,
+        1039,
+        55,
+        88
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0024": {
+      "trim": [
+        22,
+        1,
+        37,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1129,
+        90,
+        63,
+        87
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0025": {
+      "trim": [
+        12,
+        1,
+        41,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1681,
+        1738,
+        69,
+        86
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0026": {
+      "trim": [
+        4,
+        1,
+        41,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        809,
+        1820,
+        77,
+        86
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0027": {
+      "trim": [
+        4,
+        1,
+        41,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        809,
+        1912,
+        77,
+        86
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0028": {
+      "trim": [
+        3,
+        3,
+        41,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        894,
+        735,
+        78,
+        84
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0029": {
+      "trim": [
+        3,
+        3,
+        45,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1456,
+        991,
+        74,
+        81
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0030": {
+      "trim": [
+        2,
+        4,
+        45,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1947,
+        826,
+        75,
+        80
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0031": {
+      "trim": [
+        2,
+        4,
+        45,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        975,
+        991,
+        75,
+        80
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0032": {
+      "trim": [
+        1,
+        4,
+        52,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1756,
+        1904,
+        69,
+        71
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0033": {
+      "trim": [
+        1,
+        4,
+        55,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        224,
+        6,
+        66,
+        71
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0034": {
+      "trim": [
+        0,
+        9,
+        67,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        417,
+        1133,
+        55,
+        66
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0035": {
+      "trim": [
+        0,
+        9,
+        67,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        417,
+        1205,
+        55,
+        66
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0036": {
+      "trim": [
+        0,
+        23,
+        81,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1964,
+        1021,
+        41,
+        54
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0037": {
+      "trim": [
+        0,
+        23,
+        81,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1071,
+        1096,
+        41,
+        54
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0038": {
+      "trim": [
+        0,
+        23,
+        82,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1808,
+        1096,
+        40,
+        54
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0039": {
+      "trim": [
+        0,
+        23,
+        82,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1854,
+        1096,
+        40,
+        54
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0040": {
+      "trim": [
+        4,
+        27,
+        85,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1339,
+        1701,
+        33,
+        50
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0041": {
+      "trim": [
+        4,
+        27,
+        85,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1339,
+        1757,
+        33,
+        50
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0042": {
+      "trim": [
+        9,
+        51,
+        96,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1565,
+        17,
+        26
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0043": {
+      "trim": [
+        17,
+        68,
+        96,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        586,
+        1470,
+        9,
+        9
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0044": {
+      "trim": [
+        20,
+        71,
+        99,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1933,
+        538,
+        3,
+        3
+      ],
+      "alias": [
+        "ma_lake_sparks_0045"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
+    },
+    "ma_lake_sparks_0045": {
+      "trim": [
+        20,
+        71,
+        99,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1933,
+        538,
+        3,
+        3
+      ],
+      "alias": [
+        "ma_lake_sparks_0045"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        122,
+        88
+      ]
     }
   },
   "sheets": {
@@ -12823,25 +16847,6 @@
     },
     "animations": [
       {
-        "id": "ma_lake_water_sparks",
-        "pos": [
-          845,
-          503
-        ],
-        "layer": 1,
-        "loop": true,
-        "animation": {
-          "from": 1,
-          "to": 24,
-          "prefix": "ma_lake_water_sparks"
-        },
-        "anchor": [
-          0.5,
-          0.5
-        ],
-        "fps": 30
-      },
-      {
         "id": "ma_george_shout_1",
         "pos": [
           153,
@@ -12948,15 +16953,135 @@
           0.5
         ],
         "fps": 30
+      },
+      {
+        "id": "ma_hr_crystals",
+        "pos": [
+          793,
+          196
+        ],
+        "wait": [
+          8,
+          12
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 32,
+          "prefix": "ma_hr_crystals"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
+      },
+      {
+        "id": "ma_hr_sparks",
+        "pos": [
+          793,
+          194
+        ],
+        "wait": [
+          4,
+          8
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 42,
+          "prefix": "ma_hr_sparks"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
+      },
+      {
+        "id": "ma_lake_water_sparks",
+        "pos": [
+          845,
+          503
+        ],
+        "layer": 1,
+        "loop": true,
+        "animation": {
+          "from": 1,
+          "to": 24,
+          "prefix": "ma_lake_water_sparks"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
+      },
+      {
+        "id": "ma_lake_crystals",
+        "pos": [
+          848,
+          495
+        ],
+        "wait": [
+          8,
+          12
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 43,
+          "prefix": "ma_lake_crystals"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
+      },
+      {
+        "id": "ma_lake_sparks",
+        "pos": [
+          845,
+          495
+        ],
+        "wait": [
+          4,
+          8
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 45,
+          "prefix": "ma_lake_sparks"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
       }
     ],
     "source": {
       "declaration": "kr3-desktop/data/map_data.lua map_animations3",
       "declarationSha256": "22ae271d8641406c5d2b9fa50a1777cd565eec8e6e600bb76a0f589fa200d749",
       "controller": "MapView.load_map_animations loop random integer(from,to)/30; KView.animation_frame ceil modulo",
-      "scope": "vignette, lake water sparks loop, George shout, and venom vine idle/action; other decorations remain unported",
+      "scope": "vignette and seven audited first-continent ambient objects: George, venom vine, HR/lake crystals and sparks, lake water sparks; remaining decorations unported",
       "nonLoop": "initial ts=to/30, pos/scale first list entry; after integer wait select list index, ts=0, schedule duration + next integer wait",
-      "idleAction": "initial idle to/30 looping; integer wait ceil to idle period; action non-loop then idle reset after action duration; next wait ceil to idle period"
+      "idleAction": "initial idle to/30 looping; integer wait ceil to idle period; action non-loop then idle reset after action duration; next wait ceil to idle period",
+      "selectedDeclarationOrder": [
+        "ma_george_shout_1",
+        "ma_venom_vine_1",
+        "ma_hr_crystals",
+        "ma_hr_sparks",
+        "ma_lake_water_sparks",
+        "ma_lake_crystals",
+        "ma_lake_sparks"
+      ]
     }
   },
   "ambientEvidence": {

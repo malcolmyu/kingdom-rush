@@ -1,5 +1,15 @@
 # 动画保真记录
 
+## 0.2.82 四组原水晶/火花装饰
+
+只读核对KR3 map_animations3四组声明与共享MapView.load_map_animations非loop分支：ma_hr_crystals793/196、wait8..12/1..32；ma_hr_sparks793/194、wait4..8/1..42；ma_lake_crystals848/495、wait8..12/1..43；ma_lake_sparks845/495、wait4..8/1..45。均layer1、默认alpha1、半图anchor、30fps，没有额外路径/缩放/动作切换。复用现有非loop规则：初始ts=to/30末帧，整数随机等待后ts0播放一次，dur+下一整数wait再启动。没有CSS呼吸或改World。UI RNG仅展示，不声称Love同seed或原timer掉帧轨迹一致。
+
+新增162原帧，tools/sources/desktop-map.json保存声明/原PNG SHA（已缓存1..5），extract_desktop_map.py从所选animation prefix派生ambient组，逐所有630帧裁图RGBA验证，接全量提取。ambient无损图从31130到57862B，未整原atlas预载/降低画质/提高15MB。所选七装饰按原声明顺序George/vine/HR crystals/HR sparks/lake water/lake crystals/lake sparks绘制，背景后under遮挡前；旧lake专项原states[0]假定改成按id查找，保留原帧边界断言，不为测试保留错误声明顺序。
+
+297Node通过，新增四组原pos/wait/末帧保持/独立重播间隔与所选声明顺序/数据不变。实际build test:map-crystals捕获四对象初始/4秒/8秒的drawImage原q、trim位置/alpha1与顺序，真实book/modal继续、pan/原生scroll0、手机CDP入关与销毁均正常exit0；原test:map-ambient、本地UI/公开旧版UI、独立天然新存档完整九模式三战役三星/存档手机均exit0。第三战役天然XP4705/20生命，World/HP/金币/冷却/经验/策略都未改。受控UI clock及当前截图不是原版同输入逐帧或自然通关证据。
+
+build957文件54,526,414B；100ms/1.5MBps/cacheoff真实book->battle14,940,202B/15.121s<15MB（仅余约60KB），不保证线上所有设备速度。公开本轮一次manifest0.2.81且完整UI正常退出，新推送不轮询。最终logs crystals-tests.log/crystals-browser.log/crystals-ambient.log/crystals-ui.log/crystals-campaign.log/crystals-performance.log，公开crystals-pages-ui.log。desktop-map-crystals.png/mobile.png已查看。其他地图装饰/运动层、完整光效与像素对照仍未完成，整体非1:1。
+
 ## 0.2.81 原藤蔓待机/动作连续状态
 
 只读核对KR3 map_animations3.ma_venom_vine_1与原共用MapView.load_map_animations完整非loop分支：pos785/664、layer1、84×52完整图面/半图anchor，idle1..48、action49..79、30fps，wait整数8..12。初始animation=idle、ts=48/30且loop=true；初次wait向上取到1.6秒idle周期整倍数，即8/9.6/11.2/11.2/12.8秒。动作时切action/ts0/loopfalse，31/30秒后回idle/ts0/looptrue，下一动作在该dur+新的周期化wait后发生。没有把1..79直接loop或额外改位置/可见性。
