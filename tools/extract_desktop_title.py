@@ -18,3 +18,7 @@ def crops(frames):
 d=crops(s['deleteFrames']);options=json.loads((ROOT/'web/assets/options/catalog.json').read_text())
 for key in ['options_button_bg_0001','options_button_bg_0002']:d[key]=options['images'][key]
 (out/'delete.json').write_text(json.dumps({**s['delete'],'images':d},ensure_ascii=False,separators=(',',':')))
+
+d=crops(s['optionsFrames'])
+for key in ['options_barBg','options_bar','options_button_bg_0001','options_button_bg_0002']+['options_sounds_'+str(i).zfill(4)for i in range(1,7)]:d[key]=options['images'][key]
+(out/'options.json').write_text(json.dumps({**s['options'],'slider':options['slider'],'images':d},ensure_ascii=False,separators=(',',':')))

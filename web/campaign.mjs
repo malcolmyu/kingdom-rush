@@ -1,3 +1,4 @@
+import{showTitleOptions}from'./desktop-title-options.mjs';
 import{DesktopTitle}from'./desktop-title.mjs';
 import{towerRangeSpecs}from'./tower-ranges.mjs';
 import{showMapOptions}from'./desktop-options.mjs';
@@ -144,7 +145,7 @@ export class Campaign{
   html+=u.button('restart-level','重新开始',u.find(layout,'pause_view_restart_button'),ref,'','重新开始')+u.button('pause-map','返回地图',u.find(layout,'pause_view_quit_button'),ref,'','返回地图')+u.button('pause-close','继续战斗',u.find(layout,'pause_view_close_button'),ref,'data-close');
   this.dialog(html,()=>{$('restart-level').onclick=()=>this.enterLevel(this.world.id,this.world.mode);$('pause-map').onclick=()=>this.showMap();for(const type of ['music','sound','vibration'])$('pause-'+type).onclick=()=>{this.setAudioEnabled(type,!(type==='music'?(this.progress.options.music??this.progress.options.sound):this.progress.options[type]));if(type==='vibration'&&this.progress.options[type])navigator.vibrate?.(30);this.persist();this.closeDialog();this.pause();};u.bind($('dialog'));});$('dialog').className='native-dialog native-pause-dialog';
  }
- settings(){if(this.scene==='map')return showMapOptions(this);const u=this.ui,t=u.find(u.data.layouts.title,'options_view'),ref={x:450,y:298};let html=u.image('news_frame',{},ref)+u.image('news_chain',{pos:{x:19,y:-52}},ref)+u.image('news_chain',{pos:{x:436,y:-52},scale:{x:-1,y:1}},ref)+'<h2 id="dialog-title" class="sr-only">设置</h2>';
+ settings(){if(['title','saves'].includes(this.scene)&&this.menuProfile==='desktop')return showTitleOptions(this);if(this.scene==='map')return showMapOptions(this);const u=this.ui,t=u.find(u.data.layouts.title,'options_view'),ref={x:450,y:298};let html=u.image('news_frame',{},ref)+u.image('news_chain',{pos:{x:19,y:-52}},ref)+u.image('news_chain',{pos:{x:436,y:-52},scale:{x:-1,y:1}},ref)+'<h2 id="dialog-title" class="sr-only">设置</h2>';
   for(const[type,id,label]of [['music','button_music','音乐'],['sound','button_sounds','音效']]){const n=u.find(t,id),on=type==='music'?(this.progress.options.music??this.progress.options.sound):this.progress.options.sound;html+=u.button('settings-'+type,label,{...n,default_image_name:on?n.true_image_name:n.false_image_name},ref,`aria-pressed="${!!on}"`);}
   const locale=u.find(t,'button_locale');html+=u.image(locale.default_image_name,{pos:{x:locale.pos.x-locale.anchor.x,y:locale.pos.y-locale.anchor.y}},ref)+`<p class="native-settings-language" style="${rectStyle(289.5,140,96,24,ref)}">简体中文</p>`+u.button('settings-close','返回',u.find(t,'options_close'),ref,'data-close');
   if(this.scene==='map')html+=u.button('map-back','返回开始界面',{default_image_name:'generic_btn_0001',click_image_name:'generic_btn_0002',pos:{x:78,y:245}},ref,'','退出');

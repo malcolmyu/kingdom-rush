@@ -880,3 +880,16 @@ DesktopTitle恢复main_menu_bg原1920×1080图（内含左上原标志），源s
 301Node通过；UI远程首轮沿用同步count在lazy槽未完成时0!=3，改等真实首槽后公开0.2.84完整UI过。无force/教程抑制。最终背景/slots/UI/powers专项正常exit0，冷路径100ms/1.5MBps/cacheoff真实book入关14,157,012B/14.355s，旧phone title与整GUI图集未下载，15MB预算不变。桌面/手机截图已看，为当前UI取样非原版同输入帧。
 
 最终完整九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命；原phone MenuMotion、字体和波旗奖励专项亦正常exit0。最终日志title-bg-tests.log、title-bg-build-final.log、title-bg-background-final.log、title-bg-slots-final.log、title-bg-ui-final.log、title-bg-campaign-final.log、title-bg-powers-final.log、title-bg-wave-final.log、title-bg-fonts-final.log、title-bg-motion-final.log、title-bg-performance-final.log、title-bg-pages-ui-final.log。未改World/策略/RNG/HP/gold/XP/cooldown。
+
+
+## 0.2.86 原主菜单设置与实际音量
+
+原vanilla screen_slots.options_view与KR3布局交叉：main_options_bg_notxt700×370，child99043 anchor350/185、窗口中心上50逻辑像素；无命名back，不套book滑动。PopUpView仅遮罩80→160/.5与当前值→1/.25 inquad，即时可操作，关闭立即inert并取消旧回调。原header232/15/242×50、h_popup28×1080/768；SFX250/100、Music250/190，原h20×1080/768；两VolumeSlider139/132与139/222、422×34，Done中心350/273与194×76。原JIMO角色×1.2与物理字号取整/宽度fit，shader/基线仍浏览器近似，不宣称逐像素。
+
+新增desktop-title-options.mjs、options.json/原背景裁图；tools/sources/desktop-title.json记录完整源布局/原中文Done=完成/SHA，提取器逐RGBA验证，接全量提取；其余slider/button直接引用已验证options原图。JIMO subset补齐实际主菜单四文案，所有字形cmap已查存在。独立screen_settings系统配置模块不在本批，未伪造分辨率/账号/商店或导mod新增功能。新设置资源仅点击选项才加载。
+
+MapOptionsView的原滑杆绑定抽为bindAudioSliders，两设置分支共享pointercapture/正常-悬停-按下帧/0..1实时gain/键盘可用；主菜单Done遵照screen_slots532–546只保存全局volume_fx/music，不调用repo.save，避免从标题设置制造槽。Escape按源631–650只hide，保留本次会话实时gain但不写全局配置，重载回上次Done值；地图原close即保存策略保留。旧未configured sound:false有效值保留，Done先捕有效两值再确立全局权威，不因新槽默认值压掉音量。
+
+303Node通过；新纯测全局保存不触碰槽与遮罩中断值。实际build主菜单专项受控250ms遮罩100/255/静态源中心/完整可见，真实FX键盘.25/音乐鼠标.65→实际Audio.menu.volume .13、Done保存但空槽仍空、Escape不保存/重载/跨槽、旧close被新dialog取消、pending请求Escape取消不复活、手机CDP拖动均正常exit0。桌面与手机截图已人工查看，为当前UI非原版同步取样。地图Options共享滑杆兼容专项、UI亦正常exit0。
+
+最终完整九模式三战役三星/存档手机正常exit0，3campaign天然XP4705/20生命；原title/slots/fonts与公开0.2.85完整UI通过。最终冷路径100ms/1.5MBps/cacheoff真实书页入关14,166,792B/15.262s<15MB，新主菜单设置图片未进入关键路径；非所有线上速度保证。logs title-options-tests-final.log/browser.log/map-regression.log/ui.log/campaign.log/title.log/slots.log/fonts.log/performance.log/pages-ui.log。未改World/策略/HP/gold/XP/cooldown，全部owned结果收集。

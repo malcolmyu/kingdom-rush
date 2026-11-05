@@ -1245,5 +1245,182 @@
     "stringsPath": "kr3-desktop/assets/strings/zh-Hans_3.lua",
     "stringsSha256": "50aae83a41804accf5cd54a87e1b04b38655ecb7b98a5e468b537499bb5a2d80",
     "note": "Template has no named back: only shade tween, original static panel center y490. Shared vanilla PopUpView .5/.25 shade inquad."
+  },
+  "optionsFrames": {
+    "main_options_bg_notxt": {
+      "size": [
+        700,
+        370
+      ],
+      "trim": [
+        14,
+        1,
+        14,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1092,
+        672,
+        365
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    }
+  },
+  "options": {
+    "layout": {
+      "class": "PopUpView",
+      "children": [
+        {
+          "pos": {
+            "x": 960,
+            "y": 490
+          },
+          "class": "KImageView",
+          "children": [
+            {
+              "pos": {
+                "x": 232,
+                "y": 15
+              },
+              "class": "GGPanelHeader",
+              "fit_size": true,
+              "size": {
+                "x": 242,
+                "y": 50
+              },
+              "id": "99044",
+              "text_key": "OPTIONS",
+              "vertical_align": "middle-caps"
+            },
+            {
+              "pos": {
+                "x": 250,
+                "y": 100
+              },
+              "class": "GGOptionsLabel",
+              "fit_size": true,
+              "size": {
+                "x": 200,
+                "y": 32
+              },
+              "id": "99045",
+              "text_key": "SFX",
+              "vertical_align": "top"
+            },
+            {
+              "pos": {
+                "x": 139,
+                "y": 132
+              },
+              "style": "sfx",
+              "id": "s_sfx",
+              "image_name": "options_barBg",
+              "class": "VolumeSlider",
+              "size": {
+                "x": 422,
+                "y": 34
+              }
+            },
+            {
+              "pos": {
+                "x": 250,
+                "y": 190
+              },
+              "class": "GGOptionsLabel",
+              "fit_size": true,
+              "size": {
+                "x": 200,
+                "y": 32
+              },
+              "id": "99049",
+              "text_key": "Music",
+              "vertical_align": "top"
+            },
+            {
+              "pos": {
+                "x": 139,
+                "y": 222
+              },
+              "style": "music",
+              "id": "s_music",
+              "image_name": "options_barBg",
+              "class": "VolumeSlider",
+              "size": {
+                "x": 422,
+                "y": 34
+              }
+            },
+            {
+              "pos": {
+                "x": 350,
+                "y": 273
+              },
+              "class": "GGOptionsButton",
+              "label_text_key": "Done",
+              "id": "options_button_done",
+              "size": {
+                "x": 194,
+                "y": 76
+              },
+              "label_pos": {
+                "x": 350,
+                "y": 255
+              },
+              "anchor": {
+                "x": 97,
+                "y": 0
+              }
+            }
+          ],
+          "id": "99043",
+          "image_name": "main_options_bg_notxt",
+          "size": {
+            "x": 700,
+            "y": 370
+          },
+          "anchor": {
+            "x": 350,
+            "y": 185
+          }
+        }
+      ],
+      "id": "options_view",
+      "colors": {
+        "background": [
+          0,
+          0,
+          0,
+          80
+        ]
+      },
+      "size": {
+        "x": 1920,
+        "y": 1080
+      }
+    },
+    "text": {
+      "OPTIONS": "选项",
+      "SFX": "音效",
+      "Music": "音乐",
+      "Done": "完成"
+    },
+    "stringsSha256": "50aae83a41804accf5cd54a87e1b04b38655ecb7b98a5e468b537499bb5a2d80",
+    "source": "original-desktop-screen_slots.lua:532-578; shared GGOptionsLabel/GGPanelHeader/VolumeSlider",
+    "motion": {
+      "durationIn": 0.5,
+      "durationOut": 0.25,
+      "initialAlpha": 80,
+      "openAlpha": 160,
+      "hideAlpha": 1,
+      "easing": "in-quad",
+      "panelMotion": false
+    },
+    "save": "Only Done writes global volume settings. Escape hides without saving; live session gains remain."
   }
 }
