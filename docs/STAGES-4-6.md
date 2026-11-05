@@ -54,3 +54,7 @@
 0.2.110接入第6关两名上层狮鹫守卫的连续射击流程：原实体位置(460,640)/(450,700)、原z3001/anchor/15帧shoot、两片原椭圆区域过滤、每名独立aura随机冷却20/30..35/30并等待cooldown+1/30再刷新；原7/30前摇、chance1仍消耗一次随机。箭弹固定flight12/30/g-900、源移动轴独立prediction_error（x正0..10/y负0..10）、逐模拟tick切线/端点hide6、strict22接触/10物理伤害，未误用火把或预抽伤害。优先级以当前route.d换算源剩余节点，原native路径/协程/queue/ID顺序仍适配。
 
 这两名原守卫health.hp_max=1/immune_to=ALL_TYPES/vis.bans=MELEE|RANGED/无health_bar；当前以World专属gryphonGuards集合维护，避免误走临时援军寿命、普通兵营复活或敌人近战选敌。它们未加入玩家可交互士兵/集结入口，也未伪造死亡补兵；完整通用modifier/auras/目标枚举生产链仍待接。下层守卫的探身/淡入/退回掩体、关卡狮鹫演出/脚本和高级塔尚未实现，不称整关或所有guard已恢复。隔离第6关真实World/Canvas流程与旧九模式回归验收，4–6入口仍关闭，新关自身资源预算/原全层级尚未验收。
+
+0.2.111接入第6下层守卫的开波门/探身/退回流程：原hide(459,563)/show(440,550)、首次wave>=1才一次frandom1..3秒等待，rally请求后yield，按原speed75走到位后下一tick恢复攻击，闲置严格>5秒（自max(attack.ts,lastShow)算）禁用攻击/返回hide，再进入随机等待。原source探身nav_rally.center=this.show为nil，未虚构show_pos替代；当前仅rally.pos用于移动。原初始attack.disabled未设置，透明/首次等待不强加禁用，第一次退回才disabled、后续show到位清除。alpha独立按原0:0/.25:255/.5:255正放或duration-time倒放；不是移动到位瞬间出现/消失。lower独立两片原区域过滤、原1秒ranged冷却，复用已审计guard箭/真实伤害，不用upper随机冷却。
+
+World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原running/shoot与alpha覆盖，避免template初始alpha0再乘成永久透明。暂停冻结、场景丢弃清理，不改旧九模式/4TYPES/退款。新关原完整协程/tick顺序、通用modifier/vis/原集结链仍适配；第6狮鹫出场/互动/轰炸等脚本和高级塔/新关预算与旗路存档仍欠，4–6继续未开放。

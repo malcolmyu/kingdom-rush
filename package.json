@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.110",
+  "version": "0.2.111",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -114,7 +114,8 @@
     "test:ewok-spear": "node tests/ewok-spear-browser.mjs",
     "test:harasser": "node tests/harasser-browser.mjs",
     "test:harasser-jump": "node tests/harasser-jump-browser.mjs",
-    "test:gryphon-guards": "node tests/gryphon-guards-browser.mjs"
+    "test:gryphon-guards": "node tests/gryphon-guards-browser.mjs",
+    "test:gryphon-lower": "node tests/gryphon-lower-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

@@ -1201,3 +1201,11 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 新增纯测覆盖原两实体/无假下层与援军寿命、椭圆闭边界、aura单tick随机不补发、World真实7帧释放、预测轴随机/原偏移/12帧弹道/10伤害、stun/maxtrack/移除/暂停与旧关隔离。实际build专项捕原Canvas q/alpha/箭角矩阵与绘制快照不变、真实World发射伤HP、原600金币不变、真实pause/zoom/手机/退出地图。位置/时钟受控样本非自然第6关通关或原版同步像素验收。
 
 最终412项Node全过；guards-browser.log/guards-browser-matrix.log、guards-campaign.log原完整天然九模式/存档手机、guards-ui.log与guards-performance.log均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末九模式XP继续自然增加。最终build1522files/72,862,238B。100ms/1.5MBps/cacheoff真实book入关7.171s/总16.229s、14,731,668B/236请求<15MB，无整atlas/OTF/新图/抬预算/降质，不保证所有线路。新第6关自身预算未验；截图gryphon-upper-guards.png/mobile为受控流程，不称全关像素验收。初纯测只改敌xy未同步route.d被下一tick拉回，以及第二守卫合法发箭令单守卫中断断言失败，已修fixture同步路径/限定受测守卫，未改产品门控。
+
+## 0.2.111 第6下层守卫探身/退回
+
+只读原APK game_scripts17560–17563/17586–17644、SU834–868、utils.walk473–519和systems.tween1288–1386，扩展extract_gryphon_guards.py与source JSON固定SHA/完整lower模板和区域；不执行控制器。原wave>=1、random1..3等待、yield后75速度走到show、到位后恢复射击、max(attack.ts,lastShow)严格>5退回、完整.5秒正反alpha与lower原射击区域/1秒cd接入。原controller探身center=this.show确实nil，原初始attack.disabled确实nil，所以初次透明等待不强加disabled；首次退回禁用后到下一次到位才清除，未把alpha当伤害或选敌门。原原生协程/队列/全modifier仍有适配边界，未称所有守卫与关卡脚本已完。
+
+新增6纯测wave无随机/源缺省、75speed与arrival后一tick/空center、正反alpha/只读pose、strict5/新attack推迟退回、原区域与实际arrow释放/暂停owner。actualbuild test:gryphon-lower真实双击入口开波后隔离pending/enemy作受控样本，捕running/shoot Canvas q/alpha/实际矩阵位置和World快照不变、原到位/真实HP下降/600金币不变/退回与禁用、真实pause/wheel/mobileCDP触摸/地图清理。并非自然第6通关或原版同步像素。首browser将已camera.project的screen再次套camera导致expected矩阵错误，改baseScreen单次变换，不改产品；首pure取浮点55/150乘150的上边界431，实际IEEE754落在边界外，改精确x半径闭边界校验，不给产品加epsilon。
+
+418Node全部通过，lower-browser-final与补齐源断言/注释后的最终lower-browser-release、原upper回归、lower-campaign完整天然九模式/存档手机、lower-ui与最终lower-ui-release/lower-performance-release均正常exit0；三个campaign20生命，第三入关自然XP4705，九模式末XP继续增长。最终build1522files72,865,897B，最后重包仅源注释/审计注释变化及必要字体subset刷新，无模拟逻辑变更，仍跑最终包Canvas/UI/性能。cold100ms/1.5MBps/cacheoff14,735,327B/236requests，book7.168s/总16.249s<15MB，无整atlas/OTF/新图/抬预算/降质，非所有线路保证。公开一次manifest确认.110且lower-pages-ui正常exit0，新推送不轮询。截图gryphon-lower-shoot/reveal/retreat/mobile已人工看，受控时钟/清空待生波次以隔离守卫，不冒自然第6关或原版同步证据。

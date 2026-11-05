@@ -338,3 +338,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `harasser-jump.mjs`负责新harasser的unit_dodges近战调用与原jump/shadow phase，独立于.108四连射；dodge pending等待既有ranged协程结束，源节点校验失败也保留原已消费的cooldown。声明式harasser-jump-data预计算原grid查询在各中心路径节点的Faerie结果（不是图片猜路），runtime按viewportAspect/source路径margin校验节点。跳出结束才写原lane位置/d，warp tick motionVelocity强制0以免预测弹误认瞬移速度。F_ALL作用在当前塔/兵/英雄新目标获取，hurt不加全局豁免；技能AoE/全modifier生产仍适配。World实例拥有phase，无timer/跨场景cache；旧关不新增harasser状态或RNG。
 
 `gryphon-guards.mjs`只在第6关从原entities_list创建两名upper守卫，拥有独立World时钟的冷却aura和ranged episode，Renderer按原模板作为actor队列成员绘制。实体不借用普通soldiers的reinforcement/expiry/respawn模型；新gryphon-arrow独立类型复用已审计的arrow接触/抛物线更新，发射补原移动轴prediction_error，旧弹不改。lower守卫和关卡演出未接。
+
+`gryphon-guards.mjs`的lower状态机从原level实体与aura声明创建；wave/wait/out/shown/back独立维护源等待、移动与tween方向，guardPose纯读phase和原keys覆盖sprite alpha，actor仍与单位/前景同queue。upper保持原独立随机冷却。移动与等待同用World.step，不设timer，不混入普通兵的复活/援军寿命。原nav_rally.center在show为nil，保持该缺省而不补假数据，当前位置移动只依rally.pos。
