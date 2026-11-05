@@ -1,6 +1,6 @@
 // Ordinary ground death only. Original SU.y_enemy_death leaves these bodies
 // opaque; systems.health removes them strictly after death_ts+dead_lifetime.
-const keys=new Set(['enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena']);
+const keys=new Set(['enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_ettin']);
 export const isGroundCorpse=u=>keys.has(u.key)&&u.hp<=0;
 export class GroundCorpses{
  constructor(){this.reset();}
