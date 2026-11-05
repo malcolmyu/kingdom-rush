@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+`BookMotion` 只拥有书页host和veil上的WAAPI动画与临时样式，打开即时启用、关闭保持modal并禁用host，结束才调用原关闭流程。模式页内容重绘显式保留父动画，其他dialog/transition统一reset；串号与Promise取消防止旧关闭影响复用DOM的新内容。`Campaign.closeDialog` 在书页关闭时返回完成Promise，入关交接显式立即清理，原SceneTransition仍负责loading期间的输入。音效与hover保持UI职责，不进入World。
+
 `desktop-book.mjs` 负责桌面关卡书页的独立资源/字体门、1202×720节点、1920×1080窗口换算、皇冠首字窄栏及剩余宽栏。它只读 Campaign 的真实进度与模式规则，通过现有 enterLevel 和 persist 操作入关/难度；不导入 desktop 模组的控制器或数值。关闭/对话框替换/切场景取消旧请求并断开 ResizeObserver。`tools/sources/desktop-book.json` 与提取器固定社区图集来源及哈希，构建复制独立 book 资源，首字字体先去除浏览器不支持的竖排表并验证横排表不变，再按实际使用字形 subset；不更改其他字体角色。
 
 `level-book.mjs` 将 desktop 书页标题字体与 phone 全局字体角色隔离，提供按需字体就绪与原难度图片配对。Campaign 在字体异步等待前记录请求号与场景版本，关闭、Escape、其他对话框和场景变更取消旧显示请求；只在当前请求完成后创建 DOM。字体原件与固定来源/hash 单独记录，不混入 APK provenance；build 统一无损 subset，启动仍只等待既有五种 APK 字体。

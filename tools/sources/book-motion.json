@@ -1,0 +1,15 @@
+{
+  "source": "https://raw.githubusercontent.com/dima201010ia-ui/Kingdom-rush-frontiers-open-s0urce/cf90f0d68002491e705505fdeec346c0e803a97a/all-desktop/gg_views_custom.lua",
+  "sha256": "a2f71ec9ebc0e5fcde0998dc9c28f910eda2d6c2c2625555eea42afe0c1b1fdc",
+  "show": 0.5,
+  "hide": 0.25,
+  "showEnable": "immediate",
+  "distance": 50,
+  "hostEase": "out-quad",
+  "shadeEase": "in-quad",
+  "shade": [
+    80,
+    160,
+    1
+  ]
+}

@@ -1,5 +1,17 @@
 # 动画保真记录
 
+## 0.2.70 原书页交互与 PopUpView 时序
+
+重新核对固定版本共用原代码 `all-desktop/gg_views_custom.lua`，不是混合模组的修改版：原 `FADE_IN_TIME=.5`、`FADE_OUT_TIME=.25`，show在开始就 `enable(false)`，并非动画结束才启用。模组的1秒/0.5秒与延后启用未采用。来源和SHA保存在 `tools/sources/book-motion.json`，控制器仅只读，未执行。
+
+`book-motion.mjs` 独立驱动书页：初始y=-50/alpha0，以out-quad到y0/alpha1；背景黑色alpha80以in-quad到160。关闭从当前y再上移50、alpha到0，背景以in-quad到1，0.25秒后才隐藏；关闭立即inert并保持遮罩拦截，重复Escape不重启计时。打开立即可操作，半程切模式保留原父动画，选中页签为无动作状态。全局phone菜单/战场loading/director时序未重写；入关交接沿用既有立即关闭书页、由loading门管理输入的路线。关闭、重开、替换对话框、切场景均有动画所有者与取消保护，不能让旧hide回调隐藏新窗口或新存档；减少动态偏好使用静态终点。
+
+关闭按钮补齐normal/hover/pressed三图；入关与关闭点击补原GUIButtonCommon。模式页签补原normal/hover/selected帧、hover文字95/59/38与normal198/134/95、selected142/213/246。难度点击后显示新难度的hover图，实际pointerleave/cancel/blur后恢复normal，不为旧测试保留错误回弹。原 `GUIQuickMenuOver` 已从APK声音声明核实为 `Sound_GUIMouseOverTowerIcon.ogg`、gain1，独立提取为book-hover，构建可复现。所有状态均为展示层，不改World、金币/XP/冷却/RNG。
+
+264项Node，实际build的book-motion、level-book、desktop-book、UI与完整九模式（三战役三星/存档/手机）通过。专项核对0/250/500ms及中断关闭0/125ms的真实DOM位置/透明度/背景、即时启用、关闭输入阻止、重复Escape、半程真实点击切页、hover音效与图、旧hide取消、通用对话框替换、slot2隔离、减少动态偏好和手机真实tap。前批字体及九页布局回归保留。背景的controller浮点值单独精确断言，CSS序列化按8位alpha核对，未用取整差异改变产品插值。截图为当前受控展示/实际hover及手机取样，不是原版同输入逐帧像素证据。
+
+冷路径100ms/1.5MBps/禁缓存含真实开书页和入关，14.69秒、14,585,058B，低于15MB预算；该总时长包含原入场动作及自动化等待稳定，不是所有线上设备速度承诺。锁定页签原悬停说明、蜡封文字shader、Love字体细节、desktop地图与其余全局差异仍待对齐，整体未达1:1。
+
 ## 0.2.69 桌面双页书框、皇冠首字与模式书页
 
 本批找到带 Origins desktop 图集的公开社区模组仓库 `zidonghua2018/KingdomRushFL`，固定提交 `a1facc6b76d00b064ad43db958d31b4ceaf7388d`。只提取经过视频同关画面核对的书页图片与九个书页短标签，不导入模组控制器、游戏模板、数值、改写后的字体映射或新增功能。起初核对的 KR1 图集首字饰板不符，未采用；最终采用 KR3 皇冠饰板、金色书框和前三关矩形预览图。`tools/sources/desktop-book.json` 记录选中声明、原图集 SHA256、来源与帧坐标；`extract_desktop_book.py` 输出 52 张保留 trim/完整 size 的无损 WebP，并验证解码 RGBA 一致。此来源是社区仓库中的 desktop 图集，不能改写成当前 phone APK 的内容。

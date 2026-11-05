@@ -1,0 +1,5 @@
+import{test}from'node:test';import assert from'node:assert/strict';import fs from'node:fs';
+import{BOOK_MOTION,bookPose,bookFrames}from'../web/book-motion.mjs';
+test('vanilla popup timing keeps show immediately enabled and excludes mod timing',()=>{const source=JSON.parse(fs.readFileSync('tools/sources/book-motion.json'));assert.equal(source.showEnable,'immediate');assert.equal(BOOK_MOTION.show,source.show);assert.equal(BOOK_MOTION.hide,source.hide);assert.equal(BOOK_MOTION.distance,50);});
+test('book show uses separate out-quad position/alpha and in-quad background',()=>{const a={y:-50,alpha:0,shade:80},b={y:0,alpha:1,shade:160};assert.deepEqual(bookPose(a,b,.5),{y:-12.5,alpha:.75,shade:100});const frames=bookFrames(a,b,.5);assert.equal(frames.length,61);assert.equal(frames[30].opacity,.75);assert.equal(frames.at(-1).translate,'0 0%');});
+test('closing an interrupted show travels another 50 from current pose',()=>{const from={y:-12.5,alpha:.75,shade:100},to={y:-62.5,alpha:0,shade:1};assert.deepEqual(bookPose(from,to,.5),{y:-50,alpha:.1875,shade:75.25});assert.deepEqual(bookPose(from,to,2),to);assert.deepEqual(bookPose(from,to,-1),from);});

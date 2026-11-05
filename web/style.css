@@ -252,3 +252,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .desktop-book .book-tab-label{position:absolute!important;top:50%!important;width:58.62069%!important;height:9.803922%!important;display:flex!important;align-items:center;justify-content:center;line-height:1;white-space:nowrap;text-align:center;pointer-events:none}
 .desktop-book .book-button:disabled{opacity:1;filter:none}
 .desktop-book .book-battle-caption{position:absolute;left:0;width:100%;display:flex;justify-content:center;align-items:center;line-height:1;color:rgb(243 198 152);-webkit-text-stroke:.18cqw rgb(95 6 13);paint-order:stroke fill;text-shadow:0 0 .14cqw #0009;pointer-events:none}
+
+.desktop-book{animation:none!important}.veil.book-veil{background:rgba(0,0,0,.6274509804);backdrop-filter:none}
