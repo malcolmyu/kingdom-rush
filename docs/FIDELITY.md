@@ -1121,3 +1121,17 @@ ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前
 最终373Node、actualbuild test:blighter-energy/封花与旧火把回归均正常exit0。原完整九模式首轮完成全部战斗/存档/手机断言并写出passed JSON后，在浏览器关闭阶段挂住；与daemon88207比对后只TERM Node10284，收143，明确不算正常通过。未改产品/策略/门控，独立串行重跑energy-campaign-repeat → energy-ui → energy-performance全部正常exit0，三个campaign20生命，第三campaign入关自然XP4705，末XP继续自然增长。公开一次manifest确认.103，首UI启动30秒超时，独立energy-pages-ui-repeat完整断言和最终exit0，不改超时值。无未收集失败结果或后台。
 
 最终build1511files72,835,167B；冷100ms/1.5MBps/cacheoff14,708,023B，book入关7.169s/总16.092s/226requests<15MB，无整atlas/OTF，不保证所有线上设备/线路速度。无新图下载，旧塔compact1314帧/2,122,316B保持；新关自身资源预算未验。blighter-energy-flight/mobile/hit已人工看，飞行桌面样本附评论，均隔离受控展示不是新关天然通关/原版同步证据；手机整关前景接缝仍待关卡层级验收，不掩盖。logs energy-tests-final-release/build-publish/browser/blight-regression/torch-regression/campaign-repeat/ui/performance/pages-ui-repeat。
+
+### 0.2.105 树屋修复与付费佣兵连续流程（盾挡待接）
+
+原APK模板将tower_ewok指向tower_barrack_mercenaries.update，非普通兵营自动fill；source菜单holder_ewok只tw_upgrade/tower_ewok，修复后ewok菜单tw_buy_soldier/soldier_ewok+tw_rally。tower.price100是修复费，每名unit.price100另付、容量4，绝不是100送四名。只读scripts1864–1939、game_scripts17402–17482、utils1010–1023、systems升级/扣费链与原game_gui交易字段，extract_ewok_hut.py/source JSON记录六源SHA/原菜单/所选模板及肖像来源。混合社区soldier_ewok文本新增y_soldier_revive并注释原death，已以APK普通death直接return为准，未移植mod复活。
+
+World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100即时替原holder、不出免费兵；hire在原door open动画完成后才扣100并生成一名原soldier_ewok，等待期间重复请求不另计费，door hold .5后关闭。原同位置/respawn_offset、默认rally、单人站中心/多人按实际当前数量分布r25/.7椭圆；死亡对象保留到strict>3秒清理才释放容量、幸存者重新排阵，不免费复活、不允许出售修复树屋。新单位复用当前战斗适配原HP100/speed75/近战3–7/hit10帧与spear16–20/shoot11帧/flight22帧；idle regen仅满足2秒standoff时累计dt严格>.5脉冲+15。原盾挡控制器、投矛预测/真实抛物线/特殊death尚未全做，不把普通战斗适配说成完整原小熊。
+
+真实Campaign/TowerMenu/原按钮双击交易专项初次发现Missing original UI sprite portraits_towers_0013导致RAF中断，原请求已提交而World停钟，并非door等待规则错误。只补原肖像，不吞异常/换占位图或放宽门控。extract_ui添加13号并验证完整RGBA；首次WebP lossless默认丢弃alpha0下RGB被严格比较拒绝，新增肖像专用exact=True后逐RGBA一致，旧600图编码未改。新图1780B；另与APK原PNG直接交叉，修正旧runtime atlas在透明RGB上的差异，新图直接从原PNG选取并精确保留。source JSON记录原PNG SHA/运行时atlasSHA/原q-size-trim/浏览器SHA，完整extract链可复现。
+
+381Node已过（8新领域测试），actualbuild hut-browser-fixed通过实际修复/四次真实菜单招募/价格容量、Canvas原士兵q/alpha与draw只读、原pause按钮、手机、死亡不复活、旧地图清理且存档上限仍1。ewok-hut-recruited.png/mobile已人工看；这是隔离第4关受控fixture而非正常新关通关/原版同步。当前实际Campaign手机样本未出现先前独立Canvas的重复前景边缘，但本批未改背景/前景，不据此声称完整新关层级已验。盾挡/完整spear及新关脚本/高级塔/资源预算仍欠，入口继续关闭。
+
+关门边界也按原协程补齐：主动close动画期间来的hire请求先排队，close结束后再open，不能中途倒播/跳过关门；新增纯测验证此时不提前扣费或出兵。最终不改World正常伤害/金币/XP/RNG来迁就测试，只有新树屋分支增加真实消费与新单位。
+
+最终381Node、hut-browser-release真实Campaign菜单/Canvas/76x76原肖像decode、hut-campaign-release完整原九模式/存档手机、hut-ui-release、hut-performance-release及公开.104 hut-pages-ui均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末九模式XP继续自然累加，未改策略/数值。最终build1513files72,841,949B；冷100ms/1.5MBps/cacheoff14,712,692B，book入关6.272s/总15.221s/227requests<15MB，无整atlas/OTF，不保证所有线上设备速度；新关自身预算未验。最终桌面/手机样本已人工看。此前portrait缺失两次专项30秒失败与默认WebP透明RGB比较失败均保留日志且已明确修正；源码访问凭证打包时过期已更新后成功重做，未打印/落盘token。无失败结果待处理或run-owned后台。

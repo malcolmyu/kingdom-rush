@@ -1,0 +1,668 @@
+{
+  "sourceSha256": {
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89",
+    "all-phone/game_gui.lua": "e9ba578e0b2d53075f1e7b7fc7b9bae04736983246c2270c31000fd02060381d"
+  },
+  "templates": {
+    "tower_ewok_holder": {
+      "editor": {
+        "game_mode": 0,
+        "props": [
+          [
+            "tower.terrain_style",
+            "number"
+          ],
+          [
+            "tower.default_rally_pos",
+            "coords"
+          ],
+          [
+            "tower.holder_id",
+            "string"
+          ],
+          [
+            "ui.nav_mesh_id",
+            "string"
+          ],
+          [
+            "editor.game_mode",
+            "number"
+          ]
+        ]
+      },
+      "editor_script": {
+        "insert": {},
+        "remove": {},
+        "runs": 1
+      },
+      "info": {
+        "fn": {},
+        "i18n_key": "ELVES_EWOK_TOWER",
+        "portrait": "portraits_towers_0013"
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": false,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "terrains_0001",
+            "offset": {
+              "x": 0,
+              "y": 10
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          },
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": false,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "ewok_hut_0001",
+            "offset": {
+              "x": 0,
+              "y": 32
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          }
+        ]
+      },
+      "template_name": "tower_ewok_holder",
+      "tower": {
+        "block_count": 0,
+        "can_be_mod": false,
+        "can_be_sold": true,
+        "can_do_magic": true,
+        "can_hover": true,
+        "damage_factor": 1,
+        "default_rally_pos": {
+          "x": 0,
+          "y": 0
+        },
+        "level": 1,
+        "long_idle_cooldown": 3,
+        "long_idle_pos": {
+          "x": 1024,
+          "y": 0
+        },
+        "menu_offset": {
+          "x": 0,
+          "y": 2
+        },
+        "name": "",
+        "price": 0,
+        "range_offset": {
+          "x": 0,
+          "y": 12
+        },
+        "refund_factor": 0.6,
+        "size": 1,
+        "spent": 0,
+        "type": "holder_ewok"
+      },
+      "tower_holder": {
+        "blocked": false,
+        "custom": true,
+        "preview_ids": {},
+        "unblock_price": 0
+      },
+      "ui": {
+        "can_click": true,
+        "can_select": true,
+        "click_rect": {
+          "pos": {
+            "x": -40,
+            "y": -10
+          },
+          "size": {
+            "x": 80,
+            "y": 90
+          }
+        },
+        "has_nav_mesh": true,
+        "z": 0
+      }
+    },
+    "tower_ewok": {
+      "barrack": {
+        "door_hold_time": 0.5,
+        "door_open": false,
+        "door_open_ts": 0,
+        "has_door": true,
+        "max_soldiers": 4,
+        "rally_angle_offset": 0,
+        "rally_new": false,
+        "rally_radius": 25,
+        "rally_range": 150,
+        "rally_terrains": 2049,
+        "respawn_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "soldier_type": "soldier_ewok",
+        "soldiers": {}
+      },
+      "editor": {
+        "game_mode": 0,
+        "props": [
+          [
+            "tower.terrain_style",
+            "number"
+          ],
+          [
+            "tower.default_rally_pos",
+            "coords"
+          ],
+          [
+            "tower.holder_id",
+            "string"
+          ],
+          [
+            "ui.nav_mesh_id",
+            "string"
+          ],
+          [
+            "editor.game_mode",
+            "number"
+          ],
+          [
+            "barrack.rally_pos",
+            "coords"
+          ]
+        ]
+      },
+      "editor_script": {
+        "insert": {},
+        "remove": {},
+        "runs": 1
+      },
+      "info": {
+        "fn": {},
+        "i18n_key": "ELVES_EWOK_TOWER",
+        "portrait": "portraits_towers_0013"
+      },
+      "main_script": {
+        "insert": {},
+        "remove": {},
+        "runs": 1,
+        "update": {}
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "render": {
+        "door_sid": 3,
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": false,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "terrains_0001",
+            "offset": {
+              "x": 0,
+              "y": 10
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 1300
+          },
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": false,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "ewok_hut_0002",
+            "offset": {
+              "x": 0,
+              "y": 32
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          },
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": true,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": false,
+            "name": "close",
+            "offset": {
+              "x": 0,
+              "y": 32
+            },
+            "prefix": "tower_ewok_door",
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          }
+        ]
+      },
+      "sound_events": {
+        "change_rally_point": "ElvesEwokTaunt",
+        "insert": "GUITowerBuilding",
+        "mute_on_level_insert": true,
+        "sell": "GUITowerSell"
+      },
+      "template_name": "tower_ewok",
+      "tower": {
+        "block_count": 0,
+        "can_be_mod": false,
+        "can_be_sold": false,
+        "can_do_magic": true,
+        "can_hover": true,
+        "damage_factor": 1,
+        "default_rally_pos": {
+          "x": 0,
+          "y": 0
+        },
+        "level": 1,
+        "long_idle_cooldown": 3,
+        "long_idle_pos": {
+          "x": 1024,
+          "y": 0
+        },
+        "menu_offset": {
+          "x": 0,
+          "y": 2
+        },
+        "name": "",
+        "price": 100,
+        "range_offset": {
+          "x": 0,
+          "y": 12
+        },
+        "refund_factor": 0.6,
+        "size": 1,
+        "spent": 0,
+        "type": "ewok"
+      },
+      "ui": {
+        "can_click": true,
+        "can_select": true,
+        "click_rect": {
+          "pos": {
+            "x": -40,
+            "y": -10
+          },
+          "size": {
+            "x": 80,
+            "y": 90
+          }
+        },
+        "has_nav_mesh": true,
+        "z": 0
+      }
+    },
+    "soldier_ewok": {
+      "dodge": {
+        "active": false,
+        "animation_end": "shield_end",
+        "animation_hit": "shield_hit",
+        "animation_start": "shield_start",
+        "chance": 1,
+        "cooldown": 20,
+        "counter_attack_pending": false,
+        "duration": 4,
+        "ranged": true,
+        "time_before_hit": 0,
+        "ts": 0
+      },
+      "heading": {
+        "angle": 0
+      },
+      "health": {
+        "armor": 0,
+        "damage_factor": 1,
+        "dead": false,
+        "dead_lifetime": 3,
+        "death_ts": 0,
+        "hp_max": 100,
+        "ignore_damage": false,
+        "immune_to": 0,
+        "last_damage_types": 0,
+        "magic_armor": 0,
+        "poison_armor": 0,
+        "spiked_armor": 0
+      },
+      "health_bar": {
+        "frames": {},
+        "hidden": false,
+        "offset": {
+          "x": 0,
+          "y": 29
+        },
+        "type": "small",
+        "z": 3000
+      },
+      "idle_flip": {
+        "chance": 0.4,
+        "cooldown": 5,
+        "last_animation": "idle",
+        "last_dir": 1,
+        "loop": true,
+        "ts": 0,
+        "ts_counter": 0,
+        "walk_dist": 0
+      },
+      "info": {
+        "fn": {},
+        "portrait": "portraits_sc_0060",
+        "random_name_count": 6,
+        "random_name_format": "ELVES_SOLDIER_EWOK_%i_NAME"
+      },
+      "main_script": {
+        "insert": {},
+        "remove": {},
+        "runs": 1,
+        "update": {}
+      },
+      "melee": {
+        "arrived_slot_animation": "idle",
+        "attacks": [
+          {
+            "animation": "attack",
+            "chance": 1,
+            "cooldown": 1,
+            "damage_max": 7,
+            "damage_min": 3,
+            "damage_type": 2,
+            "dodge_time": 0.13333333333333333,
+            "hit_time": 0.3333333333333333,
+            "instakill": false,
+            "level": 0,
+            "pop": [
+              "pop_ewoks"
+            ],
+            "pop_chance": 0.1,
+            "sound": "MeleeSword",
+            "ts": 0,
+            "type": "melee",
+            "vis_bans": 256,
+            "vis_flags": 1
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ],
+        "range": 50
+      },
+      "motion": {
+        "arrived": true,
+        "dest": {
+          "x": 0,
+          "y": 0
+        },
+        "max_speed": 75,
+        "speed": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "nav_rally": {
+        "immune_to": 16777183,
+        "new": false,
+        "pos": {
+          "x": 0,
+          "y": 0
+        },
+        "requires_node_nearby": true
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "ranged": {
+        "attacks": [
+          {
+            "animation": "shoot",
+            "bullet": "bullet_soldier_ewok",
+            "bullet_start_offset": [
+              {
+                "x": 0,
+                "y": 10
+              }
+            ],
+            "chance": 1,
+            "cooldown": 1.3,
+            "count": 0,
+            "level": 1,
+            "max_range": 150,
+            "max_track_distance": 128,
+            "min_range": 25,
+            "shoot_time": 0.36666666666666664,
+            "ts": 0,
+            "type": "bullet",
+            "vis_bans": 0,
+            "vis_flags": 2
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ]
+      },
+      "regen": {
+        "cooldown": 0.5,
+        "health": 15,
+        "last_hit_standoff_time": 2,
+        "last_hit_ts": 0,
+        "ts": 0,
+        "ts_counter": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.19444444444444445
+            },
+            "angles": {
+              "walk": [
+                "running"
+              ]
+            },
+            "animated": true,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "idle",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "prefix": "soldier_ewok",
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          }
+        ]
+      },
+      "soldier": {
+        "courage_ts": 0,
+        "melee_slot_offset": {
+          "x": 5,
+          "y": 0
+        }
+      },
+      "sound_events": {
+        "death_by_explosion": "DeathEplosion",
+        "insert": "ElvesEwokTaunt"
+      },
+      "template_name": "soldier_ewok",
+      "ui": {
+        "can_click": true,
+        "can_select": true,
+        "click_rect": {
+          "pos": {
+            "x": -10,
+            "y": -2
+          },
+          "size": {
+            "x": 20,
+            "y": 25
+          }
+        },
+        "z": 0
+      },
+      "unit": {
+        "blood_color": "red",
+        "can_disintegrate": true,
+        "can_explode": true,
+        "damage_factor": 1,
+        "death_animation": "death",
+        "disintegrate_fx": "fx_enemy_desintegrate",
+        "explode_fx": "fx_unit_explode",
+        "hit_offset": {
+          "x": 0,
+          "y": 12
+        },
+        "level": 0,
+        "marker_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "mod_offset": {
+          "x": 0,
+          "y": 10
+        },
+        "price": 100,
+        "show_blood_pool": true,
+        "size": 1,
+        "stun_count": 0
+      },
+      "vis": {
+        "bans": 0,
+        "flags": 1024
+      }
+    }
+  },
+  "menus": {
+    "holder_ewok": [
+      [
+        {
+          "action": "tw_upgrade",
+          "action_arg": "tower_ewok",
+          "check": "main_icons_0019",
+          "halo": "glow_ico_main",
+          "image": "main_icons_0015",
+          "place": 5,
+          "tt_desc": "ELVES_EWOK_TOWER_BROKEN_DESCRIPTION",
+          "tt_title": "ELVES_EWOK_TOWER_BROKEN_NAME"
+        }
+      ]
+    ],
+    "ewok": [
+      [
+        {
+          "action": "tw_buy_soldier",
+          "action_arg": "soldier_ewok",
+          "check": "main_icons_0019",
+          "halo": "glow_ico_main",
+          "image": "main_icons_0112",
+          "place": 5,
+          "tt_desc": "ELVES_EWOK_DESCRIPTION",
+          "tt_title": "ELVES_EWOK_NAME"
+        },
+        {
+          "action": "tw_rally",
+          "halo": "glow_ico_sub",
+          "image": "sub_icons_0001",
+          "place": 8
+        }
+      ]
+    ]
+  },
+  "scope": "holder repair and individually purchased, non-respawning mercenaries; shared current combat adapter",
+  "limitations": [
+    "Shield dodge controller and full original spear physics remain pending",
+    "Native scheduler and insertion queue are adapted, not source insert ID stream",
+    "Complete special death/blood pool remains pending"
+  ],
+  "portrait": {
+    "originalPngSha256": "b8db2ab347915c6589d3fb362849fc353201fe3f567e7f44cb39351151e640ce",
+    "frame": {
+      "a": "gui_portraits-1.webp",
+      "q": [
+        96,
+        872,
+        58,
+        58
+      ],
+      "size": [
+        76,
+        76
+      ],
+      "trim": [
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    "atlasSha256": "1786b872a8d74803d56ec4f38a003ab2ca7d8bc96f428997f9e9ee29aaf2bfd1",
+    "browserSha256": "5dc03bcd583f2b84003d58ba0471ce77d225a10d02aacc0d666a204ac167f23f"
+  }
+}
