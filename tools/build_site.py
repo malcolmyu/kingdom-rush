@@ -16,6 +16,7 @@ assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rg
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-map').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/options').rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-title').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}
 assets|={'menu/'+n+'.webp'for n in ['start','logo','world']}
 assets|={f'levels/{i:02}-{m}.json'for i in range(1,4)for m in ['campaign','heroic','iron']}
@@ -27,7 +28,7 @@ optimize(OUT)
 # Resolve static imports up front to remove deep ESM request waterfalls on cold
 # connections. Preload the title background while metadata is downloading.
 # Compress declaration metadata losslessly; raw JSON remains a compatibility fallback.
-for relative in ['assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json']:
+for relative in ['assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json']:
  p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))
 html=(OUT/'index.html').read_text().replace('<html ', '<html data-packed-metadata="gzip" ')
 preloads=''.join(f'<link rel="modulepreload" href="{p.name}">\n'for p in sorted(OUT.glob('*.mjs')))

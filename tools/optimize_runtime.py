@@ -56,6 +56,11 @@ def optimize(out):
   return path
  path=pack(keys,'go_towers_campaign.webp')
  catalog['campaignTowerSheets']=['go_towers_campaign.webp']
+ enemy_prefixes={sprite['prefix']for key,t in catalog['templates'].items()if key.startswith('enemy_')for sprite in t.get('render',{}).get('sprites',[])if sprite.get('prefix')}
+ enemy_keys=sorted((k for k,f in frames.items()if f['a'].startswith('go_enemies_elven_woods-')and any(k.startswith(p+'_')for p in enemy_prefixes)),key=lambda k:(-frames[k]['q'][3],k))
+ enemy_path=pack(enemy_keys,'go_enemies_campaign.webp')
+ catalog['campaignEnemySheets']=['go_enemies_campaign.webp']
+ print('Lossless supported enemies:',len(enemy_keys),'frames,',enemy_path.stat().st_size,'bytes')
  map_keys=sorted(k for k in frames if k.startswith(('mapFlag','mapDot','mapDeco')))
  map_path=pack(map_keys,'screen_map_campaign.webp')
  catalog['mapSheets']=['screen_map_campaign.webp']

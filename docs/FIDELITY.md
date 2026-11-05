@@ -1,5 +1,19 @@
 # 动画保真记录
 
+## 0.2.83 桌面主横幅/中文按钮局部分支
+
+只读取得固定KR3 desktop screen_slots atlas/layout与vanilla共用screen_slots：ref1920×1080、scale=h/1080、sw=1080*w/h，背景原点为居中1920图的左端，不套phone .5或world .842。banner pos170/1100、anchor0/521（实际原图672×543），三个有效主按钮pos160/97、174/204、202/304，第四quit221/383保留源位置但浏览器无退出能力而禁用。CSinkButton共用源码核实base normal/down，CHoverImage中文normal/hover，child按下偏移(-3,+5)逻辑像素，leave/up/cancel/blur恢复。中文是原atlas位图，不是全局更换字体。15张所选原图逐RGBA验证，tools/sources/desktop-title.json记录PNG/layout/controller SHA，extract_desktop_title.py接全量提取。
+
+明确局部差异：原完整桌面main_menu_bg无损WebP实测2,222,858B，当前phone start背景553,616B；直接替换超过固定15MB冷路径预算。本批只接原横幅与主按钮，背景/单独logo仍phone，存档面板/删除/设置内部也沿既有phone。开始进入真实三存档；desktop主按钮不播放phone MenuMotion猜桌面动画，未恢复源侧滑panel .1秒。旧MenuMotion/SaveSlots保持phone profile，可独立回归；完整desktop背景/slots/credits尚未完成，不能称开始界面整体1:1。现有指定视频缓存没有开始页同输入取样，本批依固定源声明/原图恢复，不称视频逐像素验收。
+
+DesktopTitle实例持资源门/ResizeObserver/按钮状态，destroy拒旧ready，Campaign owner身份检查拒旧报错；waitScreenReady包含title readyPromise，保留原scene门。专项人为延迟并中断旧catalog请求，先转saves再释放/失败，旧页面不复活、不向新窗口弹过期错误，重新开始正常。浏览器quit不假装关闭应用；设置/制作名单沿已有真实入口，非完整desktop Options/Credits重做。
+
+新增约329KB原按钮素材，维持预算的同时按当前五敌template prefix完整提取565帧，build打包go_enemies_campaign.webp1,583,790B，逐每帧与原WebP解码RGBA验证，size/trim不变；未来未用敌帧仍指向原sheet，只有定义campaignEnemySheets的build跳过原两整图，web原目录兼容保留。没有改敌动画帧集合/战斗数值。readMetadata复用原gzip流解码/无API原JSON回退，desktop-map/catalog增加无损gzip旁文件，不降图质或提高15MB。
+
+299Node通过，新增源按钮几何与enemy compact preload隔离；原gzip兼容测试保持。最终实际build test:desktop-title覆盖原hover/down/text sink/cancel、source坐标/手机、真实settings/三存档/slot2/return door与旧加载取消；本地UI、旧phone MenuMotion专项与独立天然新存档完整九模式三战役三星/存档手机均正常exit0。第三战役天然XP4705/20生命，missingFrames为空，World/经验/金币/HP/冷却/策略未改。公开本轮一次manifest0.2.82且完整UI正常退出，新推送不轮询。
+
+build976文件56,458,217B；100ms/1.5MBps/cacheoff真实book->battle14,836,703B/14.910s<15MB，禁止原整enemy/tower/map atlas下载，不保证所有线上设备速度。最终logs title-tests.log、desktop-title-browser-release.log、desktop-title-campaign-release.log、desktop-title-ui-release.log、desktop-title-performance-release.log，legacy desktop-title-legacy-motion.log，公开desktop-title-pages-ui.log。desktop-title-buttons.png/mobile.png已查看，是当前phone背景+原desktop按钮的混合profile，不是原版同步证据。
+
 ## 0.2.82 四组原水晶/火花装饰
 
 只读核对KR3 map_animations3四组声明与共享MapView.load_map_animations非loop分支：ma_hr_crystals793/196、wait8..12/1..32；ma_hr_sparks793/194、wait4..8/1..42；ma_lake_crystals848/495、wait8..12/1..43；ma_lake_sparks845/495、wait4..8/1..45。均layer1、默认alpha1、半图anchor、30fps，没有额外路径/缩放/动作切换。复用现有非loop规则：初始ts=to/30末帧，整数随机等待后ts0播放一次，dur+下一整数wait再启动。没有CSS呼吸或改World。UI RNG仅展示，不声称Love同seed或原timer掉帧轨迹一致。

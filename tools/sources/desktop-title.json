@@ -1,0 +1,443 @@
+{
+  "rawBase": "https://raw.githubusercontent.com/zidonghua2018/KingdomRushFL/a1facc6b76d00b064ad43db958d31b4ceaf7388d/kr3-desktop/assets/images/fullhd/",
+  "provenance": {
+    "kind": "community-mod-origins-desktop-assets",
+    "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+    "controllerSha256": "adeb6cdb24ad5d5d33b751ae7393188e2a061b2855c917e427bb8f6c8b903752",
+    "layoutSha256": "2b5d9fbcbc01a017410b2e6a0dda6b535b9b9308b42ea5662bca45396e5da2d8",
+    "scope": "Only original banner and Chinese main buttons. Background/logo and slot panel remain phone profile; browser quit unsupported."
+  },
+  "sheets": {
+    "screen_slots-1.png": "30706917f6db5628d14664dc065e407dad33f2a6daea17979ddb3a84a2280b78",
+    "screen_slots-2.png": "7705fc659e750bf0b4ce9dd751d0a127a819000f103fa660d9c685d1e1a9eeb2"
+  },
+  "frames": {
+    "main_menu_banner_bg": {
+      "size": [
+        672,
+        543
+      ],
+      "trim": [
+        0,
+        25,
+        187,
+        31
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        684,
+        1092,
+        485,
+        487
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_quit_normal": {
+      "size": [
+        175,
+        73
+      ],
+      "trim": [
+        3,
+        1,
+        1,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1175,
+        1456,
+        171,
+        70
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_quit_normal_zh-Hans": {
+      "size": [
+        175,
+        73
+      ],
+      "trim": [
+        56,
+        14,
+        51,
+        26
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        954,
+        132,
+        68,
+        33
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_start_normal": {
+      "size": [
+        237,
+        117
+      ],
+      "trim": [
+        3,
+        0,
+        3,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1753,
+        231,
+        115
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_start_down": {
+      "size": [
+        237,
+        117
+      ],
+      "trim": [
+        3,
+        6,
+        6,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1874,
+        228,
+        109
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_start_normal_zh-Hans": {
+      "size": [
+        237,
+        117
+      ],
+      "trim": [
+        56,
+        21,
+        43,
+        28
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1670,
+        1818,
+        138,
+        68
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_start_hover_zh-Hans": {
+      "size": [
+        237,
+        117
+      ],
+      "trim": [
+        54,
+        18,
+        40,
+        26
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1518,
+        1964,
+        143,
+        73
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_options_normal": {
+      "size": [
+        227,
+        112
+      ],
+      "trim": [
+        4,
+        2,
+        4,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        243,
+        1753,
+        219,
+        107
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_options_down": {
+      "size": [
+        227,
+        112
+      ],
+      "trim": [
+        5,
+        9,
+        5,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        243,
+        1866,
+        217,
+        100
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_options_normal_zh-Hans": {
+      "size": [
+        227,
+        112
+      ],
+      "trim": [
+        68,
+        29,
+        56,
+        31
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1062,
+        103,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_t_options_hover_zh-Hans": {
+      "size": [
+        227,
+        112
+      ],
+      "trim": [
+        66,
+        26,
+        52,
+        29
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1932,
+        675,
+        109,
+        57
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_credits_normal": {
+      "size": [
+        196,
+        86
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        968,
+        1585,
+        196,
+        85
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_credits_down": {
+      "size": [
+        196,
+        86
+      ],
+      "trim": [
+        1,
+        5,
+        4,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        968,
+        1676,
+        191,
+        80
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_credits_normal_zh-Hans": {
+      "size": [
+        196,
+        86
+      ],
+      "trim": [
+        29,
+        18,
+        22,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1518,
+        1791,
+        145,
+        46
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_credits_hover_zh-Hans": {
+      "size": [
+        196,
+        86
+      ],
+      "trim": [
+        28,
+        14,
+        18,
+        20
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1674,
+        1529,
+        150,
+        52
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    }
+  },
+  "layout": {
+    "reference": [
+      1920,
+      1080
+    ],
+    "banner": {
+      "image": "main_menu_banner_bg",
+      "pos": {
+        "x": 170,
+        "y": 1100
+      },
+      "anchor": {
+        "x": 0,
+        "y": 521
+      }
+    },
+    "downOffset": [
+      -3,
+      5
+    ],
+    "buttons": [
+      {
+        "key": "start",
+        "pos": {
+          "x": 160,
+          "y": 97
+        },
+        "normal": "main_menu_start_normal",
+        "down": "main_menu_start_down",
+        "textNormal": "main_menu_t_start_normal_zh-Hans",
+        "textHover": "main_menu_t_start_hover_zh-Hans"
+      },
+      {
+        "key": "options",
+        "pos": {
+          "x": 174,
+          "y": 204
+        },
+        "normal": "main_menu_options_normal",
+        "down": "main_menu_options_down",
+        "textNormal": "main_menu_t_options_normal_zh-Hans",
+        "textHover": "main_menu_t_options_hover_zh-Hans"
+      },
+      {
+        "key": "credits",
+        "pos": {
+          "x": 202,
+          "y": 304
+        },
+        "normal": "main_menu_credits_normal",
+        "down": "main_menu_credits_down",
+        "textNormal": "main_menu_t_credits_normal_zh-Hans",
+        "textHover": "main_menu_t_credits_hover_zh-Hans"
+      },
+      {
+        "key": "quit",
+        "pos": {
+          "x": 221,
+          "y": 383
+        },
+        "normal": "main_menu_quit_normal",
+        "down": "main_menu_quit_down",
+        "textNormal": "main_menu_t_quit_normal_zh-Hans",
+        "textHover": "main_menu_t_quit_hover_zh-Hans"
+      }
+    ]
+  }
+}

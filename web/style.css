@@ -282,3 +282,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 
 .desktop-map-vignette{position:absolute;max-width:none;pointer-events:none;z-index:3;user-select:none}
 .desktop-map-viewport{overflow:clip}
+
+.desktop-title{position:absolute;inset:0;overflow:clip;pointer-events:none}.desktop-title>img,.desktop-title>button{position:absolute;margin:0;padding:0;background:none;border:0}.desktop-title>button{pointer-events:auto;cursor:pointer}.desktop-title>button>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;max-width:none}.desktop-title>img{pointer-events:none;max-width:none}.desktop-title>button:disabled{filter:none;cursor:default}
