@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.97",
+  "version": "0.2.98",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -101,7 +101,8 @@
     "test:construction-feedback": "node tests/construction-feedback-browser.mjs",
     "test:cannon-spin": "node tests/cannon-spin-browser.mjs",
     "test:desktop-battle-top": "node tests/desktop-battle-top-browser.mjs",
-    "test:facing-replay": "node tests/facing-replay-browser.mjs"
+    "test:facing-replay": "node tests/facing-replay-browser.mjs",
+    "test:desktop-battle-bottom": "node tests/desktop-battle-bottom-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

@@ -14,4 +14,4 @@ try{
  await page.locator('#pause-sound').click();assert.equal(await page.locator('#pause-sound').getAttribute('aria-pressed'),'true');await page.getByRole('button',{name:'继续战斗',exact:true}).click();assert.equal(await page.evaluate(()=>origins.world.paused),false);
  await page.setViewportSize({width:844,height:390});await page.locator('#pause').click();await shot('ui-mobile-pause');const game=await page.locator('#game').boundingBox(),dialog=await page.locator('#dialog').boundingBox();assert.ok(dialog.y>=game.y-1);assert.ok(dialog.y+dialog.height<=game.y+game.height+1);assert.deepEqual(errors,[]);
  fs.writeFileSync('artifacts/ui-validation.json',JSON.stringify({status:'passed',checks:['native pressed and restored button artwork','title settings music toggle','three save slots','world map wheel and pointer drag with limits','locked challenge','native pause panel bounds and nine-slice layout','sound toggle and resume','mobile dialog bounds','no HTTP or JS errors'],boxes},null,2));console.log('Original UI browser checks passed.');
-}finally{await page.close();await browser.close();}
+}finally{await page.context().close();await browser.close();}

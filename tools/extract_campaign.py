@@ -116,3 +116,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_tower_effects.py')],check=True
 subprocess.run(['python3',str(ROOT/'tools/extract_construction_feedback.py')],check=True,cwd=ROOT)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_battle_top.py')],check=True,cwd=ROOT)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_desktop_battle_bottom.py')],check=True,cwd=ROOT)

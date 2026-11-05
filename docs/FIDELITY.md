@@ -1023,3 +1023,19 @@ DesktopBattleTop只管理DOM/展示时钟；transition清理并恢复既有canva
 人类再次指出倒走/无菜单动画后优先重查：旧版反向镜像已在0.2.4修正，本批没有虚构一个新的方向修复。原侧身帧实际朝右，当前向左才镜像；原路径9模式8370次Renderer帧/flip采样通过。旧directions浏览器入口缺lazy槽等待、hyena动画时钟仍用通用偏移、菜单仍断言旧.6相对值，现改真实点击/原教程按钮/实际hyena时钟与源绝对.6/.88相对缩放；不修改产品规则迁就测试。实际空地圆环0/30/60/90/120ms采样通过，120ms outquad、alpha0->1、关闭/快速重开/系统减少动效兼容。首波通过真实开始/槽/地图/通知入口，记录24个受控模拟时刻的实际出怪GIF，另附菜单当前GIF；不是原版同步或自然通关录像。早期录制误等技能activeNotification（首敌为非模态通知图标）超时，已改等真实敌生成，不跳通知/改门控。
 
 最终冷路径100ms/1.5MBps/cacheoff实际book->battle14,252,585B/5.885秒，总启动入关14.579秒/210请求，低于15MB，非所有线上设备保证。未整大atlas/OTF/提预算/降质。主背景、地图、书页及此前图框通用修复保留。
+
+## 0.2.98 桌面底部英雄与三技能连续分支
+
+完整只读交叉vanilla all-desktop/game_gui.lua HeroPortrait1806–2045、PowerButton2048–2490、HudBottomView3290–3570和KR3对应HeroPortrait2195+/PowerButton2443+/HudBottomView4156+。GUI仍1024×768、原fullhd图面768/1080，底栏无top的.9父缩放：sh先+1；hero hit102×101/anchor0,101/pos15,0在底部；powers父105,sh/anchor0,36，三button29,30/92,30/155,30，原88×88图面缩为62.577…GUI单位。恢复base_gui_kr3_tile、base_powers_bg、原数字1/2/3和方形powers原图，不再phone三大圆/侧边大头像。当前仅Eridan单英雄；不加假第二英雄或背包能力。
+
+web/desktop-battle-bottom.mjs独立只读World。英雄原portrait+frame/hover/selected、level TOONISH14、health22,78与XP22,84按原图scaleX比例、63×63黑色150alpha死亡覆盖由78向上绘制；原disabled默认150、frame200乘色，源KView.disable/apply_disabled_tint交叉。真实等级变更/复活触发heroPortrait2–29；UI时钟独立World，字体基线/Shader仍Canvas近似。技能原icons17/18/hero ultimate_icon1与mask45帧，locked30/unlock30–44/selected29/hover45/ready1–28后post1；ceil(ts*30)边界，普通态/冷却mask1。原冷却为黑色150alpha、GUI inset9,10/size(button-18,-19)的纵向矩形，不是phone径向遮罩；进度读当前实际cooldown和本局模板duration，提前波次减冷却继续有效。暂停冻结真实cd，动画使用展示UI时钟；ready音效每次转入只发一次。没改World/HP/伤害/XP/gold/RNG/冷却/命中/寻路。
+
+整个底栏按原HudBottomView.hide/show 1秒outquad下移110GUI，hero随父底栏，不继续phone左滑；旧HudMotion只移除已迁移hero/powers组，notices仍legacy。DesktopBattleTop公开geometry.hero/powers改为实际desktop结果，避免外部仍读取旧phone几何；Campaign保持原输入/施法/解锁/通知/教程/场景事务，draw时选择desktop底栏或显式phone旧BattlePortraits。owner新World弱缓存，destroy恢复旧handler/删除base与profile，不跨槽复活。尚未迁移原底部next-wave按钮、infobar/教程气泡/通知面板/暂停内部与其他desktop细节，不能称整个battle HUD已完。
+
+extract_desktop_battle_bottom.py只读取固定声明与原PNG/DDS，tools/sources/desktop-battle-bottom.json记原controller/atlas/sheetsSHA与选择规则，86帧按q/size/trim紧凑无损345,228B，逐全部裁图RGBA验证，接完整extract/build。不加载整3.3MBGUI或3.7MBportrait原PNG到浏览器，未降质或提高15MB。
+
+336Node全过，新增geometry/ceil与ready post/state转移3项。实际build专项验证桌面/手机原几何、hero portrait/frame/selected实际Canvas q与healthbar位置/比例/trim、draw前后World快照不变、真实按钮开波/施法与纵向冷却/暂停、原World.hurtDefender受伤死亡与实际step复活/portrait反馈、受控1秒下移、手机CDP选择及原showMap门清理。截图desktop-battle-bottom.png/mobile.png/dead.png已人工查看，死亡伤害和UI时钟为受控样本，非原版同步像素证据。
+
+专项早期fixture错误如实：准备期status ready的技能本就disabled，改先真实双击开波再点，不force/改产品门控；施法后mask需下一RAF才更新，改等真实data-source-mode；Canvas.fillStyle将150/255序列化为两位小数，颜色字符串断言按.005序列化精度校验，不改产品RGBA或像素容差；纯geometry两种浮点运算序相差1e-14，按1e-12数值精度验证。首次公开UI打印通过但Node92437残留、首次campaign九模式断言完成后Node92548残留，daemon PID比对后精确TERM收143，不冒称这两次exit0；finally改先context.close再browser.close后独立回归正常退出，结果分别保留。无临时诊断产品代码。
+
+最终发布构建1483文件61,739,872B。最后一轮build→desktop-bottom专项→独立天然完整九模式/存档手机→本地UI→冷路径性能串行均正常exit0；336Node通过。顶栏与原实际powers施法/取消/暂停/手机/教程恢复回归也过。最后修正selected取消但指针仍在按钮上时直接highlighted，不多闪一帧default，纯测锁定该源分支。公开一次build-manifest确认0.2.97，旧版UI断言通过但第一次关闭残留后TERM143，不冒称完整exit0；新推送后不循环等CI。冷路径100ms/1.5MBps/cacheoff真实book->battle14,615,153B/7.150秒，总启动入关15.921秒/213请求<15MB；保留原预算/图质，无整atlas/OTF，非所有线上速度保证。logs bottom-tests-final-release.log、bottom-build-publish.log、bottom-browser-publish.log、bottom-campaign-publish.log、bottom-ui-publish.log、bottom-performance-publish.log、bottom-top-regression.log、bottom-powers-release.log；早期失败与残留记录保留，不提交artifacts。

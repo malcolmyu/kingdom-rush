@@ -15,6 +15,7 @@ assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts')
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-top').rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-bottom').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-map').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/options').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-title').rglob('*')if p.is_file()}

@@ -60,5 +60,5 @@ assert.equal(await page.evaluate(()=>origins.app.progress.seenMapHints?.map_ball
 assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
 const missing=await page.evaluate(()=>[...origins.renderer.missing]);
 fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({status:'passed',results,errors,requests,missingFrames:missing,checks:['title','three save slots','world map','stage locks','challenge locks','all 9 legal wins','3-star challenge unlock','upgrade and sell through UI','pause and resume','persistent progress after reload','mobile landscape build and mode selection','no HTTP failures','no uncaught JS errors']},null,2));
-}catch(e){console.log('Campaign diagnostic',JSON.stringify({errors,requests,state:await page.evaluate(()=>({scene:origins.app.scene,modal:origins.app.modal,resultAge:origins.app.resultMotion?.age,world:origins.world?.status})).catch(()=>null)}));throw e;}finally{await page.close();await browser.close();}
+}catch(e){console.log('Campaign diagnostic',JSON.stringify({errors,requests,state:await page.evaluate(()=>({scene:origins.app.scene,modal:origins.app.modal,resultAge:origins.app.resultMotion?.age,world:origins.world?.status})).catch(()=>null)}));throw e;}finally{await page.context().close();await browser.close();}
 console.log('Campaign browser flow passed: all 9 modes, persistence, mobile controls.');

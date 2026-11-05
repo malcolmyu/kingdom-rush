@@ -1,0 +1,2211 @@
+{
+  "repository": "https://github.com/zidonghua2018/KingdomRushFL",
+  "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+  "kind": "community-mod-origins-desktop-assets",
+  "textureScale": 0.7111111111111111,
+  "frames": {
+    "base_gui_kr3_tile": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        70,
+        44
+      ],
+      "trim": [
+        0,
+        4,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        7,
+        2000,
+        70,
+        40
+      ],
+      "alias": {}
+    },
+    "base_powers_bg": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        290,
+        92
+      ],
+      "trim": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        614,
+        7,
+        276,
+        78
+      ],
+      "alias": {}
+    },
+    "hero_portraits_0001": {
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        277,
+        1489,
+        90,
+        90
+      ],
+      "alias": {},
+      "a_name": "gui_portraits-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        27,
+        14,
+        27,
+        38
+      ]
+    },
+    "heroPortrait_selected": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        25,
+        11,
+        27,
+        37
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        665,
+        595,
+        92,
+        94
+      ],
+      "alias": {}
+    },
+    "hero_portrait_bars_0001": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        80,
+        5
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1145,
+        1331,
+        80,
+        5
+      ],
+      "alias": {}
+    },
+    "hero_portrait_bars_0002": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        80,
+        5
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1027,
+        2036,
+        80,
+        5
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0001": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        3,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1222,
+        93,
+        138,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0002": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        3,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1575,
+        1059,
+        138,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0003": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1222,
+        239,
+        140,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0004": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        501,
+        1605,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0005": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        501,
+        1751,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0006": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        501,
+        1897,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0007": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1669,
+        641,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0008": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1364,
+        85,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0009": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1669,
+        787,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0010": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1366,
+        231,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0011": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1366,
+        377,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0012": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        185,
+        318,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0013": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        185,
+        464,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0014": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        331,
+        320,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0015": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        331,
+        466,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0016": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        477,
+        320,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0017": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        477,
+        466,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0018": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        623,
+        303,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0019": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        623,
+        449,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0020": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        769,
+        317,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0021": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        769,
+        463,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0022": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1669,
+        641,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0023": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        915,
+        327,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0024": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        915,
+        473,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0025": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1061,
+        327,
+        142,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0026": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1061,
+        473,
+        140,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0027": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1205,
+        475,
+        140,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0028": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        3,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1717,
+        1025,
+        140,
+        142
+      ],
+      "alias": {}
+    },
+    "heroPortrait_0029": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        4,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1815,
+        655,
+        138,
+        142
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0001": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1761,
+        1961,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0002": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1957,
+        655,
+        84,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0003": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1029,
+        1430,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0004": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1029,
+        1520,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0005": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1119,
+        1524,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0006": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1209,
+        1524,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0007": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        937,
+        1678,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0008": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        937,
+        1768,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0009": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        937,
+        1858,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0010": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1029,
+        1610,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0011": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1027,
+        1700,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0012": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1027,
+        1790,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0013": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1119,
+        1614,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0014": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1209,
+        1614,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0015": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1117,
+        1704,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0016": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1207,
+        1704,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0017": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1119,
+        1614,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0018": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1027,
+        1700,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0019": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1117,
+        1794,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0020": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1207,
+        1794,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0021": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1027,
+        1880,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0022": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1117,
+        1884,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0023": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1207,
+        1884,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0024": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        937,
+        1948,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0025": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1315,
+        1243,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0026": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1405,
+        1243,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0027": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1575,
+        1277,
+        86,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0028": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        1,
+        0,
+        3,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1957,
+        745,
+        84,
+        86
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0029": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1843,
+        1961,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0030": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        179,
+        1692,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0031": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        265,
+        1606,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0032": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        351,
+        1520,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0033": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        523,
+        1434,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0034": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        93,
+        1861,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0035": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        179,
+        1776,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0036": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        433,
+        1520,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0037": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        523,
+        1518,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0038": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        753,
+        1577,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0039": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        835,
+        1577,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0040": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        925,
+        1615,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0041": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1749,
+        1820,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0042": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1963,
+        1509,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0043": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        523,
+        1602,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0044": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1097,
+        1743,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_mask_0045": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        5,
+        2,
+        5,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        265,
+        1690,
+        78,
+        80
+      ],
+      "alias": {}
+    },
+    "power_button_icons_0001": {
+      "a_name": "gui_common-1.png",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        15,
+        14,
+        15,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        605,
+        1514,
+        58,
+        60
+      ],
+      "alias": {}
+    },
+    "power_button_icons_0017": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        15,
+        14,
+        15,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1879,
+        162,
+        58,
+        60
+      ],
+      "alias": {}
+    },
+    "power_button_icons_0018": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        88,
+        88
+      ],
+      "trim": [
+        15,
+        14,
+        15,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1941,
+        162,
+        58,
+        60
+      ],
+      "alias": {}
+    },
+    "power_nbrs_0001": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        30,
+        30
+      ],
+      "trim": [
+        0,
+        2,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        913,
+        1496,
+        28,
+        28
+      ],
+      "alias": {}
+    },
+    "power_nbrs_0002": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        30,
+        30
+      ],
+      "trim": [
+        0,
+        2,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        523,
+        7,
+        28,
+        28
+      ],
+      "alias": {}
+    },
+    "power_nbrs_0003": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        30,
+        30
+      ],
+      "trim": [
+        0,
+        2,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        555,
+        7,
+        28,
+        28
+      ],
+      "alias": {}
+    }
+  },
+  "sheets": {
+    "gui_portraits-0.png": "6561f705f92f8d3ac46cc4365a41d86922422de2f97c21b497358ac2a9f92db4",
+    "gui_common-2.dds": "a6b1e0f696c02a056dc35655d18f7768bd827e125e1d638cc9b446375e44fb0e",
+    "gui_common-1.png": "e82f030d9cafe25e30dc1e31dd08d9e2ec23fca1166c20aba4af03f5d01d1c92",
+    "gui_common-0.png": "9eb452027f5d45aed88af796e95a655042795f1448d599de9188e76fde5ed496"
+  },
+  "sourceSha256": {
+    "original-desktop-game_gui.lua": "7be4b6a71351badebd3765295796d9a39f286944eb36120590da9c782c9246fd",
+    "kro-desktop-game_gui.lua": "562d8419135cd1af4c0d6a6753696e4c9ea4ba430f4ce6c279746d8480c487e3",
+    "kro-gui_common_123.lua": "691a2f522bd97e62fabbc10380f7dc92bdd44edb38cd1a70c50c5607c5972b35",
+    "kro-gui_portraits_123.lua": "582692680b9bcd86645f915c064a14acf9dcefb8cb05bee9bbee533463e97b2b"
+  },
+  "rules": {
+    "heroSize": [
+      102,
+      101
+    ],
+    "heroPos": [
+      15,
+      0
+    ],
+    "heroAnchor": [
+      0,
+      101
+    ],
+    "bottomExtraY": 1,
+    "powersPos": [
+      105,
+      -36
+    ],
+    "powerPos": [
+      [
+        29,
+        30
+      ],
+      [
+        92,
+        30
+      ],
+      [
+        155,
+        30
+      ]
+    ],
+    "healthPos": [
+      22,
+      78
+    ],
+    "xpPos": [
+      22,
+      84
+    ],
+    "levelPos": [
+      66,
+      60
+    ],
+    "levelSize": [
+      16,
+      16
+    ],
+    "levelFont": "TOONISH",
+    "levelFontSize": 14,
+    "heroCooldown": {
+      "pos": [
+        19,
+        78
+      ],
+      "size": [
+        63,
+        63
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        150
+      ]
+    },
+    "powerCooldownInset": [
+      9,
+      10,
+      18,
+      19
+    ],
+    "basePos": [
+      123.5,
+      36
+    ],
+    "baseAnchorX": 103,
+    "hideOffset": 110,
+    "hideDuration": 1,
+    "hideEasing": "out-quad",
+    "maskModes": {
+      "default": [
+        1,
+        1
+      ],
+      "highlighted": [
+        45,
+        45
+      ],
+      "cooldown": [
+        1,
+        1
+      ],
+      "locked": [
+        30,
+        30
+      ],
+      "unlocked": [
+        30,
+        44
+      ],
+      "selected": [
+        29,
+        29
+      ],
+      "ready": [
+        1,
+        28
+      ]
+    },
+    "disabledTint": {
+      "default": 150,
+      "heroFrame": 200
+    }
+  },
+  "scope": "Single current Eridan portrait + three native KR3 powers and bottom base. Source GUI1024x768/reftexture768:1080; no World changes. Native per-frame UI clocks, not original synchronized pixel certification.",
+  "reference": {
+    "width": 1024,
+    "height": 768,
+    "minAspect": 1.3333333333333333,
+    "maxAspect": 1.7777777777777777
+  },
+  "sourceRanges": {
+    "shared": "HudBottomView3290–3570 / HeroPortrait1806–2045 / powers2048–2490 / hide1431–1468",
+    "kr3": "HudBottomView4156+ / HeroPortrait2195+ / powers2443+",
+    "KView": "disable1079 / apply_disabled_tint1119 / default606"
+  }
+}
