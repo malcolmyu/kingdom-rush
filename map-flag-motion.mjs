@@ -1,12 +1,13 @@
 import data from'./desktop-map-data.mjs';
 const rules=data.flagMotion;
-export const flagMode=s=>s.frame===6?'iron':s.frame===2?'nostar':s.stars?'campaign':'nostar';
+export const flagMode=s=>s.phase?.mode||(s.frame===6?'iron':s.frame===2?'nostar':s.stars?'campaign':'nostar');
 // LÖVE rounds random bounds to integers; the source repeat upper bound is10.1.
 export function flagWait(random,repeat=false){const[lo,hi]=(repeat?rules.repeatWait:rules.initialWait).map(Math.round);return lo+Math.min(hi-lo,Math.floor(random()*(hi-lo+1)));}
 export function flagAnimationFrame(mode,time){const a=rules.animations[mode],n=Math.max(1,Math.min(a.to-a.from+1,Math.ceil(time*rules.fps)));return'map_flag_'+String(a.from+n-1).padStart(4,'0');}
 export class MapFlagMotion{
  constructor(mode,random=Math.random){this.random=random;this.hover=false;this.cooldown=0;this.active=true;this.setMode(mode,false);}
  setMode(mode,restart=false){this.mode=mode;this.ts=restart?0:1e9;this.wait=this.hover?-1:flagWait(this.random);}
+ present(phase,time){if(this.phase===phase.key)return;this.phase=phase.key;if(phase.restart)this.hover=false;this.setMode(phase.mode,phase.restart);if(phase.restart)this.ts=Math.max(0,time-phase.at);}
  sync(mode){if(mode!==this.mode)this.setMode(mode);}
  enter(){if(!this.active||this.hover)return false;this.hover=true;this.wait=-1;return true;}
  leave(){if(!this.active||!this.hover)return;this.hover=false;this.setMode(this.mode,true);}
