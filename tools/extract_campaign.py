@@ -93,6 +93,7 @@ print(json.dumps({'levels':len(levels),'frames':len(frames),'sheets':len(sheets)
 # Original stage 4–6 package is isolated until new mechanics pass acceptance.
 subprocess.run(['python3',str(ROOT/'tools/extract_expansion.py'),'--apk',opt.apk],check=True)
 subprocess.run(['python3',str(ROOT/'tools/extract_ettin.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_carrier.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py')],check=True)
 

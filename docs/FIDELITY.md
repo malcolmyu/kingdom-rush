@@ -1082,3 +1082,18 @@ ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前
 
 
 最终build1504files72,767,122B；350Node、ettin-browser-release-final及额外可见位置复测ettin-browser-visible、天然完整九模式/存档手机ettin-campaign-release、ettin-ui-release、公开.100 ettin-pages-ui均正常exit0。冷路径100ms/1.5MBps/cacheoff14,641,065B、book入关7.066s、总15.912s/219requests<15MB，不保证所有线上线路速度；新关启用预算尚未验，不抬预算/降质。无新图关键下载，完整old-template默认导出比对通过。
+
+
+### 0.2.102 第4关载兵鹿角鹰连续分支
+
+原APK game_scripts8845–8897及其8850/8858闭包、script_utils237–274与y_enemy_death2523–2654、path_db.next_entity_node只读审计；共享vanilla路径源码与kro carrier文本仅交叉，不执行控制器或移植mod数值。tools/read_carrier_rules.lua只读原constants，extract_carrier.py写原damage/flying/modifier常量与5个SHA、范围限制，完整extract_campaign已接。初source audit只选主函数片段未含spawn_trigger_range闭包字段而失败，已扩大到carrier全部闭包+主函数，不改产品绕过。
+
+靠近地面活士兵/hero的原100椭圆范围可主动释放，死亡不是唯一触发；普通stun也释放，TELEPORT/TIMELAPSE适配输入排除。默认drop_delay不存在，因此不新增随机；若定义范围才按原frandom职责从World随机取一次。释放实例carryingfalse/quantity0，下一tick藏第三sprite，不写template；死亡不重复生成。普通死亡18帧/.6秒后释放，保留末帧alpha1一个yield再hide_after_death；eat/no-spawns抑制子单位，disintegrate处理即刻隐藏/释放职责但特效图面尚未完整恢复。非致死damage type本tick累积，源modifier生产链仍未完整。
+
+子单位源pos为母体位置clone、同road/lane、原nav.ni+2，next_entity_node目标为再前一节点。carrier在现距离模型内跟踪原节点近距阈值，每tick最多前进一个索引，未改旧路径物理。payloadJoin从实际源位置以原33速度走向前方目标，不能直接onRoute把身体瞬移到node+2；无效末端目标按原insert失败语义拒绝，不夹到终点。当前4–6 carrier路径均无connections，这一分支尚未泛化跨连接路径/native协程与insertID全流。queued子单位与待普通死亡落兵阻止过早胜利；只改新增carrier分支，旧enemies数组次序/金币/HP/XP/RNG/射程/冷却/路径不改。子单位使用原gnawer战斗与aura，不虚构独立落地动画（原当前death_spawns没有spawn_animation）。
+
+三sprite分别是原perython body、static flying shadow、gnawer_flying第三层；每层独立prefix/anchor/trim/alpha/flip/z/draw_order，经原World textureScale*k/camera。原third death映射gnawer111–128、正常flying129–170按方向；shadow不随bodyflip。enemyDirection原代码移动到纯模块后由Renderer re-export，旧方向API/算法不变；carrier在model更新源方向，不由绘制反写。旧perython两层/body hide时序保持。
+
+358Node全部通过。实际build test:carrier验证三层原Canvas q/原anchor/比例/alpha与选择rect、真实World.spawn/addSoldier/step/hurt触发主动释放、暂停冻结插入队列、复制位置且每tick移动不超过原速、下一tick第三层消失、普通死亡边界/子单位数、zoom/mobile与新场景清理、draw前后模拟/进度快照不变；这些是隔离4关受控位置/时间样本，不是自然第4关通关/原版同输入像素认证。carrier-three-sprites.png/payload-released.png/payload-mobile.png已人工看见角色。
+
+最终build1508files72,773,465B，载兵专项、ettin与原perython真实选中/暂停/通知/mobile回归、天然完整旧九模式/存档手机、UI、公开.101UI均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末总XP继续自然累加。logs carrier-source-final/tests-final/build/browser/ettin-regression/flying-regression/campaign/ui/performance/pages-ui。冷100ms/1.5MBps/cacheoff14,646,834B，book入关7.151s/总16.069s/223requests<15MB，没有新图片关键下载/整atlas/OTF，不保证所有线上线路速度；新关自身资源预算未验。第4–6仍未开放，blighter/ewok/高级塔/关卡事件等仍待接入，不把本批局部机制称为完整18模式。

@@ -319,3 +319,6 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 
 
 `ettin.mjs`只为enemy_ettin插入状态：原World.number一次生成整数cooldown，原aura五帧回血4点，APK拒绝回血时重置ts，正常每tick最多一脉冲。自击Start/Loop为显式phase，非致命true damage通过World.hurt；phase控制移动/近战与绘制，不由浮点anim倒计时独自决定。外部stunned/frozen/modBanned/shielded为目前modifier适配输入，不代表完整modifier生产系统已做。原e.enemy.lives_cost数组经byDifficulty变标量，防新ettin漏怪NaN；旧五敌标量语义不变。新关提取可选precise编码保留17位往返精度，仅扩展启用，旧提取默认编码不变且全模板语义对比一致。
+
+
+`carrier.mjs`仅为enemy_perython_gnoll_gnawer拥有World状态。主动释放将clone的源位置/同road-lane/node+2入World延迟队列，下一模拟tick插入；子单位带payloadJoin从源位置走向原next_entity_node目标，不把位置直接吸到前方节点。队列/待死亡释放参与最终胜利判断，暂停不推进插入。death damage-mask按本tick合并，处理普通death动画结束释放与eat/no-spawns抑制、disintegrate的显隐/释放职责，特殊FX仍未全。`enemy-direction.mjs`抽出原纯方向函数，Renderer re-export保持旧API，新carrier model记录方向供flip继承而不在draw中写World。carrierSprites借flyingEnemySprites独立指定每sprite动画与hidden索引，原perython默认路径保持。
