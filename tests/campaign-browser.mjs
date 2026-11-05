@@ -20,7 +20,7 @@ await settle();await page.screenshot({path:path.join(out,'02-大地图.png')});
 assert.ok(await page.locator('[data-level="2"]').isDisabled());assert.equal(await page.evaluate(()=>origins.app.modal),false);
 await page.locator('[data-level="1"]').click();await page.getByRole('tab',{name:/英雄挑战/}).click();assert.equal(await page.locator('#enter-level').isDisabled(),true);
 await page.getByRole('tab',{name:'战役',exact:true}).click();
-await page.locator('#difficulty').selectOption('1');await settle();await page.screenshot({path:path.join(out,'03-模式选择.png')});
+while(await page.locator('#difficulty').getAttribute('data-difficulty')!=='1')await page.locator('#difficulty').click();await settle();await page.screenshot({path:path.join(out,'03-模式选择.png')});
 await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
 await page.locator('[data-build-slot="6"]').click();await page.locator('[data-type="artillery"]').click();await page.locator('[data-type="artillery"]').click();
 assert.equal(await page.evaluate(()=>origins.world.gold),195);
@@ -38,7 +38,7 @@ for(const id of [1,2,3])for(const mode of ['campaign','heroic','iron']){
  if(id===1&&mode==='campaign')continue;
  // Spend earned points through the real hero room before the third campaign.
  if(id===3&&mode==='campaign'){await page.locator('#hero-room').click();await dismissHeroRoomHelp(page);await page.locator('#hero-skill-multishot').click();await page.locator('#hero-train').click();await page.locator('#hero-train').click();assert.equal(await page.evaluate(()=>origins.app.progress.heroSkills.multishot),2);await page.locator('#hero-done').click();}
- await page.locator(`[data-level="${id}"]`).click();await page.locator(`[data-mode="${mode}"]`).click();await page.locator('#difficulty').selectOption('1');
+ await page.locator(`[data-level="${id}"]`).click();await page.locator(`[data-mode="${mode}"]`).click();while(await page.locator('#difficulty').getAttribute('data-difficulty')!=='1')await page.locator('#difficulty').click();
  await page.locator('#enter-level').click();await page.waitForFunction(()=>origins.app.scene==='battle');await dismissOpeningTutorial(page);
  if(mode==='iron'){await page.locator('[data-build-slot]').first().click();const prohibited=id===2?'mage':'archer';const option=page.locator(`[data-type="${prohibited}"]`);if(await option.count())assert.equal(await option.isDisabled(),true);await page.keyboard.press('Escape');}
  if(mode==='campaign'){

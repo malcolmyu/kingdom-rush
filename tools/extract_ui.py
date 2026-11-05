@@ -67,6 +67,7 @@ for name in ['enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','ene
 keys.update('heroroom_portraitsDecos_'+str(i).zfill(4) for i in [2,3])
 keys.update('balloon_hero_help_slices_'+p for p in ['lt','ct','rt','lc','cc','rc','lb','cb','rb','callout_center','callout_right'])
 keys.update(['mapStarsContainer','map_borders','butConfig_0001','butConfig_0002','mapButtons_hero_0001','mapButtons_hero_0002','butEncyclopedia_0001','butEncyclopedia_0002'])
+keys.update(f'levelSelect_difficulty_{i:04}'for i in range(1,7))
 keys.update(f'thumb_stage{i}'for i in range(1,4))
 keys.update(f'levelSelect_butModes_{i:04}'for i in range(1,8))
 keys.update(f'logo_brillo_{i:04}'for i in range(1,22))

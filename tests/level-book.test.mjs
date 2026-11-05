@@ -1,0 +1,4 @@
+import{test}from'node:test';import assert from'node:assert/strict';import fs from'node:fs';import{createHash}from'node:crypto';
+import{difficultyNode,bookFontStyle}from'../web/level-book.mjs';
+test('book face has separate desktop provenance and exact source bytes',()=>{const s=JSON.parse(fs.readFileSync('web/assets/fonts/book-source.json'));assert.equal(s.sourceKind,'desktop-common-frontiers');assert.equal(createHash('sha256').update(fs.readFileSync('web/assets/fonts/'+s.file)).digest('hex'),s.sha256);assert.match(bookFontStyle(17),/OriginsBook/);});
+test('source difficulty images preserve three normal/pressed pairs and node geometry',()=>{for(let i=1;i<=3;i++){const n=difficultyNode({pos:{x:330,y:224}},i);assert.equal(n.default_image_name,`levelSelect_difficulty_000${i*2-1}`);assert.equal(n.click_image_name,`levelSelect_difficulty_000${i*2}`);assert.deepEqual(n.pos,{x:330,y:224});}});
