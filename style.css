@@ -1,3 +1,4 @@
+@font-face{font-family:OriginsBook;src:url('assets/fonts/Sun Yun He Xuan Li Ti.woff2') format('woff2');font-weight:400;font-display:block}
 @font-face{font-family:OriginsNumbersBold;src:url('assets/fonts/TOONISH.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:OriginsNumbersItalic;src:url('assets/fonts/Comic Book Italic.woff2') format('woff2');font-display:swap}
 @font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -231,3 +232,11 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 #hud{container-type:inline-size}#hud b{overflow:hidden}
 
 .source-infobar [data-infobar-health-bar]{transform-origin:left top}
+
+/* Book typography is a desktop-specific profile; other phone font roles stay intact. */
+.native-level-title,.native-level-mode{font-family:OriginsBook!important;font-weight:400!important;font-synthesis:none;color:rgb(100 89 52);transform:rotate(-3deg);transform-origin:0 0;line-height:1.2;margin:0}
+.native-level-mode{position:absolute;text-align:left}
+.native-level-copy{transform-origin:0 0;margin:0;line-height:1.25}
+.native-level-copy .native-source-history{white-space:normal;line-height:1.25!important;margin:0!important;font-weight:400}
+.native-level-copy .native-rule-row{margin-top:1cqw;font-size:1.35cqw}
+.native-level-copy .native-tower-rules,.native-level-copy .native-lock{font-size:1.35cqw;margin:.2cqw 0}
