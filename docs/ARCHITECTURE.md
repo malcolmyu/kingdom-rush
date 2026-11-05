@@ -310,3 +310,6 @@ DesktopMapActions替代runtime的phone MapHeroHud呈现，创建前由DesktopMap
 DesktopBattleTop扩展既有BattleTop，仅替换desktop顶部统计与暂停的图面、标签和1秒显示时钟；phone英雄/能力栏仍由基类定位。独立catalog读取固定原图，保持World纹理链与GUI768/1080链分离；Campaign进入战斗事务等待DOM图片decode后提交。旧HudMotion只解除被迁移两组，通知仍经原hidden目标驱动；transition destroy清图面/恢复原handler，phone显式profile可回归。
 
 DesktopBattleBottom持有独立原图目录/Canvas状态与UI时间，组合进DesktopBattleTop；基类先保留legacy布局入口，desktop update再提交同一GUI窗口里的实际hero/powers几何，并解除这两组的phone HudMotion。Campaign只选择对应portrait呈现器，按钮身份/choose/interact/cast与World均保持；控件显示读取本局HP/XP/解锁/冷却，状态缓存以World为弱键，destroy恢复原handler/清DOM。全量提取验证固定源86帧RGBA，build只加入紧凑sprites与目录，源完整图不进入新关键下载。
+
+
+DesktopGuidance is configured through the desktop battle asset transaction and reuses Guidance event ownership. Five native fixed-image balloons own only UI motion/DOM; source World positions project through Renderer, power offsets use GUI space. Initial alpha is inherited1, hide completion owns hidden/removal and re-show starts at.8. Transition clears all records and profile; old resource completion cannot revive another scene. Existing phone hints remain for unmigrated START/WAVE/NOTI. Native TB_POWER3 does not invent an upstream notification signal. desktopPowerUnlocked maps existing ready-state disabled controls to original closed-door presentation without changing World unlock semantics.

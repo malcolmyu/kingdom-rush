@@ -1,7 +1,8 @@
+import{loadDesktopGuidance}from'./desktop-guidance.mjs';
 import{DesktopBattleBottom,loadDesktopBattleBottom}from'./desktop-battle-bottom.mjs';
 import{BattleTop}from'./battle-top.mjs';import{infobarViewport}from'./infobar.mjs';import{fitHudFont}from'./source-font-layout.mjs';
 const catalogs=new WeakMap();
-export function loadDesktopBattleTop(repo){if(!catalogs.has(repo))catalogs.set(repo,(async()=>{const r=await fetch('assets/battle-top/catalog.json');if(!r.ok)throw Error('桌面战斗状态素材加载失败');const d=await r.json();const[,bottom]=await Promise.all([Promise.all(Object.values(d.images).map(i=>repo.image(i.src))),loadDesktopBattleBottom(repo)]);return{...d,bottom};})().catch(e=>{catalogs.delete(repo);throw e;}));return catalogs.get(repo);}
+export function loadDesktopBattleTop(repo){if(!catalogs.has(repo))catalogs.set(repo,(async()=>{const r=await fetch('assets/battle-top/catalog.json');if(!r.ok)throw Error('桌面战斗状态素材加载失败');const d=await r.json();const[,bottom,guidance]=await Promise.all([Promise.all(Object.values(d.images).map(i=>repo.image(i.src))),loadDesktopBattleBottom(repo),loadDesktopGuidance(repo)]);return{...d,bottom,guidance};})().catch(e=>{catalogs.delete(repo);throw e;}));return catalogs.get(repo);}
 export function desktopBattleTopGeometry(data,width,height,offset=0){const v=infobarViewport(data,width,height),t=data.textureScale,s=data.groupScale,k=v.scale*s,h=data.images.top_left.size,b=data.images.pause_base.size,p=data.images.pause_btn_0001.size,bw=b[0]*t,bh=b[1]*t,pw=p[0]*t,ph=p[1]*t;return{v,hud:{x:v.origin.x,y:v.origin.y+(data.hudY-offset*h[1]*t)*v.scale,w:h[0]*t*k,h:h[1]*t*k},base:{x:v.origin.x+(v.sw-bw*s)*v.scale,y:v.origin.y+(data.pauseY-offset*bh)*v.scale,w:bw*k,h:bh*k},pause:{x:v.origin.x+(v.sw-bw*s+s*(bw/2-pw/2))*v.scale,y:v.origin.y+(data.pauseY-offset*bh+s*data.buttonY)*v.scale,w:pw*k,h:ph*k},labelScale:k};}
 export const desktopHudEase=t=>1-(1-Math.max(0,Math.min(1,t)))**2;
 export class DesktopBattleTop extends BattleTop{

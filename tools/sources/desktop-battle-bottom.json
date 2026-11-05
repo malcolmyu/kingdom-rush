@@ -2194,7 +2194,8 @@
     "disabledTint": {
       "default": 150,
       "heroFrame": 200
-    }
+    },
+    "preparingPresentation": "Power ctor starts locked; original level3 footage65/90 has doors shut before first wave. Current World ready is already input-disabled; map only that presentation to locked until playing. Full original unlock signal timestamps not reproduced."
   },
   "scope": "Single current Eridan portrait + three native KR3 powers and bottom base. Source GUI1024x768/reftexture768:1080; no World changes. Native per-frame UI clocks, not original synchronized pixel certification.",
   "reference": {
