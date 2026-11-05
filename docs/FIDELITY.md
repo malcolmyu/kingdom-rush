@@ -1,5 +1,15 @@
 # 动画保真记录
 
+## 0.2.81 原藤蔓待机/动作连续状态
+
+只读核对KR3 map_animations3.ma_venom_vine_1与原共用MapView.load_map_animations完整非loop分支：pos785/664、layer1、84×52完整图面/半图anchor，idle1..48、action49..79、30fps，wait整数8..12。初始animation=idle、ts=48/30且loop=true；初次wait向上取到1.6秒idle周期整倍数，即8/9.6/11.2/11.2/12.8秒。动作时切action/ts0/loopfalse，31/30秒后回idle/ts0/looptrue，下一动作在该dur+新的周期化wait后发生。没有把1..79直接loop或额外改位置/可见性。
+
+MapAmbient新增独立active animation/loop/returnAt，按名义事件顺序处理动作返回与下一动作，旧lake和George行为保留。UI RNG独立于World，不声称Love同seed随机轨迹或原timer掉帧后逐帧一致。Canvas用原pos/trim、背景后under遮挡前绘制，modal继续/场景销毁清引用，不插战斗实体、不改HP/金币/XP/冷却/进度。tools/sources/desktop-map.json记录原79帧与idle/action规则，既有原PNG1..4 SHA复用；extract_desktop_map.py接全提取，所有468选中帧逐裁图RGBA无损验证，ambient紧凑图由4410到31130B，不整atlas预载。
+
+295Node通过，覆盖整数wait周期化、idle末帧、action首末帧、dur后返回/下一动作以及销毁。最终实际build test:map-vine捕获原drawImage帧48/49/79/1/2及trim位置，真实modal继续/手机pan/原生scroll0/CDP入关/销毁通过；原George专项、本地UI、公开旧版UI与独立新存档完整九模式三战役三星/存档手机均正常exit0。第三战役天然XP4705/20生命，World/策略未改。专项临时UI时钟与截图不是天然通关或原版同输入逐帧像素证据。
+
+build957文件54,478,590B；100ms/1.5MBps/cacheoff真实book->battle14,892,378B/14.187s<15MB，不保证线上所有设备速度。公开一次manifest0.2.80且完整UI正常退出，新推送不轮询。最终logs vine-tests-final.log/vine-browser.log/vine-george.log/vine-ui.log/vine-campaign.log/vine-performance.log，公开vine-pages-ui.log；desktop-map-vine-action.png/mobile.png已看，原动画当前取样。其他地图装饰、完整光效与像素对照仍未完成，整体非1:1。
+
 ## 0.2.80 第一大陆 George 原单次装饰动画
 
 只读交叉KR3 map_data.map_animations3首项ma_george_shout_1（7326起）与原共享MapView.load_map_animations1344–1396、KR3对应：layer1，103帧，初始ts=to/30保持末帧，初始pos_list/scale_list第1组；等待整数2..6后选择同一索引的位置与朝向，ts0非loop播放，dur=103/30，再dur+下一整数wait后重播。六位置153/484、153/528、97/490、210/511、439/553、152/690，对应镜像-1/+1/+1/-1/+1/-1。没有循环播放103帧或自由插值位置。MapAmbient新增非loop ceil/clamp与名义事件时间，独立可注入UI RNG，不声称与Love同seed随机轨迹或掉帧后的timer逐帧完全相同。

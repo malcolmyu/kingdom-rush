@@ -10563,6 +10563,1938 @@
         58,
         60
       ]
+    },
+    "ma_venom_vine_0079": {
+      "trim": [
+        25,
+        19,
+        24,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1879,
+        1290,
+        35,
+        32
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0078": {
+      "trim": [
+        25,
+        21,
+        24,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1920,
+        1290,
+        35,
+        30
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0076": {
+      "trim": [
+        3,
+        18,
+        5,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        723,
+        2014,
+        76,
+        33
+      ],
+      "alias": [
+        "ma_venom_vine_0077"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0077": {
+      "trim": [
+        3,
+        18,
+        5,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        723,
+        2014,
+        76,
+        33
+      ],
+      "alias": [
+        "ma_venom_vine_0077"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0074": {
+      "trim": [
+        2,
+        19,
+        3,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1968,
+        153,
+        79,
+        32
+      ],
+      "alias": [
+        "ma_venom_vine_0075"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0075": {
+      "trim": [
+        2,
+        19,
+        3,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1968,
+        153,
+        79,
+        32
+      ],
+      "alias": [
+        "ma_venom_vine_0075"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0072": {
+      "trim": [
+        2,
+        19,
+        2,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1796,
+        153,
+        80,
+        32
+      ],
+      "alias": [
+        "ma_venom_vine_0073"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0073": {
+      "trim": [
+        2,
+        19,
+        2,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1796,
+        153,
+        80,
+        32
+      ],
+      "alias": [
+        "ma_venom_vine_0073"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0070": {
+      "trim": [
+        0,
+        20,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1865,
+        1537,
+        84,
+        31
+      ],
+      "alias": [
+        "ma_venom_vine_0071"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0071": {
+      "trim": [
+        0,
+        20,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1865,
+        1537,
+        84,
+        31
+      ],
+      "alias": [
+        "ma_venom_vine_0071"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0068": {
+      "trim": [
+        0,
+        21,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1955,
+        1537,
+        84,
+        30
+      ],
+      "alias": [
+        "ma_venom_vine_0069"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0069": {
+      "trim": [
+        0,
+        21,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1955,
+        1537,
+        84,
+        30
+      ],
+      "alias": [
+        "ma_venom_vine_0069"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0066": {
+      "trim": [
+        1,
+        22,
+        3,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1882,
+        153,
+        80,
+        29
+      ],
+      "alias": [
+        "ma_venom_vine_0067"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0067": {
+      "trim": [
+        1,
+        22,
+        3,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1882,
+        153,
+        80,
+        29
+      ],
+      "alias": [
+        "ma_venom_vine_0067"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0064": {
+      "trim": [
+        2,
+        22,
+        5,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        279,
+        2014,
+        77,
+        29
+      ],
+      "alias": [
+        "ma_venom_vine_0065"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0065": {
+      "trim": [
+        2,
+        22,
+        5,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        279,
+        2014,
+        77,
+        29
+      ],
+      "alias": [
+        "ma_venom_vine_0065"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0062": {
+      "trim": [
+        6,
+        22,
+        6,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        984,
+        699,
+        72,
+        30
+      ],
+      "alias": [
+        "ma_venom_vine_0063"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0063": {
+      "trim": [
+        6,
+        22,
+        6,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        984,
+        699,
+        72,
+        30
+      ],
+      "alias": [
+        "ma_venom_vine_0063"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0061": {
+      "trim": [
+        19,
+        12,
+        20,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1180,
+        894,
+        45,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0060": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1811,
+        710,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0059": {
+      "trim": [
+        18,
+        11,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1701,
+        665,
+        49,
+        40
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0058": {
+      "trim": [
+        18,
+        7,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1536,
+        665,
+        49,
+        44
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0057": {
+      "trim": [
+        18,
+        0,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        711,
+        1064,
+        48,
+        51
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0056": {
+      "trim": [
+        18,
+        3,
+        18,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        711,
+        1177,
+        48,
+        49
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0055": {
+      "trim": [
+        18,
+        5,
+        18,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        711,
+        1232,
+        48,
+        47
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0054": {
+      "trim": [
+        18,
+        8,
+        18,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1414,
+        757,
+        48,
+        44
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0053": {
+      "trim": [
+        18,
+        11,
+        18,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1195,
+        48,
+        41
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0052": {
+      "trim": [
+        17,
+        13,
+        17,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        655,
+        1123,
+        50,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0051": {
+      "trim": [
+        17,
+        16,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        655,
+        1420,
+        50,
+        35
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0050": {
+      "trim": [
+        18,
+        15,
+        17,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        711,
+        757,
+        49,
+        37
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0048": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1976,
+        709,
+        49,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0047": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1976,
+        665,
+        49,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0046": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1921,
+        709,
+        49,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0045": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1921,
+        665,
+        49,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0044": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1144,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0043": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1090,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0042": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1036,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0041": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        2008,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0040": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1963,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0039": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1918,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0038": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1873,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0037": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1828,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0036": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1783,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0035": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1738,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0034": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1693,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0033": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1648,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0032": {
+      "trim": [
+        19,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        820,
+        1405,
+        47,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0031": {
+      "trim": [
+        19,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        820,
+        1360,
+        47,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0030": {
+      "trim": [
+        20,
+        12,
+        19,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1129,
+        894,
+        45,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0029": {
+      "trim": [
+        20,
+        12,
+        19,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1078,
+        894,
+        45,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0028": {
+      "trim": [
+        17,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1681,
+        620,
+        50,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0027": {
+      "trim": [
+        17,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1998,
+        219,
+        50,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0026": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1811,
+        665,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0025": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1756,
+        710,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0024": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1756,
+        665,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0023": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1701,
+        711,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0022": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1646,
+        712,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0021": {
+      "trim": [
+        18,
+        12,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1591,
+        712,
+        49,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0020": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1603,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0019": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1558,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0018": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1513,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0017": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1468,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0016": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1423,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0015": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1378,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0014": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1333,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0013": {
+      "trim": [
+        18,
+        12,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        766,
+        1288,
+        48,
+        39
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0012": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        982,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0011": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        928,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0010": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        874,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0009": {
+      "trim": [
+        18,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        820,
+        809,
+        48,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0008": {
+      "trim": [
+        19,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1251,
+        809,
+        47,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0007": {
+      "trim": [
+        19,
+        13,
+        18,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1198,
+        809,
+        47,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0006": {
+      "trim": [
+        20,
+        13,
+        19,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1282,
+        894,
+        45,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0005": {
+      "trim": [
+        20,
+        13,
+        19,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1231,
+        894,
+        45,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0004": {
+      "trim": [
+        17,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        655,
+        1212,
+        50,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0003": {
+      "trim": [
+        17,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        655,
+        1168,
+        50,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0002": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1866,
+        709,
+        49,
+        38
+      ],
+      "alias": {},
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0001": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1866,
+        665,
+        49,
+        38
+      ],
+      "alias": [
+        "ma_venom_vine_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
+    },
+    "ma_venom_vine_0049": {
+      "trim": [
+        18,
+        13,
+        17,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1866,
+        665,
+        49,
+        38
+      ],
+      "alias": [
+        "ma_venom_vine_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        84,
+        52
+      ]
     }
   },
   "sheets": {
@@ -10983,14 +12915,48 @@
           0.5
         ],
         "fps": 30
+      },
+      {
+        "id": "ma_venom_vine_1",
+        "pos": [
+          785,
+          664
+        ],
+        "wait": [
+          8,
+          12
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 48,
+          "prefix": "ma_venom_vine"
+        },
+        "idleAnimation": {
+          "from": 1,
+          "to": 48,
+          "prefix": "ma_venom_vine"
+        },
+        "actionAnimation": {
+          "from": 49,
+          "to": 79,
+          "prefix": "ma_venom_vine"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
       }
     ],
     "source": {
       "declaration": "kr3-desktop/data/map_data.lua map_animations3",
       "declarationSha256": "22ae271d8641406c5d2b9fa50a1777cd565eec8e6e600bb76a0f589fa200d749",
       "controller": "MapView.load_map_animations loop random integer(from,to)/30; KView.animation_frame ceil modulo",
-      "scope": "vignette, lake water sparks loop, and first-continent George random shout only; other decorations remain unported",
-      "nonLoop": "initial ts=to/30, pos/scale first list entry; after integer wait select list index, ts=0, schedule duration + next integer wait"
+      "scope": "vignette, lake water sparks loop, George shout, and venom vine idle/action; other decorations remain unported",
+      "nonLoop": "initial ts=to/30, pos/scale first list entry; after integer wait select list index, ts=0, schedule duration + next integer wait",
+      "idleAction": "initial idle to/30 looping; integer wait ceil to idle period; action non-loop then idle reset after action duration; next wait ceil to idle period"
     }
   },
   "ambientEvidence": {
