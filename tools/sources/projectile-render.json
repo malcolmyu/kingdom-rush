@@ -1,0 +1,43 @@
+{
+  "scope": "current ordinary projectile sprites, rock/torch hit FX and existing stage foreground; flight physics unchanged",
+  "sources": {
+    "all/game.lua": "2595da5a3466fa190abe38bee6054cd58e5ec774b8711dfee56f9a21db790c18",
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74"
+  },
+  "gameDraw": [
+    711,
+    1230
+  ],
+  "systemsSort": [
+    1986,
+    2029
+  ],
+  "boltElves": [
+    13699,
+    13831
+  ],
+  "rules": {
+    "projectileZ": 3400,
+    "boltShadowZ": 3000,
+    "boltShadowOffset": [
+      0,
+      -20
+    ],
+    "boltTierScale": [
+      0.8,
+      0.9,
+      1
+    ],
+    "rockHitSortOffset": "scripts.bomb overwrites template -5 with bullet.hit_fx_sort_y_offset, including nil",
+    "torchHitZ": 3300
+  },
+  "notRestored": [
+    "source complete entity insertion IDs",
+    "source force-motion/parabola",
+    "bomb random initial rotation",
+    "full projectile hide_radius/particle state",
+    "other skill FX ordering and durations"
+  ]
+}

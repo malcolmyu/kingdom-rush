@@ -1,5 +1,16 @@
 # 动画保真记录
 
+## 0.2.90 当前弹道/命中特效与前景共同排序
+
+只读审计原game.draw711–1230（Z_GUI_DECALS2000/Z_SCREEN_FIXED3900分段）、systems.render排序、KR3 bolt_elves13699–13831与common scripts.arrow/bomb原控制链。普通箭、炮石、英雄箭、火把和箭雨弹体原z3400，魔法弹原body3400/第二shadow3000且offset0,-20；模板一二层body scale .8/.9与静态影子1分别恢复，原anchor/alpha/trim经既有textureScale*k/camera保留。魔法弹动画从本弹elapsed而非全局World time读取；不动原force_motion/本局简化飞行位置。projectile-sprites.mjs只读派生逐sprite poses，箭/torch旧朝向保留；原抛物线速度朝向、炮石随机初始角与旋转/隐藏半径/粒子仍未恢复，不新增展示随机冒充同seed。
+
+所有这些sprite在actor queue.flush前入队；已有Stage*_0002前景原3100也按原overrides入队一次，不再在箭雨后单独强盖。炮石命中fx_rock_explosion为3000层/原anchor .5,.23684210526316，火把命中3300/anchor .5,.25。重要动态规则：common scripts.bomb给实例sort_y_offset赋bullet.hit_fx_sort_y_offset，即使nil也清除模板默认-5；当前rock1/2字段缺省，实际实例用0，不能只抄template -5。World效果事件未存来源bullet，当前支持rock1/2一致规则以rock1声明派生，未来不同炮弹需要新增来源状态，不能泛化断言所有炮弹。源SHA与局部规则记tools/sources/projectile-render.json，素材仍既有APK catalog，无新图提取或关键图下载。
+
+原其余技能FX、金币字/卖建特效、range与出口圈仍独立阶段，未称完整render_frames或全global z；原实体insertID流仍用稳定代理，弹道与FX缺完整源时序/状态。未改World数组迭代/时间/随机种子/金币/HP/XP/射程/伤害/冷却/寻路，未改效果生命周期。314Node全过，3新测试源body-shadow层级/级别scale/offset与sort隔离、延迟/消失/原anchor、跨单位和前景排序/实例nil覆盖。实际build test:projectile-order真实购买mage/调用原World塔开火，再用受控重叠展示fixture捕Canvas的body .8/影子1/原q/alpha/offset、impact3000->foreground3100->torchHit3300->bullet3400，World snapshot保持、真实wheel/暂停/手机CDP与场景清理通过。受控额外箭/炮石/英雄弹不是天然通关或原版同步证据。
+
+最终天然新存档完整九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命，策略未改；render-order/health-bars/UI/原battle-powers/tower-ranges以及公开旧0.2.89完整UI同批回归。新专项初版预写FX key前缀已在运行前按真实catalog改为artillery_thrower_explosion；首次Node+build shell只给首npm配置PATH导致第二npm command not found(exit127)，已单独显式PATH实际build成功，非产品故障/未运行旧包。无浏览器失败待处理。截图projectiles-source-order.png/mobile.png已看，为当前受控样本。实际build1468文件61,297,494B；100ms/1.5MBps/cacheoff真实book->battle14,174,865B/15.368s，198请求<15MB，未整atlas/OTF/抬预算/降质，不保证所有线上线路速度。logs projectile-tests-final.log/build-final.log/browser-final.log/campaign.log/ui.log/order.log/health.log/powers.log/ranges.log/performance.log/pages-ui.log。新版推送后不轮询CI或宣称已验证公开新版本。
+
+
 ## 0.2.89 原单位头顶血条（不是底部Infobar）
 
 只读交叉APK systems.lua1729–1845/1865–2058与vanilla systems.render1798–2113：_hb_ss为1×1角点quad、ref_scale1、anchor0/0，HEALTH_BAR_SIZES按texture_size选择，iphonehd使用default，small16×2/med24×2。原go_decals/enemy/hero图集角点实际RGBA255/255/255/255；Canvas按原rgba色块等价生成，不声称裁了独立血条图。HEALTH_BAR_COLORS原bg126/0/12/255、fg68/174/50/255，满血也显示，没有边框；不再统一36×6/34×4、敌人红填充或屏幕y-48。原hb.offset按world加到floor(x)/ceil(y)，size直接按game_scale而非textureScale缩放；perython原offset0/90与body/shadow链保持。原z/sort_y_offset/200002与200003顺序进入同actor RenderQueue，自定义draw_order0与black_bar_hp分支保留。
