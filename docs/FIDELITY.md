@@ -1,5 +1,18 @@
 # 动画保真记录
 
+## 0.2.91 四类地面敌普通死亡与尸体展示寿命
+
+完整只读核对原SU.y_enemy_death（APK script_utils.lua2523–2654、共享vanilla2579–2700）、fade_out_entity及sys.health删除链。当前reaver/burner/gnawer/hyena模板unit没有hide_after_death/hide_during_death/fade_time_after_death，普通death分别84–99/101–126/90–110/53–71；原动画结束后保持末帧alpha255，不统一淡出。源health.dead_lifetime=2，系统只在tick_ts>death_ts+2时删除。移除旧ground敌一律1.2秒alpha降到0的显示规则。
+
+新增ground-corpses.mjs GroundCorpses/isGroundCorpse，首次观察到死亡时只复制绘制字段，独立展示缓存补齐World现有1.2秒数组清理后的原2秒尸体画面；严格2秒仍可见、>2秒清理。缓存不进入World数组/目标/碰撞，不更改伤害/HP/金币/XP/RNG/寻路或模拟清理时序；每次draw前后World快照相同。原deathFlip/原帧与actor逐sprite层级保持，死亡血条与marker依既有World活体规则清理，泄漏不生成尸体，复活删除快照，Campaign.transition/loadLevel/owner变化reset，暂停World时间时展示寿命也暂停。缓存需要先观察到World内的死亡；完整同输入掉帧行为不称已验收。
+
+本批只闭合四敌普通死亡显示；原血池、爆炸/分解/吞食/水面/悬崖分支与原尸体ui.z=-1点击未恢复。World未记录完整最后伤害类型和原地形状态，不凭猜测加红椭圆/假爆炸，也不开放尸体假交互。源码SHA/范围在tools/sources/ground-corpses.json；素材全已存在，没有新图下载或原始帧修改。
+
+317Node全过，3新纯测四原模板/动画/无fade、快照不变/World移除后末帧保留/2秒严格边界/owner、活体对象不复制/泄漏/复活/飞行敌隔离。实际build test:ground-corpses用原World.hurt普通伤害后采样四种死亡帧与末帧alpha1，再实际step触发World1.2秒清理，验证数组0而Canvas仍4尸体、enemyAtPoint无目标、2.001秒全无、zoom/暂停/手机/真实showMap原门与重入清缓存。首次专项误调用不存在app.enemyAtPoint收exit1，已改导入现有enemy-selection.mjs真实方法，产品没改；最终corpse-browser-final.log正常exit0。手工置死亡取样时刻与位置属于受控fixture，不是原版同步或自然通关证据。
+
+最终天然新存档九模式三战役三星/存档手机正常exit0，3campaign天然XP4705/20生命、策略不变。health-bars/UI、flying-enemy/enemy-infobar与公开旧0.2.90UI均同批回归。旧enemy-infobar先后两次点击等待超时，诊断重跑捕获原点512/399而敌人已沿道路回到437/614，原因是旧fixture只改x/y不改d。现helper从真实route.points选最近节点并同步d/坐标，保留真实点击与10秒等待/门控，最终corpse-selection-final.log正常exit0；未改产品选中规则。cold100ms/1.5MBps/cacheoff真实书页入关14,176,164B/15.369s、199请求<15MB，无整atlas/OTF/抬预算/降质，不保证所有线上速度。build1469文件61,298,940B。ground-corpses-last-frame.png/mobile.png已查看，当前受控样本，未称像素1:1。logs corpse-tests.log/build.log/browser-final.log/campaign.log/health.log/ui.log/flying.log/selection-final.log/performance.log/pages-ui.log。新版推送后不轮询CI。
+
+
 ## 0.2.90 当前弹道/命中特效与前景共同排序
 
 只读审计原game.draw711–1230（Z_GUI_DECALS2000/Z_SCREEN_FIXED3900分段）、systems.render排序、KR3 bolt_elves13699–13831与common scripts.arrow/bomb原控制链。普通箭、炮石、英雄箭、火把和箭雨弹体原z3400，魔法弹原body3400/第二shadow3000且offset0,-20；模板一二层body scale .8/.9与静态影子1分别恢复，原anchor/alpha/trim经既有textureScale*k/camera保留。魔法弹动画从本弹elapsed而非全局World time读取；不动原force_motion/本局简化飞行位置。projectile-sprites.mjs只读派生逐sprite poses，箭/torch旧朝向保留；原抛物线速度朝向、炮石随机初始角与旋转/隐藏半径/粒子仍未恢复，不新增展示随机冒充同seed。

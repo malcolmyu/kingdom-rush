@@ -1,0 +1,30 @@
+{
+  "scope": "ordinary opaque death presentation for four current ground enemy templates; no World corpse membership changes",
+  "sources": {
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e"
+  },
+  "deathFunctionLines": [
+    2523,
+    2654
+  ],
+  "rules": {
+    "deletion": "tick_ts > death_ts + health.dead_lifetime",
+    "lifetime": 2,
+    "alpha": 255,
+    "hide_after_death": false,
+    "fade_time_after_death": null,
+    "keys": [
+      "enemy_gnoll_reaver",
+      "enemy_gnoll_burner",
+      "enemy_gnoll_gnawer",
+      "enemy_hyena"
+    ]
+  },
+  "limits": [
+    "special damage death FX and terrain-specific branches not modeled",
+    "blood pools not synthesized",
+    "original corpse clicking not enabled",
+    "cache needs to observe the death while World still contains it"
+  ]
+}
