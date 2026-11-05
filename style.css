@@ -1,3 +1,4 @@
+@font-face{font-family:OriginsNumbersBold;src:url('assets/fonts/TOONISH.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:OriginsNumbersItalic;src:url('assets/fonts/Comic Book Italic.woff2') format('woff2');font-display:swap}
 @font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:OriginsCJK;src:url('assets/fonts/NotoSansCJKkr-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
@@ -193,7 +194,7 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 .wave-flag-exit{pointer-events:none!important;filter:none!important;z-index:3}.wave-reward{position:absolute;pointer-events:none;z-index:4}
 .time-reward{position:absolute;pointer-events:none;z-index:5}
 .result-badge{position:absolute;left:23.75%;top:0;width:53.333333%;height:69.375%;transform-origin:center}.veil.result-veil{background:rgb(0 0 0 / .3921568627)}
-.victory-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:12}.result-gems-label{position:absolute;color:white;font-family:OriginsNumbers;text-shadow:-1px -1px #009eb4,1px 1px #009eb4;line-height:1}
+.victory-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:12}.result-gems-label{position:absolute;color:white;font-family:OriginsNumbersBold;text-shadow:-1px -1px #009eb4,1px 1px #009eb4;line-height:1}
 
 .native-upgrades-dialog{width:min(100%,150cqh);aspect-ratio:480/320;container-type:inline-size;padding:0;background:none;box-shadow:none;border:0}
 
