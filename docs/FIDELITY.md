@@ -1135,3 +1135,17 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 关门边界也按原协程补齐：主动close动画期间来的hire请求先排队，close结束后再open，不能中途倒播/跳过关门；新增纯测验证此时不提前扣费或出兵。最终不改World正常伤害/金币/XP/RNG来迁就测试，只有新树屋分支增加真实消费与新单位。
 
 最终381Node、hut-browser-release真实Campaign菜单/Canvas/76x76原肖像decode、hut-campaign-release完整原九模式/存档手机、hut-ui-release、hut-performance-release及公开.104 hut-pages-ui均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末九模式XP继续自然累加，未改策略/数值。最终build1513files72,841,949B；冷100ms/1.5MBps/cacheoff14,712,692B，book入关6.272s/总15.221s/227requests<15MB，无整atlas/OTF，不保证所有线上设备速度；新关自身预算未验。最终桌面/手机样本已人工看。此前portrait缺失两次专项30秒失败与默认WebP透明RGB比较失败均保留日志且已明确修正；源码访问凭证打包时过期已更新后成功重做，未打印/落盘token。无失败结果待处理或run-owned后台。
+
+### 0.2.106 小熊半血盾挡与原攻击调用边界
+
+只读核对APK game_templates14032–14035、game_scripts17402–17482、script_utils138–157与enemy melee调用、scripts.arrow1989–2130。新extract_ewok_shield.py固定五源SHA并接完整extract_campaign，read_ewok_shield.lua仅读constants的DAMAGE_NO_DODGE33554432，不执行控制器。关键函数值未进入旧JSON：can_dodge先写last_hit_ts，再返回hp<=hp_max*.5；不是满血举盾或固定四秒全免伤。原helper先检查stun/ranged/严格>20秒冷却/NO_DODGE，再抽chance（即使1），最后半血函数。两段责任保持，不用UI随机替代战斗随机。
+
+新ewok-shield.mjs仅新小熊拥有state；原near-hit dodge_time/time_before_hit0和普通火把arrow命中调用判定，旧兵/英雄路径不新增随机。start前开始duration4，start11帧、hit10帧、end5帧原动画，等待完end才重置cooldown.ts。hold保留最后原动画帧，不伪循环；期间停位/取消自己未释放攻击、保持既有近战阻挡并继续源离散regen，战斗冷却按已逝时间推进。回血超过半血后仍在盾动画也可受伤，函数回调记录hit反应不等于必然成功dodge。stun通过原phase结束职责，普通死亡保持既有永久死亡/三秒清理。完整native协程/queued damage时序、特殊death与modifier生产链仍适配，不称同输入逐帧一致。
+
+没有全局修改hurtDefender：专用枯萎者energy没有unit_dodges调用，已有burn也不因举盾自动停止；普通火把成功dodge才抑制本次伤害与新附burn。投矛依旧是现有friendly arrow适配，原预测/抛物线未做，本批不声称完成整个小熊或第4关。第4–6入口仍隔离未开。
+
+387Node测试全过；6新纯测覆盖半血/strict20/chance顺序/NO_DODGE、四秒与end后冷却、回血后不免伤、stun/死亡、真实melee caller/暂停、torch与已有burn/direct damage分流。实际Campaign/TowerMenu真实100修复+100雇佣后，用受控攻击/World时钟捕start/hold/hit/end四阶段Canvas原q/alpha/无missing与draw前后模拟快照一致，真实pause/zoom/mobile/死亡与map清理。截图ewok-shield-hit/mobile已人工看，是隔离第4关受控测试而非天然新关通关或原版同步。
+
+首专项仅对全部progress做快照比较失败：新增真实敌通知合法更新seen；改只比较真实关卡解锁/星/挑战，不跳教程/通知、不改产品门控。公开一次manifest确认.105；首远程UI断言已完成但Node16593关闭挂住，与daemon88207比对后TERM143，明确不算exit0；独立重跑结果另记。原本地全九模式与UI正常exit0；最终修改仅修shield期间战斗冷却时间继续流逝后，最终包再串行回归，不拿修改前检查冒最终结果。
+
+最终actualbuild1515files72,844,669B；shield-browser-release → shield-campaign-release → shield-ui-release → shield-performance-release串行全部正常exit0，原9模式/存档手机全过，三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。387Node全过，shield-rules-final另对最终纯测试补充的冷却不冻结断言通过；hut招募回归正常exit0。远程公开.105独立shield-pages-ui-repeat最终正常exit0，首关闭挂住143已如实区分。冷100ms/1.5MBps/cacheoff14,715,120B，book入关6.301s/总15.285s/229requests，无整atlas/OTF，15MB不变、不保证线上所有设备速度。没有新图下载；原紧凑塔1314帧仍2,122,316B，新关自身预算未验。
