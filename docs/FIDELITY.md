@@ -1013,3 +1013,13 @@ extract_construction_feedback.py只读原template与systems/game_gui/render_util
 最终实际build test:cannon-spin通过真实125购买/建造与reload完成后World.updateTowers合法开火，再用受控第二级左飞弹体/elapsed/位置对照；捕获两方向原angle+speed*elapsed、同帧Canvas矩阵重复稳定、q/trim/纹理scale/alpha/World快照不变，zoom/手机CDP暂停/场景旧WeakMap清理均正常exit0。受控额外炮石与独立UI RNG不作天然通关或原版同步证据。source-cannon-spin.png/mobile.png已人工看。
 
 最终UI/原projectile-visibility/完整天然新存档九模式三战役三星/存档手机与公开旧0.2.95UI全正常exit0，3campaign自然XP4705/20生命、策略/World数值不改。最终build1474文件61,355,779B，冷路径100ms/1.5MBps/cacheoff真实book->battle14,232,142B/15.489s、204请求<15MB，无整atlas/OTF/降质/抬预算，不是线上所有线路保证。logs cannon-spin-tests-final.log/build.log/browser.log/visibility.log/campaign.log/ui.log/performance.log/pages-ui.log。
+
+## 0.2.97 desktop 顶部统计/暂停与人类朝向反馈复核
+
+桌面战斗顶部独立采用原 game_gui 的1024×768参考、fullhd图面768/1080纹理比例及父组.9，而非地图1920raw、phone.5或World比例。原top_left与pause_base/按钮normal/hover共4帧由固定PNG/DDS按原trim还原完整图面，逐RGBA无损检查；源SHA/原KR3标签与共享构造交叉范围登记tools/sources/desktop-battle-top.json，extract_desktop_battle_top.py接全提取与实际build。counters pos0,-22，pause parent右上anchor宽度/pos(sw,-21)，按钮parent内中心/25；实际统计沿用World真值，中文hud采用原desktop Noto Bold*1.4与物理字号取整/fit。隐藏/恢复为原1秒outquad，通知/暂停/教程原门控不变。英雄、技能、通知与暂停内部仍保留既有phone分支，不能称全desktop HUD已恢复。
+
+DesktopBattleTop只管理DOM/展示时钟；transition清理并恢复既有canvas/handler，资源等待纳入原scene事务/owner取消。不改World/RNG/HP/gold/XP/cooldown。最初pause_base在button后覆盖图标，已改底板插在按钮前；最终专项检查实际按钮截图黄色双竖线，手机降采样采区域内部亮像素而非单点边缘，原源图不改。333Node全过，最终实际build桌面/手机几何/真实pause/通知1秒hide-restore/重入、UI/天然完整九模式三战役三星存档手机正常exit0。无指定视频同步battle帧，非像素认证。
+
+人类再次指出倒走/无菜单动画后优先重查：旧版反向镜像已在0.2.4修正，本批没有虚构一个新的方向修复。原侧身帧实际朝右，当前向左才镜像；原路径9模式8370次Renderer帧/flip采样通过。旧directions浏览器入口缺lazy槽等待、hyena动画时钟仍用通用偏移、菜单仍断言旧.6相对值，现改真实点击/原教程按钮/实际hyena时钟与源绝对.6/.88相对缩放；不修改产品规则迁就测试。实际空地圆环0/30/60/90/120ms采样通过，120ms outquad、alpha0->1、关闭/快速重开/系统减少动效兼容。首波通过真实开始/槽/地图/通知入口，记录24个受控模拟时刻的实际出怪GIF，另附菜单当前GIF；不是原版同步或自然通关录像。早期录制误等技能activeNotification（首敌为非模态通知图标）超时，已改等真实敌生成，不跳通知/改门控。
+
+最终冷路径100ms/1.5MBps/cacheoff实际book->battle14,252,585B/5.885秒，总启动入关14.579秒/210请求，低于15MB，非所有线上设备保证。未整大atlas/OTF/提预算/降质。主背景、地图、书页及此前图框通用修复保留。

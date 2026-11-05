@@ -1,0 +1,185 @@
+{
+  "repository": "https://github.com/zidonghua2018/KingdomRushFL",
+  "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+  "kind": "community-mod-origins-desktop-assets",
+  "atlasPath": "kr3-desktop/assets/images/fullhd/gui_common_123.lua",
+  "atlasSha256": "691a2f522bd97e62fabbc10380f7dc92bdd44edb38cd1a70c50c5607c5972b35",
+  "frames": {
+    "top_left": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        524,
+        108
+      ],
+      "trim": [
+        39,
+        20,
+        37,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1365,
+        549,
+        448,
+        88
+      ],
+      "alias": {}
+    },
+    "pause_base": {
+      "a_name": "gui_common-0.png",
+      "size": [
+        160,
+        92
+      ],
+      "trim": [
+        43,
+        9,
+        43,
+        5
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1377,
+        1887,
+        74,
+        78
+      ],
+      "alias": {}
+    },
+    "pause_btn_0001": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        60,
+        54
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        7,
+        69,
+        56,
+        54
+      ],
+      "alias": {}
+    },
+    "pause_btn_0002": {
+      "a_name": "gui_common-2.dds",
+      "size": [
+        60,
+        54
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        67,
+        75,
+        56,
+        54
+      ],
+      "alias": {}
+    }
+  },
+  "sheets": {
+    "gui_common-0.png": "9eb452027f5d45aed88af796e95a655042795f1448d599de9188e76fde5ed496",
+    "gui_common-2.dds": "a6b1e0f696c02a056dc35655d18f7768bd827e125e1d638cc9b446375e44fb0e"
+  },
+  "reference": {
+    "width": 1024,
+    "height": 768,
+    "minAspect": 1.3333333333333333,
+    "maxAspect": 1.7777777777777777
+  },
+  "textureScale": 0.7111111111111111,
+  "groupScale": 0.9,
+  "hudY": -22,
+  "pauseY": -21,
+  "buttonY": 25,
+  "labels": [
+    {
+      "id": "lives",
+      "pos": {
+        "x": 80,
+        "y": 42
+      },
+      "size": {
+        "x": 71,
+        "y": 35
+      },
+      "font_name": "hud",
+      "font_size": 12
+    },
+    {
+      "id": "gold",
+      "pos": {
+        "x": 136,
+        "y": 42
+      },
+      "size": {
+        "x": 71,
+        "y": 35
+      },
+      "font_name": "hud",
+      "font_size": 12
+    },
+    {
+      "id": "wave",
+      "pos": {
+        "x": 243,
+        "y": 42
+      },
+      "size": {
+        "x": 74,
+        "y": 18
+      },
+      "font_name": "hud",
+      "font_size": 11,
+      "fit_lines": 1,
+      "fit_step": 0.25
+    }
+  ],
+  "fonts": {
+    "roles": {
+      "hud": {
+        "name": "NotoSansCJKkr-Bold",
+        "metrics": {
+          "size": 1.4
+        }
+      }
+    }
+  },
+  "motion": {
+    "duration": 1,
+    "ease": "out-quad"
+  },
+  "sources": {
+    "original-desktop-game_gui.lua": "7be4b6a71351badebd3765295796d9a39f286944eb36120590da9c782c9246fd",
+    "kro-desktop-game_gui.lua": "562d8419135cd1af4c0d6a6753696e4c9ea4ba430f4ce6c279746d8480c487e3",
+    "desktop-original-constants.lua": "d8872102d7a80944e74279d005eb36722fb3d0feacbf9c7843f1cd7b5036ccb6",
+    "desktop-font-subst.lua": "1904fd4368723f4a8b38853b8b3e7d9df2418ec9b4f8814c20c180a336e73353",
+    "desktop-original-image_db.lua": "b20a28a835174c6a567ee75f1996a8dd2557a0b34e2e831675507efa278fa566"
+  },
+  "scope": "KR3 selected counter label declarations; shared counter/pause constructors, init, reference and hide/show audited against vanilla. Pause interior and other battle HUD remain legacy. Browser text baseline approximate."
+}

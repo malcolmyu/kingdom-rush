@@ -14,6 +14,7 @@ assets={'book-hover.ogg','encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-sele
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-top').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-map').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/options').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-title').rglob('*')if p.is_file()}
