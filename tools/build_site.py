@@ -19,6 +19,14 @@ assets|={f'levels/{i:02}-{m}.json'for i in range(1,4)for m in ['campaign','heroi
 assets|={f'levels/map{i:02}.webp'for i in range(1,4)}
 for name in assets:
  p=OUT/'assets'/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/'web/assets'/name,p)
+from optimize_runtime import optimize
+optimize(OUT)
+# Resolve static imports up front to remove deep ESM request waterfalls on cold
+# connections. Preload the title background while metadata is downloading.
+html=(OUT/'index.html').read_text()
+preloads=''.join(f'<link rel="modulepreload" href="{p.name}">\n'for p in sorted(OUT.glob('*.mjs')))
+preloads+='<link rel="preload" as="image" href="assets/menu/start.webp" fetchpriority="high">\n'
+(OUT/'index.html').write_text(html.replace('</head>',preloads+'</head>'))
 manifest={'version':json.loads((ROOT/'package.json').read_text())['version'],'stages':3,'modes':['campaign','heroic','iron'],'files':{str(p.relative_to(OUT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in OUT.rglob('*')if p.is_file() and p.name!='build-manifest.json'}}
 (OUT/'build-manifest.json').write_text(json.dumps(manifest,indent=2))
 print(f'Built {len(manifest["files"])} files; {sum(p.stat().st_size for p in OUT.rglob("*")if p.is_file()):,} bytes in build/')

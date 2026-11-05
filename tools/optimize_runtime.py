@@ -1,0 +1,85 @@
+"""Lossless deployment assets: supported tower atlas and full-font WOFF2.
+
+Source extraction stays untouched. Future frames retain their original atlas;
+only the campaign preload list uses the compact, verified sheet.
+"""
+import json,re,sys,pathlib
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT.parent/'.tools/python'))
+from PIL import Image
+from fontTools.ttLib import TTFont
+from fontTools import subset
+
+def optimize(out):
+ catalog=json.loads((out/'assets/catalog.json').read_text())
+ frames=catalog['frames'];animations=catalog['animations'];keep=set()
+ # Resolve original template names/prefixes and literal renderer effects.
+ def add(s):
+  if s in frames:keep.add(s)
+  for key,a in animations.items():
+   if key==s or key.startswith(s+'_'):
+    keep.update(k for k in frames if k.startswith(a.get('prefix','!')+'_'))
+  if '%04i' in s:
+   pattern=re.escape(s).replace('%04i',r'\d{4}')
+   keep.update(k for k in frames if re.fullmatch(pattern,k))
+ def walk(o):
+  if isinstance(o,str):add(o)
+  elif isinstance(o,dict):
+   for v in o.values():walk(v)
+  elif isinstance(o,list):
+   for v in o:walk(v)
+ walk(catalog['templates'])
+ for p in (ROOT/'web').glob('*.mjs'):
+  for s in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):
+   if s in frames or s in animations:add(s)
+   if len(s)>3 and (s.endswith('_') or s[-1:].isdigit()):keep.update(k for k in frames if k.startswith(s))
+ keys=sorted((k for k in keep if frames[k]['a'].startswith('go_towers-')),key=lambda k:(-frames[k]['q'][3],k))
+ def pack(keys,name):
+  originals={n:Image.open(out/'assets/images'/n).convert('RGBA') for n in {frames[k]['a']for k in keys}}
+  # Shelf packing with a transparent gutter; original size/trim/anchor unchanged.
+  width=2048;x=y=row=0;placements={}
+  for key in keys:
+   q=frames[key]['q'];w,h=q[2:]
+   if x+w+2>width:x=0;y+=row+2;row=0
+   placements[key]=(x,y);x+=w+2;row=max(row,h)
+  atlas=Image.new('RGBA',(width,y+row+2))
+  for key,(x,y) in placements.items():
+   f=frames[key];qx,qy,w,h=f['q'];atlas.paste(originals[f['a']].crop((qx,qy,qx+w,qy+h)),(x,y))
+  path=out/'assets/images'/name
+  atlas.save(path,lossless=True,exact=True,method=6)
+  # Verify every packed frame against decoded source pixels, not just dimensions.
+  check=Image.open(path).convert('RGBA')
+  for key,(x,y) in placements.items():
+   f=frames[key];qx,qy,w,h=f['q'];source=originals[f['a']].crop((qx,qy,qx+w,qy+h))
+   if check.crop((x,y,x+w,y+h)).tobytes()!=source.tobytes():raise RuntimeError('Atlas pixel mismatch: '+key)
+   f['a']=name;f['q']=[x,y,w,h]
+  return path
+ path=pack(keys,'go_towers_campaign.webp')
+ catalog['campaignTowerSheets']=['go_towers_campaign.webp']
+ map_keys=sorted(k for k in frames if k.startswith(('mapFlag','mapDot','mapDeco')))
+ map_path=pack(map_keys,'screen_map_campaign.webp')
+ catalog['mapSheets']=['screen_map_campaign.webp']
+ (out/'assets/catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,separators=(',',':')))
+ css=(out/'style.css').read_text();font_bytes=0
+ # This game has no free-text input. Keep every character in shipped copy/code,
+ # including the complete localized catalog, rather than downloading unrelated
+ # Korean/Japanese/CJK glyphs. Preserve original global metrics and outlines.
+ corpus=''.join(chr(i) for i in range(32,127))
+ for root in [ROOT/'web']:
+  for p in root.rglob('*'):
+   if p.suffix in ('.mjs','.json','.html','.css'):corpus+=p.read_text()
+ for p in (out/'assets/fonts').iterdir():
+  if p.suffix not in ('.otf','.ttf'):continue
+  font=TTFont(p,recalcBBoxes=False);before=font.getBestCmap();required=set(map(ord,corpus))&before.keys()
+  metrics=(font['hhea'].ascent,font['hhea'].descent,font['head'].yMin,font['head'].yMax)
+  options=subset.Options();options.recalc_bounds=False;options.name_IDs=['*']
+  sub=subset.Subsetter(options=options);sub.populate(unicodes=required);sub.subset(font)
+  if not required<=font.getBestCmap().keys():raise RuntimeError('Font lost shipped text: '+p.name)
+  if metrics!=(font['hhea'].ascent,font['hhea'].descent,font['head'].yMin,font['head'].yMax):raise RuntimeError('Font metrics changed: '+p.name)
+  font.flavor='woff2';target=p.with_suffix('.woff2');font.save(target);font.close()
+  css=css.replace(p.name,target.name).replace("format('opentype')","format('woff2')").replace("format('truetype')","format('woff2')")
+  font_bytes+=p.stat().st_size-target.stat().st_size;p.unlink()
+ (out/'style.css').write_text(css)
+ print(f'Lossless campaign atlas: {len(keys)} frames, {path.stat().st_size:,} bytes; map atlas {map_path.stat().st_size:,} bytes; font transfer saved {font_bytes:,} bytes')
+
+if __name__=='__main__':optimize(pathlib.Path(sys.argv[1]))
