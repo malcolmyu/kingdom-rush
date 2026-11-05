@@ -633,3 +633,13 @@ hide在取消旧WAAPI前采当前scale/opacity，new show按源重新.6/0；回�
 构建生成当前依赖的1290帧紧凑塔图集2,027,190B、地图旗帜道路装饰图集431,390B；原全部模板/动画/坐标/trim不改，每张重排裁图按RGBA逐像素验证。未用图集仍保留供将来/图标显式请求，不在入关关键路径下载。字体保留所有已发布代码、布局、中文目录字符与ASCII，保持原全局bbox/hhea度量及原轮廓，WOFF2减少约3.7MB；浏览器原字体与部署字体代表性中文/数字Canvas像素和metrics逐项一致。不是有损画面降质或删除可用内容。原门动画/资源首画等待保留，不用跳动画假装加速。
 
 最终同条件复测：首屏2702ms、地图累计7451ms、入关另5720ms，总计13172ms（旧18713ms，约减少30%），资源13,884,787B（约减少42%）。该数值是受控本地构建网络测试，不是所有真实设备/线路保证。新增15MB冷路径预算与禁止完整大图集/OTF下载回归。251Node通过；最终构建loading专项（原字体像素/metrics）、完整九模式三战役三星/存档/手机、map-start/scene-transition/UI全部exit0。早期新专项被原开场教程遮挡，后正常点击三页教程再测，无force/seen抑制；首次profile写错旧存档ID已修且重测，所有早期结果收集。World战斗规则无改动。
+
+## 0.2.66 APK原字体角色与首帧排版
+
+用户质疑字体，重新逐字节核对APK assets/all-phone/fonts文件：现有NotoSansCJKkr-Regular/Bold、SohoGothicProMedium、Comic Book Italic都与APK SHA-256一致。原font_subst.lua的zh-Hans确实指定NotoSansCJKkr，不将其替成猜测的楷体/漫画中文。原main按global后locale注册替换，extract_fonts顺序同步，并导出每个原文件apkPath/sha256供校验。
+
+查出真实遗漏：global numbers_bold=TOONISH，旧NativeUI只按role==='numbers'/'numbers_italic'区分，numbers_bold错误回落CJK。现提取TOONISH.ttf、注册OriginsNumbersBold，font-roles.mjs按原字体名统一解析全部角色/真实字重/size系数，禁止浏览器额外合成粗斜体；结算原gems_label字体同步（宝石经济仍未开放，不伪造功能）。原CJK中文正文/标题分别Regular/Bold，普通/斜体/粗体数字分别Soho/Comic/TOONISH。
+
+首次显示前与三份metadata并行等待五种原字体就绪，避免font-display:swap期间用系统字形测量并永久保留错误fit/换行；失败保留加载错误状态，不悄悄用默认字体冒充成功。仍采用0.2.65的无损WOFF2及全已发布字符集合，不恢复大字体下载。字体原文件正确不代表Love栅格化/字号取整/描边/基线已全部复现，相关差异仍在；不能把样张当原版同镜头像素证据。
+
+254Node全部通过，新增全角色映射/原文件hash与字体就绪门控。build字体专项人为延迟原字体请求，确认界面等待而不是默认字体先排版，释放后正常进入；手机英雄殿堂、五种原字体与部署字体Canvas像素和metrics逐项一致。第一次加入TOONISH对照时测试复用OriginalComparison家族、缺字回退到了之前注册的另一原字体，改每font独立对照family后通过，不改产品字形/降低断言。独立九模式三战役三星/存档/手机与UI通过。启动预算专项仍13,907,015B、约13.37s（100ms/1.5MBps/冷缓存），保持15MB预算与无整大atlas/OTF请求，不退性能修复。样张apk-original-font-roles.png和手机图已查看，为APK原字形当前展示，不称字体渲染1:1。

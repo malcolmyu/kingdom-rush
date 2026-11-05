@@ -1,3 +1,4 @@
+import{waitForOriginalFonts}from'./font-roles.mjs';
 import{towerMenuFrames}from'./tower-menu-motion.mjs';
 import{enemyAtPoint}from'./enemy-selection.mjs';
 import{BattleTop}from'./battle-top.mjs';
@@ -162,6 +163,6 @@ export class Campaign{
  }
 }
 
-try{const repo=await new Repository().init(),renderer=new Renderer($('battlefield'),repo),app=new Campaign(repo,renderer);app.bind();app.showTitle();requestAnimationFrame(t=>app.tick(t));
+try{const[repo]=await Promise.all([new Repository().init(),waitForOriginalFonts()]);const renderer=new Renderer($('battlefield'),repo),app=new Campaign(repo,renderer);app.bind();app.showTitle();requestAnimationFrame(t=>app.tick(t));
  window.origins={app,repo,renderer,get world(){return app.world;},advance(seconds){if(!app.world)return;for(let i=0;i<seconds*60;i++)app.world.step(1/60);app.events();app.updateBattle();renderer.draw(app.world);}};
 }catch(e){$('loading-text').textContent='加载失败：'+e.message;$('loading').hidden=false;console.error(e);}

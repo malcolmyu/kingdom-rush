@@ -246,3 +246,5 @@ tower-menu-motion.mjs仅读源motion元数据，把原绝对scale换为已按max
 建造预览由TowerMenu当前选中按钮派生为{slotId,kind}，tower-preview.mjs只按原holder.preview_ids返回临时hidden覆盖。Renderer消费该覆盖绘制原sprite；预览状态不写入World或catalog，也不会随存档持久化。规则锁定与预算展示由TowerMenu统一维护，Campaign不再按余额覆盖DOM disabled。
 
 部署构建的optimize_runtime.py只优化传输：从原模板/动画和渲染器字面量收集当前塔精灵，生成无损紧凑图集；地图仅预载旗帜/道路/装饰图集。catalog保留原size/trim与所有未使用帧的原图集引用，生成campaignTowerSheets/mapSheets供Renderer与MapScene选择预载，不修改战斗模板。每个重排裁图与解码原像素逐字节校验。字体从全部已发布代码/布局/中文目录收集字符并保留原全局度量，生成WOFF2；原APK字体不改，构建依赖见tools/requirements-build.txt。Repository并行读取三份元数据，背景与战斗图集并发加载，原异步current提交保护不变。构建生成modulepreload消除深层ESM瀑布，预取标题背景；不改变场景门时序或World。
+
+font-roles.mjs以原font_subst的字体名作为唯一角色路由，普通CJK、粗体CJK、Soho、Comic Italic、TOONISH各用实际注册face；NativeUI不再凭少数role名猜family。启动时字体加载与Repository metadata并发，原字体准备好后才创建依赖测宽的界面。extract_fonts记录源APK路径和SHA-256，优化构建仍保留原度量/字形，原文件与部署压缩文件职责分开。
