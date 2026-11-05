@@ -1,3 +1,4 @@
+import{drawTowerRanges}from'./tower-ranges.mjs';
 import{holderPreviewOverrides}from'./tower-preview.mjs';
 import{SelectionMarkers}from'./selection-markers.mjs';
 import{BattleCamera,worldViewport}from'./battle-camera.mjs';
@@ -45,8 +46,7 @@ export class Renderer{
   }
  }
  circle(pos,r,fill,stroke){const c=this.ctx,p=this.screen(pos);c.beginPath();c.ellipse(p.x,p.y,r*this.k,r*this.k*.7,0,0,Math.PI*2);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}}
- draw(w,{selected=null,enemy=null,mode=null,hover=null,preview=null}={}){const c=this.ctx;c.clearRect(0,0,this.width,this.height);if(!this.map)return;this.drawing=true;c.save();c.translate(this.width/2,this.height/2);c.scale(this.camera.zoom,this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);const bgScale=worldRules.textureScale*this.k,bg=this.baseScreen({x:worldRules.width/2,y:worldRules.height/2});c.drawImage(this.map,bg.x-this.map.width*bgScale/2,bg.y-this.map.height*bgScale/2,this.map.width*bgScale,this.map.height*bgScale);
-  if(selected!==null&&w.slots[selected]){const s=w.slots[selected];const d=s.type?w.towerDef(s.type,s.level):null;this.circle(d?{x:s.x+d.rangeOffset.x,y:s.y+d.rangeOffset.y}:s,d?d.range:160,'#d5f19222','#e5eea699');}
+ draw(w,{selected=null,enemy=null,mode=null,hover=null,preview=null,ranges=[]}={}){const c=this.ctx;c.clearRect(0,0,this.width,this.height);if(!this.map)return;this.drawing=true;c.save();c.translate(this.width/2,this.height/2);c.scale(this.camera.zoom,this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);const bgScale=worldRules.textureScale*this.k,bg=this.baseScreen({x:worldRules.width/2,y:worldRules.height/2});c.drawImage(this.map,bg.x-this.map.width*bgScale/2,bg.y-this.map.height*bgScale/2,this.map.width*bgScale,this.map.height*bgScale);
   if(mode&&hover){const p=w.nearestRoad(hover);if(p)this.circle(p,mode==='lightning'?100:mode==='arrows'?35:24,'#7ccfdf33','#b8f4f8');}
   this.markers.update(w,{selected,enemy,mode});this.markers.draw(this);
   // Original map decoration layers include the river, waterfalls and foreground trees.
@@ -78,6 +78,7 @@ export class Renderer{
 
 
   }
+  drawTowerRanges(this,ranges);
   for(const p of w.exits)this.circle(p,18,'#8bc9d122','#bdeefa77');
 
  c.restore();this.drawing=false;
