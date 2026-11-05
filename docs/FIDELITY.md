@@ -1,5 +1,18 @@
 # 动画保真记录
 
+## 0.2.92 用户截图图框错位 + 雷电/箭雨原分层
+
+用户截图焚火者通知确实照片与边框错开。按diagnose先复现：实际frame角点相对photo为(+25.30,+28.21)物理px，原层级应为(-23.16,-17.57)。根因是子图NativeUI.image的CSS transform默认中心原点，而父照片组原点0/0；父组旋转还使用+r，与KView原G.scale→G.rotate(-r)→G.translate(-anchor)相反。修复共享NativeUI.image显式origin0/0、按原scale/负旋转/锚点执行；通知父组也按原顺序并正确处理锚点。不是裁图丢像素或手工把某张框移几像素，通用路径覆盖所有原带框通知和其他NativeUI叶图。
+
+新增test:notification-frames通过真实通知callsite生成DOM，用Chrome DOM.getBoxModel实际内容四角与原祖先矩阵比较（.05物理px量化误差），先红后绿。验证五敌、两种技能通知、八张塔升级照片及手机重入/真实关闭；焚火者桌面/手机修后截图已看，原图完整在边框内。新增纯测原点/负旋转/非零anchor，321Node全部过；百科/英雄界面/UI与最终天然九模式（三战役三星/自然XP4705/20生命、存档手机）全正常exit0。新用户截图通过Multica CLI下载，仅用于复现，不当原版像素参考。source范围与矩阵在tools/sources/native-image-transform.json。
+
+原任务特效分支同时完成：extract_skill_effects.py仅读原template声明与game_scripts16414–16458/3113–3118 -bl审计，生成skill-effect-data.mjs，接完整提取。SkillEffects按原ray3500/镜像爆炸3000且sort_y_offset-5/地面decal1400、箭雨地面箭1400/烟雾3000入同queue；不再所有FX最后盖单位。ray原alpha0/255,.1/255,.26666666666667/0；原image_h496或456，低落点时scaleY=max(1,(768-y)/image_h)。爆炸16帧结束，雷电decal20帧/原alpha255保持至结束，去掉旧假淡出。箭雨两sprite原alpha1秒保持、4秒淡至0，仅地面箭按原-10..5度旋转。原ray随机翻转与箭雨落箭角度用独立可注入UI RNG/WeakMap一次取值，重画不重抽，scene/loadLevel清除；World seed/技能伤害/冷却/命中时间/数组都不变，不声称Love同seed随机轨迹。
+
+实际build test:skill-effects真实按钮施法与冷却后捕Canvas分层/镜像/alpha/.6秒地面decal不淡出/2.5秒箭与烟.5/原矩阵重复稳定、zoom/暂停/手机/重入通过。首断言把仍飞行的archer_hero_arrows_proy-f也算入落点.5alpha，已精确筛decal/smoke两sprite，不改产品alpha；旧失败结果收集。最终NativeUI修后完整特效专项再次通过skill-fx-final-frame-build.log。原powers/projectiles专项同批过。其他技能粒子/雨/闪屏、range同z3500全局tie及建造卖塔FX仍非完整global render_frames，非整体1:1。
+
+最终build1471文件61,304,223B；冷路径100ms/1.5MBps/cacheoff真实书页入关14,181,149B/15.417s，201请求<15MB，不降画质/抬预算/整atlas。公开一次manifest0.2.91，首UI完整交互后因tower-menu.mjs一次HTTP503判失败，独立未改测试重跑skill-fx-pages-ui-repeat.log正常exit0，新版推送后不轮询。最终logs frame-tests.log/frame-all-browser.log/frame-ui.log/frame-encyclopedia.log/frame-hero.log/frame-campaign.log/frame-performance.log、skill-fx-tests.log/skill-fx-final-frame-build.log/skill-fx-powers.log/skill-fx-projectiles.log。完整本地九模式/已发布图资源仍非原版同输入逐像素验收。
+
+
 ## 0.2.91 四类地面敌普通死亡与尸体展示寿命
 
 完整只读核对原SU.y_enemy_death（APK script_utils.lua2523–2654、共享vanilla2579–2700）、fade_out_entity及sys.health删除链。当前reaver/burner/gnawer/hyena模板unit没有hide_after_death/hide_during_death/fade_time_after_death，普通death分别84–99/101–126/90–110/53–71；原动画结束后保持末帧alpha255，不统一淡出。源health.dead_lifetime=2，系统只在tick_ts>death_ts+2时删除。移除旧ground敌一律1.2秒alpha降到0的显示规则。

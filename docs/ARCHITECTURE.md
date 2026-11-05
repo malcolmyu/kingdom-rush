@@ -4,6 +4,10 @@
 
 ## 模块边界
 
+`NativeUI.image`以原KView左上原点执行scale→rotate(-r)→translate(-anchor)，不再使用CSS默认中心缩放。通知父组同样保留原位置、先缩放/负旋转再锚点位移，照片和子边框共享同一坐标链。带锚点的平移以原图面尺寸换算，不用看图补偏移；generic helper覆盖通知外其他NativeUI图片，测试以实际DOM内容四角比对原层级矩阵。
+
+`SkillEffects`从只读原模板/tween声明派生雷电射线、镜像爆炸、地面贴花与箭雨地面箭/烟雾逐sprite姿态并入actor队列。定时组件按原帧数结束，alpha按原keys线性取样，射线独立y拉伸；一次展示随机翻转/落箭角度由WeakMap与独立UI RNG持有，重画不重抽、场景reset，不改World seed或实际施法时钟。range及其他建造/卖塔特效等仍独立，原全局ID与同输入随机轨迹未恢复。
+
 `GroundCorpses`拥有当前四种地面敌普通死亡的只读展示快照；不透明死亡动画与末帧按原health.dead_lifetime保留到严格大于2秒。World仍在1.2秒清理模拟数组，缓存不进入碰撞/寻敌/伤害/奖励或随机迭代。快照只留绘制必要字段，以原World时间驱动；复活/漏怪清条目，场景owner变化、loadLevel提交和Campaign.transition都reset，旧尸体不跨槽/场景复活。特殊伤害/地形死亡、血池及原尸体点击仍未建模，不称完整敌死亡状态恢复。
 
 `projectileSprites`将本局bullet模板的逐sprite元数据映射到既有World飞行位置与elapsed，不改弹道模拟；魔法弹body与shadow有独立z/offset/scale，普通箭/炮石/英雄箭/火把与已有地图前景在actor队列内共同排序。炮石/火把命中特效同样入队，炮石按source bomb赋值清除模板默认sort_y_offset，事件未保存来源时当前基础rock1/2规则相同。特殊技能其余FX、range仍独立；完整弹道物理、随机炮石初始角/完整ID流及粒子状态没有借排序修复冒充完成。

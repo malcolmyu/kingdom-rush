@@ -1,0 +1,30 @@
+{
+  "scope": "NativeUI leaf image and transformed notification parent groups",
+  "source": "shared KView.draw, original KUI transform order",
+  "sharedPin": "cf90f0d68002491e705505fdeec346c0e803a97a",
+  "sharedPath": "lib/klove/kui.lua",
+  "drawLines": [
+    725,
+    742
+  ],
+  "sharedSha256": "8e6eaf63510c81f1eb1f59acc25a84db25790208df12281e308fd4900c8dedf0",
+  "order": [
+    "translate child position in parent",
+    "scale",
+    "rotate negative r",
+    "translate negative anchor"
+  ],
+  "reproduction": {
+    "photo": "encyclopedia_creeps_0002",
+    "frame": "notifications_creeps_marco",
+    "frameChildPos": [
+      -8,
+      -7
+    ],
+    "frameScale": 0.74,
+    "photoScale": 1.32,
+    "photoRotation": 0.069813170079773
+  },
+  "validation": "actual Chrome DOM content quads against original relative transform, five enemy/two power/eight tower photos and phone",
+  "apkSha256": "f06ad695814a93f60749314613b73d533cd4e0ef8d949b135e41124e4d9485a5"
+}
