@@ -12,7 +12,7 @@ export class DesktopMapScene{
  draw(){if(!this.ready)return;const time=this.timeline.time,ctx=this.canvas.getContext('2d'),over=this.top.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,1920,1080);over.clearRect(0,0,1920,1080);
  for(const key of['map_background_0001','map_background_0003','map_background_0002']){const f=this.data.images[key];ctx.drawImage(this.images[f.src],f.trim[0],f.trim[1]);}
  for(const dot of this.unlock.dots(time))this.sprite(ctx,'flag_bullet_'+String(Math.min(10,dot.frame+1)).padStart(4,'0'),dot.pos.x,dot.pos.y,.5,3/7);
- for(const flag of this.flags){const s=this.unlock.state(flag,time);flag.button.disabled=!s.enabled;flag.button.hidden=!s.visible;const c=flag.canvas.getContext('2d');c.clearRect(0,0,88,120);if(!s.visible)continue;const key=desktopMapFlagFrame(s,time-(this.unlock.levels.get(flag.id)?.flagBegin||0),flag.hover);flag.canvas.dataset.icon=key;
+ for(const flag of this.flags){const s=this.unlock.state(flag,time);if(flag.id>this.unlock.progress.unlocked){s.visible=false;s.enabled=false;}flag.button.disabled=!s.enabled;flag.button.hidden=!s.visible;const c=flag.canvas.getContext('2d');c.clearRect(0,0,88,120);if(!s.visible)continue;const key=desktopMapFlagFrame(s,time-(this.unlock.levels.get(flag.id)?.flagBegin||0),flag.hover);flag.canvas.dataset.icon=key;
  if(s.heroic)this.sprite(c,'map_flag_heroic_'+String(s.wingFrame||15).padStart(4,'0'),41,60);
  this.sprite(c,key,44,60);if(!s.reveal)for(let i=0;i<s.stars;i++)this.sprite(c,'mapFlag_star_'+String(Math.min(17,s.starFrames?.[i]||17)).padStart(4,'0'),[12,28,43][i]+17,12+17,.5,.5);
  }
