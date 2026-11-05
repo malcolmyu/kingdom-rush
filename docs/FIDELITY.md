@@ -599,3 +599,5 @@ common/scripts448–492 enemy.get_info使用当前HP/护甲、近战damage_facto
 SelectionMarkers位于展示层，快照与过滤仅维护引用；Renderer在世界Canvas单位前绘制原marker，并使用同一World纹理ref_scale/game_scale/camera投影。支持当前敌选择、targeting hero、选中兵营已有士兵，取消/换场景/新关加载按current校验后清理。没有World实体插入、RNG/XP/HP/金币/寻路修改。现Renderer全局z排序仍未逐层复原，本批按ground-before-unit绘制，原z1400保留元数据但不声称完整遮挡一致；World也尚无全部原sprite.hidden/动态ui状态，兵营可见判定限于现有状态，不称完整controller1:1。
 
 243领域测试通过，新增原体型/offset/anchor/z、跟随/不写World、英雄/兵营快照死亡与重选回归。实际build marker专项五敌/英雄/真实建造兵营、死亡/切换、真实滚轮放大及缩回、暂停/手机/场景清理通过；受控spawn为展示证据非自然通关。初次测试钢铁未完成战役被原门控拒绝，补进度后又与英雄优先点击区重叠，最终用合法战役准备期；缩放后波旗屏外先实际wheel缩回，不force。完整九模式三战役三星、enemy/hero-infobar与UI、公开0.2.60 UI均通过。标记截图已查看，未取得原版同输入同步证据，整体未1:1。
+
+标记最终取样fixture同时设置原道路节点与对应route.lengths距离，避免仅改x/y后下一步回到入口、被波旗覆盖。marker-browser-ground-final2完整exit0；这是测试证据修正，不改变运行时或部署包。
