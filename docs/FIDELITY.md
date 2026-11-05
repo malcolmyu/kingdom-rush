@@ -1,5 +1,15 @@
 # 动画保真记录
 
+## 0.2.80 第一大陆 George 原单次装饰动画
+
+只读交叉KR3 map_data.map_animations3首项ma_george_shout_1（7326起）与原共享MapView.load_map_animations1344–1396、KR3对应：layer1，103帧，初始ts=to/30保持末帧，初始pos_list/scale_list第1组；等待整数2..6后选择同一索引的位置与朝向，ts0非loop播放，dur=103/30，再dur+下一整数wait后重播。六位置153/484、153/528、97/490、210/511、439/553、152/690，对应镜像-1/+1/+1/-1/+1/-1。没有循环播放103帧或自由插值位置。MapAmbient新增非loop ceil/clamp与名义事件时间，独立可注入UI RNG，不声称与Love同seed随机轨迹或掉帧后的timer逐帧完全相同。
+
+原帧的58×60完整图面/trim保持，Canvas在原pos局部translate/scale带符号后按半图anchor绘制，位于背景与under遮挡层之间，点击继续传播；modal时钟继续、destroy清状态，无World实体/战斗RNG/进度修改。湖面loop和window vignette几何保持。tools/sources/desktop-map.json新增103帧声明和原PNG1/4/5 SHA，extract_desktop_map.py仍逐所有裁图RGBA验证，ambient无损紧凑图从444B到4410B，不下载整原图集，全部提取接全量流程。
+
+293Node通过，新增末帧等待/整数边界/成对六位置镜像/重播间隔/大delta名义事件顺序；旧lake纯测试原用整个ambient列表和空ctx，新加入镜像对象后初次ctx.save不存在，已将这个只测lake的fixture限到其自身spec，George用真实transform记录单独覆盖，不弱化产品。实际build test:map-george捕获原drawImage裁图/负scale/帧1、45、103，原书页/modal继续、手机pan与CDP真实入关/销毁；受控UI时钟和截图不是原版同步或天然通关证据。原test:map-ambient、UI、独立天然九模式三战役三星/存档手机均正常exit0，第三战役天然XP4705/20生命，策略与World数值未改。
+
+build957文件54,440,674B；100ms/1.5MBps/cacheoff真实book->battle14,854,462B/14.185s<15MB，不保证所有线上速度。公开本轮一次manifest0.2.79，完整UI正常exit0，新推送后不轮询。最终logs george-tests-release.log/george-browser-final.log/george-ambient.log/george-ui.log/george-campaign.log/george-performance.log，公开george-pages-ui.log。desktop-map-george.png/mobile.png已查看，为当前原素材受控姿态样本；完整地图其他装饰/光效和像素对照仍未完成，整体非1:1。
+
 ## 0.2.79 原窗口暗角与湖面闪光
 
 原vanilla screen_map.init302–311与KR3对应411–420均在map之后、HUD之前向window加入map_vignette_small，pos(-2,-2)、scale(1.02*sw/imageW,1.02*sh/imageH)，事件向地图传播。本批用同原400×225图、独立窗口绝对层，随clamped desktop window resize而不继承map-wrap pan；不是CSS渐变。map-ambient.mjs封装window参考几何与展示时钟。原map_animations3的ma_lake_water_sparks在845/503、layer1、anchor半图面、loop1..24/30fps；共享load_map_animations1340与KR3对应均取整数UI随机起始帧/30，再由KUI ceil/zmod循环。动画在背景后、under遮挡图前，modal继续、destroy停止，不调用World RNG或改进度。

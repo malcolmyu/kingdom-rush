@@ -7178,6 +7178,3391 @@
         30,
         19
       ]
+    },
+    "ma_george_shout_0001": {
+      "trim": [
+        34,
+        46,
+        9,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1935,
+        1520,
+        15,
+        8
+      ],
+      "alias": [
+        "ma_george_shout_0002"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0002": {
+      "trim": [
+        34,
+        46,
+        9,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1935,
+        1520,
+        15,
+        8
+      ],
+      "alias": [
+        "ma_george_shout_0002"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0003": {
+      "trim": [
+        34,
+        43,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1891,
+        1520,
+        16,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0004",
+        "ma_george_shout_0005",
+        "ma_george_shout_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0004": {
+      "trim": [
+        34,
+        43,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1891,
+        1520,
+        16,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0004",
+        "ma_george_shout_0005",
+        "ma_george_shout_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0005": {
+      "trim": [
+        34,
+        43,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1891,
+        1520,
+        16,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0004",
+        "ma_george_shout_0005",
+        "ma_george_shout_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0006": {
+      "trim": [
+        34,
+        43,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1891,
+        1520,
+        16,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0004",
+        "ma_george_shout_0005",
+        "ma_george_shout_0006"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0007": {
+      "trim": [
+        35,
+        28,
+        7,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        32,
+        483,
+        16,
+        24
+      ],
+      "alias": [
+        "ma_george_shout_0008",
+        "ma_george_shout_0009"
+      ],
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0008": {
+      "trim": [
+        35,
+        28,
+        7,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        32,
+        483,
+        16,
+        24
+      ],
+      "alias": [
+        "ma_george_shout_0008",
+        "ma_george_shout_0009"
+      ],
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0009": {
+      "trim": [
+        35,
+        28,
+        7,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        32,
+        483,
+        16,
+        24
+      ],
+      "alias": [
+        "ma_george_shout_0008",
+        "ma_george_shout_0009"
+      ],
+      "a_name": "screen_map_animations-5.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0010": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0011": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0012": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0013": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0014": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0015": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0016": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0017": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0018": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0019": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0020": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0021": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0061": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0062": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0063": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0064": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0065": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0066": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0067": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0068": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0069": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0070": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0071": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0072": {
+      "trim": [
+        34,
+        31,
+        6,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1814,
+        1514,
+        18,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0011",
+        "ma_george_shout_0012",
+        "ma_george_shout_0013",
+        "ma_george_shout_0014",
+        "ma_george_shout_0015",
+        "ma_george_shout_0016",
+        "ma_george_shout_0017",
+        "ma_george_shout_0018",
+        "ma_george_shout_0019",
+        "ma_george_shout_0020",
+        "ma_george_shout_0021",
+        "ma_george_shout_0061",
+        "ma_george_shout_0062",
+        "ma_george_shout_0063",
+        "ma_george_shout_0064",
+        "ma_george_shout_0065",
+        "ma_george_shout_0066",
+        "ma_george_shout_0067",
+        "ma_george_shout_0068",
+        "ma_george_shout_0069",
+        "ma_george_shout_0070",
+        "ma_george_shout_0071",
+        "ma_george_shout_0072"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0022": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0023": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0024": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0025": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0026": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0027": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0028": {
+      "trim": [
+        29,
+        31,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1490,
+        1951,
+        24,
+        21
+      ],
+      "alias": [
+        "ma_george_shout_0023",
+        "ma_george_shout_0024",
+        "ma_george_shout_0025",
+        "ma_george_shout_0026",
+        "ma_george_shout_0027",
+        "ma_george_shout_0028"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0029": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0030": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0031": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0041": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0042": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0043": {
+      "trim": [
+        17,
+        20,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1819,
+        853,
+        37,
+        32
+      ],
+      "alias": [
+        "ma_george_shout_0030",
+        "ma_george_shout_0031",
+        "ma_george_shout_0041",
+        "ma_george_shout_0042",
+        "ma_george_shout_0043"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0032": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0033": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0034": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0044": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0045": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0046": {
+      "trim": [
+        15,
+        19,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        979,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0033",
+        "ma_george_shout_0034",
+        "ma_george_shout_0044",
+        "ma_george_shout_0045",
+        "ma_george_shout_0046"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0035": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0036": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0037": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0047": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0048": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0049": {
+      "trim": [
+        14,
+        18,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1025,
+        853,
+        40,
+        34
+      ],
+      "alias": [
+        "ma_george_shout_0036",
+        "ma_george_shout_0037",
+        "ma_george_shout_0047",
+        "ma_george_shout_0048",
+        "ma_george_shout_0049"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0038": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0039": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0040": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0050": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0051": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0052": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0053": {
+      "trim": [
+        14,
+        17,
+        3,
+        7
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1813,
+        894,
+        41,
+        36
+      ],
+      "alias": [
+        "ma_george_shout_0039",
+        "ma_george_shout_0040",
+        "ma_george_shout_0050",
+        "ma_george_shout_0051",
+        "ma_george_shout_0052",
+        "ma_george_shout_0053"
+      ],
+      "a_name": "screen_map_animations-4.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0054": {
+      "trim": [
+        28,
+        32,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        1078,
+        26,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0055",
+        "ma_george_shout_0056"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0055": {
+      "trim": [
+        28,
+        32,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        1078,
+        26,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0055",
+        "ma_george_shout_0056"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0056": {
+      "trim": [
+        28,
+        32,
+        4,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        1078,
+        26,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0055",
+        "ma_george_shout_0056"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0057": {
+      "trim": [
+        33,
+        32,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1755,
+        242,
+        20,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0058",
+        "ma_george_shout_0059",
+        "ma_george_shout_0060"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0058": {
+      "trim": [
+        33,
+        32,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1755,
+        242,
+        20,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0058",
+        "ma_george_shout_0059",
+        "ma_george_shout_0060"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0059": {
+      "trim": [
+        33,
+        32,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1755,
+        242,
+        20,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0058",
+        "ma_george_shout_0059",
+        "ma_george_shout_0060"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0060": {
+      "trim": [
+        33,
+        32,
+        5,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1755,
+        242,
+        20,
+        20
+      ],
+      "alias": [
+        "ma_george_shout_0058",
+        "ma_george_shout_0059",
+        "ma_george_shout_0060"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0073": {
+      "trim": [
+        34,
+        40,
+        8,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1960,
+        1519,
+        16,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0074"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0074": {
+      "trim": [
+        34,
+        40,
+        8,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1960,
+        1519,
+        16,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0074"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0099": {
+      "trim": [
+        27,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        174,
+        2034,
+        29,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0100",
+        "ma_george_shout_0101",
+        "ma_george_shout_0102",
+        "ma_george_shout_0103"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0100": {
+      "trim": [
+        27,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        174,
+        2034,
+        29,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0100",
+        "ma_george_shout_0101",
+        "ma_george_shout_0102",
+        "ma_george_shout_0103"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0101": {
+      "trim": [
+        27,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        174,
+        2034,
+        29,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0100",
+        "ma_george_shout_0101",
+        "ma_george_shout_0102",
+        "ma_george_shout_0103"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0102": {
+      "trim": [
+        27,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        174,
+        2034,
+        29,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0100",
+        "ma_george_shout_0101",
+        "ma_george_shout_0102",
+        "ma_george_shout_0103"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0103": {
+      "trim": [
+        27,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        174,
+        2034,
+        29,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0100",
+        "ma_george_shout_0101",
+        "ma_george_shout_0102",
+        "ma_george_shout_0103"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0097": {
+      "trim": [
+        26,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1565,
+        248,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0098"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0098": {
+      "trim": [
+        26,
+        42,
+        2,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1565,
+        248,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0098"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0095": {
+      "trim": [
+        28,
+        40,
+        0,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1529,
+        248,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0096"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0096": {
+      "trim": [
+        28,
+        40,
+        0,
+        8
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1529,
+        248,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0096"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0093": {
+      "trim": [
+        26,
+        39,
+        2,
+        9
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1351,
+        247,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0094"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0094": {
+      "trim": [
+        26,
+        39,
+        2,
+        9
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1351,
+        247,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0094"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0091": {
+      "trim": [
+        28,
+        37,
+        0,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1890,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0092"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0092": {
+      "trim": [
+        28,
+        37,
+        0,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1890,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0092"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0089": {
+      "trim": [
+        26,
+        36,
+        2,
+        12
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1854,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0090"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0090": {
+      "trim": [
+        26,
+        36,
+        2,
+        12
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1854,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0090"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0087": {
+      "trim": [
+        28,
+        34,
+        0,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1818,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0088"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0088": {
+      "trim": [
+        28,
+        34,
+        0,
+        14
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1818,
+        149,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0088"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0085": {
+      "trim": [
+        26,
+        33,
+        2,
+        15
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1905,
+        200,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0086"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0086": {
+      "trim": [
+        26,
+        33,
+        2,
+        15
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1905,
+        200,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0086"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0083": {
+      "trim": [
+        28,
+        31,
+        0,
+        17
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1701,
+        200,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0084"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0084": {
+      "trim": [
+        28,
+        31,
+        0,
+        17
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1701,
+        200,
+        30,
+        12
+      ],
+      "alias": [
+        "ma_george_shout_0084"
+      ],
+      "a_name": "screen_map_animations-1.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0081": {
+      "trim": [
+        29,
+        33,
+        1,
+        16
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1691,
+        150,
+        28,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0082"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0082": {
+      "trim": [
+        29,
+        33,
+        1,
+        16
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1691,
+        150,
+        28,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0082"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0079": {
+      "trim": [
+        30,
+        34,
+        4,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        925,
+        24,
+        13
+      ],
+      "alias": [
+        "ma_george_shout_0080"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0080": {
+      "trim": [
+        30,
+        34,
+        4,
+        13
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2016,
+        925,
+        24,
+        13
+      ],
+      "alias": [
+        "ma_george_shout_0080"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0077": {
+      "trim": [
+        33,
+        38,
+        7,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1867,
+        1520,
+        18,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0078"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0078": {
+      "trim": [
+        33,
+        38,
+        7,
+        11
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1867,
+        1520,
+        18,
+        11
+      ],
+      "alias": [
+        "ma_george_shout_0078"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0075": {
+      "trim": [
+        33,
+        40,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        243,
+        2034,
+        17,
+        14
+      ],
+      "alias": [
+        "ma_george_shout_0076"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
+    },
+    "ma_george_shout_0076": {
+      "trim": [
+        33,
+        40,
+        8,
+        6
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        243,
+        2034,
+        17,
+        14
+      ],
+      "alias": [
+        "ma_george_shout_0076"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        58,
+        60
+      ]
     }
   },
   "sheets": {
@@ -7189,7 +10574,10 @@
     "screen_map-2.png": "ce397fa0e03716df4c0faf2e426d95e0c6bc50a09f35741e424f108c0dc064db",
     "screen_map-3.png": "8ced8abe451fa1596da2984bc7d56b30e6690a902f24bc3806ed2e1b0bb13a05",
     "screen_map_animations-2.png": "e92302716cc3605e91fee6b2ab108d8792084675b36e4d168ee0ac26e58b2ed4",
-    "screen_map_animations-3.png": "c143636e10a50412eefe6cad4a2ef40b8ceefd70fa4cc6b240346439fa8c53f4"
+    "screen_map_animations-3.png": "c143636e10a50412eefe6cad4a2ef40b8ceefd70fa4cc6b240346439fa8c53f4",
+    "screen_map_animations-5.png": "5ba7bdf054835e195921f2f3c5a48ace3bdd762298e5f6910fee6168c6f71eb2",
+    "screen_map_animations-4.png": "d3a75a80eaef8c95f12f45c12bf2142a4d8ca8651c80ecb77c1325e51e43600e",
+    "screen_map_animations-1.png": "5d453b1e77898e245d810b25a209aec8fa37b6000ebb0dc488e7fa5d52180a20"
   },
   "flags": [
     {
@@ -7520,13 +10908,89 @@
           0.5
         ],
         "fps": 30
+      },
+      {
+        "id": "ma_george_shout_1",
+        "pos": [
+          153,
+          484
+        ],
+        "posList": [
+          [
+            153,
+            484
+          ],
+          [
+            153,
+            528
+          ],
+          [
+            97,
+            490
+          ],
+          [
+            210,
+            511
+          ],
+          [
+            439,
+            553
+          ],
+          [
+            152,
+            690
+          ]
+        ],
+        "scaleList": [
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "wait": [
+          2,
+          6
+        ],
+        "layer": 1,
+        "loop": false,
+        "animation": {
+          "from": 1,
+          "to": 103,
+          "prefix": "ma_george_shout"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
       }
     ],
     "source": {
       "declaration": "kr3-desktop/data/map_data.lua map_animations3",
       "declarationSha256": "22ae271d8641406c5d2b9fa50a1777cd565eec8e6e600bb76a0f589fa200d749",
       "controller": "MapView.load_map_animations loop random integer(from,to)/30; KView.animation_frame ceil modulo",
-      "scope": "vignette and lake water sparks only; other map animations remain unported"
+      "scope": "vignette, lake water sparks loop, and first-continent George random shout only; other decorations remain unported",
+      "nonLoop": "initial ts=to/30, pos/scale first list entry; after integer wait select list index, ts=0, schedule duration + next integer wait"
     }
   },
   "ambientEvidence": {
