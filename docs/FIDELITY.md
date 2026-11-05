@@ -965,3 +965,14 @@ KR3 enemy_perython模板原body anchor(.5,.058823529411765)、offset0、原full 
 308Node通过，新增原图面留白/锚点/阴影尺寸/排序/flip/alpha/不变性与18帧隐藏边界。最终实际build专项比较原WebP与部署crop RGBA、实际Canvas body/shadow drawImage的q/trim/同world原点/缩放/镜像/alpha，真实body位置鼠标及手机CDP选择、wheel、普通死亡末帧/隐藏/漏怪、原tower3通知与暂停、重入均正常exit0。spawn/death/冻结时钟为受控显示fixture，非天然通关或原版同步。初专项误用不存在routeFor，改实际routes[road][lane]；暂停World会被真实active门拒选，改先真实选择再冻结采样；矩阵getTransform实测418.0609130859375对理论418.0609080806728为float32量化，断言按两float32 ULP而非不现实1e-6，未改产品坐标或图像。所有早期失败结果均收集。
 
 桌面perython-original-shadow.png/mobile.png已人工查看，当前取样非原版同步。最终天然新存档九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命，World/策略/HP/gold/XP/cooldown未动。原enemy-infobar/render-order/UI与公开0.2.87完整UI通过。冷路径100ms/1.5MBps/cacheoff14,170,602B/15.264s<15MB，无新图下载/未调预算/降质，不是所有线上线路速度保证。logs flying-tests.log/build.log/browser-pixels-final.log/selection.log/order.log/campaign.log/ui.log/performance.log/pages-ui.log。
+
+
+## 0.2.93 普通弹道端点显隐与火把方向
+
+只读核对APK scripts.arrow.insert/update（1947–2130）与bomb.insert/update（2138–2155/2157–2299）字节码，以及vanilla-common-scripts.lua2081–2162/2308–2368。首sprite插入时hidden；更新按当前位置到from/to的world距离严格小于hide_radius隐藏，等于半径可见，不影响其他sprite。现arrow1/2半径6、hero箭1、rock1/2半径8、torch6由真实模板读取，不套textureScale或屏幕尺寸。
+
+火把遵守arrow.insert方向：to.x>from.x则rotation_speed取负，否则正；正速翻转flip_x，原sprite.r加elapsed×signed speed。纯展示不写World字段或消耗World RNG。炮石原随机初角/旋转、普通箭原逐帧速度朝向、原完整抛物线/粒子显隐仍未做，不借本批声称完整弹道。World伤害、命中时刻、目标、数组、金币、HP、XP、冷却均保持。
+
+323项Node全过；实际build test:projectile-visibility通过原Renderer/Canvas捕捉arrow/hero/rock1/2/torch在from/to半径内/等于边界/中段的显隐与火把实际rotation/flip，World快照不变，真实mage购买/开火、缩放、暂停、手机CDP触摸、场景重入均过。额外弹体与重叠为受控展示fixture，非原版同步。旧torches专项最初没有等door/关闭首关教程，World.paused=true/time0导致根本未发射；诊断后等待原scene门并复用真实dismissOpeningTutorial按钮，不跳过产品教程/不改World门控，最终火把/命中/燃烧专项正常exit0。
+
+最终build UI、完整天然新存档九模式三战役三星/存档手机正常exit0，三campaign天然XP4705/20生命；公开一次manifest确认0.2.92且完整UI过。冷路径100ms/1.5MBps/cacheoff真实book->battle14,182,234B/15.488s、201请求<15MB，无整atlas/OTF，不是线上所有设备保证。logs projectile-visibility-tests-final.log/build-final.log/browser-final.log/torches-source-final.log/ui.log/campaign.log/performance.log/pages-ui.log。桌面/手机受控截图已看，不称像素验收。
