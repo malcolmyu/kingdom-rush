@@ -112,3 +112,4 @@ subprocess.run(['python3',str(ROOT/'tools/extract_render_order.py')],check=True,
 subprocess.run(['python3',str(ROOT/'tools/extract_health_bars.py')],check=True,cwd=ROOT)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_skill_effects.py')],check=True,cwd=ROOT)
+subprocess.run(['python3',str(ROOT/'tools/extract_tower_effects.py')],check=True,cwd=ROOT)

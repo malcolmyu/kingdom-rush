@@ -4,6 +4,9 @@
 
 ## 模块边界
 
+`TowerEffects`只读观察现有build/sell展示事件，以原fx_tower_buy_dust/fx_tower_sell_dust声明生成12帧、3300层、半图锚点的烟尘。初次购买按当前World.buildUntil延迟，纯展示缓存跨过原World事件.7秒寿命，升级立即、卖塔原位置+35；不改World事件/交易/退款/计时或RNG。pending购买随原塔取消，已发出的烟尘独立；owner/loadLevel/transition清缓存。原建造协程严格大于build_duration才升级的量化时刻与World现有完成条件仍有差异，不声称同输入逐帧一致。
+
+
 `NativeUI.image`以原KView左上原点执行scale→rotate(-r)→translate(-anchor)，不再使用CSS默认中心缩放。通知父组同样保留原位置、先缩放/负旋转再锚点位移，照片和子边框共享同一坐标链。带锚点的平移以原图面尺寸换算，不用看图补偏移；generic helper覆盖通知外其他NativeUI图片，测试以实际DOM内容四角比对原层级矩阵。
 
 `SkillEffects`从只读原模板/tween声明派生雷电射线、镜像爆炸、地面贴花与箭雨地面箭/烟雾逐sprite姿态并入actor队列。定时组件按原帧数结束，alpha按原keys线性取样，射线独立y拉伸；一次展示随机翻转/落箭角度由WeakMap与独立UI RNG持有，重画不重抽、场景reset，不改World seed或实际施法时钟。range及其他建造/卖塔特效等仍独立，原全局ID与同输入随机轨迹未恢复。

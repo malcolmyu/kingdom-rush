@@ -976,3 +976,14 @@ KR3 enemy_perython模板原body anchor(.5,.058823529411765)、offset0、原full 
 323项Node全过；实际build test:projectile-visibility通过原Renderer/Canvas捕捉arrow/hero/rock1/2/torch在from/to半径内/等于边界/中段的显隐与火把实际rotation/flip，World快照不变，真实mage购买/开火、缩放、暂停、手机CDP触摸、场景重入均过。额外弹体与重叠为受控展示fixture，非原版同步。旧torches专项最初没有等door/关闭首关教程，World.paused=true/time0导致根本未发射；诊断后等待原scene门并复用真实dismissOpeningTutorial按钮，不跳过产品教程/不改World门控，最终火把/命中/燃烧专项正常exit0。
 
 最终build UI、完整天然新存档九模式三战役三星/存档手机正常exit0，三campaign天然XP4705/20生命；公开一次manifest确认0.2.92且完整UI过。冷路径100ms/1.5MBps/cacheoff真实book->battle14,182,234B/15.488s、201请求<15MB，无整atlas/OTF，不是线上所有设备保证。logs projectile-visibility-tests-final.log/build-final.log/browser-final.log/torches-source-final.log/ui.log/campaign.log/performance.log/pages-ui.log。桌面/手机受控截图已看，不称像素验收。
+
+
+## 0.2.94 原购买/卖塔烟尘与延迟、层级
+
+完整只读原systems.tower_upgrade APK633–802与vanilla633–805：初次进入build_animation不生成buy dust，完成替换为真实塔且无hide_dust时，fx_tower_buy_dust位置pos+(0,10)；卖塔fx_tower_sell_dust位置+(0,35)。两声明均中心anchor(.5,.5)、alpha255、z3300、timed.runs1、动画12帧/30fps。旧Renderer把build立即画且anchor(.5,.75)、sell错误请求tower_sell动画，均在actor后硬画，已替换为原逐sprite pose同RenderQueue。extract_tower_effects.py仅读声明与systems -bl审计，输出tower-effect-data.mjs并接完整提取；动画帧已在原go_decals/塔资源，optimizer无损裁图检查保留全部帧。
+
+TowerEffects独立展示缓存观察原World.effects，初次购买延迟到现有slot.buildUntil，跨过World旧.7秒事件移除仍显示至原12帧结束；普通升级立即，pending塔被出售/重新建造则取消，已发烟尘独立，reset/owner/loadLevel/transition清理。World HP/金币/退款/XP/RNG/数组/建造时间均未改。原scripts.tower_build严格elapsed>duration才替换，当前World完成条件仍沿用，原协程量化时刻/掉帧完整轨迹未恢复；需先观察到World内原事件，不冒称原同步帧。建造条scale tween、金币特效字/其他FX/range与ray同z tie仍未全闭合。
+
+326Node通过。最终实际build烟尘专项真实买70/升110/售180全退，采样购买完成延迟/World事件过期后仍有烟尘/源frame1与7/alpha1/原q和trim/dest/位置矩阵/3300晚于3100前景，World快照不变，缩放、手机CDP暂停、重入清理通过。额外受控显示时钟非原版同步或天然通关。首专项误用绝对.801而实际buildAt非0，改按实际record.start；初始记录检查加真实交易完成等待；旧金币断言硬写350起始，但第三关真实400，改读真实初始金与净支出，不改产品数值。旧失败结果均收集。
+
+最终UI/原tower-preview/天然新存档完整九模式三战役三星/存档手机正常exit0，三campaign自然XP4705/20生命。公开一次manifest0.2.93且完整UI过，新版推送不轮询。冷路径100ms/1.5MBps/cacheoff真实书页入关14,229,609B/15.516s、203请求<15MB，无整atlas/OTF/降质/抬预算，非所有线上线路速度保证。logs tower-dust-tests-final.log/build-final.log/browser-release.log/preview.log/campaign.log/ui.log/performance.log/pages-ui.log。

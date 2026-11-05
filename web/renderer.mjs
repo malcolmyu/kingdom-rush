@@ -1,3 +1,4 @@
+import{TowerEffects}from'./tower-effects.mjs';
 import{SkillEffects}from'./skill-effects.mjs';
 import{GroundCorpses,isGroundCorpse}from'./ground-corpses.mjs';
 import{projectileSprites,drawProjectileSprites,rockImpactOverrides}from'./projectile-sprites.mjs';
@@ -24,14 +25,14 @@ export function enemyDirection(dx,dy,previous=null,stickiness=10){
  return{facing:'RightLeft',flip:false,quadrant:4};
 }
 export class Renderer{
- constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=worldViewport(this.width,this.height).scale;this.camera=new BattleCamera(this.width,this.height);this.markers=new SelectionMarkers();this.map=null;this.missing=new Set();this.enemyDirections=new WeakMap();this.groundCorpses=new GroundCorpses();this.skillEffects=new SkillEffects();}
+ constructor(canvas,repository){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.repo=repository;this.catalog=repository.catalog;this.sheets=new Map();this.width=1672;this.height=1014;this.k=worldViewport(this.width,this.height).scale;this.camera=new BattleCamera(this.width,this.height);this.markers=new SelectionMarkers();this.map=null;this.missing=new Set();this.enemyDirections=new WeakMap();this.groundCorpses=new GroundCorpses();this.skillEffects=new SkillEffects();this.towerEffects=new TowerEffects();}
  baseScreen(p){return{x:p.x*this.k,y:(worldRules.height-p.y)*this.k};}
  screen(p){const q=this.baseScreen(p);return this.drawing?q:this.camera.project(q);}
  world(p){p=this.camera.unproject(p);return{x:p.x/this.k,y:worldRules.height-p.y/this.k};}
  async sheet(name){if(!this.sheets.has(name))this.sheets.set(name,await this.repo.image('assets/images/'+name));return this.sheets.get(name);}
  async loadLevel(data,current=()=>true){const background=this.repo.image(data.map);
   const prefixes=['go_towers','go_decals','go_enemies_elven_woods','go_hero_elves_archer','go_stages_elven_woods',`go_stage${String(data.id).padStart(2,'0')}-`];
-  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))&&(!this.catalog.campaignTowerSheets||!f.a.startsWith('go_towers-'))&&(!this.catalog.campaignEnemySheets||!f.a.startsWith('go_enemies_elven_woods-'))).map(f=>f.a));for(const n of [...this.catalog.campaignTowerSheets||[],...this.catalog.campaignEnemySheets||[]])names.add(n);const[map]=await Promise.all([background,Promise.all([...names].map(n=>this.sheet(n)))]);if(!current())return false;this.camera.configure(worldViewport(this.width,this.height),data.level?.pan_extension?.top||0,data.level?.pan_extension?.bottom||0);this.markers.reset();this.groundCorpses.reset();this.skillEffects.reset();this.map=map;this.data=data;return true;
+  const names=new Set(Object.values(this.catalog.frames).filter(f=>prefixes.some(p=>f.a.startsWith(p))&&(!this.catalog.campaignTowerSheets||!f.a.startsWith('go_towers-'))&&(!this.catalog.campaignEnemySheets||!f.a.startsWith('go_enemies_elven_woods-'))).map(f=>f.a));for(const n of [...this.catalog.campaignTowerSheets||[],...this.catalog.campaignEnemySheets||[]])names.add(n);const[map]=await Promise.all([background,Promise.all([...names].map(n=>this.sheet(n)))]);if(!current())return false;this.camera.configure(worldViewport(this.width,this.height),data.level?.pan_extension?.top||0,data.level?.pan_extension?.bottom||0);this.markers.reset();this.groundCorpses.reset();this.skillEffects.reset();this.towerEffects.reset();this.map=map;this.data=data;return true;
  }
  async icon(canvas,key){const f=this.catalog.frames[key];if(!f)return;await this.sheet(f.a);const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);this.sprite(c,key,canvas.width/2,canvas.height/2,Math.min(canvas.width/f.size[0],canvas.height/f.size[1]));}
  frame(name,time=0,loop=true){if(this.catalog.frames[name])return name;const a=this.catalog.animations[name];if(!a)return null;const frames=a.frames||a.ranges?.flatMap(([from,to])=>Array.from({length:to-from+1},(_,i)=>from+i))||Array.from({length:(a.to||a.from||1)-(a.from||1)+1},(_,i)=>(a.from||1)+i);let f=Math.max(0,Math.floor(time*30));f=loop?f%frames.length:Math.min(f,frames.length-1);return a.prefix+'_'+String(frames[f]).padStart(4,'0');}
@@ -79,10 +80,11 @@ export class Renderer{
   for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e,renderId:this.renderId(e)});
   for(const [i,f]of w.effects.entries())if(f.type==='impact'||f.type==='torch-impact')this.entity(f.type==='impact'?'fx_rock_explosion':'fx_torch_gnoll_burner_explosion',f,{time:f.total-f.life,overrides:f.type==='impact'?rockImpactOverrides(w.template('rock_1').bullet):{},renderId:w.data.level.entities_list.length+w.serial+i+1});
   for(const[i,f]of w.effects.entries())if(f.type==='thunder-strike'||f.type==='arrow-impact')this.skillEffects.draw(this,f,w.data.level.entities_list.length+w.serial+3*i+1);
+  this.towerEffects.draw(this,w);
   const queue=this.orderQueue;this.orderQueue=null;queue.flush();this.entityOrderId=0;
   for(const f of w.effects){const p=this.screen(f),t=f.total-f.life;
    if(f.type==='coin'){c.save();c.globalAlpha=f.life/f.total;c.font='20px OriginsNumbers';c.textAlign='center';c.fillStyle='#ffe868';c.strokeStyle='#2b3e26';c.lineWidth=3;c.strokeText(f.text,p.x,p.y-t*30);c.fillText(f.text,p.x,p.y-t*30);c.restore();}
-   else if(['rally','build','sell','splash'].includes(f.type)){const names={rally:'rally_feedback',build:'tower_build_dust',sell:'tower_sell',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
+   else if(['rally','splash'].includes(f.type)){const names={rally:'rally_feedback',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
 
 
 
