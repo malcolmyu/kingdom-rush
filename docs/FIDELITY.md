@@ -567,3 +567,11 @@ BattleTop按实际game窗口的480×320参考布局：HUD anchor(-6,-8)/112×38�
 237项Node测试通过，新增原GUI几何/与独立hud_scale区分/手机间距；build目录顶部专项真实暂停、文本fit、桌面/手机、教程隐藏返回、重入通过。完整九模式及原HUDmotion/敌通知/指导回归见本轮结果，截图为当前实现取样而非原版同步像素验收，整体仍未1:1。
 
 最终构建回归曾在第三关战役天然XP4705、准备5帧时仅17生命；6帧则三星。合法策略现在对最后一波保留雷电出口防守，并只对已训练齐射的第三关战役用连接道路到最终出口的剩余距离排序；其他分路方案保留局部优先级。新增实际观察XP4705/4897×9种准备帧共18场三星回归，所有旧领域断言保留，不改World/金币/HP/冷却/三星阈值。探索XP4500/5100的部分长准备组合仍不稳定，不宣称所有XP策略均稳健。
+
+## 0.2.58 原技能组独立HUD尺度
+
+screen_utils72–81按真实窗口w/h选择HUD_SCALE_STEPS，当前固定游戏比例对应.85；game_gui init的ctx.hud_scale只应用powers父节点。原resize把powers.pos放safe.l/sh-safe.b，parent180×60/anchor0,60，三个PowerButton位置(-8,0)/(46,0)/(100,0)，原144像素图按UI ref_scale.5为72逻辑单位。battlePowerGeometry将父anchor、子位置、图面与hitbox一起乘hud_scale*gui_scale；父节点隐藏位移60仍仅乘gui_scale，不额外乘.85。顶部统计与英雄组不跟着缩小。extract_ui新增battlePowers源父/按钮/分档元数据，未将read_ui缺ctx时的scale空表当真实1。
+
+TB_POWER1/2/3按原TutorialBalloon初始化4430附近非world分支，GUI bottom-left加原offset30/80/130,-46，气泡不继承powers的hud_scale，保留脉冲、真实点击触发与World道路引导。技能Canvas冷却/门/亮光绘制、World技能与HPXP规则不变；没有新增假能力。原非零安全区与全设备viewport仍未恢复，字体后端仍近似。
+
+238领域测试通过，新增独立分档阈值/父子锚点/隐藏位移回归；实际build技能专项验证正常双击波旗、原TOWER_LEVEL3确认、援军真实两单位/冷却禁用、瞄准取消、暂停、教程恢复与手机重入。初次专项只点波旗一次仍ready导致disabled等待，已改真实第二次点击，没有force或改变产品门控。原guidance/hud-motion和最终完整九模式结果见本轮评论。截图为当前实现非原版同步像素证据，整体仍未1:1。

@@ -230,3 +230,5 @@ world-rules.mjs由原声明常量和director纹理比例派生，世界ref尺寸
 
 
 BattleTop局部读取原顶部布局，保留稳定HUD/暂停/英雄节点并按GUI参考窗定位；HudMotion从节点guiScale换算对应组的原位移，未迁移能力栏仍保留原路径。通知队列及TB_NOTI共用本批GUI坐标，领域统计与按键处理仍由Campaign/World原接口负责，不更改NativeUI全局变换。
+
+BattleTop同时维护原powers父子GUI几何；battlePowerGeometry独立选择源hud_scale，仅用于技能组图面/点击区域，motionScale保留父节点位移的GUI尺度。Guidance仅对原GUI技能提示补native坐标，不影响World投影或领域技能时间线。

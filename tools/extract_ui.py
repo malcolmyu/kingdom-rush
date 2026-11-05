@@ -18,6 +18,7 @@ notification_source=ROOT/'reference/apk/assets/gc64/kr3-phone/data/game_gui_data
 notification_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source)]))
 tower_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_tower_menu.lua')]))
 layouts['battleTop']={'reference':tower_data['reference'],'hudScaleSteps':tower_data['hudScaleSteps'],'hud':{**find(game,'hud_normal_view'),'children':[n for n in find(game,'hud_normal_view')['children']if n.get('class')=='GGLabel']},'pause':find(game,'pause_button')}
+layouts['battlePowers']={'parent':find(game,'powers_view'),'button':read('game_gui_power_button'),'hudScaleSteps':tower_data['hudScaleSteps'],'reference':tower_data['reference']}
 layouts['infobar']={'reference':tower_data['reference'],'view':find(game,'infobar_view'),'powers':{k:v for k,v in find(game,'powers_view').items() if k!='children'},'bag':{k:v for k,v in find(game,'bag_view').items() if k!='children'},'bagButton':find(game,'bag_button'),'stats':tower_data['stats']}
 layouts['towerMenu']={'menus':tower_data['menus'],'literals':tower_data['literals'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
 layouts['balloons']=notification_data['tutorial_balloons']
