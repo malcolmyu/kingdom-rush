@@ -1,5 +1,5 @@
 {
-  "version": "0.2.63",
+  "version": "0.2.64",
   "stages": 3,
   "modes": [
     "campaign",
@@ -9,11 +9,12 @@
   "files": {
     "balloon.mjs": "a61ef7a131362a25ff4af74dafb4057fce993585c2c93766c3390e64d4e03179",
     "hero-room.mjs": "00d7cae9d6626246dbed4861a567c3e83898677e3def103e0e7a6aa992307811",
+    "tower-preview.mjs": "4087b4a414c220c3e027ed3cde7d5fe93333224d5584b276e8d60ba7654dfc75",
     "marker-data.mjs": "c9eb0b853fe3275a0e855bc15e6852bc2a46121046b185759ec48cd70afe476e",
     "selection-markers.mjs": "090a33d8f95f9379300e96990ff2b78b6bb948f0a90f14615346636e836d7dae",
     "ellipse-text.mjs": "5d0b2fba87e469e2466783e06f6da9137cfcf98a09f3a0e26ca3af2367f679ef",
     "camera-input.mjs": "28db92d790943d3777cc0790cabd68b64423a15d413021d8eca937197b4c5748",
-    "tower-menu.mjs": "9041f5ee6687aeff92fcb4d7527ca6cb495a564d7733e3f953eb7e170d08f8ae",
+    "tower-menu.mjs": "bfc9f258307bf5411d41183f4865ffabe1a1078497bbfe79ce8e5d8b8b4b4970",
     "index.html": "d09f2f6cf3a56dd6f569f4fd3eb245a87bb105ca11cdab298c678a9bcf562e37",
     "enemy-selection.mjs": "8b5a5c97a56e3d69b9da8df432e70753a1829781371cbb8bf836e4f519d53bb8",
     "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
@@ -41,10 +42,10 @@
     "style.css": "dd55af84b2bd53f09838eaf2b91d9de012d01e2872cb5a8e0602c85a48d59233",
     "guidance.mjs": "ea40bf5aeb5eb0903eaad64a748a7e4bd2218521b361bfa99f19b810c9113d71",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
-    "renderer.mjs": "bef03a0e43dbc7b0b9e3214fa2ff98ec16a25d1b75af600fecc7350ac8574a07",
+    "renderer.mjs": "4bd7e37abf3f1ce7b97a21b4e22f4ca191a2ef8bf487580b77d4b427875a5623",
     "upgrade-data.mjs": "6cac3569c860f2218b416a70b01a1ce272cc5c14239f35d5d48c0ecc630a5760",
     "infobar.mjs": "322ded2e7be51f155780d2f90b9c4fc9945a42cc066acc43e50f1310ce1f349a",
-    "campaign.mjs": "f404e95c0ebc9d6d1d8c36b8c0f98277abff949e5832cfec3ad1e200b0de5fac",
+    "campaign.mjs": "20eea8d37745a5fca25c8c26ed678f722dad2e79c9a7f298bbefe08ca0d50688",
     "map-flags.mjs": "06a801d6637b97d17f257547f43b669ba0a862f03dc246c183c9d1501632b9b9",
     "wave-reward.mjs": "4d027faf3f448135daf5a449e175f978753c2ffc63e07989bcff392aff99c508",
     "menu-motion.mjs": "1cd9e9f7ac35db6cf0965cb7d003836c47d772517d6c8a7da7aa64dda0134508",
