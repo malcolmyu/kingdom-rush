@@ -1,5 +1,5 @@
 {
-  "version": "0.2.66",
+  "version": "0.2.67",
   "stages": 3,
   "modes": [
     "campaign",
@@ -15,9 +15,10 @@
     "ellipse-text.mjs": "5d0b2fba87e469e2466783e06f6da9137cfcf98a09f3a0e26ca3af2367f679ef",
     "camera-input.mjs": "28db92d790943d3777cc0790cabd68b64423a15d413021d8eca937197b4c5748",
     "tower-menu.mjs": "bfc9f258307bf5411d41183f4865ffabe1a1078497bbfe79ce8e5d8b8b4b4970",
-    "index.html": "c27938f95d23376f39f5a1ed26da711e63c3a18dd3894e7195c3bfd78204b33e",
+    "index.html": "03cbbb1f1b42933f44c310dbc1644784b5c7e47c29044a3c9bfbeee2c095f845",
     "enemy-selection.mjs": "8b5a5c97a56e3d69b9da8df432e70753a1829781371cbb8bf836e4f519d53bb8",
     "wave-flags.mjs": "658411ee4a544d1dfe78d403d44f891264df724f8bf349611fde4316fb6b84c3",
+    "source-font-layout.mjs": "34770f27fc61552969a6f75321a63cb1722a59410bd1bca201ff225f57605bb8",
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
     "ui.mjs": "0522daa42bdf18be85b95555e3c33b9d4ee11ed52cc6162c586507781636a390",
     "save-slots.mjs": "80c7c446c0cfa4214877e85f15995e0166beb2f2eceb188b4b084a225a1bce92",
@@ -26,7 +27,7 @@
     "notification-motion.mjs": "5c7cd1092a450e4b057e46609abfb1496e2c3199323e0ab7460f7e2ebee6f20f",
     "battle-camera.mjs": "2c46b74cec7b7ed0635f567231ca5f3bfc01070c0647fcded6adbd03ebf95f8c",
     "repository.mjs": "e8b8e13ad324d0d2769f226e0d11d64600bfc40d991138be62a287d145c5666c",
-    "battle-top.mjs": "9bea5000629ca686f10c9dd90d9fbcfd781f378dd0f28d2cf182f5b59d6d0a25",
+    "battle-top.mjs": "4c69d4f8e2457d9c37ee213d52ed5635872dda88080e0afc2abd3271573accf9",
     "tutorials.mjs": "f252a55eaef3e66388d7b6b5a8cd0a0ad750c8bef21a7508490f5e0b95b465bd",
     "enemy-notifications.mjs": "1ddf473f762d8ed5e78945f62bab7fee15eb4877cd7c87dfd84a340fa14effef",
     "encyclopedia.mjs": "353965873f5ec109f4d33ded0988ffa610071e80fa995bef60264fed0bd509ee",
@@ -845,11 +846,11 @@
     "assets/levels/map01.webp": "11220166061293a6b0f81e65fb7eca9fd63ab848816ecf32134d3f93d3c273e8",
     "assets/levels/02-iron.json": "7d9a4f64bacc25d8c19735566eb8459d0cb4a1d878e93f1b204d7799bd5ea8cb",
     "assets/levels/02-heroic.json": "281121a5a1cc7347de1d3955d82c974e9ce6c7355a7e18de62be4389c1036f1a",
-    "assets/fonts/NotoSansCJKkr-Bold.woff2": "7bedfea18227dcb72da20911e17e86cf185270dff34b9f90c8c7fa6b950f54bc",
-    "assets/fonts/NotoSansCJKkr-Regular.woff2": "6fd08719d0cf6ba0946da9226cc6e595b56d1e122f350e9d844a5918861ba25c",
-    "assets/fonts/Comic Book Italic.woff2": "ed28ea9093a7f2eea3d59ac103e0c2d3659ae497a765b620fcf43194106a5823",
-    "assets/fonts/TOONISH.woff2": "0a649383c13b7a3d6d1fa3a0105a859f2839550fe586aa1607b91a0514312879",
+    "assets/fonts/NotoSansCJKkr-Bold.woff2": "3c25a23e482489dd4bb3f19bb390378fc1f98d805a1c1d04dfbb2c08c4aa61eb",
+    "assets/fonts/NotoSansCJKkr-Regular.woff2": "03c59bb094d86da912301880910e216aa1369365cd3d2eb470cf6fe47e23f6fb",
+    "assets/fonts/Comic Book Italic.woff2": "8d749eddae340a361e4249f89c81e62dbe3313df97339838dd481fba43c7edc0",
+    "assets/fonts/TOONISH.woff2": "f5abb2362634444f11bd479767b5f3e20cfc669a28840c3c0a68233accddca2f",
     "assets/fonts/catalog.json": "2ccebb799eacf99dc276a38800aa29a298560c741e6bdc8fa69ceaeb00a35b82",
-    "assets/fonts/SohoGothicProMedium.woff2": "e7de9ede3b5829bc77a4a94477ea8f220fffc8e1a0c9d4960686771757aa41c6"
+    "assets/fonts/SohoGothicProMedium.woff2": "fcfcb7e418927d41b1cb32d7ae86945540bd5344cdfe4e88737f9cc0cb09d4d4"
   }
 }
