@@ -4,6 +4,9 @@
 
 ## 模块边界
 
+`ProjectileMotion`仅为当前rock_1/2的body持有WeakMap展示选择：原bomb.insert初始(random-.5)*pi与发射方向signed rotation_speed，在首次观察时固定，之后按elapsed派生旋转、同帧重画不重抽；loadLevel/transition reset。独立UI RNG不读写World seed/serial/飞行数组，不能声称Love同seed随机轨迹。普通箭仍使用现有chord朝向，原per-tick last_pos/抛物线/目标预测尚未恢复，不用渲染帧间差分冒充模拟速度。
+
+
 `constructionBarPose`只从当前tower_build模板第4sprite与scale tween派生进度条姿态，drawConstructionBar在原World/camera队列内执行独立x/y缩放。完整54×8原图、offset(-21,50)、anchor(0,.5)、alpha255与z3000保留，不再用固定屏幕clip猜测宽高。当前普通击杀的World coin事件仍保留，但Renderer不绘制自创的黄色金币浮字；原GUI got-enemy-gold只在Hand of Midas生效时创建奖励特效，该特殊能力尚未实现，原金币实值与独立早波WaveReward不变。
 
 
@@ -16,9 +19,9 @@
 
 `GroundCorpses`拥有当前四种地面敌普通死亡的只读展示快照；不透明死亡动画与末帧按原health.dead_lifetime保留到严格大于2秒。World仍在1.2秒清理模拟数组，缓存不进入碰撞/寻敌/伤害/奖励或随机迭代。快照只留绘制必要字段，以原World时间驱动；复活/漏怪清条目，场景owner变化、loadLevel提交和Campaign.transition都reset，旧尸体不跨槽/场景复活。特殊伤害/地形死亡、血池及原尸体点击仍未建模，不称完整敌死亡状态恢复。
 
-`projectileSprites`按原arrow/bomb职责仅对首sprite应用发射点/目标点严格半径隐藏，边界等于半径可见，距离以既有World坐标测量、不乘图集缩放；火把按源左右投掷方向选择signed rotation_speed与flip，读原sprite.r和elapsed，不修改World.rotationSpeed。当前飞行路径与普通箭chord方向、炮石随机旋转仍未恢复。
+`projectileSprites`按原arrow/bomb职责仅对首sprite应用发射点/目标点严格半径隐藏，边界等于半径可见，距离以既有World坐标测量、不乘图集缩放；火把按源左右投掷方向选择signed rotation_speed与flip，读原sprite.r和elapsed，不修改World.rotationSpeed。当前飞行路径与普通箭chord方向仍未恢复；炮石原旋转规则由独立ProjectileMotion接入，原随机seed轨迹未恢复。
 
-`projectileSprites`将本局bullet模板的逐sprite元数据映射到既有World飞行位置与elapsed，不改弹道模拟；魔法弹body与shadow有独立z/offset/scale，普通箭/炮石/英雄箭/火把与已有地图前景在actor队列内共同排序。炮石/火把命中特效同样入队，炮石按source bomb赋值清除模板默认sort_y_offset，事件未保存来源时当前基础rock1/2规则相同。特殊技能其余FX、range仍独立；完整弹道物理、随机炮石初始角/完整ID流及粒子状态没有借排序修复冒充完成。
+`projectileSprites`将本局bullet模板的逐sprite元数据映射到既有World飞行位置与elapsed，不改弹道模拟；魔法弹body与shadow有独立z/offset/scale，普通箭/炮石/英雄箭/火把与已有地图前景在actor队列内共同排序。炮石/火把命中特效同样入队，炮石按source bomb赋值清除模板默认sort_y_offset，事件未保存来源时当前基础rock1/2规则相同。特殊技能其余FX、range仍独立；完整弹道物理、原随机seed/完整ID流及粒子状态没有借排序修复冒充完成。
 
 `healthBarFrames`只读派生原systems.render的1×1白角点着色quad：iphonehd走default small16×2/med24×2，ref_scale=1，不乘atlas textureScale。模板offset加到floor(x)/ceil(y)世界位置，anchor0/0，红底与绿填充同宽同高，按HP比例缩放；黑条归一化与自定义draw_order/colors也保留。drawHealthBars经同World相机与RenderQueue重放，不改HP或单位状态。满血不隐藏；死亡/漏怪隐藏，Eridan初次levelup和respawn按已存在动作时钟派生原显隐。隐藏/水面offset等未建模特殊状态没有伪造，原插入ID与其余技能FX全局排序仍欠。
 

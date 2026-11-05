@@ -1000,3 +1000,16 @@ extract_construction_feedback.py只读原template与systems/game_gui/render_util
 328项Node通过；实际build test:construction-feedback验证四种真实购买/出售全退款、0/25/50/75%完整54×8图与q/trim/dest/独立轴矩阵/alpha、无clip、实际World.hurt普通击杀金币增加但不绘制prototype coin.text，World绘制快照不变，zoom/手机CDP暂停/重入清理均正常exit0。原test:tower-effects共享队列回归正常exit0。初截图包含原菜单关闭中途，最终仅加等真实menu.hidden后再拍，未改产品时序。桌面/手机半程建造截图已看，受控World显示时刻并非原版同步或天然通关证据。
 
 最终build1474文件61,354,576B。UI/完整天然新存档九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命，策略/World数值未变。公开一次manifest0.2.94且完整UI通过，新推送后不轮询。100ms/1.5MBps/cacheoff真实书页入关14,230,939B/14.583s、204请求<15MB，无整atlas/OTF、不降质/抬预算，非所有线上线路速度保证。logs construction-tests.log/build.log/browser-final.log/dust-regression.log/campaign.log/ui.log/performance.log/pages-ui.log。
+
+
+## 0.2.96 炮石初始角与方向旋转
+
+完整只读核对原scripts.bomb.insert APK2138–2155/update2157–2299与共享vanilla-common-scripts.lua2308–2368：rotation_speed存在时初始sprite.r=(math.random()-.5)*pi，然后按to.x>from.x取负speed，否则正，更新每tick累加speed*dt。当前rock1/2原speed10.471975511966，body原anchor/trim/alpha/z不变。新ProjectileMotion以每个shot对象的WeakMap保存一次UI random angle与发射方向speed，再从elapsed派生r，既不每RAF重抽也不随未来tx跨边反向；owner新弹体自然独立，loadLevel/transition reset清旧选择。只对当前type artillery且有rotation_speed/无align_with_trajectory的分支生效，torch原单独规则不改。
+
+独立可注入UI RNG不消费World.seed/serial或修改shot/template，不能声称Love同seed随机轨迹；初次观测的发射方向与elapsed来自现有World，完整原parabola/force_motion/目标预测/每tick位置尚未恢复。普通箭仍chord朝向，缺原模拟last_pos时不把渲染帧间secant伪装成原速度。本批无新图/World伤害、命中时间、HP/gold/XP/cooldown/寻路或数组改动。sourceSHA/规则与未完边界记tools/sources/projectile-render.json。
+
+331Node通过：两级/左右与竖直方向/随机边界/一次选择/重画稳定/延迟和done不抽样/隐藏初始取一次/重置与新弹体/retarget不反向/非炮石不取随机，World/template快照不变。首纯fixture的frame stub返回空字串导致torch空pose，与新旋转无关，改为真实保留动画名的stub后全过。
+
+最终实际build test:cannon-spin通过真实125购买/建造与reload完成后World.updateTowers合法开火，再用受控第二级左飞弹体/elapsed/位置对照；捕获两方向原angle+speed*elapsed、同帧Canvas矩阵重复稳定、q/trim/纹理scale/alpha/World快照不变，zoom/手机CDP暂停/场景旧WeakMap清理均正常exit0。受控额外炮石与独立UI RNG不作天然通关或原版同步证据。source-cannon-spin.png/mobile.png已人工看。
+
+最终UI/原projectile-visibility/完整天然新存档九模式三战役三星/存档手机与公开旧0.2.95UI全正常exit0，3campaign自然XP4705/20生命、策略/World数值不改。最终build1474文件61,355,779B，冷路径100ms/1.5MBps/cacheoff真实book->battle14,232,142B/15.489s、204请求<15MB，无整atlas/OTF/降质/抬预算，不是线上所有线路保证。logs cannon-spin-tests-final.log/build.log/browser.log/visibility.log/campaign.log/ui.log/performance.log/pages-ui.log。

@@ -1,5 +1,5 @@
 {
-  "scope": "current ordinary projectile sprites, source endpoint hiding, torch signed spin/flip, rock/torch hit FX and existing stage foreground; flight physics unchanged",
+  "scope": "current projectile metadata, endpoint hiding, directional torch spin and once-per-shot cannon spin; flight physics unchanged",
   "sources": {
     "all/game.lua": "2595da5a3466fa190abe38bee6054cd58e5ec774b8711dfee56f9a21db790c18",
     "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
@@ -33,14 +33,15 @@
     "rockHitSortOffset": "scripts.bomb overwrites template -5 with bullet.hit_fx_sort_y_offset, including nil",
     "torchHitZ": 3300,
     "hideRadius": "sprite 1 only; initially hidden; strict world-space distance < bullet.hide_radius at from OR to; equality visible",
-    "torchSpin": "arrow.insert signs rotation_speed by to.x > from.x (-1 else +1), toggles flip_x when signed speed >0; original sprite.r plus elapsed*signed speed"
+    "torchSpin": "arrow.insert signs rotation_speed by to.x > from.x (-1 else +1), toggles flip_x when signed speed >0; original sprite.r plus elapsed*signed speed",
+    "cannonSpin": "bomb.insert initial r=(UI random-.5)*pi once per shot, signed rotation_speed frozen by initial to.x>from.x (- else +), r=initial+elapsed*speed; independent UI RNG not Love same-seed trajectory"
   },
   "notRestored": [
     "source complete entity insertion IDs",
     "source force-motion/parabola",
-    "bomb random initial rotation",
     "other skill FX ordering and durations",
     "particle emission hidden state",
-    "original arrow tangent orientation and bomb random spin"
+    "native arrow tangent from original per-tick parabola position/last_pos",
+    "full source physics/prediction and native random seed trajectory"
   ]
 }
