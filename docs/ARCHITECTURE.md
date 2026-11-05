@@ -224,3 +224,6 @@ BattleCamera只维护展示姿态和原fit目标的.2秒插值；Renderer内部�
 
 
 CameraGesture封装原输入状态、缩放比、阻尼与六样本惯性；CameraInput适配浏览器指针/滚轮和场景门控并负责监听清理，鼠标移动按展示帧消费，触摸按事件消费。BattleCamera插值可用源时长和曲线，默认仍是塔菜单.2秒；World不处理相机输入，正常点击交易继续经过原公开接口。
+
+
+world-rules.mjs由原声明常量和director纹理比例派生，世界ref尺寸、GUI ref尺寸、图集像素尺寸分开。worldViewport提供原game_scale和camera世界边界；Renderer在世界Canvas分支应用纹理ref_scale，UI Canvas不继承它。背景和普通精灵共用原世界单位链，初始相机与逆点击不再依赖旧7/6常数。

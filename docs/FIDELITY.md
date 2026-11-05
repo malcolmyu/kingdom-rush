@@ -543,3 +543,14 @@ Renderer在统一Canvas上下文上变换地图、单位、射程和效果；外
 Canvas/塔位接真实Pointer Events，滚轮原逐格倍率、浏览器CDP双触点都能触发；touch-action:none禁止浏览器页面抢走原战场手势。拖动后消费当前点击，下一次正常按下重新允许点击；pointercancel/blur/切场景清输入，新按下即清旧点击抑制，防触摸取消后吞掉下一次UI点击，暂停/通知/场景门与技能瞄准期间门控，不添加假缩放按钮。浏览器事件分发与KUI窗口10*gui_scale点击识别尚未逐帧等同，现消费规则以TouchView阈值为准，不能称完整KUI触摸复现。
 
 230项Node单测通过，新增原倍率/两指比/边界、严格阈值/.6跟随/.5惯性与取消。构建包真实滚轮、鼠标拖动/惯性、暂停门控、CDP手机捏合与单指拖动、拖后不误建/正常两次建造、重开关重置已验证。截图来自真实输入后的当前状态，并非受控直接设置zoom，但进度解锁为UI专项fixture；不是原版同输入逐帧证据。原初始世界尺度/宽屏min_zoom和地图铺图关系仍沿用前版基线，尚未恢复；整体继续未1:1。
+
+
+## 0.2.56 原世界参考、战斗纹理比例与初始镜头
+
+核对all/constants.lua REF_W1024/REF_H768、TEXTURE_SIZE_ALIAS.ipad768/iphonehd960和TEXTURE_SIZE_FACTOR.iphonehd.game0.95；game.lua模块ref_res=ipad，director.lua:187–196的get_texture_scale先ref_res/texture_size再除item factor，因此战斗纹理ref_scale=768/960/0.95（约0.842105）。这不是UI的0.5，也不是旧Renderer位置倍率7/6。read_world_rules.lua只执行constants声明导出world-rules.mjs，完整extract_campaign已接复现。
+
+原render_utils.lua:31–52按REF_H反转y，并把纹理ref_scale乘sprite.scale；game.lua:70–170/711–1230再乘game_scale与camera.zoom。Renderer初始位置改为世界x*game_scale、(768-y)*game_scale，正常game_scale=screen_h/768；背景StageXX_0001以原512/384中心、完整图像尺寸*ref_scale*game_scale绘制，前景StageXX_0002原有独立分支继续同缩放。独立go_stage03_bg.lua明确原图1672×1014，未把它误当世界尺寸。只对战场Canvas精灵乘世界纹理比例，UI icon/肖像Canvas维持自己的图面尺寸。
+
+worldViewport按原ceil可见宽度及4:3..16:9限制推导wl/wr/ww/wh与超宽min_zoom，BattleCamera.clamp使用这些源边界和上下pan_extension；reset回原初始姿态再clamp。Canvas画面、DOM塔位与screen/world逆变换共用新投影，不改World坐标、速度/HP/金币/冷却。现页面仍以固定1672:1014游戏viewport展示，其他设备全屏宽高比接入与安全区尚未完全复现；不能把纯函数宽屏分支称为所有设备实测。
+
+233项Node测试通过，新增原常量/比例/宽屏min_zoom、初始中心/逆变换、背景/战场精灵与UI icon缩放隔离。构建包完整九模式（三战役三星）、真实camera-input、battle-camera、infobar专项通过；公开0.2.55 UI通过。原相机专项旧受控2倍姿态需把x移60使目标在新正确视野内，真实交互仍不force。数值测试的Lua导出精度和浮点乘法使用epsilon比较，不改源规则。桌面第二关与手机第三关截图已查看，均是当前原投影实现的取样，非原版同输入同步像素证据；整体仍未1:1。

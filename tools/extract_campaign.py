@@ -19,6 +19,8 @@ def lua(n):
 templates=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 wave_rules=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_wave_rules.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 (ROOT/'web/wave-rules.mjs').write_text('// Generated from original kr3/game_settings.lua.\nexport default '+json.dumps(wave_rules,sort_keys=True,separators=(',',':'))+';\n')
+world_rules=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_world_rules.lua')],cwd=ROOT))
+(ROOT/'web/world-rules.mjs').write_text('// Original phone world constants and director texture scale.\nexport default '+json.dumps(world_rules,sort_keys=True,separators=(',',':'))+';\n')
 progression=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_progression.lua'),str(ROOT/'reference/apk/assets/gc64')]))
 (ROOT/'web/hero-data.mjs').write_text('// Generated from original kr3/game_settings.lua by tools/read_progression.lua.\nexport default '+json.dumps(progression,sort_keys=True,separators=(',',':'))+';\n')
 upgrades=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_upgrades.lua'),str(ROOT/'reference/apk/assets/gc64')]))
