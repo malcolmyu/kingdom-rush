@@ -32,7 +32,7 @@ for relative in ['assets/catalog.json','assets/ui/layouts.json','assets/fonts/ca
  p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))
 html=(OUT/'index.html').read_text().replace('<html ', '<html data-packed-metadata="gzip" ')
 preloads=''.join(f'<link rel="modulepreload" href="{p.name}">\n'for p in sorted(OUT.glob('*.mjs')))
-preloads+='<link rel="preload" as="image" href="assets/menu/start.webp" fetchpriority="high">\n'
+preloads+='<link rel="preload" as="image" href="assets/desktop-title/main_menu_bg.webp" fetchpriority="high">\n'
 (OUT/'index.html').write_text(html.replace('</head>',preloads+'</head>'))
 manifest={'version':json.loads((ROOT/'package.json').read_text())['version'],'stages':3,'modes':['campaign','heroic','iron'],'files':{str(p.relative_to(OUT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in OUT.rglob('*')if p.is_file() and p.name!='build-manifest.json'}}
 (OUT/'build-manifest.json').write_text(json.dumps(manifest,indent=2))

@@ -867,3 +867,16 @@ DesktopSlots恢复原slot_panel在banner后方x0→160、.1 outquad；三槽427/
 背景与独立logo、标题设置内部仍phone，不称main完整desktop或原版同步像素完成。字体shader/基线仍浏览器近似。
 
 301项Node通过；最终实际build desktop-slots/UI/完整九模式、三战役三星及存档手机正常exit0，第三campaign天然XP4705/20生命。原desktop-title、显式phone slots/MenuMotion专项分别过。首次campaign旧同步count在lazy槽图片未完成时0≠3，改等真实首槽；旧phone专项reload后默认desktop，显式恢复phone profile后过。截图均已查看，受控槽进度不是自然通关或原版同步像素证据。最终100ms/1.5MBps/cacheoff冷路径14,898,765B/15.265s<15MB，非全线路速度保证；公开本轮一次manifest0.2.83及完整UI过，新版推送不轮询CI。
+
+
+## 0.2.85 原桌面完整背景与按需GUI
+
+DesktopTitle恢复main_menu_bg原1920×1080图（内含左上原标志），源screen_slots.ref_h1080、bg_view.anchor960/540、pos sw/2/540；使用同一h/1080与居中origin，而非phone背景cover或World比例。移除desktop独立phone logo，并禁止对应CSS背景和phone start预载。背景先于slots/banner绘制，slots改插在background之后、banner之前，真实侧滑/命中/场景门/旧请求取消保持。returnToMenu桌面分支只等DesktopTitle资源，不误取phone start；显式phone profile保留旧图与MenuMotion。
+
+原背景无损WebP2,222,858B与固定screen_slots-1.png的完整1920×1080区域在浏览器Canvas逐RGBA相同，模板/PNG SHA在desktop-title.json来源中复现；原控制器仅读。共用vanilla仅KR2中文subtitle条件可见，KR3不额外叠该图。缺指定视频同一开始帧，所以只称源图与浏览器一致，不称视频逐像素验收。标题设置/名单内部仍原现有实现，完整desktop界面尚未结束。
+
+为留出下载空间，部署optimizer将gui_common-1..4与gui_portraits-1的494帧分为461个按需文件，原animation prefix归同组，静态icon独立；每帧保留size/trim/全部原像素，逐裁图RGBA验证，原大图与其他GUI目录仍保留兼容。Renderer原sheet/icon按实际使用载入，WaveFlag/BattlePortraits/ResultMotion已有完整依赖载入，未删帧或改世界数值。先试整体GUI重包仍约1.98MB，最终采用真实按需分组；不是假延迟背景或跳动画。浏览器额外比对背景全图与静态/动画GUI原图q、size/trim，并验证手机/原door/槽2返回。
+
+301Node通过；UI远程首轮沿用同步count在lazy槽未完成时0!=3，改等真实首槽后公开0.2.84完整UI过。无force/教程抑制。最终背景/slots/UI/powers专项正常exit0，冷路径100ms/1.5MBps/cacheoff真实book入关14,157,012B/14.355s，旧phone title与整GUI图集未下载，15MB预算不变。桌面/手机截图已看，为当前UI取样非原版同输入帧。
+
+最终完整九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命；原phone MenuMotion、字体和波旗奖励专项亦正常exit0。最终日志title-bg-tests.log、title-bg-build-final.log、title-bg-background-final.log、title-bg-slots-final.log、title-bg-ui-final.log、title-bg-campaign-final.log、title-bg-powers-final.log、title-bg-wave-final.log、title-bg-fonts-final.log、title-bg-motion-final.log、title-bg-performance-final.log、title-bg-pages-ui-final.log。未改World/策略/RNG/HP/gold/XP/cooldown。

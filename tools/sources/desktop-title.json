@@ -5,7 +5,7 @@
     "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
     "controllerSha256": "adeb6cdb24ad5d5d33b751ae7393188e2a061b2855c917e427bb8f6c8b903752",
     "layoutSha256": "2b5d9fbcbc01a017410b2e6a0dda6b535b9b9308b42ea5662bca45396e5da2d8",
-    "scope": "Audited desktop banner, Chinese buttons, three save slots and delete popup. Background/logo/settings/credits remain phone or existing implementation; browser quit unsupported."
+    "scope": "Audited desktop original background with embedded logo, banner, Chinese buttons, three save slots and delete popup. Settings/credits remain existing implementation; browser quit unsupported."
   },
   "sheets": {
     "screen_slots-1.png": "30706917f6db5628d14664dc065e407dad33f2a6daea17979ddb3a84a2280b78",
@@ -371,6 +371,30 @@
       ],
       "alias": {},
       "a_name": "screen_slots-1.png"
+    },
+    "main_menu_bg": {
+      "size": [
+        1920,
+        1080
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        6,
+        1920,
+        1080
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
     }
   },
   "layout": {
@@ -438,7 +462,22 @@
         "textNormal": "main_menu_t_quit_normal_zh-Hans",
         "textHover": "main_menu_t_quit_hover_zh-Hans"
       }
-    ]
+    ],
+    "background": {
+      "image": "main_menu_bg",
+      "size": [
+        1920,
+        1080
+      ],
+      "anchor": [
+        960,
+        540
+      ],
+      "pos": [
+        "sw/2",
+        540
+      ]
+    }
   },
   "slotFrames": {
     "main_menu_slots_bg": {

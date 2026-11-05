@@ -61,6 +61,30 @@ def optimize(out):
  enemy_path=pack(enemy_keys,'go_enemies_campaign.webp')
  catalog['campaignEnemySheets']=['go_enemies_campaign.webp']
  print('Lossless supported enemies:',len(enemy_keys),'frames,',enemy_path.stat().st_size,'bytes')
+ # GUI frames load on demand through Renderer.icon. Keep animation frames in
+ # their original animation group, and static icons in independently lazy files.
+ # This preserves the entire catalog without downloading unrelated menu art.
+ gui_keys={k for k,f in frames.items()if f['a'].startswith(('gui_common-','gui_portraits-'))}
+ groups={}
+ for key in sorted(gui_keys):
+  animation=next((a['prefix']for a in animations.values()if key.startswith(a.get('prefix','!')+'_')),None)
+  groups.setdefault(animation or key,[]).append(key)
+ (out/'assets/images/gui').mkdir(exist_ok=True)
+ gui_bytes=0
+ for name,group in groups.items():
+  # Keep small lazy sheets compact rather than adding a 2048px blank row.
+  originals={n:Image.open(out/'assets/images'/n).convert('RGBA')for n in {frames[k]['a']for k in group}}
+  width=max(frames[k]['q'][2]for k in group);height=sum(frames[k]['q'][3]+2 for k in group)
+  sheet=Image.new('RGBA',(width,height));offsets={};y=0
+  for key in group:
+   f=frames[key];x0,y0,w,h=f['q'];sheet.paste(originals[f['a']].crop((x0,y0,x0+w,y0+h)),(0,y));offsets[key]=y;y+=h+2
+  target=out/'assets/images/gui'/(name+'.webp');sheet.save(target,lossless=True,exact=True,method=6);check=Image.open(target).convert('RGBA')
+  for key,y in offsets.items():
+   f=frames[key];x0,y0,w,h=f['q']
+   if check.crop((0,y,w,y+h)).tobytes()!=originals[f['a']].crop((x0,y0,x0+w,y0+h)).tobytes():raise RuntimeError('GUI pixel mismatch: '+key)
+   f['a']='gui/'+name+'.webp';f['q']=[0,y,w,h]
+  gui_bytes+=target.stat().st_size
+ print('Lossless lazy GUI:',len(gui_keys),'frames in',len(groups),'groups,',gui_bytes,'bytes')
  map_keys=sorted(k for k in frames if k.startswith(('mapFlag','mapDot','mapDeco')))
  map_path=pack(map_keys,'screen_map_campaign.webp')
  catalog['mapSheets']=['screen_map_campaign.webp']
