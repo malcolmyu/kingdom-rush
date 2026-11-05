@@ -4,6 +4,9 @@
 
 ## 模块边界
 
+`flyingEnemySprites`只读派生当前enemy_perython的原身体/地面影子姿态：原图padding与anchor编码悬空，两个sprite仍同world原点，offset按world处理，不再减固定屏幕25px或自画椭圆。保留RenderQueue的逐sprite源排序；普通死亡动画结束后按hide_after_death隐藏两层，不改World尸体保留或其他战斗状态。原unit healthbar几何/特殊伤害死亡FX仍非本分支恢复范围。
+
+
 `RenderQueue`在原世界/相机transform内收集实体与选中标记的逐sprite绘制，不改World数组或时间。顺序为z升序、sort_y或pos.y+sort_y_offset降序、100000*(draw_order或sprite序号)+展示实体ID升序、pos.x升序，完整同键稳定。视觉offset不参与排序，Lua数值0保留。当前只闭合scenery/塔各层/单位/modifier/选中环与现有血条/建造条等实体阶段；弹道、FX和特殊前景/range仍既有阶段，不能当完整全局render_frames。原实体insert ID流尚未全恢复，展示ID以原level声明序号与现World serial作稳定代理，完整同y tie的原插入ID仍是差异。
 
 

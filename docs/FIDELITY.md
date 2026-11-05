@@ -906,3 +906,14 @@ MapOptionsView的原滑杆绑定抽为bindAudioSliders，两设置分支共享po
 最终build原markers/ranges/UI专项与源排序Canvas专项正常exit0，缩放、手机、暂停/场景清理通过；受控截图render-order-overlap.png/mobile.png已人工查看。公开一次manifest0.2.86，首UI在入关等待30秒超时；未改产品或超时值，独立复测render-order-pages-ui-diagnostic.log完整UI正常exit0，不把首失败冒称成功。最终冷路径100ms/1.5MBps/cacheoff真实书页入关14,169,315B/15.280s<15MB，未提高预算/整atlas下载/降质，非所有线路速度保证。
 
 最终同一build完整九模式三战役三星/存档手机正常exit0，3campaign天然XP4705/20生命，World/策略未变。最终logs render-order-tests.log/build-final.log/canvas-final.log/markers.log/ranges.log/ui-final.log/campaign-final.log/performance-final.log/pages-ui-diagnostic.log，早期fixture暂停失败与首远程失败均已收集；所有owned工具结果前台收集。
+
+
+## 0.2.88 飞行身体与原地面影子
+
+KR3 enemy_perython模板原body anchor(.5,.058823529411765)、offset0、原full frame104×120/大量下部留白，第二sprite为静态decal_flying_shadow/anchor(.5,.5)/offset0/alpha255/z3000。原shadow全图24×8、裁图21×3，catalog/go_decals已存在，没有提取或造新影子。main_script.insert=enemy_basic.insert/update=enemy_passive.update（模板只读-bl44553–44567）与common/scripts494–559/570–608核对；后者只走正常移动/死亡/stun，utils.walk473–519只更新motion/pos，没有额外fly-height/身体offset更新。因此悬空由原图留白和anchor体现，删除旧body屏幕y-25及20×7自画ellipse，改两sprite同world原点、各原anchor/trim/alpha/scale，经原纹理.842105×k×camera链，shadow不跟body水平flip。源sprite z/draw_order仍通过RenderQueue。
+
+新增flying-enemy.mjs纯展示helper，无World写入/额外RNG；普通死亡根据perython_death43..60共18帧/.6s，source script_utils.y_enemy_death2523–2654只读字节码（vanilla共享2579起）在动画完成后隐藏所有sprite。body/shadow在动画期间保留原alpha1，结束隐藏，不再错误1.2秒淡出；World本身尸体数组保留/移除时序未改。特殊伤害hide_during_death/分解FX缺少完整World伤害类型，本批不伪造；一般单位healthbar仍原现有primitive，未称所有敌状态/视觉完成。原选择rect(-15,50,30,25)、live infobar与地面marker/泄漏清理沿既有语义。
+
+308Node通过，新增原图面留白/锚点/阴影尺寸/排序/flip/alpha/不变性与18帧隐藏边界。最终实际build专项比较原WebP与部署crop RGBA、实际Canvas body/shadow drawImage的q/trim/同world原点/缩放/镜像/alpha，真实body位置鼠标及手机CDP选择、wheel、普通死亡末帧/隐藏/漏怪、原tower3通知与暂停、重入均正常exit0。spawn/death/冻结时钟为受控显示fixture，非天然通关或原版同步。初专项误用不存在routeFor，改实际routes[road][lane]；暂停World会被真实active门拒选，改先真实选择再冻结采样；矩阵getTransform实测418.0609130859375对理论418.0609080806728为float32量化，断言按两float32 ULP而非不现实1e-6，未改产品坐标或图像。所有早期失败结果均收集。
+
+桌面perython-original-shadow.png/mobile.png已人工查看，当前取样非原版同步。最终天然新存档九模式三战役三星/存档手机正常exit0，3campaign自然XP4705/20生命，World/策略/HP/gold/XP/cooldown未动。原enemy-infobar/render-order/UI与公开0.2.87完整UI通过。冷路径100ms/1.5MBps/cacheoff14,170,602B/15.264s<15MB，无新图下载/未调预算/降质，不是所有线上线路速度保证。logs flying-tests.log/build.log/browser-pixels-final.log/selection.log/order.log/campaign.log/ui.log/performance.log/pages-ui.log。
