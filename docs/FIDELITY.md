@@ -643,3 +643,13 @@ hide在取消旧WAAPI前采当前scale/opacity，new show按源重新.6/0；回�
 首次显示前与三份metadata并行等待五种原字体就绪，避免font-display:swap期间用系统字形测量并永久保留错误fit/换行；失败保留加载错误状态，不悄悄用默认字体冒充成功。仍采用0.2.65的无损WOFF2及全已发布字符集合，不恢复大字体下载。字体原文件正确不代表Love栅格化/字号取整/描边/基线已全部复现，相关差异仍在；不能把样张当原版同镜头像素证据。
 
 254Node全部通过，新增全角色映射/原文件hash与字体就绪门控。build字体专项人为延迟原字体请求，确认界面等待而不是默认字体先排版，释放后正常进入；手机英雄殿堂、五种原字体与部署字体Canvas像素和metrics逐项一致。第一次加入TOONISH对照时测试复用OriginalComparison家族、缺字回退到了之前注册的另一原字体，改每font独立对照family后通过，不改产品字形/降低断言。独立九模式三战役三星/存档/手机与UI通过。启动预算专项仍13,907,015B、约13.37s（100ms/1.5MBps/冷缓存），保持15MB预算与无整大atlas/OTF请求，不退性能修复。样张apk-original-font-roles.png和手机图已查看，为APK原字形当前展示，不称字体渲染1:1。
+
+## 0.2.67 顶部统计原字号取整与单行fit
+
+只读完整链game_gui91–112把gui_scale写入GGLabel.static.font_scale，GGLabel63–82将逻辑字号乘_font_scale传font_db.f；font_db113–149再乘role.size，结果>6才floor(x+.5)，并用原light hinting创建字体。GGLabel84–151 fit_step默认.5，在逻辑字号空间减步长后重新取字体，不是减固定CSS像素。原HUD三标签均hud11/fit_lines1，parent无独立hud_scale，沿原GUIscale；没有给其套powers的.85。
+
+source-font-layout.mjs封装此取整顺序与单行HUD fit，BattleTop按当前GUI参考渲染像素设置实际font-size，缩放/数值变化时重新计算，取代连续cqw字号与每次.25px缩小。真实金币/生命/波数没有改，受控长数字只改DOM用于验证最大可用字号与原.5网格。普通字号与字体角色/原文件保持，原无text_shadow的HUD也仍无额外黑描边。
+
+修改范围为顶部单行统计字号/fit。基线font_adj、Love getHeight/getWrap完整后端、light hinting与原生高DPI像素关系尚未全部复原；本批当前浏览器GUI参考取整不能当全部设备同步像素证据。GGLabel.draw153–227的top/middle/base/bottom调整链及默认text_shadow=nil、offset1/1已读，未凭感觉添加普遍阴影。多行正文仍待后续。
+
+256Node全部通过；实际build source-font-layout专项验证桌面/手机/resize原整数参考字号、原.5逻辑步长、上一步不能再fit、World金币不变、暂停与三页教程后恢复；battle-top/五种字体原件Canvas像素一致性、最终完整九模式三战役三星/存档手机均exit0。启动冷缓存预算13,908,960B/约13.40s，15MB预算与无整大atlas/OTF继续过。公开Pages本轮manifest0.2.66且完整test:ui通过，上轮入关超时没有重复；新0.2.67推送后不循环等CI。截图source-hud-font-mobile.png已查看，是当前实际界面非原版同输入逐帧证据。
