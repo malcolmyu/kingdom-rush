@@ -1,17 +1,28 @@
 import{spriteOrder}from'./render-order.mjs';
+// scripts.arrow/bomb only hide sprite 1, using world-space distances, strict <.
+export function projectileHidden(template,shot){
+ const radius=template?.bullet?.hide_radius;
+ if(radius==null)return false;
+ return shot.elapsed===0||Math.hypot(shot.x-shot.sx,shot.y-shot.sy)<radius||Math.hypot(shot.x-shot.tx,shot.y-shot.ty)<radius;
+}
 // Original projectile template render declarations, read against the existing
 // World flight positions. This deliberately does not replace flight physics.
 export function projectileSprites(template,shot,frame,{entityId=0,ultimate=false}={}){
  if(!template?.render?.sprites||shot.elapsed<0||shot.done)return[];
  return template.render.sprites.flatMap((s,i)=>{
-  if(s.hidden||s.hidden_count>0)return[];
+  if(s.hidden||s.hidden_count>0||(i===0&&projectileHidden(template,shot)))return[];
   const name=s.animated?frame(s.prefix?s.prefix+'_'+s.name:s.name,shot.elapsed||0,s.loop!==false):s.name;
   if(!name)return[];const offset=s.offset||{x:0,y:0};let rotation=s.r||0;
   // Retain the current arrow/torch flight orientations. Source parabola
   // velocity and bomb random initial rotation are separate, unfinished work.
   if(i===0&&(shot.type==='archer'||shot.type==='hero'||ultimate))rotation=Math.atan2(shot.ty-shot.sy,shot.tx-shot.sx);
-  if(i===0&&shot.type==='torch')rotation+=shot.elapsed*shot.rotationSpeed;
-  return[{key:name,pos:{x:shot.x+offset.x,y:shot.y+offset.y},anchor:s.anchor||{x:.5,y:.5},scale:s.scale?.x??1,flip:!!s.flip_x,alpha:(s.alpha??255)/255,rotation,order:spriteOrder(s,shot,i+1,entityId)}];
+  let flip=!!s.flip_x;
+  if(i===0&&shot.type==='torch'){
+   const speed=template.bullet.rotation_speed*(shot.tx>shot.sx?-1:1);
+   rotation+=(shot.elapsed||0)*speed;
+   if(speed>0)flip=!flip;
+  }
+  return[{key:name,pos:{x:shot.x+offset.x,y:shot.y+offset.y},anchor:s.anchor||{x:.5,y:.5},scale:s.scale?.x??1,flip,alpha:(s.alpha??255)/255,rotation,order:spriteOrder(s,shot,i+1,entityId)}];
  });
 }
 export function drawProjectileSprites(renderer,poses){for(const p of poses){const q=renderer.screen(p.pos);renderer.sprite(renderer.ctx,p.key,q.x,q.y,p.scale,p.anchor.x,1-p.anchor.y,p.flip,p.alpha,p.rotation,p.order);}}
