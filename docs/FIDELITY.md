@@ -1193,3 +1193,11 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 406Node全过（7新纯测）：strict7与原0时钟/flags/magic/RNG、节点/viewport/Faerie拒绝、先jumpOut后迁移/14+14帧/flags恢复/shadow正常22/30箭与25–35伤害、拒绝消耗cooldown/node RNG、ranged/stun等待/非全局免伤/暂停、真实hero melee触发与warp速度0/World隔离。actualbuild test:harasser-jump由真实World.updateHero起近战并触发dodged，验证敌HP未因该近战减少、解除combatTarget、原节点/14帧phase/跳入Canvas源q/alpha/绘制只读、shadow箭、真实pause/zoom/mobile/map清理。受控位置/节点与模拟时钟不是自然第5关或原版同步像素验收。harasser-jump-in/shadow-shot/mobile已人工看；原四连射/spear/shield回归与原天然完整九模式/UI/性能均独立收集。
 
 最终406Node、jump-browser-final（额外在F_ALL跳跃中直接hurt验证HP仍减少）、原volley/spear/shield回归、jump-campaign天然原9模式/存档手机→jump-ui→jump-performance全部正常exit0。三个campaign20命、第三campaign入关自然XP4705，末XP继续增长，旧数值/策略未改。最终build1520files72,858,659B；冷100ms/1.5MBps/cacheoff14,728,391B、book6.300s/总15.340s234requests<15MB，无新图/整atlas/OTF、不抬预算或降质，旧塔compact1314帧2,122,316B保持，不保证普遍线路速度；新关自身预算仍未验。公开一次manifest确认.108，首UI一次projectile-sprites.mjs HTTP503收exit1，独立不改门控/超时/产品的jump-pages-ui-repeat最终exit0，不拿首失败冒通过。全部结果已收集，无挂住浏览器待处理。当前仅已知塔/兵/英雄新目标获取按jump bans过滤，powers/AoE仍为既有适配，未称整个F_ALL/native damage链已全恢复。
+
+## 0.2.110 第6关上层守卫射击
+
+只读原APK game_scripts17554–17557/17568–17581、scripts.arrow1947–2130、SU.soldier ranged1084–1248与模板/level06声明；tools/extract_gryphon_guards.py和tools/sources/gryphon-guards.json记录源SHA/范围，未执行控制器。原两位置/区域/动画/随机aura冷却/前摇/预测误差/抛物线/接触真实伤害已接，原免普通伤害和不可近战/远程选取的守卫以专属集合隔离。source剩余节点用现World路程换算、已知viewport边界复用；不是原native调度同输入复现。下层守卫、狮鹫脚本、完整通用modifier/auras和全关图层/预算仍未完成。
+
+新增纯测覆盖原两实体/无假下层与援军寿命、椭圆闭边界、aura单tick随机不补发、World真实7帧释放、预测轴随机/原偏移/12帧弹道/10伤害、stun/maxtrack/移除/暂停与旧关隔离。实际build专项捕原Canvas q/alpha/箭角矩阵与绘制快照不变、真实World发射伤HP、原600金币不变、真实pause/zoom/手机/退出地图。位置/时钟受控样本非自然第6关通关或原版同步像素验收。
+
+最终412项Node全过；guards-browser.log/guards-browser-matrix.log、guards-campaign.log原完整天然九模式/存档手机、guards-ui.log与guards-performance.log均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末九模式XP继续自然增加。最终build1522files/72,862,238B。100ms/1.5MBps/cacheoff真实book入关7.171s/总16.229s、14,731,668B/236请求<15MB，无整atlas/OTF/新图/抬预算/降质，不保证所有线路。新第6关自身预算未验；截图gryphon-upper-guards.png/mobile为受控流程，不称全关像素验收。初纯测只改敌xy未同步route.d被下一tick拉回，以及第二守卫合法发箭令单守卫中断断言失败，已修fixture同步路径/限定受测守卫，未改产品门控。

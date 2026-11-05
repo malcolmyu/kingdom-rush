@@ -1,0 +1,377 @@
+{
+  "limits": [
+    "Lower guard reveal/retreat and level06 gryphon events remain pending",
+    "World path distance converted to source nodes; native scheduler/queues/IDs not identical",
+    "Actors isolated from ordinary reinforcement expiry/respawn; complete generic aura/modifier/visibility chain remains pending",
+    "Blood/pop/water miss FX remain pending"
+  ],
+  "ranges": [
+    "game_scripts.lua:17554-17557",
+    "game_scripts.lua:17568-17581",
+    "script_utils.lua:1084-1167",
+    "scripts.lua:1947-1987",
+    "scripts.lua:1989-2130",
+    "utils.lua:794-857"
+  ],
+  "rules": {
+    "upperRegions": [
+      [
+        300,
+        627,
+        125,
+        0.64
+      ],
+      [
+        560,
+        382,
+        95,
+        0.5263157894736842
+      ]
+    ]
+  },
+  "scope": "two stationary upper guards, source area filter, randomized cooldown aura and predicted physical arrows",
+  "sha256": {
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3/data/levels/level06_data.lua": "7adfa7af6912097465e4648c45b6a230a199fc1c950f39bb64389111dc49b776",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  },
+  "templates": {
+    "arrow_soldier_gryphon_guard": {
+      "bullet": {
+        "damage_bans": 0,
+        "damage_factor": 1,
+        "damage_flags": 0,
+        "damage_max": 10,
+        "damage_min": 10,
+        "damage_radius": 0,
+        "damage_type": 2,
+        "flight_time": 0.4,
+        "g": -900,
+        "hide_radius": 6,
+        "hit_blood_fx": "fx_blood_splat",
+        "hit_distance": 22,
+        "level": 0,
+        "max_track_distance": 64,
+        "miss_decal": "decal_arrow",
+        "miss_fx_water": "fx_splash_small",
+        "pop": [
+          "pop_shunt",
+          "pop_oof"
+        ],
+        "pop_chance": 1,
+        "pop_conds": 2,
+        "predict_target_pos": true,
+        "prediction_error": true,
+        "reduce_armor": 0,
+        "reduce_magic_armor": 0,
+        "reset_to_target_pos": true,
+        "speed": {
+          "x": 0,
+          "y": 0
+        },
+        "vis_bans": 0,
+        "vis_flags": 0
+      },
+      "main_script": {
+        "insert": {},
+        "runs": 1,
+        "update": {}
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            },
+            "animated": false,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "arrow",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3400
+          }
+        ]
+      },
+      "sound_events": {
+        "insert": "ArrowSound"
+      },
+      "template_name": "arrow_soldier_gryphon_guard"
+    },
+    "aura_soldier_gryphon_guard_upper": {
+      "aura": {
+        "cycle_time": 0.5,
+        "duration": -1,
+        "duration_inc": 0,
+        "level": 1,
+        "radius": 0,
+        "track_source": false,
+        "ts": 0,
+        "use_mod_offset": true,
+        "vis_bans": 0,
+        "vis_flags": 0
+      },
+      "main_script": {
+        "runs": 1,
+        "update": {}
+      },
+      "patch_cooldown_max": 1.1666666666666667,
+      "patch_cooldown_min": 0.6666666666666666,
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "sound_events": {},
+      "template_name": "aura_soldier_gryphon_guard_upper"
+    },
+    "soldier_gryphon_guard_upper": {
+      "auras": {
+        "list": [
+          {
+            "cooldown": 0,
+            "name": "aura_soldier_gryphon_guard_upper",
+            "ts": 0,
+            "type": "aura"
+          }
+        ]
+      },
+      "heading": {
+        "angle": 0
+      },
+      "health": {
+        "armor": 0.3,
+        "damage_factor": 1,
+        "dead": false,
+        "dead_lifetime": 14,
+        "death_ts": 0,
+        "hp_max": 1,
+        "ignore_damage": false,
+        "immune_to": 16777215,
+        "last_damage_types": 0,
+        "magic_armor": 0,
+        "poison_armor": 0,
+        "spiked_armor": 0
+      },
+      "idle_flip": {
+        "chance": 0.4,
+        "cooldown": 5,
+        "last_animation": "idle",
+        "last_dir": 1,
+        "loop": true,
+        "ts": 0,
+        "ts_counter": 0,
+        "walk_dist": 0
+      },
+      "info": {
+        "fn": {},
+        "portrait": "portraits_sc_0001",
+        "random_name_count": 25,
+        "random_name_format": "ELVES_SOLDIER_BARRACKS_%i_NAME"
+      },
+      "main_script": {
+        "insert": {},
+        "remove": {},
+        "runs": 1,
+        "update": {}
+      },
+      "melee": {
+        "arrived_slot_animation": "idle",
+        "attacks": [
+          {
+            "animation": "attack",
+            "chance": 1,
+            "cooldown": 1,
+            "damage_max": 4,
+            "damage_min": 1,
+            "damage_type": 2,
+            "dodge_time": 0.13333333333333333,
+            "hit_time": 0.3,
+            "instakill": false,
+            "level": 0,
+            "pop": [
+              "pop_barrack1",
+              "pop_barrack2"
+            ],
+            "pop_chance": 0.1,
+            "sound": "MeleeSword",
+            "ts": 0,
+            "type": "melee",
+            "vis_bans": 256,
+            "vis_flags": 1
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ],
+        "range": 0
+      },
+      "motion": {
+        "arrived": true,
+        "dest": {
+          "x": 0,
+          "y": 0
+        },
+        "max_speed": 75,
+        "speed": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "nav_rally": {
+        "immune_to": 16777183,
+        "new": false,
+        "pos": {
+          "x": 0,
+          "y": 0
+        },
+        "requires_node_nearby": true
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "ranged": {
+        "attacks": [
+          {
+            "animation": "shoot",
+            "bullet": "arrow_soldier_gryphon_guard",
+            "bullet_start_offset": [
+              {
+                "x": 5,
+                "y": 10
+              }
+            ],
+            "chance": 1,
+            "cooldown": 1,
+            "count": 0,
+            "filter_fn": {},
+            "level": 1,
+            "max_range": 1000,
+            "max_track_distance": 128,
+            "min_range": 1,
+            "shoot_time": 0.23333333333333334,
+            "ts": 0,
+            "type": "bullet",
+            "vis_bans": 0,
+            "vis_flags": 2
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ]
+      },
+      "regen": {
+        "cooldown": 1,
+        "health": 7,
+        "last_hit_standoff_time": 2,
+        "last_hit_ts": 0,
+        "ts": 0,
+        "ts_counter": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.2391304347826087
+            },
+            "angles": {
+              "walk": [
+                "running"
+              ]
+            },
+            "animated": true,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "idle",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "prefix": "soldier_gryphon_guard",
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3001
+          }
+        ]
+      },
+      "revive": {
+        "chance": 0.1,
+        "disabled": true,
+        "fx": "fx_soldier_barrack_revive",
+        "health_recover": 1,
+        "health_recover_inc": 0,
+        "hit_time": 0,
+        "remove_modifiers": true,
+        "ts": 0
+      },
+      "soldier": {
+        "courage_ts": 0,
+        "melee_slot_offset": {
+          "x": 5,
+          "y": 0
+        }
+      },
+      "sound_events": {
+        "death_by_explosion": "DeathEplosion"
+      },
+      "template_name": "soldier_gryphon_guard_upper",
+      "unit": {
+        "blood_color": "red",
+        "can_disintegrate": true,
+        "can_explode": true,
+        "damage_factor": 1,
+        "death_animation": "death",
+        "disintegrate_fx": "fx_enemy_desintegrate",
+        "explode_fx": "fx_unit_explode",
+        "hit_offset": {
+          "x": 0,
+          "y": 10
+        },
+        "level": 1,
+        "marker_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "mod_offset": {
+          "x": 0,
+          "y": 21
+        },
+        "price": 0,
+        "show_blood_pool": true,
+        "size": 1,
+        "stun_count": 0
+      },
+      "vis": {
+        "bans": 3,
+        "flags": 1024
+      }
+    }
+  }
+}
