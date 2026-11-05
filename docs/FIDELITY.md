@@ -591,3 +591,11 @@ Infobar选择英雄沿用现有targeting==='hero'（肖像/键盘/现有世界�
 common/scripts448–492 enemy.get_info使用当前HP/护甲、近战damage_factor后ceil或远程bullet伤害、lives_cost和immune；game_gui817–866恢复enemy1的with_health、原肖像/中文、damage/armor/lives，physical非0优先物理icon4，仅physical0且magic非0用icon5；None与lives<=0的-、全免疫CArmor9按源处理。gnawer当前实际buff倍率也用于显示，不读百科base值。源模板的can_click/can_select与五个portrait已导出，未新增伪造详情文字；字体/基线仍浏览器近似。
 
 241领域测试通过，新增严格边界/飞行偏移/z和y重叠排序/死亡漏怪过滤，以及五种实时数据/增伤/护甲图标/None回归。实际build目录enemy-infobar专项正常Canvas点击、实时半血、死亡/漏怪、空地/Escape/暂停/换塔/键盘技能优先级/手机/重入通过；spawn位置/HP为受控fixture，不是天然通关。首次测试只等selected引用未等下一RAF数据重绘，修为同时等待原信息栏key；额外手机技能按钮被五个受控首见图标遮挡，改真实键盘1测试该路径，无force穿透。独立完整九模式三战役三星、hero-infobar、塔infobar与UI/公开0.2.59 UI通过。截图已查看，非原版同输入逐帧证据。整体仍未1:1。
+
+## 0.2.61 原选中实体marker
+
+原common/scripts356–393建立marker快照：soldier（含hero）用selected_soldier_small，enemy按UNIT_SIZE_SMALL/MEDIUM/LARGE用selected_small/med/big；兵营只遍历插入当时已有且首sprite可见的士兵。decal原anchor(.5,.5)、alpha255/z1400，位置引用目标pos并加unit.marker_offset。395–418在done、目标移除/不可选、死亡且非ignore_damage时移除；不对同一次选择的复活/新生士兵自动重新添加。extract_markers.py只读取模板声明和constants生成marker-data.mjs，完整extract_campaign已接入；图帧本就在go_decals，不需重复提取。
+
+SelectionMarkers位于展示层，快照与过滤仅维护引用；Renderer在世界Canvas单位前绘制原marker，并使用同一World纹理ref_scale/game_scale/camera投影。支持当前敌选择、targeting hero、选中兵营已有士兵，取消/换场景/新关加载按current校验后清理。没有World实体插入、RNG/XP/HP/金币/寻路修改。现Renderer全局z排序仍未逐层复原，本批按ground-before-unit绘制，原z1400保留元数据但不声称完整遮挡一致；World也尚无全部原sprite.hidden/动态ui状态，兵营可见判定限于现有状态，不称完整controller1:1。
+
+243领域测试通过，新增原体型/offset/anchor/z、跟随/不写World、英雄/兵营快照死亡与重选回归。实际build marker专项五敌/英雄/真实建造兵营、死亡/切换、真实滚轮放大及缩回、暂停/手机/场景清理通过；受控spawn为展示证据非自然通关。初次测试钢铁未完成战役被原门控拒绝，补进度后又与英雄优先点击区重叠，最终用合法战役准备期；缩放后波旗屏外先实际wheel缩回，不force。完整九模式三战役三星、enemy/hero-infobar与UI、公开0.2.60 UI均通过。标记截图已查看，未取得原版同输入同步证据，整体未1:1。

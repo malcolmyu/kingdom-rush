@@ -93,3 +93,5 @@ print(json.dumps({'levels':len(levels),'frames':len(frames),'sheets':len(sheets)
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_fonts.py'),'--apk',opt.apk],check=True)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_markers.py')],check=True)
