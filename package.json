@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.61",
+  "version": "0.2.62",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -62,7 +62,8 @@
     "test:battle-powers": "node tests/battle-powers-browser.mjs",
     "test:hero-infobar": "node tests/hero-infobar-browser.mjs",
     "test:enemy-infobar": "node tests/enemy-infobar-browser.mjs",
-    "test:selection-markers": "node tests/selection-markers-browser.mjs"
+    "test:selection-markers": "node tests/selection-markers-browser.mjs",
+    "test:power-infobar": "node tests/power-infobar-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

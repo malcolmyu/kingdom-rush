@@ -601,3 +601,11 @@ SelectionMarkers位于展示层，快照与过滤仅维护引用；Renderer在�
 243领域测试通过，新增原体型/offset/anchor/z、跟随/不写World、英雄/兵营快照死亡与重选回归。实际build marker专项五敌/英雄/真实建造兵营、死亡/切换、真实滚轮放大及缩回、暂停/手机/场景清理通过；受控spawn为展示证据非自然通关。初次测试钢铁未完成战役被原门控拒绝，补进度后又与英雄优先点击区重叠，最终用合法战役准备期；缩放后波旗屏外先实际wheel缩回，不force。完整九模式三战役三星、enemy/hero-infobar与UI、公开0.2.60 UI均通过。标记截图已查看，未取得原版同输入同步证据，整体未1:1。
 
 标记最终取样fixture同时设置原道路节点与对应route.lengths距离，避免仅改x/y后下一步回到入口、被波旗覆盖。marker-browser-ground-final2完整exit0；这是测试证据修正，不改变运行时或部署包。
+
+## 0.2.62 源依据纠正与技能show_text
+
+本轮原计划假定空塔基缺底栏说明，源证据不支持该前提：tower_holder_elven_woods/faerie_grove都没有info，game_gui748–793遇无info直接hide。当前空塔基隐藏信息栏是源行为，不添加“可建造防御塔”或伪造描述；四类基础建造/建成选中/出售后空地状态按真实规则回归。
+
+真实show_text调用位于PowerButton.set_mode(selected)（game_gui约2950/日志10698–10722），使用i18n_title/i18n_desc；取消/进入cooldown隐藏。原setup_hero约1800/日志6960–6978会将第3按钮覆为HERO_ELVES_ARCHER_HAIL_MENUBOTTOM_NAME/DESCRIPTION，不用泛称英雄技能。powerInfobarData从原powers元数据/英雄模板导原key，read_tower_menu导STATS_TYPE_TEXT9，extract_fonts新增POWER_*原中文。Infobar渲染原text_only和type9，标题hud10/背景shape、说明hud10/金色/line_height.9，复用既有CJK实际测高换算，保留原.4outback与font fit；测高/基线仍浏览器近似。
+
+244领域测试通过，新增无info塔基与三技能静态/动态原文规则。最终build目录power-infobar专项正常四塔购买/原退款/重选/空地隐藏、三项选中说明/重复点取消/Escape/暂停/原敌通知打开清选择关闭不自动显示/手机/重入通过；真实施法cooldown专项battle-powers、hero-infobar、23Tips、本地UI与完整九模式三战役三星、公开0.2.61 UI均通过。通知图标用实际鼠标中心点击，无force。截图已查看，是当前取样非原版同步像素验收。World、价格、升级、技能时序/伤害不变，整体未1:1。

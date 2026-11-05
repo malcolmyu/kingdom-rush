@@ -7,4 +7,4 @@ local literals={};local function visit(fn)local ok,info=pcall(u.funcinfo,fn);if 
 visit(assert(loadfile(base..'all-phone/game_gui.lua')))
 KR_TARGET='phone'
 dofile(base..'all/constants.lua')
-io.write(encode({hudScaleSteps=HUD_SCALE_STEPS,reference={width=GUI_REF_W,height=GUI_REF_H,minAspect=MIN_SCREEN_ASPECT,maxAspect=MAX_SCREEN_ASPECT},stats={immuneAll=DAMAGE_ALL_TYPES,physical=DAMAGE_PHYSICAL,magical=DAMAGE_MAGICAL,soldier=STATS_TYPE_SOLDIER,enemy=STATS_TYPE_ENEMY,tower=STATS_TYPE_TOWER,barrack=STATS_TYPE_TOWER_BARRACK,mage=STATS_TYPE_TOWER_MAGE},menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))
+io.write(encode({hudScaleSteps=HUD_SCALE_STEPS,reference={width=GUI_REF_W,height=GUI_REF_H,minAspect=MIN_SCREEN_ASPECT,maxAspect=MAX_SCREEN_ASPECT},stats={text=STATS_TYPE_TEXT,immuneAll=DAMAGE_ALL_TYPES,physical=DAMAGE_PHYSICAL,magical=DAMAGE_MAGICAL,soldier=STATS_TYPE_SOLDIER,enemy=STATS_TYPE_ENEMY,tower=STATS_TYPE_TOWER,barrack=STATS_TYPE_TOWER_BARRACK,mage=STATS_TYPE_TOWER_MAGE},menus=dofile(base..'kr3/data/tower_menus_data.lua'),literals=literals}))
