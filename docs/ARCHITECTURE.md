@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+`tower-ranges.mjs` 由当前菜单项和本局克隆模板派生只读范围描述，空塔基使用 source.template，已建塔使用 key。预览按 action_arg 的 build_name 找真实模板，升级攻击范围与兵营集结范围分开；没有选择时无虚构160圈。Renderer用原四象限图、独立带符号x/y比例、ASPECT与既有世界/相机链绘制，不插入World实体。`extract_ranges.py` 只读取原声明和constants生成range-data.mjs，接全量提取。
+
 `desktop-options.mjs` 只替换地图设置分支，按需读取独立 options 图集和 desktop 字体；标题/存档页设置保留。MapOptionsView 拥有滑杆 pointer capture、原图帧、ResizeObserver 与关闭事务；请求号、槽位及场景版本防止异步资源或旧关闭回调覆盖新书页/窗口。复用 BookMotion 时显式传入570参考高度，书页默认720不变。退出先立即清理设置，再进入既有 returnToMenu 导演门。
 
 `audio-settings.mjs` 管理独立全局 volume_fx/volume_music（0..1），Campaign 将它们乘原音轨/效果 gain 并同步已有 Audio。没有全局配置的旧存档保留原 sound/music 布尔语义；首次使用原滑杆才捕获旧有效状态并启用全局音量，之后跨槽同步，不由新槽默认静音覆盖。设置关闭持久化，未改变 World。MapDifficultyView 复用设置资源与关闭事务，前三档调用 chooseMapDifficulty 写入当前槽既有 difficulty；第四档玩法未实现而禁用。设置先完成关闭再打开难度页，取消返回 false 阻止旧续接；难度选择保存后按源回地图，重新设置再读当前槽。

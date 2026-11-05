@@ -1,5 +1,19 @@
 # 动画保真记录
 
+## 0.2.76 原四象限选塔/预览/升级/集结范围
+
+原game_gui1950–1974 show_tower_range用decal_tower_range/decal_rally_range，pos=实体+tower.range_offset；4sprite按奇偶x正负、前后二个y正负，scale.x=±range/actual_radius，scale.y=±ASPECT*range/actual_radius。原constants ASPECT=.7，模板actual_radius137、anchor1/0、alpha255、z3500、原range_circle/rally_circle图已在go_decals，非CSS猜椭圆。模板没有range显隐Tween，1975–1984 hide直接移除，展示层按同即时语义派生，不插World实体/消耗RNG。
+
+原3117–3279 show先清所有范围，仅attacks.range显示当前塔；空holder无范围，兵营初选也不画攻击圈。3513–3608第一次tw_upgrade读取action_arg；preview先经build_name，再用attacks.range画upgrade或barrack.rally_range画rally。当前攻击圈与升级圈同时保留；切到sell移除upgrade。3643–3734集结命令直接用当前barrack.rally_range，Escape/取消/通知/暂停/场景清理后消失。选中派生数据只读World本局模板（含已买天赋），不改射程/伤害/金币/XP/冷却/寻路。
+
+新tower-ranges.mjs/range-data.mjs与extract_ranges.py/read_range_rules.lua可复现原声明。四象限单独Canvas transform独立处理x/y，避免现有entity单标量缩放不适合该模板；沿同textureScale/game_scale/相机绘制。原z3500保留元数据，当前在单位/效果之后的专门绘制阶段，完整所有sprite全局z排序仍未恢复，不能称所有遮挡逐像素一致。其他技能瞄准圈/出口圈未在本批改写。
+
+首轮browser发现真实空slot.key为null、原模板在source.template，已修读取并把纯测试改成真实结构，不改World。修正前范围/预览/九模式失败结果保留，修后重构建重跑。281 Node通过，新增三项holder无圈/四build_name与当前升级rally分支、四象限anchor/alpha/比例且模板不变；不因纯fixture通过跳浏览器。
+
+实际最终build范围专项、原preview专项（含真实首波塔通知/敌通知）、UI及完整九模式三战役三星/存档手机均正常exit0，第三关自然XP4705/20生命。新专项从真实Canvas sprite调用记录四象限，覆盖无钱可预览不成交、买70/升110/准备全退180、兵营rally、缩放、暂停/场景清理；解锁stage3与零金币是UI受控fixture，独立九模式天然XP链另过。一次新专项读取上一个RAF的range_circle而误断言兵营rally_circle，已等待新类型完成绘制，未改产品。范围升级图取样是准备期塔仍建造中的当前状态，不能当原版同镜头。
+
+build947文件54,081,746B；100ms/1.5MBps/cacheoff冷路径14,785,872B/15.173s<15MB流量预算，无新图下载（原go_decals已预载），未调预算/降质。公开Pages一次manifest确认0.2.75且完整UI通过，新推送后不轮询。最终log ranges-tests-final.log/ranges-browser-final2.log/ranges-preview-final.log/ranges-ui-final.log/ranges-performance-final.log/ranges-campaign-final.log；tower-ranges-upgrade.png/mobile.png已查看，当前取样非原版同步像素证据，整体未1:1。
+
 ## 0.2.75 原桌面难度选择连续分支
 
 原共用desktop-screen_map DifficultyButton6479起/DifficultyView6689附近与KR3混合源对应只读比较：wide1380×720、原四张340×420插画/三层框、kr3_title_bg，卡中心690+(2i-5)*162.5/y340，按下.98、hover原框与glow，原h46标题/body20说明，标题/底部提示原坐标。只取固定源声明与PNG SHA验证原图，新增9图均无损RGBA验证；设置资源保持独立lazy，不进入首图关键下载。原共用源第四档解锁条件与mod改成已有一关不一致，未复制mod条件/玩法。
