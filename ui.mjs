@@ -11,7 +11,9 @@ export class NativeUI{
  image(key,node={},ref={x:693,y:320},extra=''){
   const asset=this.data.images[key];if(!asset)throw new Error('Missing original UI sprite: '+key);
   const p=node.pos_shown||node.pos||{x:0,y:0},a=node.anchor||{x:0,y:0},scale=node.scale||{x:1,y:1},w=asset.size[0]/2,h=asset.size[1]/2;
-  return `<img class="native-image" src="${asset.src}" alt="" draggable="false" style="${rectStyle(p.x-a.x,p.y-a.y,w,h,ref)};transform:scale(${scale.x},${scale.y});${node.r?`rotate:${node.r}rad;`:''}" ${extra}>`;
+  const transformed=!!(node.scale||node.r),position=transformed?rectStyle(p.x,p.y,w,h,ref):rectStyle(p.x-a.x,p.y-a.y,w,h,ref);
+  const transform=transformed?`scale(${scale.x},${scale.y}) rotate(${-node.r||0}rad) translate(${-a.x/w*100}%,${-a.y/h*100}%)`:'scale(1,1)';
+  return `<img class="native-image" src="${asset.src}" alt="" draggable="false" style="${position};transform-origin:0 0;transform:${transform}" ${extra}>`;
  }
  button(id,label,node,ref={x:693,y:320},extra='',text=''){
   const key=node.default_image_name||node.image_name,asset=this.data.images[key];if(!asset)throw new Error('Missing original UI button: '+key);
