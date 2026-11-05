@@ -4,9 +4,11 @@
 
 ## 模块边界
 
+`MapAmbient` 仅维护原地图装饰的UI时钟与可注入展示随机起点，首批恢复lake_water_sparks的24帧loop，位于背景与under遮挡图之间。暗角独立窗口图片层按desktopHudGeometry调整，不继承map-wrap拖动；viewport使用clip防原生scrollIntoView偏移。图片地址在节点创建时即提供，避免SceneTransition并发decode读取空src。destroy清装饰引用并移除窗口暗角，不修改World或进度。
+
 `DesktopMapUnlockSequence` 将桌面show_flags名义协程拆为绝对阶段/模式事件/可见星与翼章、道路和声音。它独立于旧phone MapUnlockSequence（.3点间隔仍保留），桌面用.4点间隔并按源gotstar/turnIron/newFlag切换。MapFlagMotion.present以phase key只在边界重置，避免每RAF覆盖动画或丢失原随机重播。transition图仅在真实获星/钢铁旗变化时加载。advanceDesktopMapClock只在开场一秒后对难度窗口作.5秒轮询，其他模态不暂停桌面协程；UI动画和World时钟分离，存档预算不在展示层修改。
 
-`MapFlagMotion` 拥有桌面旗帜独立UI时钟、模式、hover及.5点击锁，不引用World/RNG。原动画用ceil帧选择、非循环末帧保持和独立3..10秒重播；地图模态仅暂停原奖励时间线，旗帜时钟继续推进。DesktopMapScene在场景销毁时reset各旗并拒绝旧资源就绪回调。地图图集按关键帧/nostar/campaign/iron/transition无损分组，只预载当前旗需要的idle组；每个frame携带自己的sheet，固定PNG来源及逐裁图验证保持。
+`MapFlagMotion` 拥有桌面旗帜独立UI时钟、模式、hover及.5点击锁，不引用World/RNG。原动画用ceil帧选择、非循环末帧保持和独立3..10秒重播；桌面地图模态不暂停旗帜UI时钟，奖励只在初始难度检查点等待。DesktopMapScene在场景销毁时reset各旗并拒绝旧资源就绪回调。地图图集按关键帧/nostar/campaign/iron/transition无损分组，只预载当前旗需要的idle组；每个frame携带自己的sheet，固定PNG来源及逐裁图验证保持。
 
 `tower-ranges.mjs` 由当前菜单项和本局克隆模板派生只读范围描述，空塔基使用 source.template，已建塔使用 key。预览按 action_arg 的 build_name 找真实模板，升级攻击范围与兵营集结范围分开；没有选择时无虚构160圈。Renderer用原四象限图、独立带符号x/y比例、ASPECT与既有世界/相机链绘制，不插入World实体。`extract_ranges.py` 只读取原声明和constants生成range-data.mjs，接全量提取。
 

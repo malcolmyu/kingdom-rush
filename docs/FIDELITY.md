@@ -1,5 +1,17 @@
 # 动画保真记录
 
+## 0.2.79 原窗口暗角与湖面闪光
+
+原vanilla screen_map.init302–311与KR3对应411–420均在map之后、HUD之前向window加入map_vignette_small，pos(-2,-2)、scale(1.02*sw/imageW,1.02*sh/imageH)，事件向地图传播。本批用同原400×225图、独立窗口绝对层，随clamped desktop window resize而不继承map-wrap pan；不是CSS渐变。map-ambient.mjs封装window参考几何与展示时钟。原map_animations3的ma_lake_water_sparks在845/503、layer1、anchor半图面、loop1..24/30fps；共享load_map_animations1340与KR3对应均取整数UI随机起始帧/30，再由KUI ceil/zmod循环。动画在背景后、under遮挡图前，modal继续、destroy停止，不调用World RNG或改进度。
+
+原动画声明只读解析，新增24帧与暗角的固定源PNG SHA/声明/共享控制器SHA在tools/sources/desktop-map.json记录，extract_desktop_map.py接全提取。别把map_animations1的船与云误作KR3；KR3实际动画表从7326开始，map_decos3只有山体解锁。本批只恢复湖面一类，其他动画仍未移植。ambient独立无损图集444B、暗角988B，每裁图与原RGBA逐字节验证；未整包预载/降质/提高15MB预算。
+
+首轮新img在scene门调用decode时没有src，导致入图返回saves，已把地址在构造时立即设置，再重构建回归。手机专项还发现overflow:hidden允许scrollIntoView改变viewport原生scrollLeft/Top，暗角相对窗口被偏移；改desktop-map-viewport overflow:clip保裁切和既有transform pan，新增零原生滚动与固定位置断言。首轮入图失败的Node44527清理残留精确TERM收143；远程初轮Node44513也收143，不能称这两轮exit0。独立远程重跑先page.close后browser.close正常exit0。修decode后中间九模式正常exit0；最终clip构建又完整九模式正常exit0。手机早期测试hover使用越出固定游戏视口的y500，改合法y100；拖动后先真实wheel回原点再CDP点旗，无force/改门控。
+
+291Node全过，最终实际build map-ambient/UI/完整九模式三战役三星、存档与手机均正常exit0，3campaign自然XP4705/20生命，World/策略/RNG/金币/HP/冷却未改。专项源帧1/2/24边界与原pos/anchor调用、modal时钟、window/pan分离、窄屏/手机真实触摸入关与旧场景销毁均过；受控UI时钟非原版同步证据。截图desktop-map-ambient.png/mobile.png已查看，是当前样本。冷路径100ms/1.5MBps/cacheoff14,835,833B/15.109s<15MB，无整大atlas/OTF，不保证所有线上速度。
+
+build957文件54,422,045B；公开本轮manifest0.2.78，重复UI最终正常exit0（首次清理残留已如实记录），新推送不轮询。最终log map-ambient-tests.log/browser-complete.log/campaign-release.log/ui-release.log/performance-release.log，公开map-ambient-pages-ui-repeat.log。其他装饰/完整地图光效与Love shader/文字基线仍欠，整体非1:1。
+
 ## 0.2.78 原桌面旗奖励串行阶段
 
 新增desktop-map-unlock.mjs独立桌面profile，旧phone MapUnlockSequence保持不变。完整只读交叉vanilla desktop-screen_map MapView.show_flags1640–1770与KR3对应流程：初始wait1；获星disable(false)/.5，非iron gotstar65–89 restart/wait1/campaign端点，新增星每个1–17/.5；转iron前.5/turnIron135–150 restart/hold4/iron端点；heroic前.5/wing1–15/hold2；新道路每点wait.4（纠正旧.3），newFlag1–24/hold1/nostar端点/enable。KR3 map_data的map_decos3只见trigger21，首三关没有对应deco unlock额外等待；KR1 map_decos1的trigger2/3不能误套。本批未执行任何控制器。

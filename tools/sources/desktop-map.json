@@ -6386,6 +6386,798 @@
         164
       ],
       "alias": {}
+    },
+    "ma_lake_water_sparks_0001": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0002": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0003": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0004": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0005": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0006": {
+      "trim": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1376,
+        1079,
+        27,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0002",
+        "ma_lake_water_sparks_0003",
+        "ma_lake_water_sparks_0004",
+        "ma_lake_water_sparks_0005",
+        "ma_lake_water_sparks_0006"
+      ],
+      "a_name": "screen_map_animations-3.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0007": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0008": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0009": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0010": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0011": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0012": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0019": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0020": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0021": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0022": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0023": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0024": {
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1915,
+        1197,
+        30,
+        19
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0008",
+        "ma_lake_water_sparks_0009",
+        "ma_lake_water_sparks_0010",
+        "ma_lake_water_sparks_0011",
+        "ma_lake_water_sparks_0012",
+        "ma_lake_water_sparks_0019",
+        "ma_lake_water_sparks_0020",
+        "ma_lake_water_sparks_0021",
+        "ma_lake_water_sparks_0022",
+        "ma_lake_water_sparks_0023",
+        "ma_lake_water_sparks_0024"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0013": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0014": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0015": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0016": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0017": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
+    },
+    "ma_lake_water_sparks_0018": {
+      "trim": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1224,
+        248,
+        30,
+        14
+      ],
+      "alias": [
+        "ma_lake_water_sparks_0014",
+        "ma_lake_water_sparks_0015",
+        "ma_lake_water_sparks_0016",
+        "ma_lake_water_sparks_0017",
+        "ma_lake_water_sparks_0018"
+      ],
+      "a_name": "screen_map_animations-2.png",
+      "size": [
+        30,
+        19
+      ]
     }
   },
   "sheets": {
@@ -6395,7 +7187,9 @@
     "screen_map-4.png": "3fec3da8338e69d3a584c746a8fececa490c87158a7b805ea8486a3e2867de67",
     "screen_map-1.png": "22b9e472ac9ad6d14b6f778ab336388b805b00032c41a866db92a6847fd3d43d",
     "screen_map-2.png": "ce397fa0e03716df4c0faf2e426d95e0c6bc50a09f35741e424f108c0dc064db",
-    "screen_map-3.png": "8ced8abe451fa1596da2984bc7d56b30e6690a902f24bc3806ed2e1b0bb13a05"
+    "screen_map-3.png": "8ced8abe451fa1596da2984bc7d56b30e6690a902f24bc3806ed2e1b0bb13a05",
+    "screen_map_animations-2.png": "e92302716cc3605e91fee6b2ab108d8792084675b36e4d168ee0ac26e58b2ed4",
+    "screen_map_animations-3.png": "c143636e10a50412eefe6cad4a2ef40b8ceefd70fa4cc6b240346439fa8c53f4"
   },
   "flags": [
     {
@@ -6695,5 +7489,52 @@
     "roadInterval": 0.4,
     "newFlagHold": 1,
     "source": "vanilla desktop-screen_map.lua MapView.show_flags1640–1770, cross-checked KR3. KR3 map_decos3 has no first-three trigger unlock waits."
+  },
+  "ambient": {
+    "vignette": {
+      "image": "map_vignette_small",
+      "scale": 1.02,
+      "pos": [
+        -2,
+        -2
+      ],
+      "parent": "window",
+      "source": "screen_map init; vanilla line302 / KR3 line411"
+    },
+    "animations": [
+      {
+        "id": "ma_lake_water_sparks",
+        "pos": [
+          845,
+          503
+        ],
+        "layer": 1,
+        "loop": true,
+        "animation": {
+          "from": 1,
+          "to": 24,
+          "prefix": "ma_lake_water_sparks"
+        },
+        "anchor": [
+          0.5,
+          0.5
+        ],
+        "fps": 30
+      }
+    ],
+    "source": {
+      "declaration": "kr3-desktop/data/map_data.lua map_animations3",
+      "declarationSha256": "22ae271d8641406c5d2b9fa50a1777cd565eec8e6e600bb76a0f589fa200d749",
+      "controller": "MapView.load_map_animations loop random integer(from,to)/30; KView.animation_frame ceil modulo",
+      "scope": "vignette and lake water sparks only; other map animations remain unported"
+    }
+  },
+  "ambientEvidence": {
+    "atlasPath": "kr3-desktop/assets/images/fullhd/screen_map_animations.lua",
+    "atlasSha256": "95bc4276f4d130f60793709a09e400b5e67798b06d49ff11549f9fefb92b9fb9",
+    "sharedControllerSha256": "38c456e826645413f0226267c8a8e56d44c92c95957dc58197dae6e32550a2be",
+    "sharedMethods": "init vignette302-311; MapView.load_map_animations1340-1342",
+    "kr3Methods": "init411-420; MapView.load_map_animations1977-1979",
+    "note": "Only declaration crops and audited presentation behavior; no controller execution or mod gameplay imported."
   }
 }
