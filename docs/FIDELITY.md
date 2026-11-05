@@ -1163,3 +1163,19 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 首截图手动模拟后统计DOM尚未刷新，初取样top400而World真实300；最终截图前调用原updateBattle同步显示，没改交易或假造金钱。ewok-spear-flight/mobile最终已人工看，top300与100+100真实消费一致。没有浏览器产品故障待处理。shield/专用energy回归、完整天然原九模式/存档手机、UI与性能串行exit0。三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。公开一次manifest确认.106且spear-pages-ui正常exit0，新发布后不轮询CI。
 
 最终build1516files72,847,957B；冷100ms/1.5MBps/cacheoff14,718,269B，book6.215s/总15.215s230requests<15MB，无整atlas/OTF/新图下载，原塔compact1314帧2,122,316B保持。不是所有线上设备速度保证，新关自身预算仍未验，扩展7.3MB不能直接整图预载后抬预算/降质。logs spear-tests/build/browser-final/shield-regression/energy-regression/campaign/ui/performance/pages-ui均已收集。
+
+### 0.2.108 第5关暮光骚扰者四连射（后跳待接）
+
+完整仅读APK game_scripts8903–9021/14164–14167、SU2834–2895、scripts.arrow1989–2130与原mod_mark_flags声明/queue/dequeue/update，交叉缓存源码。原模板primary insert=enemy_basic，出生ranged.ts；严格time-ts>10才寻最近合法士兵。先原F_CUSTOM目标mark20/30秒，再shoot_start10帧、四轮shoot_loop5帧/每轮3/30出箭、shoot_end11帧。source loop没有读取repeat_cooldown字段，不能凭声明把四箭额外各等20帧。此专用直接loop调用不走generic ranged chance检查，因此未虚构开局chance1随机draw。start动画等待不提前被stun打断，loop中stun走end，end等待只death中断；模型协程调度仍适配，原同输入边界未认证。
+
+新harasser-data从数据-only模板reader提取mod_twilight_elf_harasser（controller stub），tools/extract_harasser.py/source JSON固定四原文件SHA并接完整extract_campaign。初扩展依赖闭包没包括动态脚本引用的此mod，原声明只有mark_flags/无render，本批不伪造贴图。queue立刻保留/置目标F_CUSTOM bit，源20/30严格过期、目标死亡或移除恢复旧bit，来源死不提前解；保留其他bans。当前只闭合此目标标记，完整通用modifier系统/重复来源调度未冒称完成。
+
+新harasser-arrow每箭insert先U.frandom选.5..26/30 flight，再ordinary arrow原from/to固定目标+hit_offset，predict_target_posfalse。g=-900抛物线/模拟tick last_pos切线、hide_radius6、原arrow图/anchor/trim/alpha/z3400，已有actorqueue共排，不改旧五敌torch/旧塔箭。strict22接触且目标活在本World，ordinary ranged unit_dodges调用边界（当前ewok adapter）成功才一次ceil(frandom20,30)实际物理伤HP，无torchimpact/burn；miss不假必中。已经发出的弹独立于来源；blood/pop/water miss贴花FX仍未全做，不称全部箭状态恢复。
+
+后跳dodge节点/地形门/解除阻挡/隐藏modifier与shadow shot仍未实现，当前新关源路径/native队列/insertID仍适配，不能据此宣称完整骚扰者或第5关可玩。当前生产仍前三关九模式，releaseReadyfalse/存档上限未改。
+
+399Node全过，7新纯测覆盖出生strict10/no额外chance RNG、10/5/11原动画四箭、target mark恢复/来源死亡、第二骚扰者选目标过滤/已提交volley不被新blocker硬打断、stun职责、原随机flight抛物线/伤害无burn、miss/暂停/旧敌无新状态。actualbuild test:harasser从真实World.spawn/step触发四箭，捕Canvas原harraser start/loop/body与arrow q/alpha、绘制前后模拟快照不变、四箭计数/原随机flight/真实hero损血无burn、mark过期、真实pause/zoom/mobile/map清理通过。受控位置与模拟时钟不是自然第5关通关或原版同步像素证据。截图harasser-volley/mobile已人工看，目标hero与预建兵营重叠处为受控fixture，未冒关卡完整层级验收。
+
+初包actualbuild1518files72,852,883B；harasser-browser、spear/shield回归与harasser-campaign→ui→performance串行全部正常exit0，原天然9模式/存档手机全过，三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。公开一次manifest确认.107，harasser-pages-ui正常exit0，新推送不轮询CI。本批无浏览器失败/挂起Node。冷100ms/1.5MBps/cacheoff14,722,915B、book7.167s/总16.209s232requests<15MB，无新图/整atlas/OTF；原塔compact1314帧2,122,316B不变，不保证所有线上线路速度；新关自身预算未验。初source查mod缺失与按错误拼写harasser找不到动画已在实现前核对原prefix=harraser/动态mod声明修正，未用占位/伪图或改源时序。
+
+最终源数据重提时确认Lua表键顺序不稳定，提取器改为固定排序输出harasser-data/source JSON，数据值不变；最终web与build数据模块逐字节一致。重建后399Node与harasser-browser-final、增强箭弹实际Canvas旋转矩阵的harasser-browser-matrix、完整天然9模式harasser-campaign-final→ui-final→performance-final全部正常exit0。最终build1518files72,851,663B；冷100ms/1.5MBps/cacheoff14,721,695B，book6.283s/总15.338s232requests，无整atlas/OTF/新图，15MB预算不变且不保证普遍线路速度。原spear/shield回归也正常exit0，无run-owned挂起待收。

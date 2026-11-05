@@ -332,3 +332,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `ewok-shield.mjs`只在新小熊的攻击调用边界执行tryEwokDodge，与原半血function-valued模板审计分开记录；不修改hurtDefender为全局免伤。盾挡phase和随机职责归World，Renderer经ewokShieldPose只读取原动画，hold保留最后一帧而非伪循环。持续burn与专用energy仍直接伤害；投矛现有适配保持，尚非完整原预测抛物线。
 
 `ewok-spear.mjs`为新小熊独立创建type=ewok-spear固定预测落点/原抛物线状态，World新关每模拟tick记录实际运动速度供下一次插入预测；不会按RAF修改目标/朝向或消费随机。emit tick不更新新弹，之后按source while边界更新位置/tick切线，再按存活目标当前hit_offset严格接触，成功才消费ceil(frandom)并hurt。旧三关不增加motionVelocity字段，原其他projectile分支不变；native调度/完整ranged episode与未来目标dodge、血水FX仍为边界。
+
+`harasser.mjs`只为新enemy_twilight_elf_harasser插入ranged phase，原loop动画决定四箭节奏；World分派先于旧launchTorch且不回落旧火DOT。harasserMarks以目标对象记录source F_CUSTOM bit前值，原duration严格过期/目标死亡或移除后恢复；不混用局部id或来源生命周期。新箭拥有自身随机flight/固定落点/抛物线与tick朝向，成功接触才抽伤害，ordinary arrow的ewok ranged dodge在明确调用边界处理，不让hurtDefender全局免伤。Renderer按source phase纯读动画，原血/水/文字FX和原native IDs/协程/后跳dodge仍欠。

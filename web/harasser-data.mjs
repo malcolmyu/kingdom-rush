@@ -1,0 +1,2 @@
+// Original mod declaration, see tools/sources/harasser.json.
+export default {"mark":{"main_script":{"dequeue":{},"queue":{},"runs":1,"update":{}},"mark_flags":{"vis_bans":4096,"vis_flags":0},"modifier":{"duration":0.6666666666666666,"level":1,"replaces_lower":true,"resets_same":true,"ts":0,"use_mod_offset":true,"vis_bans":0,"vis_flags":0},"pos":{"x":0,"y":0},"sound_events":{},"template_name":"mod_twilight_elf_harasser"}};

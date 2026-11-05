@@ -1,0 +1,50 @@
+{
+  "limits": [
+    "Node/terrain-gated backjump and shadow shot pending",
+    "Original path movement, queued damage and insert ID schedule adapted",
+    "Blood/pop/water miss FX remain pending"
+  ],
+  "mark": {
+    "main_script": {
+      "dequeue": {},
+      "queue": {},
+      "runs": 1,
+      "update": {}
+    },
+    "mark_flags": {
+      "vis_bans": 4096,
+      "vis_flags": 0
+    },
+    "modifier": {
+      "duration": 0.6666666666666666,
+      "level": 1,
+      "replaces_lower": true,
+      "resets_same": true,
+      "ts": 0,
+      "use_mod_offset": true,
+      "vis_bans": 0,
+      "vis_flags": 0
+    },
+    "pos": {
+      "x": 0,
+      "y": 0
+    },
+    "sound_events": {},
+    "template_name": "mod_twilight_elf_harasser"
+  },
+  "ranges": [
+    "game_scripts.lua:8903-9021",
+    "game_scripts.lua:14164-14167",
+    "script_utils.lua:2834-2895",
+    "scripts.lua:1989-2130",
+    "scripts.lua:4183-4202",
+    "scripts.lua:4204-4216"
+  ],
+  "scope": "ranged start/four source loop animations/end, F_CUSTOM target mark, custom randomized flight arrow",
+  "sha256": {
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  }
+}
