@@ -1,0 +1,2 @@
+// Original game_gui.entity_at_pos1447–1479: strict rectangle, z descending / y ascending.
+export function enemyAtPoint(world,p){return world.enemies.filter(e=>{if(e.hp<=0||e.leaked)return false;const ui=world.template(e.key).ui,r=ui?.click_rect;if(!ui?.can_click||!ui.can_select||!r)return false;return p.x>e.x+r.pos.x&&p.x<e.x+r.pos.x+r.size.x&&p.y>e.y+r.pos.y&&p.y<e.y+r.pos.y+r.size.y;}).sort((a,b)=>(world.template(b.key).ui.z||0)-(world.template(a.key).ui.z||0)||a.y-b.y)[0]||null;}

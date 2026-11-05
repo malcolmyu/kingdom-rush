@@ -583,3 +583,11 @@ TB_POWER1/2/3按原TutorialBalloon初始化4430附近非world分支，GUI bottom
 Infobar选择英雄沿用现有targeting==='hero'（肖像/键盘/现有世界点击），绘制原with_health、士兵三属性和原name/portrait；动态HP血条从左端scaleX，等级变化读取World真实等级伤害/最大HP，不把源码算法放产品文案。真实移动成功后沿用现有选择取消，暂停/通知/场景切换原显隐与.4outback保留。完整原单位选择hitbox/跨命令持久选择、敌人选择与空地show_text仍未恢复，本批不称整个infobar完成。World/经验/战斗数值未动。
 
 239领域测试通过，新增受伤/死亡/源属性与真实flushHeroXp等级更新回归。build目录hero-infobar专项实际双击波旗/确认原塔3通知、选英雄/真实道路移动/取消、受控HP损伤与临近复活时钟/手机/重入通过；该受控死亡样本非正常通关。独立完整九模式（三战役三星）、原塔infobar与本地UI、公开0.2.58 UI均通过。截图已查看，仍为当前实现而非原版同输入同步像素证据，整体未1:1。
+
+## 0.2.60 当前五敌选择与实时信息栏
+
+原game_gui1447–1479 entity_at_pos按ui.can_click与click_rect严格边界收集，1464–1470按ui.z降序、世界y升序排序，1593–1616再检查can_select。enemyAtPoint恢复当前五种敌人间此规则，飞行者原click_rect.pos.y50也保留；目前仍先走既有英雄32近距分支，塔位/花由原有DOM处理，未统一所有实体的全局排序，不称完整原selection系统。技能/集结瞄准优先；选敌不改World或导航。showBuildMenu默认清敌选择，选敌路径显式保留；空地/Escape/换塔/技能/暂停/切场景清理，死亡/漏怪/移出World列表由Infobar清理。原entity_marker_controller尚未恢复。
+
+common/scripts448–492 enemy.get_info使用当前HP/护甲、近战damage_factor后ceil或远程bullet伤害、lives_cost和immune；game_gui817–866恢复enemy1的with_health、原肖像/中文、damage/armor/lives，physical非0优先物理icon4，仅physical0且magic非0用icon5；None与lives<=0的-、全免疫CArmor9按源处理。gnawer当前实际buff倍率也用于显示，不读百科base值。源模板的can_click/can_select与五个portrait已导出，未新增伪造详情文字；字体/基线仍浏览器近似。
+
+241领域测试通过，新增严格边界/飞行偏移/z和y重叠排序/死亡漏怪过滤，以及五种实时数据/增伤/护甲图标/None回归。实际build目录enemy-infobar专项正常Canvas点击、实时半血、死亡/漏怪、空地/Escape/暂停/换塔/键盘技能优先级/手机/重入通过；spawn位置/HP为受控fixture，不是天然通关。首次测试只等selected引用未等下一RAF数据重绘，修为同时等待原信息栏key；额外手机技能按钮被五个受控首见图标遮挡，改真实键盘1测试该路径，无force穿透。独立完整九模式三战役三星、hero-infobar、塔infobar与UI/公开0.2.59 UI通过。截图已查看，非原版同输入逐帧证据。整体仍未1:1。

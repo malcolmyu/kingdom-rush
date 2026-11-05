@@ -48,6 +48,7 @@ keys.update(f'upgrades_icons_{i:04}'for i in range(1,33))
 keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
 keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('portraits_hero_0001')
+keys.update(['portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','icon_0005'])
 keys.update(f'portraits_towers_{i:04}'for i in range(1,5))
 keys.update(['gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
