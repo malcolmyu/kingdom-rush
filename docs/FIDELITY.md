@@ -722,3 +722,17 @@ gear正常/hover/pressed、离开/cancel/blur回图及真实设置按钮接通�
 最终冷路径100ms/1.5MBps/cacheoff14,635,898B/14.841s，保持15MB预算，不是所有线上设备保证。公开Pages本轮一次manifest确认0.2.71，新gzip元数据真实线上启动及完整test:ui通过；0.2.72推送后不轮询CI。
 
 最终同一build完整九模式、三战役三星/存档手机回归exit0，3campaign自然XP4705/准备约5帧20生命，无改策略/战斗数值。最终日志map-hud-tests-final.log、map-hud-browser-complete.log、map-hud-director-final.log、map-hud-campaign-complete.log、map-hud-ui-final.log、map-hud-performance-final.log、map-hud-pages-ui.log。所有owned结果收集，整体仍未1:1。
+
+## 0.2.73 桌面地图底部真实入口、字体与提示
+
+原desktop screen_map.init三入口中心hero(sw-610,sh-90)/upgrades(sw-440,sh-90)/encyclopedia(sw-270,sh-90)，保留右侧成就sw-100原空位，不把三个按钮向右挤齐。原图226×184，anchor113/92，子label50/121、126×30、font18。原共同GGButton.initialize确定button角色、按下.95、default233/233/178、hover246/228/132；原zh-Hans font_subst映射button为JIMOJW×1.2。desktop-map-actions.mjs使用独立desktop角色，按实际GUI比例进行源物理字号取整与.5逻辑fit，未替换phone全局字体。JIMO兼容原件（仅去竖排表、横排原样）的所有按钮字形cmap存在，build subset由真实三按钮文案扩充；map资源门并行等待JIMO与图片，取消用既有owner验证，不加启动5faces门/默认字先测量。
+
+原normal/hover图hero1/2、升级10/11、百科7/8，hero portrait同226×184原0/0叠图；保持原encyclopedia→upgrades→hero插入顺序及交叠hit区。原GUIButtonCommon与真实heroRoom/upgrades/encyclopedia函数，点击提示即时hide、不沿用phone渐出。各入口没有假购买/新角色；技能点与升级星分别读真实skillPoints/availableStars，不混预算。原badge图52×48与62×58，中心hero+40/-45、upgrade+20/-50、Comic Book Italic22。共享原update明确stime+=dt*10，hero pulse .95+.05sin(stime)、upgrade .8+.05sin(stime)、hint .98+.02sin(stime*.5)，不是旧phone三角pulse/额外入场。控件源init直接显示，不套phone .5入场。
+
+原desktop升级提示与英雄提示为独立分支，可同显；英雄升级条件>=首阈值1300，首次实际展示保存map_skill_tip，兼容旧map_balloon_level_up_view已读值并同步写，避免旧存档重弹。hero新解锁仅支持真实Eridan，不给未实现Arivan造提示。原3张专用hint图/原中文、坐标、蓝标题Noto/body与正文lineheight从源读取；原图/按钮数据收在desktop-map.json actions并逐裁图/打包RGBA验证，按固定社区资产源/原共用源码交叉，非APK desktop提取。phone MapHeroHud与纯helper保留为旧profile；runtime改DesktopMapActions。旧map-hero browser按新边界/独立双提示/资源完成等待/横向pan更新，未伪造正常战役XP。
+
+GGShaderLabel p_glow的实际Love shader仍未完整实现，按钮使用明确黑描边近似（1.8*1080/768的参考厚度），font raster/基线/多行fit仍存在浏览器后端差异，不宣称逐像素一致。成就/完整desktop OptionsView/其他地图动画、vignette等仍未完成。预览截图为受控1300XP/六星UI验证，独立九模式用天然XP链，不把受控进度说成正常通关。
+
+272项Node全过，实际build test:desktop-map-actions（最终含原交叠区域命中hero优先）、原map-hero浏览器专项、test:fonts、test:ui与最终完整九模式三战役三星/存档手机均正常exit0。专项真实hero训练4→2点、六星预算买原1星天赋后6→5、三入口/重入/seen兼容/同时双提示/手机CDP触摸；源JIMO所有按钮cmap字形存在，兼容原件与部署subset Canvas逐像素和metrics一致。初版专项错误寻找升级页通用data-close，改点原tutorial-upgrades_done_button并实际购买，无产品门控改动。第一次campaign九模式断言全过后browser.close残留Node，已比daemon精确TERM owned30317并收集143；finally改先page.close再browser.close，最终独立完整九模式正常exit0，不冒称被TERM那次exit0。
+
+最终同网络冷路径100ms/1.5MBps/cacheoff14,744,507B/14.950s<15MB，未调高预算或降画质。公开Pages本轮一次manifest确认0.2.72且完整UI通过，0.2.73推送后不循环等CI。最终logs map-actions-tests-final.log、map-actions-browser-complete.log、map-actions-hero-final.log、map-actions-fonts.log、map-actions-ui-final.log、map-actions-campaign-final.log、map-actions-performance-final.log、map-actions-pages-ui.log。desktop-map-actions-native.png/mobile.png已人工查看，为受控UI进度非原版同输入逐帧像素证据，整体仍未1:1。

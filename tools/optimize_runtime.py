@@ -72,12 +72,14 @@ def optimize(out):
   if p.suffix not in ('.otf','.ttf'):continue
   font=TTFont(p,recalcBBoxes=False);before=font.getBestCmap();font_corpus=corpus
   if p.name=='JIMOJW.ttf':
-   # This face is used only for the book's drop capitals and wax-seal caption.
+   # This face serves book capitals/seal and the audited desktop map buttons.
    # Derive its complete glyph set from the published copy, not an arbitrary sample.
    strings=json.loads((out/'assets/fonts/catalog.json').read_text())['text']
    book=json.loads((out/'assets/book/catalog.json').read_text())
    capitals=[v[:1]for k,v in strings.items()if k.endswith('_HISTORY')or k in ['LEVEL_MODE_HEROIC_DESCRIPTION','LEVEL_MODE_IRON_DESCRIPTION']]
-   font_corpus=''.join(chr(i)for i in range(32,127))+''.join(capitals)+book['text']['BUTTON_TO_BATTLE_1']+book['text']['BUTTON_TO_BATTLE_2']
+   map_ui=json.loads((out/'assets/desktop-map/catalog.json').read_text())['hud'].get('actions',{})
+   action_text=''.join(map_ui.get('text',{}).get(b['key'],'')for b in map_ui.get('buttons',[]))
+   font_corpus=''.join(chr(i)for i in range(32,127))+''.join(capitals)+book['text']['BUTTON_TO_BATTLE_1']+book['text']['BUTTON_TO_BATTLE_2']+action_text
   required=set(map(ord,font_corpus))&before.keys()
   metrics=(font['hhea'].ascent,font['hhea'].descent,font['head'].yMin,font['head'].yMax)
   options=subset.Options();options.recalc_bounds=False;options.name_IDs=['*']
