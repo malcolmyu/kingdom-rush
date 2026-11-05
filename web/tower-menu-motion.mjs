@@ -1,0 +1,2 @@
+// Source TowerMenu.show3117–3279 / hide3281–3315: absolute scale, parent geometry already max-scaled.
+export function towerMenuFrames(source,open,current={scale:1,opacity:1}){const m=source.motion,max=source.root.max_scale;return open?[{scale:m.initialScale/max,opacity:m.hideAlpha},{scale:1,opacity:m.openAlpha}]:[{scale:current.scale,opacity:current.opacity},{scale:m.hideScale/max,opacity:m.hideAlpha}];}

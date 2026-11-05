@@ -609,3 +609,11 @@ SelectionMarkers位于展示层，快照与过滤仅维护引用；Renderer在�
 真实show_text调用位于PowerButton.set_mode(selected)（game_gui约2950/日志10698–10722），使用i18n_title/i18n_desc；取消/进入cooldown隐藏。原setup_hero约1800/日志6960–6978会将第3按钮覆为HERO_ELVES_ARCHER_HAIL_MENUBOTTOM_NAME/DESCRIPTION，不用泛称英雄技能。powerInfobarData从原powers元数据/英雄模板导原key，read_tower_menu导STATS_TYPE_TEXT9，extract_fonts新增POWER_*原中文。Infobar渲染原text_only和type9，标题hud10/背景shape、说明hud10/金色/line_height.9，复用既有CJK实际测高换算，保留原.4outback与font fit；测高/基线仍浏览器近似。
 
 244领域测试通过，新增无info塔基与三技能静态/动态原文规则。最终build目录power-infobar专项正常四塔购买/原退款/重选/空地隐藏、三项选中说明/重复点取消/Escape/暂停/原敌通知打开清选择关闭不自动显示/手机/重入通过；真实施法cooldown专项battle-powers、hero-infobar、23Tips、本地UI与完整九模式三战役三星、公开0.2.61 UI均通过。通知图标用实际鼠标中心点击，无force。截图已查看，是当前取样非原版同步像素验收。World、价格、升级、技能时序/伤害不变，整体未1:1。
+
+## 0.2.63 TowerMenu原绝对缩放幅度
+
+只读jit函数常量补证game_gui3117–3279 show初始scale(.6,.6)/alpha0，.12outquad到max_scale.88/alpha1；3281–3315 hide table明确(.6,.6)/alpha0，取消旧timer后从当前姿态关闭。read_tower_menu导show初始数字常量与hide表到motion元数据，未调用游戏控制函数。之前host几何已乘.88却又直接用归一化.6导致绝对.528，现towerMenuFrames将绝对.6除以max_scale一次，图面与子hitbox同变换；静止仍.88，tooltip为独立原200GUI宽不继承圆环动画。
+
+hide在取消旧WAAPI前采当前scale/opacity，new show按源重新.6/0；回调带动画对象身份保护。TowerMenu同一实体内容/resize重绘保留进行中动画与inert，不再取消后提前可点；transition显式取消旧动画，减少动态偏好仍直接终点。原.12outquad、9位置、fit相机、两次确认/真实退款与World数值不变。
+
+246领域测试通过，新增源绝对幅度/中断关闭与new show重置规则。实际build专项0/60/120ms图面和子hitbox、alpha、中断关闭/重开、真实resize重绘门控、tooltip、购买升级出售、手机/暂停/场景清理通过；完整九模式三战役三星、原tower-menu/scale/UI与公开0.2.62 UI通过。早期专项点不可操作按钮会落空地取消菜单（无扣款），取样改重新选择后测；再次点同塔原产品会取消，重绘专项改用真实resize，不为测试改该行为。截图已人工查看，为受控展示时间取样而非原版同输入逐帧证据，整体仍未1:1。
