@@ -334,3 +334,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `ewok-spear.mjs`为新小熊独立创建type=ewok-spear固定预测落点/原抛物线状态，World新关每模拟tick记录实际运动速度供下一次插入预测；不会按RAF修改目标/朝向或消费随机。emit tick不更新新弹，之后按source while边界更新位置/tick切线，再按存活目标当前hit_offset严格接触，成功才消费ceil(frandom)并hurt。旧三关不增加motionVelocity字段，原其他projectile分支不变；native调度/完整ranged episode与未来目标dodge、血水FX仍为边界。
 
 `harasser.mjs`只为新enemy_twilight_elf_harasser插入ranged phase，原loop动画决定四箭节奏；World分派先于旧launchTorch且不回落旧火DOT。harasserMarks以目标对象记录source F_CUSTOM bit前值，原duration严格过期/目标死亡或移除后恢复；不混用局部id或来源生命周期。新箭拥有自身随机flight/固定落点/抛物线与tick朝向，成功接触才抽伤害，ordinary arrow的ewok ranged dodge在明确调用边界处理，不让hurtDefender全局免伤。Renderer按source phase纯读动画，原血/水/文字FX和原native IDs/协程/后跳dodge仍欠。
+
+`harasser-jump.mjs`负责新harasser的unit_dodges近战调用与原jump/shadow phase，独立于.108四连射；dodge pending等待既有ranged协程结束，源节点校验失败也保留原已消费的cooldown。声明式harasser-jump-data预计算原grid查询在各中心路径节点的Faerie结果（不是图片猜路），runtime按viewportAspect/source路径margin校验节点。跳出结束才写原lane位置/d，warp tick motionVelocity强制0以免预测弹误认瞬移速度。F_ALL作用在当前塔/兵/英雄新目标获取，hurt不加全局豁免；技能AoE/全modifier生产仍适配。World实例拥有phase，无timer/跨场景cache；旧关不新增harasser状态或RNG。

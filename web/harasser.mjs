@@ -3,7 +3,7 @@ import{inEllipse}from'./spells.mjs';
 import{tryEwokDodge}from'./ewok-shield.mjs';
 const members=w=>[...w.soldiers,w.hero].filter(Boolean);
 const flags=(w,u)=>({flags:u.visFlags??w.template(u.key).vis?.flags??0,bans:u.visBans??w.template(u.key).vis?.bans??0});
-export function insertHarasser(w,e){if(e.key==='enemy_twilight_elf_harasser')e.harasser={rangedAt:w.time,phase:null};}
+export function insertHarasser(w,e){if(e.key==='enemy_twilight_elf_harasser')e.harasser={rangedAt:w.time,phase:null,node:0};}
 export function updateHarasserMarks(w){if(!w.harasserMarks)return;w.harasserMarks=w.harasserMarks.filter(m=>{if(m.target.hp>0&&members(w).includes(m.target)&&w.time-m.at<=DATA.mark.modifier.duration)return true;m.target.visBans=((m.target.visBans??0)&~DATA.mark.mark_flags.vis_bans)|m.previous;return false;});}
 function mark(w,target){const bit=DATA.mark.mark_flags.vis_bans,bans=flags(w,target).bans;target.visBans=bans|bit;(w.harasserMarks??=[]).push({target,at:w.time,previous:bans&bit});}
 const duration=(w,e,name)=>w.animationDuration(w.template(e.key).render.sprites[0].prefix,name);
@@ -28,7 +28,7 @@ export function updateHarasser(w,e){
 export function launchHarasserArrow(w,e,target,a){
  const template=w.template(a.bullet),b=template.bullet;
  // Dedicated insert randomizes flight before scripts.arrow checks target existence.
- const range=template.flight_time_range,time=range[0]+w.random()*(range[1]-range[0]);if(!members(w).includes(target))return null;
+ const range=template.flight_time_range,time=range?range[0]+w.random()*(range[1]-range[0]):b.flight_time;if(!members(w).includes(target))return null;
  const o=a.bullet_start_offset[0],hit=w.template(target.key).unit.hit_offset,x=e.x+(e.actionFlip?-1:1)*o.x,y=e.y+o.y,tx=target.x+hit.x,ty=target.y+hit.y;
  const shot={id:++w.serial,type:'harasser-arrow',bullet:a.bullet,source:e.id,target,sx:x,sy:y,x,y,tx,ty,elapsed:0,duration:time,g:b.g,createdAt:w.time,rotation:0,velocity:{x:(tx-x)/time,y:(ty-y-.5*b.g*time*time)/time}};w.shots.push(shot);return shot;
 }

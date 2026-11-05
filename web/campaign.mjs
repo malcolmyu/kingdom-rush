@@ -94,7 +94,7 @@ export class Campaign{
    try{
     const data=await this.repo.level(id,mode);if(!current())return false;
     const top=this.menuProfile==='phone'?null:loadDesktopBattleTop(this.repo);await this.renderer.loadLevel(data,current);const topData=top?await top:null;if(!current())return false;this.desktopBattleTopData=topData;
-    this.world=new World(data,{difficulty:this.progress.options.difficulty,heroXp:this.progress.heroXp,heroSkills:this.progress.heroSkills,upgrades:this.progress.upgrades});
+    this.world=new World(data,{viewportAspect:this.renderer.width/this.renderer.height,difficulty:this.progress.options.difficulty,heroXp:this.progress.heroXp,heroSkills:this.progress.heroSkills,upgrades:this.progress.upgrades});
     this.world.paused=true;this.lastSound={};this.speed=1;this.accumulator=0;this.last=performance.now();
     this.transition('battle',true);this.makeBattleControls();await this.battleTop.readyPromise;if(!current())return false;this.updateBattle();this.renderer.draw(this.world);return true;
    }catch(e){if(current()){this.renderMap(true);this.notify(e.message);}return false;}

@@ -1,0 +1,64 @@
+{
+  "data": {
+    "faerie": {
+      "4": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "5": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "6": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    "rules": {
+      "all": 4294967295,
+      "endMargin": 10,
+      "faerie": 1024,
+      "noDodge": 33554432,
+      "validMargin": 1,
+      "validTopMargin": 2
+    }
+  },
+  "limits": [
+    "Path distance model and native queue scheduling remain adapted",
+    "Source viewport defaults to canonical4:3 unless caller passes viewportAspect; nonzero safearea not implemented",
+    "Dynamic terrain mutation and full modifier/auras lifecycle still pending",
+    "Power/AoE target filtering remains the existing adapter; current new-target bans cover tower/soldier/hero acquisition"
+  ],
+  "scope": "melee dodge trigger, source node and Faerie checks, jump phases/unblock/visibility restore/shadow arrow",
+  "sha256": {
+    "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "all/game.lua": "2595da5a3466fa190abe38bee6054cd58e5ec774b8711dfee56f9a21db790c18",
+    "all/grid_db.lua": "2278ef07d733da41d2e75c124803dedaaec9c6df1af8c272f4c0081d810bc22e",
+    "all/path_db.lua": "2fb9f1ed4c4f6216d40b9969f790cf96991c94e3e7f089cb2e8cc89ed389bc5c",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/data/levels/level04_grid.lua": "f1872f77142d7d2a2695a03e61a449e51c33d32f846fb41c5ea36f979155b371",
+    "kr3/data/levels/level04_paths.lua": "420c79aea3e0d3b262002d1585fe9324a410db5ffe0e5b446a55cb0eaabd7ec3",
+    "kr3/data/levels/level05_grid.lua": "c145da2b60ed3e4826a46e967facb14ba1f1fa41f7bac2e41ff675a7c97aeb60",
+    "kr3/data/levels/level05_paths.lua": "dfc241da9632cd362de5171a7b6bd2844e6007e729c0a28a25ebad2507dc0bb4",
+    "kr3/data/levels/level06_grid.lua": "e940cbff2cf2f07d6a655a8ddd2a22cb519ea6850dd03cd47898e39aee192ac7",
+    "kr3/data/levels/level06_paths.lua": "c76cf18722f0344ecbd9bcc3e4bf92f140297d600489174cab530ebf9fc96ab3",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74"
+  }
+}

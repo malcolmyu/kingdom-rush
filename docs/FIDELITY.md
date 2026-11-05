@@ -1179,3 +1179,17 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 初包actualbuild1518files72,852,883B；harasser-browser、spear/shield回归与harasser-campaign→ui→performance串行全部正常exit0，原天然9模式/存档手机全过，三个campaign20命、第三campaign入关自然XP4705，末XP继续增长。公开一次manifest确认.107，harasser-pages-ui正常exit0，新推送不轮询CI。本批无浏览器失败/挂起Node。冷100ms/1.5MBps/cacheoff14,722,915B、book7.167s/总16.209s232requests<15MB，无新图/整atlas/OTF；原塔compact1314帧2,122,316B不变，不保证所有线上线路速度；新关自身预算未验。初source查mod缺失与按错误拼写harasser找不到动画已在实现前核对原prefix=harraser/动态mod声明修正，未用占位/伪图或改源时序。
 
 最终源数据重提时确认Lua表键顺序不稳定，提取器改为固定排序输出harasser-data/source JSON，数据值不变；最终web与build数据模块逐字节一致。重建后399Node与harasser-browser-final、增强箭弹实际Canvas旋转矩阵的harasser-browser-matrix、完整天然9模式harasser-campaign-final→ui-final→performance-final全部正常exit0。最终build1518files72,851,663B；冷100ms/1.5MBps/cacheoff14,721,695B，book6.283s/总15.338s232requests，无整atlas/OTF/新图，15MB预算不变且不保证普遍线路速度。原spear/shield回归也正常exit0，无run-owned挂起待收。
+
+### 0.2.109 骚扰者后跳闪避与影袭连续流程
+
+仅读APK game_scripts8903–9021完整跳跃分支、unit_dodges138–157、enemy_basic494–559（没有重置dodge.ts字段）、原grid_db193–199 ceil/clamp与cell_size16、path_db原节点/visible margins10/1/2、game.resize70–170可见范围。tools/extract_harasser_jump.py/read_harasser_jump.lua固定原game/constants/grid/path/scripts/script_utils/game_scripts与三grid/path SHA，声明读取不执行控制器，接完整extract_campaign。原4–6初始grid在中心lane路径节点没有Faerie1024位，预计算仍保留该精确查询结果；纯测注入阻挡节点只验证拒绝门，不伪称原图有Faerie。当前动态地形/invalid-ranges生产链尚未全恢复。
+
+近战兵/英雄原命中调用接新harasser helper，严格time-ts>7、stun/freeze适配、requires_magic、NO_DODGE与rangedfalse先门控，再一次chance RNG；dodge.ts沿原模板0非出生时钟（区别于rangedAt）。source controller随后清active/设ts，整数随机-18..-10节点并clamp(nodeslimit10,endnode-10)，无效或lane1中心Faerie拒绝但cooldown/随机已消费。源source节点近距strict<2*speed*dt、每tick最多前进一个的职责在现World路程模型中跟踪，非完整原native path scheduler。可见节点按源viewport width ceil/ref768/clamp4:3..16:9/居中1024和pan_extension推导，Campaign传初始viewportAspect，直接World默认4:3；非零safearea仍未支持，未称整个viewport/native像素完成。
+
+成功先解除士兵/英雄近战阻挡与未提交近战攻击，保留已发/待ranged弹，source bans备份后F_ALL、已知gnawer/burn图面随jump隐藏但DPS不关；jumpOut14帧完才原lane/node/d换位，再jumpIn14帧，随后恢复bans/清_bans/显示已有modifier图。warp tick velocity置0，不能当下一发预测的巨大移动速度。Source active dodge等待既有ranged phase完成/被stun时等待，不凭感觉直接砍掉四连射；移除World即清理，无异步timer或跨场景缓存。
+
+恢复后最近合法shadow_shot目标，原26帧别名动画、14/30释放；arrow_twilight_elf_harasser_shadowshot走普通arrow固定flight22/30，不是.108随机flight插入，25–35原实际物理伤害/strict22/no burn。源ranged=false意味着不能闪避远程，并非全免伤；当前F_ALL只闭合塔/兵/英雄新目标选择，World.hurt没有新全局免伤，已发/直接伤害照原现路径处理。技能AoE目标链、完整native queued damage/IDs/特殊死亡/全modifier-auras隐藏链仍欠，未借本批称全harasser/native视觉认证，更未开放4–6。
+
+406Node全过（7新纯测）：strict7与原0时钟/flags/magic/RNG、节点/viewport/Faerie拒绝、先jumpOut后迁移/14+14帧/flags恢复/shadow正常22/30箭与25–35伤害、拒绝消耗cooldown/node RNG、ranged/stun等待/非全局免伤/暂停、真实hero melee触发与warp速度0/World隔离。actualbuild test:harasser-jump由真实World.updateHero起近战并触发dodged，验证敌HP未因该近战减少、解除combatTarget、原节点/14帧phase/跳入Canvas源q/alpha/绘制只读、shadow箭、真实pause/zoom/mobile/map清理。受控位置/节点与模拟时钟不是自然第5关或原版同步像素验收。harasser-jump-in/shadow-shot/mobile已人工看；原四连射/spear/shield回归与原天然完整九模式/UI/性能均独立收集。
+
+最终406Node、jump-browser-final（额外在F_ALL跳跃中直接hurt验证HP仍减少）、原volley/spear/shield回归、jump-campaign天然原9模式/存档手机→jump-ui→jump-performance全部正常exit0。三个campaign20命、第三campaign入关自然XP4705，末XP继续增长，旧数值/策略未改。最终build1520files72,858,659B；冷100ms/1.5MBps/cacheoff14,728,391B、book6.300s/总15.340s234requests<15MB，无新图/整atlas/OTF、不抬预算或降质，旧塔compact1314帧2,122,316B保持，不保证普遍线路速度；新关自身预算仍未验。公开一次manifest确认.108，首UI一次projectile-sprites.mjs HTTP503收exit1，独立不改门控/超时/产品的jump-pages-ui-repeat最终exit0，不拿首失败冒通过。全部结果已收集，无挂住浏览器待处理。当前仅已知塔/兵/英雄新目标获取按jump bans过滤，powers/AoE仍为既有适配，未称整个F_ALL/native damage链已全恢复。
