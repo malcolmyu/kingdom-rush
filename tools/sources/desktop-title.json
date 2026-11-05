@@ -5,7 +5,7 @@
     "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
     "controllerSha256": "adeb6cdb24ad5d5d33b751ae7393188e2a061b2855c917e427bb8f6c8b903752",
     "layoutSha256": "2b5d9fbcbc01a017410b2e6a0dda6b535b9b9308b42ea5662bca45396e5da2d8",
-    "scope": "Only original banner and Chinese main buttons. Background/logo and slot panel remain phone profile; browser quit unsupported."
+    "scope": "Audited desktop banner, Chinese buttons, three save slots and delete popup. Background/logo/settings/credits remain phone or existing implementation; browser quit unsupported."
   },
   "sheets": {
     "screen_slots-1.png": "30706917f6db5628d14664dc065e407dad33f2a6daea17979ddb3a84a2280b78",
@@ -439,5 +439,772 @@
         "textHover": "main_menu_t_quit_hover_zh-Hans"
       }
     ]
+  },
+  "slotFrames": {
+    "main_menu_slots_bg": {
+      "size": [
+        672,
+        543
+      ],
+      "trim": [
+        380,
+        59,
+        14,
+        99
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        684,
+        1585,
+        278,
+        385
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_slot_normal": {
+      "size": [
+        204,
+        109
+      ],
+      "trim": [
+        3,
+        2,
+        1,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        468,
+        1753,
+        200,
+        105
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_slot_down": {
+      "size": [
+        204,
+        109
+      ],
+      "trim": [
+        3,
+        7,
+        5,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        468,
+        1864,
+        196,
+        100
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_slot_close_normal": {
+      "size": [
+        36,
+        33
+      ],
+      "trim": [
+        5,
+        3,
+        5,
+        4
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        2022,
+        1389,
+        26,
+        26
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_slot_close_hover": {
+      "size": [
+        36,
+        33
+      ],
+      "trim": [
+        2,
+        0,
+        2,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        203,
+        1989,
+        32,
+        32
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_slot_close_down": {
+      "size": [
+        36,
+        33
+      ],
+      "trim": [
+        3,
+        6,
+        7,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1993,
+        1443,
+        26,
+        25
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_icon_star": {
+      "size": [
+        24,
+        24
+      ],
+      "trim": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        203,
+        2027,
+        22,
+        21
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_icon_heroic": {
+      "size": [
+        24,
+        24
+      ],
+      "trim": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1995,
+        1481,
+        24,
+        22
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_icon_iron": {
+      "size": [
+        24,
+        24
+      ],
+      "trim": [
+        3,
+        1,
+        2,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        439,
+        1972,
+        19,
+        23
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_slot_1_normal_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        5,
+        10,
+        49,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1963,
+        1637,
+        84,
+        31
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_slot_1_hover_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        3,
+        6,
+        45,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1955,
+        1744,
+        90,
+        36
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_slot_2_normal_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        5,
+        9,
+        44,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1896,
+        89,
+        32
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_t_slot_2_hover_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        3,
+        6,
+        40,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1619,
+        95,
+        36
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_t_slot_3_normal_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        5,
+        9,
+        44,
+        1
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1934,
+        89,
+        32
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_t_slot_3_hover_zh-Hans": {
+      "size": [
+        138,
+        42
+      ],
+      "trim": [
+        3,
+        6,
+        40,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1661,
+        95,
+        36
+      ],
+      "alias": {},
+      "a_name": "screen_slots-2.png"
+    },
+    "main_menu_t_new_game_normal_zh-Hans": {
+      "size": [
+        167,
+        42
+      ],
+      "trim": [
+        26,
+        6,
+        34,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1932,
+        969,
+        107,
+        36
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    },
+    "main_menu_t_new_game_hover_zh-Hans": {
+      "size": [
+        167,
+        42
+      ],
+      "trim": [
+        23,
+        2,
+        30,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        1932,
+        128,
+        114,
+        40
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    }
+  },
+  "deleteFrames": {
+    "homeMenu_confirm_menu_0001": {
+      "size": [
+        720,
+        260
+      ],
+      "trim": [
+        25,
+        20,
+        24,
+        22
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        6,
+        1463,
+        671,
+        218
+      ],
+      "alias": {},
+      "a_name": "screen_slots-1.png"
+    }
+  },
+  "slots": {
+    "panel": {
+      "pos": {
+        "x": 0,
+        "y": 1100
+      },
+      "class": "KImageView",
+      "children": [
+        {
+          "template_name": "slot_view",
+          "class": "SlotView",
+          "slot_idx": 1,
+          "id": "slot_1",
+          "pos": {
+            "x": 427,
+            "y": 92
+          }
+        },
+        {
+          "template_name": "slot_view",
+          "class": "SlotView",
+          "slot_idx": 2,
+          "id": "slot_2",
+          "pos": {
+            "x": 431,
+            "y": 191
+          }
+        },
+        {
+          "template_name": "slot_view",
+          "class": "SlotView",
+          "slot_idx": 3,
+          "id": "slot_3",
+          "pos": {
+            "x": 435,
+            "y": 292
+          }
+        }
+      ],
+      "id": "slot_panel",
+      "image_name": "main_menu_slots_bg",
+      "size": {
+        "x": 726,
+        "y": 521
+      },
+      "anchor": {
+        "x": 0,
+        "y": 521
+      }
+    },
+    "row": {
+      "children": [
+        {
+          "children": [
+            {
+              "class": "CSinkButton",
+              "click_image_name": "main_menu_slot_down",
+              "children": [
+                {
+                  "propagate_on_up": true,
+                  "propagate_on_click": true,
+                  "children": [
+                    {
+                      "class": "KImageButton",
+                      "pos": {
+                        "x": 159,
+                        "y": 10
+                      },
+                      "hover_image_name": "main_menu_slot_close_hover",
+                      "click_image_name": "main_menu_slot_close_down",
+                      "default_image_name": "main_menu_slot_close_normal",
+                      "image_name": "main_menu_slot_close_normal",
+                      "id": "button_slot_delete"
+                    },
+                    {
+                      "class": "CHoverImage",
+                      "hover_image_name": "main_menu_t_slot_3_hover_en",
+                      "pos": {
+                        "x": 16,
+                        "y": 15
+                      },
+                      "default_image_name": "main_menu_t_slot_3_normal_en",
+                      "image_name": "main_menu_t_slot_3_normal_en",
+                      "id": "l_slot"
+                    },
+                    {
+                      "class": "KView",
+                      "pos": {
+                        "x": 20,
+                        "y": 62
+                      },
+                      "children": [
+                        {
+                          "class": "KImageView",
+                          "image_name": "main_menu_icon_star",
+                          "pos": {
+                            "x": 0,
+                            "y": 1
+                          }
+                        },
+                        {
+                          "class": "KImageView",
+                          "image_name": "main_menu_icon_heroic",
+                          "pos": {
+                            "x": 82,
+                            "y": 2
+                          }
+                        },
+                        {
+                          "class": "KImageView",
+                          "image_name": "main_menu_icon_iron",
+                          "pos": {
+                            "x": 130,
+                            "y": 1
+                          }
+                        },
+                        {
+                          "text_align": "left",
+                          "class": "KLabel",
+                          "size": {
+                            "x": 64,
+                            "y": 27
+                          },
+                          "font_name": "numbers_italic",
+                          "text": "0/110",
+                          "pos": {
+                            "x": 26,
+                            "y": 6
+                          },
+                          "font_size": 12,
+                          "id": "l_stars"
+                        },
+                        {
+                          "text_align": "left",
+                          "class": "KLabel",
+                          "size": {
+                            "x": 64,
+                            "y": 27
+                          },
+                          "font_name": "numbers_italic",
+                          "text": "0",
+                          "pos": {
+                            "x": 108,
+                            "y": 6
+                          },
+                          "font_size": 12,
+                          "id": "l_heroic"
+                        },
+                        {
+                          "text_align": "left",
+                          "class": "KLabel",
+                          "size": {
+                            "x": 64,
+                            "y": 27
+                          },
+                          "font_name": "numbers_italic",
+                          "text": "0",
+                          "pos": {
+                            "x": 154,
+                            "y": 6
+                          },
+                          "font_size": 12,
+                          "id": "l_iron"
+                        }
+                      ],
+                      "r": 0.06,
+                      "size": {
+                        "x": 193,
+                        "y": 0
+                      }
+                    }
+                  ],
+                  "class": "KView",
+                  "propagate_on_down": true,
+                  "propagate_on_enter": true
+                }
+              ],
+              "down_offset": {
+                "x": -4,
+                "y": 4
+              },
+              "default_image_name": "main_menu_slot_normal",
+              "id": "button_slot"
+            }
+          ],
+          "class": "KView",
+          "id": "slot_used"
+        },
+        {
+          "children": [
+            {
+              "class": "CSinkButton",
+              "click_image_name": "main_menu_slot_down",
+              "children": [
+                {
+                  "children": [
+                    {
+                      "class": "CHoverImage",
+                      "hover_image_name": "main_menu_t_new_game_hover_en",
+                      "pos": {
+                        "x": 24,
+                        "y": 30
+                      },
+                      "default_image_name": "main_menu_t_new_game_normal_en",
+                      "image_name": "main_menu_t_new_game_normal_en",
+                      "id": "l_slot_new"
+                    }
+                  ],
+                  "class": "KView"
+                }
+              ],
+              "default_image_name": "main_menu_slot_normal",
+              "id": "button_slot_new"
+            }
+          ],
+          "class": "KView",
+          "id": "slot_empty"
+        }
+      ],
+      "class": "SlotView",
+      "pos": {
+        "x": 503,
+        "y": 357
+      },
+      "id": "slot_3"
+    },
+    "duration": 0.1,
+    "hiddenX": 0,
+    "shownX": 160,
+    "sourceSha256": "e1f3582b9e2fe047b37c62a8491084d63173c6ad74fa8b5c6ac43f11b987c338"
+  },
+  "delete": {
+    "layout": {
+      "class": "PopUpView",
+      "children": [
+        {
+          "pos": {
+            "x": 960,
+            "y": 490
+          },
+          "class": "KImageView",
+          "children": [
+            {
+              "pos": {
+                "x": 360,
+                "y": 86.666666666667
+              },
+              "class": "GGOptionsLabel",
+              "size": {
+                "x": 560,
+                "y": 30
+              },
+              "text_key": "DELETE SLOT?",
+              "id": "99030",
+              "font_size": 28.125,
+              "font_name": "h",
+              "anchor": {
+                "x": 280,
+                "y": 15
+              }
+            },
+            {
+              "pos": {
+                "x": 250,
+                "y": 130
+              },
+              "class": "GGOptionsButton",
+              "label_text_key": "Yes",
+              "id": "delete_button_yes",
+              "size": {
+                "x": 194,
+                "y": 76
+              },
+              "anchor": {
+                "x": 97,
+                "y": 0
+              }
+            },
+            {
+              "pos": {
+                "x": 470,
+                "y": 130
+              },
+              "class": "GGOptionsButton",
+              "label_text_key": "No",
+              "id": "delete_button_no",
+              "size": {
+                "x": 194,
+                "y": 76
+              },
+              "anchor": {
+                "x": 97,
+                "y": 0
+              }
+            }
+          ],
+          "id": "99029",
+          "image_name": "homeMenu_confirm_menu_0001",
+          "size": {
+            "x": 960,
+            "y": 260
+          },
+          "anchor": {
+            "x": 360,
+            "y": 130
+          }
+        }
+      ],
+      "id": "delete_view",
+      "colors": {
+        "background": [
+          0,
+          0,
+          0,
+          80
+        ]
+      },
+      "size": {
+        "x": 1920,
+        "y": 1080
+      }
+    },
+    "text": {
+      "DELETE SLOT?": "删除栏位？",
+      "Yes": "好",
+      "No": "不"
+    },
+    "stringsPath": "kr3-desktop/assets/strings/zh-Hans_3.lua",
+    "stringsSha256": "50aae83a41804accf5cd54a87e1b04b38655ecb7b98a5e468b537499bb5a2d80",
+    "note": "Template has no named back: only shade tween, original static panel center y490. Shared vanilla PopUpView .5/.25 shade inquad."
   }
 }

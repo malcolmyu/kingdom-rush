@@ -86,6 +86,9 @@ def optimize(out):
    action_text=''.join(map_ui.get('text',{}).get(b['key'],'')for b in map_ui.get('buttons',[]))
    options=json.loads((out/'assets/options/catalog.json').read_text())
    action_text+=''.join(options['text'][k]for k in options['jimoKeys'])
+   delete_text=''.join(json.loads((out/'assets/desktop-title/delete.json').read_text())['text'].values())
+   if not set(map(ord,delete_text))<=before.keys():raise RuntimeError('JIMO missing delete dialog glyphs')
+   action_text+=delete_text
    font_corpus=''.join(chr(i)for i in range(32,127))+''.join(capitals)+book['text']['BUTTON_TO_BATTLE_1']+book['text']['BUTTON_TO_BATTLE_2']+action_text
   required=set(map(ord,font_corpus))&before.keys()
   metrics=(font['hhea'].ascent,font['hhea'].descent,font['head'].yMin,font['head'].yMax)

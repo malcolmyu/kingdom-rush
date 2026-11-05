@@ -13,7 +13,7 @@ try{
 await page.goto(origin);await page.waitForFunction(()=>window.origins);
 await settle();await page.screenshot({path:path.join(out,'01-开始界面.png')});
 await page.getByRole('button',{name:'开始游戏',exact:true}).click();
-assert.equal(await page.locator('.save-slot').count(),3);await settle();await page.screenshot({path:path.join(out,'01b-原版存档面板.png')});
+await page.locator('.save-slot').first().waitFor();assert.equal(await page.locator('.save-slot').count(),3);await settle();await page.screenshot({path:path.join(out,'01b-原版存档面板.png')});
 await page.locator('.save-slot').first().click();await page.waitForFunction(()=>origins.app.scene==='map'&&!origins.app.sceneMotion.busy&&origins.app.mapScene?.ready);
 await page.waitForFunction(()=>origins.app.mapScene.ready&&[...document.querySelectorAll('.map-flag canvas')].filter(c=>!c.closest('.map-flag').hidden).every(c=>origins.app.mapScene.data.frames[c.dataset.icon]));
 await settle();await page.screenshot({path:path.join(out,'02-大地图.png')});

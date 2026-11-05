@@ -856,3 +856,14 @@ GGShaderLabel p_glow的实际Love shader仍未完整实现，按钮使用明确�
 272项Node全过，实际build test:desktop-map-actions（最终含原交叠区域命中hero优先）、原map-hero浏览器专项、test:fonts、test:ui与最终完整九模式三战役三星/存档手机均正常exit0。专项真实hero训练4→2点、六星预算买原1星天赋后6→5、三入口/重入/seen兼容/同时双提示/手机CDP触摸；源JIMO所有按钮cmap字形存在，兼容原件与部署subset Canvas逐像素和metrics一致。初版专项错误寻找升级页通用data-close，改点原tutorial-upgrades_done_button并实际购买，无产品门控改动。第一次campaign九模式断言全过后browser.close残留Node，已比daemon精确TERM owned30317并收集143；finally改先page.close再browser.close，最终独立完整九模式正常exit0，不冒称被TERM那次exit0。
 
 最终同网络冷路径100ms/1.5MBps/cacheoff14,744,507B/14.950s<15MB，未调高预算或降画质。公开Pages本轮一次manifest确认0.2.72且完整UI通过，0.2.73推送后不循环等CI。最终logs map-actions-tests-final.log、map-actions-browser-complete.log、map-actions-hero-final.log、map-actions-fonts.log、map-actions-ui-final.log、map-actions-campaign-final.log、map-actions-performance-final.log、map-actions-pages-ui.log。desktop-map-actions-native.png/mobile.png已人工查看，为受控UI进度非原版同输入逐帧像素证据，整体仍未1:1。
+
+
+## 0.2.84 桌面存档侧滑与真实删除
+
+DesktopSlots恢复原slot_panel在banner后方x0→160、.1 outquad；三槽427/92、431/191、435/292，中文原位图normal/hover、原down偏移及旋转统计组。读取真实槽数据，战役与挑战总星/110、英雄/钢铁数量不伪造；phone旧SlotView仍可显式回归。删除独立原确认图片与原中文，按需JIMO，不加入启动字体门。来源固定原社区资产与vanilla只读控制器交叉，不是phone APK桌面提取。
+
+原delete_view没有命名back，PopUpView只给shade做.5/.25 inquad，面板保留中心上50逻辑像素，不能套book位移。首次看截图发现CSS relative top错误叠加50%导致底部裁切，修为相对居中偏移-50×scale，并补桌面/手机源中心及完整可见断言。删除真实repo目标槽并清对应mapSeen/mapHistory；删除当前槽同时重载空progress防旧XP复活，其他槽保持。关闭/快速重开/资源未完成时取消与场景切换用owner/request保护。
+
+背景与独立logo、标题设置内部仍phone，不称main完整desktop或原版同步像素完成。字体shader/基线仍浏览器近似。
+
+301项Node通过；最终实际build desktop-slots/UI/完整九模式、三战役三星及存档手机正常exit0，第三campaign天然XP4705/20生命。原desktop-title、显式phone slots/MenuMotion专项分别过。首次campaign旧同步count在lazy槽图片未完成时0≠3，改等真实首槽；旧phone专项reload后默认desktop，显式恢复phone profile后过。截图均已查看，受控槽进度不是自然通关或原版同步像素证据。最终100ms/1.5MBps/cacheoff冷路径14,898,765B/15.265s<15MB，非全线路速度保证；公开本轮一次manifest0.2.83及完整UI过，新版推送不轮询CI。

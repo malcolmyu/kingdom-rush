@@ -4,7 +4,7 @@
 
 ## 模块边界
 
-`DesktopTitle` 是独立的desktop主横幅/中文位图按钮profile，读取固定裁图声明并按1080高度参考/居中背景origin布局。资源与ResizeObserver由实例持有，destroy/owner身份检查阻止旧加载或报错覆盖新场景；waitScreenReady包含title readyPromise。背景/标志/存档面板暂仍phone，未恢复桌面侧滑；旧MenuMotion和SaveSlots代码保留，phone profile可独立回归。退出在浏览器无对应能力而禁用，现有设置与名单入口继续真实工作。
+`DesktopTitle` 是独立的desktop主横幅/中文位图按钮profile，读取固定裁图声明并按1080高度参考/居中背景origin布局。资源与ResizeObserver由实例持有，destroy/owner身份检查阻止旧加载或报错覆盖新场景；waitScreenReady包含title readyPromise。背景/标志暂仍phone；DesktopSlots按原.1 outquad在横幅后展开三个真实存档，独立按需目录/图片/删除确认资源由title owner持有。删除弹窗源模板没有命名back，仅遮罩渐变，面板静态保持窗口中心上50逻辑像素；取消请求、切场景与重开均使旧回调失效。真实Repository删除同时清理地图历史和当前活动progress，防旧XP再保存复活；旧MenuMotion和SaveSlots代码保留，phone profile可独立回归。退出在浏览器无对应能力而禁用，现有设置与名单入口继续真实工作。
 
 `readMetadata` 共享原gzip流解码与无API原JSON兼容，地图目录加入无损gzip旁文件。build按当前enemy模板prefix完整收集565帧重打包，逐裁图RGBA比对并保留size/trim；Renderer只在campaignEnemySheets存在时跳过未用完整enemy atlas，源web仍兼容原图集，不改实体行为或数值。
 
