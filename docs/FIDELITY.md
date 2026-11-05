@@ -575,3 +575,11 @@ screen_utils72–81按真实窗口w/h选择HUD_SCALE_STEPS，当前固定游戏�
 TB_POWER1/2/3按原TutorialBalloon初始化4430附近非world分支，GUI bottom-left加原offset30/80/130,-46，气泡不继承powers的hud_scale，保留脉冲、真实点击触发与World道路引导。技能Canvas冷却/门/亮光绘制、World技能与HPXP规则不变；没有新增假能力。原非零安全区与全设备viewport仍未恢复，字体后端仍近似。
 
 238领域测试通过，新增独立分档阈值/父子锚点/隐藏位移回归；实际build技能专项验证正常双击波旗、原TOWER_LEVEL3确认、援军真实两单位/冷却禁用、瞄准取消、暂停、教程恢复与手机重入。初次专项只点波旗一次仍ready导致disabled等待，已改真实第二次点击，没有force或改变产品门控。原guidance/hud-motion和最终完整九模式结果见本轮评论。截图为当前实现非原版同步像素证据，整体仍未1:1。
+
+## 0.2.59 英雄选择信息栏
+
+原kr3/game_templates hero_elves_archer.info.fn明确hero_basic.get_info_ranged（只读日志artifacts/kr3-template-info-bytecode.txt21423–21430），common/scripts1347–1359返回STATS_TYPE_SOLDIER2、实时HP/最大HP、当前箭伤害、护甲、完整dead_lifetime。game_gui748–793在phone有health时选with_health；817–866更新health_bar比例、%i/%i、damage_value_desc、CArmorSmall与%i s。808–816英雄死亡仍更新而普通死亡实体取消。read_tower_menu导出soldier/enemy常量，extract_ui补原portraits_hero_0001，不执行控制函数。
+
+Infobar选择英雄沿用现有targeting==='hero'（肖像/键盘/现有世界点击），绘制原with_health、士兵三属性和原name/portrait；动态HP血条从左端scaleX，等级变化读取World真实等级伤害/最大HP，不把源码算法放产品文案。真实移动成功后沿用现有选择取消，暂停/通知/场景切换原显隐与.4outback保留。完整原单位选择hitbox/跨命令持久选择、敌人选择与空地show_text仍未恢复，本批不称整个infobar完成。World/经验/战斗数值未动。
+
+239领域测试通过，新增受伤/死亡/源属性与真实flushHeroXp等级更新回归。build目录hero-infobar专项实际双击波旗/确认原塔3通知、选英雄/真实道路移动/取消、受控HP损伤与临近复活时钟/手机/重入通过；该受控死亡样本非正常通关。独立完整九模式（三战役三星）、原塔infobar与本地UI、公开0.2.58 UI均通过。截图已查看，仍为当前实现而非原版同输入同步像素证据，整体未1:1。

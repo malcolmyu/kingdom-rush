@@ -228,3 +228,5 @@ footer button {border:0;background:transparent;color:#d0d8b1}
 #battlefield,.slot{touch-action:none}
 
 #hud{container-type:inline-size}#hud b{overflow:hidden}
+
+.source-infobar [data-infobar-health-bar]{transform-origin:left top}
