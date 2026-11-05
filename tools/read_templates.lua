@@ -19,4 +19,4 @@ local out={}
 for k,v in pairs(E.entities) do out[k]=clean(v,0) end
 local source=debug.getinfo(1,'S').source:sub(2):match('^(.*[/\\])') or './'
 local encode=dofile(source..'encode_json.lua')
-io.write(encode(out))
+io.write(encode(out,arg[2]=='precise'))

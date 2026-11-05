@@ -1064,3 +1064,21 @@ ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前
 
 
 最终actualbuild1503files72,763,398B，343Node、新三关资源预览与原天然完整九模式/存档手机/UI均正常exit0。冷路径100ms/1.5MBps/cacheoff14,637,653B，book入关7.149s、总15.924s/218requests，无整atlas/OTF；新扩展包未进入当前旧关加载链，不称新关预算。104个固定源SHA独立复核通过。截图expansion-stage4/5/6-resource-preview和stage6-mobile-preview已人工看，均资源预览不是特殊脚本/战斗验收。
+
+
+### 0.2.101 第4关双头食人魔基础行为
+
+只读核对原APK game_scripts8777–8841、scripts3963–3995与templates定义；缓存kro-kr3-game-scripts.lua9700+仅交叉阅读，不执行控制器或移植mod逻辑。原aura every5/30秒回4HP、无受伤standoff、ignore_stun=true/ignore_freeze=false，APK被freeze/mod-ban拒绝时重置aura.ts（共享vanilla源码分支不同，因此以APK字节码为准），正常每模拟tick最多一次脉冲，满血也推进时钟。
+
+原insane不是攻速/伤害增益：插入时一次整数random12..22秒，此后沿用同cooldown、每次start重置ts；严格超过cooldown且无shield、离开已有近战阻挡episode后启动。insaneStart109–142，28/30秒自伤random5..10/type1，clamp到hp-1保证不自杀；原start动画结束后insaneLoop143–162循环，停顿2秒再恢复idle/walk/近战。前摇hit_time等待可被stun打断，hit后动画等待不可打断，loop等待再按stun/death中断。仅新ettin分支消费原有World.number，不使用UI随机替代战斗随机，不宣称Love同seed轨迹；旧五敌无新增RNG调用。原特殊血池/分解/完整外部modifier生产链仍未全。
+
+原生命代价数组按本局difficulty取标量，普通难度ettin漏2命、第四源数据4命，防原新模板数组导致NaN；第四难度UI仍disabled。普通ettin death163–186/alpha1末帧至严格>2秒，复用GroundCorpses纯展示缓存，World旧1.2秒数组清理不改。新三关仍在隔离工作区，不能称第4关全玩法或18模式完成。
+
+新扩展提取开启可选17位IEEE754往返编码，修复旧Lua tostring将5/30变成.16666666666667导致边界晚一帧；对应hit_time同样保留原精度。原提取默认不改，重新读取全模板与上轮旧输出逐对象一致。精度重提三背景/3566framekeys逐RGBA仍通过，图面文件未变。tools/extract_ettin.py仅读-bl记录原4个文件SHA与源范围，完整提取链已接。
+
+350Node全部通过。源边界覆盖regen精确5/30、最近受伤/stun无延迟、freeze/mod-ban时间重置、目标override、单tick脉冲、death/leak不复活；self-hit严格cooldown/非致死/阻挡/打断/loop恢复/近战取消；life-cost与普通尸体清理。初纯测任意非零时间原点直接加34/30后相减落在边界前，改取一个真实帧后采样而不改产品阈值。浏览器初fixture把World含spells.world循环引用直接JSON.stringify失败，改记录明确模拟字段；后续forced anim0断言还按anim选期望帧，改源phase期望，产品phase绘制实际正确。
+
+实际build test:ettin在隔离第4关World调用真实spawn/hurt/step/RenderQueue，记录原Canvas q/alpha、移动/近战停止、真实回血/非致命自伤/暂停时钟/普通death末帧和2秒清理、zoom/mobile与清理；受控位置/模拟时间不是自然关卡通关或原版同步。最初截图位置落在原树前景遮挡下，改用真实route点(303,265)并同步d，最终ettin-self-stun.png/mobile已看见角色；手机缩放预览的整关前景边界仍需后续完整关卡层级核对，不拿局部精灵调用当全关像素验收。旧普通九模式/UI和公开.100UI结果独立保存；完整全关尚未开放。
+
+
+最终build1504files72,767,122B；350Node、ettin-browser-release-final及额外可见位置复测ettin-browser-visible、天然完整九模式/存档手机ettin-campaign-release、ettin-ui-release、公开.100 ettin-pages-ui均正常exit0。冷路径100ms/1.5MBps/cacheoff14,641,065B、book入关7.066s、总15.912s/219requests<15MB，不保证所有线上线路速度；新关启用预算尚未验，不抬预算/降质。无新图关键下载，完整old-template默认导出比对通过。

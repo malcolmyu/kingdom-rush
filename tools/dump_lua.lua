@@ -5,6 +5,7 @@ end
 local function encode(t)
   local kind=type(t)
   if kind=='string' then return quote(t) end
+  if kind=='number' and arg[2]=='precise' then return string.format('%.17g',t) end
   if kind=='number' or kind=='boolean' then return tostring(t) end
   if kind~='table' then return 'null' end
   local n,count,array=#t,0,true

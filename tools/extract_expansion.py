@@ -19,7 +19,7 @@ def extract(apk, luajit):
   return raw
  def declaration(name):
   p = ROOT/'reference/apk'/name; p.parent.mkdir(parents=True, exist_ok=True); p.write_bytes(source(name))
-  return json.loads(subprocess.check_output([luajit, str(ROOT/'tools/dump_lua.lua'), str(p)]))
+  return json.loads(subprocess.check_output([luajit, str(ROOT/'tools/dump_lua.lua'), str(p),'precise']))
  def decode(name):
   if name not in images:
    raw = source('assets/kr3-phone/images/iphonehd/'+name)
@@ -30,7 +30,7 @@ def extract(apk, luajit):
    images[name]=im
   return images[name]
  base=json.loads((ROOT/'web/assets/catalog.json').read_text())
- templates=json.loads(subprocess.check_output([luajit,str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64')]))
+ templates=json.loads(subprocess.check_output([luajit,str(ROOT/'tools/read_templates.lua'),str(ROOT/'reference/apk/assets/gc64'),'precise']))
  for rel in ['all/templates.lua','kr3/game_templates.lua','all/components.lua','kr3/data/game_animations.lua']:
   source('assets/gc64/'+rel)
  required=set(); levels=[]
@@ -96,7 +96,7 @@ def extract(apk, luajit):
  extra={k:v for k,v in selected.items()if k not in base['templates']}
  data={'levels':levels,'templates':extra,'frames':frames,'animations':{},'releaseReady':False,
        'pendingMechanics':['ettin regeneration','blighter plant suppression','perython carried gnawer release','harasser dodge/ranged combat','ewok recruitment','gryphon guards and level 6 script','advanced tower unlocks'],
-       'source':{'kind':'original APK declarations; controllers not executed','files':dict(sorted(hashes.items()))}}
+       'source':{'kind':'original APK declarations; controllers not executed','numberEncoding':'IEEE754 round-trip (17 significant digits)','files':dict(sorted(hashes.items()))}}
  (out/'catalog.json').write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')))
  print(json.dumps({'stages':[4,5,6],'modes':9,'newTemplates':len(extra),'stageFrames':len(frames),'releaseReady':False}))
 

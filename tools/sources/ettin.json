@@ -1,0 +1,49 @@
+{
+  "auraUpdateLines": [
+    3963,
+    3995
+  ],
+  "enemyUpdateLines": [
+    8777,
+    8841
+  ],
+  "insane": {
+    "cooldown_max": 22,
+    "cooldown_min": 12,
+    "damage_max": 10,
+    "damage_min": 5,
+    "damage_type": 1,
+    "hit_time": 0.9333333333333333,
+    "stun_duration": 2
+  },
+  "limitations": [
+    "World tick/entity insertion order is not the complete original coroutine scheduler",
+    "external stun/freeze/mod-ban/shield inputs have adapter coverage; complete modifier producers are not restored",
+    "special death effects/blood pool remain incomplete"
+  ],
+  "regen": {
+    "cooldown": 0.16666666666666666,
+    "health": 4,
+    "ignore_freeze": false,
+    "ignore_stun": true,
+    "last_hit_standoff_time": 2,
+    "last_hit_ts": 0,
+    "ts": 0,
+    "ts_counter": 0
+  },
+  "rules": {
+    "initialCooldown": "one integer random at insertion; reused after timestamp reset",
+    "phase": "insaneStart -> animation end -> insaneLoop for stun_duration -> idle/walk",
+    "regenCadence": "at most one pulse per tick; due rejected pulse resets ts to current tick (APK branch differs from shared vanilla)",
+    "selfDamage": "random integer clamped to [0,hp-1], source damage type",
+    "standoff": false,
+    "trigger": "strictly greater than cooldown, no shield, between melee/walking episodes"
+  },
+  "scope": "enemy_ettin regeneration and self-hit/self-stun; stage 4–6 not yet released",
+  "sourceSha256": {
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  }
+}

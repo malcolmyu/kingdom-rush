@@ -316,3 +316,6 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 
 
 第4–6关进入独立还原工作区，见STAGES-4-6.md。ExpansionRepository只加载assets/expansion声明和选中图面，创建合并副本，绝不写入主catalog、Repository缓存或存档解锁。当前生产可玩仍前三关九模式；新关特殊脚本和高级塔未完成，因此资源加载/World构造/Renderer预览不当作玩法验收。全量提取调用extract_expansion，源文件固定SHA、原图无损RGBA验证，后续可在完整机制验收后统一开放。
+
+
+`ettin.mjs`只为enemy_ettin插入状态：原World.number一次生成整数cooldown，原aura五帧回血4点，APK拒绝回血时重置ts，正常每tick最多一脉冲。自击Start/Loop为显式phase，非致命true damage通过World.hurt；phase控制移动/近战与绘制，不由浮点anim倒计时独自决定。外部stunned/frozen/modBanned/shielded为目前modifier适配输入，不代表完整modifier生产系统已做。原e.enemy.lives_cost数组经byDifficulty变标量，防新ettin漏怪NaN；旧五敌标量语义不变。新关提取可选precise编码保留17位往返精度，仅扩展启用，旧提取默认编码不变且全模板语义对比一致。
