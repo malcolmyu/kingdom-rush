@@ -1,5 +1,5 @@
 {
-  "version": "0.2.55",
+  "version": "0.2.56",
   "stages": 3,
   "modes": [
     "campaign",
@@ -17,9 +17,10 @@
     "progression.mjs": "b667cfbe953361e276150f13c240d99cb9ae5f3c5f6a7967111b9556a8f57a93",
     "ui.mjs": "e09c972eb89dc151a4b4b291060c445536e8c125d9157a8ef9b5cf7c55f8817b",
     "save-slots.mjs": "80c7c446c0cfa4214877e85f15995e0166beb2f2eceb188b4b084a225a1bce92",
+    "world-rules.mjs": "c9d3d87efdb264769cfb2fede53a504bb1ca92d72749be964ff5192c70728548",
     "battle-portraits.mjs": "a699edd2ef9c3836d91042d5e0d887a3c59033571e3c9e96b1b78f80f4a57232",
     "notification-motion.mjs": "5c7cd1092a450e4b057e46609abfb1496e2c3199323e0ab7460f7e2ebee6f20f",
-    "battle-camera.mjs": "82aa72ecdd6db8d09d7f80cdb41cee2c599c4a5f726fa356a183b567f2fb7e3e",
+    "battle-camera.mjs": "2c46b74cec7b7ed0635f567231ca5f3bfc01070c0647fcded6adbd03ebf95f8c",
     "repository.mjs": "66683ca915b85da9417a5bd68c45141f1e84713f32a3102c356048a6394ac1f4",
     "tutorials.mjs": "f252a55eaef3e66388d7b6b5a8cd0a0ad750c8bef21a7508490f5e0b95b465bd",
     "enemy-notifications.mjs": "891b6d08d182fc8dde3eb74097865b0f1d7a13f68fb540ea66534814bb7d6c0e",
@@ -35,7 +36,7 @@
     "style.css": "b2966a7c341e774dce463eab2d215172b4136c78f428d5b5c49ccd608da0ade4",
     "guidance.mjs": "407190d009e765717919494bb584458478adcf359f8ab14eb0c9a3225541b9f4",
     "victory-particles.mjs": "4b0b29bf5a3014703d93e08c686c4aa9c8f4184c9204eca68c970d661a1442c7",
-    "renderer.mjs": "6cb08e2bee9e4dd1f7de0f055722acee74dc57852a1edf183400df7f5c4d8bed",
+    "renderer.mjs": "e93124f476326659996b42a7b7dc821d07f2875bbccc9184518eff56c7bf4cd3",
     "upgrade-data.mjs": "6cac3569c860f2218b416a70b01a1ce272cc5c14239f35d5d48c0ecc630a5760",
     "infobar.mjs": "cfdf804b25894fd46c7f53bbe8d2a6cd60cfc3657e213c3ca17b91a712b3f398",
     "campaign.mjs": "54e0bece3ccc5e501cc3d1898092881e207edc943b088c99b07ce6b81466cbcb",
