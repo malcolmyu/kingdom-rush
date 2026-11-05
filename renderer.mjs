@@ -1,3 +1,4 @@
+import{projectileSprites,drawProjectileSprites,rockImpactOverrides}from'./projectile-sprites.mjs';
 import{healthBarFrames,drawHealthBars,heroHealthBarHidden}from'./health-bars.mjs';
 import{flyingEnemySprites}from'./flying-enemy.mjs';
 import{RenderQueue,spriteOrder}from'./render-order.mjs';
@@ -69,14 +70,16 @@ export class Renderer{
    if(u.hp>0&&u.gnawerBuff)this.entity('mod_gnoll_gnawer',u,{time:w.time-u.gnawerBuff.at});
    if(u.hp>0&&u.burn){const offset=w.template(u.key).unit?.mod_offset||{x:0,y:12};this.entity('mod_gnoll_burner',{x:u.x+offset.x,y:u.y+offset.y},{time:w.time-u.burn.at});}drawHealthBars(this,healthBarFrames(w.template(u.key),u,{entityId:this.entityOrderId,hidden:a.hero?heroHealthBarHidden(u,w.time,w.animationDuration(u.key,u.action)):w.template(u.key).health_bar?.hidden}));
   }
+  // Merge source projectile sprites and the existing foreground into actor
+  // ordering before replay. World arrays, flight positions and clocks stay read-only.
+  for(const b of w.shots)drawProjectileSprites(this,projectileSprites(w.template(b.bullet),b,this.frame.bind(this),{entityId:this.renderId(b)}));
+  for(const b of w.spells?.projectiles||[]){const progress=Math.min(1,Math.max(0,w.time-b.start)*b.speed/b.length),pose={x:b.from.x+(b.to.x-b.from.x)*progress,y:b.from.y+(b.to.y-b.from.y)*progress,sx:b.from.x,sy:b.from.y,tx:b.to.x,ty:b.to.y,elapsed:w.time-b.start};drawProjectileSprites(this,projectileSprites(w.template('arrow_hero_elves_archer_ultimate'),pose,this.frame.bind(this),{entityId:this.renderId(b),ultimate:true}));}
+  for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e,renderId:this.renderId(e)});
+  for(const [i,f]of w.effects.entries())if(f.type==='impact'||f.type==='torch-impact')this.entity(f.type==='impact'?'fx_rock_explosion':'fx_torch_gnoll_burner_explosion',f,{time:f.total-f.life,overrides:f.type==='impact'?rockImpactOverrides(w.template('rock_1').bullet):{},renderId:w.data.level.entities_list.length+w.serial+i+1});
   const queue=this.orderQueue;this.orderQueue=null;queue.flush();this.entityOrderId=0;
-  for(const b of w.spells?.projectiles||[]){const progress=Math.min(1,Math.max(0,w.time-b.start)*b.speed/b.length),p=this.screen({x:b.from.x+(b.to.x-b.from.x)*progress,y:b.from.y+(b.to.y-b.from.y)*progress});this.sprite(c,'archer_hero_arrows_proy-f',p.x,p.y,1,.96296296296296,.5,false,1,Math.atan2(b.to.y-b.from.y,b.to.x-b.from.x));}
-  for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e});
-  for(const b of w.shots){if(b.elapsed<0)continue;const p=this.screen(b),key=b.type==='torch'?this.frame('torch_gnoll_burner',b.elapsed):b.type==='hero'?'archer_hero_proy_0001-f':b.type==='artillery'?'artillery_thrower_proy':b.type==='mage'?this.frame('bolt_elves_travel',w.time):'arrow';this.sprite(c,key,p.x,p.y,1,.5,.5,false,1,b.type==='torch'?Math.PI+b.elapsed*b.rotationSpeed:b.type==='archer'||b.type==='hero'?-Math.atan2(-(b.ty-b.sy),b.tx-b.sx):0);}
   for(const f of w.effects){const p=this.screen(f),t=f.total-f.life;
    if(f.type==='coin'){c.save();c.globalAlpha=f.life/f.total;c.font='20px OriginsNumbers';c.textAlign='center';c.fillStyle='#ffe868';c.strokeStyle='#2b3e26';c.lineWidth=3;c.strokeText(f.text,p.x,p.y-t*30);c.fillText(f.text,p.x,p.y-t*30);c.restore();}
-   else if(['rally','build','sell','impact','splash'].includes(f.type)){const names={rally:'rally_feedback',build:'tower_build_dust',sell:'tower_sell',impact:'fx_rock_explosion',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
-   else if(f.type==='torch-impact'){this.entity('fx_torch_gnoll_burner_explosion',f,{time:t});}
+   else if(['rally','build','sell','splash'].includes(f.type)){const names={rally:'rally_feedback',build:'tower_build_dust',sell:'tower_sell',splash:'fx_waterfall_splash'};const key=this.frame(names[f.type],t,false);if(key)this.sprite(c,key,p.x,p.y,1,.5,.75);}
    else if(f.type==='thunder-strike'){const alpha=t<.1?1:Math.max(0,1-(t-.1)/(.26666666666667-.1));if(alpha)this.sprite(c,'ray_000'+(f.variant||1),p.x,p.y,1,.5,1,false,alpha);if(t<16/30){const blast=this.frame('fx_power_thunder_explosion_half',t,false);this.sprite(c,blast,p.x,p.y,1,.5,1-.15714285714286);this.sprite(c,blast,p.x,p.y,1,.5,1-.15714285714286,true);}this.sprite(c,this.frame('decal_power_thunder_explosion',t,false),p.x,p.y,1,.5,.5,false,Math.min(1,(20/30-t)*4));}
    else if(f.type==='arrow-impact'){const alpha=t<1?1:Math.max(0,(4-t)/3);this.sprite(c,this.frame('decal_hero_elves_archer_ultimate',t,false),p.x,p.y,1,.5,.5,false,alpha);this.sprite(c,this.frame('fx_hero_elves_archer_ultimate_smoke',t,false),p.x,p.y,1,.5,.5,false,alpha);}
 
