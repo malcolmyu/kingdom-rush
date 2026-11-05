@@ -1,0 +1,351 @@
+{
+  "sourceSha256": {
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89",
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b"
+  },
+  "templates": {
+    "enemy_gnoll_blighter": {
+      "enemy": {
+        "blockers": {},
+        "can_accept_magic": true,
+        "can_do_magic": true,
+        "counts": {},
+        "gems": 0,
+        "gold": 50,
+        "gold_bag": 0,
+        "lives_cost": 1,
+        "melee_slot": {
+          "x": 30,
+          "y": 0
+        },
+        "necromancer_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "remove_at_goal_line": true,
+        "valid_terrains": 1
+      },
+      "heading": {
+        "angle": 0
+      },
+      "health": {
+        "armor": 0,
+        "damage_factor": 1,
+        "dead": false,
+        "dead_lifetime": 2,
+        "death_ts": 0,
+        "hp_max": [
+          500,
+          700,
+          750,
+          850
+        ],
+        "ignore_damage": false,
+        "immune_to": 0,
+        "last_damage_types": 0,
+        "magic_armor": [
+          0.75,
+          0.75,
+          0.75,
+          0.85
+        ],
+        "poison_armor": 0,
+        "spiked_armor": 0
+      },
+      "health_bar": {
+        "frames": {},
+        "hidden": false,
+        "offset": {
+          "x": 0,
+          "y": 42
+        },
+        "type": "small",
+        "z": 3000
+      },
+      "info": {
+        "enc_icon": 4,
+        "fn": {},
+        "portrait": "portraits_sc_0019"
+      },
+      "main_script": {
+        "insert": {},
+        "runs": 1,
+        "update": {}
+      },
+      "melee": {
+        "arrived_slot_animation": "idle",
+        "attacks": [
+          {
+            "animation": "attack",
+            "chance": 1,
+            "cooldown": 1,
+            "damage_max": 12,
+            "damage_min": 8,
+            "damage_type": 2,
+            "dodge_time": 0.13333333333333333,
+            "hit_time": 0.7666666666666667,
+            "instakill": false,
+            "level": 0,
+            "pop": [
+              "pop_sok",
+              "pop_pow"
+            ],
+            "pop_chance": 0.1,
+            "ts": 0,
+            "type": "melee",
+            "vis_bans": 0,
+            "vis_flags": 0
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ]
+      },
+      "motion": {
+        "arrived": true,
+        "dest": {
+          "x": 0,
+          "y": 0
+        },
+        "max_speed": 24,
+        "speed": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "nav_path": {
+        "dir": 1,
+        "ni": 1,
+        "pi": 1,
+        "spi": 1
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "ranged": {
+        "attacks": [
+          {
+            "animation": "energy",
+            "bullet": "bullet_gnoll_blighter",
+            "bullet_start_offset": [
+              {
+                "x": 14,
+                "y": 0
+              }
+            ],
+            "chance": 1,
+            "cooldown": 1.9666666666666666,
+            "count": 0,
+            "hold_advance": true,
+            "level": 1,
+            "max_range": 160,
+            "max_track_distance": 128,
+            "min_range": 30,
+            "requires_magic": true,
+            "shoot_time": 0.6666666666666666,
+            "ts": 0,
+            "type": "bullet",
+            "vis_bans": 128,
+            "vis_flags": 2
+          }
+        ],
+        "forced_ts": 0,
+        "order": [
+          1
+        ]
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.1891891891891892
+            },
+            "angles": {
+              "walk": [
+                "walkingRightLeft",
+                "walkingUp",
+                "walkingDown"
+              ]
+            },
+            "angles_stickiness": {
+              "walk": 10
+            },
+            "animated": true,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "idle",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "prefix": "gnoll_blighter",
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          }
+        ]
+      },
+      "sound_events": {
+        "death": "DeathBig",
+        "death_by_explosion": "DeathEplosion"
+      },
+      "template_name": "enemy_gnoll_blighter",
+      "timed_attacks": {
+        "list": [
+          {
+            "animation": "attackPlants",
+            "cast_time": 0.5,
+            "chance": 1,
+            "cooldown": 5,
+            "mod": "mod_gnoll_blighter",
+            "range": 175,
+            "ts": 0,
+            "type": "mod",
+            "vis_bans": 0,
+            "vis_flags": 0
+          }
+        ]
+      },
+      "ui": {
+        "can_click": true,
+        "can_select": true,
+        "click_rect": {
+          "pos": {
+            "x": -25,
+            "y": -10
+          },
+          "size": {
+            "x": 50,
+            "y": 50
+          }
+        },
+        "z": 0
+      },
+      "unit": {
+        "blood_color": "red",
+        "can_disintegrate": true,
+        "can_explode": true,
+        "damage_factor": 1,
+        "death_animation": "death",
+        "disintegrate_fx": "fx_enemy_desintegrate",
+        "explode_fx": "fx_unit_explode",
+        "hit_offset": {
+          "x": 0,
+          "y": 18
+        },
+        "level": 0,
+        "marker_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "mod_offset": {
+          "x": 0,
+          "y": 16
+        },
+        "price": 0,
+        "show_blood_pool": true,
+        "size": 1,
+        "stun_count": 0
+      },
+      "vis": {
+        "bans": 0,
+        "flags": -2147481600
+      }
+    },
+    "mod_gnoll_blighter": {
+      "main_script": {
+        "runs": 1,
+        "update": {}
+      },
+      "modifier": {
+        "duration": 4.9,
+        "level": 1,
+        "replaces_lower": true,
+        "resets_same": true,
+        "ts": 0,
+        "use_mod_offset": true,
+        "vis_bans": 0,
+        "vis_flags": 0
+      },
+      "pos": {
+        "x": 0,
+        "y": 0
+      },
+      "render": {
+        "frames": {},
+        "sprites": [
+          {
+            "alpha": 255,
+            "anchor": {
+              "x": 0.5,
+              "y": 0.28
+            },
+            "animated": true,
+            "draw_order": 10,
+            "flip_x": false,
+            "frame_idx": 1,
+            "hidden_count": 0,
+            "loop": true,
+            "name": "mod_gnoll_blighter",
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "r": 0,
+            "runs": 0,
+            "time_offset": 0,
+            "ts": 0,
+            "z": 3000
+          }
+        ]
+      },
+      "sound_events": {},
+      "template_name": "mod_gnoll_blighter",
+      "tween": {
+        "props": [
+          {
+            "keys": [
+              [
+                0,
+                0
+              ],
+              [
+                0.3,
+                255
+              ],
+              [
+                4.6000000000000005,
+                255
+              ],
+              [
+                4.9,
+                0
+              ]
+            ],
+            "loop": false,
+            "name": "alpha",
+            "sprite_id": 1
+          }
+        ],
+        "remove": false,
+        "reverse": false
+      }
+    }
+  },
+  "scope": "timed plant suppression only; ranged energy projectile remains pending",
+  "notes": [
+    "sys.mod_lifecycle refuses same-level duplicate, resetting only modifier.ts; running U.y_wait and tween do not restart",
+    "Plant object references are isolated from enemy numeric IDs",
+    "Original plant exits blocked state by restarting its loading cooldown; complete native plant FX/notification loop remains pending"
+  ]
+}

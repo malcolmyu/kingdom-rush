@@ -322,3 +322,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 
 
 `carrier.mjs`仅为enemy_perython_gnoll_gnawer拥有World状态。主动释放将clone的源位置/同road-lane/node+2入World延迟队列，下一模拟tick插入；子单位带payloadJoin从源位置走向原next_entity_node目标，不把位置直接吸到前方节点。队列/待死亡释放参与最终胜利判断，暂停不推进插入。death damage-mask按本tick合并，处理普通death动画结束释放与eat/no-spawns抑制、disintegrate的显隐/释放职责，特殊FX仍未全。`enemy-direction.mjs`抽出原纯方向函数，Renderer re-export保持旧API，新carrier model记录方向供flip继承而不在draw中写World。carrierSprites借flyingEnemySprites独立指定每sprite动画与hidden索引，原perython默认路径保持。
+
+`blighter.mjs`只对新增enemy_gnoll_blighter持有timed plant cast状态；modifier以当前World植物对象绑定，不拿局部plant.id查询敌人。封花渲染从原模板+tween派生alpha并入既有actor队列，实际禁用走World.activatePlant统一判断；原4.9秒等待到期重启源植物蓄能。状态随World丢弃，无异步timer；施法前可中断、提交后不随来源死亡消失。同级重复由原mod_lifecycle拒绝，完整通用modifier系统/原协程插入量化未泛化。能量弹与完整native植物FX仍待后续，不开放新关。

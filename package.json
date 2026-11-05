@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.102",
+  "version": "0.2.103",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -106,7 +106,8 @@
     "test:desktop-guidance": "node tests/desktop-guidance-browser.mjs",
     "test:expansion": "node tests/expansion-browser.mjs",
     "test:ettin": "node tests/ettin-browser.mjs",
-    "test:carrier": "node tests/carrier-browser.mjs"
+    "test:carrier": "node tests/carrier-browser.mjs",
+    "test:blight": "node tests/blight-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

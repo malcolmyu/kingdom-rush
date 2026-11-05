@@ -1097,3 +1097,13 @@ ExpansionRepository隔离目录，不修改旧catalog/save/解锁；生产仍前
 358Node全部通过。实际build test:carrier验证三层原Canvas q/原anchor/比例/alpha与选择rect、真实World.spawn/addSoldier/step/hurt触发主动释放、暂停冻结插入队列、复制位置且每tick移动不超过原速、下一tick第三层消失、普通死亡边界/子单位数、zoom/mobile与新场景清理、draw前后模拟/进度快照不变；这些是隔离4关受控位置/时间样本，不是自然第4关通关/原版同输入像素认证。carrier-three-sprites.png/payload-released.png/payload-mobile.png已人工看见角色。
 
 最终build1508files72,773,465B，载兵专项、ettin与原perython真实选中/暂停/通知/mobile回归、天然完整旧九模式/存档手机、UI、公开.101UI均正常exit0。三个campaign20生命，第三campaign入关自然XP4705，末总XP继续自然累加。logs carrier-source-final/tests-final/build/browser/ettin-regression/flying-regression/campaign/ui/performance/pages-ui。冷100ms/1.5MBps/cacheoff14,646,834B，book入关7.151s/总16.069s/223requests<15MB，没有新图片关键下载/整atlas/OTF，不保证所有线上线路速度；新关自身资源预算未验。第4–6仍未开放，blighter/ewok/高级塔/关卡事件等仍待接入，不把本批局部机制称为完整18模式。
+
+### 0.2.103 第4关枯萎者封花连续分支（能量弹未完成）
+
+只读核对原APK game_scripts8647–8723及ready闭包、mod15685–15717、plant13039–13136，以及systems.mod_lifecycle。extract_blight.py固定三源SHA与选中模板，接完整提取，不执行控制器。原5秒检查/175椭圆，优先第一个未blocked植物；.5秒前摇可被stun中断，提交后等待attackPlants结束再行动，期间不另起近战。禁用目标绑定World植物对象，不把plant局部数字id误作敌人id；4.9秒mod独立于来源死亡。sys.mod_lifecycle拒绝同级重复、只重置modifier.ts，原U.y_wait与无resets_same_tween的alpha不重启。完整原协程插入tick量化未恢复。
+
+原mod贴图与alpha keys0:0/.3:255/4.6:255/4.9:0进actor队列，World.activatePlant拒绝blocked而不消耗金币/额外冷却；结束按源plant分支重新开始原custom_attack.cooldown蓄能。现有植物完整loading/ready及独立FX通知循环尚未恢复，未把这批局部机制称全关完成。远程仍待原energy动画/hold_advance与独立追踪加速弹，不能误用旧launchTorch/火DOT；本批明确未称远程完成，第4–6生产入口继续关闭。
+
+362Node通过；实际最终build test:blight覆盖真实World.step封花、原Canvas q/alpha与draw只读、死亡后持续/解除重蓄能、暂停/zoom/mobile/owner清理。受控位置/时钟样本不是自然新关通关或原版同步。桌面/手机截图已人工看，手机整关前景接缝仍待完整层级验收，不拿局部modifier调用证明整图像素一致。新mod字面量让旧塔紧凑包完整增加12帧，1314帧/2,122,316B，逐原RGBA/trim验证；没有提高15MB或降图质。
+
+最终build1509files72,827,505B；blight-browser-final、天然完整旧九模式/存档手机blight-campaign-final、blight-ui-final与公开旧.101 blight-pages-ui全部正常exit0。冷100ms/1.5MBps/cacheoff14,700,669B，book入关7.082s/总15.958s/224requests<15MB，无整atlas/OTF，不保证所有线上线路；新关自身预算尚未验。所有三个campaign20生命，第三campaign入关自然XP4705，完整九模式末自然XP继续增长。
