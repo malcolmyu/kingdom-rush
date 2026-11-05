@@ -108,3 +108,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_desktop_options.py')],check=Tr
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_title.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_render_order.py')],check=True,cwd=ROOT)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_health_bars.py')],check=True,cwd=ROOT)

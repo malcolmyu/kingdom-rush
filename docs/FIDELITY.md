@@ -1,5 +1,16 @@
 # 动画保真记录
 
+## 0.2.89 原单位头顶血条（不是底部Infobar）
+
+只读交叉APK systems.lua1729–1845/1865–2058与vanilla systems.render1798–2113：_hb_ss为1×1角点quad、ref_scale1、anchor0/0，HEALTH_BAR_SIZES按texture_size选择，iphonehd使用default，small16×2/med24×2。原go_decals/enemy/hero图集角点实际RGBA255/255/255/255；Canvas按原rgba色块等价生成，不声称裁了独立血条图。HEALTH_BAR_COLORS原bg126/0/12/255、fg68/174/50/255，满血也显示，没有边框；不再统一36×6/34×4、敌人红填充或屏幕y-48。原hb.offset按world加到floor(x)/ceil(y)，size直接按game_scale而非textureScale缩放；perython原offset0/90与body/shadow链保持。原z/sort_y_offset/200002与200003顺序进入同actor RenderQueue，自定义draw_order0与black_bar_hp分支保留。
+
+当前五敌、Eridan、兵营/援军读取本局模板原offset与真实HP；死亡/漏怪隐藏，英雄初次levelup（game_scripts.lua2795起先播动画再hidden=false）与SU普通respawn动画结束后再显。World没有额外hidden/water状态，本批未伪造这些特殊分支；生命/伤害/回血/复活时序/经验/金币/RNG/寻路都不改。完整全局弹道FX排序/原ID流/特殊死亡与完整动态hidden仍未完成，不能称全敌状态或像素1:1。
+
+新增extract_health_bars.py/read_health_bar_rules.lua仅读constants声明与systems -bl审计，health-bar-data.mjs可复现且接全量提取。311Node通过，3新纯测覆盖源尺寸/原色/满血/偏移/取整/无textureScale/排序0/黑条/隐藏/复活边界。实际build test:health-bars捕获所有五敌+hero+兵营的fillRect尺寸/坐标/色值/矩阵，实际完整Canvas内部像素68/174/50/255、真实World伤害与回血方法/死亡和复活/漏怪显示、zoom/手机CDP/pause/场景清理与World快照均过。spawn/冻结/坐标布局是受控UI样本，不是自然通关或原版同步像素证据。最初回血fixture移动hero却未更新rally target，正常移动分支阻止regen；已修fixture设置同位置目标。第二次精确累加respawn时长落到浮点边界之前，改取动画后一个源帧；未改产品显隐条件或World时序。失败工具结果均收集，最终health-browser-release.log和health-browser-screenshot.log正常exit0。
+
+原flying-enemy/render-order/hero-infobar/UI、本轮公开旧0.2.88UI以及最终独立天然新存档完整九模式三战役三星/存档/手机均正常exit0，第三战役天然XP4705/20生命，策略未改。冷路径100ms/1.5MBps/cacheoff真实书页入关14,172,383B/14.422s、197请求，保持15MB预算且无整atlas/OTF，不保证线上所有设备速度。build1467文件61,294,857B。截图unit-health-bars-injured.png与mobile.png已查看，当前受控样本非原版同步。最终日志health-tests.log/build.log/browser-screenshot.log/order.log/flying.log/hero.log/ui.log/campaign.log/performance.log/pages-ui.log。公开一次build-manifest0.2.88与完整UI成功，新推送不轮询。
+
+
 ## 0.2.83 桌面主横幅/中文按钮局部分支
 
 只读取得固定KR3 desktop screen_slots atlas/layout与vanilla共用screen_slots：ref1920×1080、scale=h/1080、sw=1080*w/h，背景原点为居中1920图的左端，不套phone .5或world .842。banner pos170/1100、anchor0/521（实际原图672×543），三个有效主按钮pos160/97、174/204、202/304，第四quit221/383保留源位置但浏览器无退出能力而禁用。CSinkButton共用源码核实base normal/down，CHoverImage中文normal/hover，child按下偏移(-3,+5)逻辑像素，leave/up/cancel/blur恢复。中文是原atlas位图，不是全局更换字体。15张所选原图逐RGBA验证，tools/sources/desktop-title.json记录PNG/layout/controller SHA，extract_desktop_title.py接全量提取。

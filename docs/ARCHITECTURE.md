@@ -4,10 +4,12 @@
 
 ## 模块边界
 
-`flyingEnemySprites`只读派生当前enemy_perython的原身体/地面影子姿态：原图padding与anchor编码悬空，两个sprite仍同world原点，offset按world处理，不再减固定屏幕25px或自画椭圆。保留RenderQueue的逐sprite源排序；普通死亡动画结束后按hide_after_death隐藏两层，不改World尸体保留或其他战斗状态。原unit healthbar几何/特殊伤害死亡FX仍非本分支恢复范围。
+`healthBarFrames`只读派生原systems.render的1×1白角点着色quad：iphonehd走default small16×2/med24×2，ref_scale=1，不乘atlas textureScale。模板offset加到floor(x)/ceil(y)世界位置，anchor0/0，红底与绿填充同宽同高，按HP比例缩放；黑条归一化与自定义draw_order/colors也保留。drawHealthBars经同World相机与RenderQueue重放，不改HP或单位状态。满血不隐藏；死亡/漏怪隐藏，Eridan初次levelup和respawn按已存在动作时钟派生原显隐。隐藏/水面offset等未建模特殊状态没有伪造，原插入ID与全局弹道FX排序仍欠。
+
+`flyingEnemySprites`只读派生当前enemy_perython的原身体/地面影子姿态：原图padding与anchor编码悬空，两个sprite仍同world原点，offset按world处理，不再减固定屏幕25px或自画椭圆。保留RenderQueue的逐sprite源排序；普通死亡动画结束后按hide_after_death隐藏两层，不改World尸体保留或其他战斗状态。原unit healthbar由独立health-bars分支恢复；特殊伤害死亡FX仍未全接。
 
 
-`RenderQueue`在原世界/相机transform内收集实体与选中标记的逐sprite绘制，不改World数组或时间。顺序为z升序、sort_y或pos.y+sort_y_offset降序、100000*(draw_order或sprite序号)+展示实体ID升序、pos.x升序，完整同键稳定。视觉offset不参与排序，Lua数值0保留。当前只闭合scenery/塔各层/单位/modifier/选中环与现有血条/建造条等实体阶段；弹道、FX和特殊前景/range仍既有阶段，不能当完整全局render_frames。原实体insert ID流尚未全恢复，展示ID以原level声明序号与现World serial作稳定代理，完整同y tie的原插入ID仍是差异。
+`RenderQueue`在原世界/相机transform内收集实体与选中标记的逐sprite绘制，不改World数组或时间。顺序为z升序、sort_y或pos.y+sort_y_offset降序、100000*(draw_order或sprite序号)+展示实体ID升序、pos.x升序，完整同键稳定。视觉offset不参与排序，Lua数值0保留。当前只闭合scenery/塔各层/单位/modifier/选中环与原单位血条/现有建造条等实体阶段；弹道、FX和特殊前景/range仍既有阶段，不能当完整全局render_frames。原实体insert ID流尚未全恢复，展示ID以原level声明序号与现World serial作稳定代理，完整同y tie的原插入ID仍是差异。
 
 
 `DesktopTitle` 是独立的desktop主横幅/中文位图按钮profile，读取固定裁图声明并按1080高度参考/居中背景origin布局。资源与ResizeObserver由实例持有，destroy/owner身份检查阻止旧加载或报错覆盖新场景；waitScreenReady包含title readyPromise。背景使用原1920×1080桌面main_menu_bg（内含左上标志），按h/1080与居中origin布局，移除desktop分支的独立phone logo/CSS背景；DesktopSlots按原.1 outquad在横幅后展开三个真实存档，独立按需目录/图片/删除确认资源由title owner持有。删除弹窗源模板没有命名back，仅遮罩渐变，面板静态保持窗口中心上50逻辑像素；取消请求、切场景与重开均使旧回调失效。真实Repository删除同时清理地图历史和当前活动progress，防旧XP再保存复活；旧MenuMotion和SaveSlots代码保留，phone profile可独立回归。退出在浏览器无对应能力而禁用，主菜单设置由TitleOptionsView按需加载原700×370面板；与地图设置共享bindAudioSliders真实音量绑定，主菜单Done只保存全局音量不创建槽，Escape仅关闭且不写设置。源未命名back的面板仅遮罩渐变，窗口中心上50逻辑像素保持静态；请求号/owner/version防止关闭和切场景后的旧资源复活。名单入口仍现有简化实现。
