@@ -1,5 +1,5 @@
 {
-  "version": "0.2.81",
+  "version": "0.2.82",
   "stages": 3,
   "modes": [
     "campaign",
@@ -65,7 +65,7 @@
     "menu-motion.mjs": "1cd9e9f7ac35db6cf0965cb7d003836c47d772517d6c8a7da7aa64dda0134508",
     "map.mjs": "88c73479238cb6f4ae860fd08a90b895599cfc521cd4a6067617ca263a4709c3",
     "scene-transition.mjs": "d68ad1e8b7083cf4ee7edac4e6a45acb07d82fdaecdb2d0836146761dbc24807",
-    "desktop-map-data.mjs": "8a4a2eeba7ed65755143828528d2c8d82390ce972551dc27dc62c5d1403a2aa7",
+    "desktop-map-data.mjs": "4ea6e43de7eb197551ef9dcd954b89ba84f09cb22488b367f0db42464c7f9bf0",
     "spells.mjs": "cd56d8d3dd32300f9d4aaa3a162aa9d3329e86ac4d1c12ad12270ba82ab72d7b",
     "upgrades.mjs": "f09f4d0e1668cc625b917d959c576af9cc9ab762697b62c657aa4790e2274c53",
     "font-roles.mjs": "2bcd16202de123cd9b54d3fdbe62512c0a1a5c60002d33fc444cc7337fa8454b",
@@ -734,10 +734,10 @@
     "assets/desktop-map/map_background_0003.webp": "6827186cefea681c75f077405da645e803cd6f5985561e651f3aba26e2565002",
     "assets/desktop-map/map_background_0002.webp": "ef44568e7e8e7d33a5a757ab65e9772b3699816f9f094c92ef6d8b354502c3ae",
     "assets/desktop-map/flag-nostar.webp": "78d90c3010fd7a1d8159c3733844f7173b68a0a85f4433cd1b30460581d2cd51",
-    "assets/desktop-map/ambient.webp": "2a3327b4266aec999ca5ba7f43d61e295fbadef033d76786f4f90df52dd0bd0b",
+    "assets/desktop-map/ambient.webp": "2fcdba51d2547af9fc1c63f24e2bd9def205231a57ec2cbdde7419ffdb0035c2",
     "assets/desktop-map/map_background_0001.webp": "79446e1bfa66d870dce732a7d16f96e7e91bd738794954b11376db20ffed3967",
     "assets/desktop-map/map_vignette_small.webp": "0c06fda6b875813bd753a696703294fa6b06e19d1e190a294571ab62150b288a",
-    "assets/desktop-map/catalog.json": "56939d382c0d70e6c0b7c802d762902c41696a45d1540112fc55c39ad76c7569",
+    "assets/desktop-map/catalog.json": "ba98b3b506715b3fb29481f3b4990081b3062dcd12019fa8fd50259b9f84681c",
     "assets/desktop-map/sprites.webp": "3a9aad46eb553b21b437f6518b1e37323db34dada90528dd33a2df3bf8fc0882",
     "assets/desktop-map/flag-iron.webp": "6baed1f7a0a5338d6524929aa3f1776e75d564aac1426212078cad6f78cc48f0",
     "assets/desktop-map/flag-campaign.webp": "bf0d50f31c09b68a0173d4fe6a69a74fd9c04c72070dfddd60f836858f2dee32",
@@ -955,14 +955,14 @@
     "assets/levels/02-iron.json": "7d9a4f64bacc25d8c19735566eb8459d0cb4a1d878e93f1b204d7799bd5ea8cb",
     "assets/levels/02-heroic.json": "281121a5a1cc7347de1d3955d82c974e9ce6c7355a7e18de62be4389c1036f1a",
     "assets/fonts/catalog.json.gz": "e4a153cadc717f492133d54a3a579fe86abf727d842a5c440807e1d3e0c8279b",
-    "assets/fonts/JIMOJW.woff2": "fbd6c16267d7f4ca4a6b749098b38fc9564acb87b49570907c8e50ea0cc841ea",
-    "assets/fonts/NotoSansCJKkr-Bold.woff2": "281197c69e9ad3546578d3accb28e0d1a984c20fde1e7ead72c6dce8f870c368",
-    "assets/fonts/NotoSansCJKkr-Regular.woff2": "06020d583a38f39e6ca0f326662466d165abd7c0b242b54ee67ae0f8eebc89ed",
-    "assets/fonts/Sun Yun He Xuan Li Ti.woff2": "55d78e9e976830a59d20431754c95ba04fd766fda9db480b953651f28c871ad7",
-    "assets/fonts/Comic Book Italic.woff2": "35c56882d344f9270f03899ccb78697cf755f4a3e4cf4a47ba3d960888005ecf",
-    "assets/fonts/TOONISH.woff2": "1f1e4de5188edfb459e1d555b8236d31237207117a864f9651bfa675914485d9",
+    "assets/fonts/JIMOJW.woff2": "0cc586f258e3095a7292b23d586f1372c45573b4f4ff52617f295eaa4c090555",
+    "assets/fonts/NotoSansCJKkr-Bold.woff2": "a8c2b8cf3282fa83dedac8543f626d7a9730ea05c92c3039dc4b8531f0839ef3",
+    "assets/fonts/NotoSansCJKkr-Regular.woff2": "0d44e57828cc0edbb5d7bbb64aa4740fcd11032b7c3cd4067b8fad519690ff7e",
+    "assets/fonts/Sun Yun He Xuan Li Ti.woff2": "ff3a8b94b23623300718a3164e0220637d2e66fffd32543d00e1846223c712a9",
+    "assets/fonts/Comic Book Italic.woff2": "17ef002d162db2b5634a479ff0168ae91d315540f6232d664069e8a1cde45b02",
+    "assets/fonts/TOONISH.woff2": "3f39491302e4a60188c891e94549522d26762e9c15d5361fdf4950ab3cbf2f57",
     "assets/fonts/book-source.json": "ebee3a802828785742cf5218e5cb95be8fe63d9c9606fa3c7faf4bc0adb2c9af",
     "assets/fonts/catalog.json": "2ccebb799eacf99dc276a38800aa29a298560c741e6bdc8fa69ceaeb00a35b82",
-    "assets/fonts/SohoGothicProMedium.woff2": "1a92a39e167db9729b539e5ca4415278208f0e5eac3d81742e9484fe2a9ed871"
+    "assets/fonts/SohoGothicProMedium.woff2": "face0cd9d73086beec9b83c4a9f1e91720d90b493def1e849118a029fb5890e0"
   }
 }
