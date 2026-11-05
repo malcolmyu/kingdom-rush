@@ -1,0 +1,345 @@
+{
+  "repository": "https://github.com/zidonghua2018/KingdomRushFL",
+  "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+  "kind": "community-mod-origins-desktop-assets",
+  "atlasPath": "kr3-desktop/assets/images/fullhd/view_options.lua",
+  "atlasSha256": "f63fc0bc3a4964749ab7f30a0d04cad8299563d91588b26dbe612ce69f9a56a9",
+  "frames": {
+    "options_bg_notxt": {
+      "size": [
+        720,
+        570
+      ],
+      "trim": [
+        24,
+        3,
+        24,
+        33
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        6,
+        6,
+        672,
+        534
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_barBg": {
+      "size": [
+        422,
+        34
+      ],
+      "trim": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        6,
+        546,
+        421,
+        33
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_bar": {
+      "size": [
+        396,
+        15
+      ],
+      "trim": [
+        0,
+        1,
+        0,
+        4
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        6,
+        585,
+        396,
+        10
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_button_bg_0001": {
+      "size": [
+        194,
+        76
+      ],
+      "trim": [
+        8,
+        2,
+        10,
+        6
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        684,
+        209,
+        176,
+        68
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_button_bg_0002": {
+      "size": [
+        194,
+        76
+      ],
+      "trim": [
+        6,
+        0,
+        8,
+        5
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        684,
+        132,
+        180,
+        71
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0001": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        7,
+        4,
+        6,
+        5
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        866,
+        209,
+        47,
+        51
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0002": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        870,
+        132,
+        59,
+        58
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0003": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        7,
+        4,
+        6,
+        5
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        919,
+        209,
+        47,
+        51
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0004": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        7,
+        4,
+        6,
+        5
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        972,
+        209,
+        47,
+        51
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0005": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        935,
+        132,
+        59,
+        58
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "options_sounds_0006": {
+      "size": [
+        60,
+        60
+      ],
+      "trim": [
+        7,
+        4,
+        6,
+        5
+      ],
+      "a_size": [
+        1024,
+        1024
+      ],
+      "f_quad": [
+        684,
+        409,
+        47,
+        51
+      ],
+      "alias": {},
+      "a_name": "view_options-1.png"
+    },
+    "difficulty_select_bg": {
+      "a_name": "screen_map-0.png",
+      "size": [
+        208,
+        46
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "a_size": [
+        2048,
+        2048
+      ],
+      "f_quad": [
+        874,
+        1989,
+        208,
+        46
+      ],
+      "alias": {}
+    }
+  },
+  "sheets": {
+    "view_options-1.png": "4a08d3feacbc30abc66845b812fe67c49a57f6e2cc811b00a7592ae237c247ba",
+    "screen_map-0.png": "99c5166a978d1d761345761a6962315014a0ef9149daa033911e6cba40896894"
+  },
+  "text": {
+    "OPTIONS": "选项",
+    "SFX": "音效",
+    "Music": "音乐",
+    "Difficulty": "难度",
+    "BUTTON_QUIT": "退出",
+    "BUTTON_RESUME": "返回",
+    "LEVEL_SELECT_DIFFICULTY_CASUAL": "休闲",
+    "LEVEL_SELECT_DIFFICULTY_NORMAL": "普通",
+    "LEVEL_SELECT_DIFFICULTY_VETERAN": "老兵"
+  },
+  "jimoKeys": [
+    "OPTIONS",
+    "SFX",
+    "Music",
+    "Difficulty",
+    "BUTTON_QUIT",
+    "BUTTON_RESUME"
+  ],
+  "reference": {
+    "x": 720,
+    "y": 570,
+    "windowWidth": 1920,
+    "windowHeight": 1080
+  },
+  "slider": {
+    "size": [
+      422,
+      34
+    ],
+    "fill": [
+      396,
+      15
+    ],
+    "fillPos": [
+      11.253333333333334,
+      11.333333333333334
+    ],
+    "thumb": [
+      60,
+      60
+    ]
+  },
+  "scope": "Original audio/resume/quit with three supported difficulty labels readonly; full difficulty popup not restored."
+}

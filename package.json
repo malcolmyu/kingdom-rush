@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.73",
+  "version": "0.2.74",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -75,7 +75,8 @@
     "test:book-motion": "node tests/book-motion-browser.mjs",
     "test:desktop-map": "node tests/desktop-map-browser.mjs",
     "test:desktop-map-hud": "node tests/desktop-map-hud-browser.mjs",
-    "test:desktop-map-actions": "node tests/desktop-map-actions-browser.mjs"
+    "test:desktop-map-actions": "node tests/desktop-map-actions-browser.mjs",
+    "test:desktop-options": "node tests/desktop-options-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

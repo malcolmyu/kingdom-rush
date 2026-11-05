@@ -79,6 +79,8 @@ def optimize(out):
    capitals=[v[:1]for k,v in strings.items()if k.endswith('_HISTORY')or k in ['LEVEL_MODE_HEROIC_DESCRIPTION','LEVEL_MODE_IRON_DESCRIPTION']]
    map_ui=json.loads((out/'assets/desktop-map/catalog.json').read_text())['hud'].get('actions',{})
    action_text=''.join(map_ui.get('text',{}).get(b['key'],'')for b in map_ui.get('buttons',[]))
+   options=json.loads((out/'assets/options/catalog.json').read_text())
+   action_text+=''.join(options['text'][k]for k in options['jimoKeys'])
    font_corpus=''.join(chr(i)for i in range(32,127))+''.join(capitals)+book['text']['BUTTON_TO_BATTLE_1']+book['text']['BUTTON_TO_BATTLE_2']+action_text
   required=set(map(ord,font_corpus))&before.keys()
   metrics=(font['hhea'].ascent,font['hhea'].descent,font['head'].yMin,font['head'].yMax)

@@ -1,5 +1,15 @@
 # 动画保真记录
 
+## 0.2.74 地图原 OptionsView 与真实全局音量
+
+地图设置改为原720×570 options_bg_notxt、12张独立原图与原desktop角色，固定公开源/PNG SHA在 tools/sources/desktop-options.json，extract_desktop_options.py 无损裁图逐RGBA验证并接全量提取。标题/存档页设置不迁移。原共用OptionsView6264–6500与VolumeSlider/GGOptionsButton/GGPanelHeader交叉核对：SFX滑杆149/167、音乐149/254、422×34、填充396×15；原thumb60×60。标题和按钮按原角色/物理字号取整与宽度fit，shader/基线仍CSS/浏览器近似。公开旧调用签名与新版slider style接口不同，按实际音乐/SFX样式分支选原帧，不执行控制器。
+
+滑杆真实控制已有及新建Audio gain，原基准.2和效果gain保留；0..1的volume_fx/music独立全局保存。未配置的旧布尔默认行为保留，首次滑杆捕获旧有效状态；配置后跨存档全局有效，不被新槽默认sound:false压成0。原thumb拖动/hover/down、pointercancel、键盘操作可用；关闭保存，退出立即清理再走既有门，返回/Escape原.25关闭。BookMotion显式570高度使50逻辑位移正确，书页默认720与.5入/.25出不变。pending请求/version/slot校验、重复close与旧回调取消已覆盖。
+
+完整难度子页未迁移，本面板只读显示真实支持三档当前值，不造第四档玩法。World/HP/金币/XP/冷却/策略未改。276 Node通过；最终build原设置专项、顶部设置入口回归、UI、完整九模式三战役三星/存档手机通过，书页动画及导演专项同批通过。首次新槽测试发现全局音量被旧默认静音覆盖，已修真实优先级并重跑；旧顶部专项同步等待不适用于lazy资源/关闭动画，已改真实等待，不改门控。
+
+最终936文件53,663,277B；冷路径100ms/1.5MBps/cacheoff14,764,752B/15.033s，15MB流量预算保持，无options图片进入关键下载，不是线上速度保证。公开本轮一次manifest确认0.2.73且UI通过，推送新版后不轮询。最终log options-tests-complete.log、options-browser-publish.log、options-hud-publish.log、options-campaign-publish.log、options-ui-publish.log、options-performance-publish.log；desktop-options-native.png/mobile.png已查看，为当前UI样本非原版同步像素证据。整体仍未1:1。
+
 ## 0.2.70 原书页交互与 PopUpView 时序
 
 重新核对固定版本共用原代码 `all-desktop/gg_views_custom.lua`，不是混合模组的修改版：原 `FADE_IN_TIME=.5`、`FADE_OUT_TIME=.25`，show在开始就 `enable(false)`，并非动画结束才启用。模组的1秒/0.5秒与延后启用未采用。来源和SHA保存在 `tools/sources/book-motion.json`，控制器仅只读，未执行。
