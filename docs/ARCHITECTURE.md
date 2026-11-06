@@ -1,5 +1,7 @@
 # 技术方案：数据驱动的塔防战役
 
+0.2.133首领基础控制器gnoll-boss.mjs只在id6/eb_gnoll实例创建状态，读取level6按需原模板，开场/节点howl真实连接现megaSpawner。近战与stomp独立phase，绘制gnollBossPose纯读，100秒死亡保留覆盖普通敌1.2秒清理；源码仍只-bl审计。source physical|NO_DODGE在boss caller开启mask护甲分支，其他hurtDefender调用维持旧规则。原boss aura/mod、囚车/相机/最终父controller及native队列/IDs/全音频仍未完成，第6不开放，不能称18模式或同输入1:1。
+
 0.2.132独立MeleeAudio接Campaign.sound(melee)，只管理一个原SWORDS声道、五短clip的sequence与450ms忽略窗；effectAudio共同管理音量，pause/modal/静音/transition清理并取消旧媒体播放，无队列/timer/World引用或RNG。原先每击播放8秒barracks fight导致援军死亡后仍多轨叠音。其他原sound_db组/全单位专属音效仍未完整恢复。
 
 0.2.131第6独立World.megaSpawner持有按需data/manualWave/current/queue/insertQueue。完整原level06四组路径声明由ExpansionRepository仅level6读取，控制器模块无大静态数据。队列编译先分配point再抽lane/interval/variation，到期提交下一tick真实spawn；同manual名称不重放、换名yield与interrupt职责独立。原source分支无CUSTOM/PACK，未扩虚假通用API。campaign6胜利显式阻止普通波次完成误判；首领caller/囚车/最终收尾尚未连接，不开入口。第五及旧World不创建本集合或消费新随机。

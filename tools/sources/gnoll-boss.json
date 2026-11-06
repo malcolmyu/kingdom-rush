@@ -1,0 +1,35 @@
+{
+  "declarationSHA256": "f9b9521dd007dba8556ff3e47b89eb341b49d218b72744901957397c3cff1880",
+  "frames": 231,
+  "imageSHA256": {
+    "go_stage06-1.webp": "727e3c2fe43f224c0d3738d971698ca00eef57388479a6fb164a0c642e5794cd",
+    "go_stage06-2.webp": "73f61c8dec0225d40703cb2bacb38da82774319213ce30e1f84864c94c133a96",
+    "go_stage06-3.webp": "03f513e90830ba1d564a742581a3e5be0caf58923a1a9068f7020e7c9b1b6a2d",
+    "go_stage06-4.webp": "6ea3f44f5289e67e09272f35463a692d03fb47fc67e909c8d62d5d4014c5025a",
+    "go_stage06-5.webp": "187a3b889b927ae6979aefa000183562fb41950b534e0e4f5bed6eb6039e5813"
+  },
+  "limits": [
+    "Cart/camera/level ending and boss aura/modifier remain pending; campaign6 stays blocked",
+    "Native coroutine/queue IDs/node walking and full entity damage/kill enumeration adapted",
+    "Screen-shake and source audio requests are not full production playback"
+  ],
+  "ranges": [
+    "game_scripts.lua:11205-11327",
+    "game_scripts.lua:11210-11214",
+    "game_scripts.lua:11216-11220",
+    "game_scripts.lua:11222-11229",
+    "level_utils.lua:557-622",
+    "script_utils.lua:2937-3131",
+    "utils.lua:574-585"
+  ],
+  "rgbaVerified": true,
+  "scope": "Original boss intro/howl -> real manual spawner, node howls, physical NO_DODGE stomp, ordinary melee and death cleanup base.",
+  "sha256": {
+    "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "all/level_utils.lua": "bfb4cd3104ef07f7d6db29434e9c3a1a986d875eee90376786a0a36322e42cce",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  }
+}

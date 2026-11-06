@@ -49,7 +49,7 @@ keys.update(f'upgrades_icons_{i:04}'for i in range(1,33))
 keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
 keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('portraits_hero_0001')
-keys.update(['portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','portraits_sc_0014','portraits_sc_0019','portraits_sc_0051','icon_0005'])
+keys.update(['portraits_sc_0013','portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','portraits_sc_0014','portraits_sc_0019','portraits_sc_0051','icon_0005'])
 keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,5,9,13])
 keys.update(['power_rank_0001','power_rank_0002','special_icons_bg','gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
@@ -80,7 +80,7 @@ keys.update(f'victoryStars_{i:04}'for i in range(1,55))
 keys.update(f'mapFlag_{i:04}'for i in [1,6,7,8,9,10])
 keys.update(f'levelSelect_badges_{i:04}'for i in range(1,7))
 keys.update(f'victoryBadges_{i:04}'for i in range(1,6))
-exact_keys={'portraits_towers_0005','portraits_sc_0051','portraits_sc_0014','portraits_sc_0019','encyclopedia_creeps_0004','encyclopedia_creeps_0005','encyclopedia_creep_thumbs_0004','encyclopedia_creep_thumbs_0005','encyclopedia_towers_0017','encyclopedia_tower_thumbs_0017','alert_creep_0004','alert_creep_0005','alert_creep_0008','encyclopedia_creeps_0008','encyclopedia_creep_thumbs_0008','encyclopedia_towers_0020','encyclopedia_tower_thumbs_0020'}
+exact_keys={'portraits_sc_0013','portraits_towers_0005','portraits_sc_0051','portraits_sc_0014','portraits_sc_0019','encyclopedia_creeps_0004','encyclopedia_creeps_0005','encyclopedia_creep_thumbs_0004','encyclopedia_creep_thumbs_0005','encyclopedia_towers_0017','encyclopedia_tower_thumbs_0017','alert_creep_0004','alert_creep_0005','alert_creep_0008','encyclopedia_creeps_0008','encyclopedia_creep_thumbs_0008','encyclopedia_towers_0020','encyclopedia_tower_thumbs_0020'}
 images={};sheets={}
 for key in sorted(keys):
  f=c['frames'].get(key)

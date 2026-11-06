@@ -1,5 +1,9 @@
 # 第4–6关还原工作区
 
+0.2.133实际接通第6首领eb_gnoll基础战斗：独立原231帧/2,564,584B无损图包仅level6加载，原HP四档/armor.6/speed30。开场37帧scream第8帧真实赋megaSpawner.manualWave，后续原节点85/135/180轮换四组；普通近战按原chance1、>=1.5秒冷却/4帧dodge/22帧命中/70–90整数物理伤害。strict7秒（最高难度5秒）后的75帧踩踏第55帧对合法soldier组件目标按hero100–120/普通150–180（最高难度1000）伤害，保留physical|NO_DODGE，不误当穿甲。hurtDefender新增仅该caller启用的physical-mask选项，旧目标/旧模式调用不改。
+
+死亡中断spawner并无奖励清场，原34帧death/death-complete与100秒不透明尸体保留；不以World.hurt给清场敌人发金币/XP或carrier落兵。原gnoll_boss_aura/mod_gnoll_boss增益尚未接；源屏幕震动/音频播放、完整native队列/IDs/时序/死亡实体枚举仍欠或适配。囚车/相机/父level06结束还未实现，因此campaign6保守胜利门保持，不开第6入口。浏览器为原路120,459附近受控spawn，不冒天然完整第6通关；当前正式仍前五关15模式。
+
 0.2.132优先修复人类新反馈“援军攻击音效不会停止并重叠”。真实Campaign.sound/World.cast援军近战复现：6秒后援军均已死亡，仍3个melee.ogg声道并播，每轨约8秒，loop=false；不是无限loop标志，而是误用长TowerBarracksBasic音轨且每次近战新建Audio。原APK extra.lua的MeleeSword为五个Sound_SoldiersFighting-01..05短音0.42–0.92秒，sequence/gain.2/ignore.45，settings.lua SWORDS.max_sources=1；sound_db605–673原抑制与满组evict旧voice职责已只读-bl核对。
 
 新melee-audio.mjs按原sequence轮换、450ms忽略窗、单SWORDS声道，新播放先pause旧轨，不积压/不用timer、不消费World随机或改命中/攻击cd。仅当前melee事件接入该组，其他音效组并非完整原sound_db恢复。dialog暂停/静音或音效音量0/transition换场景都即时停止并解绑旧回调；ended/error/拒播只清自己的引用，迟到旧回调不能清新voice。原五ogg从APK字节原样复制，不裁切/变速/重编码。source tools/sources/melee-audio.json固定extra/settings/sound_db SHA和五音轨SHA；extract_melee_audio.py接extract_campaign。旧长melee.ogg保留文件兼容，但当前近战不再调用它。
@@ -245,3 +249,8 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 
 
 0.2.127最终包第五关隔离冷入口仍失败：100ms/1.5MBps/cacheoff15,537,493B/223requests，book6.820秒/总16.726秒，15MB断言exit1。原catalog/progress/World绘制快照保持、无missing/无7.3MB整图；原Alleria/投石车/预建兵营2级/本关场景均真实加载。此项不能当通过，也不以旧四关预算冒第五。下一批应集中解决约537KB及未来正式书页增量，并推进合法自然三模式与发布链，不再重复磨三个已接技能。日志artifacts/dance-stage5-budget.log及stage5-resource-probe.json为最新样本，旧.126失败仍保留历史。
+
+
+0.2.133验证记录：558项Node全过；actualbuild gnoll-browser-selected真实Space开波后原路120,459附近受控spawn，World.step自动开场吼叫/28个真实召唤、普通近战与踩踏实际扣HP、原Canvas q/alpha/已decode/draw纯读、原肖像点选、死亡仅首领奖励1gold/无清场奖励、34帧后death-complete且100秒原尸体/仍不假won、pause/zoom/844x390 CDP触摸/退图清理通过。截图已人工看，非天然第6或原版同输入pixelcert。原天然九模式/存档手机、连续1–4→5自然三模式、UI和援军真实音频回归通过。音频首轮手机触点断言失败，未改产品/门槛的独立repeat正常exit0；首领专项初错nearestRoad返回road字段、出口前fixture导致先漏怪，以及不存在的infobar canvas selector均是测试错误，最终纠正后全流程exit0。
+
+最终0.2.133构建1645files/94,184,262B，所有web运行模块/新资源逐字节一致。cold100ms/1.5MBps/cacheoff旧14,816,173B/233req，第四真实旗书14,773,546B/223req，第五14,956,853B/234req，均<15MB，不承诺所有线路速度。第五仅43,147B余量。第6仍单独关闭、预算另有失败记录；不能把旧五通过冒第6通过，也不抬15MB/降质/整atlas/清透明RGB。主要logs artifacts/gnoll-tests-all/build/browser-selected/audio-repeat/natural4/natural5/old-nine/ui/performance/stage4-performance/stage5-performance.log。

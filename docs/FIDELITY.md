@@ -1,5 +1,7 @@
 # 动画保真记录
 
+0.2.133首领基础控制器gnoll-boss.mjs只在id6/eb_gnoll实例创建状态，读取level6按需原模板，开场/节点howl真实连接现megaSpawner。近战与stomp独立phase，绘制gnollBossPose纯读，100秒死亡保留覆盖普通敌1.2秒清理；源码仍只-bl审计。source physical|NO_DODGE在boss caller开启mask护甲分支，其他hurtDefender调用维持旧规则。原boss aura/mod、囚车/相机/最终父controller及native队列/IDs/全音频仍未完成，第6不开放，不能称18模式或同输入1:1。
+
 0.2.132修复援军近战声音：原MeleeSword五个短ogg逐字节从APK提取，原sequence/ignore.45/gain.2/SWORDS max1；替换此前误用的8秒barracks长音轨，不靠裁切/加速压缩消除重叠。真实浏览器原援军近战修前峰值3轨、修后1轨，暂停/静音/退图立即停止。其他组混音、全部原音效调用/原Love音频时钟仍适配，非全音频1:1；没有改图片/动画/World随机或攻击时序。
 
 0.2.131刷怪器只生成真实原敌，不新增或修改图片。第6受控manualWave队列使用原path起点/支路，原actorqueue与既有图组绘制；actualCanvas检查q/alpha、已decode与draw前后World完整状态不变，桌面/手机截图用于机制验证。真实boss吼叫尚未连接，非自然6通关或同输入原版像素证书；source Lua pairs/队列IDs/path timing仍适配，15MB门未通过。
