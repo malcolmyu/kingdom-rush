@@ -1,0 +1,31 @@
+{
+  "declarationSHA256": "f9b9521dd007dba8556ff3e47b89eb341b49d218b72744901957397c3cff1880",
+  "frames": 1086,
+  "pngSHA256": {
+    "go_stage06-1.png": "727e3c2fe43f224c0d3738d971698ca00eef57388479a6fb164a0c642e5794cd",
+    "go_stage06-2.png": "73f61c8dec0225d40703cb2bacb38da82774319213ce30e1f84864c94c133a96",
+    "go_stage06-3.png": "03f513e90830ba1d564a742581a3e5be0caf58923a1a9068f7020e7c9b1b6a2d",
+    "go_stage06-4.png": "6ea3f44f5289e67e09272f35463a692d03fb47fc67e909c8d62d5d4014c5025a",
+    "go_stage06-5.png": "187a3b889b927ae6979aefa000183562fb41950b534e0e4f5bed6eb6039e5813"
+  },
+  "ranges": [
+    "level06.lua:48-151",
+    "level06.lua:50-61",
+    "game_gui.lua:1104-1109",
+    "game_gui.lua:1110-1114",
+    "game_gui.lua:1189-1195",
+    "game_gui.lua:1039-1045"
+  ],
+  "rgbaVerified": true,
+  "scope": "Original campaign6 clear waves -> cart -> real boss -> death-complete -> final no-alive gate. World routes/viewport/camera/coroutine timing remain adapters; stage6 stays closed pending budgets/natural modes.",
+  "sha256": {
+    "all-phone/game_gui.lua": "e9ba578e0b2d53075f1e7b7fc7b9bae04736983246c2270c31000fd02060381d",
+    "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "all/level_utils.lua": "bfb4cd3104ef07f7d6db29434e9c3a1a986d875eee90376786a0a36322e42cce",
+    "all/path_db.lua": "2fb9f1ed4c4f6216d40b9969f790cf96991c94e3e7f089cb2e8cc89ed389bc5c",
+    "kr3-phone/data/kui_templates/game_gui.lua": "f249fae353c9f88b052de42915a2ba81b066ce052d77ee35ac2347374d3bb04e",
+    "kr3/data/levels/level06.lua": "fe258415b95fa1e8abcd5fcfda94f8cfbd1242b54cb18f6f190b745b1f6e01be",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  },
+  "uniqueCrops": 101
+}

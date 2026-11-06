@@ -1,5 +1,13 @@
 # 动画保真记录
 
+0.2.135实际接通campaign第6父level06结局：最后普通波次真正结束且无活敌后等2秒，源遮幕/2秒镜头/隐藏GUI，囚车从visible.left−132、y459以47速行至120,459；到位仍yield一次、下一tick才open；open动画83/30后按原nearest_nodes默认lane1取最近节点+1，下一模拟tick生成真实eb_gnoll并连接现megaSpawner。3/30后只前五sprite降Z_DECALS1400，第六保留3000/sort_y_offset−10。父状态读取实际gnollBoss.phase，只有进入loop才恢复镜头/GUI；等待dead→death-complete后再1秒且wavesfinished无活敌才放行原胜利门。普通15波清空不再是假won或永远无条件拦截。heroic/iron原结束链不加囚车。
+
+stage6-ending.mjs只改该World的状态，Stage6EndingView纯读Worldclock驱动原黑幕out-cubic与镜头in-out-quad；源相机目标(120,500)/zoom2→(512,384)/zoom1，使用现BattleCamera边界适配，不称原native camera完全同步。隐藏GUI期间真实交易/英雄移动/施法/鼠标镜头/键盘入口禁止，模拟继续；暂停则Worldclock/车/镜头停止，返回地图销毁遮幕/inert与owner。原协程yield/原动态nav-grid/native队列ID、音频、全死亡与屏幕震动仍欠或适配，不称完整1:1。
+
+原六层walk1..22、open23..181共1086逻辑帧，101唯一裁片/1,299,296B独立stage6-ending图组，原PNG/quad/size/trim/RGBA逐帧无损校验；只campaign6按需读取声明并完整decode，旧五关不下载车图。当前第6入口仍全量decode boss+cart，预算明确尚未完成；不以将来事件用图假延后/抬15MB/降质冒过关。extract_stage6_ending.py固定7原源码SHA和原图SHA，helper只loadfile+jit.util.funck读取level06相机TDUP与声明constants，控制器仅-bl审计、不执行。完整extract_campaign/build可重建。
+
+实际build ending-browser-repeat从真实Space开波后受控清到最后波，父controller自行驶入/开笼/排队真实首领→吼叫触发真实召唤→恢复GUI→真实hurt击杀→death-complete→最终won，Canvas六原图/alpha/无missing或未decode/draw完整World快照不变、真pause/zoom/844x390 CDP触摸/地图清理通过。截图人工看过；这是受控最终波样本，不是自然第6通关或同输入pixelcert。首浏览器发现新view将guiReference直接传给需reference包装的视口函数，实修并重建后完整通过，失败日志保留。571 Node全过（5新结局）。生产仍前五关15模式，第6继续关闭，天然三模式、自身15MB、原旗路书页/通知/奖励cap6尚未验收，不称18模式完成。
+
 0.2.134 gnoll-aura.mjs接原aura_apply_mod→mod_gnoll_boss生命周期，只实际第6目标创建状态；排队插入/同级刷新/严格过期/原HPbonus与ceil系数撤回，普通近战与infobar读unit系数，普通箭仍读bullet系数。原三静态图/环alpha-scale独立loop进actorqueue，纯绘制不写World。boss包234帧2,571,592B只第6按需，controllers只-bl。囚车/相机/结局及native队列/全modifier仍欠，第6继续关闭。
 
 0.2.133首领基础控制器gnoll-boss.mjs只在id6/eb_gnoll实例创建状态，读取level6按需原模板，开场/节点howl真实连接现megaSpawner。近战与stomp独立phase，绘制gnollBossPose纯读，100秒死亡保留覆盖普通敌1.2秒清理；源码仍只-bl审计。source physical|NO_DODGE在boss caller开启mask护甲分支，其他hurtDefender调用维持旧规则。原boss aura/mod、囚车/相机/最终父controller及native队列/IDs/全音频仍未完成，第6不开放，不能称18模式或同输入1:1。

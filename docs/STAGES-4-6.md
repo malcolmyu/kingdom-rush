@@ -1,5 +1,19 @@
 # 第4–6关还原工作区
 
+0.2.135实际接通campaign第6父level06结局：最后普通波次真正结束且无活敌后等2秒，源遮幕/2秒镜头/隐藏GUI，囚车从visible.left−132、y459以47速行至120,459；到位仍yield一次、下一tick才open；open动画83/30后按原nearest_nodes默认lane1取最近节点+1，下一模拟tick生成真实eb_gnoll并连接现megaSpawner。3/30后只前五sprite降Z_DECALS1400，第六保留3000/sort_y_offset−10。父状态读取实际gnollBoss.phase，只有进入loop才恢复镜头/GUI；等待dead→death-complete后再1秒且wavesfinished无活敌才放行原胜利门。普通15波清空不再是假won或永远无条件拦截。heroic/iron原结束链不加囚车。
+
+stage6-ending.mjs只改该World的状态，Stage6EndingView纯读Worldclock驱动原黑幕out-cubic与镜头in-out-quad；源相机目标(120,500)/zoom2→(512,384)/zoom1，使用现BattleCamera边界适配，不称原native camera完全同步。隐藏GUI期间真实交易/英雄移动/施法/鼠标镜头/键盘入口禁止，模拟继续；暂停则Worldclock/车/镜头停止，返回地图销毁遮幕/inert与owner。原协程yield/原动态nav-grid/native队列ID、音频、全死亡与屏幕震动仍欠或适配，不称完整1:1。
+
+原六层walk1..22、open23..181共1086逻辑帧，101唯一裁片/1,299,296B独立stage6-ending图组，原PNG/quad/size/trim/RGBA逐帧无损校验；只campaign6按需读取声明并完整decode，旧五关不下载车图。当前第6入口仍全量decode boss+cart，预算明确尚未完成；不以将来事件用图假延后/抬15MB/降质冒过关。extract_stage6_ending.py固定7原源码SHA和原图SHA，helper只loadfile+jit.util.funck读取level06相机TDUP与声明constants，控制器仅-bl审计、不执行。完整extract_campaign/build可重建。
+
+实际build ending-browser-repeat从真实Space开波后受控清到最后波，父controller自行驶入/开笼/排队真实首领→吼叫触发真实召唤→恢复GUI→真实hurt击杀→death-complete→最终won，Canvas六原图/alpha/无missing或未decode/draw完整World快照不变、真pause/zoom/844x390 CDP触摸/地图清理通过。截图人工看过；这是受控最终波样本，不是自然第6通关或同输入pixelcert。首浏览器发现新view将guiReference直接传给需reference包装的视口函数，实修并重建后完整通过，失败日志保留。571 Node全过（5新结局）。生产仍前五关15模式，第6继续关闭，天然三模式、自身15MB、原旗路书页/通知/奖励cap6尚未验收，不称18模式完成。
+
+最终571 Node全部通过；actualbuild ending-browser-publish含增强的六层原quad/alpha/相机矩阵断言、到位yield边界、真实parent/boss/召唤/死亡收尾与手机清理正常exit0。最终ending-old-nine-publish完整原天然九模式/存档手机、ending-ui-publish、连续新档1–4→5自然链都通过：4campaign19命三星/heroic142/iron95，5campaign20命/heroic201/iron147/XP37600。最后仅第6到位yield与source审计SHA补齐后重build，旧九/UI与三旧冷路径又在最终包完整通过。stage04/05/06组重提仍1925/1815/2446帧与4090840/3175904/4490674B，stage05只更新runtime模块SHA。旧compact仍1314帧2122316B。所有运行模块与新cart资源逐字节等actualbuild；最终包1654文件95836038B（含manifest）。
+
+最终冷100ms/1.5MBps/cacheoff旧14829462B/236requests、book6.251s总15.957s；第4真实旗书14786835B/226req、book7.192s总16.970s；第5真实旗书14970143B/237req、book7.838s总17.601s，仍<15MB，不保所有线路。第五仅29857B余量，未来第6大数据/图须按需。第6真实title/save/map/book后隔离入口19080032B/231req、book9.470s总19.531s，15MB assert明确正常exit1，不称通过；basecatalog/progress/draw不变、无missing/unready，包含真实完整boss+cart。不是已发布旗6/书6，也不是自然第6通关。下一批应实际解决该关依赖/事件前decode/owner事务与自然三模式，再接真实旗书奖励cap6，不再无限磨已完结局/基础boss/aura/HUD。援军短音单voice修复保持，本批未改音频。
+
+主要logs artifacts/ending-tests-final/build-publish/browser-publish/old-nine-publish/ui-publish/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-budget/natural4/natural5/boss-regression/source-final/groups-final，初ending-browser-first为已修的视口包装错误，不能冒最终成功。所有测试进程结果收齐后交付。
+
 0.2.134接通第6首领gnoll_boss_aura/mod_gnoll_boss完整当前可用分支。原enemy insert排队aura，下一模拟tick插入后立即首周期、之后每>=5/30秒最多一次；track_source随原boss当前位置，死亡/移除停止生产。原radius150/.7椭圆、filter_source、F_MOD4/F_FRIEND1024筛选，stun不停止aura。每次生产mod先排队，下一tick按目标对象身份插入；同级resets_same只刷新ts，不重复加HP/系数/重置显示年龄。原固定level1，本批不假实现通用多级/ban modifier引擎。
 
 mod在插入时加floor(当前maxHP*.5)且HP同加，保存bonus；unit damage factor乘1.5。离圈后不再刷新，strict now-ts>.2或目标死亡/移除才撤销，原remove减保存bonus的maxHP/HP并ceil(unitFactor/1.5)，不归一化抹掉原ceil对叠加系数的影响。只有实际中此新修饰器的第6目标创建gnollDamageState，和现gnawer.factor乘除同步，gnawer引用/时长与sleep/dance stun计数保持独立。HP撤回可致死，按原systems.health观察HP<=0，复用既有死亡/奖励而不加英雄XP；World.hurt的旧死亡段抽为finishEnemyDeath，旧调用数值/RNG不变。

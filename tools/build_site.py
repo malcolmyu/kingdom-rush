@@ -17,7 +17,7 @@ assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-top').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-guidance').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/expansion').rglob('*')if p.is_file()}
-assets|={str(p.relative_to(ROOT/'web/assets'))for group in ['stage5-catapult','stage5-alleria','battle-multi','blade','gnoll-boss'] for p in (ROOT/'web/assets'/group).rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for group in ['stage5-catapult','stage5-alleria','battle-multi','blade','gnoll-boss','stage6-ending'] for p in (ROOT/'web/assets'/group).rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/arcane').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/tower-groups').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-bottom').rglob('*')if p.is_file()}
@@ -36,7 +36,7 @@ optimize(OUT)
 # Resolve static imports up front to remove deep ESM request waterfalls on cold
 # connections. Preload the title background while metadata is downloading.
 # Compress declaration metadata losslessly; raw JSON remains a compatibility fallback.
-metadata=['assets/gnoll-boss/catalog.json','assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json','assets/arcane/catalog.json','assets/blade/catalog.json','assets/stage5-catapult/catalog.json','assets/stage5-alleria/catalog.json','assets/tower-groups/catalog.json','assets/tower-groups/entry/catalog.json']
+metadata=['assets/stage6-ending/catalog.json','assets/stage6-ending/rules.json','assets/gnoll-boss/catalog.json','assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json','assets/arcane/catalog.json','assets/blade/catalog.json','assets/stage5-catapult/catalog.json','assets/stage5-alleria/catalog.json','assets/tower-groups/catalog.json','assets/tower-groups/entry/catalog.json']
 metadata += ['assets/expansion/'+p.name for p in (OUT/'assets/expansion').glob('*.json') if p.name!='catalog.json']
 for relative in metadata:
  p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))

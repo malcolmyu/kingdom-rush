@@ -21,7 +21,7 @@ export class CameraInput{
  listen(this.game,'wheel',e=>{if(!allowed(e)||!e.deltaY)return;e.preventDefault();this.gesture.zoom(e.deltaY<0?1.1:.9);},{passive:false});
  }
  viewport(){return{...infobarViewport(this.app.ui.data.layouts.infobar,this.game.clientWidth,this.game.clientHeight)};}
- active(){const a=this.app;return a.scene==='battle'&&!a.modal&&!a.sceneMotion.busy&&!a.targeting;}
+ active(){const a=this.app;return a.scene==='battle'&&!a.world?.stage6Ending?.guiHidden&&!a.modal&&!a.sceneMotion.busy&&!a.targeting;}
  update(dt){if(!this.active()){this.gesture.clear();this.mouse=null;return;}if(this.mouse){const v=this.viewport();this.gesture.dt=dt||this.gesture.dt;this.gesture.move(this.mouse.id,this.mouse.point,{guiScale:v.scale*this.app.renderer.width/this.game.clientWidth,thresholdScale:v.scale});}this.gesture.update(dt);}
  destroy(){for(const off of this.listeners)off();this.gesture.clear();this.mouse=null;this.app.renderer.camera.phase=1;}
 }

@@ -1,0 +1,10 @@
+-- Inspect compiled controller constants; do not call even its top-level chunk.
+local u=require('jit.util')
+local f=assert(loadfile('reference/apk/assets/gc64/kr3/data/levels/level06.lua'))
+local p=u.funck(f,-17)
+assert(u.funcinfo(p).linedefined==48)
+local a=u.funck(p,-21)
+local b=u.funck(p,-52)
+assert(type(a)=='table' and type(b)=='table')
+KR_TARGET='phone';dofile('reference/apk/assets/gc64/all/constants.lua');assert(Z_DECALS==1400)
+io.write(dofile('tools/encode_json.lua')({introCamera=a,returnCamera=b,decalsZ=Z_DECALS},true))
