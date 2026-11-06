@@ -1,3 +1,4 @@
+import{initGryphons,updateGryphons,updateGryphonBolt,clickGryphon}from'./gryphon-events.mjs';
 import{addGryphonGuards,updateGryphonGuards,updateGuardArrow}from'./gryphon-guards.mjs';
 import{tryHarasserDodge,updateHarasserJump,harasserHidden}from'./harasser-jump.mjs';
 import{insertHarasser,updateHarasser,updateHarasserMarks,updateHarasserArrow}from'./harasser.mjs';
@@ -45,10 +46,11 @@ export class World{
   this.routes=data.paths.map(paths=>paths.map(p=>makeRoute(p,this.exits)));
   this.slots=data.level.entities_list.filter(e=>e.template.startsWith('tower_holder_')||/^tower_(archer|barrack|mage|rock_thrower)_[123]$/.test(e.template)).map((e,id)=>({id,x:e.pos.x,y:e.pos.y,rally:{...(e['barrack.rally_pos']||e['tower.default_rally_pos'])},holder:e['tower.holder_id'],terrain:e['tower.terrain_style']||1,type:null,level:0,key:null,spent:0,cd:0,anim:0,prebuilt:!e.template.startsWith('tower_holder_'),source:e}));
   for(const s of this.slots)if(s.prebuilt){s.key=s.source.template;s.type=Object.keys(TYPES).find(t=>s.key.startsWith('tower_'+TYPES[t].template+'_'));s.level=Number(s.key.at(-1));this.fillBarrack(s);}
-  addEwokHuts(this);addGryphonGuards(this);
+  addEwokHuts(this);addGryphonGuards(this);initGryphons(this);
   this.plants=data.level.entities_list.filter(e=>e.template==='plant_magic_blossom').map((e,i)=>({id:i,...e.pos,key:e.template,cd:0,anim:0}));
   if(!(this.id===1&&this.mode==='campaign'))this.addHero();
  }
+ clickGryphon(p){return clickGryphon(this,p);}
  random(){this.seed=(Math.imul(this.seed,1664525)+1013904223)>>>0;return this.seed/4294967296;}
  number(a,b){return a+Math.floor(this.random()*(b-a+1));}
  emit(type,props={}){this.events.push({type,...props});}
@@ -209,7 +211,7 @@ export class World{
    else if(!e.payloadJoin&&!connection&&e.d>=e.goal){e.hp=0;e.leaked=true;e.deadAt=this.time;this.lives=Math.max(0,this.lives-e.lives);this.leaks++;this.emit('leak');}
   }
   if(motionOrigins&&dt>0)for(const e of live){const p=motionOrigins.get(e);e.motionVelocity=e.harasser?.teleportedAt===this.time?{x:0,y:0}:p?{x:(e.x-p.x)/dt,y:(e.y-p.y)/dt}:{x:0,y:0};}
-  for(const b of this.shots){if(b.type==='gryphon-arrow'){updateGuardArrow(this,b,dt);continue;}if(b.type==='harasser-arrow'){updateHarasserArrow(this,b,dt);continue;}if(b.type==='ewok-spear'){updateEwokSpear(this,b,dt);continue;}if(b.type==='blighter-energy'){updateBlighterEnergy(this,b,dt);continue;}b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.type==='torch'){b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t-.5*b.g*b.duration*b.duration*t*(1-t);if(t>=1){b.done=true;this.effect('torch-impact',{x:b.tx,y:b.ty},13/30);if(b.target.hp>0&&distance({x:b.target.x+b.offset.x,y:b.target.y+b.offset.y},{x:b.tx,y:b.ty})<b.hitDistance&&!tryEwokDodge(this,b.target,{ranged:true})){this.hurtDefender(b.target,b.damage,b.damageType);const mod=this.template('mod_gnoll_burner');b.target.burn={at:this.time,until:this.time+mod.modifier.duration,next:this.time+mod.dps.damage_every,every:mod.dps.damage_every,damage:mod.dps.damage_min};}}continue;}if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
+  updateGryphons(this);for(const b of this.shots){if(b.type==='gryphon-bolt'){updateGryphonBolt(this,b,dt);continue;}if(b.type==='gryphon-arrow'){updateGuardArrow(this,b,dt);continue;}if(b.type==='harasser-arrow'){updateHarasserArrow(this,b,dt);continue;}if(b.type==='ewok-spear'){updateEwokSpear(this,b,dt);continue;}if(b.type==='blighter-energy'){updateBlighterEnergy(this,b,dt);continue;}b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.type==='torch'){b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t-.5*b.g*b.duration*b.duration*t*(1-t);if(t>=1){b.done=true;this.effect('torch-impact',{x:b.tx,y:b.ty},13/30);if(b.target.hp>0&&distance({x:b.target.x+b.offset.x,y:b.target.y+b.offset.y},{x:b.tx,y:b.ty})<b.hitDistance&&!tryEwokDodge(this,b.target,{ranged:true})){this.hurtDefender(b.target,b.damage,b.damageType);const mod=this.template('mod_gnoll_burner');b.target.burn={at:this.time,until:this.time+mod.modifier.duration,next:this.time+mod.dps.damage_every,every:mod.dps.damage_every,damage:mod.dps.damage_min};}}continue;}if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
    if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType,b.xpFactor);}
   }
   finishCarrierDeaths(this);this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);
