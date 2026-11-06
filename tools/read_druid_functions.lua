@@ -16,7 +16,7 @@ local function clean(x,depth)
   return r
 end
 local out={}
-for _,k in ipairs({'tower_druid','rock_druid'}) do out[k]=clean(E.entities[k].main_script,0) end
+for _,k in ipairs({'tower_druid','rock_druid','druid_shooter_sylvan','mod_druid_sylvan','ray_druid_sylvan','mod_druid_sylvan_affected'}) do out[k]=clean(E.entities[k].main_script,0) end
 out.info=clean(E.entities.tower_druid.info,0)
 local source='tools/'
 local encode=dofile(source..'encode_json.lua')

@@ -3,9 +3,15 @@
     "go_decals.lua": "1652564b8b74aef1c1eb422f84ab51e4106d1394a9fd8902ff94d7d7b261c951",
     "go_towers.lua": "9749d90e3bfe8ea204a76f12ac93dd1101aef390361fde3b850a42bc21c4da3c"
   },
-  "bytes": 479156,
-  "frames": 178,
+  "bytes": 730942,
+  "frames": 317,
   "functions": {
+    "druid_shooter_sylvan": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.druid_shooter_sylvan.update"
+      }
+    },
     "info": {
       "enc_icon": 13,
       "fn": {
@@ -13,6 +19,27 @@
       },
       "i18n_key": "TOWER_DRUID_HENGE",
       "portrait": "portraits_towers_0012"
+    },
+    "mod_druid_sylvan": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.mod_druid_sylvan.update"
+      }
+    },
+    "mod_druid_sylvan_affected": {
+      "insert": {
+        "__script_path": "game_scripts.mod_track_target.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.mod_track_target.update"
+      }
+    },
+    "ray_druid_sylvan": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.ray_simple.update"
+      }
     },
     "rock_druid": {
       "runs": 1,
@@ -47,10 +74,19 @@
     "game_scripts.lua:13836-13869",
     "scripts.lua:2157-2299",
     "scripts.lua:2196-2204",
-    "utils.lua:141-157"
+    "utils.lua:141-157",
+    "utils.lua:714-738",
+    "utils.lua:719-731",
+    "game_scripts.lua:1235-1268",
+    "game_scripts.lua:1248-1251",
+    "game_scripts.lua:15052-15114",
+    "scripts.lua:3242-3353",
+    "scripts.lua:4240-4261",
+    "scripts.lua:4263-4300",
+    "script_utils.lua:332-365"
   ],
   "rgbaVerified": true,
-  "scope": "baseline original storage/load/volley and bomb falloff; nature/sylvan disabled; path prediction/native queueIDs/audio/pop and higher global talents remain adapted or incomplete",
+  "scope": "baseline storage/load/volley/bomb plus sylvan three-rank shooter, HP-loss rays and marker; nature disabled; path prediction/native queueIDs/audio/pop and higher global talents remain adapted or incomplete",
   "sha256": {
     "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
     "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",

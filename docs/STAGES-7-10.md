@@ -1,5 +1,23 @@
 # 第7–10关还原工作区
 
+## 0.2.147：德鲁伊Sylvan三级购买、诅咒与生命损失传播（隔离验证）
+
+`web/stages/sylvan.mjs`只由第7动态runtime加载。250每档/max3，独立s.druid.powers，塔与技能合spent1790/战斗退1074；nature仍disabled，不假生成熊。World与TowerMenu只补最小可选powerOffer/buyPower接口，旧1–6无Sylvan状态/额外随机。原tower_druid1107外循环在未blocked且普通load/shoot结束后观察changed，queue独立druid_shooter_sylvan；下一tick初始化15秒strict冷却，升级不重置旧shooter时钟。失败沿SU.delay_attack276–279重设为now-cd+1-1e-6。原1235–1268/1248闭包完整只读：owner blocked/can_do_magic门、range175/flags6、排除ogre_magi/已诅咒；原utils714–738只filter并保持实体迭代顺序，不擅自改成最前优先，保留原节点有效性门。捕获首目标后20/30释放，释放读当前rank，不新加range/vis门；已开y_wait不被blocked或magic改变假中断。原46帧cast尾帧等同idle，独立施法不占普通三石攻击。
+
+原mod_druid_sylvan15052–15114以当前HP为基准，逐tick观察净下降；下降才更新基准并向r100/.7内其他合法敌人逐个queue ray，系数.35/.7/1。正向回血不立即重置基准，致死/移除先退出，不冒即时hurt回调反伤。5秒strict寿命，同级只刷新ts而保留HP基准/动画年龄/rayAt，低级拒/高级替换；卖塔只移shooter，已插入curse继续。faerie运输调用自己的清理，原对象重插不复活旧curse。native实体顺序/通用modifier/队列IDs及协程仍适配，不称完整通用引擎。
+
+ray_druid_sylvan通过game_scripts共享表继承原scripts.ray_simple3242–3353，无KR3 override。该模板没有track_target，所以不套Wild射线的64位移追踪门，from/to固定；前摇F_RANGED粘性失追，5/30后ceilfrandom同值仍抽一次随机，再queue type1真伤和level0 affected标记，下tick提交，护甲不再扣第二次。health ignore/immune门、原一次金币/无假主英雄XP保持。ray_cooldown仅管显示：elapsed<.5的射线隐藏但仍伤害，strict>.5才更新rayAt；不是伤害节流。affected为原generic mod_track_target4240–4300、.6秒/原size_names与mod_offset，独立寿命。原curse地贴z1400/1秒scale1→.9→1，第二层才用unit.mod_offset；12帧ray/image_width42/x独立缩放、y1/anchor(0,.5)/z3400，入同actorqueue纯绘制。专属声音/完整native排序、modifier组合和额外FX仍欠或适配，非全塔1:1。
+
+extract_druid扩安全声明stub与完整-bl审计，固定10原源码SHA/历史PNG和atlas pin不放宽，controllers不执行。Druid从178帧479156B到317帧730942B，新增原shooter/curse/ray/affected完整动画，逐RGBA/size/trim无损。只第7读metadata、三级菜单/交易前decode，旧compact1314帧2122316B、4/5/6及原7图字节保持；UI仍627图。全量extract_campaign调用已在，最终runtime/资源逐字节等actualbuild1689files105493563B。
+
+668Node全过（10新）。actualbuild sylvan-browser-publish真菜单升级由14个原ettin死亡各70付款，总1790后40gold；三级/满级拒付/nature锁正确。真Space开波、绑定原World.step避免RAF双钟，受控原road4/lane1/node57及两邻lane自动施法，三石对诅咒目标实扣40+47+37=124HP，源mod观察124净下降后向两邻敌排队射线，各实际124真伤，affected真实存在；没直接设置HP/gold/seed/cd/施法状态。原Canvas q/alpha/x独立拉伸与旋转矩阵、循环安全完整World快照不变/无missing-unready，pause/wheel/844×390CDP touch、真卖塔退1074至1114且curse保留、地图progress严格保持（仅合法ettin发现记录）全过。桌面/手机已人工看，是隔离fixture非天然7或原版pixelcert。
+
+初版核utils后发现不该排序与遗漏节点门，已实修产品、重提/重build/重跑668及最终专项，不拿初包冒最终。新增隐藏射线伤害纯测曾用稀疏跳时钟却期望下一frame第二射线已完成，改按原frame推进观察，没给产品加epsilon。早期本地UI runner漏TEST_URL导致8765拒连，最终明确8766通过。最终原完整天然九模式/手机存档/UI exit0，Druid基础/faerie实际专项也过；连续新档4/5/6自然仍4campaign19命/heroic142/iron95，5campaign20/heroic201/iron147/XP37600，6campaign20命0漏/764kill772spawn、真bossdeath-complete父complete→heroic120→iron169/XP47121真实奖励，旧合法策略没改。
+
+最终cold100ms/1.5MBps/cacheoff：旧14858212B/240req总15.989s；4真实旗书14815590B/230req书7.166总16.999；5真实旗书14998891B/241req书7.795总17.620；6真实旗书14939563B/240req书8.101总23.635，全exit0，不保所有线路。第五仅余1109B，后续大声明/代码仍须按关leaf lazy。7隔离16960066B/237req书7.581总17.793，15MB assert明确exit1，无base/progress/draw变更、无missing-unready；非正式旗7/书7路径，不抬门槛/降质/清alpha0RGB/漏必需图。原6boss/cart后期仍另3.87MB，不冒整局15MB。正式cap6/前六18模式，第7closed；下一步nature召熊及第7必要验收，不再重做Sylvan或三石。
+
+本轮公开单次manifest遭TLS EOF、public UI遭ERR_CONNECTION_CLOSED正常exit1，未循环重试或冒通过。私有Sites get_site/新credential连续连接失败，本轮无helper或native保存/部署，不能冒私有已同步；最后已知私有仍是.146的成功源ae8ff5817708ed72772cdba2e785754f537c337c，权限未改。主要logs artifacts/sylvan-{source-final,tests-publish,build-publish,browser-publish,old-nine-publish,ui-publish,natural4,natural5,natural6,base-regression,faerie-regression,performance-publish,stage4-performance-publish,stage5-performance-publish,stage6-performance-publish,stage7-budget-publish,pages-ui}.log。
+
 ## 0.2.146：德鲁伊塔升级、三石储存与普通齐射（隔离验证）
 
 `web/stages/druid.mjs`只由第7关动态runtime加载，四基础TYPES不变。原7三mode锁表复核后，artillery4映射tower_druid；campaign/heroic允许Wild/Arcane/Blade/Druid，iron仍禁止新建mage/barrack，不顺手解锁旧4–6的Druid或旧4/5的Wild。真实125→220→320→375，总spent1040，开波后退款624；action_arg拒entwood。原nature/sylvan尚未完成，菜单和World拒买，不假生成熊或提供无功能集结。

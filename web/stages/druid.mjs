@@ -1,3 +1,4 @@
+import{syncSylvan,removeSylvanShooter}from'./sylvan.mjs';
 import{routeNode,hopliteNodeValid}from'./hoplite.mjs';
 import{faerieCell}from'./faerie.mjs';
 import{spriteOrder}from'../render-order.mjs';
@@ -9,7 +10,7 @@ export function initDruids(w,options={}){w.druidState={rocks:[],damage:[],fx:[]}
 export const stage7TowerKey=(type,level)=>type==='artillery'&&level===4?KEY:undefined;
 export function stage7TowerAllowed(w,type,level){if(level!==4||!['artillery','mage'].includes(type))return undefined;const key=type==='artillery'?KEY:'tower_wild_magus';return!!w.templates[key]&&!(w.data.rules.locked_towers||[]).includes(key);}
 export function upgradeDruid(w,s){if(s.key===KEY){s.druid={last:w.time,phase:null,loaded:[],face:'Down',flip:false};s.cd=0;s.anim=0;}}
-export function sellDruid(w,s){if(!s.druid)return;for(const b of w.druidState.rocks)if(b.owner===s&&!b.target)b.done=true;delete s.druid;}
+export function sellDruid(w,s){if(!s.druid)return;removeSylvanShooter(w,s);for(const b of w.druidState.rocks)if(b.owner===s&&!b.target)b.done=true;delete s.druid;}
 export function druidPrediction(w,e,time){const r=w.routes[e.road][e.lane],v=e.motionVelocity||{x:0,y:0},node=Math.min(r.points.length-1,routeNode(w,e)+Math.ceil(time*Math.hypot(v.x,v.y)/6));return{node,pos:r.points[node]};}
 function target(w,s){const a=w.template(KEY).attacks.list[0],center={x:s.x,y:s.y+w.template(KEY).tower.range_offset.y},r=w.template(KEY).attacks.range;return w.enemies.filter(e=>{const v=w.template(e.key).vis||{},p=druidPrediction(w,e,a.node_prediction);return e.hp>0&&!((e.visBans??v.bans??0)&a.vis_flags)&&!((e.visFlags??v.flags??0)&a.vis_bans)&&inside(center,e,r)&&!faerieCell(w.data.satyrRules.grid,p.pos);}).sort((a,b)=>(a.goal-a.d)-(b.goal-b.d))[0];}
 function facing(w,s,p){const o=w.template(KEY).render.sprites[2].offset,a=Math.atan2(p.y-s.y-o.y,p.x-s.x-o.x);return{face:a>0&&a<Math.PI?'Up':'Down',flip:p.x<s.x};}
@@ -22,7 +23,7 @@ function release(w,s,phase){const p=s.druid,a=w.template(KEY).attacks.list[0],e=
 export function updateDruid(w,s){if(!s.druid)return false;const p=s.druid,a=w.template(KEY).attacks.list[0],phase=p.phase;
  if(phase){const age=w.time-phase.at;if(phase.kind==='load'){if(!phase.created&&age>=16/30){phase.created=true;createRock(w,s);}if(age>=duration(w,'tower_druid_shooter_cast'+p.face)){if(phase.shootAfter)beginShot(w,s,phase.target,phase.predicted);else p.phase=null;}}
  else{if(!phase.fired&&age>=a.shoot_time){phase.fired=true;release(w,s,phase);}if(age>=duration(w,'tower_druid_shooter_shoot'+p.face))p.phase=null;}return true;}
- if(s.blocked)return true;
+ if(s.blocked)return true;syncSylvan(w,s);
  if(w.time-p.last>a.cooldown){const e=target(w,s);if(e){p.last=w.time;const pred=druidPrediction(w,e,a.node_prediction).pos;if(!p.loaded.length){beginLoad(w,s,e,true);p.phase.predicted=pred;}else beginShot(w,s,e,pred);return true;}if(p.loaded.length<a.max_loaded_bullets){beginLoad(w,s,null);return true;}}
  if(w.time-p.last>w.template(KEY).tower.long_idle_cooldown)Object.assign(p,facing(w,s,w.template(KEY).tower.long_idle_pos));return true;
 }

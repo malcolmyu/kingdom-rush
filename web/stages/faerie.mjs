@@ -1,3 +1,4 @@
+import{clearSylvanTarget}from'./sylvan.mjs';
 import{insertWebspitter}from'./webspitter.mjs';
 import{spriteOrder}from'../render-order.mjs';
 import{tweenValue}from'../skill-effects.mjs';
@@ -14,7 +15,7 @@ export const insideFaerie=(sections,road,node)=>sections.some(s=>s.road===road&&
 export function faerieMode(controller,road,wave){const mode=controller.path_speed_per_wave?.[road+1]?.[wave]??0,speed=controller.path_speeds[mode];if(!Number.isFinite(speed))throw new Error('Missing faerie speed '+mode);return{speed,color:mode===0?'yellow':'red'};}
 export function initFaerie(w){const entity=w.data.level.entities_list.find(e=>e.template==='faerie_trails');if(!entity)return;const controller={...w.template('faerie_trails'),...entity};w.faerieState={controller,sections:compileFaerieSections(w.data.paths,p=>faerieCell(w.data.satyrRules.grid,p)),navs:[],pending:[],fx:[]};}
 // Remove owned effects while the original entity is still in the entity set.
-export function clearFaerieModifiers(w,e){const p=w.pumpkinState;if(p){for(const m of p.mods)if(m.target===e&&!m.removed){if(w.template(m.key).slow)e.speed/=w.template(m.key).slow.factor;m.removed=true;}p.pending=p.pending.filter(m=>m.target!==e);p.damage=p.damage.filter(m=>m.target!==e);}
+export function clearFaerieModifiers(w,e){clearSylvanTarget(w,e);const p=w.pumpkinState;if(p){for(const m of p.mods)if(m.target===e&&!m.removed){if(w.template(m.key).slow)e.speed/=w.template(m.key).slow.factor;m.removed=true;}p.pending=p.pending.filter(m=>m.target!==e);p.damage=p.damage.filter(m=>m.target!==e);}
  if(w.arcaneSlumbers){for(const m of w.arcaneSlumbers)if(m.target===e&&m.counted){e.arcaneStunCount=Math.max(0,(e.arcaneStunCount||0)-1);m.counted=false;}w.arcaneSlumbers=w.arcaneSlumbers.filter(m=>m.target!==e);}
  if(w.wildWards){for(const m of w.wildWards.mods)if(m.target===e)removeWildWard(w,m);w.wildWards.mods=w.wildWards.mods.filter(m=>m.target!==e);w.wildWards.pending=w.wildWards.pending.filter(m=>m.target!==e);}
  // These fields are the current runtime's direct modifier adapters.
