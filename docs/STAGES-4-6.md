@@ -1,5 +1,29 @@
 # 第4–6关还原工作区
 
+0.2.139实际闭合狂野魔术师「破坏守卫」ward三级购买/施法/沉默与恢复链。原每档225/max3/目标数1、3、6，10秒strict冷却、14/30施法；第一档changed被outerloop观察才起cd，后两档不重置，首观察前连升保留原ts0。source F_SPELLCASTER2147483648且can_do_magic、原范围/vis门选最前排序列表；cast开始捕获列表，释放时不擅加新range/vis/magic门，取当时等级上限queue mod，释放后再记冷却ts。已开始phase不因tower.blocked中途冻结。s.wild.powers独立，塔810+技能675=spent1485/战斗退891；eldritch与普通交替手/same计数保持。
+
+原mod_ward经game_scripts共享scripts表继承mod_silence.insert/remove（4889–4921）与mod_track_target.update（4263–4300），APK没有KR3 override；controllers仅-bl不执行。insert只有实体/health alive/enemy门，原can_do_magic/can_accept_magic直接false，remove对仍在entities的enemy直接true，不虚构引用计数或保存prior false；未改外部stunned/frozen、Arcane/Blade stun计数。同级重复仅刷新modifier.ts、不重置tween年龄；低级拒绝，高级替换；strict now-ts>10或死亡/移除后释放自己状态。不同外部沉默的完整通用组合生命周期仍不是已实现的通用引擎，不能声称全部原mod都闭合。
+
+真实职责接到既有blighter封花新episode与harasser.requires_magic闪避门；原已有普通近战/箭仍正常。重要源细节：blighter能量attack声明requires_magic=true，但仅SU2693–2756新目标获取检查magic；已进入的ranged episode在can_range_soldier2309–2325与range_attacks2937–3131不再检查magic，直到目标失效/episode退出。所以本批没有凭直觉取消已开能量或给持有目标加新全局门；新增纯测确认已提交弹与连续episode照原继续，新获取被阻。已进入封花cast按原y_wait只被death/stun等打断，沉默不回滚已提交动作。完整原game_scripts8647–8723与SU138–157也只读审计。
+
+原ward.bans四项中本关真实存在mod_gnoll_boss：插入后撤原HPbonus/factor并禁止pending/后续重入，过期允许原aura继续，不假阻gnawer等不在列表的增益。其他更后关卡尚无runtime的heal/consume/shadow_champion仅声明不冒已实现。本批未修改旧五关RNG/伤害/HP/施法clock；只有实际ward插入才有canDoMagic/canAcceptMagic/World.wildWards新状态。
+
+原塔sprite5/6按source独立alpha keys（2/30→16/30淡入、25/30保持→1秒淡完），rune7原25frame后隐藏、body wardUp/Down32frame；纯draw按Worldclock，offset tween/anchor/z原样，overlay不假跟shooter.flip。目标头标原custom_offsets（blighter y39）、不再叠unit.mod_offset；两地贴z1400，其中原scale1/.4是真双轴，不套Renderer.entity旧等比scale。三mod sprite独立原0/.25/9.75/10 alpha keys并跟目标移动，same-rank刷新不重开显示年龄。真实pause冻结，卖塔不清除已经插入的modifier，丢World/换场景无timer/cache回填。
+
+extract_wild_magus.py增加原mod_ward声明、10控制/声明源码SHA（含constants）、原PNG历史pin与实际render用go_towers/go_decals Lua声明SHA、输入catalog SHA；同一原PNG历史pin仍只读验证，未因删除未用图跳过源校验。发现此前递归所有组件字符串，把modifier.bans法术名误当动画依赖：第一次新pack490帧中多50帧无关evoker heal；改只从实际render.sprites/prefix/name闭包取完整动画后，原439中也移去124个未用ban引用/独立UI portrait等帧，新加1个原silence_fx，最终316帧608316B。所有实际普通bolt/eldritch/ward/塔层完整，逐RGBA/size/trim无损验证；不是降质/清alpha0RGB。原肖像仍从独立UI原PNG取，不依赖战斗sheet。野法metadata只level6读、mage3菜单/交易前完整decode原事务保留。旧compact1314frames2122316B、三个stage图1925/1815/2204与4090840/3175904/4109998B不变。
+
+598Node全过（8新ward）。actualbuild ward-browser-final/publish真实塔升级与原3ettin收益付款，再10ettin原收益700支付225x3，最终25gold/spent1485；真Space开wave1，受控原道路节点6个原blighter，World.step自动cast→6mod→实际false魔法门→10秒后true并重新封花。中途真实菜单卖塔退891，最终916gold，modifier照原继续。没有改HP/gold/伤害/cd/seed/路径终点；源码严格门都保留。头标/两地贴/rune的原Canvas q/alpha/矩阵/六个1,.4 scale，draw全字段World快照（循环引用安全序列化）不变/无missing-unready、真pause/wheel/844x390 CDP touch/map清理通过。cast/muted/mobile图人工看，是受控第6fixture，非天然新技能通关/原版同输入pixelcert。
+
+最初全字段JSON快照遇SpellTimeline.world循环，是fixture序列化错误，改WeakSet明确共享引用后publish-full-repeat正常，不改产品/不吞绘制差分。最初render-only提取被历史unused PNG pin集合检查正确挡住，改仍验证所有历史PNG原字节、仅不载入未用图到pack；实际源pins没有放宽或替换。一次在build cwd改测试路径失败但HTTP已起，随后从repo纠正fixture，未改产品数值。最终source pin重提、运行模块/新包逐字节等actualbuild，所有失败日志保留，不冒初包作最终。
+
+原完整天然九模式/手机存档ward-old-nine、连续新档1–4→5→6 ward-natural4/natural5/natural6保持（4campaign19命三星/heroic142/iron95；5campaign20命/heroic201/iron147/XP37600；6campaign20命零漏/764kill772spawn→heroic120/iron169/XP47121），但第6当前自然计划仍mage3，不冒wild新技能自然通关；recordVictory6仍cap5拒绝，没有伪造星/解锁。普通wild、eldritch、boss aura实际Canvas回归与UI均正常exit0；原人类援军叠音修复保持，本批没再改音频。
+
+生产仍前五关15模式，第6closed。wild两技能基础连续链现在均完成；下一批应集中原flag6/道路/book6/通知/recordVictory cap6与真正浏览器自然三模式、手机重载、最终真实旗书冷路径发布验收，不继续无限小修同ward/eldritch/HUD/pack/boss基础。第6实际browser必须真实等待第14波事件图decode、最后未ready冻结/重试返回地图规则，不设假的ready或循环推World跨过网络等待。首次6前置用真实stage5-earned XP37600或真实已赚浏览器checkpoint，不拿末XP47121冒首次成长。ward原施法音效尚未接；整体原grid/nativequeueIDs/globalz/特殊death/血池/完整音频/安全区/Arivan/宝石天赋仍欠，非完整1:1。
+
+最终actualbuild1663文件96121177B含manifest，136个运行模块/新图组文件逐字节等源。最终四cold100ms/1.5MBps/cacheoff：旧14850057B/240req book7.216总16.970s；第4真实旗书14807430B/230req book7.179总17.009；第5真实旗书14990735B/241req book7.870总17.750；第6隔离14854693B/234req book6.752总16.884，15MB全正常exit0，不保所有线路。第五仅余9265B，下一批原6发布数据必须按真实依赖无损加载，不能抬门/降质/删除当前必需图。第6仍不是已发布flag6/book6路径，boss/cart阶段还会额外真实下载3.87MB，不冒全局整局流量15MB。
+
+最终ward-browser-publish-full-repeat正常exit0（完整World循环安全快照），ward-old-nine/UI、原natural4/5/6、基础wild/eldritch/aura回归全exit0；全部性能与ward-pages-ui也正常exit0，无挂住browser待收。本轮公开一次manifest确认.138，新推送不轮询，不冒已确认公开.139。主要logs artifacts/ward-source-pinned/tests-final/build-final/browser-publish-full-repeat/old-nine/ui/performance/stage4-performance/stage5-performance/stage6-performance/pages-ui/natural4/natural5/natural6/eldritch-regression/base-regression/aura-regression.log。ward-browser-publish-full.log是原循环JSON错误fixture，repeat才最终；原ward-source-first490帧是早期含多余heal图，不作为最终资源组。
+
 0.2.138实际闭合狂野魔术师eldritch三档购买/射线/吞噬/延时魔法AOE基础连续链。原325/185/185、max3，累计spent1505（塔810+技能695）、战斗退款903；仅s.wild.powers独立状态，ward仍disabled与World拒买。第一档changed被controller观察才起28秒strict冷却，后两档24/20秒不重置起点，首观察前直升2档保留模板ts0。原20/30射线释放、34frame施法，开始后不被tower.blocked中途冻，释放重新核health/vis/1.1椭圆，失效则按原范围重找最前目标；不改普通双手same计数或抽新chance随机。
 
 原game_templates注册ray_wild_magus读取game_scripts.ray_simple，但APK game_scripts实际上require并返回共享scripts表且无ray_simple override，故继承all/scripts3242–3353及3248闭包，不是精灵force_motion。射线2/30后queue mod、没有普通直接伤害；追踪Chebyshev上限64相对insert时原bullet.to（非逐tick累积重置），F_RANGED或超距粘性失追，仍原hitFX但不插mod。射线原16frame/anchor0,.5/z3400，x轴距离/image_width144而y轴保持1，专用Canvas双轴矩阵，不把Renderer.entity旧等比scale当源射线正确；原hitFX/z3300。

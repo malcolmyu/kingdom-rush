@@ -1,5 +1,5 @@
 """Original Wild Magus baseline declarations/art, with controller bytecode audits."""
-import hashlib,json,pathlib,subprocess,sys,zipfile,io
+import hashlib,json,pathlib,subprocess,sys,zipfile,io,re
 R=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(R.parent/'.tools/python'))
 from PIL import Image
 root=R/'reference/apk/assets/gc64'
@@ -19,9 +19,18 @@ assert functions['ray_wild_magus']['update']['__script_path']=='game_scripts.ray
 assert '"ray_simple"' not in b
 functions['ray_wild_magus']['inherited_from']='scripts.ray_simple.update'
 assert functions['mod_eldritch']['update']['__script_path']=='game_scripts.mod_eldritch.update'
-rules=json.loads(run('tools/read_wild_magus_rules.lua'));assert 'tower_wild_magus' in rules['rangeTargets'] and 'bolt_wild_magus' in rules['damageTargets']
-t=json.loads(run('tools/read_templates.lua',str(root),'precise'));selected={k:t[k]for k in ['tower_wild_magus','bolt_wild_magus','fx_wild_magus_hit','ray_wild_magus','mod_eldritch','eldritch_enemy_decal','fx_ray_wild_magus_hit','fx_eldritch_explosion']}
+for name in ['mod_silence','mod_track_target']:
+ assert '"'+name+'"' not in b # inherited common controller, no KR3 override
+assert functions['mod_ward']['insert']['__script_path']=='game_scripts.mod_silence.insert'
+functions['mod_ward']['inherited_from']=['scripts.mod_silence.insert','scripts.mod_silence.remove','scripts.mod_track_target.update']
+assert 'can_accept_magic' in common[common.index('-- BYTECODE -- scripts.lua:4889-4912'):common.index('-- BYTECODE -- scripts.lua:4928-')]
+rules=json.loads(run('tools/read_wild_magus_rules.lua'));assert rules['spellcaster']==2147483648;assert 'tower_wild_magus' in rules['rangeTargets'] and 'bolt_wild_magus' in rules['damageTargets']
+t=json.loads(run('tools/read_templates.lua',str(root),'precise'));selected={k:t[k]for k in ['tower_wild_magus','bolt_wild_magus','fx_wild_magus_hit','ray_wild_magus','mod_eldritch','eldritch_enemy_decal','fx_ray_wild_magus_hit','fx_eldritch_explosion','mod_ward']}
 assert selected['tower_wild_magus']['tower']['price']==300
+assert selected['tower_wild_magus']['powers']['ward']['target_count']==[1,3,6]
+assert selected['mod_ward']['modifier']['duration']==10
+su=run('-bl',str(root/'all/script_utils.lua'));assert 'requires_magic' in su[su.index('-- BYTECODE -- script_utils.lua:2693-2756'):su.index('-- BYTECODE -- script_utils.lua:2758-')]
+assert 'can_do_magic' not in su[su.index('-- BYTECODE -- script_utils.lua:2309-2325'):su.index('-- BYTECODE -- script_utils.lua:2331-')]
 c=json.loads((R/'web/assets/catalog.json').read_text());frames=c['frames'];keep=set()
 def add(v):
  if isinstance(v,str):
@@ -32,9 +41,12 @@ def add(v):
   for x in v.values():add(x)
  elif isinstance(v,list):
   for x in v:add(x)
-add(selected)
+for template in selected.values():add(template.get('render',{})) # ban names are logic, not art dependencies
 keys=sorted(keep);z=zipfile.ZipFile(R.parent/'origins.apk');raws={n:z.read('assets/kr3-phone/images/iphonehd/'+n.replace('.webp','.png'))for n in {frames[k]['a']for k in keys}};images={n:Image.open(io.BytesIO(raw)).convert('RGBA')for n,raw in raws.items()}
-assert not old or old['imageSha256']=={n.replace('.webp','.png'):hashlib.sha256(raw).hexdigest()for n,raw in raws.items()}
+image_pins={**old.get('imageSha256',{}),**{n.replace('.webp','.png'):hashlib.sha256(raw).hexdigest()for n,raw in raws.items()}}
+for name,digest in old.get('imageSha256',{}).items():assert hashlib.sha256(z.read('assets/kr3-phone/images/iphonehd/'+name)).hexdigest()==digest # retain historical pins without loading unused art
+atlas_sha={name:hashlib.sha256(z.read('assets/kr3-phone/images/iphonehd/'+name)).hexdigest()for name in {re.sub(r'-[0-9]+$','',n[:-5])+'.lua'for n in raws}}
+assert not old.get('atlasDeclarationSha256') or old['atlasDeclarationSha256']==atlas_sha
 width=1024;x=y=row=0;new={};out=R/'web/assets/wild-magus';out.mkdir(exist_ok=True)
 for k in keys:
  f=frames[k];w,h=f['q'][2:]
@@ -50,5 +62,5 @@ data={'templates':selected,'frames':new,'sheets':['../wild-magus/sprites.webp']}
 (out/'catalog.json').write_text(json.dumps(data,sort_keys=True,separators=(',',':')))
 
 (out/'rules.json').write_text(json.dumps(rules,sort_keys=True,separators=(',',':'))+'\n')
-proof.write_text(json.dumps({'sha256':sha,'imageSha256':{n.replace('.webp','.png'):hashlib.sha256(raw).hexdigest()for n,raw in raws.items()},'functions':functions,'ranges':['game_scripts520–697','scripts2921–3074','utils245–332','kr3/upgrades99–301 TDUP73/75','scripts3242–3353 with3248 closure','game_scripts14962–15047','systems939–1104 DAMAGE_EAT'],'frames':len(keys),'rgbaVerified':True,'scope':'Eldritch victim render snapshot uses current World render adaptation; full extra blood/pop/audio and generic modifier ban lifecycle remain pending. Source ordinary alternating-hand attack, same-target damage increments, generic bolt tracking/acceleration; eldritch ray/queued eat and delayed magic AOE implemented; ward disabled. Particles, pop/blood/audio, native coroutine IDs/queues and higher global talents remain incomplete.'},indent=2,sort_keys=True)+'\n')
+proof.write_text(json.dumps({'sha256':sha,'imageSha256':image_pins,'renderImageNames':sorted(n.replace('.webp','.png')for n in raws),'atlasDeclarationSha256':atlas_sha,'inputCatalogSha256':hashlib.sha256((R/'web/assets/catalog.json').read_bytes()).hexdigest(),'functions':functions,'ranges':['game_scripts520–697','scripts2921–3074','utils245–332','kr3/upgrades99–301 TDUP73/75','scripts3242–3353 with3248 closure','game_scripts14962–15047','systems939–1104 DAMAGE_EAT','scripts4889–4921 silence','scripts4263–4300 track_target','systems542–627 modifier bans/reset','game_scripts596–598 ward filter','game_scripts8647–8723 blighter','SU138–157/2309–2325/2693–2756/2937–3131 acquired ranged episode and dodge'],'frames':len(keys),'rgbaVerified':True,'scope':'Eldritch victim render snapshot uses current World render adaptation; full extra blood/pop/audio and generic modifier ban lifecycle remain pending. Source ordinary alternating-hand attack, same-target damage increments, generic bolt tracking/acceleration; eldritch ray/queued eat and delayed magic AOE implemented; ward queued silence, ban/removal and original visuals implemented. Particles, pop/blood/audio, native coroutine IDs/queues and higher global talents remain incomplete.'},indent=2,sort_keys=True)+'\n')
 print('Wild Magus lossless lazy group',len(keys),'frames',path.stat().st_size,'bytes')

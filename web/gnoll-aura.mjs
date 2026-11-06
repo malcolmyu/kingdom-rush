@@ -1,3 +1,4 @@
+import{wardBlocksMod}from'./wild-ward.mjs';
 import{inEllipse}from'./spells.mjs';
 import{spriteOrder}from'./render-order.mjs';
 // Only an actual stage6 boss creates this production chain. No timers/global cache.
@@ -11,7 +12,7 @@ export function removeGnollMod(w,m){if(m.removed)return;m.removed=true;const e=m
  // systems.health observes HP loss from modifier removal, including lethal loss.
  if(before>0&&e.hp<=0&&!w.template(e.key).health.ignore_damage&&w.enemies.includes(e)){e.hp=0;w.finishEnemyDeath(e);}
 }
-function insertMod(w,p){const e=p.target,t=w.template(e.key),s=w.gnollAuraState;if(!members(w).includes(e)||!t.health||!t.unit||e.hp<=0)return;
+function insertMod(w,p){const e=p.target,t=w.template(e.key),s=w.gnollAuraState;if(wardBlocksMod(w,e,'mod_gnoll_boss')||!members(w).includes(e)||!t.health||!t.unit||e.hp<=0)return;
  const old=s.mods.find(m=>!m.removed&&m.target===e);if(old){old.ts=w.time;return;}
  const d=w.template('mod_gnoll_boss'),bonus=Math.floor(e.maxHp*d.extra_health_factor),f=factorState(w,e);e.maxHp+=bonus;e.hp+=bonus;f.factor*=d.inflicted_damage_factor;s.mods.push({...p,bonus,factor:d.inflicted_damage_factor,ts:w.time,at:w.time,removed:false});
 }
@@ -19,7 +20,7 @@ export function updateGnollAuras(w){const s=w.gnollAuraState;if(!s)return;const 
  // Source queue insertions commit on the following simulation tick. A queued
  // modifier only checks its target, not whether its source is still alive.
  const pending=s.pending;s.pending=[];for(const p of pending)insertMod(w,p);
- for(const m of s.mods)if(!m.removed&&(!units.includes(m.target)||m.target.hp<=0||w.time-m.ts>d.modifier.duration))removeGnollMod(w,m);
+ for(const m of s.mods)if(!m.removed&&(wardBlocksMod(w,m.target,'mod_gnoll_boss')||!units.includes(m.target)||m.target.hp<=0||w.time-m.ts>d.modifier.duration))removeGnollMod(w,m);
  s.mods=s.mods.filter(m=>!m.removed);
  for(const r of s.auras){const source=r.source;if(r.removed)continue;if(!units.includes(source)||source.hp<=0){r.removed=true;continue;}if(r.at===null){if(w.time<=r.queuedAt)continue;r.at=w.time;r.cycleAt=w.time-a.cycle_time;}
   if(w.time-r.cycleAt<a.cycle_time)continue;r.cycleAt=w.time;
