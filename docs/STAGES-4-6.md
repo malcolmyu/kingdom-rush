@@ -143,3 +143,9 @@ Repository只对发布4关开放访问；旧第三关胜利存档迁移仅开放
 最终包1588files89,220,717B，476Node、catapult-browser-publish（实际pan后车/石弹可见、原肖像选择/CDP）、catapult-old-nine-publish原九模式/存档手机、catapult-stage4-natural-publish完整第4连续三模式、UI与两条性能全部正常exit0。旧冷入口14,696,446B/217req、book7.232s/总16.586s；第4生产入口14,653,828B/207req、book7.210s/总16.636s（同100ms/1.5MBps/cacheoff），非普遍速度保证。第五关自身预算未验，入口仍关。
 
 源条件还包括字面min_x实际比较目标y>150、x<800，不能改成猜测的欧式射程。退场标记后拒绝滞后伤害支付100奖励；holding没有伪造全局无敌。早期纯测未隔离原预建三兵而污染目标/射击断言、17位IEEE边界样本过早等均改fixture未改阈值；首次源proof取到早先bullet引用而非注册定义，已纠正为完整catapult模板段。首次原FX helper默认为.6，已实际改用源19帧并补保持/淡出测试；最终重build验证。原普通炮石包曾被新声明catapult_proy多拉1帧，已按独立图组边界实修，最终1314原包不变。图中330金币为原400-真实70购买，未直接加钱/写HP来制造伤害或胜利。
+
+
+0.2.121接入第五关Alleria独立基础战斗：原40,190入场/HP210/速度90、近战10–15、普通箭与special三箭、独立眩晕/受伤/15秒死亡等待与respawn、23HP离战回复，不借Eridan等级表/临时援军寿命，不把伤害XP写主英雄。原112帧完整hero动画和箭图独立237帧无损组，只第五关加载。Canvas点角色→道路移动为当前道路适配，完整原grid waypoints/多英雄头像选择栏/猫controller仍未完成；因此第五关继续关闭，不称完整Alleria或整关还原。controller只读-bl，source proof在tools/sources/stage5-alleria.json，特殊死亡/全queued时序/尾粒子音效仍欠。
+
+本批最终482项Node测试通过，实际build1593files/89,600,131B。Alleria actualbuild专项验证原112帧中实际shoot的Canvas裁图/不改World、真实Canvas点角色与道路、普通箭真实伤害、独立HP/死亡复活/不写Eridan XP、暂停、844x390真实手机CDP触摸暂停、地图清理；投石车专项回归也通过。猫/完整grid waypoint/原第二头像栏尚欠，不称完整Alleria。初浏览器新stageHero未计入renderId导致RAF异常，已实修；另一次damage断言被原ettin回血回满误导，改记录实际hurt下降且隔离主英雄，没改原怪物回血；最初mobile仅CDP override仍截1440旧viewport，最终setViewportSize+innerWidth844断言/真实触摸后截图。
+原完整天然九模式/存档手机、连续第4campaign19命三星/heroic142/iron95、UI全通过。补新英雄复活动画期间pending近战提交保护后最终build重新完成，Alleria/投石车/UI/两个性能串行正常exit0。旧冷14,709,528B/219请求，book6.253秒/总15.628秒；实际生产第4旗书冷入口14,666,910B/209请求，book7.160秒/总16.604秒，100ms/1.5MBps/cacheoff均<15MB，不承诺所有线路。第一次性能恰遇重新构建导致boot超时exit1，未计通过，收齐构建后最终串行通过。公开一次manifest .120与完整UI exit0，本批推送后不轮询CI。第五自身预算/自然三模式未验，仍只发布前四关12模式。

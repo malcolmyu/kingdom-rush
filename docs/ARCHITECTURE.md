@@ -361,3 +361,6 @@ ExpansionRepository对新关组合tower-group frame映射与初始preload，Arca
 0.2.119：campaign-release.mjs由原第4关声明生成发布上限4，Repository按需合并ExpansionRepository数据并向Renderer传assetCatalog；Renderer资源就绪后原子提交，旧关始终使用baseCatalog。recordVictory/canSelect/两套地图奖励链共享发布上限，5/6不可持久化未完成胜利。旧3关胜利存档只迁移访问4，奖励动画消费一次migration，不改已赚星/XP。
 
 0.2.120：stage5-catapult独立World状态/下一tick生成队列，仅id5合并模板。移动与held ranged episode独立于普通enemy的torch分支；新catapult-rock持有固定parabola/一次随机角/源正spin与AOE，Renderer只读pose。ExpansionRepository.level5才读取独立137帧原图组并在入场前decode；旧四关不载该组。source声明模块有独立图组，旧tower compact选择器显式排除其渲染字面量，不把未使用的专用弹塞进旧首包。第五关仍未发布。
+
+
+0.2.121接入第五关Alleria独立基础战斗：原40,190入场/HP210/速度90、近战10–15、普通箭与special三箭、独立眩晕/受伤/15秒死亡等待与respawn、23HP离战回复，不借Eridan等级表/临时援军寿命，不把伤害XP写主英雄。原112帧完整hero动画和箭图独立237帧无损组，只第五关加载。Canvas点角色→道路移动为当前道路适配，完整原grid waypoints/多英雄头像选择栏/猫controller仍未完成；因此第五关继续关闭，不称完整Alleria或整关还原。controller只读-bl，source proof在tools/sources/stage5-alleria.json，特殊死亡/全queued时序/尾粒子音效仍欠。

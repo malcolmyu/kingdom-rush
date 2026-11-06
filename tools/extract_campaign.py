@@ -145,3 +145,5 @@ subprocess.run(['python3',str(ROOT/'tools/group_towers.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/prepare_stage4_release.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_stage5_catapult.py')],check=True)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_stage5_alleria.py')],check=True)

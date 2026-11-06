@@ -24,7 +24,7 @@ export function harasserJumpDestination(w,e,dn){
  return node;
 }
 function animate(w,e,name){const s=e.harasser;s.phase=name;s.animation=name;s.at=w.time;e.action=name;e.actionAt=w.time;e.actionFlip=s.jumpFlip;e.anim=w.animationDuration('harraser',name);}
-function unblock(w,e){for(const u of [...w.soldiers,w.hero].filter(Boolean)){if(u.targetId===e.id)u.targetId=null;if(u.combatTarget===e.id)u.combatTarget=null;if(u.pendingHit?.target===e&&!u.pendingHit.ranged)u.pendingHit=null;}e.blocked=false;e.pendingMelee=null;}
+function unblock(w,e){for(const u of [...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean)){if(u.targetId===e.id)u.targetId=null;if(u.combatTarget===e.id)u.combatTarget=null;if(u.pendingHit?.target===e&&!u.pendingHit.ranged)u.pendingHit=null;}e.blocked=false;e.pendingMelee=null;}
 export function updateHarasserJump(w,e,dt=0){
  if(!e.harasser)return false;const s=e.harasser;
  if(s.jumpHidden){
@@ -32,7 +32,7 @@ export function updateHarasserJump(w,e,dt=0){
   if(s.phase==='jumpIn'){
    if(w.time-s.at<w.animationDuration('harraser','jumpIn'))return true;
    e.visBans=s.previousBans;delete e._bans;s.jumpHidden=false;
-   const a=w.template(e.key).shadow_shot,targets=[...w.soldiers,w.hero].filter(Boolean).filter(u=>{const t=w.template(u.key).vis;return u.hp>0&&!((u.visBans??t.bans??0)&a.vis_flags)&&!((u.visFlags??t.flags??0)&a.vis_bans)&&inEllipse(e,u,a.max_range)&&!inEllipse(e,u,a.min_range);}).sort((a,b)=>Math.hypot(e.x-a.x,e.y-a.y)-Math.hypot(e.x-b.x,e.y-b.y));
+   const a=w.template(e.key).shadow_shot,targets=[...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean).filter(u=>{const t=w.template(u.key).vis;return u.hp>0&&!((u.visBans??t.bans??0)&a.vis_flags)&&!((u.visFlags??t.flags??0)&a.vis_bans)&&inEllipse(e,u,a.max_range)&&!inEllipse(e,u,a.min_range);}).sort((a,b)=>Math.hypot(e.x-a.x,e.y-a.y)-Math.hypot(e.x-b.x,e.y-b.y));
    if(targets.length){s.shadowTarget=targets[0];s.jumpFlip=s.shadowTarget.x<e.x;s.shadowFired=false;animate(w,e,'shadow_shot');}else{s.phase=null;e.anim=0;}return true;
   }
  }

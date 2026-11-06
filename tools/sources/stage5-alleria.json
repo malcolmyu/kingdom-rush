@@ -1,0 +1,30 @@
+{
+  "declarationSHA256": "bebe8df0e84b3479d8154fcf7092774a9434682cdbce6a701028d64d9fb62fc8",
+  "frames": 237,
+  "imageSHA256": {
+    "go_hero_alleria-1.png": "87f6fe451bc40331fbcb5511e6adbd9e108d9afd7c9fe5046d20fafc9cbbdaa9",
+    "go_towers-1.png": "ce728ee27bed688e2b8b94094cd6c2198e0acf9d7ee42ba7892a93dd5ee5da07",
+    "go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2"
+  },
+  "limits": [
+    "Cat controller, full grid rally and source multiple portrait HUD pending",
+    "Native coroutine/target priority/modifier and special-death queues adapted; no pixel certification"
+  ],
+  "ranges": [
+    "game_scripts.lua:8182-8279",
+    "game_scripts.lua:8284-8302",
+    "level05.lua:51-98",
+    "level_utils.lua:395-476"
+  ],
+  "rgbaVerified": true,
+  "scope": "Stage5 Alleria intro, independent HP/respawn, normal/special arrow and melee combat adapter",
+  "sha256": {
+    "all/level_utils.lua": "bfb4cd3104ef07f7d6db29434e9c3a1a986d875eee90376786a0a36322e42cce",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3/data/levels/level05.lua": "4a08c524651342a81a83fedb09d54bc95a524bb5fc63c2445a3c8846016d163e",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  }
+}
