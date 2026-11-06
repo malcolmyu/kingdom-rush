@@ -1,3 +1,4 @@
+import{insertWebspitter}from'./webspitter.mjs';
 import{spriteOrder}from'../render-order.mjs';
 import{tweenValue}from'../skill-effects.mjs';
 import{routeNode,registerHopliteChild}from'./hoplite.mjs';
@@ -25,7 +26,7 @@ function detach(w,e){const s=w.faerieState,mode=faerieMode(s.controller,e.road,w
  for(const u of[...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean)){if(u.targetId===e.id)u.targetId=null;if(u.combatTarget===e.id)u.combatTarget=null;if(u.pendingHit?.target===e)u.pendingHit=null;}
  const nav={id:++w.serial,enemy:e,road:e.road,lane:e.lane,node:routeNode(w,e),d:e.d,x:e.x,y:e.y,at:w.time,...mode};s.navs.push(nav);w.enemies.splice(w.enemies.indexOf(e),1);
 }
-function restore(w,n){const e=n.enemy,r=w.routes[n.road][n.lane];Object.assign(e,{x:n.x,y:n.y,d:n.d,road:n.road,lane:n.lane,goal:r.goal,anim:0,action:'idle',actionAt:w.time,faerieLimbo:false,canClick:true,ignoreDamage:false});w.enemies.push(e);insertSatyr(w,e);insertHoplite(w,e);insertHarasser(w,e);insertBlighter(w,e);if(e.ettin)e.ettin.regenTs=w.time;if(e.hopliteGroup)registerHopliteChild(w,e);smoke(w,e,n.color);}
+function restore(w,n){const e=n.enemy,r=w.routes[n.road][n.lane];Object.assign(e,{x:n.x,y:n.y,d:n.d,road:n.road,lane:n.lane,goal:r.goal,anim:0,action:'idle',actionAt:w.time,faerieLimbo:false,canClick:true,ignoreDamage:false});w.enemies.push(e);insertSatyr(w,e);insertHoplite(w,e);insertHarasser(w,e);insertBlighter(w,e);insertWebspitter(w,e);if(e.ettin)e.ettin.regenTs=w.time;if(e.hopliteGroup)registerHopliteChild(w,e);smoke(w,e,n.color);}
 export function updateFaerie(w,dt){const s=w.faerieState;if(!s)return;
  const pending=s.pending;s.pending=[];for(const n of pending)if(n.queuedAt<w.time)restore(w,n);else s.pending.push(n);
  // Parent observes the transport's current node before the next nav movement.

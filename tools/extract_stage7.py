@@ -31,6 +31,12 @@ audit('kr3/game_scripts.lua','game_scripts.lua:9382-9389',['can_do_magic','nodes
 audit('all/scripts.lua','scripts.lua:785-899',['keep_gold','initial_spawn_animation','random_cycle','check_node_valid','count_group_max'])
 audit('all/systems.lua','systems.lua:1116-1130',['in_limbo','count-group-changed'])
 audit('all/systems.lua','systems.lua:1136-1147',['COUNT_GROUP_CONCURRENT','in_limbo'])
+audit('kr3/game_scripts.lua','game_scripts.lua:9705-9771',['blockers','cast_time','unit_dodges','unblock_target'])
+audit('kr3/game_scripts.lua','game_scripts.lua:9709-9718',['cooldown','is_stunned'])
+audit('kr3/game_scripts.lua','game_scripts.lua:15866-15883',['soldier_blade','chance','mod_stun'])
+audit('all/scripts.lua','scripts.lua:4440-4488',['custom_scales','duration_heroes','stun_inc'])
+audit('all/scripts.lua','scripts.lua:4490-4549',['hide_target_delay','sprites_hide','sprites_show'])
+audit('all/scripts.lua','scripts.lua:4551-4561',['stun_dec'])
 audit('kr3/game_scripts.lua','game_scripts.lua:18716-18738',['sections','TERRAIN_FAERIE','ni'])
 audit('kr3/game_scripts.lua','game_scripts.lua:18740-18858',['remove_modifiers','remove_auras','in_limbo','ignore_damage'])
 audit('kr3/game_scripts.lua','game_scripts.lua:18864-18920',['next_entity_node','enemy_offset','ps_nav_faerie_red'])
@@ -68,7 +74,7 @@ for k in ['hero_elves_archer']+[f'tower_{f}_{t}'for f in ['archer','barrack','ma
 for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','harasser-data.mjs','harasser-jump-data.mjs']:
  p=R/'web'/name;runtime[name]=hashlib.sha256(p.read_bytes()).hexdigest()
  for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):visit(literal)
-for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs","stages/faerie.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
+for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs","stages/faerie.mjs","stages/webspitter.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
 wanted=set()
 def render_keys(obj):
  if isinstance(obj,dict):
@@ -124,5 +130,6 @@ faerie_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','too
 satyr_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_rules.lua'],cwd=R));satyr_rules['grid']=declare('assets/gc64/kr3/data/levels/level07_grid.lua')
 rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_rules.lua'],cwd=R));assert rules['poison']==32 and rules['modifierDamage']==32768
 (out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules,'hopliteRules':hoplite_rules,'faerieRules':faerie_rules},sort_keys=True,separators=(',',':')))
-proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'hopliteFunctions':hoplite_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport gameplay; source controllers bytecode-only; stage7 remains closed','pending':['full faerie native particle and generic modifier engine','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
+web_functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_webspitter_functions.lua',str(root),'precise'],cwd=R));assert web_functions['mod_spider_web']['update']['__script_path']=='game_scripts.mod_stun.update'
+proof={'webFunctions':web_functions,'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'hopliteFunctions':hoplite_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport and spider web gameplay; source controllers bytecode-only; stage7 remains closed','pending':['full faerie native particle and generic modifier engine','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
 pin.write_text(json.dumps(proof,ensure_ascii=False,sort_keys=True,indent=2)+'\n');print(json.dumps({'frames':len(result),'bytes':p.stat().st_size,'stage7':'isolated, not released'}))

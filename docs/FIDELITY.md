@@ -1,6 +1,11 @@
 # 动画保真记录
 
 
+## 0.2.145：第7关蜘蛛蛛网基础流程
+
+已接enemy_webspitting_spider原近战后施法、当前blockers重读、queued mod_spider_web、3秒/英雄2秒的包裹→隐藏→显形→计数释放。独立spiderWebCount不清外部状态，新闪避尊重真实web stun；旧1–6无新state/RNG。650Node与实际Canvas/手机专项通过，原4679帧6369762B图片包未变。完整native modifier/队列/所有英雄技能相互打断等仍适配，非1:1。正式前六关18模式，第7closed；详docs/STAGES-7-10.md。
+
+
 ## 0.2.144：第7关 faerie 暂存运输（隔离验证）
 
 `web/stages/faerie.mjs`接原18716–18858/18864–18920的基础连续流程。按原FAERIE1024格与每条道路第一lane编译半开区段，原第4路[35,70)、第5路[77,110)，索引保留一基；实际数据无开放尾部，不凭猜测填源global ni。path_speeds数字0/1保留，默认yellow30、显式red75。独立nav移动，不覆盖敌人speed；移出战斗集合、释放当前减速/中毒/睡眠/ward所属效果、解除当前blocker，保留原对象/HP/gold/id。limbo保持Hoplite组计数，重插不重加；恢复原对象后重启已接controller时钟。已发普通hurt持有引用时仅第7拒绝limbo伤害，不给旧六关增加state/RNG。

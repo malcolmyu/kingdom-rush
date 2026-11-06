@@ -49,7 +49,6 @@
   },
   "pending": [
     "full faerie native particle and generic modifier engine",
-    "webspitting spider special",
     "new allowed Druid advanced tower",
     "natural modes, own budget and actual flag/book/rewards release"
   ],
@@ -152,16 +151,17 @@
     ]
   },
   "runtimeModulesSHA256": {
-    "domain.mjs": "59404475bcbca3bf08b4856017b9c0e84757c8495f71fb9a58989b9628c5619a",
+    "domain.mjs": "730d70c53ea186713cf9cbe5e0a8749d9038822fea669173c671d7e249b6613a",
     "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
     "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
     "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
-    "renderer.mjs": "4e678e28430d452db62e6c11109d4720c1c7a05965a895ce9754606b64d3e73d",
+    "renderer.mjs": "6164819d43eab332bad10dcd6cae0548d99754c9140d973599f50521c900ed18",
     "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
-    "stages/faerie.mjs": "13e09b50bff7818d6c2ce2dc406ced1b1e8b4486be726e17f695f1efcec0d44d",
+    "stages/faerie.mjs": "f48d7ac601169148e9ad97394343c96a58e6ff4da9e273a8156579d0e1c6ec19",
     "stages/hoplite.mjs": "ae2fddf3db20abb2f11549d17952d39d9016a23f39b8b02d1643a6e69865f00b",
     "stages/satyr.mjs": "3eb34a25ac3e9f7665e89074bbdb52e6df141f982bdff4a6f7cae0cca38bdf8a",
-    "stages/stage7.mjs": "d433b7879c01be94ce8dc32c97bfedbeeb7562ca39830cf55b672c0121bfffc4",
+    "stages/stage7.mjs": "e3c47299c49bd87115a6d7908717b8e88b4082487aa85a6b1d6ca983e0f26802",
+    "stages/webspitter.mjs": "f25a9c45e53c838d5541eaf747520eb2697aa069b325b19a2cceebd785cf6366",
     "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
   },
   "satyrFunctions": {
@@ -184,7 +184,7 @@
       }
     }
   },
-  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport gameplay; source controllers bytecode-only; stage7 remains closed",
+  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport and spider web gameplay; source controllers bytecode-only; stage7 remains closed",
   "sha256": {
     "assets/gc64/all/components.lua": "3c5e9b9708ab01c4f1173f4d5fa0340bfd72ff620561bc8b95a3c2a21c438163",
     "assets/gc64/all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
@@ -260,5 +260,57 @@
     "assets/kr3-phone/images/iphonehd/go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2",
     "assets/kr3-phone/images/iphonehd/go_towers.lua": "9749d90e3bfe8ea204a76f12ac93dd1101aef390361fde3b850a42bc21c4da3c",
     "assets/kr3-phone/strings/zh-Hans.lua": "0454722db2a27c9daa6d9c71d1ed1c2d99d171e12af3a6fe229c3245da075596"
+  },
+  "webFunctions": {
+    "enemy_webspitting_spider": {
+      "insert": {
+        "__script_path": "game_scripts.enemy_basic.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.enemy_webspitting_spider.update"
+      }
+    },
+    "heroDodge": {
+      "active": false,
+      "chance": 0,
+      "counter_attack": {
+        "animation": "nimble_fencer",
+        "chance": 1,
+        "cooldown": 1,
+        "damage_max": 40,
+        "damage_min": 20,
+        "damage_type": 2,
+        "dodge_time": 0.13333333333333333,
+        "hit_time": 0.26666666666666666,
+        "instakill": false,
+        "level": 0,
+        "pop": [
+          "pop_sok",
+          "pop_pow"
+        ],
+        "pop_chance": 0.1,
+        "sound": "ElvesHeroEridanNimbleFencing",
+        "ts": 0,
+        "type": "melee",
+        "vis_bans": 0,
+        "vis_flags": 0
+      },
+      "counter_attack_pending": false,
+      "disabled": true,
+      "ts": 0
+    },
+    "mod_spider_web": {
+      "insert": {
+        "__script_path": "game_scripts.mod_spider_web.insert"
+      },
+      "remove": {
+        "__script_path": "game_scripts.mod_stun.remove"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.mod_stun.update"
+      }
+    }
   }
 }

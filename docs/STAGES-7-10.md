@@ -1,6 +1,28 @@
 # 第7–10关还原工作区
 
 
+## 0.2.145：蜘蛛近战后吐网与独立眩晕生命周期（隔离验证）
+
+`web/stages/webspitter.mjs`接原enemy_webspitting_spider9705–9771/ready9709–9718：必须真实普通近战结束后，strict6/6/6/4秒且当前存在合旗标、未眩晕的阻挡单位才起spitWeb；不是远程射弹。原custom没有can_do_magic或chance1检查，不凭“沉默”印象加门。23帧施法，第11/30秒重读当前blockers，flags71303168/未stunned并逐个unit_dodges，再queue mod_spider_web，下tick实际insert。chance0仍消费随机；Blade通用unit_dodges与原custom insert15866–15883第二次parry判定独立，零级不假抽第二次。前摇stun取消，释放后的原animation_wait不凭感觉中断；动画结束再写cd.ts并解除当前目标的阻挡关系。普通melee/路径/协程排程仍沿当前World适配，不冒native逐帧认证。
+
+mod_spider_web.update/remove由game_scripts共享scripts表继承原mod_stun4440–4561，未发现KR3 override。普通3秒/hero2秒，start9帧、loop1帧、end6帧；start内strict>5/30后隐藏目标body/世界血条与Canvas点选，进入end就显形，但自己计数仍等end动画结束才撤。same-level刷新ts不重开display age/叠计数，低级拒绝、高级替换；死亡/移除释放自己token，不清外部stunned/睡眠/Blade计数。无伤害或全局免伤，被包裹仍可实际受伤。普通兵计时冷却继续流逝，未提交攻击取消；已进入原Blade反击/刀舞按现有源phase继续，不假打断。新闪避/伤害回调与英雄nimble检查尊重spiderWebCount，不在bound时抽随机假闪。普通英雄技能/所有原modifier隐藏、nativequeueIDs/全阵营组合仍适配或欠，非通用完整modifier引擎。
+
+World只补可选meleeStarted/defender接口，Renderer可选hidden与Campaign隐藏hero Canvas命中门；只有stage7动态runtime实际提供，旧1–6无新增state/RNG。faerie同对象重插也重启蜘蛛controller时钟。原render custom_scales默认.55、anchor(0.5,1/7)、原flip/z/完整start-loop-end纯绘制。原mod声明/16帧已有stage7组中，本批没有新PNG或RGBA更动：4679帧6,369,762B/map847,936B、旧4/5/6图与oldcompact1314帧2,122,316B均保持。extract_stage7/read_webspitter_functions用声明stub与-bl完整核源/固定SHA，controllers不执行，不导mixed补丁。
+
+最终650Node通过（11新）。actualbuild webspitter-browser-publish真Space后受控原road0/lane1/node20，World原步长先行5秒再真实cast援军node80；蜘蛛原550maxHP/实际548HP、gold850未写作弊值。自动近战实扣援军40→29，再自然施法/queue包裹3秒→隐藏→显形时仍count1→end后count0，实际hurt1再降28证明并非免伤；原Canvas q/alpha/.55尺寸/矩阵/body确实不画、draw完整循环安全World快照不变/无missing-unready、真pause/844×390CDP touch/地图完整progress保持均通过。桌面/手机图人工看；是受控路径/队列/宿主RAF单时钟fixture，不是天然7或原版同输入pixelcert。
+
+早期pure把Blade当限时援军home=null创建，因该模板没有reinforcement.duration而抛错；改用原兵营身份home0并加载Blade声明后通过，未改产品unit模板。首全量测试保留该fixture失败，随后修正后的650与最终actualbuild才算通过，未拿早期.144构建冒.145。首次只用英雄的CPU探针没形成持续blocker，保留源普通World英雄/道路规则，改合法援军延后接敌，不改通用35range/HP/cd来迁就测试。第一次与最终浏览器专项均正常exit0。
+
+正式仍cap6/前六关18模式，第7closed。Druid/原高级塔与mode锁、Wild在7实际允许范围、Ready/敌通知百科/完整音频、自然三模式/自身预算/原旗路书奖励cap7待验。原native网格/队列IDs/globalz/旧箭/安全区/Arivan/特殊death/血池/全音频/宝石天赋仍欠，整体非1:1。
+
+
+
+最终actualbuild1682files104690197B含manifest，全部运行mjs/新声明与build逐字节一致，source pinned重提通过。650Node、webspitter-browser-publish、faerie-regression、原完整天然九模式/存档手机old-nine-publish、最终UI均exit0；连续新档4/5/6 CPU自然链仍4campaign19命/heroic142/iron95，5campaign20命/heroic201/iron147/XP37600，6campaign20命0漏/764kill772spawn/真boss death-complete父complete→heroic120→iron169/XP47121真实奖励。
+
+最终cold100ms/1.5MBps/cacheoff：旧14,858,034B/240req总16.948s，4真实旗书14,815,412/230req书7.199总17.039，5真实旗书14,998,715/241req书7.828总17.721，6真实旗书14,939,386/240req书8.122总23.664，均exit0，不保所有线路；第五只余1285B，大code/data仍必须web/stages按关lazy。第7隔离16,937,541B/234req，15MB assert明确exit1，base/progress/draw不变且无missing/unready，不冒预算通过/正式旗7书7/天然通关。第6boss/cart后期另真实下载3.87MB，不冒整局流量15MB。公开manifest本轮单次确认.143，public UI正常exit0，不轮询新推送。
+
+主要logs artifacts/webspitter-source-publish/groups-publish/tests-publish/build-publish/browser-publish/faerie-regression/old-nine-publish/ui-publish/natural4/natural5/natural6/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish/stage7-budget-publish/pages-ui.log。初pure Blade home=null fixture失败保留；最后仅budget scope文本去掉已完spider旧描述，独立stage7-budget-final仍应明确超15MB，不放宽门槛。
+
 ## 0.2.144：第7关 faerie 暂存运输（隔离验证）
 
 `web/stages/faerie.mjs`接原18716–18858/18864–18920的基础连续流程。按原FAERIE1024格与每条道路第一lane编译半开区段，原第4路[35,70)、第5路[77,110)，索引保留一基；实际数据无开放尾部，不凭猜测填源global ni。path_speeds数字0/1保留，默认yellow30、显式red75。独立nav移动，不覆盖敌人speed；移出战斗集合、释放当前减速/中毒/睡眠/ward所属效果、解除当前blocker，保留原对象/HP/gold/id。limbo保持Hoplite组计数，重插不重加；恢复原对象后重启已接controller时钟。已发普通hurt持有引用时仅第7拒绝limbo伤害，不给旧六关增加state/RNG。
