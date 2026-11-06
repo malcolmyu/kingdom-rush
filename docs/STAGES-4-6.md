@@ -1,5 +1,15 @@
 # 第4–6关还原工作区
 
+0.2.128第五关隔离冷入口首次通过15MB门：完整桌面双英雄HUD、真实预建二级兵营、投石车与Alleria/猫依赖均保留，100ms/1.5MBps/cacheoff实测14,833,565B/225请求，book6.504秒/总16.468秒；比.127的15,537,493B少703,928B。此为真实title/save/map/book之后的隔离level5入口，不是已发布的旗5/书5路径；生产仍前四关12模式，第5/6关闭。未抬预算、降质、清透明RGB或漏载当前会绘制的图。
+
+tools/group_towers.py新增entry变体，仍完整保留原1314帧，common514帧725580B，四族一级分别21/56/97/172帧、21746/54932/84994/180148B，二三级依赖按族取用。只stage>=5使用；预建兵营按实体依赖在入关前decode，空地菜单按实际allowed四族在打开前decode，继续沿用owner/scene/slot/version/current守卫、取消不回填、失败可重试和交易前不扣费。原1–4图组与旧compact1314帧2122316B不变。所有帧完整RGBA（含alpha0 RGB）/size/trim逐项校验。
+
+第五关场景依赖改从真实render.sprites的prefix/name及当前玩法声明闭包选取，避免把普通组件字符串aura误当动画前缀而载入Faustus等无关英雄贴花。stage05由2057帧3600394B变1815帧3175904B；保留逻辑动画别名、鹿/魔法花与实际通用战斗效果，记录runtime roots/模块SHA，保留帧与旧组逐RGBA/size/trim比较相同。stage04/06输出字节保持。新test:stage5-resources同时拒绝metadata存在但sheet未decode的实际sprite调用；test:stage5-entry-assets验证真实四族1→2→3/Arcane/Blade、空地延迟取消、预建兵营升三级网络失败不扣费再重试、暂停/缩放/手机/清理。
+
+本批自然策略探针没有改玩法数值、HP/金币/伤害/冷却/seed或伪造解锁：从实际第四关连续通关的XP18139和已赚星开始，经合法训练/天赋API，第五campaign计划0可20命零漏怪获胜（805kill、815实际spawn，十台投石车正常退出不算漏怪），结束XP30464。另三计划18/16/20命。用这次实际earned XP继续训练后，八个合法计划的heroic仍在第二波失败，iron也未通过（最佳100kill仍漏一只）。因此这些是隔离策略证据，不是自然三模式验收，也没有把cap4的recordVictory改成虚假第五奖励。失败日志entry-natural-probe/entry-challenge-probe保留；下一步必须诊断挑战的合法策略/源机制差异并完成真实发布链，不能把本次预算通过当第五已开放。
+
+最终526Node全过，actualbuild1622files91,382,485B；新第五资源/真实菜单专项、刀舞/投石车/三场景真实Canvas回归、天然原九模式/存档手机、连续第4三模式（19命三星/142/95）、UI、旧与第四生产旗书冷入口全部正常exit0。旧冷14,754,136B/227请求、book7.166秒/总16.775秒；第四真实旗书14,711,518B/217请求、book7.176秒/总16.872秒。第五14,833,565B隔离入口的预算余量不代表未来真实书页发布也通过，发布链仍须重验。最终运行模块与变更图组逐字节等于build。logs artifacts/entry-tests-final/build/browser/stage5-budget/dance-regression/catapult-regression/scenes-regression/old-nine/stage4-natural/ui/performance/stage4-performance.log。首次公开manifest误用了不存在的manifest.json收404，随后正确build-manifest.json确认.127；没有修改产品绕过该路径错误。
+
 0.2.127刀舞三档购买与原战斗流程已接通：每档250、max3，hits2/3/4、damage25–35/35–47/40–56、strict9秒检查，至少两个合法目标才开始；不足时原delay_attack延后6帧且不抽chance。原dance_out后，每击重新按当前位置/125椭圆/原vis及当前有效路径节点筛选，排除已访对象；无候选但visited非空时清表再查，按zmod(i,#targets)选中，目标计数stun_inc→原slot1/heading朝向瞬移→三个dance_hit1/2/3随机动画之一→5/30后ceil(frandom)真伤→等完整动画后仅释放本次stun。完成回原施法位置dance_in，再还原原vis.bans与ignore_damage。利刃大师不追加mixed文本的刀舞伤害。
 
 新web/blade-dance.mjs及原proto只读生成blade-dance-data.mjs；read_blade_dance.lua仅loadfile+jit.util.funck读取原1709函数TDUP，连controller顶层chunk也不调用，三动画名由原常量表取得。extract_blade.py补1820闭包/原utils714–738及719–731、melee_slot_position984–1008、SU159–178计数与276–279重试审计，controllers不执行。独立bladeDanceStunCount与睡眠箭arcaneStunCount/外部stunned并存，ignore_stun不计数，死亡/目标移除/塔出售清自己token；没有抹掉其他眩晕。新player rally请求在刀舞结束、回到起点后才消费；已经开始的动画/前摇不因stun或新集结命令中止。技能期间原health.ignore_damage确实忽略伤害，结束恢复，不是全局Blade免伤。

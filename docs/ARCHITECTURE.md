@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+0.2.128第5/6隔离catalog使用tower-groups/entry变体：common先decode，预建实体按真实template依赖补齐，空地菜单由towerMenuSheets返回当前allowed一级族的完整依赖，prepareTowerMenu在decode和owner/scene/slot/version检查完成前保持hidden/inert。第4沿用旧tier组，旧1–3沿用原compact。第五场景共享图闭包读取实际render.sprites而不是任意组件字符串，并记录runtime模块SHA；metadata存在不等于图片就绪，实际Canvas专项同时验证sheet已decode。此调整不触及World时钟/交易数值/随机流或save cap4。
+
 `ProjectileMotion`仅为当前rock_1/2的body持有WeakMap展示选择：原bomb.insert初始(random-.5)*pi与发射方向signed rotation_speed，在首次观察时固定，之后按elapsed派生旋转、同帧重画不重抽；loadLevel/transition reset。独立UI RNG不读写World seed/serial/飞行数组，不能声称Love同seed随机轨迹。普通箭仍使用现有chord朝向，原per-tick last_pos/抛物线/目标预测尚未恢复，不用渲染帧间差分冒充模拟速度。
 
 

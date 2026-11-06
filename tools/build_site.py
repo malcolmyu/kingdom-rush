@@ -35,7 +35,7 @@ optimize(OUT)
 # Resolve static imports up front to remove deep ESM request waterfalls on cold
 # connections. Preload the title background while metadata is downloading.
 # Compress declaration metadata losslessly; raw JSON remains a compatibility fallback.
-metadata=['assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json','assets/arcane/catalog.json','assets/blade/catalog.json','assets/stage5-catapult/catalog.json','assets/stage5-alleria/catalog.json','assets/tower-groups/catalog.json']
+metadata=['assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json','assets/arcane/catalog.json','assets/blade/catalog.json','assets/stage5-catapult/catalog.json','assets/stage5-alleria/catalog.json','assets/tower-groups/catalog.json','assets/tower-groups/entry/catalog.json']
 metadata += ['assets/expansion/'+p.name for p in (OUT/'assets/expansion').glob('*.json') if p.name!='catalog.json']
 for relative in metadata:
  p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))
