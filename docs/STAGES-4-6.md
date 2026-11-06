@@ -24,8 +24,8 @@
 
 接下来必须闭合：
 
-- 第4关：新敌人完整特殊死亡/音效及通用modifier生产链、奥术塔剩余技能与本关完整自然战斗验收；树屋和5/10波焚林已接通。
-- 第5关：预建兵营完整职责与本关允许的其他高级塔；骚扰者远程/后跳影袭基础分支已接通。
+- 第4关：新敌人完整特殊死亡/音效及通用modifier生产链、奥术塔剩余粒子/音效与本关分组预算、完整自然战斗验收；树屋和5/10波焚林已接通。
+- 第5关：预建兵营、hero_alleria与投石车原事件、本关允许的其他高级塔；骚扰者远程/后跳影袭基础分支已接通。
 - 第6关：Alleria/猫、mega_spawner/囚车首领结局与其他高级塔；狮鹫上下守卫和援助已接通。
 - 新敌人通知/信息栏/特殊死亡、真实地图4–6旗与路径/奖励链、存档上限扩展；待玩法验收后一起开放。
 
@@ -78,3 +78,9 @@ World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原runn
 0.2.115闭合奥术塔爆裂箭三档原购买/普通箭payload连续分支：每级200/max3计入spent，首次level1变更被controller观察才重置12秒；若观察前连续升到2级，保留原special attack.ts=0，不丢时钟。原13/30 special单箭、两射手跨普通/特殊episode轮换，special释放range允许1.1倍；箭沿现原预测/抛物线，结束无论直接命中与否都queue aura，下一模拟tick执行一次level*80魔法AOE/r57.5/.7椭圆，允许飞行。伤害中心取仍存在目标当前位置（即使目标已死），移除后取预测点；爆炸画面仍在原预测to。原目标活且地面才生成两层1400地贴，source3300爆炸/offset-sort-7/14帧与原独立alpha/scale keys同actorqueue。末次直击杀敌时等待pending payload处理后才判胜，未把F_ALL当全局伤害免疫。
 
 原power图/背景/三rank位置和原价、下一档tooltip/满级隐藏、花费退款已接。睡眠箭仍disabled；箭尾粒子、全部blood/pop/water miss、原音频/升级flash与完整native modifier/协程/队列仍未全，不称整个Arcane或第4关已1:1。新增图仅原2个地贴帧，Arcane独立包268帧377,542B，旧塔compact1314不变；605张UI中新增rank1/2和背景都从APK原PNG exact无损裁取。仍未开放4–6；应继续睡眠箭、各stage资源分组预算与原始新关全流程，不能停在局部专项或冒18模式完成。
+
+0.2.116接入睡眠箭三级原购买（180/180/180）及原special施放，冷却24+level*(-4)=20/16/12秒，原F_STUN4194304/F_BOSS32选敌门；箭直接物理命中后才queue mod_arrow_arcane_slumber，下一tick按原mod_stun成功插入/计数并另外减.03魔抗。固定4秒、同级只重置modifier.ts（不重放动画/再计数/再减甲），高阶替换低阶/低阶拒绝；退出只清自己的计数，保留外部stunned适配状态，没有伤害免疫/受伤唤醒。已发箭独立，未提交近战/普通远程被中断、移动停止、冷却继续随模拟时间过去，原各新敌阶段的可中断/不可中断职责沿用已有controller适配；ettin ignore_stun回血、carrier普通stun落兵均接真实计数。
+
+原两modifier sprite分别bubbles/z，跟unit.mod_offset、z3000/alpha255，首层继承目标flip，第二层按APK明确false（pATCHING FLIP日志也真实在原APK，不因mixed文本同名而猜为mod扩充）。原14帧slumber hitFX3300，复用原箭预测/抛物线/命中距离/actor队列；不改旧普通箭与旧九模式。原完整native队列/渲染时间边界/通用mod生产链/尾部粒子、血花/水面miss/音频等仍欠，不称全Arcane或全关像素验收。Arcane仍268帧377,542B，独立新关组无新增PNG依赖。
+
+本轮核实指定视频真正新关part/CID并看过同关战斗125s：P11/CID1232866906第4、P14/CID1232877498第5、P17/CID1232900628第6。索引及帧SHA记tools/sources/stages-video.json，不猜P9；不同玩家输入/英雄进度，非同步像素验收。第5参考出现第二英雄，原level05.update51–98确证hero_alleria at40,190，同时原load/update有campaign10/heroic3条catapult_waves，动态enemy_catapult/duration/stop_ni，这些尚未接入。不能仅用初始实体/静态波次就称第5通关。新4–6入口继续关闭，接下来优先stage4资源分组/真实模式自然流程，再补其余关卡明确脚本缺口。

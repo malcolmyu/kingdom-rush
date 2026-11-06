@@ -1,3 +1,4 @@
+import{isEnemyStunned}from'./enemy-status.mjs';
 import DATA from'./harasser-jump-data.mjs';
 import{launchHarasserArrow}from'./harasser.mjs';
 import{inEllipse}from'./spells.mjs';
@@ -12,7 +13,7 @@ export function harasserPathBounds(w,road){
 }
 export function tryHarasserDodge(w,e,{ranged=false,damageType=0}={}){
  if(!e?.harasser||e.hp<=0)return false;const d=w.template(e.key).dodge,s=e.harasser;s.lastCheck=w.time;
- if(e.stunned||e.frozen||d.requires_magic&&(e.canDoMagic??w.template(e.key).enemy.can_do_magic)===false||ranged&&!d.ranged||w.time-(s.dodgeAt??d.ts)<=d.cooldown||(damageType&C.noDodge)!==0)return false;
+ if(isEnemyStunned(e)||e.frozen||d.requires_magic&&(e.canDoMagic??w.template(e.key).enemy.can_do_magic)===false||ranged&&!d.ranged||w.time-(s.dodgeAt??d.ts)<=d.cooldown||(damageType&C.noDodge)!==0)return false;
  if(w.random()>d.chance)return false;s.dodgeActive=true;s.lastDodge=w.time;return true;
 }
 export function harasserJumpDestination(w,e,dn){
@@ -36,15 +37,15 @@ export function updateHarasserJump(w,e,dt=0){
   }
  }
  if(s.phase==='shadow_shot'){
-  if(e.stunned||e.frozen){s.phase=null;e.anim=0;return true;}
+  if(isEnemyStunned(e)||e.frozen){s.phase=null;e.anim=0;return true;}
   const a=w.template(e.key).shadow_shot;
   if(!s.shadowFired&&w.time-s.at>=a.shoot_time){s.shadowFired=true;launchHarasserArrow(w,e,s.shadowTarget,a);}
   if(w.time-s.at>=w.animationDuration('harraser','shadow_shot')){s.phase=null;e.anim=0;}
   return true;
  }
  if(s.phase)return false; // Source ranged coroutine completes before outer dodge handler.
- if(!e.blocked&&!e.stunned&&!e.frozen){const r=w.routes[e.road]?.[e.lane],p=r?.points[s.node??0];if(p&&Math.hypot(e.x-p.x,e.y-p.y)<2*e.speed*dt&&s.node<r.points.length-1)s.node++;}
- if(!s.dodgeActive||e.stunned||e.frozen)return false;
+ if(!e.blocked&&!isEnemyStunned(e)&&!e.frozen){const r=w.routes[e.road]?.[e.lane],p=r?.points[s.node??0];if(p&&Math.hypot(e.x-p.x,e.y-p.y)<2*e.speed*dt&&s.node<r.points.length-1)s.node++;}
+ if(!s.dodgeActive||isEnemyStunned(e)||e.frozen)return false;
  if((e.visBans??w.template(e.key).vis.bans)===C.all)return true;
  s.dodgeActive=false;s.dodgeAt=w.time;const d=w.template(e.key).dodge,node=harasserJumpDestination(w,e,w.number(d.min_nodes,d.max_nodes));if(node===null)return false;
  s.jumpNode=node;s.previousBans=e.visBans??w.template(e.key).vis.bans;s.jumpFlip=e.anim>0?(e.actionFlip??e.dx<0):e.dx<0;e.visBans=C.all;s.jumpHidden=true;unblock(w,e);animate(w,e,'jumpOut');return true;

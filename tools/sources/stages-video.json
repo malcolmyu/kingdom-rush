@@ -1,0 +1,40 @@
+{
+  "level05ControllerSha256": "4a08c524651342a81a83fedb09d54bc95a524bb5fc63c2445a3c8846016d163e",
+  "metadataSource": "https://api.bilibili.com/x/player/pagelist?bvid=BV1y8411R7iB",
+  "newConfirmedGap": "Original level05.update51-98 inserts hero_alleria at40,190 and scripts enemy_catapult; not implemented. Video125s stage5 shows two hero portraits.",
+  "samples": [
+    {
+      "bvid": "BV1y8411R7iB",
+      "cid": 1232866906,
+      "observed": "same-stage battle visible; different player inputs/hero progression, not synchronized pixel acceptance",
+      "page": 11,
+      "part": "4-1 红杉狙击战 战役模式",
+      "sampleSecond": 125,
+      "sampleSha256": "5fb6ac9a828ea57f8c9f348b5820189d4069b57fae11f748670dbc6543ef7865",
+      "stage": 4,
+      "url": "https://www.bilibili.com/video/BV1y8411R7iB/?p=11"
+    },
+    {
+      "bvid": "BV1y8411R7iB",
+      "cid": 1232877498,
+      "observed": "same-stage battle visible; different player inputs/hero progression, not synchronized pixel acceptance",
+      "page": 14,
+      "part": "5-1 皇家庭院 战役模式",
+      "sampleSecond": 125,
+      "sampleSha256": "be7c2a7bca1af0aa64270b546d9a13018b17e25b0baa716651e2ca3ba9883f51",
+      "stage": 5,
+      "url": "https://www.bilibili.com/video/BV1y8411R7iB/?p=14"
+    },
+    {
+      "bvid": "BV1y8411R7iB",
+      "cid": 1232900628,
+      "observed": "same-stage battle visible; different player inputs/hero progression, not synchronized pixel acceptance",
+      "page": 17,
+      "part": "6-1 狮鹫驿站 战役模式",
+      "sampleSecond": 125,
+      "sampleSha256": "3347d35cd13332c58faba36edbbf86c4d291fcf462289994e21ee9bb1b5586d8",
+      "stage": 6,
+      "url": "https://www.bilibili.com/video/BV1y8411R7iB/?p=17"
+    }
+  ]
+}

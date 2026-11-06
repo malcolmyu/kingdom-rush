@@ -1,3 +1,4 @@
+import{queueArcaneSlumber,reduceArcaneArmor}from'./arcane-slumber.mjs';
 import{queueArcaneBurst}from'./arcane-burst.mjs';
 import{harasserHidden}from'./harasser-jump.mjs';
 const center=(w,s)=>{const o=w.template(s.key).tower.range_offset;return{x:s.x+o.x,y:s.y+o.y};};
@@ -12,7 +13,7 @@ function launch(w,s,index,e,a=w.template(s.key).attacks.list[0],level=0){
  tx+=v.x*duration+(v.x&&b.prediction_error?w.random()*10:0);ty+=v.y*duration-(v.y&&b.prediction_error?w.random()*10:0);
  w.shots.push({id:++w.serial,type:'arcane-arrow',bullet:a.bullet,target:e,level,sx,sy,x:sx,y:sy,tx,ty,duration,elapsed:0,g:b.g,insertedAt:w.time,rotation:0,damageFactor:t.tower.damage_factor,velocity:{x:(tx-sx)/duration,y:(ty-sy-.5*b.g*duration*duration)/duration}});
 }
-export function arcanePowerOffer(w,s,name){if(name!=='burst'||!s?.arcane)return null;const p=s.arcane.powers?.[name]||w.template(s.key).powers[name];return{...p,price:p.level===0?p.price_base:p.price_inc};}
+export function arcanePowerOffer(w,s,name){if(!['burst','slumber'].includes(name)||!s?.arcane)return null;const p=s.arcane.powers?.[name]||w.template(s.key).powers[name];return{...p,price:p.level===0?p.price_base:p.price_inc};}
 export function buyArcanePower(w,s,name){const p=arcanePowerOffer(w,s,name);if(!w.active()||!p||p.level>=p.max_level||w.gold<p.price)return false;s.arcane.powers??={};s.arcane.powers[name]={...p,level:p.level+1,changed:true,at:p.at??w.template(s.key).attacks.list[p.attack_idx-1].ts};w.gold-=p.price;s.spent+=p.price;w.emit('tower_power',{name,level:p.level+1});return true;}
 // Powers are checked before the ordinary attack, as in tower_arcane.update.
 export function updateArcane(w,s,live){
@@ -27,8 +28,8 @@ export function updateArcane(w,s,live){
   if(p.secondShot&&w.time-m.shooters[second].at>=d)m.phase=null;
   return;
  }
- const power=m.powers?.burst;if(power?.changed){power.changed=false;if(power.level===1)power.at=w.time;}
- if(power?.level){const attack=t.attacks.list[t.powers.burst.attack_idx-1];if(w.time-power.at>=attack.cooldown+power.level*attack.cooldown_inc){const target=arcaneTargets(w,s,live,attack)[0];if(target){power.at=w.time;const index=(m.index+1)%2;m.index=index;m.phase={power:'burst',at:w.time,index,target};animate(w,s,index,target,'special');return;}}}
+ for(const name of ['burst','slumber']){const power=m.powers?.[name];if(power?.changed){power.changed=false;if(power.level===1)power.at=w.time;}
+ if(power?.level){const attack=t.attacks.list[t.powers[name].attack_idx-1];if(w.time-power.at>=attack.cooldown+power.level*attack.cooldown_inc){const target=arcaneTargets(w,s,live,attack)[0];if(target){power.at=w.time;const index=(m.index+1)%2;m.index=index;m.phase={power:name,at:w.time,index,target};animate(w,s,index,target,'special');return;}}}}
  if(w.time-m.last<=a.cooldown)return;
  const targets=arcaneTargets(w,s,live,a);
  if(!targets.length)return;m.last=w.time;const firstIndex=(m.index+1)%2;m.index=firstIndex;m.phase={at:w.time,targets,firstIndex};animate(w,s,firstIndex,targets[firstIndex%targets.length]);
@@ -41,10 +42,10 @@ export function updateArcaneArrow(w,b,dt){
  if(!w.enemies.includes(e)||e.hp<=0||Math.hypot(b.x-e.x-h.x,b.y-e.y-h.y)>=t.hit_distance)return;
  // Harasser explicitly disallows ranged dodge. No global hurt immunity.
  b.damage=Math.ceil((t.damage_min+w.random()*(t.damage_max-t.damage_min))*b.damageFactor);b.hit=true;w.hurt(e,b.damage,t.damage_type);
- if(e.hp>0){const mod=w.template(t.mod[0]);e.rawMagicArmor=(e.rawMagicArmor??e.magicArmor)-w.number(mod.damage_min,mod.damage_max);e.magicArmor=Math.max(0,Math.min(1,e.rawMagicArmor));}
- w.effect('arcane-hit',{x:e.x+h.x,y:e.y+h.y},8/30);
+ if(e.hp>0){if(t.mod[0]==='mod_arrow_arcane_slumber')queueArcaneSlumber(w,b);else reduceArcaneArmor(w,e);}
+ const fx=w.template(t.hit_fx).render.sprites[0],a=w.data.animations[fx.name];w.effect('arcane-hit',{x:e.x+h.x,y:e.y+h.y,key:t.hit_fx},(a.to-a.from+1)/30);w.effects.at(-1).key=t.hit_fx;
 }
 
-export function drawArcaneEffects(r,w){for(const f of w.effects)if(f.type==='arcane-hit')r.entity(w.template('arrow_arcane').bullet.hit_fx,f,{time:f.total-f.life});}
+export function drawArcaneEffects(r,w){for(const f of w.effects)if(f.type==='arcane-hit')r.entity(f.key||w.template('arrow_arcane').bullet.hit_fx,f,{time:f.total-f.life});}
 
-function arcaneTargets(w,s,live,a){const p=center(w,s),range=w.template(s.key).attacks.range;return live.filter(e=>e.hp>0&&!harasserHidden(e)&&!(e.visBans&a.vis_flags)&&!(e.visFlags&a.vis_bans)&&((e.x-p.x)/range)**2+((e.y-p.y)/(range*.7))**2<=1).sort((x,y)=>(x.goal-x.d)-(y.goal-y.d));}
+function arcaneTargets(w,s,live,a){const p=center(w,s),range=w.template(s.key).attacks.range;return live.filter(e=>e.hp>0&&!harasserHidden(e)&&!((e.visBans??w.template(e.key).vis?.bans??0)&a.vis_flags)&&!((e.visFlags??w.template(e.key).vis?.flags??0)&a.vis_bans)&&((e.x-p.x)/range)**2+((e.y-p.y)/(range*.7))**2<=1).sort((x,y)=>(x.goal-x.d)-(y.goal-y.d));}

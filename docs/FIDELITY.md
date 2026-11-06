@@ -1253,3 +1253,15 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 早期纯测写错order.sortY字段/期望y106，source字段是y且to.y99-7=92，改fixture；增强Canvas矩阵1e-6物理px阈值遇Chrome float32（实际672.4674682617188 vs数学672.4674700264931），矩阵平移改1e-4物理px/scale1e-6并按真实sheet筛选，不改产品坐标/像素。首final专项误在build结果未完整收集前启动，boot30秒超时，未当最终包通过；最终严格串行build后重测全通过。最终修购后下一rank说明/满级tooltip收起后，再完整final build与旧9/UI/性能，不拿旧包冒最终。失败logs原样留ignored artifacts，无挂住待收。
 
 最终build1534files73,327,461B，cold100ms/1.5MBps/cacheoff14,769,294B/242requests，book6.300s/总15.568s<15MB；无整atlas/OTF/抬预算/降质，不保普遍线路设备速度。新关自身7.3MB整包仍需实际分stage预算，不以旧路径通过称新关也通过。公开一次manifest.114且burst-pages-ui正常exit0，新推送后未轮询。最终logs artifacts/burst-tests-publish.log/build-publish.log/browser-publish.log/base-browser-publish.log/campaign-publish.log/ui-publish.log/performance-publish.log，公开pages-ui.log。第4–6入口继续关闭，releaseReadyfalse，整体in_progress。
+
+## 0.2.116 睡眠箭与原计数眩晕
+
+只读APK自有insert game_scripts14888–14903，确证调用mod_stun.insert成功后queue mod_arrow_arcane，并将第二sprite.flip_x=false；原pATCHING FLIP日志确实属于APK。通用scripts4440–4488/4490–4549/4551–4561、script_utils stun_inc/dec（ignore_stun/stun_count/is_stunned）及systems.mod_lifecycle完整同级/替换门只读交叉核对。t.modifier没有animation_phases，duration4，不凭感觉造睡醒/受伤唤醒。数据提取仍不执行controllers，Arcane10模板/原268帧377,542B，源SHA/规则见tools/sources/arcane.json；没有新增位图或旧compact扩张。
+
+实际三级180购买/cap/spent1110/战斗退款666、20/16/12秒原special选敌（F_STUN/F_BOSS），普通物理命中才排队4秒modifier，成功新insert才额外.03减魔抗。同级刷新延长duration但不增加计数/减甲/重播动画，高阶替换、低阶拒绝；忽略stun的unit仍保留原显示/减甲；到期/死亡/移除只减自身计数，不清外部stunned适配位。攻击者/目标不因睡眠获得hurt免疫；移动/未提交攻击停、既发弹继续，ettin原忽略stun回血、carrier普通stun释放接入。原完整native insert/damage队列/通用外部modifier生产、逐帧resume/animation_db边界仍适配，不称原同输入或Love同seed。
+
+454Node全过（8新）。实际build slumber-browser真实原菜单70/110/160/230（用原ettin奖励补足）与三次180（8个原ettin死亡560收入）后20金币，非直接加钱。World.step真实发射并直接命中、下一tick计数/魔抗、四秒停位与解除恢复、hurt仍减HP/不唤醒；两层3000原q/alpha/flip/unit offset/Canvas矩阵与World绘制快照不变，14帧hitFX声明/寿命，真pause/wheel/mobileCDP/map清理unlocked1全exit0。截图stunned/mobile/rank3受控第4关目标/时钟/塔blocked状态样本，非自然新关或原版同步，桌面/手机已人工看。
+
+爆裂箭、载兵、harasser后跳专项回归，原天然完整九模式/存档手机→UI→性能均正常exit0，三个campaign20生命，第三campaign入关自然XP4705，末XP继续累积，原旧数值/策略不改。最终build1536files73,334,469B，cold100ms/1.5MBps/cacheoff14,773,613B/244requests，book7.169s/总16.423s<15MB；旧塔compact1314frames2,122,316B，无整atlas/OTF/抬预算/降质，不保普遍线路速度。公开一次manifest.115且slumber-pages-ui正常exit0，新推送不轮询。logs artifacts/slumber-tests.log/build.log/browser.log/burst-regression.log/carrier-regression.log/harasser-regression.log/campaign.log/ui.log/performance.log/pages-ui.log。无浏览器失败或挂住待收；初extractor文本替换误把slumber字段塞进burst审计断言，已在提取写输出前失败并修正；参考截图脚本一次Python else0语法误拼已纠正，不是产品失败。
+
+另通过官方pagelist核P11/14/17与三CID并下载125s战斗帧，已实际看过原4/5/6地图与在战斗HUD；P9是第3关heroic而非第4。tools/sources/stages-video.json记录原标题/URL/CID/帧SHA。视频页web抓取412，但公开官方API元数据与playurl成功，ffmpeg只取原参考帧未导资源到游戏。第5第二英雄与原level05控制器确证Alleria(40,190)/动态catapult事件仍缺，补充开放门，不以静态波次完结冒自然验收。原参考与本样本输入/英雄等级/经济不同，未称同步像素验收；原视频不含睡眠箭本测试的同输入帧。新4–6仍未开放。

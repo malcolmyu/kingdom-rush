@@ -8,13 +8,13 @@
     "gui_portraits-1.png": "b8db2ab347915c6589d3fb362849fc353201fe3f567e7f44cb39351151e640ce"
   },
   "limits": [
-    "Slumber power disabled; special arrow trail particles/blood/pop/water miss incomplete",
+    "Special arrow trail particles/blood/pop/water miss incomplete; full native modifier/queued lifecycle remains adapted",
     "Native coroutine/entity insertion and queued damage adapted",
     "Blood/pop/water miss and complete modifiers pending"
   ],
   "powerUiPngSha256": "e6990a68f9ecfb2414e59a8f7baee5b1db087814add37e5bd682f09546a059cf",
   "rgbaVerified": true,
-  "scope": "baseline pair and burst levels1..3 purchase/single special shot/arrow payload AOE and ground tween",
+  "scope": "baseline pair, burst/slumber ranks1..3, original mod_stun count/lifecycle and sprites; aura payload AOE",
   "sha256": {
     "all-phone/game_gui.lua": "e9ba578e0b2d53075f1e7b7fc7b9bae04736983246c2270c31000fd02060381d",
     "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
@@ -26,5 +26,12 @@
     "kr3/data/tower_menus_data.lua": "b5ac426492c12f87bcb2a2a8318639be075dc7980a63d7eaa9ec8f668a1c4a54",
     "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
     "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  },
+  "slumberRules": {
+    "clock": "World-owned count independent of external stunned adapter; native queue/animation boundary remains adapted",
+    "duration": 4,
+    "sameLevel": "reset modifier.ts without reinsert/count/armor side effects",
+    "secondSpriteFlip": false,
+    "wakeOnDamage": false
   }
 }
