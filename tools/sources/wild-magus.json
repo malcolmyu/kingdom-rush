@@ -1,5 +1,5 @@
 {
-  "frames": 368,
+  "frames": 439,
   "functions": {
     "bolt_wild_magus": {
       "insert": {
@@ -8,6 +8,12 @@
       "runs": 1,
       "update": {
         "__script_path": "scripts.bolt.update"
+      }
+    },
+    "mod_eldritch": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.mod_eldritch.update"
       }
     },
     "mod_teleport_wild_magus": {
@@ -28,6 +34,13 @@
         "__script_path": "scripts.mod_teleport.update"
       }
     },
+    "ray_wild_magus": {
+      "inherited_from": "scripts.ray_simple.update",
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.ray_simple.update"
+      }
+    },
     "tower_wild_magus": {
       "runs": 1,
       "update": {
@@ -45,11 +58,15 @@
     "game_scripts520\u2013697",
     "scripts2921\u20133074",
     "utils245\u2013332",
-    "kr3/upgrades99\u2013301 TDUP73/75"
+    "kr3/upgrades99\u2013301 TDUP73/75",
+    "scripts3242\u20133353 with3248 closure",
+    "game_scripts14962\u201315047",
+    "systems939\u20131104 DAMAGE_EAT"
   ],
   "rgbaVerified": true,
-  "scope": "Source ordinary alternating-hand attack, same-target damage increments, generic bolt tracking/acceleration; skills eldritch/ward disabled. Particles, pop/blood/audio, native coroutine IDs/queues and higher global talents remain incomplete.",
+  "scope": "Eldritch victim render snapshot uses current World render adaptation; full extra blood/pop/audio and generic modifier ban lifecycle remain pending. Source ordinary alternating-hand attack, same-target damage increments, generic bolt tracking/acceleration; eldritch ray/queued eat and delayed magic AOE implemented; ward disabled. Particles, pop/blood/audio, native coroutine IDs/queues and higher global talents remain incomplete.",
   "sha256": {
+    "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
     "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
     "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
     "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",

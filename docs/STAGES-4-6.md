@@ -1,5 +1,23 @@
 # 第4–6关还原工作区
 
+0.2.138实际闭合狂野魔术师eldritch三档购买/射线/吞噬/延时魔法AOE基础连续链。原325/185/185、max3，累计spent1505（塔810+技能695）、战斗退款903；仅s.wild.powers独立状态，ward仍disabled与World拒买。第一档changed被controller观察才起28秒strict冷却，后两档24/20秒不重置起点，首观察前直升2档保留模板ts0。原20/30射线释放、34frame施法，开始后不被tower.blocked中途冻，释放重新核health/vis/1.1椭圆，失效则按原范围重找最前目标；不改普通双手same计数或抽新chance随机。
+
+原game_templates注册ray_wild_magus读取game_scripts.ray_simple，但APK game_scripts实际上require并返回共享scripts表且无ray_simple override，故继承all/scripts3242–3353及3248闭包，不是精灵force_motion。射线2/30后queue mod、没有普通直接伤害；追踪Chebyshev上限64相对insert时原bullet.to（非逐tick累积重置），F_RANGED或超距粘性失追，仍原hitFX但不插mod。射线原16frame/anchor0,.5/z3400，x轴距离/image_width144而y轴保持1，专用Canvas双轴矩阵，不把Renderer.entity旧等比scale当源射线正确；原hitFX/z3300。
+
+mod下一Worldtick插入，只活/实体存在/源modifier flags门成功；同级不重复启动，高级替换低级，低级拒绝。再下一Worldtick按原systems.health DAMAGE_EAT4096令HP0，检查原health.ignore_damage/immune_to，真实一次原金币/无主英雄假XP，carrier继承原EAT禁落兵/隐藏死亡，不用超大普通伤害冒吞噬。原敌闲置render快照按eldritch_enemy_decal 0..20/30抖动scale tween膨胀，隐藏正常尸体；mod原12frame loop跟初始mod_offset，等待20/30结束后原19frame爆炸。AOE在固定初始mod.pos、87.5/.7椭圆按源flags筛活敌，下一tick80/180/260固定magic4，不乘塔damage_factor、不抽伤害随机。爆炸画面在原target引用当前pos+unit.mod_offset，和AOE中心职责不混淆。完整native modifier ban列表/queueIDs/协程同tick、敌render运行时多层快照、额外blood/pop/水格/声音尚适配或欠，不能说全部技能FX/全塔1:1。
+
+extract_wild_magus.py扩原ray/mod/decal/两个FX声明，10源码SHA（新增constants）与原PNG SHA pin重提拒变，controllers仅-bl不执行；read_wild_functions安全stub记录注册并审计共享scripts继承，rules只读constants+原升级proto。独立wild组368→439帧、672348→825870B，所有RGBA/size/trim无损逐帧验；仍仅level6读metadata、mage3高级菜单/交易前完整decode，不进已发布五关冷图。旧compact1314帧2122316B与三stage图1925/1815/2204帧4090840/3175904/4109998B不变，运行模块排除优化器字面量污染。原技能层未假启用ward。
+
+590Node全过（9新eldritch）。实际build eldritch-browser-release原真实100/160/250/300塔升级与3原ettin奖励付款，再10原ettin死亡收益700支付325+185+185，最终5gold/spent1505。真实Space开波后受控原路径节点ettin/时钟，经World.step自动施法/射线/吞噬，金币5→75为原ettin70奖励；再放原邻敌测试实际260magicHP下降、范围外100单位仍900HP，没有写gold/HP/伤害/seed/cd。Canvas射线q/alpha/x独立缩放旋转矩阵、原mod/源膨胀体/无missing-unready与draw完整World快照不变；真pause冻结待爆、wheel/844x390 CDP touch/map清理均过。ray/swelling/mobile已人工看，是受控第6fixture，非天然新技能通关/原版同输入pixelcert。
+
+早期pure把买技能前gold当吞噬前gold，少算325；另新绘制stub缺frame，均改fixture。首实际Canvas矩阵确证Renderer.entity旧scale只乘x成等比，不适合原射线，实际增加专用非均匀绘制后repeat/release通过，不吞矩阵失败。最后补原ray64相对固定bullet.to与同级mod/immune回归，590全通过后重build/重浏览器。原普通wild回归保留（零gold下eldritch不可付，不再误说未实现），ward仍锁。
+
+生产仍前五关15模式，第6closed；下一批实际闭合ward原技能/沉默职责，再集中真正第6浏览器自然三模式/原旗路书通知奖励cap6与手机重载/真实发布冷路径，不无限磨已完eldritch/普通bolt/旧HUD/boss。连续自然4/5/6合法样本保持通过，6当前策略只mage3，不能拿它冒新技能自然验证；recordVictory6仍cap5拒绝，没有伪造存档开放。人类援军叠音.132已修保持，本批未改音频。
+
+最终包590纯测/eldritch-browser-publish/UI正常exit0；连续自然4/5/6与原天然完整九模式/手机存档、普通wild与事件资源失败重试/取消均正常exit0。最后仅新增队列伤害按原health.ignore_damage/immune_to同时保护EAT与magic后，再重提pin/重590/build/专项/UI/四预算全过；旧五不存在此state/队列，算法与RNG不改。全部运行模块及wild新资源135文件逐字节等actualbuild，1662文件96348236B（含manifest）。本轮公开一次manifest确认.137，eldritch-pages-ui正常exit0，新推送未轮询，不能冒已确认线上.138。
+
+最终cold100ms/1.5MBps/cacheoff旧14846330B/239req book6.282s总16.073s；第四真实旗书14803703B/229req book7.185总17.037；第五14987008B/240req book7.842总17.674；第六隔离14852065B/233req book6.741总16.839，均<15MB不保所有线路。第五只余12992B，后续大声明/图严格level6按需；第6不是已发布flag6/book6入口，boss/cart阶段另真实下载约3.87MB不能冒整局总流量15MB。主要logs artifacts/eldritch-source-pinned/tests-publish/build-publish/browser-publish/ui-publish/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish，以及base-regression/assets-regression/old-nine/natural4/natural5/natural6/pages-ui.log。早期失败已收齐，没有挂住浏览器待收。
+
 0.2.137实际闭合第6狂野魔术师基础升级/攻击链，不再把原未锁列表当作已实现。保留四基础TYPES，运行时mage level4映射原tower_wild_magus（原模板tower.level1不改）；仅第6允许且按mode原locked_towers再验，第4/5仍锁。真实mage1→2→3→wild价格100/160/250/300，累计810，准备期全退、战斗退款486；action_arg拒high_elven假升。原wild菜单两项eldritch/ward尚未实现，保持disabled、World拒付，不给s.arcane冒身份。原info肖像portraits_towers_0007直接PNG exact裁图，UI624图，InfoBar与tooltip按魔法塔/8–16/范围180原数据，当前已实现的crystal_focus/bane_spell按原upgrades TDUP73/75明确包含该塔/弹体，分别ceil范围*1.05与原伤害*1.15；模板只读。
 
 web/wild-magus.mjs独立状态，原strict>.3秒cd/4帧释放，先右手再左手、8帧施法动画，source release只重验1.1倍椭圆，不凭感觉加健康/vis门。target对象相同的连续成功释放递增same，非命中计数：floor(base+min(24,.5*same))，前两发仍8–16、第三发9–17，最大32–40；换对象清零。原手/朝向弹口、shooter offset tween后再加y30判朝向，idle按原目标复算、长闲3秒朝右下。普通攻击本身不抽chance1随机。已开始phase不被tower.blocked中途冻结，新episode被禁。

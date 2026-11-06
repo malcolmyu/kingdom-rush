@@ -16,7 +16,7 @@ local function clean(x,depth)
   return r
 end
 local out={}
-for _,k in ipairs({'tower_wild_magus','bolt_wild_magus','mod_teleport_wild_magus'}) do out[k]=clean(E.entities[k].main_script,0) end
+for _,k in ipairs({'tower_wild_magus','bolt_wild_magus','mod_teleport_wild_magus','ray_wild_magus','mod_eldritch','eldritch_enemy_decal'}) do out[k]=clean(E.entities[k].main_script,0) end
 local source='tools/'
 local encode=dofile(source..'encode_json.lua')
 io.write(encode(out,arg[2]=='precise'))

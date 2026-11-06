@@ -1,3 +1,4 @@
+import{drawWildEldritch}from'./wild-eldritch.mjs';
 import{drawWildMagus,drawWildEffects}from'./wild-magus.mjs';
 import{drawStage6Jail}from'./stage6-ending.mjs';
 import{drawGnollAuras}from'./gnoll-aura.mjs';
@@ -87,7 +88,7 @@ export class Renderer{
   }
   // Merge source projectile sprites and the existing foreground into actor
   // ordering before replay. World arrays, flight positions and clocks stay read-only.
-  drawStage6Jail(this,w);drawGnollAuras(this,w);drawCatapultImpacts(this,w);drawStage4Burn(this,w);drawGryphons(this,w);for(const b of w.shots)drawProjectileSprites(this,b.type==='blighter-energy'?blighterEnergySprites(w.template(b.bullet),b,w.time,this.frame.bind(this),this.renderId(b)):this.projectileMotion.poses(w.template(b.bullet),b,this.frame.bind(this),{entityId:this.renderId(b)}));
+  drawWildEldritch(this,w);drawStage6Jail(this,w);drawGnollAuras(this,w);drawCatapultImpacts(this,w);drawStage4Burn(this,w);drawGryphons(this,w);for(const b of w.shots)drawProjectileSprites(this,b.type==='blighter-energy'?blighterEnergySprites(w.template(b.bullet),b,w.time,this.frame.bind(this),this.renderId(b)):this.projectileMotion.poses(w.template(b.bullet),b,this.frame.bind(this),{entityId:this.renderId(b)}));
   for(const b of w.spells?.projectiles||[]){const progress=Math.min(1,Math.max(0,w.time-b.start)*b.speed/b.length),pose={x:b.from.x+(b.to.x-b.from.x)*progress,y:b.from.y+(b.to.y-b.from.y)*progress,sx:b.from.x,sy:b.from.y,tx:b.to.x,ty:b.to.y,elapsed:w.time-b.start};drawProjectileSprites(this,projectileSprites(w.template('arrow_hero_elves_archer_ultimate'),pose,this.frame.bind(this),{entityId:this.renderId(b),ultimate:true}));}
   for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e,renderId:this.renderId(e)});
   for(const [i,f]of w.effects.entries())if(f.type==='impact'||f.type==='torch-impact')this.entity(f.type==='impact'?'fx_rock_explosion':'fx_torch_gnoll_burner_explosion',f,{time:f.total-f.life,overrides:f.type==='impact'?rockImpactOverrides(w.template('rock_1').bullet):{},renderId:w.data.level.entities_list.length+w.serial+i+1});
