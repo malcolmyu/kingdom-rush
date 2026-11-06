@@ -50,7 +50,7 @@ keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
 keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('portraits_hero_0001')
 keys.update(['portraits_sc_0013','portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','portraits_sc_0014','portraits_sc_0019','portraits_sc_0051','icon_0005'])
-keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,5,7,9,13])
+keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,5,7,9,12,13])
 keys.update(['power_rank_0001','power_rank_0002','special_icons_bg','gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
  if key+'_disabled' in c['frames']:keys.add(key+'_disabled')
@@ -89,11 +89,11 @@ for key in sorted(keys):
  if not f:continue
  if f['a'] not in sheets:sheets[f['a']]=Image.open(ROOT/'web/assets/images'/f['a']).convert('RGBA')
  x,y,w,h=f['q'];im=Image.new('RGBA',tuple(f['size']));im.paste(sheets[f['a']].crop((x,y,x+w,y+h)),tuple(f['trim'][:2]));
- if key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:
+ if key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0012','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:
   with zipfile.ZipFile(opt.apk)as z:original=Image.open(io.BytesIO(z.read('assets/kr3-phone/images/iphonehd/'+f['a'].replace('.webp','.png')))).convert('RGBA')
   im.paste(original.crop((x,y,x+w,y+h)),tuple(f['trim'][:2]))
- im.save(OUT/(key+'.webp'),lossless=True,exact=key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg'])
- if key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:assert Image.open(OUT/(key+'.webp')).convert('RGBA').tobytes()==im.tobytes()
+ im.save(OUT/(key+'.webp'),lossless=True,exact=key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0012','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg'])
+ if key in exact_keys or key in ['portraits_towers_0009','portraits_towers_0012','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:assert Image.open(OUT/(key+'.webp')).convert('RGBA').tobytes()==im.tobytes()
  images[key]={'size':f['size'],'src':'assets/ui/'+key+'.webp'}
 (OUT/'layouts.json').write_text(json.dumps({'reference':{'width':693,'height':320},'layouts':layouts,'images':images},ensure_ascii=False,sort_keys=True,separators=(',',':')))
 print(f'Exported {len(images)} original sprites and {len(layouts)} layout tables')

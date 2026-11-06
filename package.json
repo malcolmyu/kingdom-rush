@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.145",
+  "version": "0.2.146",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -158,7 +158,8 @@
     "test:pumpkin": "node tests/pumpkin-browser.mjs",
     "test:stage7-resources": "node tests/stage7-resources-browser.mjs",
     "test:satyr": "node tests/satyr-browser.mjs",
-    "test:hoplite": "node tests/hoplite-browser.mjs"
+    "test:hoplite": "node tests/hoplite-browser.mjs",
+    "test:druid": "node tests/druid-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

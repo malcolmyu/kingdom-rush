@@ -74,7 +74,7 @@ for k in ['hero_elves_archer']+[f'tower_{f}_{t}'for f in ['archer','barrack','ma
 for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','harasser-data.mjs','harasser-jump-data.mjs']:
  p=R/'web'/name;runtime[name]=hashlib.sha256(p.read_bytes()).hexdigest()
  for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):visit(literal)
-for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs","stages/faerie.mjs","stages/webspitter.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
+for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs","stages/faerie.mjs","stages/webspitter.mjs","stages/druid.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
 wanted=set()
 def render_keys(obj):
  if isinstance(obj,dict):

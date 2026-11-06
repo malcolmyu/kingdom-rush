@@ -1,5 +1,21 @@
 # 第7–10关还原工作区
 
+## 0.2.146：德鲁伊塔升级、三石储存与普通齐射（隔离验证）
+
+`web/stages/druid.mjs`只由第7关动态runtime加载，四基础TYPES不变。原7三mode锁表复核后，artillery4映射tower_druid；campaign/heroic允许Wild/Arcane/Blade/Druid，iron仍禁止新建mage/barrack，不顺手解锁旧4–6的Druid或旧4/5的Wild。真实125→220→320→375，总spent1040，开波后退款624；action_arg拒entwood。原nature/sylvan尚未完成，菜单和World拒买，不假生成熊或提供无功能集结。
+
+原game_scripts1107–1230及1121–1142/1171–1174闭包完整只读-bl：strict1.4秒后查当前椭圆目标，预测点不能落FAERIE；无敌时连续储存最多3石。load第16帧queue创建石头、等28帧完整施法；无储存时先load再直接射当前目标，不重等冷却。shoot22帧，第9帧重找前方目标、没有新目标沿原引用回退；预测点在1.05range才发出并清储存。第一颗落目标子路预测点，第二颗lane1同node，第三颗lane1向前偏5node，原is_node_valid失败回退。range190；已开load/shoot不因blocked中途冻结，outer loop才检查。预测以当前motionVelocity长度、原average_node_dist6/ceil和World实际route节点适配，不冒native预测/协程同输入认证。
+
+原rock_druid13836–13869与shared bomb2157–2299/2196闭包：load13帧→travel1帧→原0/2/0浮动，持有z3000/sort_y_offset-72；目标赋值后launch FX、z3400、去sort offset、按35/30秒/g-900抛物线，右射负旋转、左射正旋转，8距离隐藏。原bomb在elapsed+dt>=flight_time处理落点，不假强制snap。半径50/.7椭圆，按原utils141–157极角半径比例衰减，floor(50-20*factor)再ceil乘伤害系数，不抽伤害随机；下一tick提交type8半物甲真实伤害，health ignore/immune先门。源完整native queueIDs/目标排序/粒子/pop/blood/声音与高阶全局天赋仍适配或欠，非全塔1:1。卖塔只删未发石，已经释放的继续飞行。已TRAINABLE两石系天赋按原TDUP81/83目标名单给实例bullet生效，不写回模板。
+
+原安全声明stub确认tower_druid.info.fn为scripts.tower_common.get_info，不能因模板有barrack字段把底栏误画熊生命。原portrait12从APK PNG exact裁图，UI627图；两技能未实现不假解锁。独立Druid组178帧479156B，逐RGBA/size/trim无损，只第7读取metadata、三级塔菜单/交易前完整decode，复用owner/scene/slot/version守卫。source tools/sources/druid.json固定10原源码SHA、原atlas/PNG及肖像PNG SHA，controllers不执行；完整extract_campaign已有调用。旧compact1314帧2122316B、stage4/5/6图及stage7原4679帧6369762B/map847936B均保持。
+
+658Node全部通过（8新）。actualbuild druid-browser-visible：真title/save/map后隔离7，真实三只原ettin死亡各70收益付款，最后20gold/spent1040；原图请求abort不升级扣费→retry、hold后Escape不回填菜单均过。真Space开波，绑定原World.step避免宿主双钟，受控原road4/lane1/node57自动三石储存/齐射，对原900HP ettin真实raw44/37/35/39/48(type8)，随后源回血仍保持，没改HP/gold/seed/cd。原Canvas q/alpha/旋转矩阵/8个Druid包draw调用、循环安全完整World快照不变/无missing-unready；真pause/wheel/844×390CDP touch/地图清理全过，桌面/手机已人工看。隔离fixture不是天然第7或原版pixelcert。首次纯测缺旧关场景模板、选错原路、浮点ceil期望与循环快照均修fixture；首次browser只漏计合法enemy_ettin发现存档，改为仅允许此一条记录、其他进度严格相等后通过。网络失败toast等真实3300ms自动消失后重拍，没有清除产品错误冒无错截图。
+
+原完整九模式/手机存档、蜘蛛/faerie专项、UI/public UI正常exit0。连续新档4/5/6自然仍4campaign19命/heroic142/iron95，5campaign20/heroic201/iron147/XP37600，6campaign20命0漏/764kill772spawn且真bossdeath-complete父complete→heroic120→iron169/末XP47121真实奖励，旧合法策略未改。最终已发布冷入口100ms/1.5MBps/cacheoff：旧14858565B/240req，总15.968s；4真实旗书14815943B/230req，书7.180s总16.997s；5真实旗书14999246B/241req，书7.804s总17.624s；6真实旗书14939918B/240req，书8.106s总23.648s，全exit0，不保所有线路。第五仅余754B，后续大代码/声明必须继续子目录按关lazy。
+
+第7隔离冷入口16951383B/236req，书7.466s总17.645s，15MB assert明确exit1，无missing/unready/base/progress/draw变动；不抬预算、降质、清alpha0RGB、漏必需图，也不冒正式旗7/书7路径或整局15MB。Druid两技能、Ready/敌通知百科/完整音频、第7自然三模式/自身预算/原旗路书奖励cap7仍欠。正式cap6/前六18模式、第7closed，整体前10目标in_progress。主要日志artifacts/druid-{source-final,tests-final,build-first,browser-visible,old-nine,web-regression,faerie-regression,ui,natural4,natural5,natural6,performance,stage4-performance,stage5-performance,stage6-performance,stage7-budget,pages-ui}.log。
+
 
 ## 0.2.145：蜘蛛近战后吐网与独立眩晕生命周期（隔离验证）
 

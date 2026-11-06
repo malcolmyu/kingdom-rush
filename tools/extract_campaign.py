@@ -163,4 +163,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_stage6_ending.py')],check=True
 
 subprocess.run(['python3',str(ROOT/'tools/extract_wild_magus.py')],check=True,cwd=ROOT)
 
+subprocess.run(['python3',str(ROOT/'tools/extract_druid.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_stage7.py')],check=True,cwd=ROOT)

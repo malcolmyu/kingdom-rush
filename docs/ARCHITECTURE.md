@@ -1,5 +1,9 @@
 # 技术方案：数据驱动的塔防战役
 
+## 0.2.146：第7关德鲁伊塔基础链
+
+stageRuntime新增可选towerKey/allowed/upgraded/sold/tower/drawTower接口，由stage7动态模块提供；旧1–6无新Druid状态或随机。World保留交易/四基础TYPES，原三石储存/发射/queued area damage由web/stages/druid.mjs持有，Renderer纯读并入actorqueue。独立图只在三级菜单/交易前decode，复用既有owner/scene/version/slot取消与重试。InfoBar按原common.get_info职责区分有攻击的Druid与普通barrack；两技能未闭合继续禁用。658Node及实际Canvas/手机、原六关回归与预算通过；第7自身预算/自然与发布链尚欠，正式cap6不变。详STAGES-7-10。
+
 
 ## 0.2.145：第7关蜘蛛蛛网基础流程
 
