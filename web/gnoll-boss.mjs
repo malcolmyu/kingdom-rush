@@ -1,9 +1,10 @@
+import{queueGnollAura}from'./gnoll-aura.mjs';
 import{isEnemyStunned}from'./enemy-status.mjs';
 import{inEllipse}from'./spells.mjs';
 import{tryEwokDodge}from'./ewok-shield.mjs';
 import{tryBladeDodge}from'./blade-dodge.mjs';
 const value=(v,d)=>Array.isArray(v)?v[Math.max(0,Math.min(v.length-1,d-1))]:v;
-export function insertGnollBoss(w,e){if(w.id!==6||e.key!=='eb_gnoll')return;e.gnollBoss={phase:'intro',action:'scream',at:w.time,flailAt:w.time,meleeAt:0,waveIndex:0,committed:false};}
+export function insertGnollBoss(w,e){if(w.id!==6||e.key!=='eb_gnoll')return;e.gnollBoss={phase:'intro',action:'scream',at:w.time,flailAt:w.time,meleeAt:0,waveIndex:0,committed:false};queueGnollAura(w,e);}
 export function gnollBossNode(w,e){const r=w.routes[e.road][e.lane];let i=0;while(i+1<r.lengths.length&&r.lengths[i+1]<=e.d)i++;return i+1;}
 function targets(w){return[...w.soldiers,...(w.stageHeroes||[]),...(w.gryphonGuards||[]),w.fixedAlleria,...(w.alleriaCats||[]),w.hero].filter(Boolean);}
 function allowed(w,u,a){const t=w.template(u.key),v=t.vis||{};return u.hp>0&&!u.expired&&!u.removed&&!((u.visBans??v.bans??0)&a.vis_flags)&&!((u.visFlags??v.flags??0)&a.vis_bans);}

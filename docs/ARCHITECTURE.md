@@ -1,5 +1,7 @@
 # 技术方案：数据驱动的塔防战役
 
+0.2.134 gnoll-aura.mjs接原aura_apply_mod→mod_gnoll_boss生命周期，只实际第6目标创建状态；排队插入/同级刷新/严格过期/原HPbonus与ceil系数撤回，普通近战与infobar读unit系数，普通箭仍读bullet系数。原三静态图/环alpha-scale独立loop进actorqueue，纯绘制不写World。boss包234帧2,571,592B只第6按需，controllers只-bl。囚车/相机/结局及native队列/全modifier仍欠，第6继续关闭。
+
 0.2.133首领基础控制器gnoll-boss.mjs只在id6/eb_gnoll实例创建状态，读取level6按需原模板，开场/节点howl真实连接现megaSpawner。近战与stomp独立phase，绘制gnollBossPose纯读，100秒死亡保留覆盖普通敌1.2秒清理；源码仍只-bl审计。source physical|NO_DODGE在boss caller开启mask护甲分支，其他hurtDefender调用维持旧规则。原boss aura/mod、囚车/相机/最终父controller及native队列/IDs/全音频仍未完成，第6不开放，不能称18模式或同输入1:1。
 
 0.2.132独立MeleeAudio接Campaign.sound(melee)，只管理一个原SWORDS声道、五短clip的sequence与450ms忽略窗；effectAudio共同管理音量，pause/modal/静音/transition清理并取消旧媒体播放，无队列/timer/World引用或RNG。原先每击播放8秒barracks fight导致援军死亡后仍多轨叠音。其他原sound_db组/全单位专属音效仍未完整恢复。

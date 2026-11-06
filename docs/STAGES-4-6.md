@@ -1,5 +1,17 @@
 # 第4–6关还原工作区
 
+0.2.134接通第6首领gnoll_boss_aura/mod_gnoll_boss完整当前可用分支。原enemy insert排队aura，下一模拟tick插入后立即首周期、之后每>=5/30秒最多一次；track_source随原boss当前位置，死亡/移除停止生产。原radius150/.7椭圆、filter_source、F_MOD4/F_FRIEND1024筛选，stun不停止aura。每次生产mod先排队，下一tick按目标对象身份插入；同级resets_same只刷新ts，不重复加HP/系数/重置显示年龄。原固定level1，本批不假实现通用多级/ban modifier引擎。
+
+mod在插入时加floor(当前maxHP*.5)且HP同加，保存bonus；unit damage factor乘1.5。离圈后不再刷新，strict now-ts>.2或目标死亡/移除才撤销，原remove减保存bonus的maxHP/HP并ceil(unitFactor/1.5)，不归一化抹掉原ceil对叠加系数的影响。只有实际中此新修饰器的第6目标创建gnollDamageState，和现gnawer.factor乘除同步，gnawer引用/时长与sleep/dance stun计数保持独立。HP撤回可致死，按原systems.health观察HP<=0，复用既有死亡/奖励而不加英雄XP；World.hurt的旧死亡段抽为finishEnemyDeath，旧调用数值/RNG不变。
+
+普通近战按原ceil(integer_random*unitFactor)后交现伤害链，信息栏读取同一系数。已核SU.ranged-loop2834–2895/普通ranged和arrow→create_bullet_damage，箭弹读取attack/bullet.damage_factor，不偷读source.unit.damage_factor，所以本批不凭感觉给普通箭/energy乘1.5；纯测确认已buff harasser箭仍原20–30。完整native队列/ID/同tick生命周期顺序和其他未接modifier仍是适配，不称整套modifier或全关1:1。
+
+渲染新gnollAuraSprites/drawGnollAuras纯读World：base/ring两个原z1400图，原aura_apply_mod.insert只给sprite1加source.unit.mod_offset(0,40)，ring仍原pos；ring alpha102→173→20和scale.65→1.57各自按原1秒loop线性采样，目标creepFx在脚下且不加mod_offset。三图同actorqueue，source视图offset不影响sort_y。extract_gnoll_boss扩三声明，body231+三静态=234帧/2,571,592B，原go_stage06/go_decals声明和PNG逐RGBA/size/trim验证，旧towercompact1314帧2,122,316B不变；只有level6加载该组。只-bl审计原game_scripts11333–11355、all/scripts3705–3862/4263–4300/4928–4966、systems542–627/939–1104及模板注册FNEW，controllers未执行。
+
+566Node全过（8新aura）。actualbuild aura-browser-repeat从真实Space开波后受控原路boss+原reaver，经World.step自动aura→queued mod，真实50→75HP/maxHP、原5点近战实际8伤、持续刷新不叠/离圈撤销→maxHP50 factor1；Canvas三原图q/alpha/scale/矩阵/z与draw完整快照不变、真实pause/zoom/844x390 CDP touch/退图清理通过。active/combat/mobile截图人工看过，受控第6fixture非天然通关/同输入pixelcert。首Canvas fixture硬套.5而现原worldRules.textureScale=.84210526315789，改正确源值后过；一次完整World双tick合法AI消费RNG使不应成立的seed不变断言失败，移除该错误整World假设，独立aura纯测仍验证无RNG。首boss回归将整个扩展新图包都计为boss body致3!=1，改仅原body数字帧筛选后完整回归通过，没改产品。
+
+囚车/相机/父level06结局仍欠，第6保守胜利门不变，入口继续关闭。正式仍前五关15模式；本批不以完成光环称第6或18模式完成。
+
 0.2.133实际接通第6首领eb_gnoll基础战斗：独立原231帧/2,564,584B无损图包仅level6加载，原HP四档/armor.6/speed30。开场37帧scream第8帧真实赋megaSpawner.manualWave，后续原节点85/135/180轮换四组；普通近战按原chance1、>=1.5秒冷却/4帧dodge/22帧命中/70–90整数物理伤害。strict7秒（最高难度5秒）后的75帧踩踏第55帧对合法soldier组件目标按hero100–120/普通150–180（最高难度1000）伤害，保留physical|NO_DODGE，不误当穿甲。hurtDefender新增仅该caller启用的physical-mask选项，旧目标/旧模式调用不改。
 
 死亡中断spawner并无奖励清场，原34帧death/death-complete与100秒不透明尸体保留；不以World.hurt给清场敌人发金币/XP或carrier落兵。原gnoll_boss_aura/mod_gnoll_boss增益尚未接；源屏幕震动/音频播放、完整native队列/IDs/时序/死亡实体枚举仍欠或适配。囚车/相机/父level06结束还未实现，因此campaign6保守胜利门保持，不开第6入口。浏览器为原路120,459附近受控spawn，不冒天然完整第6通关；当前正式仍前五关15模式。
@@ -256,3 +268,5 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 最终0.2.133构建1645files/94,184,262B，所有web运行模块/新资源逐字节一致。cold100ms/1.5MBps/cacheoff旧14,816,173B/233req，第四真实旗书14,773,546B/223req，第五14,956,853B/234req，均<15MB，不承诺所有线路速度。第五仅43,147B余量。第6仍单独关闭、预算另有失败记录；不能把旧五通过冒第6通过，也不抬15MB/降质/整atlas/清透明RGB。主要logs artifacts/gnoll-tests-all/build/browser-selected/audio-repeat/natural4/natural5/old-nine/ui/performance/stage4-performance/stage5-performance.log。
 
 第6新独立boss包真实加载后，最终隔离冷入口17,754,938B/225req、book8.406秒/总18.419秒，明确超过15MB。实际调用无missing/unready、原catalog/进度/draw快照不变；assert不能称通过。此次预算浏览器在输出报告后关闭挂住，Node2696比daemon88207后精确TERM收143，未冒exit0/exit1；其他专项与公开UI均正常结束。下一批先补boss aura与父囚车链，再按真实依赖/阶段decode解决第6预算，不能抬门槛或删当前必需图。
+
+0.2.134最终构建1646files/94,384,432B（含manifest），运行模块和新图组逐字节等源码，原固定源重提通过。首领基础实际浏览器回归aura-boss-repeat、连续原1–4→5自然链aura-natural4/natural5、天然原九模式/存档手机aura-old-nine、UI/aura-pages-ui均正常exit0，第四campaign19命三星/heroic142/iron95，第五campaign20命/heroic201/iron147/末XP37600。cold100ms/1.5MBps/cacheoff：旧14,821,929B/234req、book6.334s总15.958s；第四真实旗书14,779,302B/224req、book7.227s总16.930s；第五14,962,609B/235req、book7.833s总17.523s，均<15MB不保所有线路。第五余37,391B，后续第6大数据/图继续按实际关卡依赖加载，不抬门槛/降质/清透明RGB。主要logs artifacts/aura-tests/build/source-final/browser-repeat/boss-repeat/natural4/natural5/old-nine/ui/performance/stage4-performance/stage5-performance/pages-ui.log。
