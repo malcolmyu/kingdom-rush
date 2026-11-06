@@ -3,7 +3,7 @@ import DATA from'./harasser-jump-data.mjs';
 import{launchHarasserArrow}from'./harasser.mjs';
 import{inEllipse}from'./spells.mjs';
 const C=DATA.rules,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-export const harasserHidden=e=>!!e.harasser&&(e.harasser.jumpHidden||(e.visBans>>>0)===C.all);
+export const harasserHidden=e=>!!e.catapult?.travel||!!e.harasser&&(e.harasser.jumpHidden||(e.visBans>>>0)===C.all);
 export function harasserPathBounds(w,road){
  const p=w.data.paths[road]?.[0];if(!p)return null;
  const width=clamp(Math.ceil(768*(w.harasserAspect||4/3)),1024,768*16/9),left=(1024-width)/2,right=(1024+width)/2,pan=w.data.level.pan_extension||{},top=768+(pan.top||0),bottom=pan.bottom||0;

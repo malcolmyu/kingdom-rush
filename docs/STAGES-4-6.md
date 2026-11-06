@@ -127,3 +127,19 @@ Repository只对发布4关开放访问；旧第三关胜利存档迁移仅开放
 最终浏览器连续新档回放与纯测分开记录：前三campaign后第四campaign18生命三星，真实额外训练ultimate1/porcupine1/nimble1（double_strike因剩余点数不足未购），用第四关已赚星补兵营两项天赋；heroic142/142、iron95/95，末XP18610。此前只训multishot3的浏览器策略136杀后失败，保留日志，不削怪/改数值。实际生产路径冷加载14,641,079B/205请求、书页7.196秒/总16.615秒（100ms/1.5MBps/cacheoff）；不同线路不保证同速。旧存档解锁4时消费migration并保存，防每次重载重播道路/旗帜奖励。
 
 最终467Node全过；actual build1582files88,410,115B。stage4-release-browser-trained连续新档三模式、stage4-release-presentation-final旧档迁移一次/原书页与手机、stage4-production-performance-final、stage4-release-old-nine-publish旧九模式、stage4-release-ui-final与old-performance-final均正常exit0。原17照片变换与tower-assets真实四族交易/失败重试/手机也正常exit0。旧冷入口14,683,697B/215请求。早期启动在build尚未收齐时map超时、第四旗声明遗漏、较弱英雄挑战策略失败、旧截图采到book opening前和needsTransition误当道路标志的fixture断言均保留日志并纠正；没有将TERM143的早期旧九模式/冷路径当成功，最终独立全链收exit0。
+
+## 0.2.120 第5关投石车连续分支（入口仍关闭）
+
+`stage5-catapult.mjs`接原level05十项campaign、三项heroic时间表，iron无投石车；第1波前不生成，提前跨波时按源等待分支跳过，下一Worldtick插入。路径5/6、原spi2、stop_ni40/41，以严格近节点阈值每tick最多推进一节点，45速度进场；隐藏血条/vis F_ALL并解除阻挡，抵达后恢复，停留时间是到位后leave-enter，而非开波后的绝对leave。严格5.6667秒后原随机目标+chance，33帧释放、81帧shoot等待；已有射击完成后才检查离场，反向沿原路退回，不漏命/不赠金币。死亡保留原100奖励一次、普通末帧3秒展示cache；完整特殊死亡/原global IDs与native协程队列仍适配。
+
+专用`enemy_bomb`由APK模板明确指定，不复用我方bomb或torch。from30,90随朝向，to取释放时目标hit_offset，之后固定不追；flight=2+distance*.0013333，g-900；初角一次World.random，**两方向均正向spin10.4719**（不是我方炮石方向符号）。原while elapsed+dt<flight职责适配到模拟tick，命中在最后实际位置前于to；AOE筛选围绕to的50/.7椭圆，伤害衰减却用实际弹位置，floor150..200物理、不抽伤害随机、不附burn/假stun。飞行目标原特殊分支保留。FX在to、原z3000/sort_y-5（此controller不清成0）、19帧，crater原1秒保持/2.5秒淡完，sprite原z3400/anchor/hide8/实际角度进同queue；draw不改World。通用原damage队列、实体枚举、blood/pop/音效/全部modifier仍未全。
+
+`extract_stage5_catapult.py`仅-bl审计原game_scripts9026–9100/9053–9062、scripts.enemy_bomb2305–2438、level05与共享SU/模板，level时间表通过jit.util.funck只读proto（连controller顶层chunk都不调用）。原4模板与137帧独立无损组770,718B、原PNG SHA/逐RGBA/size/trim记录；只stage5按需decode，旧1314塔compact仍2,122,316B，不因专用声明的catapult_proy拉入旧冷包。新原肖像0051直接APK PNG裁切exact=True，UI616图、原中文名导出；旧图编码与字体角色不变。
+
+476Node通过。actualbuild专项使用隔离stage5：真实70购买与支援施法、真实World时钟生成/走入/原射击/石弹扣士兵HP/退场，Canvas原q/alpha/旋转矩阵/只读模拟、原肖像真实选中、pause/wheel/手机CDP触摸/原图清理与旧World隔离通过。最初点击建塔后镜头外的波旗失败，改用现有真实Space键开波，不force按钮或跳门控；为实际看见上侧车，用真实鼠标拖镜头上移，未改原坐标/z。最终hold/shot/mobile图已人工看见右上投石车与弹。受控波2/队列/时钟，不是第5自然通关或同输入原版像素证据。
+
+第5Alleria第二英雄、原猫/控制与预建兵营完整职责、其余允许高级塔/自身预算和自然模式仍欠，第5/6入口继续关闭。第6首领结局未做，普通15波结束不能作为自然完成。前四关12模式、旧存档4解锁与资源就绪事务保持。
+
+最终包1588files89,220,717B，476Node、catapult-browser-publish（实际pan后车/石弹可见、原肖像选择/CDP）、catapult-old-nine-publish原九模式/存档手机、catapult-stage4-natural-publish完整第4连续三模式、UI与两条性能全部正常exit0。旧冷入口14,696,446B/217req、book7.232s/总16.586s；第4生产入口14,653,828B/207req、book7.210s/总16.636s（同100ms/1.5MBps/cacheoff），非普遍速度保证。第五关自身预算未验，入口仍关。
+
+源条件还包括字面min_x实际比较目标y>150、x<800，不能改成猜测的欧式射程。退场标记后拒绝滞后伤害支付100奖励；holding没有伪造全局无敌。早期纯测未隔离原预建三兵而污染目标/射击断言、17位IEEE边界样本过早等均改fixture未改阈值；首次源proof取到早先bullet引用而非注册定义，已纠正为完整catapult模板段。首次原FX helper默认为.6，已实际改用源19帧并补保持/淡出测试；最终重build验证。原普通炮石包曾被新声明catapult_proy多拉1帧，已按独立图组边界实修，最终1314原包不变。图中330金币为原400-真实70购买，未直接加钱/写HP来制造伤害或胜利。

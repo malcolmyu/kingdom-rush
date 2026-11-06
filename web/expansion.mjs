@@ -10,8 +10,8 @@ export class ExpansionRepository {
  async level(id,mode='campaign'){
   if(!this.source?.levels.some(s=>s.id===id)||!['campaign','heroic','iron'].includes(mode))throw new Error('不在后续三关还原范围内');
   if(!this.groups.has(id))this.groups.set(id,this.json(`expansion/stage${String(id).padStart(2,'0')}.json`));
-  const group=await this.groups.get(id),b=this.base.catalog,a=this.arcane;
-  const catalog={...b,campaignTowerSheets:this.towerAssets.initial,towerAssetGroups:{...this.towerAssets.groups,tower_arcane:a.sheets},campaignScenerySheets:group.sheets,campaignEnemySheets:group.sheets,templates:{...b.templates,...group.templates,...a.templates,...stage4BurnTemplates,...gryphonTemplates},frames:{...b.frames,...this.towerAssets.frames,...group.frames,...a.frames},animations:b.animations};
+  const group=await this.groups.get(id),b=this.base.catalog,a=this.arcane;const extra=id===5?await(this.catapultAssets??=this.json('stage5-catapult/catalog.json')):{templates:{},frames:{},sheets:[]};
+  const catalog={...b,campaignTowerSheets:this.towerAssets.initial,towerAssetGroups:{...this.towerAssets.groups,tower_arcane:a.sheets},campaignScenerySheets:group.sheets,campaignEnemySheets:[...group.sheets,...extra.sheets],templates:{...b.templates,...group.templates,...a.templates,...stage4BurnTemplates,...gryphonTemplates,...extra.templates},frames:{...b.frames,...this.towerAssets.frames,...group.frames,...a.frames,...extra.frames},animations:b.animations};
   this.catalog=catalog;
   const key=id+'-'+mode;if(!this.levels.has(key)){const d=await this.json(`expansion/${String(id).padStart(2,'0')}-${mode}.json`);this.levels.set(key,{...d,templates:catalog.templates,animations:catalog.animations});}return this.levels.get(key);
  }

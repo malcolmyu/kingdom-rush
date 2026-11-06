@@ -1294,3 +1294,5 @@ logs artifacts/stage4-groups-tests-release.log/build-release.log/three-scenes.lo
 
 
 0.2.119第4关正式入口与自然三模式验收：见STAGES-4-6.md。新敌照片/肖像与book4原图裁切无损；17照片四角矩阵检查保留。地图第四旗和六道路点来自固定map_points源，不手挪位置。通关证明玩法可用，不等于原版同输入像素验收；5/6继续关闭。
+
+0.2.120原第五关投石车：源时间表/节点进退/原shoot与enemy_bomb伤害分支、137帧无损分组/原肖像/Canvas矩阵与手机已验证，见STAGES-4-6.md。Source enemy_bomb的正spin、last-pos伤害中心与to特效中心不混用我方bomb。实际鼠标pan后截图可见原位置投石车；未手挪坐标或拔高z。局部隔离受控流程不是第5自然通关、全关图层或pixelcert，入口继续关闭。

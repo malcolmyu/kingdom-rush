@@ -29,6 +29,9 @@ def runtime_tower_keys(catalog):
    for v in o:walk(v)
  walk(catalog['templates'])
  for p in (ROOT/'web').glob('*.mjs'):
+  # This separately verified stage5 sheet owns its projectile; it is not an
+  # old-campaign dependency merely because its declaration module is imported.
+  if p.name=='stage5-catapult-data.mjs':continue
   for s in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):
    if s in frames or s in animations:add(s)
    if len(s)>3 and (s.endswith('_') or s[-1:].isdigit()):keep.update(k for k in frames if k.startswith(s))
