@@ -84,3 +84,17 @@ World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原runn
 原两modifier sprite分别bubbles/z，跟unit.mod_offset、z3000/alpha255，首层继承目标flip，第二层按APK明确false（pATCHING FLIP日志也真实在原APK，不因mixed文本同名而猜为mod扩充）。原14帧slumber hitFX3300，复用原箭预测/抛物线/命中距离/actor队列；不改旧普通箭与旧九模式。原完整native队列/渲染时间边界/通用mod生产链/尾部粒子、血花/水面miss/音频等仍欠，不称全Arcane或全关像素验收。Arcane仍268帧377,542B，独立新关组无新增PNG依赖。
 
 本轮核实指定视频真正新关part/CID并看过同关战斗125s：P11/CID1232866906第4、P14/CID1232877498第5、P17/CID1232900628第6。索引及帧SHA记tools/sources/stages-video.json，不猜P9；不同玩家输入/英雄进度，非同步像素验收。第5参考出现第二英雄，原level05.update51–98确证hero_alleria at40,190，同时原load/update有campaign10/heroic3条catapult_waves，动态enemy_catapult/duration/stop_ni，这些尚未接入。不能仅用初始实体/静态波次就称第5通关。新4–6入口继续关闭，接下来优先stage4资源分组/真实模式自然流程，再补其余关卡明确脚本缺口。
+
+## 0.2.117 分关资源与第4关验收实测
+
+`tools/group_expansion.py`从已审计扩展图与现有共享atlas生成stage04/05/06独立组，保留原size/trim/全部选中前缀与printf动态场景帧，逐裁图解码RGBA验证；每组记录输入catalog/atlas SHA。第4组1711帧3,802,488B、第5组1682帧3,188,742B、第6组2122帧4,140,874B，包含替代旧整张decals/stages下载的必要共享帧。旧7.3MB原扩展图保留兼容/重建，但运行时不再请求。共享同名帧严格RGBA比较未找到可直接复用项（透明像素RGB也算），没有为省流改透明RGB或降质。
+
+ExpansionRepository仅取index+本关group+本模式数据，原base catalog/save仍只三关；Renderer仅对这些新关接受独立scenery preload列表，旧前三关不改变图面/路径。Phone BattlePortraits改为实际使用该profile时才加载，desktop不再启动时预载旧大头像/圆能力组；显式phone专项通过，H选择等待真实教程/通知关闭。
+
+**第4关尚未通过发布门槛。** 完整desktop HUD的100ms/1.5MBps/cacheoff隔离冷入口测得16,006,890B/198请求，15MB断言明确失败；不能用先前未接desktop底栏的15,628,592B样本冒当前结果。测试从真实标题/存档/地图/书页后隔离进入4，不写存档解锁，生产入口继续关闭；最后仅补source SHA元数据，不改变帧/加载逻辑。旧前三关冷路径14,655,989B/213请求仍过。
+
+新存档英雄连续打完前三战役自然XP5277后，以此同一入关成长状态分别试跑第4三模式，原预算/伤害/随机/波次不改：战役14波won但剩2命/漏13（514实际生成，含脚本与载兵），英雄挑战杀138/142后漏1失败，铁人95/95无漏怪won。它们是合法策略样本，不是三模式完整验收，也没有把XP直接写高或按原视频覆盖经济。一次改为跨第4三模式连续带XP的独立试跑反而铁人失败，日志保留，说明当前策略并非通用保证。还需诊断策略与未全接源机制，不能据战役won提前开放。
+
+457Node通过，三关资源预览、焚林与睡眠箭真实Canvas/交易回归、原天然九模式/存档手机、UI与旧15MB通过。新关专项初缺3个printf场景帧已实修；后来fixture漏loadDesktopBattleTop import已修。手机截图第一次resize未等RAF有重复残像，等真实两RAF后截图已人工查看正常，没有改产品图层。公开.116 UI首轮断言完成后Node关闭挂住精确TERM143，独立repeat exit0，不把TERM轮称通过。完整global render/modifier、原音效/特殊死亡、新关通知/地图旗路奖励/save扩展等仍在后续门内。
+
+最终补充输入SHA后build1543files85,167,327B，stage4-groups-three-scenes-release/UI-release正常exit0；最终budget-publish仍以16,006,890B明确exit1，未放宽15MB门。

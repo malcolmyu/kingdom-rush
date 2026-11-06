@@ -1265,3 +1265,15 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 爆裂箭、载兵、harasser后跳专项回归，原天然完整九模式/存档手机→UI→性能均正常exit0，三个campaign20生命，第三campaign入关自然XP4705，末XP继续累积，原旧数值/策略不改。最终build1536files73,334,469B，cold100ms/1.5MBps/cacheoff14,773,613B/244requests，book7.169s/总16.423s<15MB；旧塔compact1314frames2,122,316B，无整atlas/OTF/抬预算/降质，不保普遍线路速度。公开一次manifest.115且slumber-pages-ui正常exit0，新推送不轮询。logs artifacts/slumber-tests.log/build.log/browser.log/burst-regression.log/carrier-regression.log/harasser-regression.log/campaign.log/ui.log/performance.log/pages-ui.log。无浏览器失败或挂住待收；初extractor文本替换误把slumber字段塞进burst审计断言，已在提取写输出前失败并修正；参考截图脚本一次Python else0语法误拼已纠正，不是产品失败。
 
 另通过官方pagelist核P11/14/17与三CID并下载125s战斗帧，已实际看过原4/5/6地图与在战斗HUD；P9是第3关heroic而非第4。tools/sources/stages-video.json记录原标题/URL/CID/帧SHA。视频页web抓取412，但公开官方API元数据与playurl成功，ffmpeg只取原参考帧未导资源到游戏。第5第二英雄与原level05控制器确证Alleria(40,190)/动态catapult事件仍缺，补充开放门，不以静态波次完结冒自然验收。原参考与本样本输入/英雄等级/经济不同，未称同步像素验收；原视频不含睡眠箭本测试的同输入帧。新4–6仍未开放。
+
+## 0.2.117 分关下载与未通过的第4关验收门
+
+扩展从单张7.3MB改按stage04/05/06依赖取组，各含必要共享场景：1711/1682/2122帧，3,802,488/3,188,742/4,140,874B，原RGBA/size/trim不变，JSON记录输入SHA。完整原图保留重建兼容，不进入新关网络请求；没有改World数值/RNG/XP/旧关规则/存档上限。最初动态printf场景名漏3图，实际浏览器missing捕获后补齐，不靠占位/吞错误。默认desktop不再预取未使用的phone肖像/能力圆图；显式phone流程真实关闭教程/通知后H选择/死亡/冷却与手机bounds通过。
+
+457Node通过。最终运行时与三关预览/源焚林/睡眠箭Canvas回归、原天然9模式/存档手机、UI、旧冷路径均通过；旧100ms/1.5MBps/cacheoff14,655,989B/213请求，book7.183秒/总16.453秒。第4完整desktop HUD隔离冷路径16,006,890B/198请求、book6.712秒/总16.277秒，**15MB断言exit1，未通过**。先前漏desktop底栏的15,628,592B不是最终结果；补齐top import后的结果为准。新关图片不降质、预算不提高，生产仍前三关九模式。最后仅source provenance增加SHA并重build，图面与加载依赖未变。
+
+合法自然策略试跑：前三campaign自然XP738→2519→5277、均20命；以同一真实入关XP分别第4campaign won剩2命/漏13、heroic杀138后漏1 lost、iron95/95无漏怪won。未修改gold/lives/伤害/cooldown/生成；不称新三模式通过/原同输入。另一次第4模式间累积XP试跑铁人失败，日志保留，不拿独立样本冒顺序保证。新关继续关闭，后续应解决剩余加载与策略/机制/源层级门，不伪造解锁。
+
+logs artifacts/stage4-groups-tests-release.log/build-release.log/three-scenes.log/burn-regression.log/slumber-regression.log/campaign.log/ui.log/old-performance.log/budget-desktop.log/budget-release.log、stage4-natural-sample-final.log/results.json。早期phone专项未等通知关闭H未生效，fixture改真实按钮后过；未改产品门控。第一次手机版截图重排未等两RAF造成重复残像，等待后正常并已人工看。公开一次manifest.116，首UI断言完成后Node关闭挂住，比daemon后精确TERM143；repeat完整exit0。通关、原素材及局部Canvas调用均不是同输入逐像素验收。
+
+最终补充输入SHA后build1543files85,167,327B，stage4-groups-three-scenes-release/UI-release正常exit0；最终budget-publish仍以16,006,890B明确exit1，未放宽15MB门。

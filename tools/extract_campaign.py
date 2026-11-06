@@ -137,3 +137,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_desktop_battle_bottom.py')],ch
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_guidance.py')],check=True,cwd=ROOT)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_arcane.py')],check=True,cwd=ROOT)
+
+subprocess.run(['python3',str(ROOT/'tools/group_expansion.py')],check=True)
