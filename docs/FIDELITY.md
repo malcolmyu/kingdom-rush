@@ -1277,3 +1277,17 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 logs artifacts/stage4-groups-tests-release.log/build-release.log/three-scenes.log/burn-regression.log/slumber-regression.log/campaign.log/ui.log/old-performance.log/budget-desktop.log/budget-release.log、stage4-natural-sample-final.log/results.json。早期phone专项未等通知关闭H未生效，fixture改真实按钮后过；未改产品门控。第一次手机版截图重排未等两RAF造成重复残像，等待后正常并已人工看。公开一次manifest.116，首UI断言完成后Node关闭挂住，比daemon后精确TERM143；repeat完整exit0。通关、原素材及局部Canvas调用均不是同输入逐像素验收。
 
 最终补充输入SHA后build1543files85,167,327B，stage4-groups-three-scenes-release/UI-release正常exit0；最终budget-publish仍以16,006,890B明确exit1，未放宽15MB门。
+
+## 0.2.118 第4关加载达标、升级前图像就绪
+
+塔原1314帧无损拆860帧1,071,438B初始组+454帧二三级分族组；所有size/trim/RGBA逐裁图一致，旧前三关原compact1314/2,122,316B保持。原Arcane268帧独立图在对应升级菜单前decode；新关JSON沿用gzip/readMetadata无损解码。待资源时菜单hidden/inert且不交易，完成后检查World/场景/版本/slot身份/key/level/选择与modal，Escape或换场景不重开；失败可真实重试，未把下载变成World新时钟/新随机。
+
+首次增强实际sprite就绪检查抓到.117的bambi/plant_magicBlosom metadata有但raw sheet未加载。修复共享图logical动画别名/索引解析，最终三关1925/2057/2446帧、4,090,840/3,600,394/4,490,674B，未丢透明RGB或改图。实际四家三级塔交易画面中鹿/四株花已可见，手机与桌面已人工看；受控资源/交易样本不是原版同步。
+
+463Node通过，最终实际build四塔1→2→3/Arcane购买及wave0全退款，延迟加载取消、故意网络abort后不扣费/不升级/重试成功、readonly Canvas/无未加载sprite、pause/zoom/mobile/清理通过；三关预览、焚林、睡眠箭、原天然完整九模式/存档手机、UI通过。source500+3ettin实际210收入供交易，未直接改gold。初browser因真实捕获未加载鹿/花而exit1，产品修复后过；未放宽断言。首.118测试时只按a.prefix全帧导致分组只移8个静态图，生成器已改读真实动画索引后完整拆分；原普通compact没变。未执行任何原控制器。
+
+最终100ms/1.5MBps/cacheoff第4完整desktop冷入口14,566,000B/199请求、book5.856秒/总15.514秒<15MB；初仅拆塔未修鹿/花时14,738,242B不能冒最终结果。所有原一级塔/建造/四预览必需图先就绪，二三级在真实菜单需要前就绪，不假加载/抬预算/降质，未称其他新关预算或普遍线路保证。
+
+自然第4仍未全面发布验收：原训练函数用前三campaign自然XP5277可合法multishot2，优先树屋两兵样本campaign19命/1漏；赚9星经真实buyUpgrade购买天赋后的heroic策略最高140/142仍lost。末两ettin满700HP，hero死于前段且末路无塔覆盖，记录为源机制/策略诊断，未修改回血/伤害/XP/RNG。source max_upgrade_level2限天赋而非塔，旧World.allowed已允许挑战三级及未锁Arcane，不能把测试计划自限二级当产品规则。入口仍关闭、整体in_progress。
+
+最终build1569files88,126,620B；旧冷入口14,657,823B/214请求、book6.268秒/总15.567秒仍<15MB。logs artifacts/tier-tests-release.log/build-publish.log/stage4-performance-final.log/browser-final.log/three-scenes-final.log/burn-final.log/slumber-final.log/campaign-final.log/ui-final.log/old-performance-final.log/pages-ui.log；公开一次manifest.117且完整UI正常exit0，新推送不轮询。所有必需工具结果已收集，无浏览器挂住或未处理产品失败。

@@ -10,8 +10,7 @@ from PIL import Image
 from fontTools.ttLib import TTFont
 from fontTools import subset
 
-def optimize(out):
- catalog=json.loads((out/'assets/catalog.json').read_text())
+def runtime_tower_keys(catalog):
  frames=catalog['frames'];animations=catalog['animations'];keep=set()
  # Resolve original template names/prefixes and literal renderer effects.
  def add(s):
@@ -33,7 +32,12 @@ def optimize(out):
   for s in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):
    if s in frames or s in animations:add(s)
    if len(s)>3 and (s.endswith('_') or s[-1:].isdigit()):keep.update(k for k in frames if k.startswith(s))
- keys=sorted((k for k in keep if frames[k]['a'].startswith('go_towers-')),key=lambda k:(-frames[k]['q'][3],k))
+ return sorted((k for k in keep if frames[k]['a'].startswith('go_towers-')),key=lambda k:(-frames[k]['q'][3],k))
+
+def optimize(out):
+ catalog=json.loads((out/'assets/catalog.json').read_text())
+ frames=catalog['frames'];animations=catalog['animations'];keep=set()
+ keys=runtime_tower_keys(catalog)
  def pack(keys,name):
   originals={n:Image.open(out/'assets/images'/n).convert('RGBA') for n in {frames[k]['a']for k in keys}}
   # Shelf packing with a transparent gutter; original size/trim/anchor unchanged.

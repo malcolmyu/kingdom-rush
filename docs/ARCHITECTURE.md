@@ -352,3 +352,7 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `arcane-slumber.mjs`将新睡眠modifier记录和计数归World，`enemy-status.mjs`合并外部stunned适配位与本modifier计数，不反写外部布尔值。生命周期在World模拟tick处理：queue→插入、同级刷新/等级替换、到期/死亡/移除释放自身计数；模板/Renderer无写入。同级刷新发生于更新检查前，动画起点保留，ignore_stun只忽略计数，仍可有原modifier显示/减甲。敌人现有controllers统一查询helper；旧关没有新modifier生产路径、不新增字段/RNG，已提交飞行物不被冻结。普通移动/未提交攻击/冷却时钟适配仍非全原生协程。两层source sprite以unit.mod_offset和原flip职责进入RenderQueue，目标被现harasser隐藏时同源隐藏；完整全modifier/auras隐藏系统仍未实现。
 
 `group_expansion.py`是原扩展包之后的无损分组阶段：按关卡三模式实体/敌人及模板依赖选完整sprite前缀，另外保留原printf场景和Stage前景；必要共享combat/scenery从现有canonical atlas裁图。输出输入SHA、逐RGBA/size/trim验证过的独立图组与轻量index。ExpansionRepository按level取对应group，不载完整扩展catalog/monolith；新关`campaignScenerySheets`替代raw decals/stages preload，旧关没有该属性，原加载分支保持。Repository主目录与存档权限不随资源分组扩大。BattlePortraits自身懒加载，只在phone draw/load使用时取图，desktop底栏保持自己的原图加载与真实ready门。
+
+`tower-assets.mjs`只管理新关菜单资产就绪：以原World.allowed/towerDef选择实际下一升级目标，预建塔按实体template加载。请求票号及World/slot/key/level/scene/version/selected/modal检查隔离异步结果，reset/transition取消UI所有权而不改模拟对象。Renderer.sheet在途Promise与已解码image分表，失败删除在途记录；原前三关catalog无towerAssetGroups，保留原同步菜单与原整compact preload。group_towers复用optimizer帧选择器，按原animation.frames/ranges/from/to选render依赖，shared图只存一份、完整1314帧都保留；按族/级图组不改变原帧元数据。
+
+ExpansionRepository对新关组合tower-group frame映射与初始preload，Arcane图仅在对应原升级菜单之前取；readMetadata统一无损压缩声明。group_expansion共享图解析补逻辑动画名→物理prefix/索引的别名链；测试同时拒绝missing metadata与已调用但未加载sheet，避免仅看missing集合的假阴性。

@@ -98,3 +98,19 @@ ExpansionRepository仅取index+本关group+本模式数据，原base catalog/sav
 457Node通过，三关资源预览、焚林与睡眠箭真实Canvas/交易回归、原天然九模式/存档手机、UI与旧15MB通过。新关专项初缺3个printf场景帧已实修；后来fixture漏loadDesktopBattleTop import已修。手机截图第一次resize未等RAF有重复残像，等真实两RAF后截图已人工查看正常，没有改产品图层。公开.116 UI首轮断言完成后Node关闭挂住精确TERM143，独立repeat exit0，不把TERM轮称通过。完整global render/modifier、原音效/特殊死亡、新关通知/地图旗路奖励/save扩展等仍在后续门内。
 
 最终补充输入SHA后build1543files85,167,327B，stage4-groups-three-scenes-release/UI-release正常exit0；最终budget-publish仍以16,006,890B明确exit1，未放宽15MB门。
+
+## 0.2.118 升级图组就绪与第4关冷入口达标
+
+`group_towers.py`复用原运行时塔帧选择器，将原1314帧按实际render动画索引（不能只匹配atlas物理prefix）分组；一级塔/建造/四预览及共享战斗图860帧1,071,438B首次解码，二三级各族454帧另组，原RGBA/size/trim逐帧核验，输入catalog/原两atlas SHA记录在catalog。原前三关仍用原1314帧2,122,316B compact，未更改数值/帧。高级Arcane原268帧图在实际三级弓塔升级菜单需要前加载，不在首次空地入口预载。
+
+新关打开已有塔菜单前，`prepareTowerMenu`请求并等待对应图decode；期间菜单hidden/inert、不扣费，完成后按World/scene/version/slot对象/key/level/selected/modal与sceneMotion检查再开启原菜单动效。Escape/换场景使旧请求无效；失败清选择并显示真实错误，重开可重试。交易仍由原World方法同步检查预算/合法目标/退款，未因图片请求而暂停或改World时钟。预建塔在loadLevel内预取自身实际图组。Renderer.sheet合并在途请求，decode成功前不标记已加载。
+
+逐图检查发现.117组只解析直接物理前缀，漏了logical动画名指向bambi/plant_magicBlosom的共享图，旧missing仅检查目录存在而漏报“有metadata但sheet未加载”。已实际补完整动画别名/索引依赖，三关场景图为1925/2057/2446帧、4,090,840/3,600,394/4,490,674B；增强实际Canvas专项拒绝任何未加载的被调用sprite。鹿与魔法花在最终桌面/手机图已看见。不是吞错或把未就绪帧记为完成。
+
+新关index/group/mode/Arcane/tower-group JSON沿用现有readMetadata+gzip无损解码，web原目录仍raw fallback，所有需压缩文件随实际build生成。最终第4冷100ms/1.5MBps/cacheoff完整desktop HUD、真实title/save/map/book后隔离进入关卡：14,566,000B/199请求，book5.856秒/总15.514秒，首次通过15MB。未去图/降质/改透明RGB/抬预算，实际一级建造与四预览必需资源均已就绪；后续升级图在真实需要前加载，不买成功后补图。不是所有线上线路速度保证，也不代表第5/6预算已通过。
+
+463Node通过；真实四塔1→2→3及Arcane交易/全退款、延迟加载→Escape不重开、故意网络失败→不扣钱/不升级→重试、实际Canvas无未加载sprite/World快照不变、手机/暂停/缩放/清理通过；另原九模式/存档手机、UI、焚林、睡眠箭和三关资源预览回归通过。受控stage4样本初金500+3个原ettin实际奖励210，最后artillery3截图45金币=710-665，非加钱测试。旧World玩法/旧九模式策略未改。
+
+自然战斗仍未完整验收：以前三战役自然XP5277通过原trainHeroSkill训练multishot2、真实500预算优先树屋两兵的独立campaign样本19命/1漏、可三星，但不是完整UI新关存档/模式发布。英雄挑战合法赚星购买升级并换策略后最高140/142仍lost，后两名ettin在最后缺少防线时恢复满HP700，英雄已死亡；诊断日志保留，不削回血/加金/改HP去迁就。`max_upgrade_level=2`是全局天赋上限，不是塔层级：World原allowed本来就正确允许第4挑战三级及未锁Arcane，本批没有改玩法解锁；早期手动策略只规划二级属于策略局限。新关旗路/奖励/save/通知和三模式天然流程仍待验，入口继续关闭。
+
+最终包1569files88,126,620B；原九模式/存档手机全正常exit0（第三campaign入关自然XP4705，末XP继续积累），旧冷入口14,657,823B/214请求仍过。公开本轮一次manifest.117且tier-pages-ui完整exit0，推送新版后不轮询。原无技能baseline策略的失败未改成“验收通过”，新关仍需真实地图/奖励/save/通知与自然挑战闭合。

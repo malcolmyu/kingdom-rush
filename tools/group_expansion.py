@@ -61,6 +61,10 @@ def group():
     if v in base['frames']:shared.add(v)
     prefix=animations.get(v,{}).get('prefix',v)
     shared.update(k for k in base['frames']if k.startswith(prefix+'_'))
+    for name,a in animations.items():
+     if name==v or name.startswith(v+'_'):
+      indices=a.get('frames') or ([i for lo,hi in a['ranges']for i in range(lo,hi+1)]if a.get('ranges')else range(a.get('from',1),a.get('to',a.get('from',1))+1))
+      shared.update(k for i in indices if (k:=a['prefix']+'_'+str(i).zfill(4))in base['frames'])
     if '%04i' in v:shared.update(k for k in base['frames']if k.startswith(v.split('%04i')[0]))
    elif isinstance(v,dict):
     for x in v.values():shared_frames(x)
