@@ -17,6 +17,15 @@ audit('kr3/game_scripts.lua','game_scripts.lua:13141-13279',['PLANT_VENOM','wave
 audit('all/scripts.lua','scripts.lua:4598-4705',['damage_every','random','duration'])
 audit('all/scripts.lua','scripts.lua:4973-4987',['max_speed','factor','invulnerable'])
 audit('all/utils.lua','utils.lua:1124-1181',['poison_armor','DAMAGE_POISON','floor'])
+audit('all/scripts.lua','scripts.lua:494-559',['ranged','tick_ts','attack_order'])
+audit('all/scripts.lua','scripts.lua:616-664',['can_range_soldier','blockers','y_enemy_range_attacks'])
+audit('all/script_utils.lua','script_utils.lua:2834-2895',['shoot_times','animations','queue_insert'])
+audit('all/script_utils.lua','script_utils.lua:2897-2935',['random','chance','loops'])
+audit('all/scripts.lua','scripts.lua:1947-1987',['predict_target_pos','prediction_error','initial_parabola_speed'])
+audit('all/scripts.lua','scripts.lua:1989-2130',['unit_dodges','miss_decal','asymmetrical'])
+satyr_functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_functions.lua',str(root),'precise'],cwd=R))
+assert satyr_functions['knife_satyr']['insert']['__script_path']=='scripts.arrow.insert'
+assert satyr_functions['enemy_satyr_cutthroat']['update']['__script_path']=='game_scripts.enemy_mixed.update'
 functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_functions.lua',str(root),'precise'],cwd=R))
 assert functions['mod_plant_poison_pumpkin']['insert']['__script_path']=='scripts.mod_dps.insert'
 assert functions['mod_plant_poison_pumpkin_slow']['update']['__script_path']=='scripts.mod_track_target.update'
@@ -45,6 +54,7 @@ for k in ['hero_elves_archer']+[f'tower_{f}_{t}'for f in ['archer','barrack','ma
 for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','harasser-data.mjs','harasser-jump-data.mjs']:
  p=R/'web'/name;runtime[name]=hashlib.sha256(p.read_bytes()).hexdigest()
  for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):visit(literal)
+for name in ["stages/stage7.mjs","stages/satyr.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
 wanted=set()
 def render_keys(obj):
  if isinstance(obj,dict):
@@ -96,7 +106,8 @@ for x,y,im in tiles.values():atlas.paste(im,(x,y))
 p=out/'sprites.webp';atlas.save(p,lossless=True,exact=True,method=6);check=Image.open(p).convert('RGBA')
 for x,y,im in tiles.values():assert check.crop((x,y,x+im.width,y+im.height)).tobytes()==im.tobytes()
 bg=declare('assets/kr3-phone/images/iphonehd/go_stage07_bg.lua');f=next(iter(bg.values()));x,y,w,h=f['f_quad'];im=image(f['a_name']).crop((x,y,x+w,y+h));im.save(out/'map07.webp',lossless=True,exact=True,method=6);assert Image.open(out/'map07.webp').convert('RGBA').tobytes()==im.tobytes()
+satyr_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_rules.lua'],cwd=R));satyr_rules['grid']=declare('assets/gc64/kr3/data/levels/level07_grid.lua')
 rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_rules.lua'],cwd=R));assert rules['poison']==32 and rules['modifierDamage']==32768
-(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules},sort_keys=True,separators=(',',':')))
-proof={'sha256':dict(sorted(sha.items())),'functions':functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration and poison-pumpkin gameplay; source controllers bytecode-only; stage7 remains closed','pending':['faerie trails path speeds/controller','satyr knives and hoplite summons','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
+(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules},sort_keys=True,separators=(',',':')))
+proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife gameplay; source controllers bytecode-only; stage7 remains closed','pending':['faerie trails path speeds/controller','hoplite summons','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
 pin.write_text(json.dumps(proof,ensure_ascii=False,sort_keys=True,indent=2)+'\n');print(json.dumps({'frames':len(result),'bytes':p.stat().st_size,'stage7':'isolated, not released'}))

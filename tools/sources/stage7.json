@@ -32,7 +32,7 @@
   },
   "pending": [
     "faerie trails path speeds/controller",
-    "satyr knives and hoplite summons",
+    "hoplite summons",
     "webspitting spider special",
     "new allowed Druid advanced tower",
     "natural modes, own budget and actual flag/book/rewards release"
@@ -136,15 +136,37 @@
     ]
   },
   "runtimeModulesSHA256": {
-    "domain.mjs": "6ca6975dcc6b03a19ca12af9d8f7f9eb6e0c82c51c19a02ebf6389dff5f305dd",
+    "domain.mjs": "ac2671ab5368ae8a60a2347f05f1ae95c0758e0388f64ef804440778ce060f0d",
     "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
     "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
     "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
-    "renderer.mjs": "6408d1f1ba598de9f43f1435bcbd6edf092beaeea9bb35af740776426c5af402",
+    "renderer.mjs": "6075adbbd99f3528fa64ab0866f2cd9bc3239d1c3994fa93a141fd2f1af0bb98",
     "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
+    "stages/satyr.mjs": "3eb34a25ac3e9f7665e89074bbdb52e6df141f982bdff4a6f7cae0cca38bdf8a",
+    "stages/stage7.mjs": "76cf0eab27629c268db9c3979e3d36619061f7d51fac4ed541bb49de9a96246c",
     "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
   },
-  "scope": "isolated stage7 declaration and poison-pumpkin gameplay; source controllers bytecode-only; stage7 remains closed",
+  "satyrFunctions": {
+    "enemy_satyr_cutthroat": {
+      "insert": {
+        "__script_path": "game_scripts.enemy_basic.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.enemy_mixed.update"
+      }
+    },
+    "knife_satyr": {
+      "insert": {
+        "__script_path": "scripts.arrow.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "scripts.arrow.update"
+      }
+    }
+  },
+  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife gameplay; source controllers bytecode-only; stage7 remains closed",
   "sha256": {
     "assets/gc64/all/components.lua": "3c5e9b9708ab01c4f1173f4d5fa0340bfd72ff620561bc8b95a3c2a21c438163",
     "assets/gc64/all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
@@ -154,6 +176,7 @@
     "assets/gc64/all/templates.lua": "a9fe55b2d0196a6a5346cc898094354b47e2968db77424a287d25964c6fda65c",
     "assets/gc64/all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
     "assets/gc64/kr3/data/levels/level07_data.lua": "8ccb190d058448b9421d28cb24614076ed34c3de681edd511326f89525e85095",
+    "assets/gc64/kr3/data/levels/level07_grid.lua": "db9223c99919bde8fe5c8006001f2719606d16e2c53072a84463593cfe92652f",
     "assets/gc64/kr3/data/levels/level07_paths.lua": "9997cc97f63db4079737817ace8436ea12d061b3fcab73ceef676f0fc3642d0e",
     "assets/gc64/kr3/data/waves/level07_waves_campaign.lua": "4398eb97a0f5ec4d8f7a1ee6ae8ce6791c1ce1414909582730006e94c1657d31",
     "assets/gc64/kr3/data/waves/level07_waves_heroic.lua": "2df24be5a48b3764b8f3229591b7f6c224cfd3d9b6d519970af4e671a905241a",

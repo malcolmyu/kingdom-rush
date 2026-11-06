@@ -1,5 +1,23 @@
 # 第7–10关还原工作区
 
+## 0.2.142：羊人两次掷刀（隔离验证）
+
+第7关仍closed，生产前六关18模式与cap6保持。本批接通enemy_satyr_cutthroat原三段远程：start1帧完整等待后，loop22帧内第5/15帧各排队knife_satyr，end1帧再返回普通行为。初始cooldown按真实insert时钟，难度3/3/3/2.5秒；chance1仍抽随机。loop前摇/收尾的眩晕转end，start/end保留各自源等待；已提交的刀不因来源死亡而消失。攻击期间拒并行普通近战/移动，不用假的stunned或blocked字段控制行为。
+
+飞刀原main_script继承scripts.arrow.insert/update（1947–2130）；其predict_target_pos=false，所以即使prediction_error=true，也不抽预测误差或自动追踪。release用当时目标pos+hit_offset，下一Worldtick插入；不擅加128前摇位移门。原1/3秒/g-630抛物线、每tick切线方向、asymmetrical左向sticky flipY、6距离隐藏；结束strict22接触/原可用ranged dodge后ceilfrandom4..7，下一tick提交原physical2。正常甲由既有hurtDefender处理；无火DOT/假主英雄XP。目标死亡仍可insert无伤箭，目标移除拒insert；已释放刀失配则原地面2.1秒淡出/一次随机角度，water格改用原splash。hitFX使用原offset/z/帧。额外blood/pop/完整原音频/队列IDs、原路径和目标优先仍适配或欠，非全部敌人/原版同输入1:1。
+
+新模块web/stages/satyr.mjs只由内部stage7 loader动态加载。World新增可选spawn/enemy/holdsMelee/shot钩子，Renderer可选drawShot钩子；旧1–6没有stageRuntime，不加新状态/算法随机。没有新的PNG或RGBA变化，沿用4623帧6,314,902B组；source stage7.json固定原controllers SHA并记录安全stub继承、源码范围与新模块SHA。read_satyr_rules只读取arrow prototype两条decal tween keys，不执行controller；grid为原level07_grid声明。
+
+620项Node通过（9新测试），实际build satyr-browser-final以真Space/World.cast援军后自动掷刀，原150HP羊人未被改伤害值，援军40→35→28、gold850不变。原Canvas飞刀q/alpha/负行列式左向翻转/旋转与body帧、循环安全完整World绘制快照不变、无missing/unready、桌面pause/wheel/844×390CDP touch/退图访问/星/XP/挑战progress保持通过（真实首波先生成骚扰者时允许且只允许原已发现通知记录）。桌面与手机active图已人工看。是受控原路节点/队列/时钟fixture，非自然7或原版同输入同步。普通敌/原faerie_trails暂存导航、hoplite召唤、蛛网、Druid/允许高级塔、通知/书页/自然三模式/自身预算/发布链仍欠，不称21模式。
+
+初纯测左向刀仅走1tick还处于原6距离隐藏区，改5tick可见采样；后护甲断言错用浮点而现原路径是round，改断言，不改产品甲。额外显式done guard确保同一刀不会重复提交。首旧九模式命令漏TEST_URL访问8765被拒，不算通过；最终指向actualbuild8766重跑。专项一次first-wave真实骚扰者发现记录使全progress等值断言失败，修fixture只允许该原seenNotifications记录，其他完整字段仍逐一等值；未改产品持久化。此前一轮只调查未发布，本批才有实际运行链，不倒填版本/通过声明。
+
+最终已发布冷100ms/1.5MBps/cacheoff：旧14,857,633B/240req总16.093s；第四14,815,011B/230req书7.182s/总16.997；第五14,998,319B/241req书7.842/总17.719；第六14,938,990B/240req书8.146/总23.724。全部正常exit0，不保所有线路；第五只余1681B，后续不可全局静态加载新关大代码/声明。第六boss/cart后期额外3.87MB仍为真实下载，不称整局<15MB。原九模式/手机存档、连续新档4/5/6自然链和UI均正常exit0；4战役19命/英雄142/铁95，5战役20命/英雄201/铁147/XP37600，6战役20命零漏/真实boss收尾→英雄120/铁169/XP47121，旧计划没改。公开一次manifest确认.141/UI正常exit0，新推送不轮询CI。
+
+第7隔离冷入口本批 **16,861,260B/231req**、book7.413s/总17.560s，15MB assert正常exit1，base/progress/draw无变化、无missing/unready。仍未过预算，入口继续关闭；不抬门槛/降质/清alpha0RGB/漏必需图，也不冒已发布旗7书7路径。
+
+最终actualbuild1679文件104,604,279B含manifest，web运行模块及新stage7数据逐字节等build，oldcompact1314帧2,122,316B保持；原4/5/6图不变。主要logs artifacts/satyr-tests-publish/build-publish/source-pinned/groups/browser-publish-repeat/pumpkin-publish/old-nine-publish/ui-publish/natural4/natural5/natural6/performance/stage4-performance/stage5-performance/stage6-performance/stage7-budget/pages-ui.log。早期失败均保留，正常exit0和预期预算失败分开记录。
+
 ## 0.2.141：石环阵毒南瓜基础链
 
 正式可玩仍为前六关18模式，`PLAYABLE_STAGE_COUNT=6`。第7关只允许内部隔离加载，生产 Repository、地图、奖励和存档边界没有放开。其余第7关机制、自然三模式、通知/百科/旗路/书页及发布验收尚未完成，不称21模式。
@@ -36,7 +54,7 @@ World只新增可选 `data.stageRuntime` 的init/step/activatePlant接口，Rend
 
 ## 下一步
 
-优先补原faerie_trails路径速度机关，或satyr_cutthroat两次掷刀/相应投射物、hoplite召唤链的一条真实连续流程。新敌目前导入声明/图和通用运动并不等于专有AI完成；普通generic ranged不足以代替两次shoot_times。webspitting spider专用蛛网、原允许的Druid等高级塔分支、ready/敌人通知与百科、成就/声音、自然三模式、预算及真正发布链也未全。
+下一批优先补原faerie_trails暂存导航机关或hoplite召唤/计数组连续链。satyr两次掷刀已在.142闭合，不再当作尚未接的generic ranged。其余新敌导入声明/图和通用运动仍不等于专有AI完成。webspitting spider专用蛛网、原允许的Druid等高级塔分支、ready/敌人通知与百科、成就/声音、自然三模式、预算及真正发布链也未全。
 
 第7关充分验收后才扩cap、原旗路、书页与奖励存档。不要继续无限磨已完毒南瓜/旧HUD/4–6固定策略，也不要只因资源存在就开放7。整体原grid、native队列/IDs/global z、旧箭物理、Arivan、安全区、特殊death、血池、完整音频与宝石天赋仍有差异，不称整体1:1。
 
