@@ -153,3 +153,5 @@ subprocess.run(['python3',str(ROOT/'tools/group_towers.py')],check=True)
 subprocess.run(['python3',str(ROOT/'tools/prepare_stage4_release.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_stage6_spawner.py')],check=True,cwd=ROOT)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_melee_audio.py')],check=True,cwd=ROOT)

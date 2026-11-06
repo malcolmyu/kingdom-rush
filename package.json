@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.131",
+  "version": "0.2.132",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -143,7 +143,8 @@
     "test:stage5-presentation": "node tests/stage5-release-presentation-browser.mjs",
     "test:fixed-alleria": "node tests/fixed-alleria-browser.mjs",
     "test:stage6-resources": "node tests/stage6-resources-browser.mjs",
-    "test:stage6-spawner": "node tests/stage6-spawner-browser.mjs"
+    "test:stage6-spawner": "node tests/stage6-spawner-browser.mjs",
+    "test:melee-audio": "node tests/melee-audio-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

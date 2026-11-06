@@ -1,0 +1,36 @@
+{
+  "clipsSHA256": {
+    "Sound_SoldiersFighting-01.ogg": "482f13fbb8eced7274093506c7074010495e3087866879090aecf0c94bf68b46",
+    "Sound_SoldiersFighting-02.ogg": "fc3d3d520d387453457e701caa8f848efe9a89dae9c37bd954d1e64c508317f1",
+    "Sound_SoldiersFighting-03.ogg": "274216c40988f0a43f359d8dd2a075778e3d7465e79412bd48cdee2556f538ea",
+    "Sound_SoldiersFighting-04.ogg": "b2554d45f341284a6a1e608910c472b0b3292bf88f632a6444f804ac91c57bde",
+    "Sound_SoldiersFighting-05.ogg": "e181a00d2ea3097a06c794dfdddb21c6ff6eae18127a5a237b60cbd42c2efa75"
+  },
+  "group": {
+    "max_sources": 1
+  },
+  "limits": [
+    "Other source audio groups and all unit-specific sounds not fully restored",
+    "Browser sound clock and cancellation lifecycle adapted; World RNG/attack timing unchanged"
+  ],
+  "original": {
+    "files": [
+      "Sound_SoldiersFighting-01.ogg",
+      "Sound_SoldiersFighting-02.ogg",
+      "Sound_SoldiersFighting-03.ogg",
+      "Sound_SoldiersFighting-04.ogg",
+      "Sound_SoldiersFighting-05.ogg"
+    ],
+    "gain": 0.2,
+    "ignore": 0.45,
+    "loop": false,
+    "mode": "sequence",
+    "source_group": "SWORDS"
+  },
+  "scope": "Original short MeleeSword sequence for current ordinary melee event; 450ms suppression and one SWORDS voice, explicit pause/mute/scene cancellation.",
+  "sha256": {
+    "extra": "a636204e360128de39bd412995f07b488db3b91b0fbda061faa636a04b787a22",
+    "settings": "1511ff80a13222874abe656360b1ad9b930b7db8aeea3e3ee706aa893f330ad2",
+    "sound_db": "2a9852ef86206948d7ad2efc08945ce4e2320d4f9dcd921021b07b558743f31e"
+  }
+}

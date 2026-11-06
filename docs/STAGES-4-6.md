@@ -1,5 +1,13 @@
 # 第4–6关还原工作区
 
+0.2.132优先修复人类新反馈“援军攻击音效不会停止并重叠”。真实Campaign.sound/World.cast援军近战复现：6秒后援军均已死亡，仍3个melee.ogg声道并播，每轨约8秒，loop=false；不是无限loop标志，而是误用长TowerBarracksBasic音轨且每次近战新建Audio。原APK extra.lua的MeleeSword为五个Sound_SoldiersFighting-01..05短音0.42–0.92秒，sequence/gain.2/ignore.45，settings.lua SWORDS.max_sources=1；sound_db605–673原抑制与满组evict旧voice职责已只读-bl核对。
+
+新melee-audio.mjs按原sequence轮换、450ms忽略窗、单SWORDS声道，新播放先pause旧轨，不积压/不用timer、不消费World随机或改命中/攻击cd。仅当前melee事件接入该组，其他音效组并非完整原sound_db恢复。dialog暂停/静音或音效音量0/transition换场景都即时停止并解绑旧回调；ended/error/拒播只清自己的引用，迟到旧回调不能清新voice。原五ogg从APK字节原样复制，不裁切/变速/重编码。source tools/sources/melee-audio.json固定extra/settings/sound_db SHA和五音轨SHA；extract_melee_audio.py接extract_campaign。旧长melee.ogg保留文件兼容，但当前近战不再调用它。
+
+修前实际Chromium多援军调用峰值3，修后峰值1且仅melee-1/2等短音，援军死亡后无遗留声；pause/mute/map清理及无延迟重播通过，未用假Audio替代实际解码/播放，仅记录真实媒体事件。tests/melee-audio.test新增4项覆盖450ms/单声道/原顺序/回调竞态与音量。人类新反馈优先，所以本轮第6boss只保留源码审计与231帧原RGBA提取草稿到workdir/gnoll-boss-draft-0132，未当作已实现或发布进运行目录；下一轮继续接其真实战斗链，不取消原4–6目标。第6入口继续closed，前五关15模式不变。
+
+本轮最终551Node全部过，actualbuild1640files91762132B、oldcompact1314frames2122316B不变。melee-audio-final-browser含真实手机触摸暂停正常exit0；desktop-options、连续新档1–4再第五三模式（4campaign19命三星/heroic142/iron95；5campaign20命/heroic201/iron147/XP37600）、原天然九模式/存档手机、UI与公开.131UI全部正常exit0。真实冷100ms/1.5MBps/cacheoff旧14809877B/232req、第四14767250B/222req、第五14950553B/233req（book7.814s/总17.477s）均<15MB，不保所有线路。第6预算本轮未重测，最近.131隔离15179814B仍未过、首领/囚车链未接；不可称18模式。最终pin重提和全部运行模块/五音轨逐字节等build，无浏览器挂住或未处理失败；baseline故意红的旧叠音记录保留。主要logs artifacts/melee-audio-before/after/final-browser/tests/build/options/natural4/natural5/old-nine/ui/performance/stage4-performance/stage5-performance/pages-ui/source-final.log，melee-audio-comparison.json保留真实前后媒体记录。
+
 0.2.131闭合第6关mega_spawner的原四组手动召唤队列。level06.load指定level06_spawner，声明只含campaign Boss_Path_1..4（29/27/13/20单位）；heroic/iron为空。新stage6-spawner.mjs按原非sequence、非force_all分支先table.random分配数量，再逐点随机支路/累计interval/variation（即使单点与0范围也消费原随机），按时间排序，延迟到期queue、下一模拟tick调用真实World.spawn。四组支路与原敌模板/伤害/奖励/动画沿现有World链，不伪造额外金币或静态援军。manualWave同名不重放，换名先丢未提交未来项并yield一tick，interrupt移除controller但不撤销已queue的insert。原CUSTOM/PACK/raise不在该关声明内，未假实现通用mega_spawner。原Lua pairs/同时间排序、path_start与native队列职责仍以当前World适配，不称同seed逐帧一致。
 
 ExpansionRepository仅level6按需读expansion/stage6-spawner.json，不全局import大声明，不加新图片。tools/extract_stage6_spawner.py先字节码断言数据chunk只有表构造（无CALL/FNEW/GGET/UGET）才读声明；控制器只-bl审计all/scripts5785–5804/5806–6016和level06，固定五源SHA、完整schedule记录sourceproof并接extract_campaign。普通数值wave不触发手动Boss_Path表，真实boss吼叫调用尚未接；actualbrowser显式manualWave是替代未来boss调用者的受控fixture，不冒称自然boss已出现。

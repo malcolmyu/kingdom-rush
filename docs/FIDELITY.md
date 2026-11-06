@@ -1,5 +1,7 @@
 # 动画保真记录
 
+0.2.132修复援军近战声音：原MeleeSword五个短ogg逐字节从APK提取，原sequence/ignore.45/gain.2/SWORDS max1；替换此前误用的8秒barracks长音轨，不靠裁切/加速压缩消除重叠。真实浏览器原援军近战修前峰值3轨、修后1轨，暂停/静音/退图立即停止。其他组混音、全部原音效调用/原Love音频时钟仍适配，非全音频1:1；没有改图片/动画/World随机或攻击时序。
+
 0.2.131刷怪器只生成真实原敌，不新增或修改图片。第6受控manualWave队列使用原path起点/支路，原actorqueue与既有图组绘制；actualCanvas检查q/alpha、已decode与draw前后World完整状态不变，桌面/手机截图用于机制验证。真实boss吼叫尚未连接，非自然6通关或同输入原版像素证书；source Lua pairs/队列IDs/path timing仍适配，15MB门未通过。
 
 0.2.130第6固定射手与猫复用原237帧无损Alleria包，只第6按需多载已有328080B文件，不新增图片或改变RGBA。原NPC位660,625、猫640,655/z3001，NPC血条入场后按完整update显示、无可选头像HUD，独立actorqueue纯pose；actualCanvas比较body/cat裁图alpha、箭每tick切线旋转矩阵及World快照不变，桌面/手机截图人工看过。局部受控机制不是整关像素证书；完整idle_flip/音频/native队列/路径预测、首领结局与第6自身15MB门仍欠，cap5保持。

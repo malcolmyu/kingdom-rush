@@ -26,6 +26,7 @@ assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/options
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-title').rglob('*')if p.is_file()}
 assets|={'images/'+f['a']for f in catalog['frames'].values()}
 assets|={'menu/'+n+'.webp'for n in ['start','logo','world']}
+assets|={f'melee-{i}.ogg' for i in range(1,6)}
 assets|={f'levels/{i:02}-{m}.json'for i in range(1,4)for m in ['campaign','heroic','iron']}
 assets|={f'levels/map{i:02}.webp'for i in range(1,4)}
 for name in assets:
