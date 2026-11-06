@@ -1,3 +1,4 @@
+import{drawArcaneBursts}from'./arcane-burst.mjs';
 import{arcaneSpriteStates,drawArcaneEffects}from'./arcane.mjs';
 import{drawStage4Burn,burnScenery}from'./stage4-burn.mjs';
 import{drawGryphons}from'./gryphon-events.mjs';
@@ -81,7 +82,7 @@ export class Renderer{
   for(const e of w.data.level.entities_list)if(e.template==='decal_background'&&e['render.sprites[1].name']!==`Stage${String(w.id).padStart(2,'0')}_0001`)this.entity(e.template,e.pos,{overrides:e,renderId:this.renderId(e)});
   for(const [i,f]of w.effects.entries())if(f.type==='impact'||f.type==='torch-impact')this.entity(f.type==='impact'?'fx_rock_explosion':'fx_torch_gnoll_burner_explosion',f,{time:f.total-f.life,overrides:f.type==='impact'?rockImpactOverrides(w.template('rock_1').bullet):{},renderId:w.data.level.entities_list.length+w.serial+i+1});
   for(const[i,f]of w.effects.entries())if(f.type==='thunder-strike'||f.type==='arrow-impact')this.skillEffects.draw(this,f,w.data.level.entities_list.length+w.serial+3*i+1);
-  drawArcaneEffects(this,w);
+  drawArcaneEffects(this,w);drawArcaneBursts(this,w);
   this.towerEffects.draw(this,w);
   const queue=this.orderQueue;this.orderQueue=null;queue.flush();this.entityOrderId=0;
   for(const f of w.effects){const p=this.screen(f),t=f.total-f.life;
