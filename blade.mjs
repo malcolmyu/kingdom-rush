@@ -1,3 +1,4 @@
+import{updateBladeDance,cancelBladeDance,bladeDancePose}from'./blade-dance.mjs';
 import{syncBladePowers,updateBladeParry,bladeMelee}from'./blade-parry.mjs';
 import{harasserHidden,tryHarasserDodge}from'./harasser-jump.mjs';
 import{inEllipse}from'./spells.mjs';
@@ -23,8 +24,10 @@ export function pickBladeAttack(w,u,e){const m=bladeMelee(w,u),s=u.blade,order=m
   if(w.random()>=a.chance){s.attackTimes[i]=w.time;continue;}return i;
  }return null;}
 export function updateBladeSoldier(w,u,live,dt,{blockers,engaged,enemyTurns}){const s=u.blade,t=w.template(u.key);
- if(u.hp<=0){if(s.deadAt===undefined){s.deadAt=w.time;s.attack=null;u.targetId=null;u.action='death';u.walking=false;}u.dead=w.time-s.deadAt;if(u.dead>t.health.dead_lifetime)u.expired=true;return;}
+ if(u.hp<=0){cancelBladeDance(u);if(s.deadAt===undefined){s.deadAt=w.time;s.attack=null;u.targetId=null;u.action='death';u.walking=false;}u.dead=w.time-s.deadAt;if(u.dead>t.health.dead_lifetime)u.expired=true;return;}
  if(s.insertedAt===w.time)return;
+ if(s.dance){updateBladeDance(w,u);return;}
+ if(s.rallyPending&&!s.attack&&!s.parry&&!u.stunned&&!u.frozen){const dx=u.rally.x-u.x,dy=u.rally.y-u.y,d=Math.hypot(dx,dy);if(d>u.speed*dt){if(!u.walking)u.walkAt=w.time;u.walking=true;u.flip=dx<0;u.x+=dx/d*u.speed*dt;u.y+=dy/d*u.speed*dt;return;}u.x=u.rally.x;u.y=u.rally.y;u.walking=false;s.rallyPending=false;}
  const candidates=live.filter(e=>e.hp>0&&!e.flying&&!harasserHidden(e)&&!w.hyenaFleeing(e)&&(engaged.get(e.id)||0)<3&&inEllipse(u.rally,e,t.melee.range));
  const e=candidates.find(e=>e.id===u.targetId)||candidates.sort((a,b)=>Math.hypot(u.x-a.x,u.y-a.y)-Math.hypot(u.x-b.x,u.y-b.y))[0];
  let target=u.rally;
@@ -42,9 +45,10 @@ export function updateBladeSoldier(w,u,live,dt,{blockers,engaged,enemyTurns}){co
   }if(s.dodgeActive||age>=w.animationDuration(t.render.sprites[0].prefix,a.animation)){s.attack=null;u.anim=0;u.action='idle';u.idleAt=w.time;}return;
  }
  if(updateBladeParry(w,u))return;
+ if(!u.walking&&updateBladeDance(w,u))return;
  if(distance>u.speed*dt){if(!u.walking)u.walkAt=w.time;u.walking=true;u.flip=target.x<u.x;u.x+=(target.x-u.x)/distance*u.speed*dt;u.y+=(target.y-u.y)/distance*u.speed*dt;return;}
  u.x=target.x;u.y=target.y;u.walking=false;
  if(e){u.flip=e.x<u.x;const index=pickBladeAttack(w,u,e);if(index!==null){const a=bladeMelee(w,u).attacks[index];s.attack={index,target:e,slot:u.targetSlot,at:w.time,hit:false};u.action=a.animation;u.actionAt=w.time;u.anim=w.animationDuration(t.render.sprites[0].prefix,a.animation);}return;}
  if(w.time-u.lastHitAt>t.regen.last_hit_standoff_time){s.regen+=dt;if(s.regen>t.regen.cooldown){s.regen=0;u.hp=Math.min(u.maxHp,u.hp+t.regen.health);}}
 }
-export function bladeSoldierPose(w,u){if(u.hp>0&&u.blade.parry)return{state:'perfect_parry',time:w.time-u.blade.parry.at,spriteStates:{1:{loop:true}},flip:u.flip};return{state:u.hp<=0?'death':u.walking?'running':u.blade.attack?u.action:'idle',time:u.hp<=0?u.dead:u.walking?w.time-u.walkAt:u.blade.attack?w.time-u.actionAt:w.time-u.idleAt,flip:u.flip};}
+export function bladeSoldierPose(w,u){if(u.hp>0&&u.blade.dance)return bladeDancePose(w,u);if(u.hp>0&&u.blade.parry)return{state:'perfect_parry',time:w.time-u.blade.parry.at,spriteStates:{1:{loop:true}},flip:u.flip};return{state:u.hp<=0?'death':u.walking?'running':u.blade.attack?u.action:'idle',time:u.hp<=0?u.dead:u.walking?w.time-u.walkAt:u.blade.attack?w.time-u.actionAt:w.time-u.idleAt,flip:u.flip};}
