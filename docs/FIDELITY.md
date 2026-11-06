@@ -14,6 +14,8 @@
 
 生产仍前五关15模式，第6closed：必须先补原允许wild magus必要升级/战斗功能，之后完整浏览器自然三模式/源旗路书页通知奖励cap6与实际发布冷路径/手机重载都验收，再称18模式。初隔离预算通过不等于真实flag6/book6入口已过。全量提取/分组/build可重建，运行模块逐字节等实际build；本轮最终包1655文件95434801B含manifest。主要logs artifacts/event-assets-tests/build/groups-final/browser/ending/guards/aura/scenes-repeat/old-nine/ui/natural4/natural5/natural6/performance/stage4-performance/stage5-performance/stage6-performance/pages-ui.log；首scenes.log是旧fixture失败，repeat已正常。
 
+末次补充等待/失败界面的真实“返回地图”按钮，避免网络故障只能重试；独立hold请求后实际点击该按钮、放行请求，确认旧owner不回填。574纯测重新全过，最终build1655文件95435058B；event-assets-browser-final、stage5-performance-final和stage6-performance-final全部正常exit0，最终第五14974216B/238req（book7.881s总17.751s），第六14831808B/230req（book6.690s总16.879s），第五余25784B。旧九/第4/旧预算为按钮补充前同模拟包通过，最后仅第6网络等待UI变更，无战斗/源帧/RNG修改。最终所有web模块与build逐字节一致。
+
 0.2.135实际接通campaign第6父level06结局：最后普通波次真正结束且无活敌后等2秒，源遮幕/2秒镜头/隐藏GUI，囚车从visible.left−132、y459以47速行至120,459；到位仍yield一次、下一tick才open；open动画83/30后按原nearest_nodes默认lane1取最近节点+1，下一模拟tick生成真实eb_gnoll并连接现megaSpawner。3/30后只前五sprite降Z_DECALS1400，第六保留3000/sort_y_offset−10。父状态读取实际gnollBoss.phase，只有进入loop才恢复镜头/GUI；等待dead→death-complete后再1秒且wavesfinished无活敌才放行原胜利门。普通15波清空不再是假won或永远无条件拦截。heroic/iron原结束链不加囚车。
 
 stage6-ending.mjs只改该World的状态，Stage6EndingView纯读Worldclock驱动原黑幕out-cubic与镜头in-out-quad；源相机目标(120,500)/zoom2→(512,384)/zoom1，使用现BattleCamera边界适配，不称原native camera完全同步。隐藏GUI期间真实交易/英雄移动/施法/鼠标镜头/键盘入口禁止，模拟继续；暂停则Worldclock/车/镜头停止，返回地图销毁遮幕/inert与owner。原协程yield/原动态nav-grid/native队列ID、音频、全死亡与屏幕震动仍欠或适配，不称完整1:1。
