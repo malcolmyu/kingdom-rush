@@ -21,7 +21,7 @@ World只补可选meleeStarted/defender接口，Renderer可选hidden与Campaign�
 
 最终cold100ms/1.5MBps/cacheoff：旧14,858,034B/240req总16.948s，4真实旗书14,815,412/230req书7.199总17.039，5真实旗书14,998,715/241req书7.828总17.721，6真实旗书14,939,386/240req书8.122总23.664，均exit0，不保所有线路；第五只余1285B，大code/data仍必须web/stages按关lazy。第7隔离16,937,541B/234req，15MB assert明确exit1，base/progress/draw不变且无missing/unready，不冒预算通过/正式旗7书7/天然通关。第6boss/cart后期另真实下载3.87MB，不冒整局流量15MB。公开manifest本轮单次确认.143，public UI正常exit0，不轮询新推送。
 
-主要logs artifacts/webspitter-source-publish/groups-publish/tests-publish/build-publish/browser-publish/faerie-regression/old-nine-publish/ui-publish/natural4/natural5/natural6/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish/stage7-budget-publish/pages-ui.log。初pure Blade home=null fixture失败保留；最后仅budget scope文本去掉已完spider旧描述，独立stage7-budget-final仍应明确超15MB，不放宽门槛。
+主要logs artifacts/webspitter-source-publish/groups-publish/tests-publish/build-publish/browser-publish/faerie-regression/old-nine-publish/ui-publish/natural4/natural5/natural6/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish/stage7-budget-publish/pages-ui.log。初pure Blade home=null fixture失败保留；最后仅budget scope文本去掉已完spider旧描述，独立stage7-budget-final明确正常exit1且仍为16,937,541B超15MB，不放宽门槛。
 
 ## 0.2.144：第7关 faerie 暂存运输（隔离验证）
 
