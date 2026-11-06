@@ -17,6 +17,7 @@ export class ExpansionRepository {
   const towers=id>=5?await(this.entryTowerAssets??=this.json('tower-groups/entry/catalog.json')):this.towerAssets;
   const catalog={...b,campaignTowerSheets:towers.initial,towerAssetGroups:{...towers.groups,tower_arcane:a.sheets,tower_blade:blade.sheets},campaignScenerySheets:group.sheets,campaignEnemySheets:[...group.sheets,...extra.sheets,...ally.sheets],templates:{...b.templates,...group.templates,...a.templates,...stage4BurnTemplates,...gryphonTemplates,...extra.templates,...ally.templates,...blade.templates,...(id===6?FIXED.templates:{})},frames:{...b.frames,...towers.frames,...group.frames,...a.frames,...extra.frames,...ally.frames,...blade.frames},animations:b.animations};
   this.catalog=catalog;
-  const key=id+'-'+mode;if(!this.levels.has(key)){const d=await this.json(`expansion/${String(id).padStart(2,'0')}-${mode}.json`);this.levels.set(key,{...d,templates:catalog.templates,animations:catalog.animations});}return this.levels.get(key);
+  const spawner=id===6?await(this.stage6Spawner??=this.json('expansion/stage6-spawner.json')):undefined;
+  const key=id+'-'+mode;if(!this.levels.has(key)){const d=await this.json(`expansion/${String(id).padStart(2,'0')}-${mode}.json`);this.levels.set(key,{...d,templates:catalog.templates,animations:catalog.animations,...(spawner?{stage6Spawner:spawner}:{})});}return this.levels.get(key);
  }
 }

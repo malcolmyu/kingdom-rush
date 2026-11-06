@@ -1,5 +1,7 @@
 # 技术方案：数据驱动的塔防战役
 
+0.2.131第6独立World.megaSpawner持有按需data/manualWave/current/queue/insertQueue。完整原level06四组路径声明由ExpansionRepository仅level6读取，控制器模块无大静态数据。队列编译先分配point再抽lane/interval/variation，到期提交下一tick真实spawn；同manual名称不重放、换名yield与interrupt职责独立。原source分支无CUSTOM/PACK，未扩虚假通用API。campaign6胜利显式阻止普通波次完成误判；首领caller/囚车/最终收尾尚未连接，不开入口。第五及旧World不创建本集合或消费新随机。
+
 当前范围是游戏开始界面、大地图，以及前五关的战役、英雄挑战、钢铁挑战，共 15 个组合。运行时只有静态 HTML、CSS、原生 ES Modules 和 Canvas 2D，没有游戏服务器、账号系统或运行时第三方依赖。这样同一份文件既可部署到静态站点，也可在本机通过 HTTP 服务器运行。
 
 ## 模块边界

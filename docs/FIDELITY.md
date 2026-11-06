@@ -1,5 +1,7 @@
 # 动画保真记录
 
+0.2.131刷怪器只生成真实原敌，不新增或修改图片。第6受控manualWave队列使用原path起点/支路，原actorqueue与既有图组绘制；actualCanvas检查q/alpha、已decode与draw前后World完整状态不变，桌面/手机截图用于机制验证。真实boss吼叫尚未连接，非自然6通关或同输入原版像素证书；source Lua pairs/队列IDs/path timing仍适配，15MB门未通过。
+
 0.2.130第6固定射手与猫复用原237帧无损Alleria包，只第6按需多载已有328080B文件，不新增图片或改变RGBA。原NPC位660,625、猫640,655/z3001，NPC血条入场后按完整update显示、无可选头像HUD，独立actorqueue纯pose；actualCanvas比较body/cat裁图alpha、箭每tick切线旋转矩阵及World快照不变，桌面/手机截图人工看过。局部受控机制不是整关像素证书；完整idle_flip/音频/native队列/路径预测、首领结局与第6自身15MB门仍欠，cap5保持。
 
 0.2.129发布第五关原旗/七道路点与书页缩略图，均固定原声明和PNG SHA，342x246原缩略图完整RGBA无损（包括透明RGB）。新增骚扰者通知/百科与Blade百科原图，原高级塔首波通知沿原通用变换；实际通知照片四角专项覆盖两高级塔与骚扰者。自然三模式验证只证明当前适配玩法的合法可达性，原视频/静态原图并非同输入像素证书；完整grid/native队列/特殊death/音频等仍欠。第6入口继续关闭。

@@ -1,0 +1,269 @@
+{
+  "data": {
+    "groups": {
+      "0": [
+        0
+      ],
+      "1": [
+        1
+      ],
+      "2": [
+        2
+      ],
+      "3": [
+        3
+      ]
+    },
+    "points": {
+      "0": {
+        "path": 1
+      },
+      "1": {
+        "path": 4
+      },
+      "2": {
+        "path": 3
+      },
+      "3": {
+        "path": 2
+      }
+    },
+    "waves": [
+      {
+        "Boss_Path_1": [
+          [
+            0,
+            0,
+            0,
+            -1,
+            7,
+            false,
+            false,
+            0,
+            1,
+            "enemy_hyena"
+          ],
+          [
+            2,
+            0,
+            0,
+            -1,
+            7,
+            false,
+            false,
+            0,
+            1,
+            "enemy_hyena"
+          ],
+          [
+            4,
+            0,
+            0,
+            -1,
+            7,
+            false,
+            false,
+            0,
+            1,
+            "enemy_hyena"
+          ],
+          [
+            1,
+            0,
+            0,
+            -1,
+            4,
+            false,
+            false,
+            1,
+            1,
+            "enemy_gnoll_blighter"
+          ],
+          [
+            4,
+            0,
+            2,
+            -1,
+            4,
+            false,
+            false,
+            1,
+            1,
+            "enemy_gnoll_gnawer"
+          ]
+        ],
+        "Boss_Path_2": [
+          [
+            0,
+            0,
+            0,
+            -1,
+            4,
+            false,
+            false,
+            0,
+            1,
+            "enemy_hyena"
+          ],
+          [
+            8,
+            0,
+            1,
+            -1,
+            6,
+            false,
+            false,
+            1,
+            2,
+            "enemy_gnoll_burner"
+          ],
+          [
+            0,
+            0,
+            1,
+            -1,
+            4,
+            false,
+            false,
+            2,
+            2,
+            "enemy_perython_gnoll_gnawer"
+          ],
+          [
+            3,
+            0,
+            2,
+            -1,
+            6,
+            false,
+            false,
+            1,
+            1,
+            "enemy_hyena"
+          ],
+          [
+            5,
+            0,
+            2,
+            -1,
+            6,
+            false,
+            false,
+            1,
+            1,
+            "enemy_gnoll_gnawer"
+          ],
+          [
+            8,
+            0,
+            2,
+            -1,
+            1,
+            false,
+            false,
+            1,
+            1,
+            "enemy_ettin"
+          ]
+        ],
+        "Boss_Path_3": [
+          [
+            5,
+            0,
+            2,
+            1,
+            1,
+            false,
+            false,
+            0,
+            2,
+            "enemy_ettin"
+          ],
+          [
+            0,
+            0,
+            2,
+            2,
+            1,
+            false,
+            false,
+            2,
+            4,
+            "enemy_ettin"
+          ],
+          [
+            10,
+            0,
+            2,
+            0,
+            1,
+            false,
+            false,
+            1,
+            2,
+            "enemy_ettin"
+          ],
+          [
+            0,
+            0,
+            0,
+            -1,
+            10,
+            false,
+            false,
+            5,
+            5,
+            "enemy_ettin"
+          ]
+        ],
+        "Boss_Path_4": [
+          [
+            0,
+            0,
+            3,
+            -1,
+            10,
+            false,
+            false,
+            3,
+            4,
+            "enemy_ettin"
+          ],
+          [
+            0,
+            0,
+            0,
+            -1,
+            10,
+            false,
+            false,
+            3,
+            4,
+            "enemy_ettin"
+          ]
+        ]
+      },
+      {},
+      {}
+    ]
+  },
+  "limits": [
+    "Boss howl caller and cart/camera/ending remain pending; campaign6 victory held",
+    "No generic CUSTOM/PACK/raise extension beyond actual level06 declarations",
+    "World path start/insert scheduling and Lua pairs/tie ordering remain adapters, not native same-seed parity"
+  ],
+  "ranges": [
+    "level06.lua:22-46",
+    "level06.lua:48-151",
+    "scripts.lua:5785-5804",
+    "scripts.lua:5806-6016"
+  ],
+  "scope": "All four original level06 manual waves: nonsequence grouped path-only spawning, source RNG and interruption; actual World enemy insertion next simulation tick.",
+  "sha256": {
+    "all/path_db.lua": "2fb9f1ed4c4f6216d40b9969f790cf96991c94e3e7f089cb2e8cc89ed389bc5c",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "kr3/data/levels/level06.lua": "fe258415b95fa1e8abcd5fcfda94f8cfbd1242b54cb18f6f190b745b1f6e01be",
+    "kr3/data/levels/level06_spawner.lua": "47b632da8b0c679a826d4dc1b9f32f62ef0f757c7f434f7a164de3cbd924c04f",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74"
+  }
+}
