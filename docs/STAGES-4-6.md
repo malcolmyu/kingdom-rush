@@ -1,5 +1,9 @@
 # 第4–6关还原工作区
 
+0.2.126新增剑咏者「利刃大师」真实300金币单档购买，上限取tower_blade.powers.swirling.max_level=1而非soldier模板的3。记入spent/原退款，三兵各自克隆原melee并按SU.soldier_power_upgrade对三种power_name=swirling攻击应用damage_inc5/cooldown_inc-.2：15–19物理整数伤害、各冷却.8秒、forced_cooldown取最小值.8；不改变原攻击概率/顺序、命中时间或动画，不重置攻击时钟/消费额外RNG。普通攻击/反击等待结束后的outer loop才观察购买；补兵在insert继承已购等级。模板与其他单位不写回。塔信息栏按原tower_barrack.get_info临时创建并升级的职责显示15–19，不等已有兵观察才变，也不修改百科的原始无技能数据。
+
+原APK scripts1711–1750/get_info与SU2174–2280完整只读-bl核对，extract_blade.py新增审计字段与原300/单档/三攻击声明断言，controllers不执行。完美闪避counter仍为固定3 true伤害，未套mixed附加damage_inc；刀舞仍禁用。原142帧301774B独立Blade包与旧1314帧2122316B compact均未新增或改RGBA。第五自身预算/自然三模式与完整路径等仍待验，第5/6入口保持关闭，不称整体1:1或18模式已完成。
+
 0.2.125新增剑咏者「完美闪避」实际三档购买：每档175金币、上限3，记入spent/退款；刀舞与利刃大师仍禁用。原tower_barrack传播等级、soldier_power_upgrade每档chance_inc .1，新补兵继承已购等级，模板不写回。普通unit_dodges与health.on_damage是两次独立源检查；后者先排除死亡/stun/刀舞、非物理魔法类型及NO_DODGE，成功仅拒本次伤害并置active。原SU.y_soldier_do_single_melee_attack的前摇与收尾等待均检查dodge.active，非silent时中止该等待，下一outer tick进入反击；已经提交的命中不撤回，未提交的命中不伪造，stun可推迟开始，已进入的原等待/循环不被stun中断。
 
 原game_scripts1709–1884反击从开始计两秒，health.ignore_damage在这段期间忽略各类伤害；5/30秒前摇后，strict time-ca.ts>5/30每模拟tick最多一次，对50/.7椭圆内合法目标固定3点true伤害，不抽伤害随机、不随技能等级增加反击伤害。原APK没有mixed文本额外的damage_inc*swirling，未照抄。开始OR F_NET、结束仅清F_NET保留其他ban；原perfect_parry动画按loop播放，绘制只读World。反击结束恢复普通受伤与移动，不给所有Blade或所有hurt全局免伤。完整native队列/协程同输入、特殊死亡、音效和通用modifier枚举仍是适配边界。
@@ -179,3 +183,6 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 最终502Node通过，actualbuild1603files90,230,189B。blade-browser-publish/visible真实Campaign原预建升级250，再由两只原ettin死亡各70支付275，400+140-250-275=15，无直接写gold；真实菜单/技能disabled/集结与Space开波、World.step原三兵攻击真实减HP、源Canvas q/alpha/矩阵/原body与绘制World快照不变、原15秒死亡后新ID/开门补回三兵、pause/wheel/844x390 CDP触摸/地图清理正常exit0。desktop/mobile图已人工看，最终capture等真实HUD/infobar动画收起，非手改图面；受控stage5时钟/敌人样本不是天然5或原版同输入。
 旧双英雄专项、原完整天然九模式/存档手机、连续第四campaign19命三星/heroic142/iron95、UI/两性能全部正常exit0。cold100ms/1.5MBps/cacheoff旧14,744,458B/223req、book7.167s/总16.635s；第4真实旗书14,701,840B/213req、book7.211s/总16.769s，均<15MB，无整atlas/OTF/抬预算/降质，不保所有线路。原新塔图未进前四关首包，第五自身预算/自然三模式仍未验。公开一次manifest .123且blade-pages-ui正常exit0，新推送不轮询CI。logs artifacts/blade-tests-final/build-final/browser-publish/browser-visible/multi-regression/old-nine/stage4-natural/ui/performance/stage4-performance/pages-ui.log。
 前两专项失败如实：测试误用data-type取菜单upgrade（真实data-tower-action），修fixture；继而敌人固定road0离原集结超60，改选真实最近road/node且同步d/xy后合法起近战，不改产品range/伤害/金币/门控。早期extractor source tower_barrack结束行误1852，按原-bl1769–1850纠正后才输出。所有失败session已收，无产品异常/后台遗留。
+
+
+0.2.126第五关隔离冷入口诊断：真实title/save/map/book后进入未发布stage5，完整desktop双英雄HUD，100ms/1.5MBps/cacheoff实测15,532,002B/221requests，book6.838秒/总16.693秒，15MB断言明确失败。原catalog/进度/World绘制快照未改，无missing，未请求旧7.3MB扩展整图；这是关闭入口下的诊断，不是第五正式旗书发布路径/自然通关或预算通过。需再减少约532KB及将来第五书页增量，不能提高门槛/降质/清透明RGB/把必需图假延迟。可在实际菜单预览/交易前严格decode与owner校验的基础上，进一步按真实初级塔依赖分组；未实际交付前不称已优化。探针及失败日志保留ignored artifacts/stage5-resource-probe.mjs、stage5-resource-probe.json、swirling-stage5-budget.log。

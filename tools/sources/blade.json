@@ -5,10 +5,11 @@
     "go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2"
   },
   "limits": [
-    "Blade dance and swirling remain disabled; perfect parry uses original callback and counter loop",
+    "Blade dance remains disabled; swirling source three attacks and forced cooldown updated once",
     "Native coroutine/queued entity insertion, full modifiers/global upgrades/pathfinding remain adapted"
   ],
   "ranges": [
+    "scripts.lua:1711-1750",
     "systems.lua:939-1104",
     "game_scripts.lua:1673-1691",
     "game_scripts.lua:1693-1707",
@@ -20,7 +21,7 @@
     "scripts.lua:1769-1850"
   ],
   "rgbaVerified": true,
-  "scope": "275 upgrade, original three soldiers, perfect parry purchase/callback/two-second counter, door and replacement lifecycle",
+  "scope": "275 upgrade, original three soldiers, perfect parry purchase/callback/two-second counter, swirling 300 single-rank damage/cooldown, door and replacement lifecycle",
   "sha256": {
     "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
     "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",

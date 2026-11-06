@@ -1318,3 +1318,8 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 ## 0.2.125 Blade perfect parry
 
 原APK on_damage1673–1691/update1709–1884、SU2174–2280与health939–1104只读-bl核对。每档175/三档，counter固定3 true damage不随等级增加；原mixed额外damage_inc分支不移植。两秒计时从开始、5/30前摇、strict间隔每tick最多一次，原动画loop/anchor/trim/alpha同actorqueue，draw不改模拟。普通格挡与health回调不同；ignore_damage仅反击活跃期间生效。音频、全部特殊death/modifier/nativequeue尚未全还原，不称整体逐像素1:1。
+
+
+## 0.2.126 Blade swirling
+
+原tower能力300/max1与soldier三攻击damage_inc5/cooldown_inc-.2、SU2174–2280 forced_cd=min逻辑核实。普通攻击15–19/.8秒使用原动作与5/30命中，非新造技能动画；反击3 true伤害不追加mixed伤害。源码与图SHA/逐RGBA校验沿原Blade包，不新增整atlas。升级flash/完整音频和native协程同输入仍未恢复，不冒称全部原塔或全关像素认证。

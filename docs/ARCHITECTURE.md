@@ -381,3 +381,6 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 
 
 0.2.125 `blade-parry.mjs` owns Blade power transactions, per-unit rank/chance propagation, the health callback and two-second counter episode. TowerMenu dispatches power offers/ranks by actual tower identity without giving Blade an Arcane state. Both damage entry paths (ordinary enemy melee and hurtDefender) reach the new Blade callback; old classes retain their previous calculations/RNG. Ordinary unit_dodges remains a separate chance check. Only an active counter ignores damage, sets/clears its F_NET bit and emits fixed3 true-damage pulses at source strict intervals. Renderer supports explicit per-sprite loop poses for the source counter animation; the default old animation rules remain unchanged. Newly generated original constants are safe declarations, not executed controllers.
+
+
+0.2.126 Blade power offers now include source single-rank swirling. Per-unit melee copies apply original damage/cooldown increments at the outer-loop boundary, preserving attack timestamps and immutable templates; replacement insert inherits rank. Tower info computes the same source upgraded attack values directly from purchased tower rank, matching tower_barrack.get_info rather than borrowing another soldier state. Old classes and parry counter damage remain unchanged.
