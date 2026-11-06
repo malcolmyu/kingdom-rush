@@ -10,5 +10,5 @@ for(const id of[4,5,6])test(`stage ${id} original three-mode routes, quantities,
 });
 test('expansion loader isolates catalogs and never changes playable progress',async()=>{
  const fetchBefore=globalThis.fetch;globalThis.fetch=async url=>({ok:true,json:async()=>read(url.replace('assets/',''))});
- try{const original=JSON.stringify(base),repo={catalog:base,image:()=>null},e=await new ExpansionRepository(repo).init();const a=await e.level(4);assert.equal(a.id,4);assert.equal(await e.level(4),a);assert.equal(pack.releaseReady,false);assert.equal(base.levels.length,3);assert.equal(JSON.stringify(base),original);await assert.rejects(()=>e.level(7));await assert.rejects(()=>e.level(4,'fake'));}finally{globalThis.fetch=fetchBefore;}
+ try{const original=JSON.stringify(base),repo={catalog:base,image:()=>null},e=await new ExpansionRepository(repo).init();const a=await e.level(4);assert.equal(a.id,4);assert.equal(await e.level(4),a);assert.equal(pack.releaseReady,false);assert.equal(base.levels.length,3);assert.equal(JSON.stringify(base),original);await assert.rejects(()=>e.level(8));await assert.rejects(()=>e.level(4,'fake'));}finally{globalThis.fetch=fetchBefore;}
 });

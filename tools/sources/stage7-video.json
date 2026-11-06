@@ -1,0 +1,12 @@
+{
+  "metadataSource": "https://api.bilibili.com/x/player/pagelist?bvid=BV1y8411R7iB",
+  "playSource": "https://api.bilibili.com/x/player/playurl",
+  "bvid": "BV1y8411R7iB",
+  "cid": 1232909071,
+  "page": 20,
+  "part": "7-1 石环阵 战役模式",
+  "url": "https://www.bilibili.com/video/BV1y8411R7iB/?p=20",
+  "sampleSecond": 125,
+  "sampleSHA256": "c9f7cafb7bff76408f1d429d8f2743cf3dc250381c5a27e561b041c3ffa81f93",
+  "scope": "same stage reference seen; different hero, strategy, economy and inputs; not synchronized pixel acceptance"
+}

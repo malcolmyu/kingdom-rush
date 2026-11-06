@@ -5,8 +5,9 @@ OUT=ROOT/'build';OUT.mkdir(exist_ok=True)
 (OUT/'.nojekyll').touch()
 for name in ['index.html','style.css']+[p.name for p in (ROOT/'web').glob('*.mjs')]:
  shutil.copy2(ROOT/'web'/name,OUT/name)
+shutil.copytree(ROOT/'web/stages',OUT/'stages',dirs_exist_ok=True)
 # Reject incomplete runtime packages before producing a deployable manifest.
-for module in OUT.glob('*.mjs'):
+for module in OUT.rglob('*.mjs'):
  for relative in re.findall(r"(?:from\s*|import\s*)['\"](\./[^'\"]+)",module.read_text()):
   if not (module.parent/relative).is_file():raise RuntimeError(f'Missing runtime import {relative} from {module.name}')
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
@@ -17,7 +18,7 @@ assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-top').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/desktop-guidance').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/expansion').rglob('*')if p.is_file()}
-assets|={str(p.relative_to(ROOT/'web/assets'))for group in ['stage5-catapult','stage5-alleria','battle-multi','blade','gnoll-boss','stage6-ending','wild-magus'] for p in (ROOT/'web/assets'/group).rglob('*')if p.is_file()}
+assets|={str(p.relative_to(ROOT/'web/assets'))for group in ['stage7','stage5-catapult','stage5-alleria','battle-multi','blade','gnoll-boss','stage6-ending','wild-magus'] for p in (ROOT/'web/assets'/group).rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/arcane').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/tower-groups').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/battle-bottom').rglob('*')if p.is_file()}
@@ -37,6 +38,7 @@ optimize(OUT)
 # connections. Preload the title background while metadata is downloading.
 # Compress declaration metadata losslessly; raw JSON remains a compatibility fallback.
 metadata=['assets/wild-magus/catalog.json','assets/stage6-ending/catalog.json','assets/stage6-ending/rules.json','assets/gnoll-boss/catalog.json','assets/catalog.json','assets/ui/layouts.json','assets/fonts/catalog.json','assets/desktop-map/catalog.json','assets/arcane/catalog.json','assets/blade/catalog.json','assets/stage5-catapult/catalog.json','assets/stage5-alleria/catalog.json','assets/tower-groups/catalog.json','assets/tower-groups/entry/catalog.json']
+metadata += [str(p.relative_to(OUT)) for p in (OUT/'assets/stage7').glob('*.json')]
 metadata += ['assets/expansion/'+p.name for p in (OUT/'assets/expansion').glob('*.json') if p.name!='catalog.json']
 for relative in metadata:
  p=OUT/relative;(OUT/(relative+'.gz')).write_bytes(gzip.compress(p.read_bytes(),compresslevel=9,mtime=0))

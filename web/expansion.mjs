@@ -9,6 +9,7 @@ export class ExpansionRepository {
  async init(){this.source=await this.json('expansion/index.json');[this.arcane,this.towerAssets]=await Promise.all([this.json('arcane/catalog.json'),this.json('tower-groups/catalog.json')]);this.catalog=this.base.catalog;return this;}
  image(src){return this.base.image(src);}
  async level(id,mode='campaign'){
+  if(id===7){const{loadStage7}=await import('./stages/stage7.mjs');return loadStage7(this,mode);}
   if(!this.source?.levels.some(s=>s.id===id)||!['campaign','heroic','iron'].includes(mode))throw new Error('不在后续三关还原范围内');
   if(!this.groups.has(id))this.groups.set(id,this.json(`expansion/stage${String(id).padStart(2,'0')}.json`));
   const group=await this.groups.get(id),b=this.base.catalog,a=this.arcane;const extra=id===5?await(this.catapultAssets??=this.json('stage5-catapult/catalog.json')):{templates:{},frames:{},sheets:[]};

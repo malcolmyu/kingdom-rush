@@ -1,0 +1,222 @@
+{
+  "bytes": 6314902,
+  "frames": 4623,
+  "functions": {
+    "mod_plant_poison_pumpkin": {
+      "insert": {
+        "__script_path": "scripts.mod_dps.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "scripts.mod_dps.update"
+      }
+    },
+    "mod_plant_poison_pumpkin_slow": {
+      "insert": {
+        "__script_path": "scripts.mod_slow.insert"
+      },
+      "remove": {
+        "__script_path": "scripts.mod_slow.remove"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "scripts.mod_track_target.update"
+      }
+    },
+    "plant_poison_pumpkin": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.plant_poison_pumpkin.update"
+      }
+    }
+  },
+  "pending": [
+    "faerie trails path speeds/controller",
+    "satyr knives and hoplite summons",
+    "webspitting spider special",
+    "new allowed Druid advanced tower",
+    "natural modes, own budget and actual flag/book/rewards release"
+  ],
+  "rgbaVerified": true,
+  "rules": {
+    "modifierDamage": 32768,
+    "poison": 32,
+    "release": 0.5666666666666667,
+    "smoke": [
+      [
+        [
+          "left",
+          -74,
+          21,
+          false,
+          false
+        ],
+        [
+          "left",
+          75,
+          20,
+          true,
+          false
+        ],
+        [
+          "down",
+          -4,
+          -18,
+          false,
+          false
+        ],
+        [
+          "down",
+          -4,
+          62,
+          false,
+          true
+        ]
+      ],
+      [
+        [
+          "fill",
+          24,
+          0,
+          false,
+          false
+        ],
+        [
+          "fill",
+          29,
+          42,
+          false,
+          false
+        ],
+        [
+          "fill",
+          -34,
+          43,
+          true,
+          false
+        ],
+        [
+          "fill",
+          -34,
+          0,
+          true,
+          false
+        ]
+      ],
+      [
+        [
+          "fill",
+          48,
+          -4,
+          false,
+          false
+        ],
+        [
+          "fill",
+          45,
+          52,
+          false,
+          false
+        ],
+        [
+          "fill",
+          -43,
+          -3,
+          true,
+          false
+        ],
+        [
+          "fill",
+          -45,
+          56,
+          true,
+          false
+        ]
+      ]
+    ]
+  },
+  "runtimeModulesSHA256": {
+    "domain.mjs": "6ca6975dcc6b03a19ca12af9d8f7f9eb6e0c82c51c19a02ebf6389dff5f305dd",
+    "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
+    "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
+    "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
+    "renderer.mjs": "6408d1f1ba598de9f43f1435bcbd6edf092beaeea9bb35af740776426c5af402",
+    "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
+    "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
+  },
+  "scope": "isolated stage7 declaration and poison-pumpkin gameplay; source controllers bytecode-only; stage7 remains closed",
+  "sha256": {
+    "assets/gc64/all/components.lua": "3c5e9b9708ab01c4f1173f4d5fa0340bfd72ff620561bc8b95a3c2a21c438163",
+    "assets/gc64/all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "assets/gc64/all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "assets/gc64/all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "assets/gc64/all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "assets/gc64/all/templates.lua": "a9fe55b2d0196a6a5346cc898094354b47e2968db77424a287d25964c6fda65c",
+    "assets/gc64/all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "assets/gc64/kr3/data/levels/level07_data.lua": "8ccb190d058448b9421d28cb24614076ed34c3de681edd511326f89525e85095",
+    "assets/gc64/kr3/data/levels/level07_paths.lua": "9997cc97f63db4079737817ace8436ea12d061b3fcab73ceef676f0fc3642d0e",
+    "assets/gc64/kr3/data/waves/level07_waves_campaign.lua": "4398eb97a0f5ec4d8f7a1ee6ae8ce6791c1ce1414909582730006e94c1657d31",
+    "assets/gc64/kr3/data/waves/level07_waves_heroic.lua": "2df24be5a48b3764b8f3229591b7f6c224cfd3d9b6d519970af4e671a905241a",
+    "assets/gc64/kr3/data/waves/level07_waves_iron.lua": "0cb4de0e6cff76a24ecb6aedb5cb58790c56b48fabb4fbaa30357d42f419550d",
+    "assets/gc64/kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "assets/gc64/kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89",
+    "assets/kr3-phone/images/iphonehd/go_decals-1.png": "0e27b2572241bdf4cae4d131b7650d8cd9e510bbca04a40a3cbba865085866e5",
+    "assets/kr3-phone/images/iphonehd/go_decals.lua": "1652564b8b74aef1c1eb422f84ab51e4106d1394a9fd8902ff94d7d7b261c951",
+    "assets/kr3-phone/images/iphonehd/go_editor-1.png": "021dad78a5cfa5bf3bf96f7c52a61ddca9034735c1144abf9483f0bdda390ac9",
+    "assets/kr3-phone/images/iphonehd/go_editor.lua": "924e3c930aace8d480a1336377c1845ca4f2da3d36e1d9d2f534b6685c312263",
+    "assets/kr3-phone/images/iphonehd/go_enemies_ancient_metropolis-1.png": "6a98567f8587a34f35017cd3456b78e7728b2bfa29574ccf6ab5edc5b40f5a43",
+    "assets/kr3-phone/images/iphonehd/go_enemies_ancient_metropolis-2.png": "ecd7165e672712f3dc45f23fa6de59324ae89295038457ce7270b16281cea089",
+    "assets/kr3-phone/images/iphonehd/go_enemies_ancient_metropolis-3.png": "590757dbf0ee6e9b40166b381b974ad83fcffb83034bcd7316c4ec7f598dda70",
+    "assets/kr3-phone/images/iphonehd/go_enemies_ancient_metropolis.lua": "c5f9b18f25ae5dec10e6c7d8cab28c06135c0a5b3524a6a0ea45e87123399b71",
+    "assets/kr3-phone/images/iphonehd/go_enemies_common-1.png": "f81a2a7ba2fd70b3212a0e0c97bb80d869ee0e6ba517c310e5de86c5b4a71d2c",
+    "assets/kr3-phone/images/iphonehd/go_enemies_common-2.png": "a59586450a10d6211433ac659439744b345695011130c4c7bd2cb8f459b5454d",
+    "assets/kr3-phone/images/iphonehd/go_enemies_common-3.png": "9ef223b9fc2db872a58489440268d93504bf0c89da4802f032217d4ec2cbb44a",
+    "assets/kr3-phone/images/iphonehd/go_enemies_common.lua": "1878e4e59f09fd68a862f3de1f81011bb21b4acdc9da8df89017de4b5e92bcd9",
+    "assets/kr3-phone/images/iphonehd/go_enemies_elven_woods-1.png": "b8ef911021cd249b1a0e28c555d938efcb79ad89cb54fc9a8b91938257db64de",
+    "assets/kr3-phone/images/iphonehd/go_enemies_elven_woods-2.png": "be12a4f8f09b13e06c5e67e763fb05757fd2968f08584e541cef38d1c3b900c5",
+    "assets/kr3-phone/images/iphonehd/go_enemies_elven_woods.lua": "8f826719e22bf34e123867c4dfa3dbd2895a85974a93bbbbb5ffcef460e33cca",
+    "assets/kr3-phone/images/iphonehd/go_enemies_faerie_grove-1.png": "8bc937101feeecd63d61682316a789a1707458dd9597d3c93f17bc0f45c903a6",
+    "assets/kr3-phone/images/iphonehd/go_enemies_faerie_grove-2.png": "ecd63c8df9440d5528b0e6d00059b646e7d4e0e62ad99e1f6d0ed928ddeef21e",
+    "assets/kr3-phone/images/iphonehd/go_enemies_faerie_grove-3.png": "90356fbd44504e5edec41b2dc94f2a3aa46c56d3464c2ab8ecbd16de1f0216a1",
+    "assets/kr3-phone/images/iphonehd/go_enemies_faerie_grove.lua": "a0c92d5b69faa17abc53c9858a2b04ecfc734f7d621f9d8a8c562b58a0a744cc",
+    "assets/kr3-phone/images/iphonehd/go_enemies_forgotten_treasures-1.png": "a9702600b85320ae86718b179a78cbd2c844e867aeb562c10b66dc69b67bce86",
+    "assets/kr3-phone/images/iphonehd/go_enemies_forgotten_treasures-2.png": "3ece96d66485c4a97f3a545fcd8b03601b44c6eeb72a7dcd48e7a040f295139f",
+    "assets/kr3-phone/images/iphonehd/go_enemies_forgotten_treasures.lua": "c324d2c16675762f28b1c75829f881fd65bbd8a3df00be5bda9c35e5edb3ac04",
+    "assets/kr3-phone/images/iphonehd/go_enemies_hulking_rage-1.png": "5aeafb4cbc7df5d09ff60eef639a5f3e44a3e630f58729f92fa5800e1fbe5df7",
+    "assets/kr3-phone/images/iphonehd/go_enemies_hulking_rage-2.png": "64f44ee6dc02f603338a64b8e1d6588c9c2c916bb9966800be366cc834efbad5",
+    "assets/kr3-phone/images/iphonehd/go_enemies_hulking_rage.lua": "c05a3352095e2ef7069056ae96cc99d7176b79d82a001e5c4c87bfb898783945",
+    "assets/kr3-phone/images/iphonehd/go_hero_faustus-1.png": "e94480fe4707c874139ee5c14e0200e684e2bb5a0faf1c93068e025c8818a4f5",
+    "assets/kr3-phone/images/iphonehd/go_hero_faustus.lua": "6f9d055a4622db3eb1747591e5ba51a7f46183d80a383cd9ea612329136b29c0",
+    "assets/kr3-phone/images/iphonehd/go_hero_lynn-1.png": "987cb6c6b8b96588385a9a02c541d981fec9399b72a1339f703abe43a948aa48",
+    "assets/kr3-phone/images/iphonehd/go_hero_lynn.lua": "fea5ca9859bdaa4508497a1d558643d64c4b5c48a810d5fc4fbf4a5b2ae3175a",
+    "assets/kr3-phone/images/iphonehd/go_hero_regson-1.png": "e9402650a265e989f1d2940d9454462bf4431b6d99fd79243abe06f3b5729f3c",
+    "assets/kr3-phone/images/iphonehd/go_hero_regson.lua": "4121939fca936d30931850bfe454321775def7ac0936b0dfaede2593fb7bc0bb",
+    "assets/kr3-phone/images/iphonehd/go_stage04-1.png": "f2319770b98a3d9238d9bad7f92b382013b669680d079795aa738aaa33b7ad03",
+    "assets/kr3-phone/images/iphonehd/go_stage04.lua": "c63e5d5d7ec114387863707a6b3cb5191e3400adcfd8bbcd5a358f3a1c69b8b1",
+    "assets/kr3-phone/images/iphonehd/go_stage07-1.png": "939378187a408ce6e2eb845293713c638b4a5682aa35a1f28f660bc11da48384",
+    "assets/kr3-phone/images/iphonehd/go_stage07.lua": "869079a41b39413c4de5ac42708ff908d7c0779bc488612acc4ca3b9068e4fe6",
+    "assets/kr3-phone/images/iphonehd/go_stage07_bg-1.pkm": "9afaa38a95bf941a422f696a2bb381f3cf709932b57154c01f3a00b67d93a34e",
+    "assets/kr3-phone/images/iphonehd/go_stage07_bg.lua": "fc9e8723ffc01fe7d15be3ee9122662e3ad7ff6da4fb0f57b9956a4c6acb9a44",
+    "assets/kr3-phone/images/iphonehd/go_stage09-1.png": "1d52186061df958b6c2fe2ae96b0c660503aa748ba7a91e7af50f45d79150809",
+    "assets/kr3-phone/images/iphonehd/go_stage09-2.png": "64caba5d6e6328ee122d78486c6f9a479e96cc357a98695cbc349b4a21745f31",
+    "assets/kr3-phone/images/iphonehd/go_stage09-3.png": "deee0152ca0cbdf0e78594950eafb52166b2685244fa353032710bed0c618d82",
+    "assets/kr3-phone/images/iphonehd/go_stage09-4.png": "192124e914b0181b3269df1bd7b4170eb02e23608e3d2bcd992a4b80437baa52",
+    "assets/kr3-phone/images/iphonehd/go_stage09.lua": "43f55ef1f8e2d3912db3edfa74b8cbb51f9171f97cf621761b8b1073554e0d96",
+    "assets/kr3-phone/images/iphonehd/go_stage11-1.png": "8778473a623bffcfdb29dbd28bdb354fcf5484196b30fad99f4be12f19aece79",
+    "assets/kr3-phone/images/iphonehd/go_stage11.lua": "4783a278d97ca6211713333c8affc9bc3457ebfdded3a736cd5b3efd31db6cf1",
+    "assets/kr3-phone/images/iphonehd/go_stage82-1.png": "f362617a2d9c2d6ad94e80b70f1b95efb89152ae873aee52b6b4007de11b45f6",
+    "assets/kr3-phone/images/iphonehd/go_stage82.lua": "3898be164db07556c293d6796fe95d48afaa8607ab5454f314009e4fd1ff2ce4",
+    "assets/kr3-phone/images/iphonehd/go_stages_ancient_metropolis-1.png": "a311ee8a6548ec5569fc5d99885ad88f6377d970c176b7f1ff90d338f8145d30",
+    "assets/kr3-phone/images/iphonehd/go_stages_ancient_metropolis.lua": "02920c8d2f5c1c8a5f1e73786d7de1ee2bc614b4d6fafe5aff681dad5592618f",
+    "assets/kr3-phone/images/iphonehd/go_stages_elven_woods-1.png": "04a92375767d0120ce37b929350a279df564ba667c54e680265ea575871decf8",
+    "assets/kr3-phone/images/iphonehd/go_stages_elven_woods.lua": "01d9bd1d2c934bd4d49bf40214faa684fe17556eac7b65374742881afbad13c6",
+    "assets/kr3-phone/images/iphonehd/go_stages_faerie_grove-1.png": "69ec0d67ecd58f0d661e8895209a9777aee9c502ecdb5730938a70dedb3b5825",
+    "assets/kr3-phone/images/iphonehd/go_stages_faerie_grove.lua": "b329cff81b2f8804276b308b9dda3901d7237fc6d17636450b199b452a10bbad",
+    "assets/kr3-phone/images/iphonehd/go_stages_hulking_rage-1.png": "d53008de916523322abbf51a248c668f7092ae7b5bb54a3a80746e578b167b26",
+    "assets/kr3-phone/images/iphonehd/go_stages_hulking_rage.lua": "506f00c7c8a0c9aec76e8e21cdb5cbbafd309dc93cfae19d83d72f7a1f7fed02",
+    "assets/kr3-phone/images/iphonehd/go_towers-1.png": "ce728ee27bed688e2b8b94094cd6c2198e0acf9d7ee42ba7892a93dd5ee5da07",
+    "assets/kr3-phone/images/iphonehd/go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2",
+    "assets/kr3-phone/images/iphonehd/go_towers.lua": "9749d90e3bfe8ea204a76f12ac93dd1101aef390361fde3b850a42bc21c4da3c",
+    "assets/kr3-phone/strings/zh-Hans.lua": "0454722db2a27c9daa6d9c71d1ed1c2d99d171e12af3a6fe229c3245da075596"
+  }
+}
