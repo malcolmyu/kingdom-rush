@@ -1313,3 +1313,8 @@ catRallyPoint读取原level05_grid16格/ceil-clamp/原WATER|CLIFF|NOWALK gate，
 web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，原attack2(.33)/3(.5)/1(1)、各strict cooldown与forced1秒门，失败只重置自己的ts；5/30命中才提交attack/forced时钟、原10..14整数物理真实伤害，17/18/21帧动画不冒通用attack。source unit_dodges即使chance0仍在合法普通箭/敌近战调用处抽一次；health.on_damage的0级提前返回则不抽，blighter energy与AOE仍直接伤害，不造格挡/全局免伤。原随机姓名/初sprite时钟新单位各消费一次，不改旧单位/旧九RNG。
 普通死亡严格15秒后移除，再由原塔开门结束排入新对象三兵名额，非同对象满血返生；door_hold.5/close等待，尸体占名额，tower.blocked不启动新招募。离战2秒后原每strict1秒+25，真实集结会取消未提交攻击。原特殊死亡/blood/pop/audio/native队列ID和完整路径/插入时序仍适配。基础revive.disabled默认true，未伪造启用未实现高阶天赋。source upgrades proto99 TDUP41仅列basic1..3的fencing（所以blade不降价），TDUP45包含blade的expert rally（145→160），只扩新模板此作用，旧数值不改。
 新142帧301774B blade独立组按实际逻辑动画indices选完整门/兵动作，无损RGBA/size/trim/原PNG与controller SHA审计；不把整个物理door prefix覆盖旧1..3门图。仅stage5/6隔离catalog含声明/frames，真正3级菜单预览与交易前由原prepareTowerMenu decode，四关首包/原towercompact1314frames2122316B不变。原portraits_towers0005直接APK PNG exact裁图，UI617图，其余编码不改。tools/extract_blade.py/read_blade_upgrade_rules.lua/source blade.json全量提取已接，controllers只-bl/原proto常量读取不执行。
+
+
+## 0.2.125 Blade perfect parry
+
+原APK on_damage1673–1691/update1709–1884、SU2174–2280与health939–1104只读-bl核对。每档175/三档，counter固定3 true damage不随等级增加；原mixed额外damage_inc分支不移植。两秒计时从开始、5/30前摇、strict间隔每tick最多一次，原动画loop/anchor/trim/alpha同actorqueue，draw不改模拟。普通格挡与health回调不同；ignore_damage仅反击活跃期间生效。音频、全部特殊death/modifier/nativequeue尚未全还原，不称整体逐像素1:1。

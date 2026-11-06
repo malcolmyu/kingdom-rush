@@ -1,5 +1,11 @@
 # 第4–6关还原工作区
 
+0.2.125新增剑咏者「完美闪避」实际三档购买：每档175金币、上限3，记入spent/退款；刀舞与利刃大师仍禁用。原tower_barrack传播等级、soldier_power_upgrade每档chance_inc .1，新补兵继承已购等级，模板不写回。普通unit_dodges与health.on_damage是两次独立源检查；后者先排除死亡/stun/刀舞、非物理魔法类型及NO_DODGE，成功仅拒本次伤害并置active。原SU.y_soldier_do_single_melee_attack的前摇与收尾等待均检查dodge.active，非silent时中止该等待，下一outer tick进入反击；已经提交的命中不撤回，未提交的命中不伪造，stun可推迟开始，已进入的原等待/循环不被stun中断。
+
+原game_scripts1709–1884反击从开始计两秒，health.ignore_damage在这段期间忽略各类伤害；5/30秒前摇后，strict time-ca.ts>5/30每模拟tick最多一次，对50/.7椭圆内合法目标固定3点true伤害，不抽伤害随机、不随技能等级增加反击伤害。原APK没有mixed文本额外的damage_inc*swirling，未照抄。开始OR F_NET、结束仅清F_NET保留其他ban；原perfect_parry动画按loop播放，绘制只读World。反击结束恢复普通受伤与移动，不给所有Blade或所有hurt全局免伤。完整native队列/协程同输入、特殊死亡、音效和通用modifier枚举仍是适配边界。
+
+源证据扩展tools/extract_blade.py：原on_damage1673–1691、update1709–1884、SU.unit_dodges138–157、soldier_power_upgrade2174–2280、systems.health939–1104只读-bl审计；read_blade_parry_rules.lua只读声明常量，controllers不执行。142帧301774B独立组和旧compact1314帧2122316B均未变化，未新增图或降低质量。当前仍仅前四关12模式正式开放，第五自身预算/自然三模式与其余机制尚未验收，不把受控技能专项当新关通关或原版同输入像素认证。
+
 人类要求从2026-11-05起优先继续后面三关。0.2.119发布范围为前四关、每关三模式。第4关已接真实地图旗/道路、原书页、胜利奖励与存档上限4；第5、6关仍隔离开发且入口关闭，不把它们的普通波次结束当完整通关。
 
 `tools/extract_expansion.py --apk ../origins.apk`读取原APK的九份波次、三份路径/实体声明、模式限制与依赖模板；`tools/sources/expansion.json`固定所选源文件SHA。仅读声明，控制器未执行；模板reader沿用原脚本stub边界。三张背景及选中精灵图无损输出并逐解码RGBA校验，所有别名保留size/trim，3566个帧键共用紧凑图。

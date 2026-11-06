@@ -53,7 +53,7 @@ export class Renderer{
     else if(action==='death')name='death';
     else if(action==='walking'||action==='running')name='running';
     else if(['attack','ranged_attack'].includes(action)&&this.catalog.animations[(s.prefix||'')+'_'+action])name=action;
-    const full=s.prefix?s.prefix+'_'+name:name;const loop=action==='idle'||action==='idle_sword'||action==='walk'||action==='walking'||action==='running';name=this.frame(full,elapsed,loop&&s.loop!==false)||this.frame(s.prefix+'_'+s.name,elapsed,s.loop!==false)||this.frame(s.name,elapsed,s.loop!==false);
+    const full=s.prefix?s.prefix+'_'+name:name;const loop=action==='idle'||action==='idle_sword'||action==='walk'||action==='walking'||action==='running';name=this.frame(full,elapsed,(pose.loop??loop)&&s.loop!==false)||this.frame(s.prefix+'_'+s.name,elapsed,s.loop!==false)||this.frame(s.name,elapsed,s.loop!==false);
    }
    if(!name)continue;if(name.includes('%04i'))name=name.replace('%04i',String(overrides['tower.terrain_style']||1).padStart(4,'0'));
    const p=this.screen({x:pos.x+(s.offset?.x||0),y:pos.y+(s.offset?.y||0)}),anchor=s.anchor||{x:.5,y:.5};
