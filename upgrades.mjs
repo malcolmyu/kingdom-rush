@@ -20,5 +20,6 @@ export function patchUpgradeTemplates(templates,selected={},maxLevel=Infinity){
   if(key==='barrack_el_expert_tactician')tower.barrack.rally_range=Math.ceil(tower.barrack.rally_range*u.rally_range_factor);
   if(key==='stone_el_druid_hardened_boulders'||key==='mage_el_bane_spell'){const bullet=t[tower.attacks.list[0].bullet].bullet;bullet.damage_min=Math.ceil(bullet.damage_min*u.damage_factor);bullet.damage_max=Math.ceil(bullet.damage_max*u.damage_factor);}
   if(key==='stone_el_druid_sharp_splinters'){const bullet=t[tower.attacks.list[0].bullet].bullet;bullet.damage_radius=Math.ceil(bullet.damage_radius*u.damage_area_factor);}
- }}return t;
+ }if(key==='barrack_el_expert_tactician'&&t.tower_blade)t.tower_blade.barrack.rally_range=Math.ceil(t.tower_blade.barrack.rally_range*u.rally_range_factor);}
+ return t;
 }
