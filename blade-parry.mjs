@@ -11,7 +11,7 @@ export const bladeDodgeChance=(w,u)=>u.blade.dodgeChance??w.template(u.key).dodg
 // health.on_damage is distinct from ordinary unit_dodges. TRUE damage and
 // NO_DODGE never sample the callback; ignore_damage is checked before it.
 export function bladeRejectDamage(w,u,type){if(!u?.blade)return false;const s=u.blade;if(s.parry||s.dance)return true;
- const chance=bladeDodgeChance(w,u);if(chance<=0||u.hp<=0||u.stunned||u.frozen||s.dance||!(s.parryLevel>0)||(type&RULES.allTypes&~(RULES.physical|RULES.magical))||(type&RULES.noDodge))return false;
+ const chance=bladeDodgeChance(w,u);if(chance<=0||u.hp<=0||u.stunned||u.frozen||u.spiderWebCount>0||s.dance||!(s.parryLevel>0)||(type&RULES.allTypes&~(RULES.physical|RULES.magical))||(type&RULES.noDodge))return false;
  if(w.random()>chance)return false;s.dodgeActive=true;return true;
 }
 export function updateBladeParry(w,u){const s=u.blade,a=w.template(u.key).dodge.counter_attack;
