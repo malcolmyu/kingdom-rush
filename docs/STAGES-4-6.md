@@ -254,3 +254,5 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 0.2.133验证记录：558项Node全过；actualbuild gnoll-browser-selected真实Space开波后原路120,459附近受控spawn，World.step自动开场吼叫/28个真实召唤、普通近战与踩踏实际扣HP、原Canvas q/alpha/已decode/draw纯读、原肖像点选、死亡仅首领奖励1gold/无清场奖励、34帧后death-complete且100秒原尸体/仍不假won、pause/zoom/844x390 CDP触摸/退图清理通过。截图已人工看，非天然第6或原版同输入pixelcert。原天然九模式/存档手机、连续1–4→5自然三模式、UI和援军真实音频回归通过。音频首轮手机触点断言失败，未改产品/门槛的独立repeat正常exit0；首领专项初错nearestRoad返回road字段、出口前fixture导致先漏怪，以及不存在的infobar canvas selector均是测试错误，最终纠正后全流程exit0。
 
 最终0.2.133构建1645files/94,184,262B，所有web运行模块/新资源逐字节一致。cold100ms/1.5MBps/cacheoff旧14,816,173B/233req，第四真实旗书14,773,546B/223req，第五14,956,853B/234req，均<15MB，不承诺所有线路速度。第五仅43,147B余量。第6仍单独关闭、预算另有失败记录；不能把旧五通过冒第6通过，也不抬15MB/降质/整atlas/清透明RGB。主要logs artifacts/gnoll-tests-all/build/browser-selected/audio-repeat/natural4/natural5/old-nine/ui/performance/stage4-performance/stage5-performance.log。
+
+第6新独立boss包真实加载后，最终隔离冷入口17,754,938B/225req、book8.406秒/总18.419秒，明确超过15MB。实际调用无missing/unready、原catalog/进度/draw快照不变；assert不能称通过。此次预算浏览器在输出报告后关闭挂住，Node2696比daemon88207后精确TERM收143，未冒exit0/exit1；其他专项与公开UI均正常结束。下一批先补boss aura与父囚车链，再按真实依赖/阶段decode解决第6预算，不能抬门槛或删当前必需图。
