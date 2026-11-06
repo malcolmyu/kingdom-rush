@@ -1,6 +1,6 @@
 {
-  "controller": "game_scripts240-362 including246-274; scripts.arrow1947-2130; mod_damage; health magical armor branch",
-  "frames": 266,
+  "controller": "game_scripts240-362 including246-274; scripts.arrow1947-2130; mod_damage; health magical armor branch; aura14239-14277; phone upgrade_power transaction",
+  "frames": 268,
   "imageSha256": {
     "go_decals-1.png": "0e27b2572241bdf4cae4d131b7650d8cd9e510bbca04a40a3cbba865085866e5",
     "go_towers-1.png": "ce728ee27bed688e2b8b94094cd6c2198e0acf9d7ee42ba7892a93dd5ee5da07",
@@ -8,18 +8,22 @@
     "gui_portraits-1.png": "b8db2ab347915c6589d3fb362849fc353201fe3f567e7f44cb39351151e640ce"
   },
   "limits": [
-    "Special powers disabled",
+    "Slumber power disabled; special arrow trail particles/blood/pop/water miss incomplete",
     "Native coroutine/entity insertion and queued damage adapted",
     "Blood/pop/water miss and complete modifiers pending"
   ],
+  "powerUiPngSha256": "e6990a68f9ecfb2414e59a8f7baee5b1db087814add37e5bd682f09546a059cf",
   "rgbaVerified": true,
-  "scope": "baseline paired shooters, source upgrade, physical arrows and additive magic armor reduction",
+  "scope": "baseline pair and burst levels1..3 purchase/single special shot/arrow payload AOE and ground tween",
   "sha256": {
+    "all-phone/game_gui.lua": "e9ba578e0b2d53075f1e7b7fc7b9bae04736983246c2270c31000fd02060381d",
     "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
     "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
     "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
     "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
     "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3-phone/data/game_gui_data.lua": "0ff5d765fb621301314abf1f86352009ba45c7f75b080c6a3f0c09df70526f89",
+    "kr3/data/tower_menus_data.lua": "b5ac426492c12f87bcb2a2a8318639be075dc7980a63d7eaa9ec8f668a1c4a54",
     "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
     "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
   }

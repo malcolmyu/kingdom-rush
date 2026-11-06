@@ -24,9 +24,9 @@
 
 接下来必须闭合：
 
-- 第4关：双头食人魔完整特殊死亡/外部modifier生产链、枯萎者完整特殊死亡/音效及modifier生产链、载兵飞行敌人完整特殊伤害FX/完整原协程调度、树屋招募，以及本关原脚本事件。
-- 第5关：暮光骚扰者闪避/远程攻击、预建兵营与新塔解锁。
-- 第6关：狮鹫上下守卫/演出事件、对应关卡脚本；高级塔解锁和机制。
+- 第4关：新敌人完整特殊死亡/音效及通用modifier生产链、奥术塔剩余技能与本关完整自然战斗验收；树屋和5/10波焚林已接通。
+- 第5关：预建兵营完整职责与本关允许的其他高级塔；骚扰者远程/后跳影袭基础分支已接通。
+- 第6关：Alleria/猫、mega_spawner/囚车首领结局与其他高级塔；狮鹫上下守卫和援助已接通。
 - 新敌人通知/信息栏/特殊死亡、真实地图4–6旗与路径/奖励链、存档上限扩展；待玩法验收后一起开放。
 
 不加金币、削敌或改伤害/冷却以迁就测试。World当前部分通用行为能承载数据不代表新敌特殊机制已实现。前三关旧九模式必须持续回归。新关资源按需隔离，不进入旧冷启动15MB关键路径；后续启用时需另测各新关实际资源预算。
@@ -74,3 +74,7 @@ World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原runn
 只读APK模板/Arcane controller240–362及246–274闭包、普通arrow/mod_damage/health魔抗分支，固定SHA；原PNG所需266帧独立lazy组373,782B，逐RGBA/size/trim验证，旧前三关不加载该组，旧塔compact仍1314帧。9号肖像补源PNG无损裁取。模板仅合并ExpansionRepository隔离目录，没有开放新关或改旧存档。
 
 当前只闭合基础双箭/魔抗削减，不包括爆裂/睡眠购买与技能、全部血花/特效字/水面miss、完整原modifier/native队列/协程/IDs。现有motionVelocity和目标优先级仍为World适配，未称Love同seed或原同输入帧。第4–6仍须其余脚本/高级塔技能/预算与真实新关全流程验收；第6Alleria/spawner/囚车首领链仍欠，不能15波后冒自然完成。
+
+0.2.115闭合奥术塔爆裂箭三档原购买/普通箭payload连续分支：每级200/max3计入spent，首次level1变更被controller观察才重置12秒；若观察前连续升到2级，保留原special attack.ts=0，不丢时钟。原13/30 special单箭、两射手跨普通/特殊episode轮换，special释放range允许1.1倍；箭沿现原预测/抛物线，结束无论直接命中与否都queue aura，下一模拟tick执行一次level*80魔法AOE/r57.5/.7椭圆，允许飞行。伤害中心取仍存在目标当前位置（即使目标已死），移除后取预测点；爆炸画面仍在原预测to。原目标活且地面才生成两层1400地贴，source3300爆炸/offset-sort-7/14帧与原独立alpha/scale keys同actorqueue。末次直击杀敌时等待pending payload处理后才判胜，未把F_ALL当全局伤害免疫。
+
+原power图/背景/三rank位置和原价、下一档tooltip/满级隐藏、花费退款已接。睡眠箭仍disabled；箭尾粒子、全部blood/pop/water miss、原音频/升级flash与完整native modifier/协程/队列仍未全，不称整个Arcane或第4关已1:1。新增图仅原2个地贴帧，Arcane独立包268帧377,542B，旧塔compact1314不变；605张UI中新增rank1/2和背景都从APK原PNG exact无损裁取。仍未开放4–6；应继续睡眠箭、各stage资源分组预算与原始新关全流程，不能停在局部专项或冒18模式完成。

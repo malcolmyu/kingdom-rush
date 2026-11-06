@@ -21,7 +21,7 @@ tower_data=json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_tow
 layouts['battleTop']={'reference':tower_data['reference'],'hudScaleSteps':tower_data['hudScaleSteps'],'hud':{**find(game,'hud_normal_view'),'children':[n for n in find(game,'hud_normal_view')['children']if n.get('class')=='GGLabel']},'pause':find(game,'pause_button')}
 layouts['battlePowers']={'parent':find(game,'powers_view'),'button':read('game_gui_power_button'),'hudScaleSteps':tower_data['hudScaleSteps'],'reference':tower_data['reference']}
 layouts['infobar']={'reference':tower_data['reference'],'view':find(game,'infobar_view'),'powers':{k:v for k,v in find(game,'powers_view').items() if k!='children'},'bag':{k:v for k,v in find(game,'bag_view').items() if k!='children'},'bagButton':find(game,'bag_button'),'stats':tower_data['stats']}
-layouts['towerMenu']={'motion':tower_data['motion'],'menus':tower_data['menus'],'literals':tower_data['literals'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
+layouts['towerMenu']={'motion':tower_data['motion'],'menus':tower_data['menus'],'literals':tower_data['literals'],'powerPlaces':notification_data['tower_menu_power_places'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
 layouts['balloons']=notification_data['tutorial_balloons']
 layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['TOWER_LEVEL2','TOWER_LEVEL3','POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython']}
 layouts['upgrades']=find(world,'upgrades_view')
@@ -51,7 +51,7 @@ keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('portraits_hero_0001')
 keys.update(['portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','icon_0005'])
 keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,9,13])
-keys.update(['gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
+keys.update(['power_rank_0001','power_rank_0002','special_icons_bg','gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
  if key+'_disabled' in c['frames']:keys.add(key+'_disabled')
 keys.add('mapFlag_star_0018')
@@ -82,11 +82,11 @@ for key in sorted(keys):
  if not f:continue
  if f['a'] not in sheets:sheets[f['a']]=Image.open(ROOT/'web/assets/images'/f['a']).convert('RGBA')
  x,y,w,h=f['q'];im=Image.new('RGBA',tuple(f['size']));im.paste(sheets[f['a']].crop((x,y,x+w,y+h)),tuple(f['trim'][:2]));
- if key in ['portraits_towers_0009','portraits_towers_0013']:
+ if key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:
   with zipfile.ZipFile(opt.apk)as z:original=Image.open(io.BytesIO(z.read('assets/kr3-phone/images/iphonehd/'+f['a'].replace('.webp','.png')))).convert('RGBA')
   im.paste(original.crop((x,y,x+w,y+h)),tuple(f['trim'][:2]))
- im.save(OUT/(key+'.webp'),lossless=True,exact=key in ['portraits_towers_0009','portraits_towers_0013'])
- if key in ['portraits_towers_0009','portraits_towers_0013']:assert Image.open(OUT/(key+'.webp')).convert('RGBA').tobytes()==im.tobytes()
+ im.save(OUT/(key+'.webp'),lossless=True,exact=key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg'])
+ if key in ['portraits_towers_0009','portraits_towers_0013','power_rank_0001','power_rank_0002','special_icons_bg']:assert Image.open(OUT/(key+'.webp')).convert('RGBA').tobytes()==im.tobytes()
  images[key]={'size':f['size'],'src':'assets/ui/'+key+'.webp'}
 (OUT/'layouts.json').write_text(json.dumps({'reference':{'width':693,'height':320},'layouts':layouts,'images':images},ensure_ascii=False,sort_keys=True,separators=(',',':')))
 print(f'Exported {len(images)} original sprites and {len(layouts)} layout tables')

@@ -1,4 +1,5 @@
-import{updateArcane,updateArcaneArrow}from'./arcane.mjs';
+import{updateArcaneBursts}from'./arcane-burst.mjs';
+import{updateArcane,updateArcaneArrow,buyArcanePower}from'./arcane.mjs';
 import{initStage4Burn,updateStage4Burn,stage4NodeAllowed}from'./stage4-burn.mjs';
 import{initGryphons,updateGryphons,updateGryphonBolt,clickGryphon}from'./gryphon-events.mjs';
 import{addGryphonGuards,updateGryphonGuards,updateGuardArrow}from'./gryphon-guards.mjs';
@@ -62,6 +63,7 @@ export class World{
   return {key,type,level,price:t.tower.price,range:t.attacks?.range||t.barrack?.rally_range||145,rangeOffset:t.tower.range_offset||{x:0,y:0},cooldown:attack?.cooldown||1,damage:[bullet?.damage_min||0,bullet?.damage_max||0],bullet:attack?.bullet,damageFactor:t.tower.damage_factor??1,damageType:bullet?.damage_type||2,radius:bullet?.damage_radius||0,shootTime:attack?.shoot_time||0,offsets:attack?.bullet_start_offset?.x!==undefined?[attack.bullet_start_offset]:list(attack?.bullet_start_offset),count:type==='mage'?attack.loops||1:1,shotHeight:Math.max(28,...list(attack?.bullet_start_offset).map(p=>p?.y||0)),render:t.render.sprites};
  }
  allowed(type,level=1){if(type==='archer'&&level===4)return this.id>=4&&!!this.templates.tower_arcane&&!(this.data.rules?.locked_towers||[]).includes('tower_arcane');const locked=this.data.rules?.locked_towers||[];return !locked.includes('tower_build_'+TYPES[type].template)&&!locked.includes('tower_'+TYPES[type].template+'_'+level)&&level<=3;}
+ upgradeTowerPower(id,name){return buyArcanePower(this,this.slots[id],name);}
  repairEwok(id){return repairEwok(this,id);}
  hireEwok(id){return hireEwok(this,id);}
  build(id,type){const s=this.slots[id];if(!this.active()||!s||s.scriptLocked||s.ewok||s.type||!TYPES[type]||!this.allowed(type))return false;const d=this.towerDef(type);if(this.gold<d.price)return false;
@@ -216,8 +218,8 @@ export class World{
   updateStage4Burn(this);updateGryphons(this);for(const b of this.shots){if(b.type==='arcane-arrow'){updateArcaneArrow(this,b,dt);continue;}if(b.type==='gryphon-bolt'){updateGryphonBolt(this,b,dt);continue;}if(b.type==='gryphon-arrow'){updateGuardArrow(this,b,dt);continue;}if(b.type==='harasser-arrow'){updateHarasserArrow(this,b,dt);continue;}if(b.type==='ewok-spear'){updateEwokSpear(this,b,dt);continue;}if(b.type==='blighter-energy'){updateBlighterEnergy(this,b,dt);continue;}b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.type==='torch'){b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t-.5*b.g*b.duration*b.duration*t*(1-t);if(t>=1){b.done=true;this.effect('torch-impact',{x:b.tx,y:b.ty},13/30);if(b.target.hp>0&&distance({x:b.target.x+b.offset.x,y:b.target.y+b.offset.y},{x:b.tx,y:b.ty})<b.hitDistance&&!tryEwokDodge(this,b.target,{ranged:true})){this.hurtDefender(b.target,b.damage,b.damageType);const mod=this.template('mod_gnoll_burner');b.target.burn={at:this.time,until:this.time+mod.modifier.duration,next:this.time+mod.dps.damage_every,every:mod.dps.damage_every,damage:mod.dps.damage_min};}}continue;}if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
    if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType,b.xpFactor);}
   }
-  finishCarrierDeaths(this);this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);
-  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length&&!this.spells.busy&&!carrierBusy(this)){this.flushHeroXp();this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
+  updateArcaneBursts(this);finishCarrierDeaths(this);this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);
+  if(this.status==='playing'){if(this.lives<=0){this.status='lost';this.emit('lost');}else if(this.wave===this.totalWaves&&!this.pending.length&&!this.enemies.some(e=>e.hp>0)&&!this.shots.length&&!this.spells.busy&&!carrierBusy(this)&&!this.arcaneBursts?.some(f=>f.at===undefined)){this.flushHeroXp();this.status='won';this.emit('won');}else if(this.wave<this.totalWaves&&this.time>=this.nextWaveAt)this.startWave();}
  }
  get stars(){return this.mode!=='campaign'?1:this.lives>=18?3:this.lives>=6?2:1;}
 }

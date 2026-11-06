@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.114",
+  "version": "0.2.115",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -118,7 +118,8 @@
     "test:gryphon-lower": "node tests/gryphon-lower-browser.mjs",
     "test:gryphon-events": "node tests/gryphon-events-browser.mjs",
     "test:stage4-burn": "node tests/stage4-burn-browser.mjs",
-    "test:arcane": "node tests/arcane-browser.mjs"
+    "test:arcane": "node tests/arcane-browser.mjs",
+    "test:arcane-burst": "node tests/arcane-burst-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

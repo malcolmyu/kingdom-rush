@@ -345,4 +345,6 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 
 `stage4-burn.mjs`把原第4关campaign脚本作为World专属状态推进，不执行原Lua控制器。静态source实体保持只读，私有scene视图记录原错峰时钟；Renderer排除对应旧scenery路径后只绘一次，支持原双轴scale。holder24的scriptLocked同时控制真实World.build拒绝和DOM disabled，scriptZ按源1199→1400；其他关不新建该状态、不改交易与RNG。脚本演出结束以既有payloadJoin适配源位置/node继承的真实纵火者，之后进入原普通战斗链。nearestRoad只在该新关按原active路径和invalid ranges筛候选；原完整grid/队列调度不是全恢复。
 
-`arcane.mjs`只处理新高级分支的双射手episode/原普通arrow方程与接触后魔抗削减。World.upgrade接受原action_arg并验证目标，不让银弓等未实现分支误升Arcane；保留四基础TYPES与旧关rules。Arcane实例level4仅为当前基础archer升级树的运行时索引，原template tower.level=1不改。两技能无可购买入口。`assets/arcane/catalog.json`由ExpansionRepository按需合并，373KB紧凑组不进旧campaignTowerSheets，原帧metadata不改；Renderer只读每射手状态/气泡偏移时钟和命中FX，场景状态归World，售塔清episode。
+`arcane.mjs`只处理新高级分支的双射手episode/原普通arrow方程与接触后魔抗削减。World.upgrade接受原action_arg并验证目标，不让银弓等未实现分支误升Arcane；保留四基础TYPES与旧关rules。Arcane实例level4仅为当前基础archer升级树的运行时索引，原template tower.level=1不改。爆裂箭已有三档原购买与独立箭弹payload；睡眠箭继续禁用。`assets/arcane/catalog.json`由ExpansionRepository按需合并，原图紧凑组不进旧campaignTowerSheets，原帧metadata不改；Renderer只读每射手状态/气泡偏移时钟和命中FX，场景状态归World，售塔清episode。
+
+`arcane-burst.mjs`持有独立World payload记录（仅实际爆裂箭才创建集合），保留queue→下一tick的伤害职责，view记录区分predicted位置/target query中心/ground decal位置。AOE没有随机damage与新免伤门；record.level在发射/queue时固定，不随以后购买追改。`arcaneBurstSprites`纯读source templates/tween，原独立层/alpha/scale与spriteOrder进入同队列；没有render RNG/timer/跨World cache。最后敌人死亡时只让pending payload参与胜利门，不用展示寿命阻塞通关。`buyArcanePower`仅允许已实现burst，原200/200/200/cap3/changed语义与spent退款，普通四塔/旧关不新增状态或随机消耗。

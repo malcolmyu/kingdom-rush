@@ -1241,3 +1241,15 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 438Node全过（6新），actualbuild arcane-browser-release真实菜单购买/升级、因160不足230拒绝后用真实ettin死亡奖励70补足，0金币截图来自实际总570支出。控时钟发出两箭，Canvas q/alpha/tick旋转矩阵/World绘制前后不变，真实HP下降/.03魔抗削减、pause/wheel/mobileCDP触摸/地图清理unlocked1正常exit0。桌面/手机图已人工看，为隔离第4关受控目标与时钟，非天然第4关或原版同步。
 
 最终实际包原完整天然九模式/存档手机→UI→性能→公开UI串行全exit0，三个campaign20命，第三campaign入关自然XP4705，末XP继续累加。首campaign命令漏TEST_URL默认8765连接拒绝exit1，已正确8766独立完整复测通过，没有改产品/门控；remote UI断言后关闭稍慢，最终自行正常exit0，未TERM冒通过。冷100ms/1.5MBps/cacheoff14,763,121B/241requests，book7.199s/总16.400s<15MB，无整atlas/OTF/抬预算/降质，不保普遍线上速度。新关自身资源分组预算仍待验。公开一次manifest.113且arcane-pages-ui正常exit0，新推送后不轮询。logs artifacts/arcane-tests-release.log/build-release.log/browser-release.log/campaign-final.log/ui-final.log/performance-final.log/pages-ui.log。
+
+## 0.2.115 爆裂箭原购买/箭弹payload/范围特效
+
+只读APK game_scripts240–362/246–274、aura_arcane_burst14239–14277、scripts.arrow1989–2130结束payload分支及all-phone/game_gui原upgrade_power交易/构造；声明读取仅templates/菜单/GUI数据，控制器未执行。extract_arcane.py固定10个源SHA与4张原PNG/菜单PNG SHA，原7模板/268帧377,542B逐RGBA/size/trim验证。UI增加powerPlaces和原rank1/2/bg，3图直接APK PNG exact roundtrip，旧UI编码不改，总605图。旧塔compact1314帧2,122,316B不变，新Arcane组不进前三关冷路径。
+
+爆裂箭每档200/cap3，累计spent含技能600，1170战斗退款702。源changed level1观察时起12秒，等级2/3不重置既有at；若快速双买先观察到2级，仍保留原sa.ts0而非undefined。普通/特殊射手索引共用，special13/30放一箭，range重新检验1.1倍，继承原特殊箭flight_min.7/距离factor/预测/g-900/切线/hide6。箭结束不依赖direct hit也queue payload，下tick只一次80/160/240 magic伤害，无随机AoE值；source既存target.pos为查询中心（包括死但尚在集合的target），已移除才fallback to，而FX画面仍to。ground decal按AOE伤害队列提交前目标alive/非flying决定，保留两层1400各自alpha/scale tween；14帧3300爆炸anchor.5,.2916667/sortoffset-7。完整血花/特效字/水面miss/箭尾粒子/原音效/升级flash/native协程与modifier链仍欠，sleep未做继续禁用，不称整个tower/4关逐像素完成。
+
+446Node全过（8新）：原购买价格/拒绝/上限与退款、首次观察/连续双买clock、special单箭/射手交替、miss/dead/removed payload、AOE固定数值/flying、画面中心与伤害中心区分、两层alpha/scale与只读、pause/owner/旧关隔离、最后直接击杀等待payload而不提前won。最终串行npm test→build→burst-browser-publish→普通双箭回归→burst-campaign-publish完整天然旧九模式/存档手机→UI→performance全部exit0。三个campaign20生命，第三campaign入关自然XP4705，末XP继续增长。专项源World.step真发特殊箭/真实菜单三次200购买/原rank图cap和满级tooltip收起，actualCanvas原q/alpha/独立matrix/分层与World快照不变、两种真实敌人各失240/金钱保持自然奖励、pause/wheel/mobileCDP/地图清理通过。受控stage4时钟/目标/原敌击杀供购买，不是天然新关或原版同步。impact/rank3/mobile截图已人工看；技能购后30金币，impact48是原perython死亡奖励18，不是直接改gold。
+
+早期纯测写错order.sortY字段/期望y106，source字段是y且to.y99-7=92，改fixture；增强Canvas矩阵1e-6物理px阈值遇Chrome float32（实际672.4674682617188 vs数学672.4674700264931），矩阵平移改1e-4物理px/scale1e-6并按真实sheet筛选，不改产品坐标/像素。首final专项误在build结果未完整收集前启动，boot30秒超时，未当最终包通过；最终严格串行build后重测全通过。最终修购后下一rank说明/满级tooltip收起后，再完整final build与旧9/UI/性能，不拿旧包冒最终。失败logs原样留ignored artifacts，无挂住待收。
+
+最终build1534files73,327,461B，cold100ms/1.5MBps/cacheoff14,769,294B/242requests，book6.300s/总15.568s<15MB；无整atlas/OTF/抬预算/降质，不保普遍线路设备速度。新关自身7.3MB整包仍需实际分stage预算，不以旧路径通过称新关也通过。公开一次manifest.114且burst-pages-ui正常exit0，新推送后未轮询。最终logs artifacts/burst-tests-publish.log/build-publish.log/browser-publish.log/base-browser-publish.log/campaign-publish.log/ui-publish.log/performance-publish.log，公开pages-ui.log。第4–6入口继续关闭，releaseReadyfalse，整体in_progress。
