@@ -340,3 +340,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `gryphon-guards.mjs`只在第6关从原entities_list创建两名upper守卫，拥有独立World时钟的冷却aura和ranged episode，Renderer按原模板作为actor队列成员绘制。实体不借用普通soldiers的reinforcement/expiry/respawn模型；新gryphon-arrow独立类型复用已审计的arrow接触/抛物线更新，发射补原移动轴prediction_error，旧弹不改。lower守卫和关卡演出未接。
 
 `gryphon-guards.mjs`的lower状态机从原level实体与aura声明创建；wave/wait/out/shown/back独立维护源等待、移动与tween方向，guardPose纯读phase和原keys覆盖sprite alpha，actor仍与单位/前景同queue。upper保持原独立随机冷却。移动与等待同用World.step，不设timer，不混入普通兵的复活/援军寿命。原nav_rally.center在show为nil，保持该缺省而不补假数据，当前位置移动只依rally.pos。
+
+`gryphon-events.mjs`拥有第6关独立controller/actors/impacts，数据模块gryphon-event-data仅原声明与只读prototype常量，ExpansionRepository只合并隔离目录，World仅id6克隆扩展templates；不污染base catalog/旧存档。每Worldtick推进源Bezier/attack phase、专用AOE bolt，Renderer drawGryphons纯pose逐sprite入queue。Campaign非targeting的实际canvas交互先检查原飞机click_rect，只idle触发，起飞后源cooldown在下一次飞过之后等待。所有phase归World，非timer/UI cache。boss/Alleria/mega_spawner链仍未接，不能把普通waves胜利当第6完整结局。

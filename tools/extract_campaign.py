@@ -102,6 +102,7 @@ subprocess.run(['python3',str(ROOT/'tools/extract_ewok_spear.py')],check=True,cw
 subprocess.run(['python3',str(ROOT/'tools/extract_harasser.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_harasser_jump.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_guards.py')],check=True,cwd=ROOT)
+subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_events.py')],check=True,cwd=ROOT)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py'),'--apk',opt.apk],check=True)
 

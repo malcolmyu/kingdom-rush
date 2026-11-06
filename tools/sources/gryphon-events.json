@@ -1,0 +1,68 @@
+{
+  "limits": [
+    "Native entity insertion/coroutine and damage queue ordering adapted to World ticks",
+    "Level06 Alleria/spawner/jailed boss ending not implemented",
+    "UI audio events and complete modifier/visibility production chain pending"
+  ],
+  "ranges": [
+    "animation_db.lua:110-163",
+    "level06.lua:22-46",
+    "level06.lua:48-151",
+    "game_scripts.lua:17650-17784",
+    "game_scripts.lua:17789-17828",
+    "game_scripts.lua:17833-17860"
+  ],
+  "scope": "wave-gated two-sided fly/attack/approach/land/click/takeoff loop, dedicated bolt and impact",
+  "sha256": {
+    "all/path_db.lua": "2fb9f1ed4c4f6216d40b9969f790cf96991c94e3e7f089cb2e8cc89ed389bc5c",
+    "kr3/data/levels/level06.lua": "fe258415b95fa1e8abcd5fcfda94f8cfbd1242b54cb18f6f190b745b1f6e01be",
+    "kr3/data/levels/level06_paths.lua": "c76cf18722f0344ecbd9bcc3e4bf92f140297d600489174cab530ebf9fc96ab3",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89",
+    "lib/klove/animation_db.lua": "c00e5bde6e18db9b5eae6ce8830b3d2e8fa78b4c40142605a40564d2930eff74"
+  },
+  "waves": {
+    "campaign": [
+      {
+        "cooldown": 120,
+        "delay": 17,
+        "side": "left",
+        "wave": 5
+      },
+      {
+        "cooldown": 120,
+        "delay": 13,
+        "side": "right",
+        "wave": 10
+      }
+    ],
+    "heroic": [
+      {
+        "cooldown": 360,
+        "delay": 15,
+        "side": "left",
+        "wave": 2
+      },
+      {
+        "cooldown": 360,
+        "delay": 15,
+        "side": "right",
+        "wave": 4
+      }
+    ],
+    "iron": [
+      {
+        "cooldown": 48,
+        "delay": 15,
+        "side": "left",
+        "wave": 1
+      },
+      {
+        "cooldown": 48,
+        "delay": 15,
+        "side": "right",
+        "wave": 1
+      }
+    ]
+  }
+}
