@@ -39,3 +39,7 @@ World只新增可选 `data.stageRuntime` 的init/step/activatePlant接口，Rend
 优先补原faerie_trails路径速度机关，或satyr_cutthroat两次掷刀/相应投射物、hoplite召唤链的一条真实连续流程。新敌目前导入声明/图和通用运动并不等于专有AI完成；普通generic ranged不足以代替两次shoot_times。webspitting spider专用蛛网、原允许的Druid等高级塔分支、ready/敌人通知与百科、成就/声音、自然三模式、预算及真正发布链也未全。
 
 第7关充分验收后才扩cap、原旗路、书页与奖励存档。不要继续无限磨已完毒南瓜/旧HUD/4–6固定策略，也不要只因资源存在就开放7。整体原grid、native队列/IDs/global z、旧箭物理、Arivan、安全区、特殊death、血池、完整音频与宝石天赋仍有差异，不称整体1:1。
+
+最终交付构建1678文件104,578,733B（含manifest）；runtime main a1b2ea6、Pages b9f03f4均推送。私有Site source74007759bb6e0a11a3274e0624765f6626ff87d0，deploy appgdep_6aee318f07608191bc8949fa5d76d4e8 succeeded，owner-only保持。公开站本轮一次manifest确认0.2.140/public UI正常exit0，新推送不轮询CI。Sites技能位置已更新为1.1.4，旧1.1.3不存在；helper/native各一次成功，无重复部署。
+
+主要日志：artifacts/pumpkin-tests-publish.log、pumpkin-build-publish.log、pumpkin-browser-publish.log、pumpkin-source-pinned.log、pumpkin-groups.log、pumpkin-natural.log、pumpkin-old-nine.log、pumpkin-ui.log、pumpkin-pages-ui.log，以及pumpkin-performance.log/stage4-performance/stage5-performance/stage6-performance/stage7-budget。第7预算是正常exit1，其他最终专项均正常exit0。HTTP29429比daemon88207后精确TERM，owned server正常收143，所有结果收齐无后台。
