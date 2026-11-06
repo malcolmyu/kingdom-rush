@@ -13,6 +13,8 @@
 
 主要logs artifacts/sixth-tests-publish/build-publish/browser-final/browser-publish/browser-publish-repeat/browser-retry-flow/presentation/natural-final/old-nine-build/ui/pages-ui/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish.log；sixth-browser-publish是关闭阶段143，repeat是弱iron策略失败。完整正常browser-final保存了真实三模式/奖励/手机结果；不同输入/初始时钟下自动策略不保证零漏。当前普通15波后必须实际囚车/首领/死亡收尾，最终父complete才won，没去掉机制来过自然样本。
 
+补充最终交付记录：sixth-browser-retry-flow的独立自动计划iron多次lost保留，未修改产品数值；artifacts/stage6-iron-continuation.mjs首脚本生成误把prep的step替换成含t的片段，ReferenceError为fixture。修正后，从真实已赚第6heroic存档续铁人、真实20秒准备与原“再战一次”后169/169 won，奖励/手机重载/清理全部正常exit0（sixth-iron-continuation-repeat.log）。这是合法续测，不拿末XP51088冒首次入6前置，也不冒称所有自动策略首试必过。首次完整三模式正常browser-final，以及publish三胜/持久化后关闭143的记录保持区分。最终main/runtime cbdee0f，Pages f1af29b，私有source1d71efa75e3f588b072b6d0fedc2a2e444ca0d6d/deploy appgdep_6aee25be2758819189ea501bae73bf1e succeeded，owner-only。
+
 0.2.139实际闭合狂野魔术师「破坏守卫」ward三级购买/施法/沉默与恢复链。原每档225/max3/目标数1、3、6，10秒strict冷却、14/30施法；第一档changed被outerloop观察才起cd，后两档不重置，首观察前连升保留原ts0。source F_SPELLCASTER2147483648且can_do_magic、原范围/vis门选最前排序列表；cast开始捕获列表，释放时不擅加新range/vis/magic门，取当时等级上限queue mod，释放后再记冷却ts。已开始phase不因tower.blocked中途冻结。s.wild.powers独立，塔810+技能675=spent1485/战斗退891；eldritch与普通交替手/same计数保持。
 
 原mod_ward经game_scripts共享scripts表继承mod_silence.insert/remove（4889–4921）与mod_track_target.update（4263–4300），APK没有KR3 override；controllers仅-bl不执行。insert只有实体/health alive/enemy门，原can_do_magic/can_accept_magic直接false，remove对仍在entities的enemy直接true，不虚构引用计数或保存prior false；未改外部stunned/frozen、Arcane/Blade stun计数。同级重复仅刷新modifier.ts、不重置tween年龄；低级拒绝，高级替换；strict now-ts>10或死亡/移除后释放自己状态。不同外部沉默的完整通用组合生命周期仍不是已实现的通用引擎，不能声称全部原mod都闭合。
