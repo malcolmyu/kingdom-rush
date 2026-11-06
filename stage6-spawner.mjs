@@ -24,4 +24,4 @@ export function updateStage6Spawner(w){const s=w.megaSpawner;if(!s)return;
  if(!s.hasCurrent){s.current=current;s.hasCurrent=true;s.at=w.time;s.queue=compileStage6Wave(w,current);}
  while(s.queue.length&&w.time-s.at>=s.queue[0].at){const p=s.queue.shift();s.insertQueue.push({...p,wave:current});}
 }
-export function stage6EndingBlocksVictory(w){return w.id===6&&w.mode==='campaign';}
+export{stage6EndingBlocksVictory}from'./stage6-ending.mjs';
