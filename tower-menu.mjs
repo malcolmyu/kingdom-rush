@@ -7,8 +7,8 @@ import{infobarViewport}from'./infobar.mjs';
 import{towerRefund}from'./domain.mjs';
 import{rectStyle}from'./ui.mjs';
 import{towerBookStats}from'./encyclopedia.mjs';
-const towerPowers=s=>(s.wild||s.blade||s.arcane)?.powers||{};
-const powerOffer=(w,s,name)=>s.wild?wildPowerOffer(w,s,name):s.blade?bladePowerOffer(w,s,name):arcanePowerOffer(w,s,name);
+const towerPowers=s=>(s.wild||s.blade||s.arcane||s.druid)?.powers||{};
+const powerOffer=(w,s,name)=>w.data.stageRuntime?.powerOffer?.(w,s,name)||(s.wild?wildPowerOffer(w,s,name):s.blade?bladePowerOffer(w,s,name):arcanePowerOffer(w,s,name));
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
 const family={archer:'archer',barrack:'barrack',mage:'mage',artillery:'rock_thrower',ewok:'ewok'};
 export function menuButtonRect(place,size){return{x:place.x-size[0]/4,y:place.y-size[1]/4,w:size[0]/2,h:size[1]/2};}
