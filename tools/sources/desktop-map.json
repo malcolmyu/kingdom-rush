@@ -16570,6 +16570,13 @@
         "x": 344,
         "y": 790
       }
+    },
+    {
+      "id": 6,
+      "pos": {
+        "x": 609,
+        "y": 814
+      }
     }
   ],
   "roads": [
@@ -16732,6 +16739,48 @@
           "y": 823
         }
       ]
+    },
+    {
+      "dots": [
+        {
+          "x": 364,
+          "y": 843
+        },
+        {
+          "x": 390,
+          "y": 854
+        },
+        {
+          "x": 418,
+          "y": 868
+        },
+        {
+          "x": 445,
+          "y": 882
+        },
+        {
+          "x": 472,
+          "y": 888
+        },
+        {
+          "x": 498,
+          "y": 887
+        },
+        {
+          "x": 526,
+          "y": 883
+        },
+        {
+          "x": 553,
+          "y": 876
+        },
+        {
+          "x": 580,
+          "y": 866
+        }
+      ],
+      "id": "6",
+      "unlock_at": 6
     }
   ],
   "pointsPath": "kr3-desktop/data/map_points.lua",
@@ -16740,7 +16789,7 @@
     "x": 1920,
     "y": 1080
   },
-  "scope": "First four original flags/roads; source points unchanged, stages5/6 unreleased",
+  "scope": "Original first six flags and roads from pinned map_points declaration",
   "hud": {
     "settings": {
       "pos": {

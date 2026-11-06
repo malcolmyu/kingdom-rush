@@ -23,7 +23,7 @@ layouts['battlePowers']={'parent':find(game,'powers_view'),'button':read('game_g
 layouts['infobar']={'reference':tower_data['reference'],'view':find(game,'infobar_view'),'powers':{k:v for k,v in find(game,'powers_view').items() if k!='children'},'bag':{k:v for k,v in find(game,'bag_view').items() if k!='children'},'bagButton':find(game,'bag_button'),'stats':tower_data['stats']}
 layouts['towerMenu']={'motion':tower_data['motion'],'menus':tower_data['menus'],'literals':tower_data['literals'],'powerPlaces':notification_data['tower_menu_power_places'],'places':notification_data['tower_menu_button_places'],'root':find(game,'tower_menu'),'tooltip':read('game_gui_tower_menu_tooltip')}
 layouts['balloons']=notification_data['tutorial_balloons']
-layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['TOWER_LEVEL2','TOWER_LEVEL3','TOWER_ARCHER_ARCANE','TOWER_BARRACK_BLADE','POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython','enemy_ettin','enemy_gnoll_blighter','enemy_twilight_elf_harasser']}
+layouts['notifications']={key:{'meta':notification_data['notifications'][key],'layout':json.loads(subprocess.check_output(['luajit',str(ROOT/'tools/read_notifications.lua'),str(notification_source),key]))}for key in ['TOWER_LEVEL2','TOWER_LEVEL3','TOWER_ARCHER_ARCANE','TOWER_BARRACK_BLADE','TOWER_MAGE_WILD_MAGUS','POWER_REINFORCEMENT','POWER_THUNDERBOLT','TIP_HEROES','enemy_gnoll_reaver','enemy_gnoll_burner','enemy_gnoll_gnawer','enemy_hyena','enemy_perython','enemy_ettin','enemy_gnoll_blighter','enemy_twilight_elf_harasser']}
 layouts['upgrades']=find(world,'upgrades_view')
 layouts['upgradeItem']=read('upgrade_item_view')
 right=find(world,'bottom_right_bar_view')
@@ -64,6 +64,8 @@ for family in ['archer','barrack','mage','rock_thrower']:
   icon=c['templates'][f'tower_{family}_{level}']['info']['enc_icon'];keys.update([f'encyclopedia_tower_thumbs_{icon:04}',f'encyclopedia_towers_{icon:04}'])
 c['templates'].update(json.loads((ROOT/'web/assets/expansion/catalog.json').read_text())['templates'])
 c['templates'].update(json.loads((ROOT/'web/assets/blade/catalog.json').read_text())['templates'])
+c['templates'].update(json.loads((ROOT/'web/assets/wild-magus/catalog.json').read_text())['templates'])
+icon=c['templates']['tower_wild_magus']['info']['enc_icon'];keys.update([f'encyclopedia_tower_thumbs_{icon:04}',f'encyclopedia_towers_{icon:04}'])
 icon=c['templates']['tower_blade']['info']['enc_icon'];keys.update([f'encyclopedia_tower_thumbs_{icon:04}',f'encyclopedia_towers_{icon:04}'])
 icon=c['templates']['tower_arcane']['info']['enc_icon'];keys.update([f'encyclopedia_tower_thumbs_{icon:04}',f'encyclopedia_towers_{icon:04}'])
 keys.update(['encyclopedia_tower_thumbs_0121','encyclopedia_creep_thumbs_frame_0001','encyclopedia_creep_thumbs_frame_0002'])
@@ -80,7 +82,7 @@ keys.update(f'victoryStars_{i:04}'for i in range(1,55))
 keys.update(f'mapFlag_{i:04}'for i in [1,6,7,8,9,10])
 keys.update(f'levelSelect_badges_{i:04}'for i in range(1,7))
 keys.update(f'victoryBadges_{i:04}'for i in range(1,6))
-exact_keys={'portraits_sc_0013','portraits_towers_0005','portraits_sc_0051','portraits_sc_0014','portraits_sc_0019','encyclopedia_creeps_0004','encyclopedia_creeps_0005','encyclopedia_creep_thumbs_0004','encyclopedia_creep_thumbs_0005','encyclopedia_towers_0017','encyclopedia_tower_thumbs_0017','alert_creep_0004','alert_creep_0005','alert_creep_0008','encyclopedia_creeps_0008','encyclopedia_creep_thumbs_0008','encyclopedia_towers_0020','encyclopedia_tower_thumbs_0020'}
+exact_keys={'encyclopedia_towers_0016','encyclopedia_tower_thumbs_0016','portraits_sc_0013','portraits_towers_0005','portraits_sc_0051','portraits_sc_0014','portraits_sc_0019','encyclopedia_creeps_0004','encyclopedia_creeps_0005','encyclopedia_creep_thumbs_0004','encyclopedia_creep_thumbs_0005','encyclopedia_towers_0017','encyclopedia_tower_thumbs_0017','alert_creep_0004','alert_creep_0005','alert_creep_0008','encyclopedia_creeps_0008','encyclopedia_creep_thumbs_0008','encyclopedia_towers_0020','encyclopedia_tower_thumbs_0020'}
 images={};sheets={}
 for key in sorted(keys):
  f=c['frames'].get(key)

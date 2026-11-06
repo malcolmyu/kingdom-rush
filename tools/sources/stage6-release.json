@@ -1,0 +1,88 @@
+{
+  "apkFiles": {
+    "assets/gc64/kr3/data/levels/level06_data.lua": "7adfa7af6912097465e4648c45b6a230a199fc1c950f39bb64389111dc49b776",
+    "assets/gc64/kr3/data/levels/level06_paths.lua": "c76cf18722f0344ecbd9bcc3e4bf92f140297d600489174cab530ebf9fc96ab3",
+    "assets/gc64/kr3/data/waves/level06_waves_campaign.lua": "4ad061712219e7a2a658c41060d6649b182778b348e7759cc1580f1bc0d6674f",
+    "assets/gc64/kr3/data/waves/level06_waves_heroic.lua": "4f3216ead28290c1e2385d0f5813053a65b07395e9b7c201cf6291622657861b",
+    "assets/gc64/kr3/data/waves/level06_waves_iron.lua": "63d3f30b714c64bd0756cf6d7684e4eab58fbddfcaf2f96824f05845d93bed79"
+  },
+  "bookAtlasSHA256": "23352a39a58ced6f9c7578a9e93078bef42bb6225f3d8316e486e359fc1b2730",
+  "flag": {
+    "id": 6,
+    "pos": {
+      "x": 609,
+      "y": 814
+    }
+  },
+  "kind": "original declaration tables; no controllers executed",
+  "mapPointsSHA256": "c183fee5455390a5375685bf61ace8549883dde0d843bca4faf745905ec9114c",
+  "notOriginalSynchronizedPixels": true,
+  "notification": "TOWER_MAGE_WILD_MAGUS",
+  "notificationDeclarationSHA256": "0ff5d765fb621301314abf1f86352009ba45c7f75b080c6a3f0c09df70526f89",
+  "road": {
+    "dots": [
+      {
+        "x": 364,
+        "y": 843
+      },
+      {
+        "x": 390,
+        "y": 854
+      },
+      {
+        "x": 418,
+        "y": 868
+      },
+      {
+        "x": 445,
+        "y": 882
+      },
+      {
+        "x": 472,
+        "y": 888
+      },
+      {
+        "x": 498,
+        "y": 887
+      },
+      {
+        "x": 526,
+        "y": 883
+      },
+      {
+        "x": 553,
+        "y": 876
+      },
+      {
+        "x": 580,
+        "y": 866
+      }
+    ],
+    "id": "6",
+    "unlock_at": 6
+  },
+  "thumbnail": {
+    "a_name": "screen_map-3.png",
+    "a_size": [
+      2048,
+      2048
+    ],
+    "alias": {},
+    "f_quad": [
+      354,
+      1489,
+      342,
+      246
+    ],
+    "size": [
+      342,
+      246
+    ],
+    "trim": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,5 +1,18 @@
 # 技术方案：数据驱动的塔防战役
 
+0.2.140正式发布第6关「狮鹫驿站」三模式，生产cap6/前六关18模式。原flag6(609,814)、9道路点与stage_thumbs_0006原342×246书页来自固定map_points/desktop atlas声明，RGBA裁图无损；原第一波TOWER_MAGE_WILD_MAGUS通知与狂野魔术师百科接通。旧第五胜利save只迁移访问6，不赠XP、星或挑战；原道路旗揭示一次后保存。真实胜利再记第6星/挑战，手机重载保留。第7关仍拒绝。不是整关/全系统1:1像素认证。
+
+百科专用声明改为实际统计字段投影，逐塔/敌与原完整模板统计对比一致；战斗仍由ExpansionRepository按关完整模板原子替换/解码，不删战斗图或弱化机制。此举修复发布初包把第五冷入口推到15,021,175B的失败，不抬预算或降质。原compact1314帧2122316B和所有战斗图字节不变。
+
+浏览器真实第五已赚checkpoint XP38903起，合法训练/天赋后按World API连续战役18命三星、英雄120/120、铁人169/169，首领death-complete/父complete、原通知发现、奖励存档和手机重载通过，末XP48653。测试以固定步长驱动World，批次间真实等待第14波boss/cart网络decode；控制测试宿主RAF避免同一World被两个时钟推进，不写HP/gold/伤害/seed/cd或assetsReady。不是原版同输入同步。初较弱策略13/17命和一版iron lost保留，最终仅合法策略emergencyRange campaign350/iron220；默认CPU旧计划保持。CPU新档1–4→5→6自然链仍20命零漏/heroic120/iron169，末XP47121且真实recordVictory记奖励。人类援军叠音.132修复保留。
+
+
+最终验收：601项Node测试全过；原完整天然九模式/存档手机、连续新档4/5/6 CPU自然链、stage6-browser-final完整三胜奖励/手机重载、stage6-presentation一次迁移/原书页与UI通过。另一publish浏览器也已写完三胜/手机结果，但Node在关闭阶段挂住，确认无子进程并比daemon88207后精确TERM收143，不称exit0；其后独立弱策略iron失败保留，不把策略搜索失败改产品值。最终重试流程允许真实点击“再战一次”，只沿产品事件保存实际earned XP，不伪造存档/奖励。
+
+最终actualbuild1666files/96,300,852B含manifest；web模块全逐字节一致，原第6缩略图RGBA exact。cold100ms/1.5MBps/cacheoff：旧14,852,300B/240req，总16.096s；第四真实旗书14,809,678B/230req，book7.172s/总16.991s；第五14,992,983B/241req，book7.852s/总17.722s；第六真实旗书14,933,653B/240req，book8.134s/总23.728s，15MB全exit0。第6总时长含旧存档首次道路旗揭示；不保所有线路。第五仅7017B余量。boss/cart事件仍另实际下载3.87MB，不称整局总流量15MB。公开本轮一次manifest确认.139/UI exit0，新推送不轮询CI。
+
+主要logs artifacts/sixth-tests-publish/build-publish/browser-final/browser-publish/browser-publish-repeat/browser-retry-flow/presentation/natural-final/old-nine-build/ui/pages-ui/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish.log；sixth-browser-publish是关闭阶段143，repeat是弱iron策略失败。完整正常browser-final保存了真实三模式/奖励/手机结果；不同输入/初始时钟下自动策略不保证零漏。当前普通15波后必须实际囚车/首领/死亡收尾，最终父complete才won，没去掉机制来过自然样本。
+
 0.2.139实际闭合狂野魔术师「破坏守卫」ward三级购买/施法/沉默与恢复链。原每档225/max3/目标数1、3、6，10秒strict冷却、14/30施法；第一档changed被outerloop观察才起cd，后两档不重置，首观察前连升保留原ts0。source F_SPELLCASTER2147483648且can_do_magic、原范围/vis门选最前排序列表；cast开始捕获列表，释放时不擅加新range/vis/magic门，取当时等级上限queue mod，释放后再记冷却ts。已开始phase不因tower.blocked中途冻结。s.wild.powers独立，塔810+技能675=spent1485/战斗退891；eldritch与普通交替手/same计数保持。
 
 原mod_ward经game_scripts共享scripts表继承mod_silence.insert/remove（4889–4921）与mod_track_target.update（4263–4300），APK没有KR3 override；controllers仅-bl不执行。insert只有实体/health alive/enemy门，原can_do_magic/can_accept_magic直接false，remove对仍在entities的enemy直接true，不虚构引用计数或保存prior false；未改外部stunned/frozen、Arcane/Blade stun计数。同级重复仅刷新modifier.ts、不重置tween年龄；低级拒绝，高级替换；strict now-ts>10或死亡/移除后释放自己状态。不同外部沉默的完整通用组合生命周期仍不是已实现的通用引擎，不能声称全部原mod都闭合。
