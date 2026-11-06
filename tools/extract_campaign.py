@@ -105,6 +105,13 @@ subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_guards.py')],check=Tru
 subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_events.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_stage4_burn.py')],check=True,cwd=ROOT)
 
+# New-stage declarations must exist before GUI and release-book dependencies.
+subprocess.run(['python3',str(ROOT/'tools/extract_arcane.py')],check=True,cwd=ROOT)
+subprocess.run(['python3',str(ROOT/'tools/extract_stage5_catapult.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_stage5_alleria.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_desktop_multi_hero.py')],check=True)
+subprocess.run(['python3',str(ROOT/'tools/extract_blade.py')],check=True)
+
 subprocess.run(['python3',str(ROOT/'tools/extract_ui.py'),'--apk',opt.apk],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_fonts.py'),'--apk',opt.apk],check=True)
@@ -136,18 +143,9 @@ subprocess.run(['python3',str(ROOT/'tools/extract_desktop_battle_bottom.py')],ch
 
 subprocess.run(['python3',str(ROOT/'tools/extract_desktop_guidance.py')],check=True,cwd=ROOT)
 
-subprocess.run(['python3',str(ROOT/'tools/extract_arcane.py')],check=True,cwd=ROOT)
 
 subprocess.run(['python3',str(ROOT/'tools/group_expansion.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/group_towers.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/prepare_stage4_release.py')],check=True)
-
-subprocess.run(['python3',str(ROOT/'tools/extract_stage5_catapult.py')],check=True)
-
-subprocess.run(['python3',str(ROOT/'tools/extract_stage5_alleria.py')],check=True)
-
-subprocess.run(['python3',str(ROOT/'tools/extract_desktop_multi_hero.py')],check=True)
-
-subprocess.run(['python3',str(ROOT/'tools/extract_blade.py')],check=True)

@@ -1,5 +1,17 @@
 # 第4–6关还原工作区
 
+0.2.129将第5关「皇家庭园」接入真实发布链（原APK中文名是园，先前任务描述称院）。当前cap5，前五关共15模式，第6关仍关闭。prepare_stage4_release.py保留既有入口名、改为生成4/5原三模式索引，Repository按需加载扩展并传独立assetCatalog；原第4胜利旧存档只迁移开放5、不赠第五星/挑战/XP，地图只揭示一次。第五原旗(344,790)、七道路点来自固定map_points SHA；原stage_thumbs_0005为342x246、screen_map-3.png quad(7,1489,342,246)，原RGBA无损裁图。source proof在tools/sources/stage5-release.json，原声明/PNG SHA和extractors可重建，不执行controller。
+
+本批没有修改怪物/英雄HP、金币、伤害、回血、XP、冷却、路径终点或World随机流。前次挑战测试玩家频繁追到出口外侧、移动取消攻击；合法改为两英雄分路站位、分散一级塔后按预算升级，英雄挑战末段用真实剩余金币升级Arcane和购买爆裂/睡眠，避免预算闲置。tests/stage5-strategy.mjs只调用真实purchase/move/cast/plant/upgradeTowerPower/World.step。先在tests/stage4-natural.mjs从新档真实赚到XP18139，再连续第五campaign20命零漏怪/805kill815spawn→heroic201kill204spawn→iron147/147全过；10/3台投石车正常退场不算漏怪或击杀。连续最终XP37600，recordVictory真实落盘第五三星/双挑战且cap停5，未伪造解锁或预设高XP。
+
+实际浏览器从本轮新档连续1–4的真实earned存档续打第五三模式，完整旗/书/奖励与手机重载通过。测试按计划预解码将购买的塔图以加速模拟，真实生产冷入口另测；不冒称同输入原版像素验收。初两套较弱浏览器计划在英雄挑战199/184杀后失败，日志保留，后续合法追加塔/技能预算通过，没有改产品数值。一次三模式已全部获胜后重载检查失败，原因是测试addInitScript在每次reload覆盖存档，修为只导入真实earned存档一次，产品持久化未改以迁就fixture。补原通知后的最终浏览器三模式又全通过，末XP38903，骚扰者与Blade发现标记/第五星及挑战手机重载保持。
+
+还实修了源通知接入遗漏：原4/5第一波分别TOWER_ARCHER_ARCANE/TOWER_BARRACK_BLADE，旧代码只接TOWER_LEVEL2/3。现在仅接受已有真实layout的TOWER通知，原always/seen/单局一次职责保持，原照片/文案/发现标记入账；骚扰者原enemy通知、百科裁图与中文也已接。投石车原notification表无条目，不伪造。百科支持已实现新敌/Arcane/Blade的原模板统计，首次重载可用，不要求先入关合并模板；仍按always/seen门显示。新增书用声明不当成旧战斗依赖，optimizer排除campaign-release模块，原oldcompact仍1314frames2122316B。
+
+第五真实旗→书→战斗冷入口（非隔离注入）初最终包实测14,937,687B/228请求，book7.878秒/总17.572秒，100ms/1.5MBps/cacheoff且无missing；补原通知后最终数字见本批末尾日志。保持15MB门、不整atlas/OTF/抬预算/降质，不承诺所有线路速度。530Node全过；本批图框专项实际覆盖两高级塔通知与骚扰者。手机/地图书页/奖励截图已人工看。第6仍缺Alleria_fixed/cat、mega_spawner/load_file、末2秒curtains→囚车→83/30→eb_gnoll首领链，普通15波won不算完整6。动态grid/native协程/完整IDs/globalz/所有modifier与特殊death/音频等仍是适配边界，整体非1:1。
+
+最终actualbuild1628files91,634,549B；fifth-tests-release530全过，fifth-browser-publish三模式/真实奖励存档与手机重载、fifth-presentation-publish历史第四胜利迁移一次/原第五书页/手机入关、fifth-notifications原照片四角、fifth-old-nine-publish原天然九模式/存档手机、fifth-ui-publish与三个实际冷入口均正常exit0，无挂住待收。最终旧冷14,796,984B/227req、book7.167秒/总16.777秒；第四14,754,363B/217req、book7.198秒/总16.859秒；第五14,937,666B/228req、book7.867秒/总17.573秒，网络100ms/1.5MBps/cacheoff，无整atlas/OTF。原UI622图，新增图严格原PNG exact=True roundtrip，旧编码保持。全量extract_campaign已将新stage声明提取提前到UI/书用索引依赖之前，避免靠旧生成文件重建；最终web运行模块/新UI与书页逐字节等于build。公开一次manifest确认.128且fifth-pages-ui正常exit0，新推送后不循环轮询。
+
 0.2.128第五关隔离冷入口首次通过15MB门：完整桌面双英雄HUD、真实预建二级兵营、投石车与Alleria/猫依赖均保留，100ms/1.5MBps/cacheoff实测14,833,565B/225请求，book6.504秒/总16.468秒；比.127的15,537,493B少703,928B。此为真实title/save/map/book之后的隔离level5入口，不是已发布的旗5/书5路径；生产仍前四关12模式，第5/6关闭。未抬预算、降质、清透明RGB或漏载当前会绘制的图。
 
 tools/group_towers.py新增entry变体，仍完整保留原1314帧，common514帧725580B，四族一级分别21/56/97/172帧、21746/54932/84994/180148B，二三级依赖按族取用。只stage>=5使用；预建兵营按实体依赖在入关前decode，空地菜单按实际allowed四族在打开前decode，继续沿用owner/scene/slot/version/current守卫、取消不回填、失败可重试和交易前不扣费。原1–4图组与旧compact1314帧2122316B不变。所有帧完整RGBA（含alpha0 RGB）/size/trim逐项校验。

@@ -1,0 +1,116 @@
+{
+  "bookAtlasSHA256": "23352a39a58ced6f9c7578a9e93078bef42bb6225f3d8316e486e359fc1b2730",
+  "flag": {
+    "id": 5,
+    "pos": {
+      "x": 344,
+      "y": 790
+    }
+  },
+  "images": {
+    "alert_creep_0008": {
+      "size": [
+        120,
+        96
+      ],
+      "src": "assets/ui/alert_creep_0008.webp"
+    },
+    "encyclopedia_creep_thumbs_0008": {
+      "size": [
+        96,
+        90
+      ],
+      "src": "assets/ui/encyclopedia_creep_thumbs_0008.webp"
+    },
+    "encyclopedia_creeps_0008": {
+      "size": [
+        170,
+        158
+      ],
+      "src": "assets/ui/encyclopedia_creeps_0008.webp"
+    },
+    "encyclopedia_tower_thumbs_0020": {
+      "size": [
+        96,
+        90
+      ],
+      "src": "assets/ui/encyclopedia_tower_thumbs_0020.webp"
+    },
+    "encyclopedia_towers_0020": {
+      "size": [
+        170,
+        158
+      ],
+      "src": "assets/ui/encyclopedia_towers_0020.webp"
+    }
+  },
+  "kind": "source declarations and original image crops; no controller execution",
+  "mapPointsSHA256": "c183fee5455390a5375685bf61ace8549883dde0d843bca4faf745905ec9114c",
+  "notOriginalSynchronizedPixels": true,
+  "phonePNG_SHA256": {
+    "encyclopedia-68.png": "ae959ccb455386148658d640688ef47ba5d02ed14680d53bd3bb7b8721d36722",
+    "encyclopedia-8.png": "ca8c7d9345a06148adacc5cfda61f0ead919e6ed06936e19636628dd77e47a26",
+    "encyclopedia_thumbs-1.png": "bab0e548bad82a52991caaf8db98fb71444b5adeed68380e0d08e021228f3b60",
+    "encyclopedia_thumbs-3.png": "ee13659110d025393c3807c7fa9dab2164e87d36de9e29c2c267be079a2164ff",
+    "gui_notifications_common-1.png": "6386e9038d5d89c51a7001ad66d99a080de7e418cc759271f3e6f6f51d1af87c"
+  },
+  "road": {
+    "dots": [
+      {
+        "x": 231,
+        "y": 653
+      },
+      {
+        "x": 244,
+        "y": 666
+      },
+      {
+        "x": 256,
+        "y": 761
+      },
+      {
+        "x": 258,
+        "y": 783
+      },
+      {
+        "x": 271,
+        "y": 801
+      },
+      {
+        "x": 292,
+        "y": 814
+      },
+      {
+        "x": 315,
+        "y": 823
+      }
+    ],
+    "id": "5",
+    "unlock_at": 5
+  },
+  "scope": "stage5 entry/notice/book/rewards; stage6 intentionally closed",
+  "thumbnail": {
+    "a_name": "screen_map-3.png",
+    "a_size": [
+      2048,
+      2048
+    ],
+    "alias": {},
+    "f_quad": [
+      7,
+      1489,
+      342,
+      246
+    ],
+    "size": [
+      342,
+      246
+    ],
+    "trim": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
