@@ -1,0 +1,1477 @@
+{
+  "commit": "a1facc6b76d00b064ad43db958d31b4ceaf7388d",
+  "frames": {
+    "heroPortrait_L_0001": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1861,
+        1025,
+        130,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        3,
+        0,
+        11,
+        0
+      ]
+    },
+    "heroPortrait_L_0002": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1917,
+        7,
+        124,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        3,
+        0,
+        17,
+        0
+      ]
+    },
+    "heroPortrait_L_0003": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        535,
+        612,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        16,
+        0
+      ]
+    },
+    "heroPortrait_L_0004": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        578,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0005": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        724,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0006": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        870,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0007": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        610,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0008": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        756,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0009": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        902,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0010": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        271,
+        612,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0011": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        403,
+        612,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0012": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        271,
+        758,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0013": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        403,
+        758,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0014": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        271,
+        904,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0015": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        403,
+        904,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0016": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        535,
+        758,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0017": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        535,
+        904,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0018": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        1016,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0019": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        1048,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0020": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        271,
+        1050,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0021": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        403,
+        1050,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0022": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        610,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0023": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        535,
+        1050,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0024": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        1162,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0025": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        139,
+        1194,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        1,
+        0,
+        15,
+        0
+      ]
+    },
+    "heroPortrait_L_0026": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        647,
+        1605,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        16,
+        0
+      ]
+    },
+    "heroPortrait_L_0027": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        647,
+        1751,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        16,
+        0
+      ]
+    },
+    "heroPortrait_L_0028": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        647,
+        1897,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        2,
+        0,
+        16,
+        0
+      ]
+    },
+    "heroPortrait_L_0029": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1917,
+        153,
+        124,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        3,
+        0,
+        17,
+        0
+      ]
+    },
+    "heroPortrait_R_0001": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1908,
+        7,
+        132,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        9,
+        0,
+        3,
+        0
+      ]
+    },
+    "heroPortrait_R_0002": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        755,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        15,
+        0,
+        3,
+        0
+      ]
+    },
+    "heroPortrait_R_0003": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        271,
+        1196,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0004": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        403,
+        1196,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0005": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        535,
+        1196,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0006": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        901,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0007": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        1047,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0008": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        1193,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0009": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        797,
+        701,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0010": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        929,
+        695,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0011": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1061,
+        707,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0012": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        799,
+        847,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0013": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        799,
+        993,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0014": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        799,
+        1139,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0015": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        931,
+        987,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0016": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        931,
+        1133,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0017": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1193,
+        781,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0018": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1063,
+        949,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0019": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1063,
+        1095,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0020": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1195,
+        927,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0021": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1195,
+        1073,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0022": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        1047,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0023": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        799,
+        1285,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0024": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        931,
+        1279,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0025": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1063,
+        1241,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0026": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1195,
+        1219,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0027": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        667,
+        1339,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        14,
+        0,
+        2,
+        0
+      ]
+    },
+    "heroPortrait_R_0028": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        799,
+        1431,
+        128,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        13,
+        0,
+        3,
+        0
+      ]
+    },
+    "heroPortrait_R_0029": {
+      "a_name": "gui_common-1.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        931,
+        841,
+        126,
+        142
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        15,
+        0,
+        3,
+        0
+      ]
+    },
+    "heroPortrait_separator": {
+      "a_name": "gui_common-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1995,
+        1021,
+        24,
+        132
+      ],
+      "size": [
+        28,
+        142
+      ],
+      "trim": [
+        2,
+        10,
+        2,
+        0
+      ]
+    },
+    "hero_portraits_0019": {
+      "a_name": "gui_portraits-0.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        7,
+        1579,
+        90,
+        90
+      ],
+      "size": [
+        144,
+        142
+      ],
+      "trim": [
+        27,
+        14,
+        27,
+        38
+      ]
+    }
+  },
+  "limits": [
+    "Current World story hero statistics and grid movement remain adapted",
+    "Full desktop infobar and original keyboard hero cycling pending"
+  ],
+  "repository": "https://github.com/zidonghua2018/KingdomRushFL",
+  "rgbaVerified": true,
+  "rules": {
+    "heroX": [
+      8,
+      92
+    ],
+    "overlap": 18,
+    "powersX": 175,
+    "separatorAnchorY": 101,
+    "separatorPos": [
+      101,
+      3
+    ]
+  },
+  "scope": "Original desktop KR3 two hero portraits and identity-bound selection, source HP/XP/death masks",
+  "sheets": {
+    "gui_common-0.png": "9eb452027f5d45aed88af796e95a655042795f1448d599de9188e76fde5ed496",
+    "gui_common-1.png": "e82f030d9cafe25e30dc1e31dd08d9e2ec23fca1166c20aba4af03f5d01d1c92",
+    "gui_portraits-0.png": "6561f705f92f8d3ac46cc4365a41d86922422de2f97c21b497358ac2a9f92db4"
+  },
+  "sourceSha256": {
+    "kro-desktop-game_gui.lua": "562d8419135cd1af4c0d6a6753696e4c9ea4ba430f4ce6c279746d8480c487e3",
+    "kro-gui_common_123.lua": "691a2f522bd97e62fabbc10380f7dc92bdd44edb38cd1a70c50c5607c5972b35",
+    "kro-gui_portraits_123.lua": "582692680b9bcd86645f915c064a14acf9dcefb8cb05bee9bbee533463e97b2b",
+    "original-desktop-game_gui.lua": "7be4b6a71351badebd3765295796d9a39f286944eb36120590da9c782c9246fd"
+  },
+  "textureScale": 0.7111111111111111
+}

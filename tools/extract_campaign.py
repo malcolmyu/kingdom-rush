@@ -147,3 +147,5 @@ subprocess.run(['python3',str(ROOT/'tools/prepare_stage4_release.py')],check=Tru
 subprocess.run(['python3',str(ROOT/'tools/extract_stage5_catapult.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_stage5_alleria.py')],check=True)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_desktop_multi_hero.py')],check=True)
