@@ -18,14 +18,14 @@ export function moveAlleria(w,p){
 }
 function walk(w,h,p,dt){const dx=p.x-h.x,dy=p.y-h.y,d=Math.hypot(dx,dy);if(d<=h.speed*dt){h.x=p.x;h.y=p.y;h.walking=false;return true;}if(!h.walking)h.walkAt=w.time;h.walking=true;h.flip=dx<0;h.x+=dx/d*h.speed*dt;h.y+=dy/d*h.speed*dt;return false;}
 function allowed(w,e,a){return e.hp>0&&!harasserHidden(e)&&!((e.visBans??w.template(e.key).vis?.bans??0)&a.vis_flags)&&!((e.visFlags??w.template(e.key).vis?.flags??0)&a.vis_bans);}
-function arrow(w,h,target,a){
- if(!w.enemies.includes(target)||!allowed(w,target,a))return;
+export function launchAlleriaArrow(w,h,target,a){
+ if(!h.fixedAlly&&(!w.enemies.includes(target)||!allowed(w,target,a)))return;
  const t=w.template(a.bullet),b=t.bullet,extra=t.extra_arrows||0;
  // Original multishot clones before normal arrow.insert; unused clones retain
  // the original target, not invented random spread or extra damage modifiers.
  const others=w.enemies.filter(e=>e!==target&&allowed(w,e,a)&&inEllipse(target,e,t.extra_arrows_range||0));
  const targets=[...Array.from({length:extra},(_,i)=>others[i]||target),target];
- for(const e of targets){const o=a.bullet_start_offset[0],off=w.template(e.key).unit?.hit_offset||{x:0,y:0},v=e.motionVelocity||{x:0,y:0};
+ for(const e of targets){if(h.fixedAlly&&!w.enemies.includes(e))continue;const o=a.bullet_start_offset[0],off=w.template(e.key).unit?.hit_offset||{x:0,y:0},v=e.motionVelocity||{x:0,y:0};
   const sx=h.x+(h.flip?-1:1)*o.x,sy=h.y+o.y,tx=e.x+off.x+v.x*b.flight_time+(b.prediction_error&&v.x?w.random()*10:0),ty=e.y+off.y+v.y*b.flight_time-(b.prediction_error&&v.y?w.random()*10:0);
   w.shots.push({id:++w.serial,type:'alleria-arrow',bullet:a.bullet,source:h.id,target:e,sx,sy,x:sx,y:sy,tx,ty,elapsed:0,duration:b.flight_time,g:b.g,rotation:0,insertedAt:w.time,velocity:{x:(tx-sx)/b.flight_time,y:(ty-sy-.5*b.g*b.flight_time**2)/b.flight_time}});
  }w.emit('arrow');
@@ -40,7 +40,7 @@ export function updateAlleria(w,live,blockers,dt){
   if(h.phase==='move'){if(walk(w,h,h.target,dt)){h.phase='idle';action(w,h,'idle');}continue;}
   if(h.pending){const p=h.pending,a=p.melee?m:t.ranged.attacks[p.index];
    if(p.melee&&p.target.hp>0){blockers.add(p.target.id);w.enemyMelee(p.target,h,dt);}
-   if(!p.fired&&w.time-h.at>=(a.hit_time??a.shoot_time)){p.fired=true;if(p.melee){if(p.target.hp>0&&inEllipse(h,p.target,35)&&!tryHarasserDodge(w,p.target,{damageType:a.damage_type}))w.hurt(p.target,w.number(a.damage_min,a.damage_max),a.damage_type);}else if(Math.hypot(p.target.x-p.origin.x,p.target.y-p.origin.y)<=a.max_track_distance)arrow(w,h,p.target,a);}
+   if(!p.fired&&w.time-h.at>=(a.hit_time??a.shoot_time)){p.fired=true;if(p.melee){if(p.target.hp>0&&inEllipse(h,p.target,35)&&!tryHarasserDodge(w,p.target,{damageType:a.damage_type}))w.hurt(p.target,w.number(a.damage_min,a.damage_max),a.damage_type);}else if(Math.hypot(p.target.x-p.origin.x,p.target.y-p.origin.y)<=a.max_track_distance)launchAlleriaArrow(w,h,p.target,a);}
    if(w.time-h.at>=duration(w,h,h.action)){if(p.melee)h.meleeAt=h.at;else h.attackTimes[p.index]=h.at;h.pending=null;h.phase='idle';action(w,h,'idle');}continue;
   }
   const close=live.filter(e=>!e.flying&&allowed(w,e,m)&&inEllipse(h.target,e,t.melee.range)).sort((a,b)=>Math.hypot(h.x-a.x,h.y-a.y)-Math.hypot(h.x-b.x,h.y-b.y))[0];
