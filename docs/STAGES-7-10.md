@@ -1,5 +1,19 @@
 # 第7–10关还原工作区
 
+
+## 0.2.144：第7关 faerie 暂存运输（隔离验证）
+
+`web/stages/faerie.mjs`接原18716–18858/18864–18920的基础连续流程。按原FAERIE1024格与每条道路第一lane编译半开区段，原第4路[35,70)、第5路[77,110)，索引保留一基；实际数据无开放尾部，不凭猜测填源global ni。path_speeds数字0/1保留，默认yellow30、显式red75。独立nav移动，不覆盖敌人speed；移出战斗集合、释放当前减速/中毒/睡眠/ward所属效果、解除当前blocker，保留原对象/HP/gold/id。limbo保持Hoplite组计数，重插不重加；恢复原对象后重启已接controller时钟。已发普通hurt持有引用时仅第7拒绝limbo伤害，不给旧六关增加state/RNG。
+
+原两层同色nav（静态球+原动画）与入/出smoke、大小比例/anchor/z/tween纯绘制；原粒子发射器、完整通用mod/aura移除、native insert/remove队列与IDs、stun_force全部状态、所有敌人重插协程和动态路径仍为适配或待补，非原版同输入1:1。当前释放自己拥有的睡眠计数，保留外部stunned/其他计数；并非通用清空眩晕。source新增nav/fx/粒子声明闭包，4679逻辑帧/6,369,762B无损，未清alpha0RGB/整atlas；旧4/5/6图与1314frame compact保持。第7入口仍closed、正式前六关18模式，自己的预算和其余必要机制仍欠。
+
+
+最终639Node全部通过（9新faerie），actualbuild faerie-browser-publish真实Space后World.step自动暂存/运输/原对象恢复、原Canvas q/alpha/已decode/绘制World快照不变、离场hurt无HP/XP/金币变化、真实844×390 CDP touch暂停与地图完整progress保持正常exit0。黄光/手机图人工看过；受控原区段节点与队列，不是天然7或原版同步认证。已释放Hoplite spawner没有owner_id，父兵运输不会擅自interrupt它，新增纯测覆盖。Hoplite专项、最终build旧九模式/手机存档与UI全正常exit0；连续新档4/5/6合法自然链保持原19/20/20命与各挑战/XP47121真实奖励。所有运行模块和新资源逐字节等build，source pinned重提通过。
+
+最终cold100ms/1.5MBps/cacheoff旧14,857,387B/240req总16.911s，4真实旗书14,814,765/230req书7.192/总17.016，5真实旗书14,998,071/241req书7.846/总17.647，6真实旗书14,938,744/240req书8.131/总23.680，均exit0，不保所有线路；第五余1929B，后续必须继续按关lazy。第7隔离16,929,836B/233req书7.463/总17.554，15MB assert明确正常exit1，base/progress/draw不变且无missing/unready，不冒预算通过/正式旗7书7/全局整局15MB。第六boss/cart后期仍另下载3.87MB。
+
+本轮公开manifest单次确认.143；public UI导航net::ERR_CONNECTION_CLOSED正常收exit1，未冒通过、未循环重试。当地最终UI正常exit0。日志artifacts/faerie-source-final/tests-publish/build-publish/browser-publish/hoplite-regression/old-nine-publish/ui-publish/natural4/natural5/natural6/performance-publish/stage4-performance-publish/stage5-performance-publish/stage6-performance-publish/stage7-budget-publish/pages-ui.log。公开网络失败和第7预算失败均保留，不拿它们冒产品通过。
+
 ## 0.2.143：重装羊人召唤与并发计数组（隔离验证）
 
 第7关仍closed，正式仍前六关18模式/cap6。`web/stages/hoplite.mjs`接原enemy_satyr_hoplite9376–9433、ready闭包9382–9389与共享enemies_spawner785–899。spawn时抽一次spread_seed整数1..10并起timed.ts；strict8/8/8/6秒、can_do_magic、组并发<12、当前道路距防守节点>60才可起cast。行走episode用floor(time*10)%spread_seed分散检查，不把source chance1字段误当本控制器额外随机。

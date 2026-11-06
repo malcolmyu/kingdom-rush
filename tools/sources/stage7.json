@@ -1,6 +1,6 @@
 {
-  "bytes": 6314902,
-  "frames": 4623,
+  "bytes": 6369762,
+  "frames": 4679,
   "functions": {
     "mod_plant_poison_pumpkin": {
       "insert": {
@@ -48,8 +48,7 @@
     }
   },
   "pending": [
-    "faerie trails path speeds/controller",
-    "faerie transport and other special enemy controllers",
+    "full faerie native particle and generic modifier engine",
     "webspitting spider special",
     "new allowed Druid advanced tower",
     "natural modes, own budget and actual flag/book/rewards release"
@@ -153,15 +152,16 @@
     ]
   },
   "runtimeModulesSHA256": {
-    "domain.mjs": "7736f01414263d5b66f2b1cb70bf93c15ee21c2b45e353f64d77bb0087f0cc2c",
+    "domain.mjs": "59404475bcbca3bf08b4856017b9c0e84757c8495f71fb9a58989b9628c5619a",
     "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
     "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
     "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
     "renderer.mjs": "4e678e28430d452db62e6c11109d4720c1c7a05965a895ce9754606b64d3e73d",
     "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
+    "stages/faerie.mjs": "13e09b50bff7818d6c2ce2dc406ced1b1e8b4486be726e17f695f1efcec0d44d",
     "stages/hoplite.mjs": "ae2fddf3db20abb2f11549d17952d39d9016a23f39b8b02d1643a6e69865f00b",
     "stages/satyr.mjs": "3eb34a25ac3e9f7665e89074bbdb52e6df141f982bdff4a6f7cae0cca38bdf8a",
-    "stages/stage7.mjs": "fe035b4a6648e745e92f6a047f66eedf7b7f739eca56ee9158e9689b2cb42392",
+    "stages/stage7.mjs": "d433b7879c01be94ce8dc32c97bfedbeeb7562ca39830cf55b672c0121bfffc4",
     "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
   },
   "satyrFunctions": {
@@ -184,7 +184,7 @@
       }
     }
   },
-  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon gameplay; source controllers bytecode-only; stage7 remains closed",
+  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport gameplay; source controllers bytecode-only; stage7 remains closed",
   "sha256": {
     "assets/gc64/all/components.lua": "3c5e9b9708ab01c4f1173f4d5fa0340bfd72ff620561bc8b95a3c2a21c438163",
     "assets/gc64/all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",

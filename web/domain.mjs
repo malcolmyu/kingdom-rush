@@ -128,7 +128,7 @@ export class World{
  }
  moveHero(p){if(!this.active(true)||!this.hero||this.hero.hp<=0)return false;const q=this.nearestRoad(p);if(!q||distance(p,q)>70)return false;this.hero.target={x:q.x,y:q.y};this.hero.pendingHit=null;if(this.hero.volley?.fired)this.hero.volleyReadyAt=this.time+this.template(this.hero.key).ranged.attacks[1].cooldown;this.hero.volley=null;this.hero.counterPending=false;this.hero.playerMove=true;this.hero.combatTarget=null;this.hero.anim=0;this.hero.action=null;return true;}
  effect(type,p,life,text){this.effects.push({type,x:p.x,y:p.y,life,total:life,text});}
- hurt(e,damage,type=2,xpFactor=0){if(e.hp<=0||e.catapult&&e.removed)return;carrierDamage(this,e,type);const armor=type&4?e.magicArmor:type&8?e.armor*.5:type&2?e.armor:0;const applied=Math.max(1,Math.round(damage*(1-(armor||0))));e.hp-=applied;e.flash=.1;if(xpFactor>0)this.heroXpQueued+=applied*xpFactor;
+ hurt(e,damage,type=2,xpFactor=0){if(e.hp<=0||e.catapult&&e.removed||this.data.stageRuntime?.canHurt?.(this,e)===false)return;carrierDamage(this,e,type);const armor=type&4?e.magicArmor:type&8?e.armor*.5:type&2?e.armor:0;const applied=Math.max(1,Math.round(damage*(1-(armor||0))));e.hp-=applied;e.flash=.1;if(xpFactor>0)this.heroXpQueued+=applied*xpFactor;
   if(e.hp<=0)this.finishEnemyDeath(e);
  }
  finishEnemyDeath(e){e.deadAt=this.time;e.deathFlip=e.anim>0?e.actionFlip:e.dx<0;this.kills++;this.gold+=e.gold;this.effect('coin',{x:e.x,y:e.y+20},.8,'+'+e.gold);this.emit('coin');carrierDied(this,e);

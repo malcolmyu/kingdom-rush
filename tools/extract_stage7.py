@@ -31,6 +31,10 @@ audit('kr3/game_scripts.lua','game_scripts.lua:9382-9389',['can_do_magic','nodes
 audit('all/scripts.lua','scripts.lua:785-899',['keep_gold','initial_spawn_animation','random_cycle','check_node_valid','count_group_max'])
 audit('all/systems.lua','systems.lua:1116-1130',['in_limbo','count-group-changed'])
 audit('all/systems.lua','systems.lua:1136-1147',['COUNT_GROUP_CONCURRENT','in_limbo'])
+audit('kr3/game_scripts.lua','game_scripts.lua:18716-18738',['sections','TERRAIN_FAERIE','ni'])
+audit('kr3/game_scripts.lua','game_scripts.lua:18740-18858',['remove_modifiers','remove_auras','in_limbo','ignore_damage'])
+audit('kr3/game_scripts.lua','game_scripts.lua:18864-18920',['next_entity_node','enemy_offset','ps_nav_faerie_red'])
+audit('all/script_utils.lua','script_utils.lua:56-68',['queue_remove','entities'])
 audit('all/path_db.lua','path_db.lua:378-401',['is_path_active','get_visible_start_node','invalid_ranges'])
 hoplite_functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_hoplite_functions.lua',str(root),'precise'],cwd=R))
 assert hoplite_functions['enemy_satyr_hoplite']['update']['__script_path']=='game_scripts.enemy_satyr_hoplite.update'
@@ -58,13 +62,13 @@ for i,mode in enumerate(['campaign','heroic','iron'],1):
  d={'id':7,'title':strings['LEVEL_7_TITLE'],'mode':mode,'modeId':i,'level':level,'rules':raw['level_mode_overrides'][i-1],'paths':paths['paths'],'active':paths['active'],'connections':paths.get('connections',{}),'waves':waves,'map':'assets/stage7/map07.webp'}
  (out/f'07-{mode}.json').write_text(json.dumps(d,ensure_ascii=False,sort_keys=True,separators=(',',':')))
 # Explicit source-created pumpkin effects, and actual shared combat/scenery roots.
-for k in ['fx_plant_poison_pumpkin_idle','fx_plant_poison_pumpkin_smoke_left','fx_plant_poison_pumpkin_smoke_down','fx_plant_poison_pumpkin_smoke_fill']:visit(k)
+for k in ['nav_faerie','fx_faerie_smoke','ps_nav_faerie_red','ps_nav_faerie_yellow','fx_plant_poison_pumpkin_idle','fx_plant_poison_pumpkin_smoke_left','fx_plant_poison_pumpkin_smoke_down','fx_plant_poison_pumpkin_smoke_fill']:visit(k)
 runtime={}
 for k in ['hero_elves_archer']+[f'tower_{f}_{t}'for f in ['archer','barrack','mage','rock_thrower']for t in [1,2,3]]+[k for k in templates if k.startswith(('re_current_','soldier_re_'))]:visit(k)
 for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','harasser-data.mjs','harasser-jump-data.mjs']:
  p=R/'web'/name;runtime[name]=hashlib.sha256(p.read_bytes()).hexdigest()
  for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):visit(literal)
-for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
+for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs","stages/faerie.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
 wanted=set()
 def render_keys(obj):
  if isinstance(obj,dict):
@@ -116,8 +120,9 @@ for x,y,im in tiles.values():atlas.paste(im,(x,y))
 p=out/'sprites.webp';atlas.save(p,lossless=True,exact=True,method=6);check=Image.open(p).convert('RGBA')
 for x,y,im in tiles.values():assert check.crop((x,y,x+im.width,y+im.height)).tobytes()==im.tobytes()
 bg=declare('assets/kr3-phone/images/iphonehd/go_stage07_bg.lua');f=next(iter(bg.values()));x,y,w,h=f['f_quad'];im=image(f['a_name']).crop((x,y,x+w,y+h));im.save(out/'map07.webp',lossless=True,exact=True,method=6);assert Image.open(out/'map07.webp').convert('RGBA').tobytes()==im.tobytes()
+faerie_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_faerie_rules.lua'],cwd=R));assert faerie_rules=={'terrain':1024,'small':1}
 satyr_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_rules.lua'],cwd=R));satyr_rules['grid']=declare('assets/gc64/kr3/data/levels/level07_grid.lua')
 rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_rules.lua'],cwd=R));assert rules['poison']==32 and rules['modifierDamage']==32768
-(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules,'hopliteRules':hoplite_rules},sort_keys=True,separators=(',',':')))
-proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'hopliteFunctions':hoplite_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon gameplay; source controllers bytecode-only; stage7 remains closed','pending':['faerie trails path speeds/controller','faerie transport and other special enemy controllers','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
+(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules,'hopliteRules':hoplite_rules,'faerieRules':faerie_rules},sort_keys=True,separators=(',',':')))
+proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'hopliteFunctions':hoplite_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon and faerie transport gameplay; source controllers bytecode-only; stage7 remains closed','pending':['full faerie native particle and generic modifier engine','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
 pin.write_text(json.dumps(proof,ensure_ascii=False,sort_keys=True,indent=2)+'\n');print(json.dumps({'frames':len(result),'bytes':p.stat().st_size,'stage7':'isolated, not released'}))
