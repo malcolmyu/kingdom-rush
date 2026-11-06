@@ -1,3 +1,4 @@
+import{queueAlleriaCat,rallyAlleriaCat}from'./alleria-cat.mjs';
 import DATA from './stage5-alleria-data.mjs';
 import {inEllipse} from './spells.mjs';
 import {harasserHidden,tryHarasserDodge} from './harasser-jump.mjs';
@@ -13,7 +14,7 @@ function action(w,h,name){h.action=name;h.at=w.time;h.walking=false;}
 export function alleriaPose(w,h){return{state:h.walking?'walk':h.action,time:w.time-(h.walking?h.walkAt:h.at),flip:h.flip};}
 export function moveAlleria(w,p){
  const h=w.stageHeroes?.[0],q=w.nearestRoad(p);if(!w.active()||!h||h.hp<=0||h.phase==='intro'||h.phase==='respawn'||!q||Math.hypot(q.x-p.x,q.y-p.y)>45)return false;
- h.target={x:q.x,y:q.y};h.pending=null;h.phase='move';h.combatTarget=null;return true;
+ rallyAlleriaCat(w,h,q);h.target={x:q.x,y:q.y};h.pending=null;h.phase='move';h.combatTarget=null;return true;
 }
 function walk(w,h,p,dt){const dx=p.x-h.x,dy=p.y-h.y,d=Math.hypot(dx,dy);if(d<=h.speed*dt){h.x=p.x;h.y=p.y;h.walking=false;return true;}if(!h.walking)h.walkAt=w.time;h.walking=true;h.flip=dx<0;h.x+=dx/d*h.speed*dt;h.y+=dy/d*h.speed*dt;return false;}
 function allowed(w,e,a){return e.hp>0&&!harasserHidden(e)&&!((e.visBans??w.template(e.key).vis?.bans??0)&a.vis_flags)&&!((e.visFlags??w.template(e.key).vis?.flags??0)&a.vis_bans);}
@@ -32,9 +33,9 @@ function arrow(w,h,target,a){
 export const updateAlleriaArrow=updateEwokSpear;
 export function updateAlleria(w,live,blockers,dt){
  for(const h of w.stageHeroes||[]){const t=w.template(h.key),m=t.melee.attacks[0];
-  if(h.phase==='respawn'){if(w.time-h.at>=duration(w,h,'respawn')){h.phase='idle';h.hp=h.maxHp;h.dead=0;action(w,h,'idle');}continue;}
+  if(h.phase==='respawn'){if(w.time-h.at>=duration(w,h,'respawn')){h.phase='idle';h.hp=h.maxHp;h.dead=0;action(w,h,'idle');queueAlleriaCat(w,h);}continue;}
   if(h.hp<=0){if(h.phase!=='dead'){h.phase='dead';h.deadAt=w.time;h.pending=null;h.combatTarget=null;action(w,h,'death');}h.dead=w.time-h.deadAt;if(h.dead>=t.health.dead_lifetime){h.phase='respawn';action(w,h,'respawn');}continue;}
-  if(h.phase==='intro'||h.phase==='respawn'){if(w.time-h.at>=duration(w,h,'respawn')){h.phase='idle';h.hp=h.maxHp;h.dead=0;action(w,h,'idle');}continue;}
+  if(h.phase==='intro'||h.phase==='respawn'){if(w.time-h.at>=duration(w,h,'respawn')){h.phase='idle';h.hp=h.maxHp;h.dead=0;action(w,h,'idle');queueAlleriaCat(w,h);}continue;}
   if(h.stunned||h.frozen){h.pending=null;h.phase='idle';action(w,h,'idle');continue;}
   if(h.phase==='move'){if(walk(w,h,h.target,dt)){h.phase='idle';action(w,h,'idle');}continue;}
   if(h.pending){const p=h.pending,a=p.melee?m:t.ranged.attacks[p.index];
