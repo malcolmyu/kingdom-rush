@@ -1,3 +1,4 @@
+import{tryBladeDodge}from'./blade-dodge.mjs';
 import{isEnemyStunned}from'./enemy-status.mjs';
 import DATA from'./harasser-data.mjs';
 import{inEllipse}from'./spells.mjs';
@@ -37,5 +38,5 @@ export function updateHarasserArrow(w,b,dt){
  if(b.done||w.time===b.createdAt)return;
  if(b.elapsed+dt<=b.duration){const x=b.x,y=b.y;b.elapsed+=dt;b.x=b.sx+b.velocity.x*b.elapsed;b.y=b.sy+b.velocity.y*b.elapsed+b.g*b.elapsed*b.elapsed/2;b.rotation=Math.atan2(b.y-y,b.x-x);return;}
  b.done=true;const t=b.target,a=w.template(b.bullet).bullet,off=w.template(t.key).unit.hit_offset;
- if(members(w).includes(t)&&t.hp>0&&Math.hypot(b.x-t.x-off.x,b.y-t.y-off.y)<a.hit_distance&&!tryEwokDodge(w,t,{ranged:true})){b.hit=true;b.damage=Math.ceil(a.damage_min+w.random()*(a.damage_max-a.damage_min));w.hurtDefender(t,b.damage,a.damage_type);}
+ if(members(w).includes(t)&&t.hp>0&&Math.hypot(b.x-t.x-off.x,b.y-t.y-off.y)<a.hit_distance&&!tryEwokDodge(w,t,{ranged:true})&&!tryBladeDodge(w,t,{ranged:true})){b.hit=true;b.damage=Math.ceil(a.damage_min+w.random()*(a.damage_max-a.damage_min));w.hurtDefender(t,b.damage,a.damage_type);}
 }

@@ -1,0 +1,46 @@
+{
+  "frames": 142,
+  "imageSHA256": {
+    "go_towers-1.png": "ce728ee27bed688e2b8b94094cd6c2198e0acf9d7ee42ba7892a93dd5ee5da07",
+    "go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2"
+  },
+  "limits": [
+    "Three powers disabled; no perfect parry, blade dance or swirling purchase",
+    "Native coroutine/queued entity insertion, full modifiers/global upgrades/pathfinding remain adapted"
+  ],
+  "ranges": [
+    "game_scripts.lua:1673-1691",
+    "game_scripts.lua:1693-1707",
+    "game_scripts.lua:1709-1884",
+    "script_utils.lua:138-157",
+    "script_utils.lua:2012-2066",
+    "script_utils.lua:1776-1929",
+    "scripts.lua:1769-1850"
+  ],
+  "rgbaVerified": true,
+  "scope": "275 upgrade, original three baseline soldiers, source chance/forced cooldown, door and replacement lifecycle",
+  "sha256": {
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3/data/tower_menus_data.lua": "b5ac426492c12f87bcb2a2a8318639be075dc7980a63d7eaa9ec8f668a1c4a54",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89",
+    "kr3/upgrades.lua": "879a6779dc1113a717758f3953f98135251a2ac97040e1648106fd73ff90c143"
+  },
+  "upgrades": {
+    "fencing": [
+      "tower_barrack_1",
+      "tower_barrack_2",
+      "tower_barrack_3"
+    ],
+    "rally": [
+      "tower_barrack_1",
+      "tower_barrack_2",
+      "tower_barrack_3",
+      "tower_blade",
+      "tower_forest"
+    ]
+  }
+}

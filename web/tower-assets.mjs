@@ -1,7 +1,7 @@
 // Asset readiness only. Transactions and simulation clocks remain in World.
 export function towerMenuSheets(catalog,w,s){
  if(!catalog.towerAssetGroups||!s?.type||s.ewok)return[];
- if(s.arcane)return catalog.towerAssetGroups[s.key]||[];
+ if(s.arcane||s.blade)return catalog.towerAssetGroups[s.key]||[];
  const next=s.level+1;
  if(!w.allowed(s.type,next))return[];
  return catalog.towerAssetGroups[w.towerDef(s.type,next).key]||[];
