@@ -9,7 +9,7 @@ def source(n):
 def declare(n):
  p=R/'reference/apk'/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(source(n));return json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/dump_lua.lua',str(p),'precise'],cwd=R))
 root=R/'reference/apk/assets/gc64'
-for n in ['kr3/game_scripts.lua','kr3/game_templates.lua','all/templates.lua','all/components.lua','all/scripts.lua','all/systems.lua','all/script_utils.lua','all/utils.lua','all/constants.lua']:source('assets/gc64/'+n)
+for n in ['kr3/game_scripts.lua','kr3/game_templates.lua','all/templates.lua','all/components.lua','all/scripts.lua','all/systems.lua','all/script_utils.lua','all/utils.lua','all/constants.lua','all/path_db.lua']:source('assets/gc64/'+n)
 def audit(file,mark,terms):
  b=subprocess.check_output(['/opt/homebrew/bin/luajit','-bl',str(root/file)],text=True);i=b.index('-- BYTECODE -- '+mark);j=b.find('-- BYTECODE --',i+16);body=b[i:j]
  for s in terms:assert s in body,(mark,s)
@@ -26,6 +26,16 @@ audit('all/scripts.lua','scripts.lua:1989-2130',['unit_dodges','miss_decal','asy
 satyr_functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_functions.lua',str(root),'precise'],cwd=R))
 assert satyr_functions['knife_satyr']['insert']['__script_path']=='scripts.arrow.insert'
 assert satyr_functions['enemy_satyr_cutthroat']['update']['__script_path']=='game_scripts.enemy_mixed.update'
+audit('kr3/game_scripts.lua','game_scripts.lua:9376-9433',['count_groups','random','spawn_time','interrupt'])
+audit('kr3/game_scripts.lua','game_scripts.lua:9382-9389',['can_do_magic','nodes_to_defend_point','spread_seed'])
+audit('all/scripts.lua','scripts.lua:785-899',['keep_gold','initial_spawn_animation','random_cycle','check_node_valid','count_group_max'])
+audit('all/systems.lua','systems.lua:1116-1130',['in_limbo','count-group-changed'])
+audit('all/systems.lua','systems.lua:1136-1147',['COUNT_GROUP_CONCURRENT','in_limbo'])
+audit('all/path_db.lua','path_db.lua:378-401',['is_path_active','get_visible_start_node','invalid_ranges'])
+hoplite_functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_hoplite_functions.lua',str(root),'precise'],cwd=R))
+assert hoplite_functions['enemy_satyr_hoplite']['update']['__script_path']=='game_scripts.enemy_satyr_hoplite.update'
+assert hoplite_functions['satyr_hoplite_spawner']['update']['__script_path']=='game_scripts.enemies_spawner.update'
+hoplite_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_hoplite_rules.lua'],cwd=R))
 functions=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_functions.lua',str(root),'precise'],cwd=R))
 assert functions['mod_plant_poison_pumpkin']['insert']['__script_path']=='scripts.mod_dps.insert'
 assert functions['mod_plant_poison_pumpkin_slow']['update']['__script_path']=='scripts.mod_track_target.update'
@@ -54,7 +64,7 @@ for k in ['hero_elves_archer']+[f'tower_{f}_{t}'for f in ['archer','barrack','ma
 for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','harasser-data.mjs','harasser-jump-data.mjs']:
  p=R/'web'/name;runtime[name]=hashlib.sha256(p.read_bytes()).hexdigest()
  for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",p.read_text()):visit(literal)
-for name in ["stages/stage7.mjs","stages/satyr.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
+for name in ["stages/stage7.mjs","stages/satyr.mjs","stages/hoplite.mjs"]:runtime[name]=hashlib.sha256((R/"web"/name).read_bytes()).hexdigest()
 wanted=set()
 def render_keys(obj):
  if isinstance(obj,dict):
@@ -108,6 +118,6 @@ for x,y,im in tiles.values():assert check.crop((x,y,x+im.width,y+im.height)).tob
 bg=declare('assets/kr3-phone/images/iphonehd/go_stage07_bg.lua');f=next(iter(bg.values()));x,y,w,h=f['f_quad'];im=image(f['a_name']).crop((x,y,x+w,y+h));im.save(out/'map07.webp',lossless=True,exact=True,method=6);assert Image.open(out/'map07.webp').convert('RGBA').tobytes()==im.tobytes()
 satyr_rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_satyr_rules.lua'],cwd=R));satyr_rules['grid']=declare('assets/gc64/kr3/data/levels/level07_grid.lua')
 rules=json.loads(subprocess.check_output(['/opt/homebrew/bin/luajit','tools/read_pumpkin_rules.lua'],cwd=R));assert rules['poison']==32 and rules['modifierDamage']==32768
-(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules},sort_keys=True,separators=(',',':')))
-proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife gameplay; source controllers bytecode-only; stage7 remains closed','pending':['faerie trails path speeds/controller','hoplite summons','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
+(out/'catalog.json').write_text(json.dumps({'templates':selected,'frames':result,'sheets':['../stage7/sprites.webp'],'rules':rules,'satyrRules':satyr_rules,'hopliteRules':hoplite_rules},sort_keys=True,separators=(',',':')))
+proof={'sha256':dict(sorted(sha.items())),'functions':functions,'satyrFunctions':satyr_functions,'hopliteFunctions':hoplite_functions,'rgbaVerified':True,'frames':len(result),'bytes':p.stat().st_size,'runtimeModulesSHA256':runtime,'rules':rules,'scope':'isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon gameplay; source controllers bytecode-only; stage7 remains closed','pending':['faerie trails path speeds/controller','faerie transport and other special enemy controllers','webspitting spider special','new allowed Druid advanced tower','natural modes, own budget and actual flag/book/rewards release']}
 pin.write_text(json.dumps(proof,ensure_ascii=False,sort_keys=True,indent=2)+'\n');print(json.dumps({'frames':len(result),'bytes':p.stat().st_size,'stage7':'isolated, not released'}))

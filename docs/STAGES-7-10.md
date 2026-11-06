@@ -1,5 +1,25 @@
 # 第7–10关还原工作区
 
+## 0.2.143：重装羊人召唤与并发计数组（隔离验证）
+
+第7关仍closed，正式仍前六关18模式/cap6。`web/stages/hoplite.mjs`接原enemy_satyr_hoplite9376–9433、ready闭包9382–9389与共享enemies_spawner785–899。spawn时抽一次spread_seed整数1..10并起timed.ts；strict8/8/8/6秒、can_do_magic、组并发<12、当前道路距防守节点>60才可起cast。行走episode用floor(time*10)%spread_seed分散检查，不把source chance1字段误当本控制器额外随机。
+
+原cast55帧，第16帧后queue隐形spawner，下一模拟tick开始；3次尝试各按原allowed_subpaths1/2/3随机子路、当前节点偏移-12..-7，检查active/当前viewport可见节点和invalid ranges，失败不夹路径终点/不补假兵，也不抽该次cycle等待。成功queue原enemy_satyr_cutthroat，原random_cycle0..1秒（最后一次也等待）后继续；没有owner_id，已完成施法的生成器不因后续主人移除自动消失。前摇眩晕取消不写成功cd；释放后的动画等待被stun/death打断则interrupt生成器，已queue的孩子仍提交；正常结束才把cd.ts再次写到动画结束时钟。节点/viewport/回调调度使用当前World路程适配，并非原native导航/协程同帧认证。
+
+生成实例原HP/甲/速度照模板，唯原keep_gold=nil使实例gold=0，模板仍15。孩子原raise14帧保持原节点、不移动/攻击、世界血条暂隐藏；不是全局免伤，仍可被真实伤害。原召唤声只生成scoped sound请求，完整声音播放尚未接，不虚构已发声。原共享计数组只在实际insert时+1，pending不预占；死亡不减，strict>2秒尸体移除才释放，原普通opaque尸体保留到期。limbo移除不减、再插入不重计；这是当前固定CONCURRENT1单组适配，不冒完整count_groups引擎。原max12是每次ready/生成尝试的准入门，不额外预占pending/硬夹数量去改变source队列顺序。
+
+World/Renderer只补可选busy/keepCorpse/healthHidden/opaqueCorpse接口；仅stage7 loader提供，旧1–6无新state/RNG。排队的spawner/孩子会阻止普通末波提前won。无新PNG，4623逻辑帧6,314,902B/map847,936B原RGBA/size/trim保持；原4/5/6图1925/1815/2204帧4,090,840/3,175,904/4,109,998B与oldcompact1314帧2,122,316B不变。extract_stage7/read_hoplite_functions/rules记录原继承与constants/pins，控制器只-bl、声明stub与constants可读，不执行原controllers或mixed作弊补丁。
+
+630项Node通过（10新）：含随机draw数量、held cast不被silence凭空中断、12共享准入、零金币/尸体计数/limbo、无提前won和raise并非免伤。actualbuild hoplite-browser-repeat真Space后World.step自动原8秒准备/cast/spawner/三孩子raise→正常羊人双刀实际伤援军（40→33与40→34）。父原600HP/0.5甲；kill父真实+60gold，kill孩子0gold且计数仍3，尸体1.33秒仍在、2秒后释放为2；没有假给主英雄XP。source body/raise Canvas q/alpha/矩阵、原hidden bar职责、完整循环安全World绘制快照不变、无missing/unready、真实pause/wheel/844×390 CDP touch、地图全progress保持均通过。test只控制宿主RAF避免双时钟，实际调用绑定的原World.step；路径节点/队列/时钟是隔离fixture，不是第7天然通关或原版同输入pixelcert。
+
+首次手机pause在关闭桌面dialog/viewport布局仍过渡时就点击旧坐标，断言失败保留；fixture改为真实等待modal/veil关闭和两次RAF再取button bbox，未改产品门/动画/触点放宽。桌面/手机raise与squad图已人工看。原faerie_trails暂存导航、蜘蛛蛛网、原Druid/高级塔与mode锁/7的Wild允许范围、Ready/敌通知百科/完整音频、自然模式/自身预算/旗路书奖励cap7等继续待做，不称21模式。
+
+最终actualbuild1680文件104,610,774B含manifest；所有运行模块与stage7资源逐字节等build，source pinned重提成功。旧九模式/手机存档、satyr/pumpkin实际回归、UI与公开.142 UI均正常exit0；连续新档4/5/6自然链全过（4campaign19命/heroic142/iron95；5campaign20/heroic201/iron147/XP37600；6campaign20命零漏/真boss收尾→heroic120/iron169/XP47121），旧策略未改。
+
+最终cold100ms/1.5MBps/cacheoff旧14,857,128B/240req总16.070s；第四14,814,506/230req书7.203/总17.063；第五14,997,813/241req书7.844/总17.744；第六14,938,482/240req书8.180/总23.728，均正常exit0，不保所有线路。第五仅余2187B，后续按关lazy不静态塞大声明。第7隔离冷 **16,867,614B/232req**、book7.428s/总17.624s，15MB assert正常exit1，base/progress/draw不变、无missing/unready，仍未通过预算、非正式旗7书7入口；不抬门槛/降质/清透明RGB/漏当前必需图。第六boss/cart后期额外3.87MB仍是真实下载，不冒整局15MB。
+
+主要logs artifacts/hoplite-source-pinned/tests-final/build-publish/browser-publish/satyr-regression/pumpkin-regression/old-nine/ui/natural4/natural5/natural6/performance/stage4-performance/stage5-performance/stage6-performance/stage7-budget/pages-ui.log。旧手机触点失败保留；恢复桌面viewport后截图也需等两次RAF，不拿尚未布局稳定的HUD残影作最终截图。
+
 ## 0.2.142：羊人两次掷刀（隔离验证）
 
 第7关仍closed，生产前六关18模式与cap6保持。本批接通enemy_satyr_cutthroat原三段远程：start1帧完整等待后，loop22帧内第5/15帧各排队knife_satyr，end1帧再返回普通行为。初始cooldown按真实insert时钟，难度3/3/3/2.5秒；chance1仍抽随机。loop前摇/收尾的眩晕转end，start/end保留各自源等待；已提交的刀不因来源死亡而消失。攻击期间拒并行普通近战/移动，不用假的stunned或blocked字段控制行为。
@@ -54,7 +74,7 @@ World只新增可选 `data.stageRuntime` 的init/step/activatePlant接口，Rend
 
 ## 下一步
 
-下一批优先补原faerie_trails暂存导航机关或hoplite召唤/计数组连续链。satyr两次掷刀已在.142闭合，不再当作尚未接的generic ranged。其余新敌导入声明/图和通用运动仍不等于专有AI完成。webspitting spider专用蛛网、原允许的Druid等高级塔分支、ready/敌人通知与百科、成就/声音、自然三模式、预算及真正发布链也未全。
+下一批优先补原faerie_trails暂存导航机关或蜘蛛原蛛网特殊链。hoplite召唤/计数组.143与satyr两次掷刀.142均已闭合，不再当作尚未接的generic ranged。其余新敌导入声明/图和通用运动仍不等于专有AI完成。webspitting spider专用蛛网、原允许的Druid等高级塔分支、ready/敌人通知与百科、成就/声音、自然三模式、预算及真正发布链也未全。
 
 第7关充分验收后才扩cap、原旗路、书页与奖励存档。不要继续无限磨已完毒南瓜/旧HUD/4–6固定策略，也不要只因资源存在就开放7。整体原grid、native队列/IDs/global z、旧箭物理、Arivan、安全区、特殊death、血池、完整音频与宝石天赋仍有差异，不称整体1:1。
 

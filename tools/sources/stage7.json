@@ -30,9 +30,26 @@
       }
     }
   },
+  "hopliteFunctions": {
+    "enemy_satyr_hoplite": {
+      "insert": {
+        "__script_path": "game_scripts.enemy_basic.insert"
+      },
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.enemy_satyr_hoplite.update"
+      }
+    },
+    "satyr_hoplite_spawner": {
+      "runs": 1,
+      "update": {
+        "__script_path": "game_scripts.enemies_spawner.update"
+      }
+    }
+  },
   "pending": [
     "faerie trails path speeds/controller",
-    "hoplite summons",
+    "faerie transport and other special enemy controllers",
     "webspitting spider special",
     "new allowed Druid advanced tower",
     "natural modes, own budget and actual flag/book/rewards release"
@@ -136,14 +153,15 @@
     ]
   },
   "runtimeModulesSHA256": {
-    "domain.mjs": "ac2671ab5368ae8a60a2347f05f1ae95c0758e0388f64ef804440778ce060f0d",
+    "domain.mjs": "7736f01414263d5b66f2b1cb70bf93c15ee21c2b45e353f64d77bb0087f0cc2c",
     "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
     "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
     "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
-    "renderer.mjs": "6075adbbd99f3528fa64ab0866f2cd9bc3239d1c3994fa93a141fd2f1af0bb98",
+    "renderer.mjs": "4e678e28430d452db62e6c11109d4720c1c7a05965a895ce9754606b64d3e73d",
     "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
+    "stages/hoplite.mjs": "ae2fddf3db20abb2f11549d17952d39d9016a23f39b8b02d1643a6e69865f00b",
     "stages/satyr.mjs": "3eb34a25ac3e9f7665e89074bbdb52e6df141f982bdff4a6f7cae0cca38bdf8a",
-    "stages/stage7.mjs": "76cf0eab27629c268db9c3979e3d36619061f7d51fac4ed541bb49de9a96246c",
+    "stages/stage7.mjs": "fe035b4a6648e745e92f6a047f66eedf7b7f739eca56ee9158e9689b2cb42392",
     "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
   },
   "satyrFunctions": {
@@ -166,10 +184,11 @@
       }
     }
   },
-  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife gameplay; source controllers bytecode-only; stage7 remains closed",
+  "scope": "isolated stage7 declaration, poison-pumpkin and satyr dual knife and hoplite summon gameplay; source controllers bytecode-only; stage7 remains closed",
   "sha256": {
     "assets/gc64/all/components.lua": "3c5e9b9708ab01c4f1173f4d5fa0340bfd72ff620561bc8b95a3c2a21c438163",
     "assets/gc64/all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "assets/gc64/all/path_db.lua": "2fb9f1ed4c4f6216d40b9969f790cf96991c94e3e7f089cb2e8cc89ed389bc5c",
     "assets/gc64/all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
     "assets/gc64/all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
     "assets/gc64/all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
