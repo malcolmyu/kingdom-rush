@@ -1,7 +1,7 @@
 {
   "limits": [
     "Native coroutine and entity insertion order adapted to World ticks",
-    "Tower arcane and complete advanced tower implementation pending",
+    "Arcane special powers and complete advanced tower implementation pending",
     "Source audio cues and full grid/path target production remain pending"
   ],
   "rules": {
@@ -25,7 +25,9 @@
     "availableAdvanced": [
       "tower_arcane"
     ],
-    "implementedAdvanced": [],
+    "implementedAdvanced": [
+      "tower_arcane baseline (skills disabled)"
+    ],
     "locked": [
       "tower_silver",
       "tower_blade",

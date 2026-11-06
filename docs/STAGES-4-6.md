@@ -68,3 +68,9 @@ World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原runn
 当前World独立stage4Burn/scenery状态、脚本建造门与nearestRoad active/invalid-node适配，绘制纯pose并保留每个声明的非均匀scale/r/z/anchor，不再用scale.x代替双轴。源控制器与全部声明只读审计，JSON不改；脚本火把目标是无health的decal，不进入普通敌人伤害/奖励。完整native协程/插入/renderer timed顺序、source grid/寻路生产与音频仍适配。
 
 高级塔锁已真实审计：第4关原locked_towers只锁其余7种，tower_arcane没有锁，当前实现仍仅基础1–3tier，**奥术弓箭塔尚未完成**。这是第4关开放前的明确缺口，不能把这一名单导入当高级塔已实现，也不能以新敌/焚林专项过了就宣称第4自然完成。4–6入口仍关闭，后续需原高级塔/通知/资源分组预算和实际新关通关验收。
+
+0.2.114接入奥术弓箭塔基础升级/普通攻击：真实archer1→2→3→tower_arcane，价格70/110/160/230，累计spent570，未另造第五种基础塔。高级分支读取原菜单action_arg；tower_silver等未实现分支与Arcane两种技能继续disabled。现有前三关各级锁按各关原rules保持（第3关已允许基础3级，锁的是高级塔，不能概括为前三关全部只允许2级）。原范围200、两名射手按.1秒错开动画/放箭、严格>.8秒冷却、4/30前摇、原射手offset与目标方向选择；箭按源距离决定flight、固定预测落点/非零速度轴误差、g=-900/逐模拟tick切线/strict22命中，11–18物理伤害后原mod减.03魔抗（raw值累计、显示值夹0..1）。射手/塔身/气泡/原命中FX同原actor队列；原get_info伤害按两箭显示。
+
+只读APK模板/Arcane controller240–362及246–274闭包、普通arrow/mod_damage/health魔抗分支，固定SHA；原PNG所需266帧独立lazy组373,782B，逐RGBA/size/trim验证，旧前三关不加载该组，旧塔compact仍1314帧。9号肖像补源PNG无损裁取。模板仅合并ExpansionRepository隔离目录，没有开放新关或改旧存档。
+
+当前只闭合基础双箭/魔抗削减，不包括爆裂/睡眠购买与技能、全部血花/特效字/水面miss、完整原modifier/native队列/协程/IDs。现有motionVelocity和目标优先级仍为World适配，未称Love同seed或原同输入帧。第4–6仍须其余脚本/高级塔技能/预算与真实新关全流程验收；第6Alleria/spawner/囚车首领链仍欠，不能15波后冒自然完成。

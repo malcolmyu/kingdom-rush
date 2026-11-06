@@ -22,7 +22,7 @@ export function projectileSprites(template,shot,frame,{entityId=0,ultimate=false
    rotation+=(shot.elapsed||0)*speed;
    if(speed>0)flip=!flip;
   }
-  if(i===0&&(shot.type==='ewok-spear'||shot.type==='harasser-arrow'||shot.type==='gryphon-arrow'||shot.type==='gryphon-bolt'))rotation=shot.rotation;
+  if(i===0&&(shot.type==='arcane-arrow'||shot.type==='ewok-spear'||shot.type==='harasser-arrow'||shot.type==='gryphon-arrow'||shot.type==='gryphon-bolt'))rotation=shot.rotation;
   if(i===0&&bodyRotation!==undefined)rotation=bodyRotation;
   return[{key:name,pos:{x:shot.x+offset.x,y:shot.y+offset.y},anchor:s.anchor||{x:.5,y:.5},scale:s.scale?.x??1,flip,alpha:(s.alpha??255)/255,rotation,order:spriteOrder(s,shot,i+1,entityId)}];
  });

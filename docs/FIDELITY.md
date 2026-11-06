@@ -1229,3 +1229,15 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 新增7纯测涵盖5而非6波、45速/8+12+5帧、原场景传播与alpha/只读原JSON/双轴scale、真实holder24禁买不扣钱和开后70交易、两个路径/challenge门、真实额外敌人node连接和只生成一次、暂停/owner与旧关隔离。actualbuild专项用隔离stage4真实开波后受控wave5/10/清pending，捕Canvas原q/alpha/双轴矩阵、draw前后World快照不变、源road与holder DOM disabled解除、实际70买塔/500→430、真实burner进入road2/pause/wheel/mobile/退出旧存档unlocked1。不是天然第4通关或原版同步，Arcane尚未实现且新关关闭。
 
 432Node全过；actualbuild stage4-burn-browser-final（等原build-menu.hidden再拍/手机CDP真实pause）、stage4-burn-campaign天然原九模式/存档手机→ui→performance全正常exit0。三个campaign20命，第三campaign入关自然XP4705，末九模式XP继续增长，旧策略/数值不改。公开一次manifest确认.112且pages-ui正常exit0；新推送未轮询。build1526files72,887,137B，cold100ms/1.5MBps/cacheoff14,755,973B/240requests，book7.167s/总16.326s<15MB，无新图/整atlas/OTF/抬预算/降质，不保普遍线路速度。stage4-burn-zone1/zone2/mobile已人工看，附最终zone2图；受控推进wave与清pending非天然第4关/原版同步。专项全部无产品失败/挂住，初截图menu处于原hide中途已等真实隐藏重拍，不改产品动画或门控。新关资源自身预算/Arcane/完整通关仍待验，整体非1:1。
+
+## 0.2.114 奥术弓箭塔基础分支
+
+原Arcane controller240–362/246–274闭包只读-bl核对两射手与flight职责；普通arrow1947–2130、mod_damage5328–5342、health的DAMAGE_MAGICAL_ARMOR及raw magic armor clamp交叉核对，不执行控制器。extract_arcane.py固定7源SHA和4张原PNG SHA，声明reader隔离scripts，仅将tower_arcane/普通arrow/mod/hitFX合并隔离ExpansionRepository。266帧373,782B原PNG紧凑lazy组逐RGBA/size/trim验证；9号肖像直接原PNG裁取并exact roundtrip，UI602图。最终旧塔compact仍1314帧2,122,316B，不把Arcane整图塞旧启动链。
+
+源升级目标action_arg真正验证，archer1→2→3→Arcane分别70/110/160/230累计570；wave0全部spent退款，战斗floor570*.6+.5=342。原第3关已允许基础3级、锁全部高级塔，第4原锁7种但不锁Arcane；旧关rules不改，没有全局加第五基础塔或开新关。原高级两技能未完成，明确disabled，不能假购买。
+
+原strict>.8冷却、两动画相隔.1、4/30首箭后再.1第二箭，目标取前列列表，释放时原欧式range重验；射手offset和上下弹口按原目标方向，flight=min11/30+distance/200*10/30，预测采用现模拟motionVelocity与原非零轴误差，fixed destination/g-900/tick tangent/strict22接触。每箭contact才ceil frandom11–18物理伤害，原mod再消费一次math.random(.03,.03)并累计减raw魔抗，夹0..1；不是把魔抗削减当额外HP伤害。get_info按两箭显示22–36。命中FX原8帧/3300，塔与两射手/气泡/箭原metadata同actorqueue，不改变offset-sort规则。完整原special powers/blood/pop/water miss/native modifier/coroutine/IDs仍欠；原RNG/路径/模拟器适配不称Love同seed或逐帧同步。
+
+438Node全过（6新），actualbuild arcane-browser-release真实菜单购买/升级、因160不足230拒绝后用真实ettin死亡奖励70补足，0金币截图来自实际总570支出。控时钟发出两箭，Canvas q/alpha/tick旋转矩阵/World绘制前后不变，真实HP下降/.03魔抗削减、pause/wheel/mobileCDP触摸/地图清理unlocked1正常exit0。桌面/手机图已人工看，为隔离第4关受控目标与时钟，非天然第4关或原版同步。
+
+最终实际包原完整天然九模式/存档手机→UI→性能→公开UI串行全exit0，三个campaign20命，第三campaign入关自然XP4705，末XP继续累加。首campaign命令漏TEST_URL默认8765连接拒绝exit1，已正确8766独立完整复测通过，没有改产品/门控；remote UI断言后关闭稍慢，最终自行正常exit0，未TERM冒通过。冷100ms/1.5MBps/cacheoff14,763,121B/241requests，book7.199s/总16.400s<15MB，无整atlas/OTF/抬预算/降质，不保普遍线上速度。新关自身资源分组预算仍待验。公开一次manifest.113且arcane-pages-ui正常exit0，新推送后不轮询。logs artifacts/arcane-tests-release.log/build-release.log/browser-release.log/campaign-final.log/ui-final.log/performance-final.log/pages-ui.log。

@@ -1,0 +1,26 @@
+{
+  "controller": "game_scripts240-362 including246-274; scripts.arrow1947-2130; mod_damage; health magical armor branch",
+  "frames": 266,
+  "imageSha256": {
+    "go_decals-1.png": "0e27b2572241bdf4cae4d131b7650d8cd9e510bbca04a40a3cbba865085866e5",
+    "go_towers-1.png": "ce728ee27bed688e2b8b94094cd6c2198e0acf9d7ee42ba7892a93dd5ee5da07",
+    "go_towers-2.png": "4b1c04cba1b1a3bd387a78f70bbf7f231c4dbdef7e97916edf8ff5be9ea533c2",
+    "gui_portraits-1.png": "b8db2ab347915c6589d3fb362849fc353201fe3f567e7f44cb39351151e640ce"
+  },
+  "limits": [
+    "Special powers disabled",
+    "Native coroutine/entity insertion and queued damage adapted",
+    "Blood/pop/water miss and complete modifiers pending"
+  ],
+  "rgbaVerified": true,
+  "scope": "baseline paired shooters, source upgrade, physical arrows and additive magic armor reduction",
+  "sha256": {
+    "all/constants.lua": "b380c59bfd7c9c8c8d6c1bfe64dd5fc9e8892f07f2f0b68e140520b9104bfdf5",
+    "all/script_utils.lua": "a87ce56b0079f384f6b1ec9ffa998225a992369fa5292f1fba5ec394cf57df0e",
+    "all/scripts.lua": "6039402a5384e88e9c5c505d89c6fe92a685d16519943e12791da4ad84f3efdc",
+    "all/systems.lua": "994654ee9f882fd8cab9b2cc4e3282fb793f4e5c324b1c5e328b83a6ecf3254b",
+    "all/utils.lua": "e037700b5b8e293e70e487b00470660cf527f8b769d942ceb36c969856bc12a9",
+    "kr3/game_scripts.lua": "ea9ad03c7236eff294e1dff339fe859ceda54ba79d8045a8ede0f5fced4f3c74",
+    "kr3/game_templates.lua": "e998ab4a1dca446e39c156c58286ad2f340c814c2e698d07be614bbca0c71f89"
+  }
+}
