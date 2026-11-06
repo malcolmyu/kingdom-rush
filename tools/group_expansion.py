@@ -70,9 +70,9 @@ def group():
     for x in v.values():shared_frames(x)
    elif isinstance(v,list):
     for x in v:shared_frames(x)
-  if stage!=5:shared_frames(selected)
+  if stage not in (5,6):shared_frames(selected)
   runtime_roots={};runtime_modules={}
-  if stage==5:
+  if stage in (5,6):
    def runtime_visit(v):
     if isinstance(v,str)and v in all_templates and v not in runtime_roots:
      runtime_roots[v]=all_templates[v];runtime_visit(runtime_roots[v])
@@ -80,10 +80,10 @@ def group():
      for x in v.values():runtime_visit(x)
     elif isinstance(v,list):
      for x in v:runtime_visit(x)
-   roots=['hero_elves_archer','hero_alleria']+[f'tower_{f}_{t}'for f in ['archer','barrack','mage','rock_thrower']for t in [1,2,3]]
+   roots=['hero_elves_archer','hero_alleria' if stage==5 else 'hero_alleria_fixed']+[f'tower_{f}_{t}'for f in ['archer','barrack','mage','rock_thrower']for t in [1,2,3]]
    roots += [k for k in all_templates if k.startswith(('re_current_','soldier_re_'))]
    for k in roots:runtime_visit(k)
-   for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','blighter.mjs','blighter-energy-data.mjs','harasser-data.mjs','harasser-jump-data.mjs','stage5-alleria-data.mjs','stage5-catapult-data.mjs','arcane-slumber.mjs']:
+   for name in ['domain.mjs','renderer.mjs','projectile-sprites.mjs','skill-effect-data.mjs','tower-effect-data.mjs','blighter.mjs','blighter-energy-data.mjs','harasser-data.mjs','harasser-jump-data.mjs','stage5-alleria-data.mjs','stage5-catapult-data.mjs','arcane-slumber.mjs']+(['fixed-alleria-data.mjs','gryphon-guard-data.mjs','gryphon-event-data.mjs']if stage==6 else[]):
     path=ROOT/'web'/name;runtime_modules[name]=hashlib.sha256(path.read_bytes()).hexdigest()
     for literal in re.findall(r"['\"]([a-zA-Z0-9_%-]+)['\"]",path.read_text()):runtime_visit(literal)
    def render_shared(obj):
@@ -115,7 +115,7 @@ def group():
   dest=out/f'stage{stage:02}.webp';atlas.save(dest,lossless=True,exact=True,method=6);check=Image.open(dest).convert('RGBA')
   for px,py,im in tiles.values():assert check.crop((px,py,px+im.width,py+im.height)).tobytes()==im.tobytes()
   data={'id':stage,'frames':result,'templates':{k:v for k,v in selected.items()if k in pack['templates']},'sheets':[f'../expansion/stage{stage:02}.webp'],'compactScenery':True,'source':{'catalogSHA256':hashlib.sha256((out/'catalog.json').read_bytes()).hexdigest(),'baseCatalogSHA256':hashlib.sha256((ROOT/'web/assets/catalog.json').read_bytes()).hexdigest(),'expansionAtlasSHA256':hashlib.sha256((out/'sprites.webp').read_bytes()).hexdigest(),'sharedAtlasSHA256':{n:hashlib.sha256((ROOT/'web/assets/images'/n).read_bytes()).hexdigest()for n in sorted({base['frames'][k]['a']for k in shared})},'reusedFrames':len(reusable),'rgbaVerified':True}}
-  if stage==5:data['source']['runtimeRoots']=sorted(runtime_roots);data['source']['runtimeModulesSHA256']=runtime_modules
+  if stage in (5,6):data['source']['runtimeRoots']=sorted(runtime_roots);data['source']['runtimeModulesSHA256']=runtime_modules
   (out/f'stage{stage:02}.json').write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')))
   summaries.append({'id':stage,'frames':len(result),'bytes':dest.stat().st_size})
  print(json.dumps({'stageGroups':summaries,'verifiedSharedFrames':len(reusable)}))

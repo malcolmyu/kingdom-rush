@@ -1,5 +1,19 @@
 # 技术方案：数据驱动的塔防战役
 
+0.2.136实际解决第6隔离冷入口预算：stage06共享帧改按实际render.sprites与已审计runtime模板闭包选取（含fixed Alleria/gryphon/guards），2204帧4,109,998B，所有保留帧RGBA/size/trim逐一验证；旧stage04/05图片字节与旧1314帧2,122,316B塔compact不变。boss/cart完整原图与元数据均保留，但campaignEnemySheets不再在开场预载两张结局sheet；campaignEventSheets只在campaign6声明，heroic/iron不取boss/cart包。第14波（最后一波之前）真实开始异步预解码，两个完整sheet都decode后才能标ready。不是删除必需图或假load，也不在原事件生成之后补图。
+
+新Stage6EventAssets绑定World/scene/version，失败不吞错：提供真实重试按钮。若最后普通波清空时仍未ready，stage6AssetsWaiting禁止World.step前进及交易，原父controller仍留waves，结局/金币/HP/RNG/时钟不变化；用户重试成功才恢复原2秒等待/囚车/首领链。第14波预加载时正常战斗不停，HTTP等待不消费World RNG；已解码图可复用现Renderer只读cache，但旧owner/销毁/换版本的迟到Promise不得设置World ready或重建UI。没有后台timer或跨World结局状态。
+
+574 Node全过（3新资产事务纯测）。actualbuild event-assets-browser故意abort真实boss图片，验证最终事件与Worldclock禁止提前启动；844x390 CDP真触摸重试成功，真实cart/boss sheet全decode后parent到fight，Canvas无missing/unready；独立fresh page hold请求→退地图→放行验证旧World不回填ready、UI不复活。完整ending-browser在受控最后波fixture中由父controller排队首领→真实召唤→死亡→won，含源Canvas矩阵/暂停手机清理；aura/guards、三关场景专项、原天然完整九模式/存档手机与UI回归通过。三场景老fixture仍断言base四关，发现现已发布五关后只修期望5，产品cap未改。
+
+新增tests/stage6-strategy.mjs/stage6-natural.mjs可复现合法自然测试：先原tests/stage4-natural→stage5-natural从新档真正赚XP37600/星，再用trainHeroSkill/buyUpgrade真实预算。第6campaign20命/0漏/764kill772spawn（首领死亡原无奖励清场8个）且boss death-complete/父complete；以实际战斗XP43810续heroic120/120零漏→XP45926续iron169/169零漏→末XP47121。只有隔离World之间续实际已赚战斗XP，不写World金币/HP/伤害/冷却/seed/路径终点，也不伪造星/解锁；recordVictory(6)被当前cap5正确拒绝。结果battleReady=true/releaseReady=false，是当前模拟的自然三模式，不是实际发布浏览器奖励链或原版同输入像素验收。
+
+早期合法方案campaign10/7命、heroic过、iron失败保留在ignored artifacts。iron初计划错误尝试锁住的archer/barrack，后用允许的mage/rock；低级平铺仍漏burner，诊断源当前防守终点约574,475而非道路最后559,583，没改产品终点或敌人值。最终先合法mage6三级/mage10一级、英雄道路点450附近，再按计划升级通过；不要把错建造类/站位当产品bug。实际原rules第6campaign/heroic不锁tower_wild_magus，当前尚未实现此高级法师塔，是新确认发布缺口；不是基础mage3或Arcane替身可以冒全源能力已齐。
+
+最终cold100ms/1.5MBps/cacheoff旧14833279B/237req book7.234s总17.049s；第四真实旗书14790652B/227req book7.182总17.039；第五真实旗书14973959B/238req book7.859总17.647；第六隔离真实title/save/map/book入口14831551B/230req book6.641总16.707，15MB全部正常exit0。不抬预算/降质/清透明RGB/漏当前必需帧，不保所有线上线路；第6完整事件阶段还会实际下载约3.87MB原图，不能把冷入口<15MB写成全局整局传输<15MB。第五只余26041B，未来大模块/图必须按本关依赖。
+
+生产仍前五关15模式，第6closed：必须先补原允许wild magus必要升级/战斗功能，之后完整浏览器自然三模式/源旗路书页通知奖励cap6与实际发布冷路径/手机重载都验收，再称18模式。初隔离预算通过不等于真实flag6/book6入口已过。全量提取/分组/build可重建，运行模块逐字节等实际build；本轮最终包1655文件95434801B含manifest。主要logs artifacts/event-assets-tests/build/groups-final/browser/ending/guards/aura/scenes-repeat/old-nine/ui/natural4/natural5/natural6/performance/stage4-performance/stage5-performance/stage6-performance/pages-ui.log；首scenes.log是旧fixture失败，repeat已正常。
+
 0.2.135实际接通campaign第6父level06结局：最后普通波次真正结束且无活敌后等2秒，源遮幕/2秒镜头/隐藏GUI，囚车从visible.left−132、y459以47速行至120,459；到位仍yield一次、下一tick才open；open动画83/30后按原nearest_nodes默认lane1取最近节点+1，下一模拟tick生成真实eb_gnoll并连接现megaSpawner。3/30后只前五sprite降Z_DECALS1400，第六保留3000/sort_y_offset−10。父状态读取实际gnollBoss.phase，只有进入loop才恢复镜头/GUI；等待dead→death-complete后再1秒且wavesfinished无活敌才放行原胜利门。普通15波清空不再是假won或永远无条件拦截。heroic/iron原结束链不加囚车。
 
 stage6-ending.mjs只改该World的状态，Stage6EndingView纯读Worldclock驱动原黑幕out-cubic与镜头in-out-quad；源相机目标(120,500)/zoom2→(512,384)/zoom1，使用现BattleCamera边界适配，不称原native camera完全同步。隐藏GUI期间真实交易/英雄移动/施法/鼠标镜头/键盘入口禁止，模拟继续；暂停则Worldclock/车/镜头停止，返回地图销毁遮幕/inert与owner。原协程yield/原动态nav-grid/native队列ID、音频、全死亡与屏幕震动仍欠或适配，不称完整1:1。

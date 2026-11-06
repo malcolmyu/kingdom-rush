@@ -12,15 +12,15 @@ export class ExpansionRepository {
   if(!this.source?.levels.some(s=>s.id===id)||!['campaign','heroic','iron'].includes(mode))throw new Error('不在后续三关还原范围内');
   if(!this.groups.has(id))this.groups.set(id,this.json(`expansion/stage${String(id).padStart(2,'0')}.json`));
   const group=await this.groups.get(id),b=this.base.catalog,a=this.arcane;const extra=id===5?await(this.catapultAssets??=this.json('stage5-catapult/catalog.json')):{templates:{},frames:{},sheets:[]};
-  const boss=id===6?await(this.bossAssets??=this.json('gnoll-boss/catalog.json')):{templates:{},frames:{},sheets:[]};
+  const boss=id===6&&mode==='campaign'?await(this.bossAssets??=this.json('gnoll-boss/catalog.json')):{templates:{},frames:{},sheets:[]};
   const ending=id===6&&mode==='campaign'?await(this.endingAssets??=this.json('stage6-ending/catalog.json')):{templates:{},frames:{},sheets:[]};
   const endingRules=id===6&&mode==='campaign'?await(this.endingRules??=this.json('stage6-ending/rules.json')):undefined;
   const ally=id>=5?await(this.alleriaAssets??=this.json('stage5-alleria/catalog.json')):{templates:{},frames:{},sheets:[]};
   const blade=id>=5?await(this.bladeAssets??=this.json('blade/catalog.json')):{templates:{},frames:{},sheets:[]};
   const towers=id>=5?await(this.entryTowerAssets??=this.json('tower-groups/entry/catalog.json')):this.towerAssets;
-  const catalog={...b,campaignTowerSheets:towers.initial,towerAssetGroups:{...towers.groups,tower_arcane:a.sheets,tower_blade:blade.sheets},campaignScenerySheets:group.sheets,campaignEnemySheets:[...group.sheets,...extra.sheets,...ally.sheets,...boss.sheets,...ending.sheets],templates:{...b.templates,...group.templates,...a.templates,...stage4BurnTemplates,...gryphonTemplates,...extra.templates,...ally.templates,...blade.templates,...boss.templates,...ending.templates,...(id===6?FIXED.templates:{})},frames:{...b.frames,...towers.frames,...group.frames,...a.frames,...extra.frames,...ally.frames,...blade.frames,...boss.frames,...ending.frames},animations:b.animations};
+  const catalog={...b,campaignTowerSheets:towers.initial,towerAssetGroups:{...towers.groups,tower_arcane:a.sheets,tower_blade:blade.sheets},campaignScenerySheets:group.sheets,campaignEnemySheets:[...group.sheets,...extra.sheets,...ally.sheets],campaignEventSheets:[...boss.sheets,...ending.sheets],templates:{...b.templates,...group.templates,...a.templates,...stage4BurnTemplates,...gryphonTemplates,...extra.templates,...ally.templates,...blade.templates,...boss.templates,...ending.templates,...(id===6?FIXED.templates:{})},frames:{...b.frames,...towers.frames,...group.frames,...a.frames,...extra.frames,...ally.frames,...blade.frames,...boss.frames,...ending.frames},animations:b.animations};
   this.catalog=catalog;
   const spawner=id===6?await(this.stage6Spawner??=this.json('expansion/stage6-spawner.json')):undefined;
-  const key=id+'-'+mode;if(!this.levels.has(key)){const d=await this.json(`expansion/${String(id).padStart(2,'0')}-${mode}.json`);this.levels.set(key,{...d,templates:catalog.templates,animations:catalog.animations,...(spawner?{stage6Spawner:spawner}:{}),...(endingRules?{stage6Ending:endingRules}:{})});}return this.levels.get(key);
+  const key=id+'-'+mode;if(!this.levels.has(key)){const d=await this.json(`expansion/${String(id).padStart(2,'0')}-${mode}.json`);this.levels.set(key,{...d,templates:catalog.templates,animations:catalog.animations,...(spawner?{stage6Spawner:spawner}:{}),...(endingRules?{stage6Ending:endingRules,stage6EventSheets:catalog.campaignEventSheets}:{})});}return this.levels.get(key);
  }
 }

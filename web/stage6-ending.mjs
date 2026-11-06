@@ -1,13 +1,14 @@
 import{spriteOrder}from'./render-order.mjs';
 export function initStage6Ending(w){if(w.id===6&&w.mode==='campaign'&&w.data.stage6Ending)w.stage6Ending={phase:'waves',at:w.time,guiHidden:false,cart:null,boss:null,insertQueue:null};}
 export const stage6WavesFinished=w=>w.wave===w.totalWaves&&!w.pending.length&&w.time>=w.nextWaveReadyAt;
+export const stage6AssetsWaiting=w=>w.stage6EventAssetsReady===false&&stage6WavesFinished(w)&&!w.enemies.some(e=>e.hp>0&&!e.removed);
 const alive=w=>w.enemies.some(e=>e.hp>0&&!e.removed);
 function phase(w,name){w.stage6Ending.phase=name;w.stage6Ending.at=w.time;}
 export function nearestJailNode(w,pos){let result=null;for(let road=0;road<w.routes.length;road++){const r=w.routes[road][0];for(let i=0;i<r.points.length;i++){const p=r.points[i],d=Math.hypot(pos.x-p.x,pos.y-p.y);if(!result||d<result.distance)result={road,lane:0,node:i+1,distance:d};}}return result;}
 export function flushStage6Boss(w){const s=w.stage6Ending,p=s?.insertQueue;if(!p||w.time<=p.at)return;const r=w.routes[p.road][0],point=r.points[p.node];if(!point)throw new Error('Original jail boss path node is missing');s.boss=w.spawn({key:'eb_gnoll',road:p.road,lane:0});Object.assign(s.boss,point,{d:r.lengths[p.node]});s.insertQueue=null;s.bossInsertedAt=w.time;}
 export function updateStage6Ending(w){const s=w.stage6Ending;if(!s)return;const d=w.data.stage6Ending;
  switch(s.phase){
- case'waves':if(stage6WavesFinished(w)&&!alive(w))phase(w,'delay');break;
+ case'waves':if(w.stage6EventAssetsReady!==false&&stage6WavesFinished(w)&&!alive(w))phase(w,'delay');break;
  case'delay':if(w.time-s.at>=d.delay){s.guiHidden=true;s.cinematicAt=w.time;const width=Math.max(1024,Math.min(768*16/9,Math.ceil(768*(w.harasserAspect||4/3))));s.cart={id:++w.serial,x:(1024-width)/2-d.fromOffset,y:d.destination.y,fromX:(1024-width)/2-d.fromOffset,at:w.time,openAt:null,lowered:false};phase(w,'travel');w.emit('stage6_cinematic');}break;
  case'travel':{const c=s.cart;if(c.arrivedAt!==undefined){c.openAt=w.time;phase(w,'open');break;}const duration=Math.abs(d.destination.x-c.fromX)/d.speed,t=Math.min(1,(w.time-c.at)/duration);c.x=c.fromX+(d.destination.x-c.fromX)*t;if(t>=1)c.arrivedAt=w.time;break;}
  case'open':if(w.time-s.at>=d.openWait){const p=nearestJailNode(w,s.cart);if(!p)throw new Error('No original boss spawn path');s.insertQueue={...p,at:w.time};s.bossQueuedAt=w.time;phase(w,'boss');}break;
