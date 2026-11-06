@@ -1,3 +1,4 @@
+import{isEnemyStunned}from'./enemy-status.mjs';
 import C from'./carrier-data.mjs';
 import{enemyDirection}from'./enemy-direction.mjs';
 const KEY='enemy_perython_gnoll_gnawer';
@@ -21,7 +22,7 @@ export function placePayload(w,e,p){
 }
 export function movePayload(w,e,dt){
  if(!e.payloadJoin)return false;
- if(e.blocked||e.stunned)return true;
+ if(e.blocked||isEnemyStunned(e))return true;
  const route=w.routes[e.road][e.lane],to=route.points[e.payloadJoin.targetNode],dx=to.x-e.x,dy=to.y-e.y,length=Math.hypot(dx,dy),step=Math.min(length,e.speed*(e.slowUntil>w.time?.5:1)*dt);
  e.dx=dx;e.dy=dy;if(length){e.x+=dx/length*step;e.y+=dy/length*step;}
  if(step>=length){e.d=route.lengths[e.payloadJoin.targetNode];e.x=to.x;e.y=to.y;delete e.payloadJoin;}
@@ -32,14 +33,14 @@ export function updateCarrier(w,e,dt){
  if(s.hidePayloadAt!==undefined&&w.time>s.hidePayloadAt)s.hiddenPayload=true;
  updateFacing(w,e);
  const modifiers=e.modifierTypes||[];
- const forced=e.stunned&&!modifiers.includes(C.teleport)&&!modifiers.includes(C.timelapse);
+ const forced=isEnemyStunned(e)&&!modifiers.includes(C.teleport)&&!modifiers.includes(C.timelapse);
  let ready=false;
- if(s.carrying&&(forced||!e.stunned&&(s.firstCheck||w.time-s.checkedAt>=s.delay))){
+ if(s.carrying&&(forced||!isEnemyStunned(e)&&(s.firstCheck||w.time-s.checkedAt>=s.delay))){
   s.firstCheck=false;s.checkedAt=w.time;const radius=w.template(e.key).spawn_trigger_range;
   ready=forced||[...w.soldiers,w.hero].filter(Boolean).some(u=>{const flags=u.visFlags??w.template(u.key).vis?.flags??0;return u.hp>0&&!u.flying&&!(flags&C.flying)&&((u.x-e.x)**2+((u.y-e.y)/.7)**2<=radius*radius);});
  }
  if(ready){queuePayload(w,e);s.hidePayloadAt=w.time;return true;}
- if(e.stunned)return true;
+ if(isEnemyStunned(e))return true;
  const route=w.routes[e.road][e.lane];if(s.road!==e.road||s.lane!==e.lane){s.road=e.road;s.lane=e.lane;s.node=carrierNodeAt(route,e.d);}
  const next=route.points[s.node+1];if(next&&Math.hypot(next.x-e.x,next.y-e.y)<2*e.speed*dt)s.node++;
  return false;

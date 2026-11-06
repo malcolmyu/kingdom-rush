@@ -1,3 +1,4 @@
+import{isEnemyStunned}from'./enemy-status.mjs';
 import DATA from'./harasser-data.mjs';
 import{inEllipse}from'./spells.mjs';
 import{tryEwokDodge}from'./ewok-shield.mjs';
@@ -15,12 +16,12 @@ export function updateHarasser(w,e){
   if(s.phase==='start'){if(w.time-s.at>=duration(w,e,s.animation)){s.count=1;s.fired=false;phase(w,e,'loop');}return true;}
   if(s.phase==='end'){if(w.time-s.at>=duration(w,e,s.animation)){s.phase=null;e.anim=0;e.action='idle';}return true;}
   const age=w.time-s.at;
-  if(!s.fired){if(age<a.shoot_time){if(e.stunned||e.frozen)phase(w,e,'end');return true;}s.fired=true;launchHarasserArrow(w,e,s.target,a);}
-  if(e.stunned||e.frozen){phase(w,e,'end');return true;}
+  if(!s.fired){if(age<a.shoot_time){if(isEnemyStunned(e)||e.frozen)phase(w,e,'end');return true;}s.fired=true;launchHarasserArrow(w,e,s.target,a);}
+  if(isEnemyStunned(e)||e.frozen){phase(w,e,'end');return true;}
   if(age>=duration(w,e,s.animation)){if(s.count>=a.loops)phase(w,e,'end');else{s.count++;s.fired=false;phase(w,e,'loop');}}
   return true;
  }
- if(e.stunned||e.frozen){e.action='idle';e.anim=0;return true;}
+ if(isEnemyStunned(e)||e.frozen){e.action='idle';e.anim=0;return true;}
  if(e.blocked||e.pendingMelee||e.anim>0||w.time-s.rangedAt<=a.cooldown)return false;
  const candidates=members(w).filter(u=>{const f=flags(w,u);return u.hp>0&&!(f.bans&a.vis_flags)&&!(f.flags&a.vis_bans)&&inEllipse(e,u,a.max_range)&&!inEllipse(e,u,a.min_range);}).sort((a,b)=>Math.hypot(e.x-a.x,e.y-a.y)-Math.hypot(e.x-b.x,e.y-b.y));
  if(!candidates.length)return false;s.target=candidates[0];s.rangedAt=w.time;mark(w,s.target);phase(w,e,'start');return true;

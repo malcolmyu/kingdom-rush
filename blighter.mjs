@@ -1,3 +1,4 @@
+import{isEnemyStunned}from'./enemy-status.mjs';
 import {inEllipse} from './spells.mjs';
 import {tweenValue} from './skill-effects.mjs';
 // Original blighter timed attack. Plant references are local objects, never enemy IDs.
@@ -21,13 +22,13 @@ export function updateBlighter(w,e){const s=e.blighter;if(!s)return false;
  if(e.hp<=0){s.phase=null;return false;}
  if(s.phase){
   if(s.phase==='cast'){
-   if(e.stunned||e.frozen){s.phase=null;e.anim=0;return true;}
+   if(isEnemyStunned(e)||e.frozen){s.phase=null;e.anim=0;return true;}
    if(w.time-s.at>=a.cast_time){blockPlant(w,s.target);s.phase='finish';}
   }
   if(s.phase==='finish'&&w.time-s.at>=w.animationDuration(w.template(e.key).render.sprites[0].prefix,a.animation)){s.phase=null;return true;}
   return true;
  }
- if(e.stunned||e.frozen){s.energyAttack=null;s.rangedTarget=null;e.anim=0;return true;}
+ if(isEnemyStunned(e)||e.frozen){s.energyAttack=null;s.rangedTarget=null;e.anim=0;return true;}
  // Existing melee/ranged episodes finish before source outer-loop timed attack.
  if(s.energyAttack||s.rangedTarget||e.blocked||e.pendingMelee||e.pendingRanged||e.anim>0||e.canDoMagic===false||w.time-s.ts<a.cooldown)return false;
  const target=w.plants.find(p=>!p.blocked&&inEllipse(e,p,a.range));if(!target)return false;

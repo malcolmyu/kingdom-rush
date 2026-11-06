@@ -1,3 +1,4 @@
+import{isEnemyStunned}from'./enemy-status.mjs';
 import{inEllipse}from'./spells.mjs';
 import{enemyDirection}from'./enemy-direction.mjs';
 import RULES from'./blighter-energy-data.mjs';
@@ -6,7 +7,7 @@ const members=w=>[...w.soldiers,w.hero].filter(Boolean);
 const present=(w,s)=>!!s&&members(w).includes(s);
 const flags=(w,s)=>({bans:s.visBans??w.template(s.key).vis?.bans??0,flags:s.visFlags??w.template(s.key).vis?.flags??0});
 export function energyTargetAllowed(w,s,a){if(!present(w,s)||s.hp<=0)return false;const v=flags(w,s);return !(v.bans&a.vis_flags)&&!(v.flags&a.vis_bans);}
-const interrupted=e=>e.hp<=0||e.stunned||e.frozen;
+const interrupted=e=>e.hp<=0||isEnemyStunned(e)||e.frozen;
 export function launchBlighterEnergy(w,e,target,attack){
  const offset=attack.bullet_start_offset[0],hit=w.template(target.key).unit.hit_offset,flip=e.actionFlip;
  const b=w.template(attack.bullet).bullet,x=e.x+(flip?-1:1)*offset.x,y=e.y+offset.y;
