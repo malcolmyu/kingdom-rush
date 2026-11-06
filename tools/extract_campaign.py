@@ -105,6 +105,8 @@ subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_guards.py')],check=Tru
 subprocess.run(['python3',str(ROOT/'tools/extract_gryphon_events.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_stage4_burn.py')],check=True,cwd=ROOT)
 
+subprocess.run(['python3',str(ROOT/'tools/extract_fixed_alleria.py')],check=True,cwd=ROOT)
+
 # New-stage declarations must exist before GUI and release-book dependencies.
 subprocess.run(['python3',str(ROOT/'tools/extract_arcane.py')],check=True,cwd=ROOT)
 subprocess.run(['python3',str(ROOT/'tools/extract_stage5_catapult.py')],check=True)

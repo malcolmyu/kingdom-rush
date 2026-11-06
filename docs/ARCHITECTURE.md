@@ -4,6 +4,8 @@
 
 ## 模块边界
 
+0.2.130固定Alleria使用独立World.fixedAlleria，仅第6创建；不进入stageHeroes/多英雄GUI/普通援军和敌方target枚举。共用Alleria箭的发射/已审计抛物线适配，不共用第五可选英雄的近战、移动、成长和死亡控制器；固定猫仍归同World队列且继承父z，直接固定位置，不求第五网格rally。Renderer只读独立NPC/cat pose。第6catalog按需合并fixed声明与已有Alleria图包，旧五关图包/World随机流不增加新类状态。公开范围仍cap5，第6boss/spawner链和15MB预算未过。
+
 0.2.129发布cap5统一来自campaign-release.mjs。生成器从原4/5声明构建mode索引与书用模板统计；Repository.init合并书用原声明，level仍按需加载战斗资源。历史第四胜利只迁移访问权，沿一次原地图揭示后保存，不赠星/XP；真实第五胜利与挑战分别recordVictory，cap5不开放未完成首领链的第6关。源首波高级塔通知仅在已有真实layout时接收，沿原seen标记启用百科；不在World里写UI存档或额外随机。
 
 0.2.128第5/6隔离catalog使用tower-groups/entry变体：common先decode，预建实体按真实template依赖补齐，空地菜单由towerMenuSheets返回当前allowed一级族的完整依赖，prepareTowerMenu在decode和owner/scene/slot/version检查完成前保持hidden/inert。第4沿用旧tier组，旧1–3沿用原compact。第五场景共享图闭包读取实际render.sprites而不是任意组件字符串，并记录runtime模块SHA；metadata存在不等于图片就绪，实际Canvas专项同时验证sheet已decode。此调整不触及World时钟/交易数值/随机流或save cap4。

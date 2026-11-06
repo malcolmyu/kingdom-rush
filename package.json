@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.129",
+  "version": "0.2.130",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -140,7 +140,9 @@
     "test:stage5-natural": "node tests/stage4-natural.mjs && node tests/stage5-natural.mjs",
     "test:stage5-release": "node tests/stage5-release-browser.mjs",
     "test:stage5-loading-performance": "node tests/stage5-loading-performance.mjs",
-    "test:stage5-presentation": "node tests/stage5-release-presentation-browser.mjs"
+    "test:stage5-presentation": "node tests/stage5-release-presentation-browser.mjs",
+    "test:fixed-alleria": "node tests/fixed-alleria-browser.mjs",
+    "test:stage6-resources": "node tests/stage6-resources-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

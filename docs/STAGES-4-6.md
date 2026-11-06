@@ -1,5 +1,17 @@
 # 第4–6关还原工作区
 
+0.2.130实际接入第6关固定Alleria射手与猫。原level06.update在任何mode开波前创建hero_alleria_fixed于(660,625)，cat_pos(640,655)；不是第五关可选玩家第二英雄。原HP210/health.ignore_damage/F_ALL/UI不可点选，模板血条初始隐藏、完整update在入场后设为显示，独立World.fixedAlleria，不进stageHeroes、多头像、普通援军寿命或敌人target列表，不借主英雄XP。重要修正：初仅看模板误判无血条，原game_scripts8182在respawn后明确health_bar.hidden=false，systems.render依此显示；最终按完整源恢复入场后的世界血条，不增加可选HUD。原24帧respawn后排队猫，下一模拟tick创建，猫继承父sprite z3001而非默认3000，固定位置不走第五关NF_RALLY网格求点；原全局pos(nil)不伪填nav_rally字段。猫不制造伤害，idle_flip和真实音频播放仍欠。
+
+fixed-alleria.mjs/fixed-alleria-data.mjs独立行为：原区域union ellipse(838,491,r125,k1.368)/(540,357,r75,k1)，600范围/min0，U.attack_order等chance时大cooldown先，special7秒优先、普通1秒，chance1照常draw。原普通11/30、special13/30前摇，原两弹10–30物理/22帧g-900/无prediction_error轴误差，特殊3clone+原箭共四箭；复用已经审计的Alleria抛物线/strict22接触伤害与每tick切线，非torch/DOT，不加NPC XP。普通soldier辅助原优先飞行/foremost职责以当前route模型适配，完整native节点预测/跨路径排序、queue/coroutine/IDs仍非同输入恢复。前摇stun取消不重置成功时钟；已发弹独立，收尾stun按源结束动画等待并提交开始时刻；max_track128拒发不提交成功cd。固定外层绕过普通可移动英雄的近战/regen/死亡返生职责，未伪造可选/集结/右头像。
+
+tools/extract_fixed_alleria.py只读-bl审计原game_scripts8171–8180/8182–8279/8284–8302/8307–8371、level06 48–151、SU1084–1248、utils794–857与原templates，生成声明/记录七源SHA及scope；不执行controller。扩展catalog仅level6合并fixed模板、按需加载现有Alleria237帧328080B图包（不是没有下载：第6此前未用该包，现在多载既有文件；没有新增图片文件/裁图/改RGBA）。旧五关图包不增加，oldcompact仍1314frames2122316B。group_expansion重提更新第五运行模块SHA，原4/5/6组帧值和图片字节不变。完整extract_campaign已接新审计。
+
+540Node全部过。实际build1630files91,643,952B；最终fixed-browser-final-release通过（含源血条fillRect与箭旋转矩阵）真实Space开波后的受控第6World.spawn/step自动普通/四箭、真实10–30伤害/NPC免伤、不写主英雄XP、cat/body原Canvas q/alpha、箭旋转矩阵与draw完整World快照不变、pause/zoom/844x390CDP触摸/地图清理。shoot/special/mobile截图人工看过；这是受控位置/时钟的局部机制验收，不是第6天然通关或原版同输入像素验收。初browser只在road0找目标，落在原攻击区域外，正确没有射箭；fixture改为所有原道路最近节点并同步d后过，产品区域/伤害未改迁就测试。
+
+第五Alleria与第6upper守卫实际Canvas回归、连续新档1–4→第五自然三模式（campaign20命/heroic201/iron147、末XP37600）、原完整天然九模式/存档手机、UI全部正常exit0。最终第五真实旗书入口14,946,769B/230req、book7.847秒/总17.461秒（100ms/1.5MBps/cacheoff）仍<15MB；旧冷14,806,331B/229req、第四14,763,710B/219req也通过，最后仅新第6已选目标死亡释放与源世界血条职责补充，不改变旧五关模拟或图组。
+
+**第6自身冷门仍失败，入口继续关闭！** 新test:stage6-resources完整title/save/map/book后隔离level6，15,176,267B/218req、book6.455秒/总16.371秒，15MB assert明确exit1，不放宽门槛、不降质/假延后当前必需图。无missing/实际调用但未decode的sprite、baseCatalog/progress/drawWorld不变；仍是隔离入口，不是发布第6旗书路径。未来首领等资源还会增加，不能把当前五关预算通过当第6通过。下一步必须转mega_spawner/load_file level06_spawner/囚车→eb_gnoll首领结局连续链；当前普通15波won不代表完整6，不继续磨同NPC/旧HUD。公开一次manifest .129与完整fixed-pages-ui正常exit0，新推送不循环等CI。主要logs artifacts/fixed-tests-final-publish/build-final-publish/browser-final-release/alleria-regression/guards-regression/natural/old-nine/ui/performance/stage4-performance/stage5-final-release/stage6-final-release/pages-ui.log。
+
 0.2.129将第5关「皇家庭园」接入真实发布链（原APK中文名是园，先前任务描述称院）。当前cap5，前五关共15模式，第6关仍关闭。prepare_stage4_release.py保留既有入口名、改为生成4/5原三模式索引，Repository按需加载扩展并传独立assetCatalog；原第4胜利旧存档只迁移开放5、不赠第五星/挑战/XP，地图只揭示一次。第五原旗(344,790)、七道路点来自固定map_points SHA；原stage_thumbs_0005为342x246、screen_map-3.png quad(7,1489,342,246)，原RGBA无损裁图。source proof在tools/sources/stage5-release.json，原声明/PNG SHA和extractors可重建，不执行controller。
 
 本批没有修改怪物/英雄HP、金币、伤害、回血、XP、冷却、路径终点或World随机流。前次挑战测试玩家频繁追到出口外侧、移动取消攻击；合法改为两英雄分路站位、分散一级塔后按预算升级，英雄挑战末段用真实剩余金币升级Arcane和购买爆裂/睡眠，避免预算闲置。tests/stage5-strategy.mjs只调用真实purchase/move/cast/plant/upgradeTowerPower/World.step。先在tests/stage4-natural.mjs从新档真实赚到XP18139，再连续第五campaign20命零漏怪/805kill815spawn→heroic201kill204spawn→iron147/147全过；10/3台投石车正常退场不算漏怪或击杀。连续最终XP37600，recordVictory真实落盘第五三星/双挑战且cap停5，未伪造解锁或预设高XP。
