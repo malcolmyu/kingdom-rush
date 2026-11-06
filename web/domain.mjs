@@ -1,3 +1,4 @@
+import{initStage4Burn,updateStage4Burn,stage4NodeAllowed}from'./stage4-burn.mjs';
 import{initGryphons,updateGryphons,updateGryphonBolt,clickGryphon}from'./gryphon-events.mjs';
 import{addGryphonGuards,updateGryphonGuards,updateGuardArrow}from'./gryphon-guards.mjs';
 import{tryHarasserDodge,updateHarasserJump,harasserHidden}from'./harasser-jump.mjs';
@@ -46,7 +47,7 @@ export class World{
   this.routes=data.paths.map(paths=>paths.map(p=>makeRoute(p,this.exits)));
   this.slots=data.level.entities_list.filter(e=>e.template.startsWith('tower_holder_')||/^tower_(archer|barrack|mage|rock_thrower)_[123]$/.test(e.template)).map((e,id)=>({id,x:e.pos.x,y:e.pos.y,rally:{...(e['barrack.rally_pos']||e['tower.default_rally_pos'])},holder:e['tower.holder_id'],terrain:e['tower.terrain_style']||1,type:null,level:0,key:null,spent:0,cd:0,anim:0,prebuilt:!e.template.startsWith('tower_holder_'),source:e}));
   for(const s of this.slots)if(s.prebuilt){s.key=s.source.template;s.type=Object.keys(TYPES).find(t=>s.key.startsWith('tower_'+TYPES[t].template+'_'));s.level=Number(s.key.at(-1));this.fillBarrack(s);}
-  addEwokHuts(this);addGryphonGuards(this);initGryphons(this);
+  addEwokHuts(this);addGryphonGuards(this);initGryphons(this);initStage4Burn(this);
   this.plants=data.level.entities_list.filter(e=>e.template==='plant_magic_blossom').map((e,i)=>({id:i,...e.pos,key:e.template,cd:0,anim:0}));
   if(!(this.id===1&&this.mode==='campaign'))this.addHero();
  }
@@ -62,7 +63,7 @@ export class World{
  allowed(type,level=1){const locked=this.data.rules?.locked_towers||[];return !locked.includes('tower_build_'+TYPES[type].template)&&!locked.includes('tower_'+TYPES[type].template+'_'+level)&&level<=3;}
  repairEwok(id){return repairEwok(this,id);}
  hireEwok(id){return hireEwok(this,id);}
- build(id,type){const s=this.slots[id];if(!this.active()||!s||s.ewok||s.type||!TYPES[type]||!this.allowed(type))return false;const d=this.towerDef(type);if(this.gold<d.price)return false;
+ build(id,type){const s=this.slots[id];if(!this.active()||!s||s.scriptLocked||s.ewok||s.type||!TYPES[type]||!this.allowed(type))return false;const d=this.towerDef(type);if(this.gold<d.price)return false;
   this.gold-=d.price;Object.assign(s,{type,level:1,key:d.key,spent:d.price,cd:.3,anim:0,buildAt:this.time,buildUntil:this.time+this.template('tower_build_'+TYPES[type].template).build_duration});this.fillBarrack(s);this.effect('build',s,.7);this.emit('build');if(type==='barrack')this.emit('barrack');return true;
  }
  upgrade(id){const s=this.slots[id];if(!this.active()||!s?.type||s.ewok||!this.allowed(s.type,s.level+1))return false;const d=this.towerDef(s.type,s.level+1);if(this.gold<d.price)return false;
@@ -70,7 +71,7 @@ export class World{
  }
  sell(id){const s=this.slots[id];if(!this.active()||!s?.type||s.ewok)return false;this.gold+=towerRefund(s.spent,this.template(s.key).tower.refund_factor,this.wave);s.type=null;s.key=null;s.level=0;s.spent=0;this.soldiers=this.soldiers.filter(v=>v.home!==id);this.effect('sell',s,.7);this.emit('coin');return true;}
  nearestRoad(p,groundOnly=true){let best=null,dist=Infinity;const used=new Set(this.data.waves.groups.flatMap(g=>g.waves.map(w=>w.path_index-1)));
-  for(let r=0;r<this.routes.length;r++){if(!used.has(r))continue;for(const q of this.routes[r][0].points){const d=distance(p,q);if(d<dist){best=q;dist=d;}}}return best;
+  for(let r=0;r<this.routes.length;r++){if(!used.has(r))continue;for(const [i,q] of this.routes[r][0].points.entries()){if(!stage4NodeAllowed(this,r,i))continue;const d=distance(p,q);if(d<dist){best=q;dist=d;}}}return best;
  }
  setRally(id,p){const s=this.slots[id],q=this.nearestRoad(p);if(!this.active()||!s||!['barrack','ewok'].includes(s.type)||distance(p,q)>45||distance(s,q)>this.template(s.key).barrack.rally_range)return false;s.rally={x:q.x,y:q.y};if(s.ewok)ewokFormation(this,s);for(const v of this.soldiers.filter(v=>v.home===id)){if(!s.ewok)v.rally=this.formation(s,v.index);v.pendingHit=null;}this.effect('rally',q,1);this.emit('barrack');return true;}
  addHero(){const t=this.template('hero_elves_archer'),ls=t.hero.level_stats,i=this.heroLevel-1,p=this.data.level.custom_spawn_pos||this.exits[0]||{x:512,y:384};
@@ -211,7 +212,7 @@ export class World{
    else if(!e.payloadJoin&&!connection&&e.d>=e.goal){e.hp=0;e.leaked=true;e.deadAt=this.time;this.lives=Math.max(0,this.lives-e.lives);this.leaks++;this.emit('leak');}
   }
   if(motionOrigins&&dt>0)for(const e of live){const p=motionOrigins.get(e);e.motionVelocity=e.harasser?.teleportedAt===this.time?{x:0,y:0}:p?{x:(e.x-p.x)/dt,y:(e.y-p.y)/dt}:{x:0,y:0};}
-  updateGryphons(this);for(const b of this.shots){if(b.type==='gryphon-bolt'){updateGryphonBolt(this,b,dt);continue;}if(b.type==='gryphon-arrow'){updateGuardArrow(this,b,dt);continue;}if(b.type==='harasser-arrow'){updateHarasserArrow(this,b,dt);continue;}if(b.type==='ewok-spear'){updateEwokSpear(this,b,dt);continue;}if(b.type==='blighter-energy'){updateBlighterEnergy(this,b,dt);continue;}b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.type==='torch'){b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t-.5*b.g*b.duration*b.duration*t*(1-t);if(t>=1){b.done=true;this.effect('torch-impact',{x:b.tx,y:b.ty},13/30);if(b.target.hp>0&&distance({x:b.target.x+b.offset.x,y:b.target.y+b.offset.y},{x:b.tx,y:b.ty})<b.hitDistance&&!tryEwokDodge(this,b.target,{ranged:true})){this.hurtDefender(b.target,b.damage,b.damageType);const mod=this.template('mod_gnoll_burner');b.target.burn={at:this.time,until:this.time+mod.modifier.duration,next:this.time+mod.dps.damage_every,every:mod.dps.damage_every,damage:mod.dps.damage_min};}}continue;}if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
+  updateStage4Burn(this);updateGryphons(this);for(const b of this.shots){if(b.type==='gryphon-bolt'){updateGryphonBolt(this,b,dt);continue;}if(b.type==='gryphon-arrow'){updateGuardArrow(this,b,dt);continue;}if(b.type==='harasser-arrow'){updateHarasserArrow(this,b,dt);continue;}if(b.type==='ewok-spear'){updateEwokSpear(this,b,dt);continue;}if(b.type==='blighter-energy'){updateBlighterEnergy(this,b,dt);continue;}b.elapsed+=dt;if(b.elapsed<0)continue;const t=clamp(b.elapsed/b.duration,0,1);if(b.type==='torch'){b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t-.5*b.g*b.duration*b.duration*t*(1-t);if(t>=1){b.done=true;this.effect('torch-impact',{x:b.tx,y:b.ty},13/30);if(b.target.hp>0&&distance({x:b.target.x+b.offset.x,y:b.target.y+b.offset.y},{x:b.tx,y:b.ty})<b.hitDistance&&!tryEwokDodge(this,b.target,{ranged:true})){this.hurtDefender(b.target,b.damage,b.damageType);const mod=this.template('mod_gnoll_burner');b.target.burn={at:this.time,until:this.time+mod.modifier.duration,next:this.time+mod.dps.damage_every,every:mod.dps.damage_every,damage:mod.dps.damage_min};}}continue;}if(b.target.hp>0){b.tx=b.target.x;b.ty=b.target.y+12;}b.x=b.sx+(b.tx-b.sx)*t;b.y=b.sy+(b.ty-b.sy)*t+Math.sin(t*Math.PI)*(b.type==='artillery'?85:12);
    if(t>=1){b.done=true;if(b.radius){for(const e of this.enemies)if(e.hp>0&&!e.flying&&inEllipse(e,{x:b.tx,y:b.ty},b.radius))this.hurt(e,b.damage,b.damageType);this.effect('impact',{x:b.tx,y:b.ty},.5);}else if(b.target.hp>0)this.hurt(b.target,b.damage,b.damageType,b.xpFactor);}
   }
   finishCarrierDeaths(this);this.shots=this.shots.filter(b=>!b.done);this.enemies=this.enemies.filter(e=>e.hp>0||!e.leaked&&this.time-e.deadAt<1.2);for(const f of this.effects)f.life-=dt;this.effects=this.effects.filter(f=>f.life>0);

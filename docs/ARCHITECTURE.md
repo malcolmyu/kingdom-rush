@@ -342,3 +342,5 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `gryphon-guards.mjs`的lower状态机从原level实体与aura声明创建；wave/wait/out/shown/back独立维护源等待、移动与tween方向，guardPose纯读phase和原keys覆盖sprite alpha，actor仍与单位/前景同queue。upper保持原独立随机冷却。移动与等待同用World.step，不设timer，不混入普通兵的复活/援军寿命。原nav_rally.center在show为nil，保持该缺省而不补假数据，当前位置移动只依rally.pos。
 
 `gryphon-events.mjs`拥有第6关独立controller/actors/impacts，数据模块gryphon-event-data仅原声明与只读prototype常量，ExpansionRepository只合并隔离目录，World仅id6克隆扩展templates；不污染base catalog/旧存档。每Worldtick推进源Bezier/attack phase、专用AOE bolt，Renderer drawGryphons纯pose逐sprite入queue。Campaign非targeting的实际canvas交互先检查原飞机click_rect，只idle触发，起飞后源cooldown在下一次飞过之后等待。所有phase归World，非timer/UI cache。boss/Alleria/mega_spawner链仍未接，不能把普通waves胜利当第6完整结局。
+
+`stage4-burn.mjs`把原第4关campaign脚本作为World专属状态推进，不执行原Lua控制器。静态source实体保持只读，私有scene视图记录原错峰时钟；Renderer排除对应旧scenery路径后只绘一次，支持原双轴scale。holder24的scriptLocked同时控制真实World.build拒绝和DOM disabled，scriptZ按源1199→1400；其他关不新建该状态、不改交易与RNG。脚本演出结束以既有payloadJoin适配源位置/node继承的真实纵火者，之后进入原普通战斗链。nearestRoad只在该新关按原active路径和invalid ranges筛候选；原完整grid/队列调度不是全恢复。

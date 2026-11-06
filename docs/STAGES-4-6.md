@@ -62,3 +62,9 @@ World实例维护lower phase/rally/tween时钟；Renderer guardPose只读原runn
 0.2.112接入第6关狮鹫援助：原三模式两侧波次/延迟/重复cooldown（campaign5/17s左、10/13s右；heroic2/15s左、4/15s右；iron1/15s双侧），原Bezier初次飞行/常规飞行/approach曲线与duration、attack_start/loop/end区间每.1秒三弹、降落/idle、原body click_rect点击起飞再巡航。专用bolt按原speed300/距离<2*speed*dt在实际弹位置30椭圆魔法AOE，每目标一次ceilfrandom100..120，FX/弹坑在目标to，原fps10/anchor/z3400；initial_impulse字段按源消费随机但专用controller并不读取它，不假套force_motion。命中FX/原弹坑fade、两body3400/影3000 alpha60/flash3000、原sign缩放alpha与5秒隐藏1秒显示一起入actorqueue。
 
 原level06.load的TDUP波次常量从未执行的loadfile编译函数prototype用jit.util只读取得；控制器top-level/load/update均未调用。只读-bl审计所有职责，声明与6条原4控制点曲线来自APK。当前原native协程/insert/伤害队列和完整modifier链仍适配；phase由World持有，pause冻结，场景丢弃清理。第6还有hero_alleria_fixed、level06_spawner/mega_spawner及campaign通关后囚车/eb_gnoll首领链未实现，本次源审计已明确发现，不能只凭15波结束就说第6关自然完成！新4–6入口继续关闭，原boss/高级塔/各新关预算/地图旗路与存档奖励未验收前不开放。
+
+0.2.113闭合第4关campaign原焚林事件：APK门槛是第5波/第10波（不是第6波），纵火者770,-30以45速度走至680,105，8/30前摇→12/30火把→5/30等待后烧第一区；按原x排序和0.37/0.555/0.2分摊错峰处理树/火/焦痕，地表延迟.46后原.26秒淡掉，开放path3和24号holder（can_click/can_hover、z1199→Z_DECALS1400）。1秒后演出纵火者转成真实enemy_gnoll_burner，原road2/lane1最近node+3、enemy_basic再+1，由源位置步行连接原节点而非瞬移。第10波同排序烧第二区并开放path4，无第二名脚本纵火者。heroic/iron原load即打开path3/4，不执行campaign演出。
+
+当前World独立stage4Burn/scenery状态、脚本建造门与nearestRoad active/invalid-node适配，绘制纯pose并保留每个声明的非均匀scale/r/z/anchor，不再用scale.x代替双轴。源控制器与全部声明只读审计，JSON不改；脚本火把目标是无health的decal，不进入普通敌人伤害/奖励。完整native协程/插入/renderer timed顺序、source grid/寻路生产与音频仍适配。
+
+高级塔锁已真实审计：第4关原locked_towers只锁其余7种，tower_arcane没有锁，当前实现仍仅基础1–3tier，**奥术弓箭塔尚未完成**。这是第4关开放前的明确缺口，不能把这一名单导入当高级塔已实现，也不能以新敌/焚林专项过了就宣称第4自然完成。4–6入口仍关闭，后续需原高级塔/通知/资源分组预算和实际新关通关验收。

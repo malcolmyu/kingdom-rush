@@ -1219,3 +1219,13 @@ World追加独立ewok slot、不改变旧建造点序号或四TYPES。repair100�
 状态全归World，原source coroutine本身一tick落后Bezier取样职责保留，完整native调度/queueIDs与damage队列仍适配。source sign5秒hidden/1秒shown和各自alpha/scale prop时长反放，影子不跟body水平flip，approach只改变原指定offset，land隐藏影；原两body/影/flash原z和alpha同queue，不拿视觉offset参与sort_y。现通关后Alleria/spawner/囚车/首领源链未实现，新关仍隔离关闭，不称第6全关验收。
 
 最终425Node全过；actualbuild gryphon-events-browser-final与追加手机CDP右侧飞机触摸起飞的browser-touch、原lower守卫回归、gryphon-events-campaign-final天然原完整九模式/存档手机→ui-final→performance-final全部正常exit0。三个campaign20命，第三campaign入关自然XP4705，末九模式XP继续累加；旧World数值/策略/RNG未变。实际build1524files72,878,801B，cold100ms/1.5MBps/cacheoff14,747,929B/238requests，book7.199s/总16.432s<15MB，无新图/整atlas/OTF/抬预算或降质，不保普遍线上线路。公开一次manifest确认.111且pages-ui正常exit0；新推送未轮询。strafing/impact/landed/takeoff/mobile当前样本已人工看，源520金币/iron1生命是真模式值，测试清pending并留场外sentinel保证采样，额外ettin在真实路径节点承受真实攻击，属于受控场景，非天然第6关通关/原版同步。初包也全过，后补只对新bolt原animation_db fps/epsilon规则并重跑完整最终包，不拿初包冒最终。所有结果已收，无浏览器产品失败/挂住待处理。
+
+## 0.2.113 第4关焚林/道路/建造点
+
+只读原level04.lua22–196的load/update/y_burn_zone及闭包，APK第5/10波、can_hover与Z_DECALS为权威，mixed源码只交叉（其holder分支缺hover/z，不照抄）。read_stage4_burn.lua仅loadfile获得proto，再jit.util读取0.37/0.555/0.2/.46与nodeAdvance3；constants声明读取Z_DECALS1400，未执行level顶层/load/update。extract_stage4_burn.py/source JSON固定SHA/规则、动态声明与真实tower锁缺口，接完整提取。
+
+恢复原纵火者行走/前摇/火把/两种爆炸、树烧毁/火/焦痕/land错峰淡出，source正负x排序决定传播方向；24号从真实禁用/1199层到真实可买/1400层，path3/4按5/10波打开，challenge开局即开。脚本纵火者只演出不算可攻击敌人，1秒后才实际spawn原burner，同road2/lane1/最近node+3再insert+1连接段（既有路程/原native节点仍适配）。完整source coroutine/timed删除次序/全grid/audio/nativeIDs仍欠，不称同输入pixelcert。
+
+新增7纯测涵盖5而非6波、45速/8+12+5帧、原场景传播与alpha/只读原JSON/双轴scale、真实holder24禁买不扣钱和开后70交易、两个路径/challenge门、真实额外敌人node连接和只生成一次、暂停/owner与旧关隔离。actualbuild专项用隔离stage4真实开波后受控wave5/10/清pending，捕Canvas原q/alpha/双轴矩阵、draw前后World快照不变、源road与holder DOM disabled解除、实际70买塔/500→430、真实burner进入road2/pause/wheel/mobile/退出旧存档unlocked1。不是天然第4通关或原版同步，Arcane尚未实现且新关关闭。
+
+432Node全过；actualbuild stage4-burn-browser-final（等原build-menu.hidden再拍/手机CDP真实pause）、stage4-burn-campaign天然原九模式/存档手机→ui→performance全正常exit0。三个campaign20命，第三campaign入关自然XP4705，末九模式XP继续增长，旧策略/数值不改。公开一次manifest确认.112且pages-ui正常exit0；新推送未轮询。build1526files72,887,137B，cold100ms/1.5MBps/cacheoff14,755,973B/240requests，book7.167s/总16.326s<15MB，无新图/整atlas/OTF/抬预算/降质，不保普遍线路速度。stage4-burn-zone1/zone2/mobile已人工看，附最终zone2图；受控推进wave与清pending非天然第4关/原版同步。专项全部无产品失败/挂住，初截图menu处于原hide中途已等真实隐藏重拍，不改产品动画或门控。新关资源自身预算/Arcane/完整通关仍待验，整体非1:1。
