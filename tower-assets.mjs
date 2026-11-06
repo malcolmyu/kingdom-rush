@@ -1,6 +1,7 @@
 // Asset readiness only. Transactions and simulation clocks remain in World.
 export function towerMenuSheets(catalog,w,s){
- if(!catalog.towerAssetGroups||!s?.type||s.ewok)return[];
+ if(!catalog.towerAssetGroups||!s||s.ewok)return[];
+ if(!s.type){const names=[];for(const type of ['archer','barrack','mage','artillery'])if(w.allowed(type,1))names.push(...catalog.towerAssetGroups[w.towerDef(type,1).key]||[]);return [...new Set(names)];}
  if(s.arcane||s.blade)return catalog.towerAssetGroups[s.key]||[];
  const next=s.level+1;
  if(!w.allowed(s.type,next))return[];
