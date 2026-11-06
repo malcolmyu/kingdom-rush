@@ -6,13 +6,14 @@ root=R/'reference/apk/assets/gc64'
 pinnedPath=R/'tools/sources/stage5-alleria.json';pinned=json.loads(pinnedPath.read_text())if pinnedPath.exists()else{}
 for file,digest in pinned.get('sha256',{}).items():assert hashlib.sha256((root/file).read_bytes()).hexdigest()==digest,('Pinned source changed',file)
 def run(*a):return subprocess.check_output(['/opt/homebrew/bin/luajit',*a],cwd=R,text=True)
-checks=[('kr3/game_scripts.lua','game_scripts.lua:8182-8279',['respawn','alleria_cat','y_hero_death_and_respawn','soldier_regen']),('kr3/game_scripts.lua','game_scripts.lua:8284-8302',['extra_arrows','clone_entity','target_id']),('kr3/data/levels/level05.lua','level05.lua:51-98',['insert_hero','hero_alleria']),('all/level_utils.lua','level_utils.lua:395-476',['main_hero','hero-added'])]
+checks=[('kr3/game_scripts.lua','game_scripts.lua:8182-8279',['respawn','alleria_cat','y_hero_death_and_respawn','soldier_regen']),('kr3/game_scripts.lua','game_scripts.lua:8284-8302',['extra_arrows','clone_entity','target_id']),('kr3/data/levels/level05.lua','level05.lua:51-98',['insert_hero','hero_alleria']),('kr3/game_scripts.lua','game_scripts.lua:8307-8371',['behaviour_attack','toSad','sadSigh','frandom','queue']),('all/level_utils.lua','level_utils.lua:395-476',['main_hero','hero-added'])]
 for path,mark,fields in checks:
  b=run('-bl',str(root/path));i=b.index('-- BYTECODE -- '+mark);j=b.find('-- BYTECODE --',i+15)
  for v in fields:assert v in b[i:j],(mark,v)
 t=json.loads(run('tools/read_templates.lua',str(root),'precise'))
-selected={k:t[k]for k in ['hero_alleria','arrow_hero_alleria','arrow_multishot_hero_alleria']}
-(R/'web/stage5-alleria-data.mjs').write_text('// Original data only. Controllers never executed.\nexport default '+json.dumps({'templates':selected},sort_keys=True,separators=(',',':'))+';\n')
+selected={k:t[k]for k in ['hero_alleria','arrow_hero_alleria','arrow_multishot_hero_alleria','alleria_cat']}
+rules=json.loads(run('tools/read_alleria_cat.lua'));grid=json.loads(run('tools/dump_lua.lua',str(root/'kr3/data/levels/level05_grid.lua'),'precise'))
+(R/'web/stage5-alleria-data.mjs').write_text('// Original data only. Controllers never executed.\nexport default '+json.dumps({'templates':selected,'catGrid':grid,'catRules':rules},sort_keys=True,separators=(',',':'))+';\n')
 c=json.loads((R/'web/assets/catalog.json').read_text());frames=dict(c['frames']);keep=set()
 z=zipfile.ZipFile(R.parent/'origins.apk');declaration='assets/kr3-phone/images/iphonehd/go_hero_alleria.lua'
 raw=z.read(declaration);assert not pinned.get('declarationSHA256')or hashlib.sha256(raw).hexdigest()==pinned['declarationSHA256'];local=R/'reference/apk'/declaration;local.parent.mkdir(parents=True,exist_ok=True);local.write_bytes(raw)
@@ -54,7 +55,7 @@ data={'templates':selected,'frames':new,'sheets':['../stage5-alleria/sprites.web
 (out/'catalog.json').write_text(json.dumps(data,sort_keys=True,separators=(',',':')))
 
 
-paths=['kr3/data/levels/level05.lua','kr3/game_templates.lua','kr3/game_scripts.lua','all/level_utils.lua','all/scripts.lua','all/script_utils.lua','all/utils.lua']
-proof={'sha256':{p:hashlib.sha256((root/p).read_bytes()).hexdigest()for p in paths},'imageSHA256':{k.replace('.webp','.png'):hashlib.sha256(v).hexdigest()for k,v in raws.items()},'declarationSHA256':hashlib.sha256(z.read(declaration)).hexdigest(),'frames':len(keys),'rgbaVerified':True,'ranges':[x[1]for x in checks],'scope':'Stage5 Alleria intro, independent HP/respawn, normal/special arrow and melee combat adapter','limits':['Cat controller, full grid rally and source multiple portrait HUD pending','Native coroutine/target priority/modifier and special-death queues adapted; no pixel certification']}
+paths=['kr3/data/levels/level05.lua','kr3/game_templates.lua','kr3/game_scripts.lua','all/level_utils.lua','all/scripts.lua','all/script_utils.lua','all/utils.lua','all/constants.lua','all/grid_db.lua','all/path_db.lua','kr3/data/levels/level05_grid.lua','kr3/data/levels/level05_paths.lua']
+proof={'sha256':{p:hashlib.sha256((root/p).read_bytes()).hexdigest()for p in paths},'imageSHA256':{k.replace('.webp','.png'):hashlib.sha256(v).hexdigest()for k,v in raws.items()},'declarationSHA256':hashlib.sha256(z.read(declaration)).hexdigest(),'frames':len(keys),'rgbaVerified':True,'ranges':[x[1]for x in checks],'scope':'Stage5 Alleria combat plus source cosmetic cat phases, owner death/respawn and original terrain/node endpoint checks','limits':['Cat nearest-node validity uses current viewport path adapter; complete NF_RALLY node-flag production/dynamic terrain and grid waypoints pending','Cat idle_flip and original audio playback pending; attack emits a source sound request, never damage','Source multiple portrait HUD pending','Native coroutine/target priority/modifier and special-death queues adapted; no pixel certification']}
 pinnedPath.write_text(json.dumps(proof,sort_keys=True,indent=2)+'\n')
 print('Alleria group',len(keys),'frames',path.stat().st_size,'bytes')
