@@ -50,7 +50,7 @@ keys.update(f'upgrades_icons_off_{i:04}'for i in range(1,31))
 keys.update(f'upgrade_check_anim_{i:04}'for i in range(1,8))
 keys.add('portraits_hero_0001')
 keys.update(['portraits_sc_0013','portraits_sc_0004','portraits_sc_0005','portraits_sc_0006','portraits_sc_0008','portraits_sc_0009','portraits_sc_0014','portraits_sc_0019','portraits_sc_0051','icon_0005'])
-keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,5,9,13])
+keys.update(f'portraits_towers_{i:04}'for i in [1,2,3,4,5,7,9,13])
 keys.update(['power_rank_0001','power_rank_0002','special_icons_bg','gui_ring','main_icons_over','price_tag','price_tag_disabled','main_icons_0014','tooltip_icons_0010'])
 for key in list(keys):
  if key+'_disabled' in c['frames']:keys.add(key+'_disabled')

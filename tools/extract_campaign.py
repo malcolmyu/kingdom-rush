@@ -159,3 +159,5 @@ subprocess.run(['python3',str(ROOT/'tools/extract_melee_audio.py')],check=True,c
 subprocess.run(['python3',str(ROOT/'tools/extract_gnoll_boss.py')],check=True)
 
 subprocess.run(['python3',str(ROOT/'tools/extract_stage6_ending.py')],check=True,cwd=ROOT)
+
+subprocess.run(['python3',str(ROOT/'tools/extract_wild_magus.py')],check=True,cwd=ROOT)

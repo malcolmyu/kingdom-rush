@@ -1,5 +1,25 @@
 # 动画保真记录
 
+0.2.137实际闭合第6狂野魔术师基础升级/攻击链，不再把原未锁列表当作已实现。保留四基础TYPES，运行时mage level4映射原tower_wild_magus（原模板tower.level1不改）；仅第6允许且按mode原locked_towers再验，第4/5仍锁。真实mage1→2→3→wild价格100/160/250/300，累计810，准备期全退、战斗退款486；action_arg拒high_elven假升。原wild菜单两项eldritch/ward尚未实现，保持disabled、World拒付，不给s.arcane冒身份。原info肖像portraits_towers_0007直接PNG exact裁图，UI624图，InfoBar与tooltip按魔法塔/8–16/范围180原数据，当前已实现的crystal_focus/bane_spell按原upgrades TDUP73/75明确包含该塔/弹体，分别ceil范围*1.05与原伤害*1.15；模板只读。
+
+web/wild-magus.mjs独立状态，原strict>.3秒cd/4帧释放，先右手再左手、8帧施法动画，source release只重验1.1倍椭圆，不凭感觉加健康/vis门。target对象相同的连续成功释放递增same，非命中计数：floor(base+min(24,.5*same))，前两发仍8–16、第三发9–17，最大32–40；换对象清零。原手/朝向弹口、shooter offset tween后再加y30判朝向，idle按原目标复算、长闲3秒朝右下。普通攻击本身不抽chance1随机。已开始phase不被tower.blocked中途冻结，新episode被禁。
+
+重要继承链经安全stub-tag reader实际核实：bolt_wild_magus继承scripts.bolt.insert/update（原all/scripts2921–3074），不是game_scripts.bolt_elves！generic insert只查实体/F_RANGED，不凭感觉拒死目标。按原FPS30*ceil(mspeed/30*.25)每当前模拟tick增长、30..2100夹值，while旧距离>旧speed*dt才跟踪并移动，Chebyshev位移strict>128或F_RANGED后粘性失追，失追/死亡仍飞到to并有FX、不虚构HP损伤。结束准确snap到to，仍合法活目标才ceil(frandom8..16*factor)经原魔法伤害链，没火DOT/额外dodge。rotation指向移动后的to，不套箭抛物线/精灵force_motion公式；alpha按原4/30从0到255。当前World队列/实体身份/协程tick与queued damage仍适配，非同输入native逐帧全复刻。
+
+source 17sprite中的地形/两塔层/射手/10浮石与隐藏技能层保持原anchor/z/sort_y_offset；offset tween按原各自ts/2秒loop纯采样，只绘制不写World/RNG。renderer进同actorqueue，projectile用原flying动画/anchor/alpha/角度，hitFX在to/z3300。完整粒子尾迹/pop/blood/audio/高级global talent empowerment-alter_reality和通用modifier/native ID生命周期仍未全，不能称全塔或第6完成。当前高阶全局天赋本来未列TRAINABLE，不新增假购买/假传送。
+
+extract_wild_magus.py只读-bl审计原game_scripts520–697/all scripts2921–3074/utils245–332与升级proto；read_wild_functions.lua用原templates声明+脚本stub记录真实函数路径，不执行controllers；read_wild_magus_rules.lua只loadfile/jit.util.funck取原升级TDUP，不调用chunk或patch函数。9源码SHA与原PNG SHA固定并重提拒变，368帧672348B独立wild-magus组RGBA/size/trim全校验，仅level6取metadata、三级法师升级菜单显示/交易前才decode该组，source controllers永不运行。优化器排除独立wild运行模块的绘制字面量，旧compact仍1314帧2122316B；stage04/05/06仍1925/1815/2204帧与4090840/3175904/4109998B（仅runtime审计SHA更新），没把高级塔整图塞旧cold。完整extract_campaign/build接新工具与gzip。
+
+581Node全过（7新wild）。actualbuild wild-browser-final真实菜单支付100/160/250，初600剩90；3个原ettin真实死亡收益各70后才付300升级，最终0gold/spent810，未直接写gold。真实点击清焦点后Space开wave1，受控原路径节点ettin/时钟隔离，经World.step自动右/左施法、同目标same>=4与实际魔法伤HP（hit14/14/15/11/13，原ettin随后回血，不用末HP当累计伤害）；source Canvas原q/alpha.125/旋转矩阵/位置、13个wild包塔层+1弹体（地形另用原common）/无missing-unready，draw完整World快照不变，真pause/zoom/844x390 CDP touch/map清理unlocked1通过。cast/purchased/mobile图人工看，受控fixture非天然第6/原版同输入pixelcert；塔菜单与旧InfoBar安全区/原全GUI仍非完全同步，不拿截图冒全UI像素验收。
+
+初pure误把4/30精确浮点采样当必到释放，改下一原frame采样；误认crystal_focus为1.2，核原声明实际1.05后改fixture，不改产品阈值/数值。首browser误计15个wild包图，实际地形在旧common所以14，已按源分组纠正；第二次Space被旧菜单按钮focus正确门挡住，改真实canvas点空白释放focus再Space并断言wave1，没有移除产品输入门。最后补InfoBar魔法类型与等原.4秒展开后截图，重新581纯测/build和专项/UI/四预算全过。wild-browser-first/repeat失败保留，wave/final成功。
+
+第6仍closed，生产前五关15模式。尚欠此塔eldritch/ward技能购买/施法分支、原全音效粒子/native modifier等与真正第6浏览器自然奖励链/flag6路book6通知/savecap6/手机重载，不能以基础塔接通称18完成。下一批应实际推进原eldritch或ward完整必要流程，再集中第6真实发布验收，勿无限磨普通bolt/悬浮/旧HUD/已完boss与资源包。
+
+最终actualbuild1661文件96174185B（含manifest），全部web运行模块/新wild图组与build逐字节相同，pin重提成功。原天然完整九模式/存档手机wild-old-nine、连续新档1–4→5 wild-natural4/natural5（4campaign19命三星/heroic142/iron95；5campaign20命/heroic201/iron147/XP37600）、stage6 assets事务回归、UI与公开.136 UI正常exit0。末次InfoBar仅wild类型修正后重新纯测/build，wild-browser-final/ui-final及四冷路径全部正常exit0，无产品/browser挂住待收。
+
+最终cold100ms/1.5MBps/cacheoff旧14839326B/238req book7.166s总16.969s；第4真实旗书14796699B/228req book7.213总17.128；第5真实旗书14980006B/239req book7.895总17.809；第6隔离14843692B/232req book6.793总16.929，15MB都过、不保所有线路。第五余19994B，未来技能大数据只level6按需，不能全局raw导入挤爆旧五。第6不是发布的flag6/book6路径，全事件阶段仍需额外3.87MB boss/cart实际decode，不能冒整局传输<15MB。主要logs artifacts/wild-source-pinned/tests-final/build-final/browser-final/assets-regression/old-nine/natural4/natural5/ui-final/performance-final/stage4-performance-final/stage5-performance-final/stage6-performance-final/pages-ui.log。
+
 0.2.136实际解决第6隔离冷入口预算：stage06共享帧改按实际render.sprites与已审计runtime模板闭包选取（含fixed Alleria/gryphon/guards），2204帧4,109,998B，所有保留帧RGBA/size/trim逐一验证；旧stage04/05图片字节与旧1314帧2,122,316B塔compact不变。boss/cart完整原图与元数据均保留，但campaignEnemySheets不再在开场预载两张结局sheet；campaignEventSheets只在campaign6声明，heroic/iron不取boss/cart包。第14波（最后一波之前）真实开始异步预解码，两个完整sheet都decode后才能标ready。不是删除必需图或假load，也不在原事件生成之后补图。
 
 新Stage6EventAssets绑定World/scene/version，失败不吞错：提供真实重试按钮。若最后普通波清空时仍未ready，stage6AssetsWaiting禁止World.step前进及交易，原父controller仍留waves，结局/金币/HP/RNG/时钟不变化；用户重试成功才恢复原2秒等待/囚车/首领链。第14波预加载时正常战斗不停，HTTP等待不消费World RNG；已解码图可复用现Renderer只读cache，但旧owner/销毁/换版本的迟到Promise不得设置World ready或重建UI。没有后台timer或跨World结局状态。

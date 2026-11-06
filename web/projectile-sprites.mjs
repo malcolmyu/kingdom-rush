@@ -12,7 +12,7 @@ export function projectileSprites(template,shot,frame,{entityId=0,ultimate=false
  return template.render.sprites.flatMap((s,i)=>{
   if(s.hidden||s.hidden_count>0||(i===0&&projectileHidden(template,shot)))return[];
   const age=shot.elapsed||0,animationTime=shot.type==='gryphon-bolt'?(Math.max(0,Math.ceil(age*(s.fps||30)+1e-9)-1)+.25)/30:age;
-  const name=s.animated?frame(s.prefix?s.prefix+'_'+s.name:s.name,animationTime,s.loop!==false):s.name;
+  const name=s.animated?frame(s.prefix?s.prefix+'_'+(shot.type==='wild-bolt'?'flying':s.name):s.name,animationTime,s.loop!==false):s.name;
   if(!name)return[];const offset=s.offset||{x:0,y:0};let rotation=s.r||0;
   // Arrow tangent still depends on the unfinished native flight positions.
   if(i===0&&(shot.type==='archer'||shot.type==='hero'||ultimate))rotation=Math.atan2(shot.ty-shot.sy,shot.tx-shot.sx);
@@ -22,9 +22,9 @@ export function projectileSprites(template,shot,frame,{entityId=0,ultimate=false
    rotation+=(shot.elapsed||0)*speed;
    if(speed>0)flip=!flip;
   }
-  if(i===0&&(shot.type==='alleria-arrow'||shot.type==='catapult-rock'||shot.type==='arcane-arrow'||shot.type==='ewok-spear'||shot.type==='harasser-arrow'||shot.type==='gryphon-arrow'||shot.type==='gryphon-bolt'))rotation=shot.rotation;
+  if(i===0&&(shot.type==='wild-bolt'||shot.type==='alleria-arrow'||shot.type==='catapult-rock'||shot.type==='arcane-arrow'||shot.type==='ewok-spear'||shot.type==='harasser-arrow'||shot.type==='gryphon-arrow'||shot.type==='gryphon-bolt'))rotation=shot.rotation;
   if(i===0&&bodyRotation!==undefined)rotation=bodyRotation;
-  return[{key:name,pos:{x:shot.x+offset.x,y:shot.y+offset.y},anchor:s.anchor||{x:.5,y:.5},scale:s.scale?.x??1,flip,alpha:(s.alpha??255)/255,rotation,order:spriteOrder(s,shot,i+1,entityId)}];
+  return[{key:name,pos:{x:shot.x+offset.x,y:shot.y+offset.y},anchor:s.anchor||{x:.5,y:.5},scale:s.scale?.x??1,flip,alpha:(s.alpha??255)/255*(shot.type==='wild-bolt'?Math.min(1,age/(4/30)):1),rotation,order:spriteOrder(s,shot,i+1,entityId)}];
  });
 }
 // Source bomb.insert takes one random initial r, then signs rotation_speed by

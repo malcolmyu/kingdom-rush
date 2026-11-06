@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.136",
+  "version": "0.2.137",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -149,7 +149,8 @@
     "test:gnoll-aura": "node tests/gnoll-aura-browser.mjs",
     "test:stage6-ending": "node tests/stage6-ending-browser.mjs",
     "test:stage6-event-assets": "node tests/stage6-event-assets-browser.mjs",
-    "test:stage6-natural": "node tests/stage4-natural.mjs && node tests/stage5-natural.mjs && node tests/stage6-natural.mjs"
+    "test:stage6-natural": "node tests/stage4-natural.mjs && node tests/stage5-natural.mjs && node tests/stage6-natural.mjs",
+    "test:wild-magus": "node tests/wild-magus-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"
