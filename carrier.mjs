@@ -37,7 +37,7 @@ export function updateCarrier(w,e,dt){
  let ready=false;
  if(s.carrying&&(forced||!isEnemyStunned(e)&&(s.firstCheck||w.time-s.checkedAt>=s.delay))){
   s.firstCheck=false;s.checkedAt=w.time;const radius=w.template(e.key).spawn_trigger_range;
-  ready=forced||[...w.soldiers,w.hero].filter(Boolean).some(u=>{const flags=u.visFlags??w.template(u.key).vis?.flags??0;return u.hp>0&&!u.flying&&!(flags&C.flying)&&((u.x-e.x)**2+((u.y-e.y)/.7)**2<=radius*radius);});
+  ready=forced||[...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean).some(u=>{const flags=u.visFlags??w.template(u.key).vis?.flags??0;return u.hp>0&&!u.flying&&!(flags&C.flying)&&((u.x-e.x)**2+((u.y-e.y)/.7)**2<=radius*radius);});
  }
  if(ready){queuePayload(w,e);s.hidePayloadAt=w.time;return true;}
  if(isEnemyStunned(e))return true;

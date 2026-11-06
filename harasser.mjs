@@ -2,7 +2,7 @@ import{isEnemyStunned}from'./enemy-status.mjs';
 import DATA from'./harasser-data.mjs';
 import{inEllipse}from'./spells.mjs';
 import{tryEwokDodge}from'./ewok-shield.mjs';
-const members=w=>[...w.soldiers,w.hero].filter(Boolean);
+const members=w=>[...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean);
 const flags=(w,u)=>({flags:u.visFlags??w.template(u.key).vis?.flags??0,bans:u.visBans??w.template(u.key).vis?.bans??0});
 export function insertHarasser(w,e){if(e.key==='enemy_twilight_elf_harasser')e.harasser={rangedAt:w.time,phase:null,node:0};}
 export function updateHarasserMarks(w){if(!w.harasserMarks)return;w.harasserMarks=w.harasserMarks.filter(m=>{if(m.target.hp>0&&members(w).includes(m.target)&&w.time-m.at<=DATA.mark.modifier.duration)return true;m.target.visBans=((m.target.visBans??0)&~DATA.mark.mark_flags.vis_bans)|m.previous;return false;});}

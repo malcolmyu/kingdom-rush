@@ -3,7 +3,7 @@ import{inEllipse}from'./spells.mjs';
 import{enemyDirection}from'./enemy-direction.mjs';
 import RULES from'./blighter-energy-data.mjs';
 import{spriteOrder}from'./render-order.mjs';
-const members=w=>[...w.soldiers,w.hero].filter(Boolean);
+const members=w=>[...w.soldiers,...(w.stageHeroes||[]),w.hero].filter(Boolean);
 const present=(w,s)=>!!s&&members(w).includes(s);
 const flags=(w,s)=>({bans:s.visBans??w.template(s.key).vis?.bans??0,flags:s.visFlags??w.template(s.key).vis?.flags??0});
 export function energyTargetAllowed(w,s,a){if(!present(w,s)||s.hp<=0)return false;const v=flags(w,s);return !(v.bans&a.vis_flags)&&!(v.flags&a.vis_bans);}
