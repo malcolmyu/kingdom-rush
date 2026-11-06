@@ -1,6 +1,6 @@
 # 技术方案：数据驱动的塔防战役
 
-当前范围是游戏开始界面、大地图，以及前三关的战役、英雄挑战、钢铁挑战，共 9 个组合。运行时只有静态 HTML、CSS、原生 ES Modules 和 Canvas 2D，没有游戏服务器、账号系统或运行时第三方依赖。这样同一份文件既可部署到静态站点，也可在本机通过 HTTP 服务器运行。
+当前范围是游戏开始界面、大地图，以及前四关的战役、英雄挑战、钢铁挑战，共 12 个组合。运行时只有静态 HTML、CSS、原生 ES Modules 和 Canvas 2D，没有游戏服务器、账号系统或运行时第三方依赖。这样同一份文件既可部署到静态站点，也可在本机通过 HTTP 服务器运行。
 
 ## 模块边界
 
@@ -315,7 +315,7 @@ DesktopBattleBottom持有独立原图目录/Canvas状态与UI时间，组合进D
 DesktopGuidance is configured through the desktop battle asset transaction and reuses Guidance event ownership. Five native fixed-image balloons own only UI motion/DOM; source World positions project through Renderer, power offsets use GUI space. Initial alpha is inherited1, hide completion owns hidden/removal and re-show starts at.8. Transition clears all records and profile; old resource completion cannot revive another scene. Existing phone hints remain for unmigrated START/WAVE/NOTI. Native TB_POWER3 does not invent an upstream notification signal. desktopPowerUnlocked maps existing ready-state disabled controls to original closed-door presentation without changing World unlock semantics.
 
 
-第4–6关进入独立还原工作区，见STAGES-4-6.md。ExpansionRepository只加载assets/expansion声明和选中图面，创建合并副本，绝不写入主catalog、Repository缓存或存档解锁。当前生产可玩仍前三关九模式；新关特殊脚本和高级塔未完成，因此资源加载/World构造/Renderer预览不当作玩法验收。全量提取调用extract_expansion，源文件固定SHA、原图无损RGBA验证，后续可在完整机制验收后统一开放。
+第4–6关进入独立还原工作区，见STAGES-4-6.md。ExpansionRepository只加载assets/expansion声明和选中图面，创建合并副本，绝不写入主catalog、Repository缓存或存档解锁。该段记录0.2.100初导入阶段的前三关九模式范围；0.2.119已实际发布第4关，5/6继续关闭。资源加载/World构造/Renderer预览不当作玩法验收。全量提取调用extract_expansion，源文件固定SHA、原图无损RGBA验证，后续可在完整机制验收后统一开放。
 
 
 `ettin.mjs`只为enemy_ettin插入状态：原World.number一次生成整数cooldown，原aura五帧回血4点，APK拒绝回血时重置ts，正常每tick最多一脉冲。自击Start/Loop为显式phase，非致命true damage通过World.hurt；phase控制移动/近战与绘制，不由浮点anim倒计时独自决定。外部stunned/frozen/modBanned/shielded为目前modifier适配输入，不代表完整modifier生产系统已做。原e.enemy.lives_cost数组经byDifficulty变标量，防新ettin漏怪NaN；旧五敌标量语义不变。新关提取可选precise编码保留17位往返精度，仅扩展启用，旧提取默认编码不变且全模板语义对比一致。
@@ -356,3 +356,6 @@ DesktopGuidance is configured through the desktop battle asset transaction and r
 `tower-assets.mjs`只管理新关菜单资产就绪：以原World.allowed/towerDef选择实际下一升级目标，预建塔按实体template加载。请求票号及World/slot/key/level/scene/version/selected/modal检查隔离异步结果，reset/transition取消UI所有权而不改模拟对象。Renderer.sheet在途Promise与已解码image分表，失败删除在途记录；原前三关catalog无towerAssetGroups，保留原同步菜单与原整compact preload。group_towers复用optimizer帧选择器，按原animation.frames/ranges/from/to选render依赖，shared图只存一份、完整1314帧都保留；按族/级图组不改变原帧元数据。
 
 ExpansionRepository对新关组合tower-group frame映射与初始preload，Arcane图仅在对应原升级菜单之前取；readMetadata统一无损压缩声明。group_expansion共享图解析补逻辑动画名→物理prefix/索引的别名链；测试同时拒绝missing metadata与已调用但未加载sheet，避免仅看missing集合的假阴性。
+
+
+0.2.119：campaign-release.mjs由原第4关声明生成发布上限4，Repository按需合并ExpansionRepository数据并向Renderer传assetCatalog；Renderer资源就绪后原子提交，旧关始终使用baseCatalog。recordVictory/canSelect/两套地图奖励链共享发布上限，5/6不可持久化未完成胜利。旧3关胜利存档只迁移访问4，奖励动画消费一次migration，不改已赚星/XP。

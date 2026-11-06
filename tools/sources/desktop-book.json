@@ -1255,6 +1255,30 @@
         0,
         0
       ]
+    },
+    "stage_thumbs_0004": {
+      "a_name": "screen_map-3.png",
+      "a_size": [
+        2048,
+        2048
+      ],
+      "alias": {},
+      "f_quad": [
+        1339,
+        398,
+        342,
+        246
+      ],
+      "size": [
+        342,
+        246
+      ],
+      "trim": [
+        0,
+        0,
+        0,
+        0
+      ]
     }
   },
   "kind": "community-mod-origins-desktop-assets",

@@ -1,6 +1,6 @@
 # 第4–6关还原工作区
 
-人类要求从2026-11-05起优先继续后面三关。当前公开可玩仍前三关九模式；后续三关的原始数据与美术已独立接入，尚未开放战斗入口。没有将缺失的特殊敌人/关卡脚本当普通敌人发布，也没有修改旧存档解锁上限。
+人类要求从2026-11-05起优先继续后面三关。0.2.119发布范围为前四关、每关三模式。第4关已接真实地图旗/道路、原书页、胜利奖励与存档上限4；第5、6关仍隔离开发且入口关闭，不把它们的普通波次结束当完整通关。
 
 `tools/extract_expansion.py --apk ../origins.apk`读取原APK的九份波次、三份路径/实体声明、模式限制与依赖模板；`tools/sources/expansion.json`固定所选源文件SHA。仅读声明，控制器未执行；模板reader沿用原脚本stub边界。三张背景及选中精灵图无损输出并逐解码RGBA校验，所有别名保留size/trim，3566个帧键共用紧凑图。
 
@@ -114,3 +114,16 @@ ExpansionRepository仅取index+本关group+本模式数据，原base catalog/sav
 自然战斗仍未完整验收：以前三战役自然XP5277通过原trainHeroSkill训练multishot2、真实500预算优先树屋两兵的独立campaign样本19命/1漏、可三星，但不是完整UI新关存档/模式发布。英雄挑战合法赚星购买升级并换策略后最高140/142仍lost，后两名ettin在最后缺少防线时恢复满HP700，英雄已死亡；诊断日志保留，不削回血/加金/改HP去迁就。`max_upgrade_level=2`是全局天赋上限，不是塔层级：World原allowed本来就正确允许第4挑战三级及未锁Arcane，本批没有改玩法解锁；早期手动策略只规划二级属于策略局限。新关旗路/奖励/save/通知和三模式天然流程仍待验，入口继续关闭。
 
 最终包1569files88,126,620B；原九模式/存档手机全正常exit0（第三campaign入关自然XP4705，末XP继续积累），旧冷入口14,657,823B/214请求仍过。公开本轮一次manifest.117且tier-pages-ui完整exit0，推送新版后不轮询。原无技能baseline策略的失败未改成“验收通过”，新关仍需真实地图/奖励/save/通知与自然挑战闭合。
+
+
+## 0.2.119 第4关真实发布链
+
+从新存档原前三campaign连续赚得XP5277和9星，真实训练multishot2后，第4campaign19生命三星（513杀/514实际生成，含载兵与脚本）；用该关自然所得XP训练multishot3，再用已赚星购买7项已实现天赋，heroic142/142、iron95/95无漏怪。测试仅发出真实购买/出售/集结/移动/施法命令，不改金币、HP、伤害、经验、RNG或冷却。英雄挑战末波卖掉已不覆盖出口的塔，用真实退款雇树屋盟友、集结610并保持英雄出口远程，是合法测试策略，不是产品数值修补。
+
+Repository只对发布4关开放访问；旧第三关胜利存档迁移仅开放第四关入口，不赠星或XP。Renderer在资源decode且当前事务仍有效后才原子切换stage catalog，回旧关恢复base catalog。源桌面第四旗(238,595)和六个原道路点补入固定声明；新敌通知/肖像、第四关桌面书页缩略图均取原图无损裁切。原载兵共用鹿角鹰信息，没有伪造独立通知。
+
+浏览器自然战斗回放为加速World时钟的合法玩家API命令；预载计划会用到的塔图以隔离战斗验证。实际生产冷入口另用真实 earned 前置存档、第四旗→书页→入关单测，严格15MB，不将预热自然回放冒充冷加载。未取得原版同输入逐像素证明，整体仍非完整1:1；5/6的Alleria、投石车和最终首领链等缺口继续见下文历史记录。
+
+最终浏览器连续新档回放与纯测分开记录：前三campaign后第四campaign18生命三星，真实额外训练ultimate1/porcupine1/nimble1（double_strike因剩余点数不足未购），用第四关已赚星补兵营两项天赋；heroic142/142、iron95/95，末XP18610。此前只训multishot3的浏览器策略136杀后失败，保留日志，不削怪/改数值。实际生产路径冷加载14,641,079B/205请求、书页7.196秒/总16.615秒（100ms/1.5MBps/cacheoff）；不同线路不保证同速。旧存档解锁4时消费migration并保存，防每次重载重播道路/旗帜奖励。
+
+最终467Node全过；actual build1582files88,410,115B。stage4-release-browser-trained连续新档三模式、stage4-release-presentation-final旧档迁移一次/原书页与手机、stage4-production-performance-final、stage4-release-old-nine-publish旧九模式、stage4-release-ui-final与old-performance-final均正常exit0。原17照片变换与tower-assets真实四族交易/失败重试/手机也正常exit0。旧冷入口14,683,697B/215请求。早期启动在build尚未收齐时map超时、第四旗声明遗漏、较弱英雄挑战策略失败、旧截图采到book opening前和needsTransition误当道路标志的fixture断言均保留日志并纠正；没有将TERM143的早期旧九模式/冷路径当成功，最终独立全链收exit0。

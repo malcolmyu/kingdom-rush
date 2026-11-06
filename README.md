@@ -1,8 +1,8 @@
 # 王国保卫战：起源 · 浏览器复现
 
-[在线试玩](https://kingdom-rush-origins-first-level.minghaoyusombie.chatgpt.site) · [技术方案](docs/ARCHITECTURE.md) · [参考与差异](docs/REFERENCE.md)
+[在线试玩](https://malcolmyu.github.io/kingdom-rush/) · [技术方案](docs/ARCHITECTURE.md) · [参考与差异](docs/REFERENCE.md)
 
-当前版本包含开始界面、三个独立本地存档、大地图，以及**灰鸦港口、高桥、瀑布小径**的战役、英雄挑战和钢铁挑战，共 9 个关卡组合。公开试玩：[GitHub Pages](https://malcolmyu.github.io/kingdom-rush/)。原 Sites 站点继续保持私人访问范围。
+当前版本包含开始界面、三个独立本地存档、大地图，以及**灰鸦港口、高桥、瀑布小径、红杉阻击战**的战役、英雄挑战和钢铁挑战，共 12 个关卡组合。公开试玩：[GitHub Pages](https://malcolmyu.github.io/kingdom-rush/)。原 Sites 站点继续保持私人访问范围。
 
 ![开始界面](docs/images/start.png)
 
@@ -10,7 +10,7 @@
 
 ## 开始游玩
 
-点击“开始游戏”，选择存档，再点击地图旗帜进入关卡。战役通关解锁下一关；战役获得三星后，解锁该关的英雄与钢铁挑战。后续关卡旗帜仅展示，当前可玩范围为前三关。
+点击“开始游戏”，选择存档，再点击地图旗帜进入关卡。战役通关解锁下一关；战役获得三星后，解锁该关的英雄与钢铁挑战。后续关卡旗帜仅展示，当前可玩范围为前四关，第5、6关仍在还原中。
 
 - 点击木牌空地建造四类塔；点击已建塔可升级、出售，或调整兵营集结点。不同关卡、模式有各自的禁用塔和等级限制。
 - 战役有 20 生命；英雄与钢铁挑战只有 1 生命。英雄挑战为六波精英敌人，钢铁为一波长进攻。

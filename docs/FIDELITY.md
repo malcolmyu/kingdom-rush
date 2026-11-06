@@ -1291,3 +1291,6 @@ logs artifacts/stage4-groups-tests-release.log/build-release.log/three-scenes.lo
 自然第4仍未全面发布验收：原训练函数用前三campaign自然XP5277可合法multishot2，优先树屋两兵样本campaign19命/1漏；赚9星经真实buyUpgrade购买天赋后的heroic策略最高140/142仍lost。末两ettin满700HP，hero死于前段且末路无塔覆盖，记录为源机制/策略诊断，未修改回血/伤害/XP/RNG。source max_upgrade_level2限天赋而非塔，旧World.allowed已允许挑战三级及未锁Arcane，不能把测试计划自限二级当产品规则。入口仍关闭、整体in_progress。
 
 最终build1569files88,126,620B；旧冷入口14,657,823B/214请求、book6.268秒/总15.567秒仍<15MB。logs artifacts/tier-tests-release.log/build-publish.log/stage4-performance-final.log/browser-final.log/three-scenes-final.log/burn-final.log/slumber-final.log/campaign-final.log/ui-final.log/old-performance-final.log/pages-ui.log；公开一次manifest.117且完整UI正常exit0，新推送不轮询。所有必需工具结果已收集，无浏览器挂住或未处理产品失败。
+
+
+0.2.119第4关正式入口与自然三模式验收：见STAGES-4-6.md。新敌照片/肖像与book4原图裁切无损；17照片四角矩阵检查保留。地图第四旗和六道路点来自固定map_points源，不手挪位置。通关证明玩法可用，不等于原版同输入像素验收；5/6继续关闭。

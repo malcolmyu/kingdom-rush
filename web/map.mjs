@@ -1,9 +1,10 @@
+import{PLAYABLE_STAGE_COUNT}from'./campaign-release.mjs';
 import{createBalloon}from'./balloon.mjs';
 import{MapUnlockSequence,mapBalloonAlpha}from'./map-unlock.mjs';
 import {drawMapFlag} from './map-flags.mjs';
 // Original map coordinates and presentation time, independent of battle simulation.
 const clamp=v=>Math.max(0,Math.min(1,v));
-export function roadDots(roads,unlocked,previous,time){return roads.filter(r=>r.unlock_at<=Math.min(3,unlocked)).flatMap(r=>r.dots.map((p,i)=>({key:`${r.id}-${i}`,pos:p,hidden:(r.hidden_idx||[]).includes(i+1),frame:r.unlock_at>previous?Math.min(9,Math.floor((time-i*.3)*30)):9}))).filter(d=>!d.hidden&&d.frame>=0);}
+export function roadDots(roads,unlocked,previous,time){return roads.filter(r=>r.unlock_at<=Math.min(PLAYABLE_STAGE_COUNT,unlocked)).flatMap(r=>r.dots.map((p,i)=>({key:`${r.id}-${i}`,pos:p,hidden:(r.hidden_idx||[]).includes(i+1),frame:r.unlock_at>previous?Math.min(9,Math.floor((time-i*.3)*30)):9}))).filter(d=>!d.hidden&&d.frame>=0);}
 export function pathPosition(points,distance){let length=0;const segments=[];for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],length=Math.hypot(b.x-a.x,b.y-a.y);segments.push({a,b,length});}for(const s of segments)length+=s.length;if(!length)return{...points[0],angle:0};let d=((distance%length)+length)%length;for(const s of segments){if(d<=s.length){const t=d/s.length;return{x:s.a.x+(s.b.x-s.a.x)*t,y:s.a.y+(s.b.y-s.a.y)*t,angle:Math.atan2(s.b.y-s.a.y,s.b.x-s.a.x)};}d-=s.length;}return{...points.at(-1),angle:0};}
 export class MapShip{
  constructor(definition,random){this.definition=definition;this.random=random;this.phase='out';this.elapsed=0;this.duration=random(...definition.wait_out);}

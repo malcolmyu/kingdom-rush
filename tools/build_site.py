@@ -10,7 +10,7 @@ for module in OUT.glob('*.mjs'):
  for relative in re.findall(r"(?:from\s*|import\s*)['\"](\./[^'\"]+)",module.read_text()):
   if not (module.parent/relative).is_file():raise RuntimeError(f'Missing runtime import {relative} from {module.name}')
 catalog=json.loads((ROOT/'web/assets/catalog.json').read_text())
-assets={'book-hover.ogg','encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-select.ogg','upgrade-confirm.ogg','map-new-flag.ogg','map-new-road.ogg','transition-open.ogg','transition-close.ogg','quest-completed.ogg','quest-failed.ogg','win-star.ogg','notification-open.ogg','notification-close.ogg','notification-icon.ogg','spell-refresh.ogg','catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
+assets={'campaign-release.json','book-hover.ogg','encyclopedia-turn.ogg','upgrade-buy.ogg','upgrade-select.ogg','upgrade-confirm.ogg','map-new-flag.ogg','map-new-road.ogg','transition-open.ogg','transition-close.ogg','quest-completed.ogg','quest-failed.ogg','win-star.ogg','notification-open.ogg','notification-close.ogg','notification-icon.ogg','spell-refresh.ogg','catalog.json','ObelixPro.ttf','coin.ogg','build.ogg','arrow.ogg','victory.ogg','battle.ogg','menu.ogg','world.ogg','door.ogg','melee.ogg','barrack.ogg','thunder1.ogg','thunder2.ogg','thunder3.ogg','levelup.ogg','double-strike.ogg','nimble.ogg'}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/fonts').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/ui').rglob('*')if p.is_file()}
 assets|={str(p.relative_to(ROOT/'web/assets'))for p in (ROOT/'web/assets/book').rglob('*')if p.is_file()}
@@ -42,6 +42,6 @@ html=(OUT/'index.html').read_text().replace('<html ', '<html data-packed-metadat
 preloads=''.join(f'<link rel="modulepreload" href="{p.name}">\n'for p in sorted(OUT.glob('*.mjs')))
 preloads+='<link rel="preload" as="image" href="assets/desktop-title/main_menu_bg.webp" fetchpriority="high">\n'
 (OUT/'index.html').write_text(html.replace('</head>',preloads+'</head>'))
-manifest={'version':json.loads((ROOT/'package.json').read_text())['version'],'stages':3,'modes':['campaign','heroic','iron'],'files':{str(p.relative_to(OUT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in OUT.rglob('*')if p.is_file() and p.name!='build-manifest.json'}}
+manifest={'version':json.loads((ROOT/'package.json').read_text())['version'],'stages':json.loads((ROOT/'web/assets/campaign-release.json').read_text())['playableStages'],'modes':['campaign','heroic','iron'],'files':{str(p.relative_to(OUT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in OUT.rglob('*')if p.is_file() and p.name!='build-manifest.json'}}
 (OUT/'build-manifest.json').write_text(json.dumps(manifest,indent=2))
 print(f'Built {len(manifest["files"])} files; {sum(p.stat().st_size for p in OUT.rglob("*")if p.is_file()):,} bytes in build/')

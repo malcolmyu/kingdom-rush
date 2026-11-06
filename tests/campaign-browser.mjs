@@ -7,7 +7,7 @@ const origin=process.env.TEST_URL||'http://127.0.0.1:8765';
 async function settle(){await page.evaluate(async()=>{await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));await Promise.all(document.getAnimations().map(a=>a.finished.catch(()=>{})));});}
 const out=path.resolve('artifacts');fs.mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:process.platform==='darwin'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});
-const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],requests=[];
+const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[],requests=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)requests.push([r.status(),r.url()]);});
 try{
 await page.goto(origin);await page.waitForFunction(()=>window.origins);
@@ -60,5 +60,5 @@ assert.equal(await page.evaluate(()=>origins.app.progress.seenMapHints?.map_ball
 assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
 const missing=await page.evaluate(()=>[...origins.renderer.missing]);
 fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({status:'passed',results,errors,requests,missingFrames:missing,checks:['title','three save slots','world map','stage locks','challenge locks','all 9 legal wins','3-star challenge unlock','upgrade and sell through UI','pause and resume','persistent progress after reload','mobile landscape build and mode selection','no HTTP failures','no uncaught JS errors']},null,2));
-}catch(e){console.log('Campaign diagnostic',JSON.stringify({errors,requests,state:await page.evaluate(()=>({scene:origins.app.scene,modal:origins.app.modal,resultAge:origins.app.resultMotion?.age,world:origins.world?.status})).catch(()=>null)}));throw e;}finally{await page.context().close();await browser.close();}
+}catch(e){console.log('Campaign diagnostic',JSON.stringify({errors,requests,state:await page.evaluate(()=>({scene:origins.app.scene,modal:origins.app.modal,resultAge:origins.app.resultMotion?.age,world:origins.world?.status})).catch(()=>null)}));throw e;}finally{await context.close();await browser.close();}
 console.log('Campaign browser flow passed: all 9 modes, persistence, mobile controls.');

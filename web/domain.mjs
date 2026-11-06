@@ -1,3 +1,4 @@
+import{PLAYABLE_STAGE_COUNT}from'./campaign-release.mjs';
 import{isEnemyStunned}from'./enemy-status.mjs';
 import{updateArcaneSlumbers}from'./arcane-slumber.mjs';
 import{updateArcaneBursts}from'./arcane-burst.mjs';
@@ -227,5 +228,5 @@ export class World{
 }
 
 export function emptySave(){return{version:2,unlocked:1,stars:{},challenges:{},heroLevel:1,heroXp:0,heroSkills:heroSkills(),heroProgressVersion:1,options:{sound:false,difficulty:2}};}
-export function recordVictory(save,w){if(w.status!=='won')return save;const next=normalizeHeroProgress(structuredClone(save));next.heroXp=w.heroXp;next.heroLevel=w.heroLevel;if(w.mode==='campaign'){next.stars[w.id]=Math.max(next.stars[w.id]||0,w.stars);next.unlocked=Math.min(3,Math.max(next.unlocked,w.id+1));}else next.challenges[w.id+'-'+w.mode]=true;return next;}
-export function canSelect(save,id,mode='campaign'){return id>=1&&id<=3&&id<=save.unlocked&&(mode==='campaign'||(save.stars[id]||0)===3);}
+export function recordVictory(save,w){if(w.status!=='won'||w.id<1||w.id>PLAYABLE_STAGE_COUNT)return save;const next=normalizeHeroProgress(structuredClone(save));next.heroXp=w.heroXp;next.heroLevel=w.heroLevel;if(w.mode==='campaign'){next.stars[w.id]=Math.max(next.stars[w.id]||0,w.stars);next.unlocked=Math.min(PLAYABLE_STAGE_COUNT,Math.max(next.unlocked,w.id+1));}else next.challenges[w.id+'-'+w.mode]=true;return next;}
+export function canSelect(save,id,mode='campaign'){return id>=1&&id<=PLAYABLE_STAGE_COUNT&&id<=save.unlocked&&(mode==='campaign'||(save.stars[id]||0)===3);}

@@ -1,3 +1,4 @@
+import{PLAYABLE_STAGE_COUNT}from'./campaign-release.mjs';
 import data from'./desktop-map-data.mjs';
 const R=data.rewardMotion;
 export function kuiFrame(time,last){return Math.max(1,Math.min(last,Math.ceil(time*30)));}
@@ -5,7 +6,7 @@ export function advanceDesktopMapClock(t,dt,difficultyOpen=false){t.uiTime+=dt;w
 // Desktop nominal coroutine schedule. No storage or gameplay mutation.
 export class DesktopMapUnlockSequence{
  constructor(progress,before,previous,roads){Object.assign(this,{progress,before:before||progress,previous,roads,levels:new Map(),events:[]});let cursor=R.initialWait;this.needsTransition=false;
-  for(let id=1;id<=Math.min(3,progress.unlocked);id++){
+  for(let id=1;id<=Math.min(PLAYABLE_STAGE_COUNT,progress.unlocked);id++){
    const stars=progress.stars[id]||0,old=this.before.stars?.[id]||0,iron=!!progress.challenges[id+'-iron'],newIron=iron&&!this.before.challenges?.[id+'-iron'],newHero=progress.challenges[id+'-heroic']&&!this.before.challenges?.[id+'-heroic'],s={old,stars,blocks:[],modes:[]};
    const mode=iron&&!newIron?'iron':stars&&(old||stars===old)?'campaign':'nostar';s.modes.push({at:0,mode,restart:false,key:id+':initial'});
    const set=(at,mode,restart)=>s.modes.push({at,mode,restart,key:id+':'+mode+':'+at});
@@ -21,5 +22,5 @@ export class DesktopMapUnlockSequence{
   const heroic=!!this.progress.challenges[flag.id+'-heroic']&&(s.heroicBegin===undefined||time>=s.heroicBegin);
   return{visible:!hidden,enabled:!hidden&&!reveal&&!s.blocks.some(([a,b])=>time>=a&&time<b),phase,stars:s.stars,starFrames,heroic,wingFrame:s.heroicBegin===undefined?15:kuiFrame(time-s.heroicBegin,15),reveal};
  }
- dots(time){return this.roads.filter(r=>r.unlock_at<=Math.min(3,this.progress.unlocked)).flatMap(r=>{const at=this.levels.get(r.unlock_at)?.roadBegin;return r.dots.map((pos,i)=>({pos,frame:at===undefined?9:time<at+i*R.roadInterval?-1:kuiFrame(time-at-i*R.roadInterval,10)-1,hidden:(r.hidden_idx||[]).includes(i+1)}));}).filter(d=>!d.hidden&&d.frame>=0);}
+ dots(time){return this.roads.filter(r=>r.unlock_at<=Math.min(PLAYABLE_STAGE_COUNT,this.progress.unlocked)).flatMap(r=>{const at=this.levels.get(r.unlock_at)?.roadBegin;return r.dots.map((pos,i)=>({pos,frame:at===undefined?9:time<at+i*R.roadInterval?-1:kuiFrame(time-at-i*R.roadInterval,10)-1,hidden:(r.hidden_idx||[]).includes(i+1)}));}).filter(d=>!d.hidden&&d.frame>=0);}
 }

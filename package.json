@@ -1,7 +1,7 @@
 {
   "name": "kingdom-rush-origins-browser",
   "private": true,
-  "version": "0.2.118",
+  "version": "0.2.119",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
@@ -123,7 +123,10 @@
     "test:arcane-slumber": "node tests/arcane-slumber-browser.mjs",
     "test:stage4-resources": "node tests/stage4-resources-browser.mjs",
     "test:stage4-natural": "node tests/stage4-natural.mjs",
-    "test:tower-assets": "node tests/tower-assets-browser.mjs"
+    "test:tower-assets": "node tests/tower-assets-browser.mjs",
+    "test:stage4-release": "node tests/stage4-release-browser.mjs",
+    "test:stage4-loading-performance": "node tests/stage4-loading-performance.mjs",
+    "test:stage4-presentation": "node tests/stage4-release-presentation-browser.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"
