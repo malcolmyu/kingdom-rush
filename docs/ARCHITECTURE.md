@@ -384,3 +384,6 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 
 
 0.2.126 Blade power offers now include source single-rank swirling. Per-unit melee copies apply original damage/cooldown increments at the outer-loop boundary, preserving attack timestamps and immutable templates; replacement insert inherits rank. Tower info computes the same source upgraded attack values directly from purchased tower rank, matching tower_barrack.get_info rather than borrowing another soldier state. Old classes and parry counter damage remain unchanged.
+
+
+0.2.127 `blade-dance.mjs` owns out/hit/in phases, source target selection and slot1 teleport, exact origin return and balanced target stun tokens. World retains independent per-source enemy counts; death/removal/sale releases only a dance-owned token. Active dance runs before ordinary soldier targeting and motion; new rally orders wait for completion. Blade damage callback respects the source explicit ignore_damage phase and restores normal health handling afterward. `read_blade_dance.lua` inspects compiled prototype constants without executing any controller. Full native path/node/heading and scheduler equivalence remain outside this adaptation.

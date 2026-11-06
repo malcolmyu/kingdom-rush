@@ -1,5 +1,11 @@
 # 第4–6关还原工作区
 
+0.2.127刀舞三档购买与原战斗流程已接通：每档250、max3，hits2/3/4、damage25–35/35–47/40–56、strict9秒检查，至少两个合法目标才开始；不足时原delay_attack延后6帧且不抽chance。原dance_out后，每击重新按当前位置/125椭圆/原vis及当前有效路径节点筛选，排除已访对象；无候选但visited非空时清表再查，按zmod(i,#targets)选中，目标计数stun_inc→原slot1/heading朝向瞬移→三个dance_hit1/2/3随机动画之一→5/30后ceil(frandom)真伤→等完整动画后仅释放本次stun。完成回原施法位置dance_in，再还原原vis.bans与ignore_damage。利刃大师不追加mixed文本的刀舞伤害。
+
+新web/blade-dance.mjs及原proto只读生成blade-dance-data.mjs；read_blade_dance.lua仅loadfile+jit.util.funck读取原1709函数TDUP，连controller顶层chunk也不调用，三动画名由原常量表取得。extract_blade.py补1820闭包/原utils714–738及719–731、melee_slot_position984–1008、SU159–178计数与276–279重试审计，controllers不执行。独立bladeDanceStunCount与睡眠箭arcaneStunCount/外部stunned并存，ignore_stun不计数，死亡/目标移除/塔出售清自己token；没有抹掉其他眩晕。新player rally请求在刀舞结束、回到起点后才消费；已经开始的动画/前摇不因stun或新集结命令中止。技能期间原health.ignore_damage确实忽略伤害，结束恢复，不是全局Blade免伤。
+
+三个技能的基础玩法现均可真实购买，但仍非完整原塔/整关1:1：native协程与queued damage/insertIDs、动态grid/nav节点、部分音效/升级flash/特殊death与全modifier链未恢复。目标节点与朝向由当前World路程/heading适配，不冒称原native同输入全状态；原F_ALL针对新目标获取，已有投射物/伤害在本类的明确ignore_damage阶段处理。原142帧301774B包与oldcompact1314帧2122316B完全保持。第5资源门与自然三模式未通过前不开入口，第6仍有首领结局缺口。
+
 0.2.126新增剑咏者「利刃大师」真实300金币单档购买，上限取tower_blade.powers.swirling.max_level=1而非soldier模板的3。记入spent/原退款，三兵各自克隆原melee并按SU.soldier_power_upgrade对三种power_name=swirling攻击应用damage_inc5/cooldown_inc-.2：15–19物理整数伤害、各冷却.8秒、forced_cooldown取最小值.8；不改变原攻击概率/顺序、命中时间或动画，不重置攻击时钟/消费额外RNG。普通攻击/反击等待结束后的outer loop才观察购买；补兵在insert继承已购等级。模板与其他单位不写回。塔信息栏按原tower_barrack.get_info临时创建并升级的职责显示15–19，不等已有兵观察才变，也不修改百科的原始无技能数据。
 
 原APK scripts1711–1750/get_info与SU2174–2280完整只读-bl核对，extract_blade.py新增审计字段与原300/单档/三攻击声明断言，controllers不执行。完美闪避counter仍为固定3 true伤害，未套mixed附加damage_inc；刀舞仍禁用。原142帧301774B独立Blade包与旧1314帧2122316B compact均未新增或改RGBA。第五自身预算/自然三模式与完整路径等仍待验，第5/6入口保持关闭，不称整体1:1或18模式已完成。
@@ -186,3 +192,6 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 
 
 0.2.126第五关隔离冷入口诊断：真实title/save/map/book后进入未发布stage5，完整desktop双英雄HUD，100ms/1.5MBps/cacheoff实测15,532,002B/221requests，book6.838秒/总16.693秒，15MB断言明确失败。原catalog/进度/World绘制快照未改，无missing，未请求旧7.3MB扩展整图；这是关闭入口下的诊断，不是第五正式旗书发布路径/自然通关或预算通过。需再减少约532KB及将来第五书页增量，不能提高门槛/降质/清透明RGB/把必需图假延迟。可在实际菜单预览/交易前严格decode与owner校验的基础上，进一步按真实初级塔依赖分组；未实际交付前不称已优化。探针及失败日志保留ignored artifacts/stage5-resource-probe.mjs、stage5-resource-probe.json、swirling-stage5-budget.log。
+
+
+0.2.127最终包第五关隔离冷入口仍失败：100ms/1.5MBps/cacheoff15,537,493B/223requests，book6.820秒/总16.726秒，15MB断言exit1。原catalog/progress/World绘制快照保持、无missing/无7.3MB整图；原Alleria/投石车/预建兵营2级/本关场景均真实加载。此项不能当通过，也不以旧四关预算冒第五。下一批应集中解决约537KB及未来正式书页增量，并推进合法自然三模式与发布链，不再重复磨三个已接技能。日志artifacts/dance-stage5-budget.log及stage5-resource-probe.json为最新样本，旧.126失败仍保留历史。

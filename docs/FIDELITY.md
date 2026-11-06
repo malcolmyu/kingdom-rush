@@ -1323,3 +1323,8 @@ web/blade.mjs独立基础兵controller：源U.attack_order按chance小到大，�
 ## 0.2.126 Blade swirling
 
 原tower能力300/max1与soldier三攻击damage_inc5/cooldown_inc-.2、SU2174–2280 forced_cd=min逻辑核实。普通攻击15–19/.8秒使用原动作与5/30命中，非新造技能动画；反击3 true伤害不追加mixed伤害。源码与图SHA/逐RGBA校验沿原Blade包，不新增整atlas。升级flash/完整音频和native协程同输入仍未恢复，不冒称全部原塔或全关像素认证。
+
+
+## 0.2.127 Blade dance
+
+APK1709–1884/1820闭包与utils原slot1/计数/重试完整只读审计。三档250、四击最高40–56 true伤害，三种原随机出手动画，125椭圆/最少两目标/strict9秒。出场、瞬移出手、原点回位按原帧/anchor/trim同actorqueue绘制；不移植mixed额外damage_inc*swirling。伤害/动画与World快照专项为受控样本，非原版同步或自然第五通关；源图不是全关像素认证。音效/部分flash与native调度/完整global IDs等仍欠。
