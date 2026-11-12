@@ -1,5 +1,21 @@
 # 第7–10关还原工作区
 
+## 0.2.148：自然之友两档购买、召熊、战斗与死亡补兵（隔离验证）
+
+`web/stages/nature.mjs`仅第7动态加载。nature350每档/max2，独立s.druid.powers；塔与两档技能合spent1740/开波后退款1044。塔外循环观察changed才更新召熊兵位，升级不改旧熊身份或生命；不借普通兵营的同对象复活。原nature shooter1273–1329虽有模板cooldown15，却没有读取它作为补兵条件：逐位检查活兵或仍在entities的死亡熊，空位才等10/30后queue新熊，下一Worldtick插入；不等待57帧完整施法动画。一次扫描已经开始后不因新blocked/magic变化中断，下一次扫描才重新检查。原队形角只在shooter初始化/处理新集结时抽随机；rank2的容量变化必须经塔外循环观察，不能读刚购买的level提前增员。真实rally沿当前World道路/距离校验适配，在扫描结束处理队形更新。
+
+安全stub与APK注册核实bear insert继承共享scripts.soldier_barrack.insert、update为game_scripts2088–2187；game_scripts没有soldier_barrack override，reader继承标签已规范化。原45帧spawn完整等待/隐藏世界血条，不是免伤；死亡发生在入场时也先等原动画返回再进入death职责。原250HP/.2甲/20..40物理、4/5帧idle2stance/stance2idle、23帧attack/9帧hit、1秒冷却，伤害ceilfrandom并下一tick提交，health免疫/存在门保持；普通近战、选敌/slot与敌方回击沿当前World适配，无假英雄XP。只在空闲并已回到集结位置后按原2秒受击间隔/1秒周期离散回25HP，不在行走或攻击时全局回血。52帧death后隐藏body，死亡实体保留至原20秒到期才移除/释放计数，新补熊使用新对象/id；没有死亡奖励。卖塔清shooter/未插入熊与所属兵，已排队伤害按自己的目标存在门完成；没有timer或跨场景缓存。
+
+原2093闭包三层spawn/death decal/effect/rune的原offset/flip/z/负time_offset/alpha、双轴scale与offset tween已纯绘制，原世界血条在idle40/standing55间切换。World只增加可选soldier/rally，Renderer只增加可选pose/healthTemplate；旧六关无熊状态/RNG，旧4–6仍不解锁Druid。Druid原568逻辑帧1125634B独立组逐RGBA/size/trim无损，三级高级菜单/交易前完整decode；原stage7组4679帧6369762B及旧compact1314帧2122316B均保持。source固定SHA与controller只读-bl审计扩到nature/bear/FX/insert/death/formation，未执行controllers或引入mixed玩法。
+
+实际浏览器菜单由14个原ettin各70死亡收益付款，最后90gold/spent1740；真实Space后World.step自动召两熊、原物理伤害、真hurt死亡、20秒内保留旧实体/之后新id补位，金币不额外增加。原Canvas无missing/未decode、完整循环安全World绘制快照不变，pause/wheel/844×390CDP触摸、卖塔与退图清理通过。附件为受控第7原路径/队列样本，不是天然第7通关或原版同输入像素认证。普通近战目标/队列IDs、动态网格/通用计数组与modifier、全部特殊死亡/idle_flip/专属声音和额外FX仍适配或欠，不称全塔/全关1:1。
+
+679Node全过（11新nature）。最终actualbuild1689files105938154B；142个web运行模块与Druid/第7资源逐字节相等，source pinned重提通过。原完整天然九模式/手机存档、Sylvan专项与UI通过；连续新档4/5/6自然保持4campaign19命/heroic142/iron95、5campaign20命/heroic201/iron147/XP37600、6campaign20命0漏/764kill772spawn/真实bossdeath-complete父complete→heroic120→iron169/末XP47121。首浏览器缺已锁定Playwright依赖，按npm ci恢复后repeat/final/release/publish均正常exit0；最初错误的继承stub脚本路径断言已在原共享表/无override审计后修正，不执行controllers。补原ceilfrandom与next-tick伤害、外循环容量观察后重新纯测/build/实际专项和四条已发布预算；未拿早期包冒最终。
+
+最终cold100ms/1.5MBps/cacheoff：旧14858989B/240req总16.010s；4真实旗书14816367B/230req书7.191总17.032；5真实旗书14999673B/241req书7.829总17.655；6真实旗书14940342B/240req书8.098总23.649，全通过15MB门，不保所有线路。第五只余327B，新大代码/声明必须继续按关lazy！第7隔离16973620B/238req书7.646总17.797，15MB assert明确正常exit1，无base/progress/draw差分、无missing/unready，不抬门槛/降质/清alpha0RGB/假延后当前必需图；不是正式旗7书7路径。原第6boss/cart后期仍另3.87MB，不冒整局流量15MB。
+
+第7通知百科、自然三模式和原旗路书页奖励cap7仍待验；生产继续前六关18模式/cap6，第7关闭。下一批集中第7自身预算与合法自然流程，不再重做nature/Sylvan/三石/蜘蛛/faerie/羊人或旧HUD。核验日志`artifacts/nature-{source-pinned,source-final-release,tests-final-release,build-final-release,browser-publish,old-nine,ui-final,natural4,natural5,natural6,sylvan-regression,performance-publish,stage4-performance-publish,stage5-performance-publish,stage6-performance-publish,stage7-budget-publish,pages-ui}.log`。公开单次manifest确认0.2.147且public UI正常exit0，新推送后不轮询；私有接口恢复，本批同步结果以issue最终交付记录为准。
+
 ## 0.2.147：德鲁伊Sylvan三级购买、诅咒与生命损失传播（隔离验证）
 
 `web/stages/sylvan.mjs`只由第7动态runtime加载。250每档/max3，独立s.druid.powers，塔与技能合spent1790/战斗退1074；nature仍disabled，不假生成熊。World与TowerMenu只补最小可选powerOffer/buyPower接口，旧1–6无Sylvan状态/额外随机。原tower_druid1107外循环在未blocked且普通load/shoot结束后观察changed，queue独立druid_shooter_sylvan；下一tick初始化15秒strict冷却，升级不重置旧shooter时钟。失败沿SU.delay_attack276–279重设为now-cd+1-1e-6。原1235–1268/1248闭包完整只读：owner blocked/can_do_magic门、range175/flags6、排除ogre_magi/已诅咒；原utils714–738只filter并保持实体迭代顺序，不擅自改成最前优先，保留原节点有效性门。捕获首目标后20/30释放，释放读当前rank，不新加range/vis门；已开y_wait不被blocked或magic改变假中断。原46帧cast尾帧等同idle，独立施法不占普通三石攻击。

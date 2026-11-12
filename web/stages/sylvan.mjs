@@ -7,7 +7,7 @@ const inside=(a,b,r)=>((a.x-b.x)/r)**2+((a.y-b.y)/(.7*r))**2<=1;
 const present=(w,e)=>w.enemies.includes(e),alive=(w,e)=>present(w,e)&&e.hp>0;
 const duration=(w,name)=>{const a=w.data.animations[name];return(a.frames?.length||a.to-a.from+1)/30;};
 function legal(w,e,flags,bans){const v=w.template(e.key).vis||{};return alive(w,e)&&hopliteNodeValid(w,e.road,routeNode(w,e))&&!((e.visBans??v.bans??0)&flags)&&!((e.visFlags??v.flags??0)&bans);}
-export function druidPowerOffer(w,s,name){if(!s?.druid||name!=='sylvan')return null;const p=s.druid.powers?.[name]||w.template(s.key).powers[name];return{...p,price:p.level===0?p.price_base:p.price_inc};}
+export function druidPowerOffer(w,s,name){if(!s?.druid||!['sylvan','nature'].includes(name))return null;const p=s.druid.powers?.[name]||w.template(s.key).powers[name];return{...p,price:p.level===0?p.price_base:p.price_inc};}
 export function buyDruidPower(w,s,name){if(!s?.druid)return undefined;const p=druidPowerOffer(w,s,name);if(!w.active(true)||!p||p.level>=p.max_level||w.gold<p.price)return false;s.druid.powers??={};s.druid.powers[name]={...p,level:p.level+1,changed:true};w.gold-=p.price;s.spent+=p.price;w.emit('tower_power',{name,level:p.level+1});return true;}
 // The tower outer coroutine observes changed and queues the independent shooter.
 export function syncSylvan(w,s){const p=s.druid.powers?.sylvan;if(!p?.changed)return;p.changed=false;const q=state(w);if(!q.shooters.some(x=>x.owner===s))q.shooters.push({id:++w.serial,owner:s,queuedAt:w.time,last:null,cast:null,visualAt:null});}

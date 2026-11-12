@@ -151,17 +151,19 @@
     ]
   },
   "runtimeModulesSHA256": {
-    "domain.mjs": "85b4bc8baa54fc8ba88e56bae91a6a2a6a8d8dfdc20b9da2a9fbbfe374c89c20",
+    "domain.mjs": "78f9ff8205ab384a85cf590b9e92785f8d020915063e97d213c7433a3ad82dd0",
     "harasser-data.mjs": "4aeba44da9d3d85dda654b05d9999a373230dc9a771bd9b41d0d4e6e6c8563a9",
     "harasser-jump-data.mjs": "e677146526430325ba4405b31a8eb4955f4410a7950fe9840dddf647778f2541",
     "projectile-sprites.mjs": "9329c9674ed582549a50dba3518b54f4e8736d0a48bcd328d80daaa3601001e8",
-    "renderer.mjs": "312908b4021d2f9e9c993117934bf8e207896937775df6d5918b1ee35f3d29db",
+    "renderer.mjs": "110a1bd85afaf219f046f813e4fabf28a36ff1f73c642cacc6f0f4bf3b4ae2bc",
     "skill-effect-data.mjs": "0e5431aee85e63a64e28fefbf67a8c280a4a22fb3fa24d1a0347cf3d7c83b340",
-    "stages/druid.mjs": "fbbd0688c135e123dd6e9b55026b1dd69111e75f5118b4358add2cb8a2cd4da5",
+    "stages/druid.mjs": "586a00118b2485c4045b30301efbd5f563e871967ed406dcdfb9403933e717cb",
     "stages/faerie.mjs": "58418bb37559bf4eb23873dcf06f536efd6bf7da9858c22ecbeebc286f5a80b7",
     "stages/hoplite.mjs": "ae2fddf3db20abb2f11549d17952d39d9016a23f39b8b02d1643a6e69865f00b",
+    "stages/nature.mjs": "0c0df50b2639e1ef079c7cae3e6460c880120b282fc6bc8b2b85b8817b25c15d",
     "stages/satyr.mjs": "3eb34a25ac3e9f7665e89074bbdb52e6df141f982bdff4a6f7cae0cca38bdf8a",
-    "stages/stage7.mjs": "9d2a886a02aca063dd701cc4314d3d633625dcb28ef4c0442f3837275005cea6",
+    "stages/stage7.mjs": "9c1636a853b81f950a5dc5dd444a163b8a474af4f115edccfd0f345aca63c16d",
+    "stages/sylvan.mjs": "2527b0904acca9bdeb97f0399afb27c5ec58f4fe070eb8ee6a80c07cf2e1e5ca",
     "stages/webspitter.mjs": "f25a9c45e53c838d5541eaf747520eb2697aa069b325b19a2cceebd785cf6366",
     "tower-effect-data.mjs": "e013c1e28727490a254f2d8a79e2c92f3c4acc0039e55b9672027b656f5c65c3"
   },

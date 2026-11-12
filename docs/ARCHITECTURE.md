@@ -1,5 +1,9 @@
 # 技术方案：数据驱动的塔防战役
 
+## 0.2.148：第7专属召熊生命周期
+
+`stages/nature.mjs`管理独立shooter扫描/next-tick新兵插入/熊状态/queued物理伤害/FX与实体移除计数。nature350×2，经塔外循环观察升级才改容量；死亡熊仍占兵位至20秒实体移除，新熊身份独立。可选soldier/rally与pose/healthTemplate接口只第7提供，不向旧六关静态导入大声明。输入、付款与资源decode沿现有交易事务；纯Renderer读取原动画/tween。第7仍隔离closed，正式cap6，详STAGES-7-10。
+
 ## 0.2.147：德鲁伊Sylvan独立施法与传播队列
 
 第7 leaf模块sylvan.mjs持有独立shooter、pending modifiers、HP快照、固定端点射线与next-tick damage/affected。World/TowerMenu仅提供可选buyPower/powerOffer，s.druid.powers独立；旧六关无新state/RNG。faerie清所属Sylvan状态，卖塔只删shooter而不撤既有诅咒；Renderer纯采样并入actorqueue。668Node及实际Canvas/手机、前六回归预算通过；nature/第7预算及自然发布链仍欠，cap6保持。详STAGES-7-10。
